@@ -1,0 +1,23 @@
+/*
+Theme Name: Visual Composer Starter Child
+Theme URI: http://visualcomposer.io
+Description: Visual Composer Starter child theme
+Author: The Visual Composer Team
+Author URI: http://visualcomposer.io
+Template: visual-composer-starter
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: light, blog, starter, responsive-layout, accessibility-ready, sandwich-menu
+Text Domain: visual-composer-starter-child
+*/
+@import url( "https://seandinwiddie.com/wp-content/themes/visual-composer-starter-theme-child/dank-mono.css" );
+*:not( .far )
+{
+  font-family: "dm" !important;
+}
+
+.text-glow em span
+{
+  background: rgba( 255, 255, 255, .8 );
+}
