@@ -2,13 +2,55 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://seandinwiddie.com/community/</loc>
-		<lastmod>2023-10-27T12:44:03+00:00</lastmod>
+		<lastmod>2023-10-27T14:41:20+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://seandinwiddie.com/community/introduction/</loc>
-		<lastmod>2023-10-27T12:44:03+00:00</lastmod>
+		<lastmod>2023-10-27T13:15:36+00:00</lastmod>
 		<image:image>
 			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/user-stories/</loc>
+		<lastmod>2023-10-27T14:01:34+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/behavior-driven-development-bdd/</loc>
+		<lastmod>2023-10-27T14:03:02+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/noaa-Z2gm_Ml_qzk-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/functional-reactive-programming-frp/</loc>
+		<lastmod>2023-10-27T14:04:03+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/mohammad-rahmani-8qEB0fTe9Vw-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/curriculum/</loc>
+		<lastmod>2023-10-27T14:08:28+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/glenn-carstens-peters-npxXWgQ33ZQ-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/staff/</loc>
+		<lastmod>2023-10-27T14:34:55+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/our-community-unveiling-our-offer-and-prices/</loc>
+		<lastmod>2023-10-27T14:41:20+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/clay-banks-LjqARJaJotc-unsplash-scaled.jpg</image:loc>
 		</image:image>
 	</url>
 </urlset>
