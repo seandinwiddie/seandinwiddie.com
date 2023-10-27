@@ -9,10 +9,10 @@
 
 <channel>
 	<title>Development Archives | Sean Dinwiddie</title>
-	<atom:link href="http://localhost/category/development/feed/?simply_static_page=51" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost/category/development/feed/?simply_static_page=101" rel="self" type="application/rss+xml" />
 	<link>https://seandinwiddie.com/community/category/development/</link>
 	<description>Software Development</description>
-	<lastBuildDate>Thu, 26 Oct 2023 14:11:48 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 27 Oct 2023 12:44:03 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -93,7 +93,7 @@
 
 
 
-<p>We&#8217;ve always had a passion for technology.</p>
+<h2 class="wp-block-heading">We&#8217;ve always had a passion for technology.</h2>
 
 
 

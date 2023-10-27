@@ -8,10 +8,10 @@
 <channel>
 	<title>
 	Comments for Sean Dinwiddie	</title>
-	<atom:link href="http://localhost/comments/feed/?simply_static_page=19" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost/comments/feed/?simply_static_page=69" rel="self" type="application/rss+xml" />
 	<link>https://seandinwiddie.com/community/</link>
 	<description>Software Development</description>
-	<lastBuildDate>Thu, 26 Oct 2023 14:11:48 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 27 Oct 2023 12:44:03 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
