@@ -7,9 +7,9 @@
 	>
 <channel>
 	<title>
-	Comments for Sean Dinwiddie	</title>
-	<atom:link href="http://localhost/comments/feed/?simply_static_page=268" rel="self" type="application/rss+xml" />
-	<link>https://seandinwiddie.com/community/</link>
+	Comments on: User-Story_BDD_FRP Workflow	</title>
+	<atom:link href="http://localhost/user-story_bdd_frp-workflow/feed/?simply_static_page=316" rel="self" type="application/rss+xml" />
+	<link>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/</link>
 	<description>Software Development</description>
 	<lastBuildDate>Fri, 27 Oct 2023 15:47:12 +0000</lastBuildDate>
 	<sy:updatePeriod>

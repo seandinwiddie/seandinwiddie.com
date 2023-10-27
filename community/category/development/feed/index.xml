@@ -9,10 +9,10 @@
 
 <channel>
 	<title>Development Archives | Sean Dinwiddie</title>
-	<atom:link href="http://localhost/category/development/feed/?simply_static_page=205" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost/category/development/feed/?simply_static_page=319" rel="self" type="application/rss+xml" />
 	<link>https://seandinwiddie.com/community/category/development/</link>
 	<description>Software Development</description>
-	<lastBuildDate>Fri, 27 Oct 2023 14:41:20 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 27 Oct 2023 15:47:12 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,6 +28,749 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>User-Story_BDD_FRP Workflow</title>
+		<link>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/</link>
+					<comments>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Fri, 27 Oct 2023 15:44:27 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=192</guid>
+
+					<description><![CDATA[<p>Developing Modules a cyclically. Welcome to the Community Course Manual Curriculum for developing software modules using a cyclical User-Story -&#62; Behavior-Driven Development (BDD) -&#62; Functional Reactive Programming (FRP) workflow. In this course, you will gain the knowledge and skills to create efficient and user-centric software solutions. This curriculum is designed to provide a step-by-step guide [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/user-story_bdd_frp-workflow/">User-Story_BDD_FRP Workflow</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Developing Modules a cyclically.</strong></p>
+
+
+
+<p>Welcome to the Community Course Manual Curriculum for developing software modules using a cyclical User-Story -&gt; Behavior-Driven Development (BDD) -&gt; Functional Reactive Programming (FRP) workflow. In this course, you will gain the knowledge and skills to create efficient and user-centric software solutions. This curriculum is designed to provide a step-by-step guide on how to develop software modules and continuously enhance them using a cyclical approach.</p>
+
+
+
+<p><strong>Module 1: Understanding User Stories</strong></p>
+
+
+
+<ul>
+<li><em>Objectives:</em></li>
+
+
+
+<li>Learn to capture user requirements effectively.</li>
+
+
+
+<li>Understand the importance of user-centric design.</li>
+
+
+
+<li>Translate user needs into User Stories.</li>
+
+
+
+<li><em>Topics:</em></li>
+
+
+
+<li>Defining User Stories.</li>
+
+
+
+<li>Identifying user needs.</li>
+
+
+
+<li>Writing clear and concise User Stories.</li>
+
+
+
+<li><em>Activities:</em></li>
+
+
+
+<li>Practical exercises in creating User Stories.</li>
+
+
+
+<li>Collaborative sessions to review and refine User Stories.</li>
+</ul>
+
+
+
+<p><strong>Module 2: Behavior-Driven Development (BDD)</strong></p>
+
+
+
+<ul>
+<li><em>Objectives:</em></li>
+
+
+
+<li>Explore the principles of BDD.</li>
+
+
+
+<li>Understand how BDD aligns development with user expectations.</li>
+
+
+
+<li>Learn to write BDD scenarios.</li>
+
+
+
+<li><em>Topics:</em></li>
+
+
+
+<li>Introduction to BDD.</li>
+
+
+
+<li>Given-When-Then (Gherkin) syntax.</li>
+
+
+
+<li>Writing BDD scenarios for software modules.</li>
+
+
+
+<li><em>Activities:</em></li>
+
+
+
+<li>Creating BDD scenarios for real-world cases.</li>
+
+
+
+<li>Reviewing and enhancing BDD scenarios as a group.</li>
+</ul>
+
+
+
+<p><strong>Module 3: Functional Reactive Programming (FRP)</strong></p>
+
+
+
+<ul>
+<li><em>Objectives:</em></li>
+
+
+
+<li>Master the fundamentals of FRP in software development.</li>
+
+
+
+<li>Discover how FRP enhances user interaction and responsiveness.</li>
+
+
+
+<li>Apply FRP concepts to software modules.</li>
+
+
+
+<li><em>Topics:</em></li>
+
+
+
+<li>Introduction to FRP.</li>
+
+
+
+<li>Event streams and reactive programming.</li>
+
+
+
+<li>Integrating FRP into software modules.</li>
+
+
+
+<li><em>Activities:</em></li>
+
+
+
+<li>Building software modules using FRP.</li>
+
+
+
+<li>Analyzing and optimizing existing modules with FRP.</li>
+</ul>
+
+
+
+<p><strong>Module 4: The Cyclical Workflow</strong></p>
+
+
+
+<ul>
+<li><em>Objectives:</em></li>
+
+
+
+<li>Integrate User Stories, BDD, and FRP into a cyclical workflow.</li>
+
+
+
+<li>Understand the benefits of continuous improvement.</li>
+
+
+
+<li>Create software modules that evolve with user needs.</li>
+
+
+
+<li><em>Topics:</em></li>
+
+
+
+<li>Creating a cyclical workflow.</li>
+
+
+
+<li>Reviewing and revising User Stories.</li>
+
+
+
+<li>Iteratively enhancing software modules.</li>
+
+
+
+<li><em>Activities:</em></li>
+
+
+
+<li>Practicing the cyclical approach in real projects.</li>
+
+
+
+<li>Collaborative sessions to refine existing software modules.</li>
+</ul>
+
+
+
+<p><strong>Conclusion:</strong></p>
+
+
+
+<p>You will be well-equipped to develop software modules with a cyclical User-Story -> BDD -> FRP workflow. You&#8217;ll have the skills to create user-centric solutions that evolve and adapt to changing requirements. Remember, software development is a dynamic field, and this curriculum empowers you to stay ahead of the curve.</p>
+
+
+
+<p>Get ready to embark on this journey and join the community of developers committed to delivering outstanding software modules. Your expertise will not only benefit you but also contribute to the success of your team and organization.</p>
+
+
+
+<p>Our commitment to developing software modules is fueled by our love for efficient, user-focused solutions. Together, we can make a difference in the world of software development. </p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/user-story_bdd_frp-workflow/">User-Story_BDD_FRP Workflow</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>From marketing to development</title>
+		<link>https://seandinwiddie.com/community/from-marketing-to-development/</link>
+					<comments>https://seandinwiddie.com/community/from-marketing-to-development/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Fri, 27 Oct 2023 15:08:46 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=170</guid>
+
+					<description><![CDATA[<p>DEV/REP CUT-SHEET for all internal staff including sales repesentative, software developers, executives, evangalists, moderaters, etc BRAND: Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults/Development&#8230; _ agency: cold leads &#62; marketing funnels: ads, social, and webpages/sites, email, video sales, networking&#160; &#62; hot leads &#8211; discovery &#8211; scoping &#8211; maintaining scope &#8211; hiring contractors &#8211; producing deliverables _ [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/from-marketing-to-development/">From marketing to development</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<h2 class="wp-block-heading">DEV/REP CUT-SHEET</h2>
+
+
+
+<p><sub>for all internal staff including sales repesentative, software developers, executives, evangalists, moderaters, etc</sub></p>
+
+
+
+<p><strong>BRAND</strong>: Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults/Development&#8230;</p>
+
+
+
+<p>_</p>
+
+
+
+<p>agency:</p>
+
+
+
+<p>cold leads &gt;</p>
+
+
+
+<p>marketing funnels:</p>
+
+
+
+<p>ads, social, and webpages/sites, email, video sales, networking&nbsp;</p>
+
+
+
+<p>&gt; hot leads</p>
+
+
+
+<p>&#8211; discovery</p>
+
+
+
+<p>&#8211; scoping</p>
+
+
+
+<p>&#8211; maintaining scope</p>
+
+
+
+<p>&#8211; hiring contractors</p>
+
+
+
+<p>&#8211; producing deliverables</p>
+
+
+
+<p>_</p>
+
+
+
+<p>inhouse:</p>
+
+
+
+<p>producing deliverables:</p>
+
+
+
+<p>Design,</p>
+
+
+
+<p>Development</p>
+
+
+
+<p>(</p>
+
+
+
+<p>Onboarding,</p>
+
+
+
+<p>style guide,</p>
+
+
+
+<p>and maintenance technical documentation about software development covering 3 top-level subjects:</p>
+
+
+
+<p>User-stories, BDD, and functional reactive programming;</p>
+
+
+
+<p>primarily focusing on modular SPAs covering MVPs, git, UX, react.js, and material design;</p>
+
+
+
+<p>secondary touching on databases, flat-files, JSON, vector, repositories, large datasets, big data, visualization and dashboard logistics&nbsp;</p>
+
+
+
+<p>)</p>
+
+
+
+<p>Engineering,</p>
+
+
+
+<p>Architecture,</p>
+
+
+
+<p>DevOps,</p>
+
+
+
+<p>Security&nbsp;</p>
+
+
+
+<p>_</p>
+
+
+
+<p>Dfy, dwy, coaching (Fully Booked):</p>
+
+
+
+<p>+4k/m retainer services:</p>
+
+
+
+<p>_</p>
+
+
+
+<p>Course*:</p>
+
+
+
+<p>+1k</p>
+
+
+
+<p>_</p>
+
+
+
+<p>Community:</p>
+
+
+
+<p>Online country club for administrators with Gamification</p>
+
+
+
+<p>Free beta access for early signups&nbsp;</p>
+
+
+
+<p>+1k/m General access&nbsp;</p>
+
+
+
+<p>+4k/m Inner circle</p>
+
+
+
+<p>_</p>
+
+
+
+<p>Join Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults Team staff and earn based on team size to community size ratio with daily, weekly, monthly, and yearly payout options:</p>
+
+
+
+<p>-.5% /d, -0.75% /wk, -.8% /m, or -.9% /yr</p>
+
+
+
+<p>Income /nth staff.</p>
+
+
+
+<p>I.e. ( +54k /m /6 staff ) [ ( +9k/m /-.8% ) ( -$7.2k ) ]</p>
+
+
+
+<p>_</p>
+
+
+
+<p>*Course content is a mixture of community recordings, member demonstrations, user guides, and proprietary manuals.</p>
+
+
+
+<p>_</p>
+
+
+
+<p>Prices subject to change. Admin Users, Companies, and Seats…</p>
+
+
+
+<p>_</p>
+
+
+
+<p>Review contractor(s) (Fiverr, Wethos, etc) packages. As a service and per internal analysis. Competitor relations reporting.</p>
+
+
+
+<p>_</p>
+
+
+
+<p><strong>DFY, DWY, Coaching &lt;no-vacancy&gt;:</strong></p>
+
+
+
+<ul>
+<li><strong>+4k/m Retainer Services:</strong></li>
+
+
+
+<li>Learn how to provide comprehensive Done-For-You (DFY), Done-With-You (DWY), and coaching services to clients.</li>
+
+
+
+<li>Understand the various service tiers and how to tailor them to client needs.</li>
+</ul>
+
+
+
+<p><strong>Agency:</strong></p>
+
+
+
+<ul>
+<li><strong>Cold Leads to Hot Leads:</strong></li>
+
+
+
+<li>Explore the journey of turning cold leads into hot prospects through strategic marketing and sales techniques.</li>
+
+
+
+<li>Master the art of discovery, scoping, maintaining scope, hiring contractors, and delivering successful projects.</li>
+</ul>
+
+
+
+<p><strong>In-House:</strong></p>
+
+
+
+<ul>
+<li><strong>Producing Deliverables:</strong></li>
+
+
+
+<li>Learn how to design, develop, and engineer software solutions in-house.</li>
+
+
+
+<li>Dive into the details of onboarding, creating style guides, and maintaining technical documentation.</li>
+
+
+
+<li>Explore three top-level subjects: User Stories, Behavior-Driven Development (BDD), and Functional Reactive Programming (FRP).</li>
+
+
+
+<li>Honing Minimum Viable Products (MVPs) and User Experience (UX), Specializing in modular Single Page Applications (SPAs), utilizing tools like git, React.js, APIs, LLMs, and Material Design &amp; UI Kits.</li>
+
+
+
+<li>Gain expertise in other areas including databases, flat-files, JSON, vector databases, repositories, large datasets, big data, and visualization and dashboard logistics.</li>
+
+
+
+<li>Understand software architecture, DevOps, and security practices.</li>
+</ul>
+
+
+
+<p><strong>Course:</strong></p>
+
+
+
+<ul>
+<li><strong>+1k</strong></li>
+
+
+
+<li>Explore the course content, a blend of community recordings, member demonstrations, user guides, and proprietary manuals.</li>
+
+
+
+<li>Stay updated as prices are subject to change.</li>
+</ul>
+
+
+
+<p><strong>Community:</strong></p>
+
+
+
+<ul>
+<li><strong>Online Country Club for Administrators with Gamification:</strong></li>
+
+
+
+<li>Join the exclusive online community tailored for administrators.</li>
+
+
+
+<li>Experience gamification and engage with fellow members.</li>
+
+
+
+<li>Enjoy free beta access for early signups.</li>
+
+
+
+<li>Upgrade to +1k/m General access or +4k/m Inner Circle for more benefits.</li>
+</ul>
+
+
+
+<p><strong>Join Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults Team:</strong></p>
+
+
+
+<ul>
+<li><strong>Earn Based on Team Size to Community Size Ratio:</strong></li>
+
+
+
+<li>Calculate your income based on the size of your team and the community.</li>
+
+
+
+<li>Choose from daily, weekly, monthly, and yearly payout options:
+<ul>
+<li>-.5% /d</li>
+
+
+
+<li>-0.75% /wk</li>
+
+
+
+<li>-.8% /m</li>
+
+
+
+<li>-.9% /yr</li>
+</ul>
+</li>
+
+
+
+<li>For example: +54k/m /6 staff earns (+9k/m /-.8%) and results in a -$7.2k payout.</li>
+</ul>
+
+
+
+<p><strong>Review Contractor Packages:</strong></p>
+
+
+
+<ul>
+<li><strong>Analyze Contractor Packages:</strong></li>
+
+
+
+<li>Evaluate contractor packages from platforms like Fiverr, Wethos, etc.</li>
+
+
+
+<li>Assess these packages as a service and based on internal analysis.</li>
+
+
+
+<li>Keep track of competitor relations and report findings.</li>
+</ul>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/from-marketing-to-development/">From marketing to development</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/from-marketing-to-development/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! ✌🏻</title>
+		<link>https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/</link>
+					<comments>https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Fri, 27 Oct 2023 14:53:32 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=168</guid>
+
+					<description><![CDATA[<p>As we journey through the world of software excellence, there&#8217;s a little personal note we&#8217;d like to share with you. It&#8217;s something that fuels our passion and drives our commitment to delivering top-notch software solutions. Redux.js Apps: A Labor of Love At Sean Dinwiddie &#8211; Software Engineering Consultant, we have a deep fondness for crafting [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/">P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! ✌🏻</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>As we journey through the world of software excellence, there&#8217;s a little personal note we&#8217;d like to share with you. It&#8217;s something that fuels our passion and drives our commitment to delivering top-notch software solutions.</p>
+
+
+
+<p><strong>Redux.js Apps: A Labor of Love</strong></p>
+
+
+
+<p>At Sean Dinwiddie &#8211; Software Engineering Consultant, we have a deep fondness for crafting Redux.js apps. But what exactly is Redux, and why do we hold it in such high regard?</p>
+
+
+
+<p>Redux is a predictable state container for JavaScript applications. It helps you manage the state of your application in a consistent and predictable manner. What does this mean for you as an administrator? It means that your software will run smoothly, with fewer unexpected issues or errors.</p>
+
+
+
+<p>Redux is a vital tool for building web applications, particularly those that require real-time updates and complex data management. It&#8217;s the secret sauce behind many successful web applications, providing the kind of user experience that keeps clients coming back for more.</p>
+
+
+
+<p>When we say we love coding Redux.js apps, we mean that we&#8217;re passionate about crafting software that not only meets your needs but exceeds your expectations. We&#8217;re devoted to creating solutions that make your administration tasks more efficient, enjoyable, and ultimately, more successful.</p>
+
+
+
+<p><strong>Sublime Text: Our Trusty Sidekick</strong></p>
+
+
+
+<p>In the world of software development, the tools you use can make a world of difference. That&#8217;s why we&#8217;re proud to share our admiration for Sublime Text.</p>
+
+
+
+<p>Sublime Text is a code editor that&#8217;s fast, efficient, and highly customizable. It&#8217;s a text editor for code, markup, and prose, offering a sleek and distraction-free interface. Our fondness for Sublime Text goes beyond its aesthetics; it&#8217;s a tool that helps us write clean, error-free code and deliver the best possible software solutions to you.</p>
+
+
+
+<p>With Sublime Text by our side, we&#8217;re able to focus on the details, ensuring that every line of code contributes to the efficiency and performance of your software.</p>
+
+
+
+<p><strong>Why This Matters to You</strong></p>
+
+
+
+<p>Our love for Redux.js apps and our trust in Sublime Text aren&#8217;t just personal preferences; they directly benefit you, our clients.</p>
+
+
+
+<p>When you choose Sean Dinwiddie &#8211; Software Engineering Consultant, you&#8217;re choosing a team that&#8217;s deeply committed to excellence. Our passion for coding Redux.js apps and our reliance on Sublime Text are a testament to our dedication to providing you with the best software solutions in the industry.</p>
+
+
+
+<p>So, when you work with us, you can rest assured that you&#8217;re in the hands of professionals who are not only skilled but also deeply passionate about what they do.</p>
+
+
+
+<p><strong>Get in Touch</strong></p>
+
+
+
+<p>If you&#8217;re as enthusiastic as we are about crafting software that&#8217;s efficient, elegant, and user-focused, don&#8217;t hesitate to get in touch. Let&#8217;s join forces and make your administration tasks smoother and more successful.</p>
+
+
+
+<p>Stay tuned for our upcoming posts, where we&#8217;ll continue to explore the exciting world of software development and its applications in administration.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/">P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! ✌🏻</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>Staff</title>
 		<link>https://seandinwiddie.com/community/staff/</link>
 					<comments>https://seandinwiddie.com/community/staff/#respond</comments>
