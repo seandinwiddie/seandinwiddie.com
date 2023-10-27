@@ -9,10 +9,10 @@
 
 <channel>
 	<title>Development Archives | Sean Dinwiddie</title>
-	<atom:link href="http://localhost/category/development/feed/?simply_static_page=319" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost/category/development/feed/?simply_static_page=446" rel="self" type="application/rss+xml" />
 	<link>https://seandinwiddie.com/community/category/development/</link>
 	<description>Software Development</description>
-	<lastBuildDate>Fri, 27 Oct 2023 15:47:12 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 27 Oct 2023 16:06:53 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -253,7 +253,7 @@
 
 
 
-<p>You will be well-equipped to develop software modules with a cyclical User-Story -> BDD -> FRP workflow. You&#8217;ll have the skills to create user-centric solutions that evolve and adapt to changing requirements. Remember, software development is a dynamic field, and this curriculum empowers you to stay ahead of the curve.</p>
+<p>You will be well-equipped to develop software modules with a cyclical User-Story -&gt; BDD -&gt; FRP workflow. You&#8217;ll have the skills to create user-centric solutions that evolve and adapt to changing requirements. Remember, software development is a dynamic field, and this curriculum empowers you to stay ahead of the curve.</p>
 
 
 
