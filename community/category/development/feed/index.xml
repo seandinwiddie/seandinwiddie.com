@@ -9,10 +9,10 @@
 
 <channel>
 	<title>Development Archives | Sean Dinwiddie</title>
-	<atom:link href="http://localhost/category/development/feed/?simply_static_page=854" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost/category/development/feed/?simply_static_page=1187" rel="self" type="application/rss+xml" />
 	<link>https://seandinwiddie.com/community/category/development/</link>
 	<description>Software Development</description>
-	<lastBuildDate>Sat, 28 Oct 2023 16:52:02 +0000</lastBuildDate>
+	<lastBuildDate>Sat, 28 Oct 2023 19:02:33 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,1505 +28,1258 @@
 	<height>32</height>
 </image> 
 	<item>
-		<title>Welcome to Module 1: Understanding User Stories</title>
-		<link>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/</link>
-					<comments>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/#respond</comments>
+		<title>Master the fundamentals of FRP in software development</title>
+		<link>https://seandinwiddie.com/community/master-the-fundamentals-of-frp-in-software-development/</link>
+					<comments>https://seandinwiddie.com/community/master-the-fundamentals-of-frp-in-software-development/#respond</comments>
 		
 		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Sat, 28 Oct 2023 16:49:14 +0000</pubDate>
+		<pubDate>Sat, 28 Oct 2023 19:02:33 +0000</pubDate>
 				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=201</guid>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=280</guid>
 
-					<description><![CDATA[<p>In this module, we will delve into the foundational concepts of User Stories and how they play a pivotal role in software development. User Stories are the first step in our cyclical workflow, and understanding them is crucial for creating user-centric software modules. By the end of this module, you will be well-equipped to capture [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/">Welcome to Module 1: Understanding User Stories</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+					<description><![CDATA[<p>Mastering the fundamentals of Functional Reactive Programming (FRP) in software development requires a solid understanding of its core concepts and principles. Here&#8217;s a step-by-step guide to help you become proficient in FRP: Remember that mastering FRP is an ongoing process, and practice is key to becoming proficient. The more you work with FRP in practical [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/master-the-fundamentals-of-frp-in-software-development/">Master the fundamentals of FRP in software development</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
-<p>In this module, we will delve into the foundational concepts of User Stories and how they play a pivotal role in software development. User Stories are the first step in our cyclical workflow, and understanding them is crucial for creating user-centric software modules. By the end of this module, you will be well-equipped to capture user requirements effectively and translate them into clear and concise User Stories.</p>
-
-
-
-<p><strong>Objectives:</strong></p>
+<p>Mastering the fundamentals of Functional Reactive Programming (FRP) in software development requires a solid understanding of its core concepts and principles. Here&#8217;s a step-by-step guide to help you become proficient in FRP:</p>
 
 
 
 <ol>
-<li>Learn to capture user requirements effectively.</li>
+<li><strong>Understand Reactive Streams:</strong> Start by grasping the concept of reactive streams. These are sequences of events or data changes over time. Learn how to create and work with reactive streams in your chosen programming language or framework.</li>
 
 
 
-<li>Understand the importance of user-centric design.</li>
+<li><strong>Learn Observables:</strong> Observables are central to FRP. They represent asynchronous data streams. Study how to create and manipulate observables. Familiarize yourself with operators that allow you to transform, filter, and combine observables.</li>
 
 
 
-<li>Translate user needs into User Stories.</li>
+<li><strong>Event Handling:</strong> Explore event handling in FRP. Understand how to react to events using observables. Practice creating event-driven code that reacts to user interactions, data changes, or external events.</li>
+
+
+
+<li><strong>Immutability:</strong> FRP often promotes immutability, where data is treated as unchangeable. Learn how to work with immutable data structures to maintain the purity of your functions and minimize side effects.</li>
+
+
+
+<li><strong>Declarative Programming:</strong> Embrace declarative programming, which emphasizes specifying what should happen rather than how it should happen. Write code that clearly expresses the desired behavior and leverages observables to achieve it.</li>
+
+
+
+<li><strong>Subscriptions:</strong> Study subscriptions, which establish an active connection to observables. Learn how to create and manage subscriptions and when to unsubscribe to prevent resource leaks.</li>
+
+
+
+<li><strong>Use Cases:</strong> Apply FRP to real-world use cases. Build small applications or features using FRP to gain practical experience. This could include creating reactive user interfaces or handling real-time data.</li>
+
+
+
+<li><strong>Operators:</strong> Explore the wide range of operators available in your chosen FRP library or framework. Practice using these operators to transform and manipulate data streams effectively.</li>
+
+
+
+<li><strong>Testing:</strong> Learn how to test code written with FRP principles. Understand how to write unit tests for observables and ensure that your reactive code behaves as expected.</li>
+
+
+
+<li><strong>Error Handling:</strong> Study error handling in FRP. Discover how to handle errors and exceptions gracefully within your reactive code, maintaining the stability of your applications.</li>
+
+
+
+<li><strong>Combine with Frameworks:</strong> Explore how FRP can be used in conjunction with popular frameworks and libraries in your chosen programming language. Many languages and ecosystems offer FRP support.</li>
+
+
+
+<li><strong>Performance and Optimization:</strong> Learn about performance considerations and optimization techniques when using FRP. Understand how to ensure your reactive code is efficient and responsive.</li>
+
+
+
+<li><strong>Read FRP Documentation:</strong> Refer to the documentation of the FRP library or framework you&#8217;re using. Documentation provides valuable insights into best practices, examples, and advanced usage.</li>
+
+
+
+<li><strong>Join FRP Communities:</strong> Engage with the FRP community for knowledge sharing and troubleshooting. Online forums, discussion groups, and social media can be great sources of information and support.</li>
+
+
+
+<li><strong>Projects and Collaboration:</strong> Collaborate with others on projects that use FRP. Working on real projects allows you to apply your knowledge and learn from others&#8217; experiences.</li>
+
+
+
+<li><strong>Advanced Topics:</strong> Delve into advanced topics, such as time-based operations, multicasting, and integrating FRP with other paradigms like object-oriented programming.</li>
+
+
+
+<li><strong>Continuous Learning:</strong> FRP is a dynamic field, and new developments and tools emerge. Stay up to date with the latest trends and technologies related to FRP.</li>
 </ol>
 
 
 
-<p><strong>Topics:</strong></p>
-
-
-
-<p><strong>Defining User Stories:</strong></p>
-
-
-
-<p>User Stories are short, simple descriptions of a feature or functionality told from the perspective of an end user. They help us understand what the user wants and why.</p>
-
-
-
-<p><strong>Identifying User Needs:</strong></p>
-
-
-
-<p>To create meaningful User Stories, you must be able to identify the real needs of the user. This involves effective communication and active listening.</p>
-
-
-
-<p><strong>Writing Clear and Concise User Stories:</strong></p>
-
-
-
-<p>A well-written User Story is clear, concise, and easy to understand. It serves as a guideline for the development process.</p>
-
-
-
-<p><strong>Activities:</strong></p>
-
-
-
-<ul>
-<li><strong>Practical exercises in creating User Stories:</strong></li>
-
-
-
-<li>You&#8217;ll get hands-on experience in crafting User Stories based on user needs.</li>
-
-
-
-<li><strong>Collaborative sessions to review and refine User Stories:</strong></li>
-
-
-
-<li>Working together to ensure your User Stories are well-structured and aligned with user expectations.</li>
-</ul>
-
-
-
-<p>User Stories are the bridge between the user&#8217;s needs and the software you&#8217;ll develop. They are the foundation of user-centric design, and mastering them is key to successful software development.</p>
-
-
-
-<p>In the next module, we&#8217;ll explore Behavior-Driven Development (BDD) and learn how to align our development process with user expectations.</p>
-
-
-
-<p>But for now, let&#8217;s dive deep into the world of User Stories and begin the journey of creating software that truly satisfies the needs of its users. Remember, it all starts with a good story.</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/">Welcome to Module 1: Understanding User Stories</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+<p>Remember that mastering FRP is an ongoing process, and practice is key to becoming proficient. The more you work with FRP in practical scenarios, the more confident and skilled you will become in leveraging its principles for building responsive and efficient software.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/master-the-fundamentals-of-frp-in-software-development/">Master the fundamentals of FRP in software development</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/feed/</wfw:commentRss>
+					<wfw:commentRss>https://seandinwiddie.com/community/master-the-fundamentals-of-frp-in-software-development/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
-		<title>User-Story_BDD_FRP Workflow</title>
-		<link>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/</link>
-					<comments>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/#respond</comments>
+		<title>Module 3: Functional Reactive Programming (FRP)</title>
+		<link>https://seandinwiddie.com/community/module-3-functional-reactive-programming-frp/</link>
+					<comments>https://seandinwiddie.com/community/module-3-functional-reactive-programming-frp/#respond</comments>
 		
 		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 15:44:27 +0000</pubDate>
+		<pubDate>Sat, 28 Oct 2023 18:58:28 +0000</pubDate>
 				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=192</guid>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=277</guid>
 
-					<description><![CDATA[<p>Developing Modules a cyclically. Welcome to the Community Course Manual Curriculum for developing software modules using a cyclical User-Story -&#62; Behavior-Driven Development (BDD) -&#62; Functional Reactive Programming (FRP) workflow. In this course, you will gain the knowledge and skills to create efficient and user-centric software solutions. This curriculum is designed to provide a step-by-step guide [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/user-story_bdd_frp-workflow/">User-Story_BDD_FRP Workflow</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+					<description><![CDATA[<p>Functional Reactive Programming (FRP) is a programming paradigm that combines functional programming and reactive programming to handle asynchronous data streams and events in a declarative and composable way. FRP is used to build systems that are responsive, maintainable, and easy to reason about. Let&#8217;s explore the key concepts and principles of FRP: Key Concepts: Key [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/module-3-functional-reactive-programming-frp/">Module 3: Functional Reactive Programming (FRP)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
-<p><strong>Developing Modules a cyclically.</strong></p>
+<p>Functional Reactive Programming (FRP) is a programming paradigm that combines functional programming and reactive programming to handle asynchronous data streams and events in a declarative and composable way. FRP is used to build systems that are responsive, maintainable, and easy to reason about. Let&#8217;s explore the key concepts and principles of FRP:</p>
 
 
 
-<p>Welcome to the Community Course Manual Curriculum for developing software modules using a cyclical User-Story -&gt; Behavior-Driven Development (BDD) -&gt; Functional Reactive Programming (FRP) workflow. In this course, you will gain the knowledge and skills to create efficient and user-centric software solutions. This curriculum is designed to provide a step-by-step guide on how to develop software modules and continuously enhance them using a cyclical approach.</p>
-
-
-
-<p><strong>Module 1: Understanding User Stories</strong></p>
-
-
-
-<ul>
-<li><em>Objectives:</em></li>
-
-
-
-<li>Learn to capture user requirements effectively.</li>
-
-
-
-<li>Understand the importance of user-centric design.</li>
-
-
-
-<li>Translate user needs into User Stories.</li>
-
-
-
-<li><em>Topics:</em></li>
-
-
-
-<li>Defining User Stories.</li>
-
-
-
-<li>Identifying user needs.</li>
-
-
-
-<li>Writing clear and concise User Stories.</li>
-
-
-
-<li><em>Activities:</em></li>
-
-
-
-<li>Practical exercises in creating User Stories.</li>
-
-
-
-<li>Collaborative sessions to review and refine User Stories.</li>
-</ul>
-
-
-
-<p><strong>Module 2: Behavior-Driven Development (BDD)</strong></p>
-
-
-
-<ul>
-<li><em>Objectives:</em></li>
-
-
-
-<li>Explore the principles of BDD.</li>
-
-
-
-<li>Understand how BDD aligns development with user expectations.</li>
-
-
-
-<li>Learn to write BDD scenarios.</li>
-
-
-
-<li><em>Topics:</em></li>
-
-
-
-<li>Introduction to BDD.</li>
-
-
-
-<li>Given-When-Then (Gherkin) syntax.</li>
-
-
-
-<li>Writing BDD scenarios for software modules.</li>
-
-
-
-<li><em>Activities:</em></li>
-
-
-
-<li>Creating BDD scenarios for real-world cases.</li>
-
-
-
-<li>Reviewing and enhancing BDD scenarios as a group.</li>
-</ul>
-
-
-
-<p><strong>Module 3: Functional Reactive Programming (FRP)</strong></p>
-
-
-
-<ul>
-<li><em>Objectives:</em></li>
-
-
-
-<li>Master the fundamentals of FRP in software development.</li>
-
-
-
-<li>Discover how FRP enhances user interaction and responsiveness.</li>
-
-
-
-<li>Apply FRP concepts to software modules.</li>
-
-
-
-<li><em>Topics:</em></li>
-
-
-
-<li>Introduction to FRP.</li>
-
-
-
-<li>Event streams and reactive programming.</li>
-
-
-
-<li>Integrating FRP into software modules.</li>
-
-
-
-<li><em>Activities:</em></li>
-
-
-
-<li>Building software modules using FRP.</li>
-
-
-
-<li>Analyzing and optimizing existing modules with FRP.</li>
-</ul>
-
-
-
-<p><strong>Module 4: The Cyclical Workflow</strong></p>
-
-
-
-<ul>
-<li><em>Objectives:</em></li>
-
-
-
-<li>Integrate User Stories, BDD, and FRP into a cyclical workflow.</li>
-
-
-
-<li>Understand the benefits of continuous improvement.</li>
-
-
-
-<li>Create software modules that evolve with user needs.</li>
-
-
-
-<li><em>Topics:</em></li>
-
-
-
-<li>Creating a cyclical workflow.</li>
-
-
-
-<li>Reviewing and revising User Stories.</li>
-
-
-
-<li>Iteratively enhancing software modules.</li>
-
-
-
-<li><em>Activities:</em></li>
-
-
-
-<li>Practicing the cyclical approach in real projects.</li>
-
-
-
-<li>Collaborative sessions to refine existing software modules.</li>
-</ul>
-
-
-
-<p><strong>Conclusion:</strong></p>
-
-
-
-<p>You will be well-equipped to develop software modules with a cyclical User-Story -&gt; BDD -&gt; FRP workflow. You&#8217;ll have the skills to create user-centric solutions that evolve and adapt to changing requirements. Remember, software development is a dynamic field, and this curriculum empowers you to stay ahead of the curve.</p>
-
-
-
-<p>Get ready to embark on this journey and join the community of developers committed to delivering outstanding software modules. Your expertise will not only benefit you but also contribute to the success of your team and organization.</p>
-
-
-
-<p>Our commitment to developing software modules is fueled by our love for efficient, user-focused solutions. Together, we can make a difference in the world of software development. </p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/user-story_bdd_frp-workflow/">User-Story_BDD_FRP Workflow</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>From marketing to development</title>
-		<link>https://seandinwiddie.com/community/from-marketing-to-development/</link>
-					<comments>https://seandinwiddie.com/community/from-marketing-to-development/#respond</comments>
-		
-		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 15:08:46 +0000</pubDate>
-				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=170</guid>
-
-					<description><![CDATA[<p>DEV/REP CUT-SHEET for all internal staff including sales representatives, web developers, chief executives, software evangelists, moderators, etc BRAND: Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults/Development&#8230; _ agency: cold leads &#62; marketing funnels: ads, social, and webpages/sites, email, video sales, networking&#160; &#62; hot leads &#8211; discovery &#8211; scoping &#8211; maintaining scope &#8211; hiring contractors &#8211; producing [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/from-marketing-to-development/">From marketing to development</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<h2 class="wp-block-heading">DEV/REP CUT-SHEET</h2>
-
-
-
-<p><sub>for all internal staff including sales representatives, web developers, chief executives, software evangelists, moderators, etc</sub></p>
-
-
-
-<p><strong>BRAND</strong>: Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults/Development&#8230;</p>
-
-
-
-<p>_</p>
-
-
-
-<p>agency:</p>
-
-
-
-<p>cold leads &gt;</p>
-
-
-
-<p>marketing funnels:</p>
-
-
-
-<p>ads, social, and webpages/sites, email, video sales, networking&nbsp;</p>
-
-
-
-<p>&gt; hot leads</p>
-
-
-
-<p>&#8211; discovery</p>
-
-
-
-<p>&#8211; scoping</p>
-
-
-
-<p>&#8211; maintaining scope</p>
-
-
-
-<p>&#8211; hiring contractors</p>
-
-
-
-<p>&#8211; producing deliverables</p>
-
-
-
-<p>_</p>
-
-
-
-<p>inhouse:</p>
-
-
-
-<p>producing deliverables:</p>
-
-
-
-<p>Design,</p>
-
-
-
-<p>Development</p>
-
-
-
-<p>(</p>
-
-
-
-<p>Onboarding,</p>
-
-
-
-<p>style guide,</p>
-
-
-
-<p>and maintenance technical documentation about software development covering 3 top-level subjects:</p>
-
-
-
-<p>User-stories, BDD, and functional reactive programming;</p>
-
-
-
-<p>primarily focusing on modular SPAs covering MVPs, git, UX, react.js, and material design;</p>
-
-
-
-<p>secondary touching on databases, flat-files, JSON, vector, repositories, large datasets, big data, visualization and dashboard logistics&nbsp;</p>
-
-
-
-<p>)</p>
-
-
-
-<p>Engineering,</p>
-
-
-
-<p>Architecture,</p>
-
-
-
-<p>DevOps,</p>
-
-
-
-<p>Security&nbsp;</p>
-
-
-
-<p>_</p>
-
-
-
-<p>Dfy, dwy, coaching (Fully Booked):</p>
-
-
-
-<p>+4k/m retainer services:</p>
-
-
-
-<p>_</p>
-
-
-
-<p>Course*:</p>
-
-
-
-<p>+1k</p>
-
-
-
-<p>_</p>
-
-
-
-<p>Community:</p>
-
-
-
-<p>Online country club for administrators with Gamification</p>
-
-
-
-<p>Free beta access for early signups&nbsp;</p>
-
-
-
-<p>+1k/m General access&nbsp;</p>
-
-
-
-<p>+4k/m Inner circle</p>
-
-
-
-<p>_</p>
-
-
-
-<p>Join Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults Team staff and earn based on team size to community size ratio with daily, weekly, monthly, and yearly payout options:</p>
-
-
-
-<p>-.5% /d, -0.75% /wk, -.8% /m, or -.9% /yr</p>
-
-
-
-<p>Income /nth staff.</p>
-
-
-
-<p>I.e. ( +54k /m /6 staff ) [ ( +9k/m /-.8% ) ( -$7.2k ) ]</p>
-
-
-
-<p>_</p>
-
-
-
-<p>*Course content is a mixture of community recordings, member demonstrations, user guides, and proprietary manuals.</p>
-
-
-
-<p>_</p>
-
-
-
-<p>Prices subject to change. Admin Users, Companies, and Seats…</p>
-
-
-
-<p>_</p>
-
-
-
-<p>Review contractor(s) (Fiverr, Wethos, etc) packages. As a service and per internal analysis. Competitor relations reporting.</p>
-
-
-
-<p>_</p>
-
-
-
-<p><strong>DFY, DWY, Coaching &lt;no-vacancy&gt;:</strong></p>
-
-
-
-<ul>
-<li><strong>+4k/m Retainer Services:</strong></li>
-
-
-
-<li>Learn how to provide comprehensive Done-For-You (DFY), Done-With-You (DWY), and coaching services to clients.</li>
-
-
-
-<li>Understand the various service tiers and how to tailor them to client needs.</li>
-</ul>
-
-
-
-<p><strong>Agency:</strong></p>
-
-
-
-<ul>
-<li><strong>Cold Leads to Hot Leads:</strong></li>
-
-
-
-<li>Explore the journey of turning cold leads into hot prospects through strategic marketing and sales techniques.</li>
-
-
-
-<li>Master the art of discovery, scoping, maintaining scope, hiring contractors, and delivering successful projects.</li>
-</ul>
-
-
-
-<p><strong>In-House:</strong></p>
-
-
-
-<ul>
-<li><strong>Producing Deliverables:</strong></li>
-
-
-
-<li>Learn how to design, develop, and engineer software solutions in-house.</li>
-
-
-
-<li>Dive into the details of onboarding, creating style guides, and maintaining technical documentation.</li>
-
-
-
-<li>Explore three top-level subjects: User Stories, Behavior-Driven Development (BDD), and Functional Reactive Programming (FRP).</li>
-
-
-
-<li>Honing Minimum Viable Products (MVPs) and User Experience (UX), Specializing in modular Single Page Applications (SPAs), utilizing tools like git, React.js, APIs, LLMs, and Material Design &amp; UI Kits.</li>
-
-
-
-<li>Gain expertise in other areas including databases, flat-files, JSON, vector databases, repositories, large datasets, big data, and visualization and dashboard logistics.</li>
-
-
-
-<li>Understand software architecture, DevOps, and security practices.</li>
-</ul>
-
-
-
-<p><strong>Course:</strong></p>
-
-
-
-<ul>
-<li><strong>+1k</strong></li>
-
-
-
-<li>Explore the course content, a blend of community recordings, member demonstrations, user guides, and proprietary manuals.</li>
-
-
-
-<li>Stay updated as prices are subject to change.</li>
-</ul>
-
-
-
-<p><strong>Community:</strong></p>
-
-
-
-<ul>
-<li><strong>Online Country Club for Administrators with Gamification:</strong></li>
-
-
-
-<li>Join the exclusive online community tailored for administrators.</li>
-
-
-
-<li>Experience gamification and engage with fellow members.</li>
-
-
-
-<li>Enjoy free beta access for early signups.</li>
-
-
-
-<li>Upgrade to +1k/m General access or +4k/m Inner Circle for more benefits.</li>
-</ul>
-
-
-
-<p><strong>Join Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults Team:</strong></p>
-
-
-
-<ul>
-<li><strong>Earn Based on Team Size to Community Size Ratio:</strong></li>
-
-
-
-<li>Calculate your income based on the size of your team and the community.</li>
-
-
-
-<li>Choose from daily, weekly, monthly, and yearly payout options:
-<ul>
-<li>-.5% /d</li>
-
-
-
-<li>-0.75% /wk</li>
-
-
-
-<li>-.8% /m</li>
-
-
-
-<li>-.9% /yr</li>
-</ul>
-</li>
-
-
-
-<li>For example: +54k/m /6 staff earns (+9k/m /-.8%) and results in a -$7.2k payout.</li>
-</ul>
-
-
-
-<p><strong>Review Contractor Packages:</strong></p>
-
-
-
-<ul>
-<li><strong>Analyze Contractor Packages:</strong></li>
-
-
-
-<li>Evaluate contractor packages from platforms like Fiverr, Wethos, etc.</li>
-
-
-
-<li>Assess these packages as a service and based on internal analysis.</li>
-
-
-
-<li>Keep track of competitor relations and report findings.</li>
-</ul>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/from-marketing-to-development/">From marketing to development</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://seandinwiddie.com/community/from-marketing-to-development/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! ✌🏻</title>
-		<link>https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/</link>
-					<comments>https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/#respond</comments>
-		
-		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 14:53:32 +0000</pubDate>
-				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=168</guid>
-
-					<description><![CDATA[<p>As we journey through the world of software excellence, there&#8217;s a little personal note we&#8217;d like to share with you. It&#8217;s something that fuels our passion and drives our commitment to delivering top-notch software solutions. Redux.js Apps: A Labor of Love At Sean Dinwiddie &#8211; Software Engineering Consultant, we have a deep fondness for crafting [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/">P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! ✌🏻</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>As we journey through the world of software excellence, there&#8217;s a little personal note we&#8217;d like to share with you. It&#8217;s something that fuels our passion and drives our commitment to delivering top-notch software solutions.</p>
-
-
-
-<p><strong>Redux.js Apps: A Labor of Love</strong></p>
-
-
-
-<p>At Sean Dinwiddie &#8211; Software Engineering Consultant, we have a deep fondness for crafting Redux.js apps. But what exactly is Redux, and why do we hold it in such high regard?</p>
-
-
-
-<p>Redux is a predictable state container for JavaScript applications. It helps you manage the state of your application in a consistent and predictable manner. What does this mean for you as an administrator? It means that your software will run smoothly, with fewer unexpected issues or errors.</p>
-
-
-
-<p>Redux is a vital tool for building web applications, particularly those that require real-time updates and complex data management. It&#8217;s the secret sauce behind many successful web applications, providing the kind of user experience that keeps clients coming back for more.</p>
-
-
-
-<p>When we say we love coding Redux.js apps, we mean that we&#8217;re passionate about crafting software that not only meets your needs but exceeds your expectations. We&#8217;re devoted to creating solutions that make your administration tasks more efficient, enjoyable, and ultimately, more successful.</p>
-
-
-
-<p><strong>Sublime Text: Our Trusty Sidekick</strong></p>
-
-
-
-<p>In the world of software development, the tools you use can make a world of difference. That&#8217;s why we&#8217;re proud to share our admiration for Sublime Text.</p>
-
-
-
-<p>Sublime Text is a code editor that&#8217;s fast, efficient, and highly customizable. It&#8217;s a text editor for code, markup, and prose, offering a sleek and distraction-free interface. Our fondness for Sublime Text goes beyond its aesthetics; it&#8217;s a tool that helps us write clean, error-free code and deliver the best possible software solutions to you.</p>
-
-
-
-<p>With Sublime Text by our side, we&#8217;re able to focus on the details, ensuring that every line of code contributes to the efficiency and performance of your software.</p>
-
-
-
-<p><strong>Why This Matters to You</strong></p>
-
-
-
-<p>Our love for Redux.js apps and our trust in Sublime Text aren&#8217;t just personal preferences; they directly benefit you, our clients.</p>
-
-
-
-<p>When you choose Sean Dinwiddie &#8211; Software Engineering Consultant, you&#8217;re choosing a team that&#8217;s deeply committed to excellence. Our passion for coding Redux.js apps and our reliance on Sublime Text are a testament to our dedication to providing you with the best software solutions in the industry.</p>
-
-
-
-<p>So, when you work with us, you can rest assured that you&#8217;re in the hands of professionals who are not only skilled but also deeply passionate about what they do.</p>
-
-
-
-<p><strong>Get in Touch</strong></p>
-
-
-
-<p>If you&#8217;re as enthusiastic as we are about crafting software that&#8217;s efficient, elegant, and user-focused, don&#8217;t hesitate to get in touch. Let&#8217;s join forces and make your administration tasks smoother and more successful.</p>
-
-
-
-<p>Stay tuned for our upcoming posts, where we&#8217;ll continue to explore the exciting world of software development and its applications in administration.</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/">P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! ✌🏻</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://seandinwiddie.com/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Staff</title>
-		<link>https://seandinwiddie.com/community/staff/</link>
-					<comments>https://seandinwiddie.com/community/staff/#respond</comments>
-		
-		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 14:19:11 +0000</pubDate>
-				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=161</guid>
-
-					<description><![CDATA[<p>Joining Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults&#8217; team staff is not just an opportunity to be a part of an innovative and dynamic community, but it&#8217;s also a chance to earn based on your contribution and the growth of our community. Here&#8217;s how our payout options work: Daily Payout Option: -0.5% per dayYour daily [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/staff/">Staff</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>Joining Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults&#8217; team staff is not just an opportunity to be a part of an innovative and dynamic community, but it&#8217;s also a chance to earn based on your contribution and the growth of our community.</p>
-
-
-
-<p>Here&#8217;s how our payout options work:</p>
-
-
-
-<p><strong>Daily Payout Option: -0.5% per day</strong><br>Your daily earnings are calculated based on the team size to community size ratio. You&#8217;ll receive a percentage of the community&#8217;s total earnings every day.</p>
-
-
-
-<p><strong>Weekly Payout Option: -0.75% per week</strong><br>If you prefer a weekly payout, you can earn based on the same ratio, but on a weekly basis. This provides a slightly larger payout compared to the daily option.</p>
-
-
-
-<p><strong>Monthly Payout Option: -0.8% per month</strong><br>For a more stable and consistent income, you can choose the monthly payout option. Your earnings are calculated at the end of each month based on the team size to community size ratio.</p>
-
-
-
-<p><strong>Yearly Payout Option: -0.9% per year</strong><br>If you&#8217;re looking for a long-term commitment and a yearly payout, this option provides a more substantial annual income based on your contribution to the community.</p>
-
-
-
-<p>Here&#8217;s an example to illustrate how it works:</p>
-
-
-
-<p>Let&#8217;s say the community generates $54,000 per month, and there are 6 team members. You choose the monthly payout option at -0.8%. Your earnings for the month would be calculated as follows:</p>
-
-
-
-<p>Income for the month = (Community earnings for the month / Number of team members) x (Payout percentage for the month)<br>Income for the month = (+$54,000 / 6) x (-0.8%)<br>Income for the month = +$9,000 x (-0.8)<br>Income for the month = -$7,200</p>
-
-
-
-<p>In this example, you would earn $7,200 for that month. The payout percentage is based on the community&#8217;s earnings and the size of your team.</p>
-
-
-
-<p>Joining Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults Team staff comes with unique benefits, including the opportunity to earn based on the team size to community size ratio. We offer flexible payout options, allowing you to choose the frequency that suits you best, whether it&#8217;s daily, weekly, monthly, or yearly. Here&#8217;s how it works:</p>
-
-
-
-<p><strong>Earnings Formula:</strong></p>
-
-
-
-<ul>
-<li>For every day you&#8217;re part of our team staff, you&#8217;ll earn -0.5% of your monthly income.</li>
-
-
-
-<li>If you prefer weekly payouts, you&#8217;ll earn -0.75% of your monthly income each week.</li>
-
-
-
-<li>For those who opt for monthly payouts, you&#8217;ll earn -0.8% of your monthly income each month.</li>
-
-
-
-<li>And if you&#8217;re looking for yearly payouts, you&#8217;ll earn -0.9% of your monthly income annually.</li>
-</ul>
-
-
-
-<p><strong>Example:</strong><br>Let&#8217;s say you earn $54,000 per month, and your team consists of six staff members. If you choose the monthly payout option (-0.8%), your earnings for the month will be calculated as follows:</p>
-
-
-
-<p>( $54,000 / 6 staff ) [ ( $9,000 / -0.8% ) ( $7,200 ) ]</p>
-
-
-
-<p>In this example, your monthly payout would be $7,200.</p>
-
-
-
-<p>This unique income structure allows you to benefit not only from your own contributions but also from the growth of our community. As the community expands, your potential earnings can grow along with it. Join our team staff, and you&#8217;ll have the opportunity to earn in a way that aligns with your preferences and financial goals.</p>
-
-
-
-<p>Join our team staff, contribute to our community&#8217;s growth, and start earning based on your dedication and the success of Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults. Your commitment to our community is rewarded, and together, we can achieve remarkable results.</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/staff/">Staff</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://seandinwiddie.com/community/staff/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Curriculum</title>
-		<link>https://seandinwiddie.com/community/curriculum/</link>
-					<comments>https://seandinwiddie.com/community/curriculum/#respond</comments>
-		
-		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 13:53:36 +0000</pubDate>
-				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=152</guid>
-
-					<description><![CDATA[<p>In this guide, we will delve into the core aspects of our firm&#8217;s operations and practices, offering you valuable insights and knowledge to help you excel in the dynamic world of software consulting and development. Our firm specializes in helping administrators and businesses navigate the complex landscape of software development, from engaging with potential clients [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/curriculum/">Curriculum</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>In this guide, we will delve into the core aspects of our firm&#8217;s operations and practices, offering you valuable insights and knowledge to help you excel in the dynamic world of software consulting and development.</p>
-
-
-
-<p>Our firm specializes in helping administrators and businesses navigate the complex landscape of software development, from engaging with potential clients to creating top-tier deliverables. Whether you&#8217;re part of our agency team, handling cold leads and transforming them into hot opportunities, or you&#8217;re an inhouse member focused on crafting exceptional deliverables, this manual will provide you with the tools and knowledge you need to thrive.</p>
-
-
-
-<p>We understand that success in software consulting and development requires a holistic approach, encompassing marketing, design, development, engineering, architecture, DevOps, and security. Our community is committed to guiding you through each of these critical areas, ensuring that you have the expertise and skills necessary to make a significant impact.</p>
-
-
-
-<p>So, let&#8217;s dive in, explore the intricacies of our agency and inhouse operations, and equip you with the knowledge and insights to excel in your role. Whether you&#8217;re an experienced professional or just starting your journey, this manual is designed to empower you every step of the way.</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/curriculum/">Curriculum</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://seandinwiddie.com/community/curriculum/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Our Community: Unveiling Our Offer and Prices</title>
-		<link>https://seandinwiddie.com/community/our-community-unveiling-our-offer-and-prices/</link>
-					<comments>https://seandinwiddie.com/community/our-community-unveiling-our-offer-and-prices/#respond</comments>
-		
-		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 13:44:36 +0000</pubDate>
-				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=150</guid>
-
-					<description><![CDATA[<p>Welcome to the heart of our community – Sean Paul Payne Dinwiddie&#8217;s Software Firm/Practice/Consults. We&#8217;ve crafted a vibrant online hub where administrators like you can access a wealth of resources, engage in dynamic discussions, and propel your administration endeavors to new heights. Let&#8217;s dive into the core of our community and explore the offers and [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/our-community-unveiling-our-offer-and-prices/">Our Community: Unveiling Our Offer and Prices</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>Welcome to the heart of our community – Sean Paul Payne Dinwiddie&#8217;s Software Firm/Practice/Consults. We&#8217;ve crafted a vibrant online hub where administrators like you can access a wealth of resources, engage in dynamic discussions, and propel your administration endeavors to new heights. Let&#8217;s dive into the core of our community and explore the offers and prices that make it all possible.</p>
-
-
-
-<p><strong>What We Bring to the Table</strong></p>
-
-
-
-<p>In our online country club for administrators, we&#8217;ve meticulously designed an array of offerings to cater to your unique needs. Here&#8217;s a glimpse of what you can expect:</p>
-
-
-
-<p><strong>1. Free Beta Access for Early Signups</strong></p>
-
-
-
-<p>For early adopters and pioneers, we&#8217;re extending an exclusive invitation. Get a taste of our community and explore the wealth of knowledge and resources it holds. It&#8217;s a chance to experience firsthand the transformative power of our platform.</p>
-
-
-
-<p><strong>2. General Access: +$1,000/month</strong></p>
-
-
-
-<p>Unlock the full potential of our community with a General Access membership. This tier grants you access to a wide range of resources, discussions, and tools that will help you streamline your administration tasks and achieve peak efficiency.</p>
-
-
-
-<p><strong>3. Inner Circle: +$4,000/month</strong></p>
-
-
-
-<p>For those who demand nothing but the best, our Inner Circle membership offers an elevated experience. Dive deep into advanced topics, receive personalized guidance, and connect with a select group of administrators who are determined to excel. This tier is your ticket to the forefront of administration excellence.</p>
-
-
-
-<p><strong>Team Staff Discounts</strong></p>
-
-
-
-<p>We value the power of collaboration and believe in empowering entire teams. As a special incentive, we offer discounts for team staff memberships, making it even more accessible to harness the full potential of our community. Whether you&#8217;re a solo administrator or part of a larger team, there&#8217;s a place for you in our community.</p>
-
-
-
-<p><strong>Course Content</strong></p>
-
-
-
-<p>Our course content is a treasure trove of knowledge. It includes a mixture of community recordings, member demonstrations, user guides, and proprietary manuals. It&#8217;s designed to cater to all levels of experience, from beginners to seasoned administrators, and covers a wide range of topics to equip you with the skills you need to excel in your role.</p>
-
-
-
-<p><strong>Important Note</strong></p>
-
-
-
-<p>While we aim to offer the most competitive prices for our community, please be aware that our prices are subject to change. We continuously work to enhance the value we provide to our members and may adjust our pricing to reflect these improvements.</p>
-
-
-
-<p><strong>Join Our Community</strong></p>
-
-
-
-<p>The world of administration is ever-evolving, and success demands staying ahead of the curve. Our community is your gateway to achieving excellence in your field. Whether you&#8217;re a seasoned administrator looking for advanced insights or a newcomer eager to learn, there&#8217;s a place for you in our community.</p>
-
-
-
-<p>We offer a range of services and resources to help you excel in the world of software development and consulting. Here&#8217;s a quick overview of what we have to offer:</p>
-
-
-
-<p><strong><strong>•</strong> DFY, DWY, Coaching: +4k/m Retainer Services</strong> OUT-OF-STOCK [COMMISSIONS CLOSED]</p>
-
-
-
-<p>Our retainer services encompass &#8220;Done for You&#8221; (DFY), &#8220;Done with You&#8221; (DWY), and personalized coaching. We&#8217;re here to support your software development journey, whether you want us to handle it all, work collaboratively, or provide expert guidance.</p>
-
-
-
-<p><strong><strong>•</strong> Agency Services</strong></p>
-
-
-
-<p>In our agency services, we assist you in navigating from cold leads to hot opportunities. This includes crafting effective marketing funnels through ads, social media, webpages/sites, email, video sales, and networking. Our agency services also cover the critical phases of working with hot leads, including discovery, scoping, maintaining scope, hiring contractors, and producing top-notch deliverables.</p>
-
-
-
-<p><strong><strong>•</strong> Inhouse Expertise</strong></p>
-
-
-
-<p>Our inhouse team is dedicated to producing deliverables that meet the highest standards. This encompasses design, development, engineering, architecture, DevOps, and security. We also provide onboarding, style guides, and maintenance technical documentation about software development, focusing on three top-level subjects: User-stories, Behavior-Driven Development (BDD), and Functional Reactive Programming (FRP). Our primary focus is on modular Single Page Applications (SPAs) covering MVPs, git, UX, react.js, and material design. We also delve into databases, flat-files, JSON, vector, repositories, large datasets, big data, visualization, and dashboard logistics.</p>
-
-
-
-<p><strong><strong>•</strong> Active Documentation</strong></p>
-
-
-
-<p>Enhance your knowledge and skills with our courses. These courses cover a wide range of topics related to software development and consulting, providing you with the expertise needed to thrive in your field.</p>
-
-
-
-<p><strong><strong>•</strong> Community</strong></p>
-
-
-
-<p>Join our online country club for administrators and gain access to a supportive community that&#8217;s committed to your success. We offer free beta access for early signups, as well as General and Inner Circle memberships for an even deeper level of engagement.</p>
-
-
-
-<p><strong>Team Staff Earnings</strong></p>
-
-
-
-<p>As a member of our team staff, you have the opportunity to earn based on the team size to community size ratio. You can choose from daily, weekly, monthly, or yearly payout options. Your earnings are calculated as a percentage of your monthly income, and they&#8217;re influenced by the size and growth of the community.</p>
-
-
-
-<p><strong>Prices and Contractor Reviews</strong></p>
-
-
-
-<p>Please note that our prices are subject to change. We also conduct regular reviews of contractor packages, ensuring that we provide the best services based on internal analysis and competitor relations reporting.</p>
-
-
-
-<p>At Sean Paul Payne Dinwiddie &#8211; Software Firm/Practice/Consults, we are dedicated to your success in the world of software development and consulting. Join our community, and let&#8217;s embark on a journey of growth, learning, and achievement together.</p>
-
-
-
-<p><strong>Next Steps</strong></p>
-
-
-
-<p>If you&#8217;re ready to embark on a transformative journey in administration, take the plunge and join our community. Your path to efficiency, success, and excellence starts here. Reach out to us to learn more about our membership options and to get started.</p>
-
-
-
-<p>Stay tuned for more updates, discussions, and valuable insights right here in our dynamic community!</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/our-community-unveiling-our-offer-and-prices/">Our Community: Unveiling Our Offer and Prices</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://seandinwiddie.com/community/our-community-unveiling-our-offer-and-prices/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Functional Reactive Programming (FRP)</title>
-		<link>https://seandinwiddie.com/community/functional-reactive-programming-frp/</link>
-					<comments>https://seandinwiddie.com/community/functional-reactive-programming-frp/#respond</comments>
-		
-		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 13:39:16 +0000</pubDate>
-				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=148</guid>
-
-					<description><![CDATA[<p>Welcome back to our journey of software excellence. Today, we&#8217;re diving into the fascinating world of Functional Reactive Programming (FRP) and how it can enhance responsiveness and efficiency in your software development. In the dynamic realm of administration, where adaptability and speed are the keys to success, staying ahead of the curve in software development [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/functional-reactive-programming-frp/">Functional Reactive Programming (FRP)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p>Welcome back to our journey of software excellence. Today, we&#8217;re diving into the fascinating world of Functional Reactive Programming (FRP) and how it can enhance responsiveness and efficiency in your software development.</p>
-
-
-
-<p>In the dynamic realm of administration, where adaptability and speed are the keys to success, staying ahead of the curve in software development is essential. FRP is not just a methodology; it&#8217;s a powerful paradigm shift that can transform the way you and your team approach software design.</p>
-
-
-
-<p><strong>What Is Functional Reactive Programming (FRP)?</strong></p>
-
-
-
-<p>Functional Reactive Programming is a paradigm for dealing with sequences of events and asynchronous data. It allows you to express the dynamic behavior of a value in a declarative way. In FRP, you model your system as a network of functions and data flows, where changes in data automatically propagate through the system.</p>
-
-
-
-<p>FRP is particularly well-suited for building user interfaces, interactive systems, and any application where real-time data needs to be managed efficiently.</p>
-
-
-
-<p><strong>Key Concepts of FRP</strong></p>
+<p><strong>Key Concepts:</strong></p>
 
 
 
 <ol>
-<li><strong>Reactive Programming:</strong> In FRP, you deal with streams of data and events. These streams can be manipulated and combined using a set of high-level, functional operators. This allows for a clear and declarative way to express the flow of data in your application.</li>
+<li><strong>Reactive Streams:</strong> FRP revolves around the idea of reactive streams, which represent sequences of events or changes over time. These streams can include user interactions, sensor data, network responses, or any time-varying data.</li>
 
 
 
-<li><strong>Functional Programming:</strong> FRP emphasizes the use of functional programming concepts, such as immutability and pure functions. This results in code that is more predictable, easier to test, and less error-prone.</li>
+<li><strong>Declarative Programming:</strong> FRP promotes a declarative approach to programming, where you specify what should happen in response to events, rather than how it should happen. This leads to more concise and readable code.</li>
 
 
 
-<li><strong>Declarative Style:</strong> FRP encourages a declarative style of programming, where you describe what the system should do, rather than specifying how to do it. This makes your code more concise and easier to understand.</li>
+<li><strong>Immutable Data:</strong> In FRP, data is often treated as immutable. When data changes, a new version of the data is created rather than modifying the existing data. This supports referential transparency and reduces side effects.</li>
+
+
+
+<li><strong>Event-Driven Programming:</strong> FRP is well-suited for event-driven programming, where code reacts to events or signals as they occur. Events can be filtered, transformed, and combined in a functional way.</li>
 </ol>
 
 
 
-<p><strong>Why FRP Matters</strong></p>
+<p><strong>Key Principles:</strong></p>
 
 
 
 <ol>
-<li><strong>Responsiveness:</strong> FRP enables your applications to be highly responsive to user input and real-time data. It allows you to handle complex interactions with ease.</li>
+<li><strong>Observables:</strong> In FRP, observables are a central concept. An observable is a sequence of values that can be observed over time. It represents an asynchronous data stream. Observables can be created from various sources, such as user interactions, timers, or external data sources.</li>
 
 
 
-<li><strong>Efficiency:</strong> The declarative and functional nature of FRP leads to more efficient code. It&#8217;s easier to reason about, test, and maintain, resulting in fewer bugs and faster development.</li>
+<li><strong>Subscriptions:</strong> A subscription represents an active connection to an observable. It allows you to observe and respond to values emitted by the observable. Subscriptions can be managed, and you can unsubscribe when you no longer want to receive events.</li>
 
 
 
-<li><strong>Real-time Data:</strong> If your administration tasks involve real-time data processing, such as monitoring, analytics, or automation, FRP is an excellent choice.</li>
+<li><strong>Operators:</strong> FRP provides a wide range of operators that can be applied to observables to transform, filter, or combine their data. Operators enable complex operations to be composed from simpler ones, promoting code reusability and readability.</li>
 
 
 
-<li><strong>Scalability:</strong> FRP scales well for applications with a high degree of complexity. It keeps your codebase manageable as your project grows.</li>
+<li><strong>Event Handling:</strong> FRP simplifies event handling by allowing you to describe how to react to events in a declarative manner. This reduces the need for callbacks and imperative event handling code.</li>
 </ol>
 
 
 
-<p><strong>How We Can Help</strong></p>
+<p><strong>FRP in Practice:</strong></p>
 
 
 
-<p>At Sean Dinwiddie &#8211; Software Engineering Consultant, we understand that administrators need software that is responsive, efficient, and adaptable. Our expertise in FRP can help you:</p>
+<p>FRP is commonly used in various programming languages and frameworks, including:</p>
 
 
 
 <ul>
-<li>Design and implement systems that respond in real-time to user input and data changes.</li>
+<li><strong>RxJS (Reactive Extensions for JavaScript):</strong> A popular library for FRP in JavaScript.</li>
 
 
 
-<li>Create code that is highly maintainable, reliable, and easy to test.</li>
+<li><strong>RxJava:</strong> An implementation of FRP for the Java programming language.</li>
 
 
 
-<li>Streamline complex interactions and data flows in your applications.</li>
+<li><strong>ReactiveX:</strong> A library that provides a consistent API for FRP across multiple programming languages.</li>
 
 
 
-<li>Ensure that your software is scalable and can grow with your administration needs.</li>
+<li><strong>Elm:</strong> A functional programming language that enforces the use of FRP for building web applications.</li>
+
+
+
+<li><strong>Swift and Combine:</strong> In the context of iOS app development, Apple introduced the Combine framework, which incorporates FRP principles.</li>
 </ul>
 
 
 
-<p>We are committed to providing you with the tools and expertise to embrace FRP and deliver software that not only meets your current needs but is ready for the challenges of tomorrow.</p>
+<p><strong>Benefits of FRP:</strong></p>
 
 
 
-<p><strong>Next Steps</strong></p>
+<ul>
+<li><strong>Reactive and Responsive:</strong> FRP helps in building highly responsive and reactive systems that can efficiently handle asynchronous events and data streams.</li>
 
 
 
-<p>If you&#8217;re ready to take your software development to the next level with FRP and collaborate with a team dedicated to your success, get in touch with us. Our online community is here to support you every step of the way, ensuring your journey towards streamlined, efficient administration.</p>
+<li><strong>Composability:</strong> FRP emphasizes the composability of operations, making it easier to create complex functionality from simple and reusable parts.</li>
 
 
 
-<p>Stay tuned for our next post, where we&#8217;ll explore how we can apply FRP to your specific administration challenges and achieve remarkable results.</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/functional-reactive-programming-frp/">Functional Reactive Programming (FRP)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+<li><strong>Readability:</strong> Declarative code in FRP is often more readable and easier to understand, making it beneficial for collaboration and maintenance.</li>
+
+
+
+<li><strong>Testability:</strong> The functional and declarative nature of FRP code simplifies unit testing, as it doesn&#8217;t rely on complex states and side effects.</li>
+
+
+
+<li><strong>Maintainability:</strong> FRP can lead to more maintainable codebases, as the declarative approach reduces the likelihood of bugs and makes it easier to update and extend software.</li>
+</ul>
+
+
+
+<p>Functional Reactive Programming is a powerful paradigm for handling asynchronous events and data streams, particularly in applications where responsiveness and real-time data are crucial. Its emphasis on declarative and functional programming principles leads to more maintainable and reliable code.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/module-3-functional-reactive-programming-frp/">Module 3: Functional Reactive Programming (FRP)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>https://seandinwiddie.com/community/functional-reactive-programming-frp/feed/</wfw:commentRss>
+					<wfw:commentRss>https://seandinwiddie.com/community/module-3-functional-reactive-programming-frp/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
-		<title>Behavior-Driven Development (BDD)</title>
-		<link>https://seandinwiddie.com/community/behavior-driven-development-bdd/</link>
-					<comments>https://seandinwiddie.com/community/behavior-driven-development-bdd/#respond</comments>
+		<title>BDD Testing Framework</title>
+		<link>https://seandinwiddie.com/community/bdd-testing-framework/</link>
+					<comments>https://seandinwiddie.com/community/bdd-testing-framework/#respond</comments>
 		
 		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 13:36:06 +0000</pubDate>
+		<pubDate>Sat, 28 Oct 2023 18:55:26 +0000</pubDate>
 				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=146</guid>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=274</guid>
 
-					<description><![CDATA[<p>Welcome back to our exploration of software excellence. Today, let&#8217;s dive into the world of Behavior-Driven Development, or BDD, and how it can revolutionize your approach to software development. In the dynamic realm of administration, where efficiency and precision are paramount, staying ahead in the software game is crucial. BDD is not just a methodology; [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/behavior-driven-development-bdd/">Behavior-Driven Development (BDD)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+					<description><![CDATA[<p>Building an effective Behavior-Driven Development (BDD) testing framework requires careful consideration of several key requirements to ensure that the framework is robust, maintainable, and capable of accurately validating software behavior. Here are the essential requirements for a BDD testing framework: Choosing or developing a BDD testing framework that meets these requirements will contribute to successful [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/bdd-testing-framework/">BDD Testing Framework</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
-<p>Welcome back to our exploration of software excellence. Today, let&#8217;s dive into the world of Behavior-Driven Development, or BDD, and how it can revolutionize your approach to software development.</p>
-
-
-
-<p>In the dynamic realm of administration, where efficiency and precision are paramount, staying ahead in the software game is crucial. BDD is not just a methodology; it&#8217;s a mindset that can transform the way you and your team approach software development.</p>
-
-
-
-<p><strong>What Is Behavior-Driven Development (BDD)?</strong></p>
-
-
-
-<p>Behavior-Driven Development is an agile software development process that encourages collaboration between developers, testers, and non-technical or business participants in a software project. Unlike traditional development processes, BDD puts the focus on defining the desired behavior of the software from the user&#8217;s perspective.</p>
-
-
-
-<p>BDD typically involves creating scenarios that describe the expected behavior of a feature in plain, understandable language. These scenarios are often written in a format known as Given-When-Then (or Gherkin). Here&#8217;s an example:</p>
-
-
-
-<p><strong>Given</strong> a user is logged in<br><strong>When</strong> the user clicks the &#8220;Add to Cart&#8221; button<br><strong>Then</strong> the item should be added to the shopping cart</p>
-
-
-
-<p>The power of BDD lies in its simplicity and user-centric approach. It bridges the communication gap between technical and non-technical team members and ensures that everyone is on the same page regarding the software&#8217;s functionality.</p>
-
-
-
-<p><strong>Why BDD Matters</strong></p>
+<p>Building an effective Behavior-Driven Development (BDD) testing framework requires careful consideration of several key requirements to ensure that the framework is robust, maintainable, and capable of accurately validating software behavior. Here are the essential requirements for a BDD testing framework:</p>
 
 
 
 <ol>
-<li><strong>User-Centric:</strong> BDD forces you to think from the user&#8217;s perspective, aligning every feature or functionality with their needs and expectations. This ensures that your software truly serves its purpose.</li>
+<li><strong>Natural Language Support:</strong> The framework should support the use of natural language for defining BDD scenarios and steps. This makes it accessible to both technical and non-technical team members, fostering clear communication and collaboration.</li>
 
 
 
-<li><strong>Improved Communication:</strong> By using plain language scenarios, BDD promotes better communication and collaboration within your team. Developers, testers, and business participants can easily understand what is expected.</li>
+<li><strong>Scenario Organization:</strong> The framework should provide a structured way to organize and group BDD scenarios. Scenarios should be logically organized into feature files or equivalent constructs to facilitate management.</li>
 
 
 
-<li><strong>Clear Documentation:</strong> BDD scenarios serve as clear and easily understandable documentation for your software&#8217;s behavior. This documentation can be a valuable resource for future reference and testing.</li>
+<li><strong>Given-When-Then Structure:</strong> The framework should support the Given-When-Then structure for writing scenarios. It should allow users to define the initial context (Given), the actions taken (When), and the expected outcomes (Then) for each scenario.</li>
 
 
 
-<li><strong>Early Detection of Issues:</strong> BDD allows you to identify and address potential issues early in the development process, reducing the chances of costly errors in later stages.</li>
+<li><strong>Parameterization:</strong> The framework should support parameterization to create reusable scenarios with varying inputs. This is especially useful for testing scenarios with multiple data combinations.</li>
+
+
+
+<li><strong>Scenario Tags and Labels:</strong> The framework should allow for tagging or labeling of scenarios, making it easy to categorize and filter them. Tags can be used to specify scenarios for specific purposes, such as regression testing.</li>
+
+
+
+<li><strong>Test Automation:</strong> The framework should enable the automation of BDD scenarios. It should provide hooks or interfaces to integrate with automation tools and execute tests automatically.</li>
+
+
+
+<li><strong>Data-Driven Testing:</strong> Support for data-driven testing is crucial. The framework should allow scenarios to be executed with different sets of data, improving test coverage and versatility.</li>
+
+
+
+<li><strong>Reporting and Logging:</strong> The framework should generate detailed test reports and logs, providing insights into test results and failures. It should capture information on which scenarios passed and which failed.</li>
+
+
+
+<li><strong>Integration with Development Tools:</strong> The framework should seamlessly integrate with popular development tools and continuous integration/continuous deployment (CI/CD) pipelines. This ensures that BDD tests can be easily incorporated into the development workflow.</li>
+
+
+
+<li><strong>Parallel Execution:</strong> To save time and improve efficiency, the framework should support parallel execution of scenarios across multiple environments or configurations.</li>
+
+
+
+<li><strong>Environment Configuration:</strong> The ability to configure test environments (e.g., development, testing, staging, production) is crucial. The framework should allow testers to specify the environment in which scenarios are run.</li>
+
+
+
+<li><strong>Cross-Browser Testing:</strong> For web applications, the framework should support cross-browser testing to verify that the software functions correctly in different web browsers.</li>
+
+
+
+<li><strong>Extensibility:</strong> A good framework should be extensible, allowing users to create custom step definitions or plugins to meet specific testing needs.</li>
+
+
+
+<li><strong>Parameterized Reporting:</strong> The framework should provide customizable reporting capabilities, enabling users to tailor reports to their specific requirements.</li>
+
+
+
+<li><strong>Scenario Reusability:</strong> Scenarios should be designed for reusability, so common steps or scenarios can be reused in multiple tests. This reduces redundancy and maintenance effort.</li>
+
+
+
+<li><strong>Error Handling and Debugging:</strong> Effective error handling and debugging tools are essential to help testers identify and diagnose issues when scenarios fail.</li>
+
+
+
+<li><strong>Documentation and Training:</strong> The framework should offer clear documentation and training resources to assist users in adopting and effectively using the framework.</li>
+
+
+
+<li><strong>Community and Support:</strong> A vibrant user community and available support resources are valuable for sharing best practices and seeking assistance when needed.</li>
+
+
+
+<li><strong>Scalability:</strong> The framework should be capable of handling a growing number of scenarios as the application&#8217;s test suite expands.</li>
+
+
+
+<li><strong>Compatibility:</strong> Ensure that the framework is compatible with the programming languages, libraries, and technologies used in your software project.</li>
 </ol>
 
 
 
-<p><strong>How We Can Help</strong></p>
-
-
-
-<p>At Sean Dinwiddie &#8211; Software Engineering Consultant, we understand the unique needs of administrators. Our expertise in BDD can help you:</p>
-
-
-
-<ul>
-<li>Define clear, user-centric expectations for your software.</li>
-
-
-
-<li>Improve communication and collaboration within your team.</li>
-
-
-
-<li>Create easily understandable documentation of your software&#8217;s behavior.</li>
-
-
-
-<li>Ensure that your software meets the needs and expectations of your users.</li>
-</ul>
-
-
-
-<p>BDD is not just a methodology; it&#8217;s a mindset shift that can significantly impact the success of your software projects. We are committed to providing you with the tools and expertise to embrace BDD and deliver software that aligns perfectly with your administration goals.</p>
-
-
-
-<p><strong>Next Steps</strong></p>
-
-
-
-<p>If you&#8217;re ready to take your software development to the next level with BDD and collaborate with a team dedicated to your success, get in touch with us. Our online community is here to support you every step of the way, ensuring your journey towards streamlined, efficient administration.</p>
-
-
-
-<p>Stay tuned for our next post where we&#8217;ll explore another powerful approach to software development &#8211; Functional Reactive Programming (FRP) and how it can enhance responsiveness and efficiency.</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/behavior-driven-development-bdd/">Behavior-Driven Development (BDD)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+<p>Choosing or developing a BDD testing framework that meets these requirements will contribute to successful behavior-driven testing, fostering clear communication, improved software quality, and effective collaboration within the development team.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/bdd-testing-framework/">BDD Testing Framework</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>https://seandinwiddie.com/community/behavior-driven-development-bdd/feed/</wfw:commentRss>
+					<wfw:commentRss>https://seandinwiddie.com/community/bdd-testing-framework/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
-		<title>User Stories</title>
-		<link>https://seandinwiddie.com/community/user-stories/</link>
-					<comments>https://seandinwiddie.com/community/user-stories/#respond</comments>
+		<title>BDD and Unit Testing</title>
+		<link>https://seandinwiddie.com/community/bdd-and-unit-testing/</link>
+					<comments>https://seandinwiddie.com/community/bdd-and-unit-testing/#respond</comments>
 		
 		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Fri, 27 Oct 2023 13:20:54 +0000</pubDate>
+		<pubDate>Sat, 28 Oct 2023 18:47:37 +0000</pubDate>
 				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=144</guid>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=271</guid>
 
-					<description><![CDATA[<p>Welcome back to our journey of software excellence! Today, let&#8217;s delve into a critical aspect of our service – User Stories. In the dynamic world of administration, where every day brings new challenges and tasks, staying organized and efficient is the key to success. As administrators, you are the orchestrators of operations, the conductors of [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/user-stories/">User Stories</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+					<description><![CDATA[<p>Behavior-Driven Development (BDD) and unit testing are two essential practices in software development, each serving a distinct purpose but complementing each other to create high-quality software. Let&#8217;s explore how BDD and unit testing work together and their individual roles: Behavior-Driven Development (BDD): BDD is a software development methodology that focuses on defining and verifying the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/bdd-and-unit-testing/">BDD and Unit Testing</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></description>
 										<content:encoded><![CDATA[
-<p>Welcome back to our journey of software excellence! Today, let&#8217;s delve into a critical aspect of our service – User Stories.</p>
+<p>Behavior-Driven Development (BDD) and unit testing are two essential practices in software development, each serving a distinct purpose but complementing each other to create high-quality software. Let&#8217;s explore how BDD and unit testing work together and their individual roles:</p>
 
 
 
-<p>In the dynamic world of administration, where every day brings new challenges and tasks, staying organized and efficient is the key to success. As administrators, you are the orchestrators of operations, the conductors of client relationships, and the guardians of efficiency. In this intricate dance, having a clear and structured approach is your secret weapon.</p>
+<p><strong>Behavior-Driven Development (BDD):</strong></p>
 
 
 
-<p>User Stories are at the heart of this approach. They help you understand the needs, wants, and expectations of the individuals you serve. These stories are not just about creating software; they are about crafting solutions that align precisely with the requirements of your clients, your team, and your objectives.</p>
+<p>BDD is a software development methodology that focuses on defining and verifying the expected behavior of a software system from the user&#8217;s perspective. It aims to ensure that the software meets user expectations and aligns with business requirements. BDD is often associated with creating and running high-level, user-centric scenarios written in plain language. These scenarios, often following the Given-When-Then structure, describe how the software should behave in various situations.</p>
 
 
 
-<p><strong>What Are User Stories?</strong></p>
+<p><strong>Unit Testing:</strong></p>
 
 
 
-<p>User Stories are a simple and effective way to express the functionalities or features of a software application from the perspective of an end user. They are a part of the Agile methodology, a project management approach that emphasizes collaboration, customer feedback, and small, incremental changes.</p>
+<p>Unit testing is a software testing practice that focuses on validating the correctness of individual units or components of code, such as functions, methods, or classes. Unit tests are written by developers to assess whether specific pieces of code produce the correct output given certain inputs. The primary goal of unit testing is to catch bugs early, improve code maintainability, and ensure that each unit of code functions as intended.</p>
 
 
 
-<p>A User Story typically follows this format:</p>
-
-
-
-<p>&#8220;As a [type of user], I want [an action] so that [benefit/value].&#8221;</p>
-
-
-
-<p>For example:</p>
-
-
-
-<p>&#8220;As a customer, I want to be able to easily track my orders online so that I can stay informed about the status of my purchases.&#8221;</p>
-
-
-
-<p><strong>Why User Stories Matter</strong></p>
+<p><strong>How BDD and Unit Testing Work Together:</strong></p>
 
 
 
 <ol>
-<li><strong>Client-Centered:</strong> User Stories keep the focus on the end user, ensuring that every feature or functionality added to the software directly contributes to their needs and satisfaction.</li>
+<li><strong>Alignment with User Expectations:</strong> BDD scenarios help ensure that the software aligns with user expectations and business requirements. By creating scenarios that describe user interactions and expected outcomes, BDD provides a clear and user-centric understanding of software behavior.</li>
 
 
 
-<li><strong>Collaboration:</strong> They promote collaboration and communication within your team. When everyone understands the user&#8217;s perspective, it&#8217;s easier to work together effectively.</li>
+<li><strong>Testable Specifications:</strong> BDD scenarios serve as testable specifications. These high-level scenarios can be used as a basis for creating automated acceptance tests. While BDD scenarios focus on the &#8220;what&#8221; and &#8220;why,&#8221; unit tests focus on the &#8220;how&#8221; by verifying individual code units.</li>
 
 
 
-<li><strong>Prioritization:</strong> User Stories help you prioritize what features to develop first. You can address the most critical needs of your users before moving on to less important ones.</li>
+<li><strong>Validation of Behavior:</strong> Unit tests complement BDD scenarios by validating the behavior of specific code units. Unit tests assess whether the low-level code components behave as expected, ensuring the correctness of individual functions or methods.</li>
 
 
 
-<li><strong>Flexibility:</strong> They allow for flexibility in the development process. You can add, change, or remove User Stories as the project progresses and as you gather more user feedback.</li>
+<li><strong>Early Issue Detection:</strong> Both BDD and unit testing contribute to early issue detection. BDD scenarios help identify high-level behavior issues, while unit tests catch low-level code bugs. By addressing issues early in the development process, you reduce the cost and effort required to fix them.</li>
+
+
+
+<li><strong>Test Coverage:</strong> BDD scenarios typically focus on high-level end-to-end behavior, while unit testing delves into the internal details of code components. Together, they provide comprehensive test coverage, verifying both the macro-level user interactions and micro-level code functionality.</li>
+
+
+
+<li><strong>Documentation and Communication:</strong> BDD scenarios serve as living documentation that communicates the expected behavior of the software to all stakeholders. Unit tests, on the other hand, document how specific code units are intended to work.</li>
+
+
+
+<li><strong>Regression Testing:</strong> Both BDD scenarios and unit tests play a crucial role in regression testing. When changes are made to the software, both types of tests can be run to verify that existing functionality remains intact.</li>
 </ol>
 
 
 
-<p><strong>How We Can Help</strong></p>
-
-
-
-<p>At Sean Dinwiddie &#8211; Software Engineering Consultant, we specialize in crafting User Stories tailored to your unique needs as an administrator. We understand that your software needs to serve both your team and your clients efficiently.</p>
-
-
-
-<p>Our User Stories are designed to help you:</p>
+<p><strong>Challenges and Considerations:</strong></p>
 
 
 
 <ul>
-<li>Understand your client&#8217;s perspective thoroughly.</li>
+<li><strong>Overlap:</strong> There may be some overlap between BDD and unit tests, as certain BDD scenarios may also cover aspects tested by unit tests. It&#8217;s essential to strike a balance and avoid redundancy.</li>
 
 
 
-<li>Prioritize features based on user needs.</li>
+<li><strong>Integration Testing:</strong> While BDD and unit testing focus on specific levels of testing, integration testing is also important to verify that different components of the software work together seamlessly.</li>
 
 
 
-<li>Collaborate effectively with your development team.</li>
-
-
-
-<li>Adapt to changing requirements as your project evolves.</li>
+<li><strong>Test Maintenance:</strong> Both BDD scenarios and unit tests require maintenance as the software evolves. Ensure that tests remain up-to-date as code changes.</li>
 </ul>
 
 
 
-<p>User Stories are not just about writing, but about understanding and adapting to the evolving needs of your business. Our commitment is to provide you with the tools and expertise to deliver software that truly aligns with your goals.</p>
-
-
-
-<p><strong>Next Steps</strong></p>
-
-
-
-<p>If you&#8217;re ready to take your administration to the next level, embrace the power of User Stories, and collaborate with a team dedicated to your success, get in touch with us. Our online community is here to support you every step of the way, ensuring your journey towards streamlined, efficient administration.</p>
-
-
-
-<p>Stay tuned for our next post where we&#8217;ll dive deeper into the world of Behavior-Driven Development (BDD) and how it can revolutionize your approach to software development.</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/user-stories/">User Stories</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+<p>In summary, BDD and unit testing are complementary practices that contribute to software quality by addressing different aspects of behavior verification. BDD scenarios focus on high-level user behavior, while unit tests verify low-level code components. Together, they help create robust, user-centric software that meets both high-level expectations and low-level code quality standards.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/bdd-and-unit-testing/">BDD and Unit Testing</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>https://seandinwiddie.com/community/user-stories/feed/</wfw:commentRss>
+					<wfw:commentRss>https://seandinwiddie.com/community/bdd-and-unit-testing/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Reviewing and Enhancing BDD Scenarios as a Group</title>
+		<link>https://seandinwiddie.com/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/</link>
+					<comments>https://seandinwiddie.com/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Sat, 28 Oct 2023 18:42:50 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=268</guid>
+
+					<description><![CDATA[<p>Collaborative review and enhancement of Behavior-Driven Development (BDD) scenarios as a group is a critical step to ensure that your scenarios accurately reflect the expected behavior of the software. Group collaboration helps identify potential issues, refine scenarios, and align the development team&#8217;s understanding of user expectations. Here&#8217;s a step-by-step guide on how to review and [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/">Reviewing and Enhancing BDD Scenarios as a Group</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Collaborative review and enhancement of Behavior-Driven Development (BDD) scenarios as a group is a critical step to ensure that your scenarios accurately reflect the expected behavior of the software. Group collaboration helps identify potential issues, refine scenarios, and align the development team&#8217;s understanding of user expectations. Here&#8217;s a step-by-step guide on how to review and enhance BDD scenarios as a group:</p>
+
+
+
+<p><strong>1. Select the Right Participants:</strong></p>
+
+
+
+<p>Choose a diverse group of participants that may include developers, testers, product owners, domain experts, and other stakeholders. This diversity ensures that different perspectives are considered during the review.</p>
+
+
+
+<p><strong>2. Set Clear Objectives:</strong></p>
+
+
+
+<p>Before the review session, establish clear objectives. What are you trying to achieve with the review? Are you looking for clarity, completeness, accuracy, or alignment with user expectations? Define your goals.</p>
+
+
+
+<p><strong>3. Schedule a Review Session:</strong></p>
+
+
+
+<p>Set a specific date and time for the review session. Ensure that all relevant participants can attend the session. Depending on the complexity of the scenarios, the session may take anywhere from a few hours to a full day.</p>
+
+
+
+<p><strong>4. Distribute Scenarios in Advance:</strong></p>
+
+
+
+<p>Share the BDD scenarios with participants in advance of the review session. This allows participants to familiarize themselves with the content and come prepared with feedback and suggestions.</p>
+
+
+
+<p><strong>5. Facilitate the Review:</strong></p>
+
+
+
+<p>Designate a facilitator for the review session. The facilitator&#8217;s role is to guide the discussion, ensure that objectives are met, and keep the review on track. They should encourage open and constructive feedback.</p>
+
+
+
+<p><strong>6. Read Aloud and Discuss Each Scenario:</strong></p>
+
+
+
+<p>During the session, read each scenario aloud. This can be done by the facilitator or by participants taking turns. After reading a scenario, encourage discussion and feedback. Participants should express their thoughts on clarity, completeness, and alignment with user expectations.</p>
+
+
+
+<p><strong>7. Identify Ambiguities and Issues:</strong></p>
+
+
+
+<p>Encourage participants to identify any ambiguities, inconsistencies, or issues in the scenarios. This may include unclear language, missing details, or potential misunderstandings.</p>
+
+
+
+<p><strong>8. Propose Enhancements:</strong></p>
+
+
+
+<p>Participants should propose enhancements or revisions to the scenarios as needed. These can include adding more context to the Given section, refining the action in the When section, or specifying additional expected outcomes in the Then section.</p>
+
+
+
+<p><strong>9. Document Feedback:</strong></p>
+
+
+
+<p>Document all feedback and proposed enhancements. This documentation ensures that the feedback is not lost and can be incorporated into the scenarios after the review session.</p>
+
+
+
+<p><strong>10. Prioritize Changes:</strong></p>
+
+
+
+<p>Prioritize the suggested changes based on their impact on scenario quality and alignment with user expectations. Some changes may be critical, while others may be minor improvements.</p>
+
+
+
+<p><strong>11. Iterate and Revise:</strong></p>
+
+
+
+<p>After the review session, collaborate with the scenario author(s) to revise the scenarios based on the feedback received. This may involve rewriting, clarifying, or expanding scenarios to address the identified issues and enhancements.</p>
+
+
+
+<p><strong>12. Verify Changes:</strong></p>
+
+
+
+<p>After revisions, it&#8217;s important to verify that the scenarios accurately reflect the intended behavior of the software. This may involve running automated tests based on the scenarios.</p>
+
+
+
+<p><strong>13. Continuous Improvement:</strong></p>
+
+
+
+<p>Consider making scenario review and enhancement a continuous practice throughout the development process. Regularly revisit and refine scenarios as the project evolves and as user expectations change.</p>
+
+
+
+<p>Collaborative review and enhancement of BDD scenarios as a group can significantly improve the quality and effectiveness of the scenarios. It ensures that the development team maintains a shared understanding of user expectations and that the software aligns closely with those expectations. It&#8217;s a practice that promotes clarity, collaboration, and the delivery of software that truly meets user needs.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/">Reviewing and Enhancing BDD Scenarios as a Group</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Creating BDD Scenarios for Real-World Cases</title>
+		<link>https://seandinwiddie.com/community/creating-bdd-scenarios-for-real-world-cases/</link>
+					<comments>https://seandinwiddie.com/community/creating-bdd-scenarios-for-real-world-cases/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Sat, 28 Oct 2023 18:41:07 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=265</guid>
+
+					<description><![CDATA[<p>Behavior-Driven Development (BDD) scenarios are a powerful tool for defining and testing software behavior in real-world cases. When creating BDD scenarios for real-world cases, it&#8217;s important to follow a structured approach to ensure that the scenarios accurately reflect the expected behavior of the software. Here&#8217;s a step-by-step guide: 1. Understand the Real-World Case: Before creating [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Behavior-Driven Development (BDD) scenarios are a powerful tool for defining and testing software behavior in real-world cases. When creating BDD scenarios for real-world cases, it&#8217;s important to follow a structured approach to ensure that the scenarios accurately reflect the expected behavior of the software. Here&#8217;s a step-by-step guide:</p>
+
+
+
+<p><strong>1. Understand the Real-World Case:</strong></p>
+
+
+
+<p>Before creating BDD scenarios, you need a deep understanding of the real-world case you want to address with your software. This might involve detailed user stories, use cases, or domain knowledge. Consider the specific problem or need that the software should address.</p>
+
+
+
+<p><strong>2. Identify User Roles:</strong></p>
+
+
+
+<p>Determine the various user roles or personas involved in the real-world case. Different users may interact with the software in distinct ways, and it&#8217;s essential to consider all user perspectives.</p>
+
+
+
+<p><strong>3. Define High-Level Scenarios:</strong></p>
+
+
+
+<p>Start by defining high-level scenarios that represent the key interactions or processes within the real-world case. These high-level scenarios serve as a framework for more detailed scenarios.</p>
+
+
+
+<p><strong>4. Create Scenario Outlines:</strong></p>
+
+
+
+<p>For each high-level scenario, create a scenario outline. A scenario outline typically includes a title or description and a list of possible user interactions or steps. This provides a structured framework for detailing the scenarios.</p>
+
+
+
+<p><strong>5. List User Actions (When):</strong></p>
+
+
+
+<p>Identify the specific actions or interactions that users take within the real-world case. This might involve actions like data input, decision-making, or communication with the software.</p>
+
+
+
+<p><strong>6. Describe the Initial State (Given):</strong></p>
+
+
+
+<p>In the Given section of your scenario, describe the initial state or context before the user actions take place. This sets up the preconditions for the scenario. It may involve data setup, system initialization, or user authentication.</p>
+
+
+
+<p><strong>7. Define the Expected Outcomes (Then):</strong></p>
+
+
+
+<p>In the Then section, specify the expected outcomes or results of the user actions. What should happen after the user interacts with the software in the context of the real-world case? This could include changes in the user interface, data updates, or system responses.</p>
+
+
+
+<p><strong>8. Consider Alternate Paths:</strong></p>
+
+
+
+<p>Real-world cases often involve alternate paths or exceptional scenarios. Think about situations where the software might behave differently, and create scenarios to cover those cases.</p>
+
+
+
+<p><strong>9. Use Natural Language:</strong></p>
+
+
+
+<p>BDD scenarios should be written in natural language that is easy to understand by both technical and non-technical team members. Avoid technical jargon or complex terminology.</p>
+
+
+
+<p><strong>10. Include Edge Cases:</strong></p>
+
+
+
+<p>Consider edge cases and boundary conditions that could impact the real-world case. Create scenarios that cover these scenarios, including scenarios where unusual or unexpected inputs are involved.</p>
+
+
+
+<p><strong>11. Review and Revise:</strong></p>
+
+
+
+<p>After creating your scenarios, review them for clarity, accuracy, and completeness. Make sure that they accurately reflect the real-world case and that the expected behavior aligns with user expectations.</p>
+
+
+
+<p><strong>12. Collaborate with Stakeholders:</strong></p>
+
+
+
+<p>Engage with stakeholders, including end users, product owners, and domain experts, to validate the scenarios. Their feedback can help refine the scenarios and ensure that they address the real-world case effectively.</p>
+
+
+
+<p><strong>Example BDD Scenario for a Real-World Case:</strong></p>
+
+
+
+<p>Here&#8217;s an example of a BDD scenario for a real-world case involving an e-commerce order:</p>
+
+
+
+<pre class="wp-block-code"><code>Scenario: Placing an order in an e-commerce store
+
+Given the user is logged in
+And the user has items in their shopping cart
+When the user proceeds to checkout
+Then the user should be able to select a shipping address
+And the user should be able to choose a payment method
+And the order should be successfully placed
+And an order confirmation email should be sent to the user</code></pre>
+
+
+
+<p>In this scenario, the Given section sets the initial state, the When section describes the user actions, and the Then section specifies the expected outcomes within the context of the real-world case.</p>
+
+
+
+<p>By following this structured approach, you can create comprehensive and accurate BDD scenarios for real-world cases. These scenarios provide a clear and testable specification of how the software should behave in complex, real-world situations, ensuring that it aligns with user needs and expectations.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/creating-bdd-scenarios-for-real-world-cases/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Writing BDD Scenarios for Software Modules</title>
+		<link>https://seandinwiddie.com/community/writing-bdd-scenarios-for-software-modules/</link>
+					<comments>https://seandinwiddie.com/community/writing-bdd-scenarios-for-software-modules/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Sat, 28 Oct 2023 18:39:26 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=262</guid>
+
+					<description><![CDATA[<p>Behavior-Driven Development (BDD) scenarios are a powerful tool for specifying and testing the expected behavior of software modules. Writing BDD scenarios helps ensure that your software aligns with user expectations and business requirements. Here&#8217;s a step-by-step guide on how to write BDD scenarios for software modules: 1. Identify the Software Module: Begin by identifying the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/writing-bdd-scenarios-for-software-modules/">Writing BDD Scenarios for Software Modules</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Behavior-Driven Development (BDD) scenarios are a powerful tool for specifying and testing the expected behavior of software modules. Writing BDD scenarios helps ensure that your software aligns with user expectations and business requirements. Here&#8217;s a step-by-step guide on how to write BDD scenarios for software modules:</p>
+
+
+
+<p><strong>1. Identify the Software Module:</strong></p>
+
+
+
+<p>Begin by identifying the specific software module or feature you want to create scenarios for. This could be a module within a larger software application or a standalone software component.</p>
+
+
+
+<p><strong>2. Understand User Expectations:</strong></p>
+
+
+
+<p>Before writing BDD scenarios, you need a clear understanding of what the users expect from the software module. This might involve user stories, product requirements, or direct communication with stakeholders.</p>
+
+
+
+<p><strong>3. Define the High-Level Behavior:</strong></p>
+
+
+
+<p>Start by defining the high-level behavior or functionality of the software module. What is its primary purpose, and how does it contribute to the overall system? This high-level understanding will guide the creation of more detailed scenarios.</p>
+
+
+
+<p><strong>4. Create a Scenario Outline:</strong></p>
+
+
+
+<p>A scenario outline provides an overarching structure for your scenarios. It typically includes a title or description of the module and a list of possible user interactions. This outline helps organize your scenarios logically.</p>
+
+
+
+<p><strong>5. List User Actions (When):</strong></p>
+
+
+
+<p>Identify the user actions or interactions with the software module that you want to test. This could involve actions like data input, button clicks, or navigation.</p>
+
+
+
+<p><strong>6. Describe the Initial State (Given):</strong></p>
+
+
+
+<p>In the Given section of your scenario, describe the initial state or context before the user actions take place. This sets up the preconditions for the scenario. It may involve data setup, system initialization, or user authentication.</p>
+
+
+
+<p><strong>7. Define the Expected Outcomes (Then):</strong></p>
+
+
+
+<p>In the Then section, specify the expected outcomes or results of the user actions. What should happen after the user interacts with the module? This could include changes in the user interface, data updates, or system responses.</p>
+
+
+
+<p><strong>8. Add Additional Details (And or But):</strong></p>
+
+
+
+<p>To make your scenarios more comprehensive and precise, you can use the &#8220;And&#8221; or &#8220;But&#8221; keywords to include additional steps or conditions. These can be used to clarify complex interactions or to cover alternative paths.</p>
+
+
+
+<p><strong>9. Consider Edge Cases:</strong></p>
+
+
+
+<p>Think about edge cases or exceptional scenarios that might occur. These are situations where the software module might behave differently or where specific conditions need to be met.</p>
+
+
+
+<p><strong>10. Review and Refine:</strong></p>
+
+
+
+<p>Review your scenarios for clarity, completeness, and accuracy. Ensure that they accurately represent the intended behavior of the software module. Make revisions as necessary.</p>
+
+
+
+<p><strong>11. Use Scenario Templates:</strong></p>
+
+
+
+<p>Consider using scenario templates or pre-defined formats that follow the Given-When-Then structure. These templates can make it easier to write consistent and well-structured scenarios.</p>
+
+
+
+<p><strong>Example BDD Scenario for a Software Module:</strong></p>
+
+
+
+<p>Here&#8217;s an example of a BDD scenario for a login module:</p>
+
+
+
+<pre class="wp-block-code"><code>Scenario: Logging into the system
+
+Given the user is on the login page
+When the user enters a valid username and password
+Then the user should be successfully logged into the system
+And the user should be redirected to the dashboard</code></pre>
+
+
+
+<p>In this scenario, the Given section sets the initial state, the When section describes the user action, and the Then section specifies the expected outcomes.</p>
+
+
+
+<p>By following these steps, you can create effective BDD scenarios for your software modules. These scenarios provide a clear and testable specification of the module&#8217;s behavior, ensuring that it aligns with user expectations and business requirements.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/writing-bdd-scenarios-for-software-modules/">Writing BDD Scenarios for Software Modules</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/writing-bdd-scenarios-for-software-modules/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Given-When-Then (Gherkin) Syntax in BDD</title>
+		<link>https://seandinwiddie.com/community/given-when-then-gherkin-syntax-in-bdd/</link>
+					<comments>https://seandinwiddie.com/community/given-when-then-gherkin-syntax-in-bdd/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Sat, 28 Oct 2023 18:37:32 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=259</guid>
+
+					<description><![CDATA[<p>Given-When-Then, often referred to as Gherkin syntax, is a structured language used in Behavior-Driven Development (BDD) to define and describe the expected behavior of a software system. Gherkin syntax is designed to be human-readable and is commonly used in BDD frameworks like Cucumber and SpecFlow. It provides a clear and uniform way to express behavior [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) Syntax in BDD</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Given-When-Then, often referred to as Gherkin syntax, is a structured language used in Behavior-Driven Development (BDD) to define and describe the expected behavior of a software system. Gherkin syntax is designed to be human-readable and is commonly used in BDD frameworks like Cucumber and SpecFlow. It provides a clear and uniform way to express behavior scenarios.</p>
+
+
+
+<p><strong>The Gherkin Structure:</strong></p>
+
+
+
+<p>Gherkin scenarios follow a specific structure with three main sections: Given, When, and Then. Each section serves a distinct purpose in describing the expected behavior.</p>
+
+
+
+<ol>
+<li><strong>Given:</strong></li>
+</ol>
+
+
+
+<ul>
+<li>The &#8220;Given&#8221; section describes the initial context or state of the system before the behavior is tested.</li>
+
+
+
+<li>It sets up the preconditions necessary for the scenario to make sense.</li>
+
+
+
+<li>&#8220;Given&#8221; statements establish the starting point for the behavior you want to test.</li>
+</ul>
+
+
+
+<ol>
+<li><strong>When:</strong></li>
+</ol>
+
+
+
+<ul>
+<li>The &#8220;When&#8221; section describes an action or event that occurs, typically triggered by the user or some external factor.</li>
+
+
+
+<li>It represents the action you are testing—the specific behavior that you want to observe or verify.</li>
+</ul>
+
+
+
+<ol>
+<li><strong>Then:</strong></li>
+</ol>
+
+
+
+<ul>
+<li>The &#8220;Then&#8221; section describes the expected outcome or behavior that should result from the action defined in the &#8220;When&#8221; section.</li>
+
+
+
+<li>&#8220;Then&#8221; statements articulate the specific results, changes, or behavior that you are testing for.</li>
+</ul>
+
+
+
+<p><strong>Example Using Gherkin Syntax:</strong></p>
+
+
+
+<p>Here&#8217;s an example of a BDD scenario written in Gherkin syntax:</p>
+
+
+
+<pre class="wp-block-code"><code>Scenario: Logging into an email account
+
+Given the user is on the email login page
+When the user enters their valid username and password
+Then the user should be logged into their email account</code></pre>
+
+
+
+<p>In this scenario:</p>
+
+
+
+<ul>
+<li>The &#8220;Given&#8221; section establishes the context by placing the user on the email login page.</li>
+
+
+
+<li>The &#8220;When&#8221; section describes the action of entering a valid username and password.</li>
+
+
+
+<li>The &#8220;Then&#8221; section specifies the expected outcome, which is that the user should be successfully logged into their email account.</li>
+</ul>
+
+
+
+<p><strong>Additional Keywords in Gherkin:</strong></p>
+
+
+
+<p>In addition to the primary Given-When-Then structure, Gherkin syntax also includes other keywords that can be used to enhance scenarios:</p>
+
+
+
+<ul>
+<li><strong>And:</strong> The &#8220;And&#8221; keyword can be used to continue a section that has already started. For example, &#8220;Given,&#8221; &#8220;When,&#8221; or &#8220;Then&#8221; can be followed by &#8220;And&#8221; to add more context, actions, or expected outcomes.</li>
+
+
+
+<li><strong>But:</strong> The &#8220;But&#8221; keyword is similar to &#8220;And&#8221; but is often used to introduce an unexpected outcome or exception.</li>
+
+
+
+<li><strong>Background:</strong> The &#8220;Background&#8221; keyword is used to define a set of Given steps that are common to multiple scenarios within the same feature file. This helps avoid repetition and keeps feature files concise.</li>
+
+
+
+<li><strong>Scenario Outline:</strong> The &#8220;Scenario Outline&#8221; keyword is used to create parameterized scenarios. It allows you to run the same scenario with different sets of data.</li>
+</ul>
+
+
+
+<p>Gherkin syntax provides a standardized and human-readable way to express behavior scenarios in BDD. By following this structure, development teams can create clear, structured, and unambiguous descriptions of how the software should behave from the user&#8217;s perspective.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) Syntax in BDD</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/given-when-then-gherkin-syntax-in-bdd/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Introduction to Behavior-Driven Development (BDD)</title>
+		<link>https://seandinwiddie.com/community/introduction-to-behavior-driven-development-bdd/</link>
+					<comments>https://seandinwiddie.com/community/introduction-to-behavior-driven-development-bdd/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Sat, 28 Oct 2023 18:33:04 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=256</guid>
+
+					<description><![CDATA[<p>Behavior-Driven Development (BDD) is a software development methodology that focuses on creating and delivering software that aligns closely with user expectations and business requirements. It places a strong emphasis on understanding and defining the expected behavior of a software system from the user&#8217;s perspective. BDD combines aspects of software development, testing, and collaboration to create [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/introduction-to-behavior-driven-development-bdd/">Introduction to Behavior-Driven Development (BDD)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Behavior-Driven Development (BDD) is a software development methodology that focuses on creating and delivering software that aligns closely with user expectations and business requirements. It places a strong emphasis on understanding and defining the expected behavior of a software system from the user&#8217;s perspective. BDD combines aspects of software development, testing, and collaboration to create a user-centric and value-driven development process.</p>
+
+
+
+<p><strong>Key Concepts of BDD:</strong></p>
+
+
+
+<ol>
+<li><strong>User-Centric Approach:</strong> BDD begins by understanding the needs, expectations, and behaviors of the end users. It prioritizes creating software that directly addresses these user needs, ensuring that the end product is valuable and user-friendly.</li>
+
+
+
+<li><strong>Collaboration:</strong> Collaboration is central to BDD. It encourages open and ongoing communication between developers, testers, product owners, and other stakeholders. This collaboration ensures that all team members have a shared understanding of the software&#8217;s behavior.</li>
+
+
+
+<li><strong>Common Language:</strong> BDD promotes the use of a common language, typically plain English, to describe the behavior of the software. This language is accessible to both technical and non-technical team members, making it easier to communicate and define expectations.</li>
+
+
+
+<li><strong>Behavior Specifications:</strong> BDD scenarios are used to specify how the software should behave in different situations. These scenarios follow the Given-When-Then format and provide a clear and structured way to describe expected behavior.</li>
+</ol>
+
+
+
+<ul>
+<li><strong>Given:</strong> Describes the initial context or state.</li>
+
+
+
+<li><strong>When:</strong> Describes an action or event that occurs.</li>
+
+
+
+<li><strong>Then:</strong> Describes the expected outcome or behavior.</li>
+</ul>
+
+
+
+<ol>
+<li><strong>Continuous Feedback:</strong> BDD encourages continuous feedback throughout the development process. Team members provide feedback, ask questions, and collaborate to refine and improve behavior specifications. This iterative approach allows the development team to adapt to changing user expectations and requirements.</li>
+
+
+
+<li><strong>Automation:</strong> BDD scenarios serve as the basis for automated tests. These tests validate that the software behaves as expected based on user scenarios. Automated testing ensures that the software consistently meets user expectations, even as it evolves.</li>
+</ol>
+
+
+
+<p><strong>Benefits of BDD:</strong></p>
+
+
+
+<ol>
+<li><strong>User-Centric Development:</strong> BDD ensures that software development is aligned with user needs and expectations, resulting in higher user satisfaction.</li>
+
+
+
+<li><strong>Clear Communication:</strong> BDD&#8217;s use of a common language promotes clear and effective communication among team members.</li>
+
+
+
+<li><strong>Shared Understanding:</strong> BDD helps create a shared understanding of the software&#8217;s behavior, reducing misunderstandings and misinterpretations.</li>
+
+
+
+<li><strong>Early Issue Detection:</strong> By writing behavior scenarios and automated tests, issues can be detected and addressed early in the development process.</li>
+
+
+
+<li><strong>Documentation:</strong> BDD scenarios serve as living documentation that can be easily maintained and updated as the software evolves.</li>
+
+
+
+<li><strong>Improved Collaboration:</strong> Collaboration between technical and non-technical team members is enhanced, leading to more effective development.</li>
+</ol>
+
+
+
+<p>BDD is a valuable approach for teams that want to ensure that their software consistently delivers real value to users and aligns with business objectives. It fosters a culture of user-centric development and clear communication, ultimately leading to more reliable and valuable software products.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/introduction-to-behavior-driven-development-bdd/">Introduction to Behavior-Driven Development (BDD)</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/introduction-to-behavior-driven-development-bdd/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Writing BDD Scenarios</title>
+		<link>https://seandinwiddie.com/community/writing-bdd-scenarios/</link>
+					<comments>https://seandinwiddie.com/community/writing-bdd-scenarios/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Sat, 28 Oct 2023 18:30:02 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=253</guid>
+
+					<description><![CDATA[<p>Behavior-Driven Development (BDD) scenarios are a pivotal part of BDD methodology. They are used to define the expected behavior of a software system from the user&#8217;s perspective. BDD scenarios follow the Given-When-Then format and serve as a clear and structured way to specify how the software should behave in different situations. Here&#8217;s how to write [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/writing-bdd-scenarios/">Writing BDD Scenarios</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Behavior-Driven Development (BDD) scenarios are a pivotal part of BDD methodology. They are used to define the expected behavior of a software system from the user&#8217;s perspective. BDD scenarios follow the Given-When-Then format and serve as a clear and structured way to specify how the software should behave in different situations. Here&#8217;s how to write BDD scenarios:</p>
+
+
+
+<p><strong>1. Understand the Feature or User Story:</strong></p>
+
+
+
+<p>Before you begin writing BDD scenarios, it&#8217;s crucial to have a clear understanding of the feature or user story you are working on. You should know the specific behavior you want to define.</p>
+
+
+
+<p><strong>2. Use the Given-When-Then Format:</strong></p>
+
+
+
+<p>BDD scenarios are typically structured using the Given-When-Then format, which helps create a clear and concise description of the expected behavior.</p>
+
+
+
+<ul>
+<li><strong>Given:</strong> Describes the initial context or state of the system before the behavior is tested. It sets up the preconditions for the test.</li>
+
+
+
+<li><strong>When:</strong> Describes an action or event that occurs, typically triggered by the user or some external factor. This is the action you are testing.</li>
+
+
+
+<li><strong>Then:</strong> Describes the expected outcome or behavior resulting from the action defined in the &#8220;When&#8221; section.</li>
+</ul>
+
+
+
+<p><strong>3. Be Specific and Concrete:</strong></p>
+
+
+
+<p>Your scenarios should be specific and concrete, leaving no room for ambiguity. Avoid vague or general descriptions. The more precise your scenarios are, the easier they are to understand and implement.</p>
+
+
+
+<p><strong>4. Use Plain Language:</strong></p>
+
+
+
+<p>BDD scenarios should use plain language that is easily understandable by both technical and non-technical team members. Avoid using technical jargon or complex terminology.</p>
+
+
+
+<p><strong>5. Include Context in the &#8220;Given&#8221; Section:</strong></p>
+
+
+
+<p>The &#8220;Given&#8221; section is where you set up the initial conditions or context for the scenario. This section should establish the state of the system or any necessary preconditions for the scenario to make sense. For example:</p>
+
+
+
+<ul>
+<li>Given the user is logged in</li>
+
+
+
+<li>Given the user has a balance of $100 in their account</li>
+</ul>
+
+
+
+<p><strong>6. Describe Actions in the &#8220;When&#8221; Section:</strong></p>
+
+
+
+<p>The &#8220;When&#8221; section is where you describe the action or event you are testing. This is typically the action that a user takes. For example:</p>
+
+
+
+<ul>
+<li>When the user clicks the &#8220;Submit&#8221; button</li>
+
+
+
+<li>When the user enters their login credentials</li>
+</ul>
+
+
+
+<p><strong>7. Define Expected Outcomes in the &#8220;Then&#8221; Section:</strong></p>
+
+
+
+<p>The &#8220;Then&#8221; section is where you specify the expected outcomes or results of the action described in the &#8220;When&#8221; section. This is the behavior you are testing. For example:</p>
+
+
+
+<ul>
+<li>Then the system should display a confirmation message</li>
+
+
+
+<li>Then the user&#8217;s account balance should be updated to $150</li>
+</ul>
+
+
+
+<p><strong>8. Keep Scenarios Small and Focused:</strong></p>
+
+
+
+<p>BDD scenarios should be focused on testing a single aspect of behavior. Keep your scenarios small and specific, addressing one user interaction at a time. This makes it easier to understand, implement, and maintain scenarios.</p>
+
+
+
+<p><strong>9. Include Acceptance Criteria:</strong></p>
+
+
+
+<p>To ensure clarity and testability, it&#8217;s a good practice to include acceptance criteria within or alongside your BDD scenarios. Acceptance criteria provide specific conditions that must be met for the scenario to be considered complete.</p>
+
+
+
+<p><strong>Example BDD Scenario:</strong></p>
+
+
+
+<p>Here&#8217;s an example of a BDD scenario for an e-commerce website:</p>
+
+
+
+<pre class="wp-block-code"><code>Scenario: Adding a product to the shopping cart
+
+Given the user is on the product page
+And the product "Widget A" is available for purchase
+When the user clicks the "Add to Cart" button
+Then the user's shopping cart should contain "Widget A"
+And the user's shopping cart total should reflect the price of "Widget A"</code></pre>
+
+
+
+<p>This scenario describes the expected behavior when a user adds a product to their shopping cart.</p>
+
+
+
+<p>By following these guidelines, you can write clear, structured, and effective BDD scenarios that accurately describe how the software should behave from the user&#8217;s perspective. BDD scenarios serve as the foundation for creating tests and ensuring that your software aligns with user expectations.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/writing-bdd-scenarios/">Writing BDD Scenarios</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/writing-bdd-scenarios/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

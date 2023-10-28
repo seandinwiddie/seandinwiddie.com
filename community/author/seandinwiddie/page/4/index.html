@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+		<style id="material-css-variables">:root {
+				/* Theme color vars */
+				--md-sys-color-primary-rgb:0,99,152;
+				--md-sys-color-primary:#006398;
+				--md-sys-color-on-primary-rgb:255,255,255;
+				--md-sys-color-on-primary:#ffffff;
+				--md-sys-color-primary-container-rgb:203,229,255;
+				--md-sys-color-primary-container:#cbe5ff;
+				--md-sys-color-on-primary-container-rgb:0,29,49;
+				--md-sys-color-on-primary-container:#001d31;
+				--md-sys-color-secondary-rgb:80,96,111;
+				--md-sys-color-secondary:#50606f;
+				--md-sys-color-on-secondary-rgb:255,255,255;
+				--md-sys-color-on-secondary:#ffffff;
+				--md-sys-color-secondary-container-rgb:212,228,246;
+				--md-sys-color-secondary-container:#d4e4f6;
+				--md-sys-color-on-secondary-container-rgb:13,29,42;
+				--md-sys-color-on-secondary-container:#0d1d2a;
+				--md-sys-color-tertiary-rgb:102,88,122;
+				--md-sys-color-tertiary:#66587a;
+				--md-sys-color-on-tertiary-rgb:255,255,255;
+				--md-sys-color-on-tertiary:#ffffff;
+				--md-sys-color-tertiary-container-rgb:238,220,255;
+				--md-sys-color-tertiary-container:#eedcff;
+				--md-sys-color-on-tertiary-container-rgb:34,21,52;
+				--md-sys-color-on-tertiary-container:#221534;
+				--md-sys-color-error-rgb:186,27,27;
+				--md-sys-color-error:#ba1b1b;
+				--md-sys-color-on-error-rgb:255,255,255;
+				--md-sys-color-on-error:#ffffff;
+				--md-sys-color-error-container-rgb:255,218,212;
+				--md-sys-color-error-container:#ffdad4;
+				--md-sys-color-on-error-container-rgb:65,0,1;
+				--md-sys-color-on-error-container:#410001;
+				--md-sys-color-background-rgb:252,252,255;
+				--md-sys-color-background:#fcfcff;
+				--md-sys-color-on-background-rgb:26,28,30;
+				--md-sys-color-on-background:#1a1c1e;
+				--md-sys-color-surface-rgb:252,252,255;
+				--md-sys-color-surface:#fcfcff;
+				--md-sys-color-on-surface-rgb:26,28,30;
+				--md-sys-color-on-surface:#1a1c1e;
+				--md-sys-color-surface-variant-rgb:222,227,234;
+				--md-sys-color-surface-variant:#dee3ea;
+				--md-sys-color-on-surface-variant-rgb:65,71,77;
+				--md-sys-color-on-surface-variant:#41474d;
+				--md-sys-color-outline-rgb:114,119,126;
+				--md-sys-color-outline:#72777e;
+				--md-sys-color-shadow-rgb:0,0,0;
+				--md-sys-color-shadow:#000000;
+				--md-sys-color-inverse-surface-rgb:47,48,50;
+				--md-sys-color-inverse-surface:#2f3032;
+				--md-sys-color-inverse-on-surface-rgb:240,240,243;
+				--md-sys-color-inverse-on-surface:#f0f0f3;
+				--md-sys-color-inverse-primary-rgb:144,204,255;
+				--md-sys-color-inverse-primary:#90ccff;
+
+				/* Icon collection type var */
+				--mdc-icons-font-family: "Material Icons Two Tone";
+
+				/* Typography vars */
+				--md-sys-typescale-display-large-font: "Space Mono", monospace;
+				--md-sys-typescale-display-medium-font: "Space Mono", monospace;
+				--md-sys-typescale-display-small-font: "Space Mono", monospace;
+				--md-sys-typescale-headline-large-font: "Space Mono", monospace;
+				--md-sys-typescale-headline-medium-font: "Space Mono", monospace;
+				--md-sys-typescale-headline-small-font: "Space Mono", monospace;
+				--md-sys-typescale-title-large-font: "Space Mono", monospace;
+				--md-sys-typescale-title-medium-font: "Space Mono", monospace;
+				--md-sys-typescale-title-small-font: "Space Mono", monospace;
+				--md-sys-typescale-label-large-font: "Space Mono", monospace;
+				--md-sys-typescale-label-medium-font: "Space Mono", monospace;
+				--md-sys-typescale-label-small-font: "Space Mono", monospace;
+				--md-sys-typescale-body-large-font: "Space Mono", monospace;
+				--md-sys-typescale-body-medium-font: "Space Mono", monospace;
+				--md-sys-typescale-body-small-font: "Space Mono", monospace;
+
+				/* Corner Styles vars */
+				--mdc-button-radius: 20px;
+				--mdc-card-radius: 12px;
+				--mdc-chip-radius: 8px;
+				--mdc-data-table-radius: 24px;
+				--mdc-image-list-radius: 12px;
+				--mdc-nav-drawer-radius: 4px;
+				--mdc-text-field-radius: 4px;
+			}
+
+			/* Forced light mode */
+			body[data-color-scheme='light'] {
+				--md-sys-color-primary-rgb:0,99,152;
+				--md-sys-color-primary:#006398;
+				--md-sys-color-on-primary-rgb:255,255,255;
+				--md-sys-color-on-primary:#ffffff;
+				--md-sys-color-primary-container-rgb:203,229,255;
+				--md-sys-color-primary-container:#cbe5ff;
+				--md-sys-color-on-primary-container-rgb:0,29,49;
+				--md-sys-color-on-primary-container:#001d31;
+				--md-sys-color-secondary-rgb:80,96,111;
+				--md-sys-color-secondary:#50606f;
+				--md-sys-color-on-secondary-rgb:255,255,255;
+				--md-sys-color-on-secondary:#ffffff;
+				--md-sys-color-secondary-container-rgb:212,228,246;
+				--md-sys-color-secondary-container:#d4e4f6;
+				--md-sys-color-on-secondary-container-rgb:13,29,42;
+				--md-sys-color-on-secondary-container:#0d1d2a;
+				--md-sys-color-tertiary-rgb:102,88,122;
+				--md-sys-color-tertiary:#66587a;
+				--md-sys-color-on-tertiary-rgb:255,255,255;
+				--md-sys-color-on-tertiary:#ffffff;
+				--md-sys-color-tertiary-container-rgb:238,220,255;
+				--md-sys-color-tertiary-container:#eedcff;
+				--md-sys-color-on-tertiary-container-rgb:34,21,52;
+				--md-sys-color-on-tertiary-container:#221534;
+				--md-sys-color-error-rgb:186,27,27;
+				--md-sys-color-error:#ba1b1b;
+				--md-sys-color-on-error-rgb:255,255,255;
+				--md-sys-color-on-error:#ffffff;
+				--md-sys-color-error-container-rgb:255,218,212;
+				--md-sys-color-error-container:#ffdad4;
+				--md-sys-color-on-error-container-rgb:65,0,1;
+				--md-sys-color-on-error-container:#410001;
+				--md-sys-color-background-rgb:252,252,255;
+				--md-sys-color-background:#fcfcff;
+				--md-sys-color-on-background-rgb:26,28,30;
+				--md-sys-color-on-background:#1a1c1e;
+				--md-sys-color-surface-rgb:252,252,255;
+				--md-sys-color-surface:#fcfcff;
+				--md-sys-color-on-surface-rgb:26,28,30;
+				--md-sys-color-on-surface:#1a1c1e;
+				--md-sys-color-surface-variant-rgb:222,227,234;
+				--md-sys-color-surface-variant:#dee3ea;
+				--md-sys-color-on-surface-variant-rgb:65,71,77;
+				--md-sys-color-on-surface-variant:#41474d;
+				--md-sys-color-outline-rgb:114,119,126;
+				--md-sys-color-outline:#72777e;
+				--md-sys-color-shadow-rgb:0,0,0;
+				--md-sys-color-shadow:#000000;
+				--md-sys-color-inverse-surface-rgb:47,48,50;
+				--md-sys-color-inverse-surface:#2f3032;
+				--md-sys-color-inverse-on-surface-rgb:240,240,243;
+				--md-sys-color-inverse-on-surface:#f0f0f3;
+				--md-sys-color-inverse-primary-rgb:144,204,255;
+				--md-sys-color-inverse-primary:#90ccff;
+			}
+
+			/* Forced dark mode */
+			body[data-color-scheme='dark'] {
+				--md-sys-color-primary-rgb:144,204,255;
+				--md-sys-color-primary:#90ccff;
+				--md-sys-color-on-primary-rgb:0,51,81;
+				--md-sys-color-on-primary:#003351;
+				--md-sys-color-primary-container-rgb:0,75,117;
+				--md-sys-color-primary-container:#004b75;
+				--md-sys-color-on-primary-container-rgb:203,229,255;
+				--md-sys-color-on-primary-container:#cbe5ff;
+				--md-sys-color-secondary-rgb:184,200,218;
+				--md-sys-color-secondary:#b8c8da;
+				--md-sys-color-on-secondary-rgb:35,50,63;
+				--md-sys-color-on-secondary:#23323f;
+				--md-sys-color-secondary-container-rgb:57,72,86;
+				--md-sys-color-secondary-container:#394856;
+				--md-sys-color-on-secondary-container-rgb:212,228,246;
+				--md-sys-color-on-secondary-container:#d4e4f6;
+				--md-sys-color-tertiary-rgb:209,191,231;
+				--md-sys-color-tertiary:#d1bfe7;
+				--md-sys-color-on-tertiary-rgb:55,42,74;
+				--md-sys-color-on-tertiary:#372a4a;
+				--md-sys-color-tertiary-container-rgb:78,65,97;
+				--md-sys-color-tertiary-container:#4e4161;
+				--md-sys-color-on-tertiary-container-rgb:238,220,255;
+				--md-sys-color-on-tertiary-container:#eedcff;
+				--md-sys-color-error-rgb:255,180,169;
+				--md-sys-color-error:#ffb4a9;
+				--md-sys-color-on-error-rgb:104,0,3;
+				--md-sys-color-on-error:#680003;
+				--md-sys-color-error-container-rgb:147,0,6;
+				--md-sys-color-error-container:#930006;
+				--md-sys-color-on-error-container-rgb:255,180,169;
+				--md-sys-color-on-error-container:#ffb4a9;
+				--md-sys-color-background-rgb:26,28,30;
+				--md-sys-color-background:#1a1c1e;
+				--md-sys-color-on-background-rgb:226,226,229;
+				--md-sys-color-on-background:#e2e2e5;
+				--md-sys-color-surface-rgb:26,28,30;
+				--md-sys-color-surface:#1a1c1e;
+				--md-sys-color-on-surface-rgb:226,226,229;
+				--md-sys-color-on-surface:#e2e2e5;
+				--md-sys-color-surface-variant-rgb:65,71,77;
+				--md-sys-color-surface-variant:#41474d;
+				--md-sys-color-on-surface-variant-rgb:194,199,206;
+				--md-sys-color-on-surface-variant:#c2c7ce;
+				--md-sys-color-outline-rgb:140,145,152;
+				--md-sys-color-outline:#8c9198;
+				--md-sys-color-shadow-rgb:0,0,0;
+				--md-sys-color-shadow:#000000;
+				--md-sys-color-inverse-surface-rgb:226,226,229;
+				--md-sys-color-inverse-surface:#e2e2e5;
+				--md-sys-color-inverse-on-surface-rgb:47,48,50;
+				--md-sys-color-inverse-on-surface:#2f3032;
+				--md-sys-color-inverse-primary-rgb:0,99,152;
+				--md-sys-color-inverse-primary:#006398;
+			}</style>
+		
+	<!-- This site is optimized with the Yoast SEO plugin v21.4 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>seandinwiddie, Author at Sean Dinwiddie | Page 4 of 4</title>
+	<link rel="canonical" href="https://seandinwiddie.com/community/author/seandinwiddie/page/4/">
+	<link rel="prev" href="https://seandinwiddie.com/community/author/seandinwiddie/page/3/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="profile">
+	<meta property="og:title" content="seandinwiddie, Author at Sean Dinwiddie | Page 4 of 4">
+	<meta property="og:url" content="https://seandinwiddie.com/community/author/seandinwiddie/">
+	<meta property="og:site_name" content="Sean Dinwiddie">
+	<meta property="og:image" content="https://2.gravatar.com/avatar/e66a6738e9c0b2419c8f71725b6d5a19?s=500&d=mm&r=g">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@seandinwiddie">
+	<script type="application/ld+json" class="yoast-schema-graph">{
+	    "@context": "https://schema.org",
+	    "@graph": [
+	        {
+	            "@type": "ProfilePage",
+	            "@id": "https://seandinwiddie.com/community/author/seandinwiddie/",
+	            "url": "https://seandinwiddie.com/community/author/seandinwiddie/page/4/",
+	            "name": "seandinwiddie, Author at Sean Dinwiddie | Page 4 of 4",
+	            "isPartOf": {
+	                "@id": "https://seandinwiddie.com/community/#website"
+	            },
+	            "primaryImageOfPage": {
+	                "@id": "https://seandinwiddie.com/community/author/seandinwiddie/page/4/#primaryimage"
+	            },
+	            "image": {
+	                "@id": "https://seandinwiddie.com/community/author/seandinwiddie/page/4/#primaryimage"
+	            },
+	            "thumbnailUrl": "https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-scaled.jpg",
+	            "breadcrumb": {
+	                "@id": "https://seandinwiddie.com/community/author/seandinwiddie/page/4/#breadcrumb"
+	            },
+	            "inLanguage": "en-US",
+	            "potentialAction": [
+	                {
+	                    "@type": "ReadAction",
+	                    "target": [
+	                        "https://seandinwiddie.com/community/author/seandinwiddie/page/4/"
+	                    ]
+	                }
+	            ]
+	        },
+	        {
+	            "@type": "ImageObject",
+	            "inLanguage": "en-US",
+	            "@id": "https://seandinwiddie.com/community/author/seandinwiddie/page/4/#primaryimage",
+	            "url": "https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-scaled.jpg",
+	            "contentUrl": "https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-scaled.jpg",
+	            "width": 2560,
+	            "height": 1920
+	        },
+	        {
+	            "@type": "BreadcrumbList",
+	            "@id": "https://seandinwiddie.com/community/author/seandinwiddie/page/4/#breadcrumb",
+	            "itemListElement": [
+	                {
+	                    "@type": "ListItem",
+	                    "position": 1,
+	                    "name": "Home",
+	                    "item": "https://seandinwiddie.com/community/"
+	                },
+	                {
+	                    "@type": "ListItem",
+	                    "position": 2,
+	                    "name": "Archives for seandinwiddie"
+	                }
+	            ]
+	        },
+	        {
+	            "@type": "WebSite",
+	            "@id": "https://seandinwiddie.com/community/#website",
+	            "url": "https://seandinwiddie.com/community/",
+	            "name": "Sean Dinwiddie",
+	            "description": "Software Development",
+	            "publisher": {
+	                "@id": "https://seandinwiddie.com/community/#organization"
+	            },
+	            "potentialAction": [
+	                {
+	                    "@type": "SearchAction",
+	                    "target": {
+	                        "@type": "EntryPoint",
+	                        "urlTemplate": "https://seandinwiddie.com/community/?s={search_term_string}"
+	                    },
+	                    "query-input": "required name=search_term_string"
+	                }
+	            ],
+	            "inLanguage": "en-US"
+	        },
+	        {
+	            "@type": "Organization",
+	            "@id": "https://seandinwiddie.com/community/#organization",
+	            "name": "Sean Dinwiddie",
+	            "url": "https://seandinwiddie.com/community/",
+	            "logo": {
+	                "@type": "ImageObject",
+	                "inLanguage": "en-US",
+	                "@id": "https://seandinwiddie.com/community/#/schema/logo/image/",
+	                "url": "https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1.jpg",
+	                "contentUrl": "https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1.jpg",
+	                "width": 512,
+	                "height": 512,
+	                "caption": "Sean Dinwiddie"
+	            },
+	            "image": {
+	                "@id": "https://seandinwiddie.com/community/#/schema/logo/image/"
+	            },
+	            "sameAs": [
+	                "https://www.facebook.com/seanpaulpaynedinwiddie/",
+	                "https://twitter.com/seandinwiddie",
+	                "https://linkedin.com/in/seandinwiddie",
+	                "https://github.com/seandinwiddie",
+	                "https://www.instagram.com/seanpaulpaynedinwiddie/"
+	            ]
+	        },
+	        {
+	            "@type": "Person",
+	            "@id": "https://seandinwiddie.com/community/#/schema/person/902c3ac2feab4b4f79613cac495c132a",
+	            "name": "seandinwiddie",
+	            "image": {
+	                "@type": "ImageObject",
+	                "inLanguage": "en-US",
+	                "@id": "https://seandinwiddie.com/community/#/schema/person/image/",
+	                "url": "http://2.gravatar.com/avatar/e66a6738e9c0b2419c8f71725b6d5a19?s=96&d=mm&r=g",
+	                "contentUrl": "http://2.gravatar.com/avatar/e66a6738e9c0b2419c8f71725b6d5a19?s=96&d=mm&r=g",
+	                "caption": "seandinwiddie"
+	            },
+	            "sameAs": [
+	                "https://seandinwiddie.com/community"
+	            ],
+	            "mainEntityOfPage": {
+	                "@id": "https://seandinwiddie.com/community/author/seandinwiddie/"
+	            }
+	        }
+	    ]
+	}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Sean Dinwiddie &raquo; Feed" href="https://seandinwiddie.com/community/feed/">
+<link rel="alternate" type="application/rss+xml" title="Sean Dinwiddie &raquo; Comments Feed" href="https://seandinwiddie.com/community/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Sean Dinwiddie &raquo; Posts by seandinwiddie Feed" href="https://seandinwiddie.com/community/author/seandinwiddie/feed/">
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/seandinwiddie.com\/community\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🫱🏻‍🫲🏿","🫱🏻​🫲🏿")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	<style id="wp-block-library-inline-css" type="text/css">:root{--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,161;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px;--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{clip:rect(1px,1px,1px,1px);word-wrap:normal!important;border:0;-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{clip:auto!important;background-color:#ddd;-webkit-clip-path:none;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}</style>
+<link rel="stylesheet" id="material-google-fonts-cdn-css" href="//fonts.googleapis.com/css?family=Material+Icons+Two+Tone%7CSpace+Mono%3A300%2C400%2C500&#038;ver=0.7.0" type="text/css" media="all">
+<link rel="stylesheet" id="material-design-google-style-css" href="https://seandinwiddie.com/community/wp-content/themes/material-design-google/style.css?ver=0.7.0" type="text/css" media="all">
+<style id="material-design-google-style-inline-css" type="text/css">:root {
+			--md-sys-color-primary:#006398;
+			--md-sys-color-on-primary:#ffffff;
+			--md-sys-color-primary-container:#cbe5ff;
+			--md-sys-color-on-primary-container:#001d31;
+			--md-sys-color-secondary:#50606f;
+			--md-sys-color-on-secondary:#ffffff;
+			--md-sys-color-secondary-container:#d4e4f6;
+			--md-sys-color-on-secondary-container:#0d1d2a;
+			--md-sys-color-tertiary:#66587a;
+			--md-sys-color-on-tertiary:#ffffff;
+			--md-sys-color-tertiary-container:#eedcff;
+			--md-sys-color-on-tertiary-container:#221534;
+			--md-sys-color-error:#ba1b1b;
+			--md-sys-color-on-error:#ffffff;
+			--md-sys-color-error-container:#ffdad4;
+			--md-sys-color-on-error-container:#410001;
+			--md-sys-color-background:#fcfcff;
+			--md-sys-color-on-background:#1a1c1e;
+			--md-sys-color-surface:#fcfcff;
+			--md-sys-color-on-surface:#1a1c1e;
+			--md-sys-color-surface-variant:#dee3ea;
+			--md-sys-color-on-surface-variant:#41474d;
+			--md-sys-color-outline:#72777e;
+			--md-sys-color-shadow:#000000;
+			--md-sys-color-inverse-surface:#2f3032;
+			--md-sys-color-inverse-on-surface:#f0f0f3;
+			--md-sys-color-inverse-primary:#90ccff;
+		}
+
+		/* Forced dark mode */
+		body[data-color-scheme='dark'] {
+			--md-sys-color-primary:#90ccff;
+			--md-sys-color-on-primary:#003351;
+			--md-sys-color-primary-container:#004b75;
+			--md-sys-color-on-primary-container:#cbe5ff;
+			--md-sys-color-secondary:#b8c8da;
+			--md-sys-color-on-secondary:#23323f;
+			--md-sys-color-secondary-container:#394856;
+			--md-sys-color-on-secondary-container:#d4e4f6;
+			--md-sys-color-tertiary:#d1bfe7;
+			--md-sys-color-on-tertiary:#372a4a;
+			--md-sys-color-tertiary-container:#4e4161;
+			--md-sys-color-on-tertiary-container:#eedcff;
+			--md-sys-color-error:#ffb4a9;
+			--md-sys-color-on-error:#680003;
+			--md-sys-color-error-container:#930006;
+			--md-sys-color-on-error-container:#ffb4a9;
+			--md-sys-color-background:#1a1c1e;
+			--md-sys-color-on-background:#e2e2e5;
+			--md-sys-color-surface:#1a1c1e;
+			--md-sys-color-on-surface:#e2e2e5;
+			--md-sys-color-surface-variant:#41474d;
+			--md-sys-color-on-surface-variant:#c2c7ce;
+			--md-sys-color-outline:#8c9198;
+			--md-sys-color-shadow:#000000;
+			--md-sys-color-inverse-surface:#e2e2e5;
+			--md-sys-color-inverse-on-surface:#2f3032;
+			--md-sys-color-inverse-primary:#006398;
+		}
+
+
+		body[data-color-scheme='light'] {
+			--md-sys-color-primary:#006398;
+			--md-sys-color-on-primary:#ffffff;
+			--md-sys-color-primary-container:#cbe5ff;
+			--md-sys-color-on-primary-container:#001d31;
+			--md-sys-color-secondary:#50606f;
+			--md-sys-color-on-secondary:#ffffff;
+			--md-sys-color-secondary-container:#d4e4f6;
+			--md-sys-color-on-secondary-container:#0d1d2a;
+			--md-sys-color-tertiary:#66587a;
+			--md-sys-color-on-tertiary:#ffffff;
+			--md-sys-color-tertiary-container:#eedcff;
+			--md-sys-color-on-tertiary-container:#221534;
+			--md-sys-color-error:#ba1b1b;
+			--md-sys-color-on-error:#ffffff;
+			--md-sys-color-error-container:#ffdad4;
+			--md-sys-color-on-error-container:#410001;
+			--md-sys-color-background:#fcfcff;
+			--md-sys-color-on-background:#1a1c1e;
+			--md-sys-color-surface:#fcfcff;
+			--md-sys-color-on-surface:#1a1c1e;
+			--md-sys-color-surface-variant:#dee3ea;
+			--md-sys-color-on-surface-variant:#41474d;
+			--md-sys-color-outline:#72777e;
+			--md-sys-color-shadow:#000000;
+			--md-sys-color-inverse-surface:#2f3032;
+			--md-sys-color-inverse-on-surface:#f0f0f3;
+			--md-sys-color-inverse-primary:#90ccff;
+		}</style>
+<link rel="stylesheet" id="material-design-google-front-end-css-css" href="https://seandinwiddie.com/community/wp-content/themes/material-design-google/assets/css/front-end-compiled.min.css?ver=0.7.0" type="text/css" media="all">
+<link rel="stylesheet" id="material-front-end-css-css" href="https://seandinwiddie.com/community/wp-content/plugins/material-design/assets/css/front-end-w-theme-compiled.css?ver=0.7.0" type="text/css" media="all">
+<link rel="https://api.w.org/" href="https://seandinwiddie.com/community/wp-json/">
+<link rel="alternate" type="application/json" href="https://seandinwiddie.com/community/wp-json/wp/v2/users/1">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://seandinwiddie.com/community/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.3.2">
+<meta name="material-design-plugin" content="v0.7.0">
+<meta name="material-design-google-theme" content="v0.7.0">
+<link rel="icon" href="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-32x32.jpg" sizes="32x32">
+<link rel="icon" href="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-192x192.jpg" sizes="192x192">
+<link rel="apple-touch-icon" href="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-180x180.jpg">
+<meta name="msapplication-TileImage" content="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-270x270.jpg">
+		<style type="text/css" id="wp-custom-css">.home .entry-title { display: none; }
+
+@import url( "https://seandinwiddie.com/community/wp-content/uploads/2023/10/dank-mono.css" );
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p
+{
+  _font-family: "dm" !important;
+}
+
+
+div.byline {
+display: none !important;
+}</style>
+		</head>
+
+<body class="archive paged author author-seandinwiddie author-1 wp-custom-logo paged-4 author-paged-4 mdc-typography hfeed no-sidebar">
+	
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		
+<aside class="mdc-drawer material-drawer mdc-drawer--modal">
+	<div class="mdc-drawer__header">
+					<div class="logo">
+				<a href="https://seandinwiddie.com/community/" class="custom-logo-link" rel="home"><img width="512" height="512" src="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1.jpg" class="custom-logo" alt="Sean Dinwiddie" decoding="async" fetchpriority="high" srcset="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1.jpg 512w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1-300x300.jpg 300w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1-150x150.jpg 150w" sizes="(max-width: 512px) 100vw, 512px"></a>			</div>
+		
+		<div class="mdc-drawer__title">
+				<div class="site-title__wrapper">
+		<div class="site-title__row">
+			<div class="site-title title-large">
+				<a href="https://seandinwiddie.com/community/" rel="home">Sean Dinwiddie</a>
+			</div>
+
+			<button type="button" class="mdc-icon-button mdc-drawer__close">
+				<span class="mdc-button__ripple"></span>
+				<i class="material-icons mdc-button__icon" aria-hidden="true">close</i>
+				<span class="screen-reader-text">Close drawer</span>
+			</button>
+		</div>
+		<div class="site-tagline label-large">Software Development</div>
+	</div>
+			</div>
+	</div>
+	<div class="mdc-drawer__content">
+		
+<form class="search-form" action="https://seandinwiddie.com/community/" method="get" role="search" id="search-653d5aeb33790">
+	<label class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon">
+		<input class="mdc-text-field__input" type="text" aria-labelledby="search-label-653d5aeb33791" name="s" value="">
+		<i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="0" role="button">search</i>
+		<div class="mdc-notched-outline">
+			<div class="mdc-notched-outline__leading"></div>
+			<div class="mdc-notched-outline__notch">
+			<span class="mdc-floating-label" id="search-label-653d5aeb33791">Search</span>
+			</div>
+			<div class="mdc-notched-outline__trailing"></div>
+		</div>
+	</label>
+</form>
+
+		<nav class="mdc-list mdc-drawer__list" role="listbox">
+			<a href="https://seandinwiddie.com/community/" class="mdc-list-item"><span class="mdc-list-item__text">Home</span></a>
+<a href="https://seandinwiddie.com/community/sitemap/" class="mdc-list-item"><span class="mdc-list-item__text">Sitemap</span></a>
+		</nav>
+	</div>
+</aside>
+
+<div class="mdc-drawer-scrim"></div>
+
+		
+<div class="
+		site__navigation
+					-has-tab-bar
+				" role="banner">
+	
+<div class="mdc-top-app-bar top-app-bar mdc-top-app-bar--fixed top-app-bar--has-dark-mode">
+	<div class="mdc-top-app-bar__row top-app-bar__header">
+		<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+			<button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button top-app-bar__menu-trigger">menu</button>
+
+							<div class="logo">
+					<a href="https://seandinwiddie.com/community/" class="custom-logo-link" rel="home"><img width="512" height="512" src="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1.jpg" class="custom-logo" alt="Sean Dinwiddie" decoding="async" srcset="https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1.jpg 512w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1-300x300.jpg 300w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/cropped-cropped-PhotoReal_a_watercooled_gaming_PC_case_of_temperaturecontrolle_0-1-150x150.jpg 150w" sizes="(max-width: 512px) 100vw, 512px"></a>				</div>
+						<span class="mdc-top-app-bar__title top-app-bar__title">
+					<div class="site-title__wrapper">
+		<div class="site-title__row">
+			<div class="site-title title-large">
+				<a href="https://seandinwiddie.com/community/" rel="home">Sean Dinwiddie</a>
+			</div>
+
+			<button type="button" class="mdc-icon-button mdc-drawer__close">
+				<span class="mdc-button__ripple"></span>
+				<i class="material-icons mdc-button__icon" aria-hidden="true">close</i>
+				<span class="screen-reader-text">Close drawer</span>
+			</button>
+		</div>
+		<div class="site-tagline label-large">Software Development</div>
+	</div>
+				</span>
+		</section>
+		<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end top-app-bar__menu" role="toolbar">
+							<button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button search__button" aria-label="Search">
+					<span class="mdc-button__ripple"></span>
+					search
+				</button>
+			
+			<button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button dark-mode__button" aria-label="Toggle Dark Mode">
+				<span class="mdc-button__ripple"></span>
+				<span class="dark-mode__icon">dark_mode</span>
+			</button>
+		</section>
+	</div>
+
+	<div class="mdc-top-app-bar__row top-app-bar__search">
+		
+<form class="search-form" action="https://seandinwiddie.com/community/" method="get" id="search-653d5aeb33d6b">
+	<div class="mdc-text-field mdc-text-field--fullwidth mdc-text-field--no-label">
+		<div class="mdc-text-field__ripple"></div>
+		<input class="mdc-text-field__input" placeholder="Search the site" aria-label="Search" type="search" name="s">
+	</div>
+	<button class="mdc-button mdc-button--unelevated button__search" type="submit">
+		<span class="mdc-button__ripple"></span>
+		<span class="mdc-button__label">Search</span>
+	</button>
+	<button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button mdc-button--unelevated button__back" type="button" aria-label="Exit search form">
+		<span class="mdc-button__ripple"></span>
+		<i class="material-icons mdc-button__icon" aria-hidden="true">close</i>
+	</button>
+</form>
+	</div>
+
+	
+<div class="tab-bar__wrap">
+	<div class="mdc-tab-bar tab-bar" role="tablist">
+		<div class="mdc-tab-scroller">
+			<div class="mdc-tab-scroller__scroll-area">
+				<div class="mdc-tab-scroller__scroll-content">
+									</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+		<div id="content" class="site-content">
+
+	<div id="primary" class="content-area material-archive__wide">
+		<main id="main" class="site-main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title display-small">Author: <span>seandinwiddie</span>
+</h1>			</header><!-- .page-header -->
+
+			<div class="site-main__inner">
+				
+<div class="archive-cards masonry-grid-theme layout-masonry-3">
+	
+<div class="post-card__container">
+	<div id="144" class="mdc-card post-card  post-144 post type-post status-publish format-standard has-post-thumbnail hentry category-development">
+		<a class="mdc-card__link" href="https://seandinwiddie.com/community/user-stories/">
+			<div class="mdc-card__primary-action post-card__primary-action">
+									<div class="mdc-card__media mdc-card__media--16-9 post-card__media">
+						<img width="2560" height="1920" src="https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-scaled.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-scaled.jpg 2560w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-300x225.jpg 300w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-1024x768.jpg 1024w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-768x576.jpg 768w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-1536x1152.jpg 1536w, https://seandinwiddie.com/community/wp-content/uploads/2023/10/austin-distel-wD1LRb9OeEo-unsplash-2048x1536.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px">					</div>
+								<div class="post-card__primary">
+											<h2 class="post-card__title title-large">User Stories</h2>					
+									</div>
+									<div class="post-card__secondary body-medium">
+<p>Welcome back to our journey of software excellence! Today, let&#8217;s delve into a critical aspect of our service – User Stories. In the dynamic world of administration, where every day brings new challenges and tasks, staying organized and efficient is the key to success. As administrators, you are the orchestrators of operations, the conductors of [&hellip;]</p>
+</div>
+							</div>
+		</a>
+			</div>
+</div>
+
+<div class="post-card__container">
+	<div id="15" class="mdc-card post-card  post-15 post type-post status-publish format-standard has-post-thumbnail hentry category-development">
+		<a class="mdc-card__link" href="https://seandinwiddie.com/community/introduction/">
+			<div class="mdc-card__primary-action post-card__primary-action">
+									<div class="mdc-card__media mdc-card__media--16-9 post-card__media">
+						<img width="2560" height="1709" src="https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-scaled.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" srcset="https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-scaled.jpg 2560w, https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-300x200.jpg 300w, https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-1024x684.jpg 1024w, https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-768x513.jpg 768w, https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-1536x1025.jpg 1536w, https://seandinwiddie.com/community/wp-content/uploads/2020/05/ilya-pavlov-OqtafYT5kTw-unsplash-2048x1367.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px">					</div>
+								<div class="post-card__primary">
+											<h2 class="post-card__title title-large">Introduction</h2>					
+									</div>
+									<div class="post-card__secondary body-medium">
+<p>👋🏻 Greetings from Sean Dinwiddie! Your go-to Software Engineering Consultant. Lover of writing and devoted enthusiast of crafting Functional Reactive Programs in Vim. All to the soothing sound of my mechanical keyboard! Are you an administrator? Are you seeking to up your game? Are you determined to elevate your game?? And streamline your operations with [&hellip;]</p>
+</div>
+							</div>
+		</a>
+			</div>
+</div>
+</div>
+			</div>
+		</main>
+</div>
+
+			
+<div style="display: none;">
+	<a href="https://seandinwiddie.com/community/author/seandinwiddie/page/3/">&laquo; Previous Page</a>
+</div>
+
+<ul class="mdc-page-navigation">
+	<li>
+					<a href="https://seandinwiddie.com/community/author/seandinwiddie/" title="
+					Go to page 1 of 4				" class="mdc-ripple-surface">
+				<span class="material-icons" aria-hidden="true">
+					first_page				</span>
+				<span class="screen-reader-text">
+					First page				</span>
+			</a>
+			</li>
+	<li>
+					<a href="https://seandinwiddie.com/community/author/seandinwiddie/page/3/" title="
+					Go to page 3 of 4				" class="mdc-ripple-surface">
+				<span class="material-icons" aria-hidden="true">
+					chevron_left				</span>
+				<span class="screen-reader-text">
+					Previous page				</span>
+			</a>
+			</li>
+	<li>
+					<span class="material-icons" title="
+				Next page				" aria-hidden="true">
+				chevron_right			</span>
+			</li>
+	<li>
+					<span class="material-icons" title="
+				Last page				" aria-hidden="true">
+				last_page			</span>
+			</li>
+</ul>
+
+		<!-- #main -->
+	</div>
+<!-- #primary -->
+
+	</div>
+<!-- #content -->
+
+<!-- #page -->
+
+<footer class="site-footer">
+	
+	<div id="colophon" class="mdc-layout-grid site-footer__inner">
+		<div class="mdc-layout-grid__inner">
+			<div class="site-footer__copyright mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
+				<small class="site-footer__text label-medium">© Sean Dinwiddie</small>
+			</div>
+
+			
+<div class="back-to-top mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
+	<button id="back-to-top" class="mdc-button" aria-label="Back to Top">
+		<div class="mdc-button__ripple"></div>
+		<i class="material-icons mdc-icon-button__icon">expand_less</i>
+	</button>
+</div>
+		</div>
+	</div>
+<!-- #colophon -->
+</footer>
+
+<style id="wp-block-paragraph-inline-css" type="text/css">.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}p.has-background{padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}</style>
+<style id="wp-block-heading-inline-css" type="text/css">h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}</style>
+<style id="wp-block-quote-inline-css" type="text/css">.wp-block-quote{box-sizing:border-box;overflow-wrap:break-word}.wp-block-quote.is-large:where(:not(.is-style-plain)),.wp-block-quote.is-style-large:where(:not(.is-style-plain)){margin-bottom:1em;padding:0 1em}.wp-block-quote.is-large:where(:not(.is-style-plain)) p,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) p{font-size:1.5em;font-style:italic;line-height:1.6}.wp-block-quote.is-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-large:where(:not(.is-style-plain)) footer,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) cite,.wp-block-quote.is-style-large:where(:not(.is-style-plain)) footer{font-size:1.125em;text-align:right}</style>
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--primary: var(--md-sys-color-primary);--wp--preset--color--on-primary: var(--md-sys-color-on-primary);--wp--preset--color--primary-container: var(--md-sys-color-primary-container);--wp--preset--color--on-primary-container: var(--md-sys-color-on-primary-container);--wp--preset--color--secondary: var(--md-sys-color-secondary);--wp--preset--color--on-secondary: var(--md-sys-color-on-secondary);--wp--preset--color--secondary-container: var(--md-sys-color-secondary-container);--wp--preset--color--on-secondary-container: var(--md-sys-color-on-secondary-container);--wp--preset--color--tertiary: var(--md-sys-color-tertiary);--wp--preset--color--on-tertiary: var(--md-sys-color-on-tertiary);--wp--preset--color--tertiary-container: var(--md-sys-color-tertiary-container);--wp--preset--color--on-tertiary-container: var(--md-sys-color-on-tertiary-container);--wp--preset--color--error: var(--md-sys-color-error);--wp--preset--color--on-error: var(--md-sys-color-on-error);--wp--preset--color--error-container: var(--md-sys-color-error-container);--wp--preset--color--on-error-container: var(--md-sys-color-on-error-container);--wp--preset--color--background: var(--md-sys-color-background);--wp--preset--color--on-background: var(--md-sys-color-on-background);--wp--preset--color--surface: var(--md-sys-color-surface);--wp--preset--color--on-surface: var(--md-sys-color-on-surface);--wp--preset--color--surface-variant: var(--md-sys-color-surface-variant);--wp--preset--color--on-surface-variant: var(--md-sys-color-on-surface-variant);--wp--preset--color--outline: var(--md-sys-color-outline);--wp--preset--color--shadow: var(--md-sys-color-shadow);--wp--preset--color--inverse-surface: var(--md-sys-color-inverse-surface);--wp--preset--color--inverse-on-surface: var(--md-sys-color-inverse-on-surface);--wp--preset--color--inverse-primary: var(--md-sys-color-inverse-primary);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--display-large: var(--md-sys-typescale-display-large-size, 7.5em);--wp--preset--font-size--display-medium: var(--md-sys-typescale-display-medium-size, 6.875em);--wp--preset--font-size--display-small: var(--md-sys-typescale-display-small-size, 6em);--wp--preset--font-size--headline-large: var(--md-sys-typescale-headline-large-size, 3.75em);--wp--preset--font-size--headline-medium: var(--md-sys-typescale-headline-medium-size, 3em);--wp--preset--font-size--headline-small: var(--md-sys-typescale-headline-small-size, 2.125em);--wp--preset--font-size--title-large: var(--md-sys-typescale-title-large-size, 1.5em);--wp--preset--font-size--title-medium: var(--md-sys-typescale-title-medium-size, 1.25em);--wp--preset--font-size--title-small: var(--md-sys-typescale-title-small-size, 0.875em);--wp--preset--font-size--label-large: var(--md-sys-typescale-label-large-size, 1em);--wp--preset--font-size--label-medium: var(--md-sys-typescale-label-medium-size, 0.875em);--wp--preset--font-size--label-small: var(--md-sys-typescale-label-small-size, 0.75em);--wp--preset--font-size--body-large: var(--md-sys-typescale-body-large-size, 1);--wp--preset--font-size--body-medium: var(--md-sys-typescale-body-medium-size, 0.857em);--wp--preset--font-size--body-small: var(--md-sys-typescale-body-small-size, 0.75em);--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}body { margin: 0;--wp--style--global--content-size: 840px;--wp--style--global--wide-size: 84rem; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}.wp-element-button, .wp-block-button__link{background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-color{color: var(--wp--preset--color--primary) !important;}.has-on-primary-color{color: var(--wp--preset--color--on-primary) !important;}.has-primary-container-color{color: var(--wp--preset--color--primary-container) !important;}.has-on-primary-container-color{color: var(--wp--preset--color--on-primary-container) !important;}.has-secondary-color{color: var(--wp--preset--color--secondary) !important;}.has-on-secondary-color{color: var(--wp--preset--color--on-secondary) !important;}.has-secondary-container-color{color: var(--wp--preset--color--secondary-container) !important;}.has-on-secondary-container-color{color: var(--wp--preset--color--on-secondary-container) !important;}.has-tertiary-color{color: var(--wp--preset--color--tertiary) !important;}.has-on-tertiary-color{color: var(--wp--preset--color--on-tertiary) !important;}.has-tertiary-container-color{color: var(--wp--preset--color--tertiary-container) !important;}.has-on-tertiary-container-color{color: var(--wp--preset--color--on-tertiary-container) !important;}.has-error-color{color: var(--wp--preset--color--error) !important;}.has-on-error-color{color: var(--wp--preset--color--on-error) !important;}.has-error-container-color{color: var(--wp--preset--color--error-container) !important;}.has-on-error-container-color{color: var(--wp--preset--color--on-error-container) !important;}.has-background-color{color: var(--wp--preset--color--background) !important;}.has-on-background-color{color: var(--wp--preset--color--on-background) !important;}.has-surface-color{color: var(--wp--preset--color--surface) !important;}.has-on-surface-color{color: var(--wp--preset--color--on-surface) !important;}.has-surface-variant-color{color: var(--wp--preset--color--surface-variant) !important;}.has-on-surface-variant-color{color: var(--wp--preset--color--on-surface-variant) !important;}.has-outline-color{color: var(--wp--preset--color--outline) !important;}.has-shadow-color{color: var(--wp--preset--color--shadow) !important;}.has-inverse-surface-color{color: var(--wp--preset--color--inverse-surface) !important;}.has-inverse-on-surface-color{color: var(--wp--preset--color--inverse-on-surface) !important;}.has-inverse-primary-color{color: var(--wp--preset--color--inverse-primary) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-background-color{background-color: var(--wp--preset--color--primary) !important;}.has-on-primary-background-color{background-color: var(--wp--preset--color--on-primary) !important;}.has-primary-container-background-color{background-color: var(--wp--preset--color--primary-container) !important;}.has-on-primary-container-background-color{background-color: var(--wp--preset--color--on-primary-container) !important;}.has-secondary-background-color{background-color: var(--wp--preset--color--secondary) !important;}.has-on-secondary-background-color{background-color: var(--wp--preset--color--on-secondary) !important;}.has-secondary-container-background-color{background-color: var(--wp--preset--color--secondary-container) !important;}.has-on-secondary-container-background-color{background-color: var(--wp--preset--color--on-secondary-container) !important;}.has-tertiary-background-color{background-color: var(--wp--preset--color--tertiary) !important;}.has-on-tertiary-background-color{background-color: var(--wp--preset--color--on-tertiary) !important;}.has-tertiary-container-background-color{background-color: var(--wp--preset--color--tertiary-container) !important;}.has-on-tertiary-container-background-color{background-color: var(--wp--preset--color--on-tertiary-container) !important;}.has-error-background-color{background-color: var(--wp--preset--color--error) !important;}.has-on-error-background-color{background-color: var(--wp--preset--color--on-error) !important;}.has-error-container-background-color{background-color: var(--wp--preset--color--error-container) !important;}.has-on-error-container-background-color{background-color: var(--wp--preset--color--on-error-container) !important;}.has-background-background-color{background-color: var(--wp--preset--color--background) !important;}.has-on-background-background-color{background-color: var(--wp--preset--color--on-background) !important;}.has-surface-background-color{background-color: var(--wp--preset--color--surface) !important;}.has-on-surface-background-color{background-color: var(--wp--preset--color--on-surface) !important;}.has-surface-variant-background-color{background-color: var(--wp--preset--color--surface-variant) !important;}.has-on-surface-variant-background-color{background-color: var(--wp--preset--color--on-surface-variant) !important;}.has-outline-background-color{background-color: var(--wp--preset--color--outline) !important;}.has-shadow-background-color{background-color: var(--wp--preset--color--shadow) !important;}.has-inverse-surface-background-color{background-color: var(--wp--preset--color--inverse-surface) !important;}.has-inverse-on-surface-background-color{background-color: var(--wp--preset--color--inverse-on-surface) !important;}.has-inverse-primary-background-color{background-color: var(--wp--preset--color--inverse-primary) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-border-color{border-color: var(--wp--preset--color--primary) !important;}.has-on-primary-border-color{border-color: var(--wp--preset--color--on-primary) !important;}.has-primary-container-border-color{border-color: var(--wp--preset--color--primary-container) !important;}.has-on-primary-container-border-color{border-color: var(--wp--preset--color--on-primary-container) !important;}.has-secondary-border-color{border-color: var(--wp--preset--color--secondary) !important;}.has-on-secondary-border-color{border-color: var(--wp--preset--color--on-secondary) !important;}.has-secondary-container-border-color{border-color: var(--wp--preset--color--secondary-container) !important;}.has-on-secondary-container-border-color{border-color: var(--wp--preset--color--on-secondary-container) !important;}.has-tertiary-border-color{border-color: var(--wp--preset--color--tertiary) !important;}.has-on-tertiary-border-color{border-color: var(--wp--preset--color--on-tertiary) !important;}.has-tertiary-container-border-color{border-color: var(--wp--preset--color--tertiary-container) !important;}.has-on-tertiary-container-border-color{border-color: var(--wp--preset--color--on-tertiary-container) !important;}.has-error-border-color{border-color: var(--wp--preset--color--error) !important;}.has-on-error-border-color{border-color: var(--wp--preset--color--on-error) !important;}.has-error-container-border-color{border-color: var(--wp--preset--color--error-container) !important;}.has-on-error-container-border-color{border-color: var(--wp--preset--color--on-error-container) !important;}.has-background-border-color{border-color: var(--wp--preset--color--background) !important;}.has-on-background-border-color{border-color: var(--wp--preset--color--on-background) !important;}.has-surface-border-color{border-color: var(--wp--preset--color--surface) !important;}.has-on-surface-border-color{border-color: var(--wp--preset--color--on-surface) !important;}.has-surface-variant-border-color{border-color: var(--wp--preset--color--surface-variant) !important;}.has-on-surface-variant-border-color{border-color: var(--wp--preset--color--on-surface-variant) !important;}.has-outline-border-color{border-color: var(--wp--preset--color--outline) !important;}.has-shadow-border-color{border-color: var(--wp--preset--color--shadow) !important;}.has-inverse-surface-border-color{border-color: var(--wp--preset--color--inverse-surface) !important;}.has-inverse-on-surface-border-color{border-color: var(--wp--preset--color--inverse-on-surface) !important;}.has-inverse-primary-border-color{border-color: var(--wp--preset--color--inverse-primary) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-display-large-font-size{font-size: var(--wp--preset--font-size--display-large) !important;}.has-display-medium-font-size{font-size: var(--wp--preset--font-size--display-medium) !important;}.has-display-small-font-size{font-size: var(--wp--preset--font-size--display-small) !important;}.has-headline-large-font-size{font-size: var(--wp--preset--font-size--headline-large) !important;}.has-headline-medium-font-size{font-size: var(--wp--preset--font-size--headline-medium) !important;}.has-headline-small-font-size{font-size: var(--wp--preset--font-size--headline-small) !important;}.has-title-large-font-size{font-size: var(--wp--preset--font-size--title-large) !important;}.has-title-medium-font-size{font-size: var(--wp--preset--font-size--title-medium) !important;}.has-title-small-font-size{font-size: var(--wp--preset--font-size--title-small) !important;}.has-label-large-font-size{font-size: var(--wp--preset--font-size--label-large) !important;}.has-label-medium-font-size{font-size: var(--wp--preset--font-size--label-medium) !important;}.has-label-small-font-size{font-size: var(--wp--preset--font-size--label-small) !important;}.has-body-large-font-size{font-size: var(--wp--preset--font-size--body-large) !important;}.has-body-medium-font-size{font-size: var(--wp--preset--font-size--body-medium) !important;}.has-body-small-font-size{font-size: var(--wp--preset--font-size--body-small) !important;}</style>
+<script type="text/javascript" src="https://seandinwiddie.com/community/wp-content/themes/material-design-google/assets/js/front-end.min.js?ver=0.7.0" id="material-design-google-js-js"></script>
+<script type="text/javascript" id="material-front-end-js-js-extra">
+/* <![CDATA[ */
+var materialDesign = {"ajax_url":"https:\/\/seandinwiddie.com\/community\/wp-admin\/admin-ajax.php","sourceColor":"#004266","darkModeStatus":"inactive","globalStyle":{"card_style":"elevated"},"isMaterialThemeActive":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://seandinwiddie.com/community/wp-content/plugins/material-design/assets/js/front-end.js?ver=0.7.0" id="material-front-end-js-js"></script>
+
+</body>
+</html>
