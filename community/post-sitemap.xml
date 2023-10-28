@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://seandinwiddie.com/community/</loc>
-		<lastmod>2023-10-28T19:02:33+00:00</lastmod>
+		<lastmod>2023-10-28T19:30:15+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://seandinwiddie.com/community/introduction/</loc>
@@ -223,9 +223,37 @@
 	</url>
 	<url>
 		<loc>https://seandinwiddie.com/community/master-the-fundamentals-of-frp-in-software-development/</loc>
-		<lastmod>2023-10-28T19:02:33+00:00</lastmod>
+		<lastmod>2023-10-28T19:20:17+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/Import-the-necessary-RxJS-modules-2023-10-28-12-18-34.png</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/discover-how-frp-enhances-user-interaction-and-responsiveness/</loc>
+		<lastmod>2023-10-28T19:22:34+00:00</lastmod>
 		<image:image>
 			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/altumcode-zE007SNgcdE-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/apply-frp-concepts-to-software-modules/</loc>
+		<lastmod>2023-10-28T19:27:49+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/pankaj-patel-yEAOfWSdzgM-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/introduction-to-functional-reactive-programming-frp/</loc>
+		<lastmod>2023-10-28T19:28:08+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/pexels-kevin-ku-577585-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/event-streams-and-reactive-programming/</loc>
+		<lastmod>2023-10-28T19:30:15+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/pexels-thisisengineering-3861958-scaled.jpg</image:loc>
 		</image:image>
 	</url>
 </urlset>
