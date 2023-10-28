@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://seandinwiddie.com/community/</loc>
-		<lastmod>2023-10-27T16:06:53+00:00</lastmod>
+		<lastmod>2023-10-28T10:50:01+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://seandinwiddie.com/community/introduction/</loc>
@@ -61,17 +61,17 @@
 		</image:image>
 	</url>
 	<url>
-		<loc>https://seandinwiddie.com/community/from-marketing-to-development/</loc>
-		<lastmod>2023-10-27T16:05:29+00:00</lastmod>
-		<image:image>
-			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/christin-hume-hBuwVLcYTnA-unsplash-scaled.jpg</image:loc>
-		</image:image>
-	</url>
-	<url>
 		<loc>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/</loc>
 		<lastmod>2023-10-27T16:06:53+00:00</lastmod>
 		<image:image>
 			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/john-schnobrich-FlPc9_VocJ4-unsplash-scaled.jpg</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://seandinwiddie.com/community/from-marketing-to-development/</loc>
+		<lastmod>2023-10-28T10:50:01+00:00</lastmod>
+		<image:image>
+			<image:loc>https://seandinwiddie.com/community/wp-content/uploads/2023/10/christin-hume-hBuwVLcYTnA-unsplash-scaled.jpg</image:loc>
 		</image:image>
 	</url>
 </urlset>
