@@ -7,9 +7,9 @@
 	>
 <channel>
 	<title>
-	Comments for Sean Dinwiddie	</title>
-	<atom:link href="http://localhost/comments/feed/?simply_static_page=795" rel="self" type="application/rss+xml" />
-	<link>https://seandinwiddie.com/community/</link>
+	Comments on: Welcome to Module 1: Understanding User Stories	</title>
+	<atom:link href="http://localhost/welcome-to-module-1-understanding-user-stories/feed/?simply_static_page=851" rel="self" type="application/rss+xml" />
+	<link>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/</link>
 	<description>Software Development</description>
 	<lastBuildDate>Sat, 28 Oct 2023 16:52:02 +0000</lastBuildDate>
 	<sy:updatePeriod>

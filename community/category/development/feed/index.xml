@@ -9,10 +9,10 @@
 
 <channel>
 	<title>Development Archives | Sean Dinwiddie</title>
-	<atom:link href="http://localhost/category/development/feed/?simply_static_page=575" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost/category/development/feed/?simply_static_page=854" rel="self" type="application/rss+xml" />
 	<link>https://seandinwiddie.com/community/category/development/</link>
 	<description>Software Development</description>
-	<lastBuildDate>Sat, 28 Oct 2023 10:50:01 +0000</lastBuildDate>
+	<lastBuildDate>Sat, 28 Oct 2023 16:52:02 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,6 +28,109 @@
 	<height>32</height>
 </image> 
 	<item>
+		<title>Welcome to Module 1: Understanding User Stories</title>
+		<link>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/</link>
+					<comments>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/#respond</comments>
+		
+		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
+		<pubDate>Sat, 28 Oct 2023 16:49:14 +0000</pubDate>
+				<category><![CDATA[Development]]></category>
+		<guid isPermaLink="false">https://seandinwiddie.com/community/?p=201</guid>
+
+					<description><![CDATA[<p>In this module, we will delve into the foundational concepts of User Stories and how they play a pivotal role in software development. User Stories are the first step in our cyclical workflow, and understanding them is crucial for creating user-centric software modules. By the end of this module, you will be well-equipped to capture [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/">Welcome to Module 1: Understanding User Stories</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>In this module, we will delve into the foundational concepts of User Stories and how they play a pivotal role in software development. User Stories are the first step in our cyclical workflow, and understanding them is crucial for creating user-centric software modules. By the end of this module, you will be well-equipped to capture user requirements effectively and translate them into clear and concise User Stories.</p>
+
+
+
+<p><strong>Objectives:</strong></p>
+
+
+
+<ol>
+<li>Learn to capture user requirements effectively.</li>
+
+
+
+<li>Understand the importance of user-centric design.</li>
+
+
+
+<li>Translate user needs into User Stories.</li>
+</ol>
+
+
+
+<p><strong>Topics:</strong></p>
+
+
+
+<p><strong>Defining User Stories:</strong></p>
+
+
+
+<p>User Stories are short, simple descriptions of a feature or functionality told from the perspective of an end user. They help us understand what the user wants and why.</p>
+
+
+
+<p><strong>Identifying User Needs:</strong></p>
+
+
+
+<p>To create meaningful User Stories, you must be able to identify the real needs of the user. This involves effective communication and active listening.</p>
+
+
+
+<p><strong>Writing Clear and Concise User Stories:</strong></p>
+
+
+
+<p>A well-written User Story is clear, concise, and easy to understand. It serves as a guideline for the development process.</p>
+
+
+
+<p><strong>Activities:</strong></p>
+
+
+
+<ul>
+<li><strong>Practical exercises in creating User Stories:</strong></li>
+
+
+
+<li>You&#8217;ll get hands-on experience in crafting User Stories based on user needs.</li>
+
+
+
+<li><strong>Collaborative sessions to review and refine User Stories:</strong></li>
+
+
+
+<li>Working together to ensure your User Stories are well-structured and aligned with user expectations.</li>
+</ul>
+
+
+
+<p>User Stories are the bridge between the user&#8217;s needs and the software you&#8217;ll develop. They are the foundation of user-centric design, and mastering them is key to successful software development.</p>
+
+
+
+<p>In the next module, we&#8217;ll explore Behavior-Driven Development (BDD) and learn how to align our development process with user expectations.</p>
+
+
+
+<p>But for now, let&#8217;s dive deep into the world of User Stories and begin the journey of creating software that truly satisfies the needs of its users. Remember, it all starts with a good story.</p>
+<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/">Welcome to Module 1: Understanding User Stories</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>User-Story_BDD_FRP Workflow</title>
 		<link>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/</link>
 					<comments>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/#respond</comments>
@@ -1424,375 +1527,6 @@
 ]]></content:encoded>
 					
 					<wfw:commentRss>https://seandinwiddie.com/community/user-stories/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
-		
-		
-			</item>
-		<item>
-		<title>Introduction</title>
-		<link>https://seandinwiddie.com/community/introduction/</link>
-					<comments>https://seandinwiddie.com/community/introduction/#respond</comments>
-		
-		<dc:creator><![CDATA[seandinwiddie]]></dc:creator>
-		<pubDate>Wed, 25 Oct 2023 14:49:59 +0000</pubDate>
-				<category><![CDATA[Development]]></category>
-		<guid isPermaLink="false">https://seandinwiddie.com/community/suspendisse-morbi-pretium/</guid>
-
-					<description><![CDATA[<p>👋🏻 Greetings from Sean Dinwiddie! Your go-to Software Engineering Consultant. Lover of writing and devoted enthusiast of crafting Functional Reactive Programs in Vim. All to the soothing sound of my mechanical keyboard! Are you an administrator? Are you seeking to up your game? Are you determined to elevate your game?? And streamline your operations with [&#8230;]</p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/introduction/">Introduction</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></description>
-										<content:encoded><![CDATA[
-<p><img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f44b-1f3fb.png" alt="👋🏻" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Greetings from Sean Dinwiddie! Your go-to Software Engineering Consultant. Lover of writing and devoted enthusiast of crafting Functional Reactive Programs in Vim. All to the soothing sound of my mechanical keyboard!</p>
-
-
-
-<p>Are you an administrator? Are you seeking to up your game? Are you determined to elevate your game?? And streamline your operations with unmatched seamless efficiency?</p>
-
-
-
-<p>I&#8217;m here to help you achieve that by crafting modular, scalable, and oh-so-thoughtful systems; and to partner with you on this journey, constructing designed systems that&#8217;ll drive your administration into the future.</p>
-
-
-
-<p>Together, we&#8217;ll transition legacy processes to modern, test-driven industry standards.</p>
-
-
-
-<h2 class="wp-block-heading">Our shared objective?</h2>
-
-
-
-<p>To guide your company into self-sustaining autonomy, fueled by your unique insights and knowledge.</p>
-
-
-
-<p>Let&#8217;s navigate the intricate landscape of administration with precise care, nurturing your client relationships and stewarding your success.</p>
-
-
-
-<p>My expertise lies in precise execution, paving the path for your journey. I extend an invitation to you to follow in these footsteps.</p>
-
-
-
-<p><img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f680.png" alt="🚀" class="wp-smiley" style="height: 1em; max-height: 1em;" /> If you&#8217;re eager to dive into the world of software architecture or if you&#8217;re contemplating collaboration or commissioning, reach out!</p>
-
-
-
-<p>Join our online community, and you&#8217;ll find me, though I may be lost in the bliss of programming nirvana.</p>
-
-
-
-<p>Now, let&#8217;s dive into the heart of the matter. When things aren&#8217;t quite going your way in the business world, where should you start the upgrade? The answer, my friends, lies within your systems!</p>
-
-
-
-<p>In today&#8217;s digital age, your online presence is of paramount importance.</p>
-
-
-
-<p>Your prospects and even your cherished clients need to find you online. This is the bedrock of building enduring collaborations and bolstering their trust in your offerings.</p>
-
-
-
-<h2 class="wp-block-heading">We&#8217;ve always had a passion for technology.</h2>
-
-
-
-<p>If you&#8217;re grappling with software architecture, software design, application design for information retrieval, or have questions related to data engineering, customer service automation, and databases, then our community is your haven.</p>
-
-
-
-<p>We&#8217;re your solution to creating and refining operational systems, ensuring that your customers&#8217; needs find their perfect match within your offerings.</p>
-
-
-
-<p>If this concept has crossed your mind, but you were teetering on the edge, now is the prime moment to act and flourish in the digital realm with finesse!</p>
-
-
-
-<p>Our dedication converges with those who seek guidance, sparking innovation and generating positive outcomes.</p>
-
-
-
-<blockquote class="wp-block-quote has-text-align-center is-style-default has-body-large-font-size" style="font-style:normal;font-weight:700">
-<p class="has-text-align-center">“If you&#8217;re not failing, you&#8217;re not trying hard enough.”</p>
-<cite>Jillian Michaels</cite></blockquote>
-
-
-
-<p>In the dynamic realm of administration, where each day ushers in fresh challenges, staying organized and efficient is your ticket to success.</p>
-
-
-
-<p>Visualize a world where you can streamline your processes, minimize errors, and empower your team with the knowledge they require to shine. This world is well within your reach, thanks to an oft-underrated yet incredibly valuable tool – technical documentation and community.</p>
-
-
-
-<p>We understand the distinct needs of administrators. Whether you&#8217;re overseeing a bustling office, managing a complex project, or handling intricate systems, having clear, concise, and up-to-date technical direction is a game-changer.</p>
-
-
-
-<h2 class="wp-block-heading">Our Specialization</h2>
-
-
-
-<p>We specialize in crafting technical documentation tailored to the unique needs of administrators. Our documents cover three top-level subjects:</p>
-
-
-
-<ul>
-<li><strong>User Stories:</strong> Delve into the needs, wants, and expectations of those you serve. User stories serve as the blueprint for solutions that align precisely with their requirements.</li>
-</ul>
-
-
-
-<ul>
-<li><strong>BDD (Behavior-Driven Development):</strong> Focus on the expected behavior of your systems and processes. BDD ensures that your projects seamlessly align with your desired outcomes.</li>
-</ul>
-
-
-
-<ul>
-<li><strong>Functional Reactive Programming:</strong> This cutting-edge approach to software development heightens responsiveness and efficiency. Our documentation empowers administrators to harness the full potential of FRP for their specific needs.</li>
-</ul>
-
-
-
-<h2 class="wp-block-heading">The Power of Documentation for Administrators</h2>
-
-
-
-<p><strong>Process Efficiency:</strong> Envision having an all-encompassing, up-to-the-minute manual that delineates your organization&#8217;s processes and procedures. This invaluable resource guarantees consistency, reducing errors, and ultimately saving you time.</p>
-
-
-
-<p><strong>Onboarding and Training:</strong> Consistent technical documentation is the lifeline for new team members. It provides a structured, self-paced learning experience that propels them up to speed rapidly, enabling them to make impactful contributions from day one.</p>
-
-
-
-<p><strong>Problem Solving:</strong> When challenges emerge, your team can turn to well-documented solutions. No more reinventing the wheel or losing precious hours in trial and error. Our community empowers you to resolve issues efficiently.</p>
-
-
-
-<p><strong>Knowledge Transfer:</strong> Administrators come and go, but the institutional knowledge you&#8217;ve amassed should persist. Our live technical documentation serves as an invaluable knowledge repository, ensuring a seamless transition when team members shift.</p>
-
-
-
-<h2 class="wp-block-heading">Our Approach</h2>
-
-
-
-<p>Our approach is clear, yet exceptionally effective:</p>
-
-
-
-<p><strong>Understanding Your Needs:</strong> We work intimately with you to grasp your distinct requirements and challenges.</p>
-
-
-
-<p>D<strong>ocumentation Creation:</strong> Our expert community crafts comprehensive, user-friendly technical documents aligned with industry standards.</p>
-
-
-
-<p><strong>Regular Updates:</strong> Technical documentation is a living resource. We ensure it remains current and reflects any changes in standard processes or systems.</p>
-
-
-
-<h2 class="wp-block-heading">Training</h2>
-
-
-
-<p><img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f680.png" alt="🚀" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Get our training &#8211; REFINE AND ELEVATE YOUR ONLINE BUSINESS NOW, YES, YOURS! <img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f680.png" alt="🚀" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
-
-
-
-<p>Do your systems feel overly complex, burdened by unnecessary layers of complication?</p>
-
-
-
-<p>Are you grappling with an excess of unnecessary processing?</p>
-
-
-
-<p>Our community stands as a meticulously curated library designed to empower businesses in their progression and scaling journey.</p>
-
-
-
-<p>We&#8217;ve crafted this community to support administrators facing development challenges, showing them the way to craft niche software applications with a touch of practice and expert guidance.</p>
-
-
-
-<p>We wholeheartedly believe that YOU can revolutionize your business, achieving the success you know you&#8217;re capable of.</p>
-
-
-
-<p>No more stress, no more confusion; this community serves as a dedicated resource to alleviate your worries about:</p>
-
-
-
-<ul>
-<li>Concepting</li>
-
-
-
-<li>Wireframing</li>
-
-
-
-<li>Testing</li>
-
-
-
-<li>Programming</li>
-
-
-
-<li>Social Engagement</li>
-
-
-
-<li>Emails</li>
-</ul>
-
-
-
-<p>Is it as easy as it sounds?</p>
-
-
-
-<h2 class="wp-block-heading">Unlock the Potential</h2>
-
-
-
-<p>It&#8217;s time to unlock the full potential of your administrative operations. Bid farewell to inefficiencies, confusion, and wasted time. Embrace the power of technical documentation and watch your team flourish.</p>
-
-
-
-<p>Join us today and take the first step towards streamlined, efficient administration. Our documented experience and community will equip you with the mastery of software development, establishing you as the authority in your field.</p>
-
-
-
-<p>Don&#8217;t hesitate; the future of efficient administration is just a click away.</p>
-
-
-
-<h2 class="wp-block-heading">What sets us apart?</h2>
-
-
-
-<h2 class="wp-block-heading has-text-align-center">Our Unique Value Proposition.</h2>
-
-
-
-<h3 class="wp-block-heading has-text-align-center has-headline-small-font-size">Our Vision: To resolve your business challenges.</h3>
-
-
-
-<h3 class="wp-block-heading has-text-align-center has-headline-small-font-size">Our Mission: To fortify the service industry.</h3>
-
-
-
-<hr class="wp-block-separator has-alpha-channel-opacity is-style-dots"/>
-
-
-
-<p><strong>Question</strong>: What keeps you up at night?</p>
-
-
-
-<p><strong>Insight</strong>: The health and maturity of your business and partner relationships.</p>
-
-
-
-<p><strong>Question</strong>: Is there an alternative that provides a solution to your situation?</p>
-
-
-
-<p><strong>Insight</strong>: Our community crafts software and promotes services for businesses effectively, offering companies cost-effective, high-quality empowerment without the need to sift through questionable, ineffective offerings. You can depend on us.</p>
-
-
-
-<p><strong>Our niche</strong>: Empowering administrators to enhance efficiency through specifically developed software and serve more customers through smart acquisition methods.</p>
-
-
-
-<p><span style="text-transform:uppercase"><strong>The Results</strong></span>: Every problem we solve for our clients takes us one step closer to fulfilling our mission. It&#8217;s no longer just about the money. Every member in our community knows that their work is meaningful, and the harder they strive, the more people enjoy profound, restful, and dramatically improved sleep. We&#8217;re inspired by vision, passion, determination, and the niche we adore, and we get to change the world, one small business at a time.</p>
-
-
-
-<p>If our vision resonates with you…</p>
-
-
-
-<p>Then contact us immediately!</p>
-
-
-
-<p><strong>I&#8217;ll leave you with some food for thought</strong>.</p>
-
-
-
-<p style="font-size:1.7em"><strong><em>Systems thinking!</em></strong></p>
-
-
-
-<p>Evaluate choices through these principles:</p>
-
-
-
-<p><strong>Leverage</strong> (a machine… engine): from high/low input to high/low output<br><strong>Duration</strong>: half-life/decay-rate<br><strong>Fallibility</strong>: second-order consequences/side-effects (impurity)/leakage<br><strong>Compounding</strong>: presence of feedback/byproduct, preferably positive, affecting scale and reusability</p>
-
-
-
-<p><br><em>High-return</em> samples:</p>
-
-
-
-<ul>
-<li>Capital/asset allocation</li>
-
-
-
-<li>Incentive structures</li>
-
-
-
-<li>Restructuring</li>
-
-
-
-<li>Long-term partnerships</li>
-
-
-
-<li>Radical innovation</li>
-</ul>
-
-
-
-<p><br>Low-return samples:</p>
-
-
-
-<ul>
-<li>Non-consistent, micro-managed, spontaneous actions</li>
-
-
-
-<li>Daily meals</li>
-
-
-
-<li>Wardrobe choices</li>
-</ul>
-
-
-
-<p>P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! <img src="https://s.w.org/images/core/emoji/14.0.0/72x72/270c-1f3fb.png" alt="✌🏻" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
-<p>The post <a rel="nofollow" href="https://seandinwiddie.com/community/introduction/">Introduction</a> appeared first on <a rel="nofollow" href="https://seandinwiddie.com/community/">Sean Dinwiddie</a>.</p>
-]]></content:encoded>
-					
-					<wfw:commentRss>https://seandinwiddie.com/community/introduction/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
