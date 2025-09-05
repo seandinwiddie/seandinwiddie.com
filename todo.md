@@ -7,7 +7,7 @@
 1. [x] contact page use email and phone instead of a form
 
 ### 3. Messaging and Homepage
-1. [ ] Clarify headline with specific value proposition and audience
+1. [x] Clarify headline with specific value proposition and audience
 2. [ ] Replace vague copy with concrete benefits and outcomes
 3. [ ] Add primary CTA (e.g., “Get a Free Consultation”) above the fold
 4. [ ] Add secondary CTA (e.g., “View Work” or “See Services”)
