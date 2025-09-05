@@ -1,7 +1,7 @@
 ## Website Improvement Checklist
 
 ### 1. Pricing Clarity
-1. [ ] updated prices from 2k/mo 40k/annu to 6k/mo 120k/annu
+1. [x] updated prices from 2k/mo 40k/annu to 6k/mo 120k/annu
 
 ### 2. Contact
 1. [ ] contact page use email and phone instead of a form
