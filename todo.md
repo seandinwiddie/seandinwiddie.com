@@ -9,7 +9,7 @@
 ### 3. Messaging and Homepage
 1. [x] Clarify headline with specific value proposition and audience
 2. [x] Replace vague copy with concrete benefits and outcomes
-3. [ ] Add primary CTA (e.g., “Get a Free Consultation”) above the fold
+3. [x] Add primary CTA (e.g., “Get a Free Consultation”) above the fold
 4. [ ] Add secondary CTA (e.g., “View Work” or “See Services”)
 5. [ ] Add social proof element on homepage (logos, testimonial snippet) -save this for later
 
