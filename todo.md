@@ -4,7 +4,7 @@
 1. [x] updated prices from 2k/mo 40k/annu to 6k/mo 120k/annu
 
 ### 2. Contact
-1. [ ] contact page use email and phone instead of a form
+1. [x] contact page use email and phone instead of a form
 
 ### 3. Messaging and Homepage
 1. [ ] Clarify headline with specific value proposition and audience
