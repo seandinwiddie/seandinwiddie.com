@@ -46,7 +46,7 @@
 6. [ ] Review copywriting: Marketing → Off‑site SEO & Ads (`/marketing/off-site-seo-and-ads/`)  (no separate page) -FIX THIS
 
 ### 4.75 Local Pages
-1. [ ] Add a page for Klamath Falls, Oregon
+1. [ ] Review and update a page for Klamath Falls, Oregon
 
 ### 5. SEO and Schema
 1. [ ] Tighten page titles and meta descriptions for primary pages
