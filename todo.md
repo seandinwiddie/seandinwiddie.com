@@ -15,7 +15,7 @@
 
 ### 4. Services Pages
 1. [x] Create/expand detailed pages for Design, Development, and Marketing
-2. [ ] Describe process steps for each service (discovery → delivery)
+2. [x] Describe process steps for each service (discovery → delivery)
 3. [ ] Add outcomes and deliverables per service
 4. [ ] Include FAQs addressing common objections
 5. [ ] Add service‑specific CTAs (e.g., “Request Scope & Quote”)
