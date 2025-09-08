@@ -10,11 +10,11 @@
 1. [x] Clarify headline with specific value proposition and audience
 2. [x] Replace vague copy with concrete benefits and outcomes
 3. [x] Add primary CTA (e.g., “Get a Free Consultation”) above the fold
-4. [ ] Add secondary CTA (e.g., “View Work” or “See Services”)
+4. [ ] Add secondary CTA (e.g., “View Work” or “See Services”) -save this for later
 5. [ ] Add social proof element on homepage (logos, testimonial snippet) -save this for later
 
 ### 4. Services Pages
-1. [ ] Create/expand detailed pages for Design, Development, and Marketing
+1. [x] Create/expand detailed pages for Design, Development, and Marketing
 2. [ ] Describe process steps for each service (discovery → delivery)
 3. [ ] Add outcomes and deliverables per service
 4. [ ] Include FAQs addressing common objections
