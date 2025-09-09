@@ -45,6 +45,17 @@
 5. [ ] Review copywriting: Marketing → On‑site SEO (`/marketing/on-site-seo/`)  (no separate page) -FIX THIS
 6. [ ] Review copywriting: Marketing → Off‑site SEO & Ads (`/marketing/off-site-seo-and-ads/`)  (no separate page) -FIX THIS
 
+### 4.55 Service Pages Optimization (High-Converting Landing Page Principles)
+1. [ ] Review and optimize Design → New page: improve headline clarity, add clear value proposition, stronger CTA, rewrite copy 
+2. [ ] Review and optimize Design → CRO page: enhance benefit-focused messaging, add process steps, include ROI examples, rewrite copy
+3. [ ] Create Development → Sites page with high-converting landing page structure
+4. [ ] Review and optimize Development → Apps page: improve value proposition, add detailed process, rewrite copy
+5. [ ] Create Marketing → On-site SEO page with clear benefits, process steps, and outcome-focused messaging, rewrite copy
+6. [ ] Create Marketing → Off-site SEO & Ads page with comprehensive service details and conversion-focused design, rewrite copy
+7. [ ] Add Sean Dinwiddie brand consistency across all service pages (Sean Dinwiddie's Webmastery emphasis)
+8. [ ] Implement high-quality Unsplash images with proper alt text on all service pages
+10. [ ] Optimize all service page CTAs for conversion (specific, action-oriented, urgency)
+
 ### 4.75 Local Pages
 1. [ ] Review and update a page for Klamath Falls, Oregon
 
