@@ -8,6 +8,15 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../lectures"
+		},
+		{
+			"path": "../skool-com_functional-programming"
+		},
+		{
+			"path": "../rework-consulting"
 		}
 	],
 	"settings": {}
