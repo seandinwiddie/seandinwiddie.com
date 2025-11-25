@@ -17,6 +17,27 @@
 		},
 		{
 			"path": "../rework-consulting"
+		},
+		{
+			"path": "../AI-Image-Creative-Tool"
+		},
+		{
+			"path": "../AI-Video-Scripting-Tool"
+		},
+		{
+			"path": "../advertisement-generation"
+		},
+		{
+			"path": "../marketing-platform"
+		},
+		{
+			"path": "../202509231406"
+		},
+		{
+			"path": "../portfolio"
+		},
+		{
+			"path": "../api.sdin.dev"
 		}
 	],
 	"settings": {}
