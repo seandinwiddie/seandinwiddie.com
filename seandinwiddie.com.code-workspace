@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../lectures"
+		},
+		{
+			"path": "../sdin-business-private"
+		},
+		{
+			"path": "../portfolio"
+		},
+		{
+			"path": "../api.sdin.dev"
+		},
+		{
+			"path": "../../Documents/GitHub/sdin.dev"
+		}
+	]
+}
