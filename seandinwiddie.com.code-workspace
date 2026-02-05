@@ -19,9 +19,6 @@
 			"path": "../../Documents/GitHub/sdin.dev"
 		},
 		{
-			"path": "../forbocai.github.io"
-		},
-		{
 			"path": "../Forboc"
 		},
 		{
@@ -38,6 +35,9 @@
 		},
 		{
 			"path": "../api"
+		},
+		{
+			"path": "../forbocai.github.io"
 		}
 	]
 }
