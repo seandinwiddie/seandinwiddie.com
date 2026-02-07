@@ -38,6 +38,18 @@
 		},
 		{
 			"path": "../forbocai.github.io"
+		},
+		{
+			"path": "../Forboc.AI/studio"
+		},
+		{
+			"path": "../Forboc.AI/Platform"
+		},
+		{
+			"path": "../Forboc.AI/account"
+		},
+		{
+			"path": "../Forboc.AI/investors"
 		}
 	]
 }
