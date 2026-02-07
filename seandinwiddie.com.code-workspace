@@ -50,6 +50,9 @@
 		},
 		{
 			"path": "../Forboc.AI/investors"
+		},
+		{
+			"path": "../Forboc.AI/classified"
 		}
 	]
 }
