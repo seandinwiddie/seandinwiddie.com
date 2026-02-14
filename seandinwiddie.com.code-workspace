@@ -53,6 +53,18 @@
 		},
 		{
 			"path": "../Forboc.AI/classified"
+		},
+		{
+			"path": "../seandinwiddie"
+		},
+		{
+			"path": "../vim-game"
+		},
+		{
+			"path": "../Forboc.AI/sdk-ue-4.23.1"
+		},
+		{
+			"path": "../Forboc.AI/sdk-ue-5.7.3"
 		}
 	]
 }
