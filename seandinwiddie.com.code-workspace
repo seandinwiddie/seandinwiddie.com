@@ -65,6 +65,9 @@
 		},
 		{
 			"path": "../Forboc.AI/sdk-ue-5.7.3"
+		},
+		{
+			"path": "../Forboc.AI/demo-ue-5.7.3"
 		}
 	]
 }
