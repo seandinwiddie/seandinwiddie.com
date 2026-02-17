@@ -69,5 +69,8 @@
 		{
 			"path": "../Forboc.AI/demo-ue-5.7.3"
 		}
-	]
+	],
+	"settings": {
+		"kiroAgent.configureMCP": "Disabled"
+	}
 }
