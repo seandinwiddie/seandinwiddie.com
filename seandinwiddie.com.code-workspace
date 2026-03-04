@@ -68,6 +68,9 @@
 		},
 		{
 			"path": "../Forboc.AI/demo-ue-5.7.3"
+		},
+		{
+			"path": "../My-Paper-Plane"
 		}
 	],
 	"settings": {
