@@ -1,73 +1,96 @@
 {
 	"folders": [
 		{
+			"name": "seandinwiddie.com",
 			"path": "."
 		},
 		{
+			"name": "lectures",
 			"path": "../lectures"
 		},
 		{
+			"name": "sdin-business-private",
 			"path": "../sdin-business-private"
 		},
 		{
+			"name": "portfolio",
 			"path": "../portfolio"
 		},
 		{
+			"name": "api.sdin.dev",
 			"path": "../api.sdin.dev"
 		},
 		{
+			"name": "sdin.dev",
 			"path": "../../Documents/GitHub/sdin.dev"
 		},
 		{
+			"name": "Forboc",
 			"path": "../Forboc"
 		},
 		{
+			"name": "forboc.github.io",
 			"path": "../../Documents/GitHub/forboc.github.io"
 		},
 		{
+			"name": "qvht.github.io",
 			"path": "../../Documents/GitHub/qvht.github.io"
 		},
 		{
+			"name": "forbocai",
 			"path": "../forbocai"
 		},
 		{
-			"path": "../sdk"
+			"name": "sdk",
+			"path": "../Forboc.AI/sdk"
 		},
 		{
-			"path": "../api"
+			"name": "api",
+			"path": "../Forboc.AI/api"
 		},
 		{
+			"name": "forbocai.github.io",
 			"path": "../forbocai.github.io"
 		},
 		{
+			"name": "studio",
 			"path": "../Forboc.AI/studio"
 		},
 		{
+			"name": "Platform",
 			"path": "../Forboc.AI/Platform"
 		},
 		{
+			"name": "account",
 			"path": "../Forboc.AI/account"
 		},
 		{
+			"name": "investors",
 			"path": "../Forboc.AI/investors"
 		},
 		{
+			"name": "classified",
 			"path": "../Forboc.AI/classified"
 		},
 		{
+			"name": "seandinwiddie",
 			"path": "../seandinwiddie"
 		},
 		{
+			"name": "vim-game",
 			"path": "../vim-game"
 		},
 		{
+			"name": "sdk-ue-4.23.1",
 			"path": "../Forboc.AI/sdk-ue-4.23.1"
 		},
 		{
-			"path": "../Forboc.AI/sdk-ue-5.7.3"
+			"name": "sdk-ue-5.7",
+			"path": "../Forboc.AI/sdk-ue-5.7"
 		},
 		{
-			"path": "../Forboc.AI/demo-ue-5.7.3"
+			"name": "demo-ue-5.7",
+			"path": "../Forboc.AI/demo-ue-5.7"
 		}
 	],
 	"settings": {
