@@ -45,16 +45,8 @@
 			"path": "../forbocai.github.io"
 		},
 		{
-			"name": "studio",
-			"path": "../Forboc.AI/studio"
-		},
-		{
 			"name": "Platform",
 			"path": "../Forboc.AI/Platform"
-		},
-		{
-			"name": "account",
-			"path": "../Forboc.AI/account"
 		},
 		{
 			"name": "investors",
