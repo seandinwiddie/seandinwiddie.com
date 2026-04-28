@@ -41,14 +41,6 @@
 			"path": "../forbocai"
 		},
 		{
-			"name": "sdk",
-			"path": "../Forboc.AI/sdk"
-		},
-		{
-			"name": "api",
-			"path": "../Forboc.AI/api"
-		},
-		{
 			"name": "forbocai.github.io",
 			"path": "../forbocai.github.io"
 		},
@@ -69,10 +61,6 @@
 			"path": "../Forboc.AI/investors"
 		},
 		{
-			"name": "classified",
-			"path": "../Forboc.AI/classified"
-		},
-		{
 			"name": "seandinwiddie",
 			"path": "../seandinwiddie"
 		},
@@ -81,16 +69,8 @@
 			"path": "../vim-game"
 		},
 		{
-			"name": "sdk-ue-4.23.1",
-			"path": "../Forboc.AI/sdk-ue-4.23.1"
-		},
-		{
-			"name": "sdk-ue-5.7",
-			"path": "../Forboc.AI/sdk-ue-5.7"
-		},
-		{
-			"name": "demo-ue-5.7",
-			"path": "../Forboc.AI/demo-ue-5.7"
+			"name": "Forboc.AI",
+			"path": "../Forboc.AI"
 		}
 	],
 	"settings": {
