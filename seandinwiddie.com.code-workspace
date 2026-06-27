@@ -45,10 +45,6 @@
 			"path": "../forbocai.github.io"
 		},
 		{
-			"name": "Platform",
-			"path": "../Forboc.AI/Platform"
-		},
-		{
 			"name": "investors",
 			"path": "../Forboc.AI/investors"
 		},
@@ -63,6 +59,9 @@
 		{
 			"name": "Forboc.AI",
 			"path": "../Forboc.AI"
+		},
+		{
+			"path": "../Therapy 4150"
 		}
 	],
 	"settings": {
