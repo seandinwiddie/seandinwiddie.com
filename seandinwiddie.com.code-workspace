@@ -21,10 +21,6 @@
 			"path": "../api.sdin.dev"
 		},
 		{
-			"name": "sdin.dev",
-			"path": "../../Documents/GitHub/sdin.dev"
-		},
-		{
 			"name": "Forboc",
 			"path": "../Forboc"
 		},
@@ -62,6 +58,9 @@
 		},
 		{
 			"path": "../Therapy 4150"
+		},
+		{
+			"path": "../sdin.dev"
 		}
 	],
 	"settings": {
