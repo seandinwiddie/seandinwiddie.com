@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "lastReviewed": "2026-07-14",
+  "site": "https://seandinwiddie.com",
+  "default": "Optional analytics is disabled until a visitor explicitly allows it.",
+  "processors": [
+    {
+      "name": "GitHub Pages",
+      "purpose": "Static site hosting and delivery",
+      "data": "Request metadata may be processed in infrastructure logs under GitHub's terms."
+    },
+    {
+      "name": "Google Analytics 4",
+      "purpose": "Optional, aggregate site-usage measurement",
+      "data": "Page path, page title, referrer, device and browser information, and analytics identifiers",
+      "condition": "Loaded only after the visitor selects Allow analytics. Advertising signals are disabled by site configuration."
+    },
+    {
+      "name": "AWeber",
+      "purpose": "Email or training-list enrollment",
+      "data": "The name, email address, and form metadata that a visitor intentionally submits",
+      "condition": "Contacted only when a visitor submits an AWeber form; passive AWeber display pixels are removed."
+    },
+    {
+      "name": "YouTube, Vimeo, and Simple Membership",
+      "purpose": "Optional embedded video or store content",
+      "data": "The provider receives normal web-request metadata when a visitor chooses to load its frame.",
+      "condition": "The external frame has no source URL until the visitor activates its load button."
+    }
+  ],
+  "events": [
+    {
+      "name": "page_view",
+      "destination": "Google Analytics 4",
+      "trigger": "A page loads after analytics consent",
+      "fields": ["page path", "page title", "referrer", "device and browser information"],
+      "consent": "analytics"
+    },
+    {
+      "name": "contact_page_view",
+      "destination": "Google Analytics 4",
+      "trigger": "The contact page loads after analytics consent",
+      "fields": ["page_path"],
+      "consent": "analytics"
+    },
+    {
+      "name": "email_click",
+      "destination": "Google Analytics 4",
+      "trigger": "A mail link is selected after analytics consent",
+      "fields": ["link_location"],
+      "consent": "analytics"
+    },
+    {
+      "name": "phone_click",
+      "destination": "Google Analytics 4",
+      "trigger": "A phone link is selected after analytics consent",
+      "fields": ["link_location"],
+      "consent": "analytics"
+    },
+    {
+      "name": "privacy_preference",
+      "destination": "Visitor's browser storage only",
+      "trigger": "A visitor allows or declines optional analytics",
+      "fields": ["granted or denied"],
+      "consent": "not transmitted"
+    },
+    {
+      "name": "aweber_form_submission",
+      "destination": "AWeber",
+      "trigger": "A visitor submits an AWeber form",
+      "fields": ["name", "email address", "form metadata"],
+      "consent": "explicit form submission"
+    },
+    {
+      "name": "external_embed_load",
+      "destination": "The named embed provider",
+      "trigger": "A visitor selects Load external content",
+      "fields": ["normal web-request metadata"],
+      "consent": "explicit load action"
+    }
+  ]
+}

@@ -3,45 +3,55 @@
 <html lang="en">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4CWP5L8TMC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4CWP5L8TMC');
-</script>
-
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Building a Redux Toolkit CLI App with Prompt and JSON Persistence | Sean Dinwiddie</title>
+  <title>Redux Toolkit CLI with Prompts and JSON | Sean Dinwiddie</title>
   <!-- Sanitize.css reset -->
   <!-- Latest release version of Simple.css -->
   <!-- Latest commit from GitHub -->
   <link rel="stylesheet" href="/assets/vendor/simple.css">
-	<meta name="description" content="Build a small command-line app with Redux Toolkit, prompt-driven input, and JSON state persistence.">
+	<meta name="description" content="Build a small command-line application with Redux Toolkit, prompt-driven input, and JSON state persistence.">
 	<link rel="canonical" href="https://seandinwiddie.com/blog/rtk-promt-example/">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Building a Redux Toolkit CLI App with Prompt and JSON Persistence | Sean Dinwiddie">
-	<meta property="og:description" content="Build a small command-line app with Redux Toolkit, prompt-driven input, and JSON state persistence.">
+	<meta property="og:title" content="Redux Toolkit CLI with Prompts and JSON | Sean Dinwiddie">
+	<meta property="og:description" content="Build a small command-line application with Redux Toolkit, prompt-driven input, and JSON state persistence.">
 	<meta property="og:url" content="https://seandinwiddie.com/blog/rtk-promt-example/">
 	<meta property="og:site_name" content="Sean Dinwiddie's Webmastery">
-	<meta property="og:image" content="https://seandinwiddie.com/wp-content/uploads/2019/10/AdobeStock_138021007-e1571312681920-scaled.jpeg">
-	<meta property="og:image:width" content="2560">
-	<meta property="og:image:height" content="1707">
-	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:type" content="image/png">
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Building a Redux Toolkit CLI App with Prompt and JSON Persistence | Sean Dinwiddie">
-	<meta name="twitter:description" content="Build a small command-line app with Redux Toolkit, prompt-driven input, and JSON state persistence.">
-	<meta name="twitter:image" content="https://seandinwiddie.com/wp-content/uploads/2019/10/AdobeStock_138021007-e1571312681920-scaled.jpeg">
+	<meta name="twitter:title" content="Redux Toolkit CLI with Prompts and JSON | Sean Dinwiddie">
+	<meta name="twitter:description" content="Build a small command-line application with Redux Toolkit, prompt-driven input, and JSON state persistence.">
+	<meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+	<meta property="og:image:alt" content="Sean Dinwiddie's technical archive covering Redux, BDD, and functional reactive programming">
+	<meta name="twitter:image:alt" content="Sean Dinwiddie's technical archive covering Redux, BDD, and functional reactive programming">
+<link rel="stylesheet" href="/assets/agency-static.css">
+<script defer src="/assets/privacy-controls.js"></script>
+
+<script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/blog/rtk-promt-example/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's technical archive covering Redux, BDD, and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/blog/rtk-promt-example/#webpage","url":"https://seandinwiddie.com/blog/rtk-promt-example/","name":"Redux Toolkit CLI with Prompts and JSON | Sean Dinwiddie","description":"Build a small command-line application with Redux Toolkit, prompt-driven input, and JSON state persistence.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/blog/rtk-promt-example/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/blog/rtk-promt-example/#breadcrumb"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/blog/rtk-promt-example/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Agency Notes","item":"https://seandinwiddie.com/blog/"},{"@type":"ListItem","position":3,"name":"Redux Toolkit CLI with Prompts and JSON","item":"https://seandinwiddie.com/blog/rtk-promt-example/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/blog/rtk-promt-example/#article","headline":"Redux Toolkit CLI with Prompts and JSON","description":"Build a small command-line application with Redux Toolkit, prompt-driven input, and JSON state persistence.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/blog/rtk-promt-example/#webpage"},"image":{"@id":"https://seandinwiddie.com/blog/rtk-promt-example/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"}]}</script>
 </head>
 
 <body id="top">
-  <header>
+<a class="agency-skip-link" href="#main-content">Skip to content</a>
+<header class="agency-shell">
+  <nav class="agency-shell__inner" aria-label="Agency navigation">
+    <a class="agency-shell__brand" href="/">Sean Dinwiddie's Webmastery</a>
+    <ul>
+      <li><a href="/service/">Services</a></li>
+      <li><a href="/local/">Locations</a></li>
+      <li><a href="/local/oregon/klamath-falls/">Klamath Falls</a></li>
+      <li><a href="/local/california/redding/">Redding</a></li>
+      <li><a href="/community/">Technical archive</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<header>
     <p><a href="/blog/">Agency Notes</a></p>
   </header>
-  <main>
+  <main id="main-content" tabindex="-1">
     <section id="text">
       <article id="text__paragraphs">
         <header>

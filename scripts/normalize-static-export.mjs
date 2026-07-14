@@ -11,65 +11,39 @@
  */
 
 import {
+  existsSync,
   readdirSync,
   readFileSync,
   statSync,
   writeFileSync,
 } from "node:fs";
 import { relative, resolve, sep } from "node:path";
+import {
+  SERVICE_AREAS,
+  SITE,
+  metadataForRoute,
+  organizationId,
+  serviceTypesForRoute,
+  socialImageForRoute,
+  websiteId,
+} from "./site-config.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
-const ORIGIN = "https://seandinwiddie.com";
-const SITE_NAME = "Sean Dinwiddie's Webmastery";
-const CONTACT_EMAIL = "hello@seandinwiddie.com";
-const CONTACT_PHONE = "+1-530-638-3238";
+const ORIGIN = SITE.origin;
+const SITE_NAME = SITE.name;
+const CONTACT_EMAIL = SITE.email;
+const CONTACT_PHONE = SITE.phone;
+const ORGANIZATION_ID = organizationId;
 const DEFAULT_IMAGE = `${ORIGIN}/wp-content/uploads/2019/10/AdobeStock_138021007-e1571312681920-scaled.jpeg`;
-const ORGANIZATION_ID = `${ORIGIN}/#organization`;
-const NOINDEX_ROUTES = new Set(["/sitemap/", "/community/sitemap/"]);
-
-const PAGE_METADATA = Object.freeze({
-  "/": {
-    title: "Web Design for Klamath Falls & Redding | Sean Dinwiddie",
-    description:
-      "Web design, development, local SEO, and business automation for organizations in Klamath Falls, Oregon, and Redding, California.",
-  },
-  "/about/": {
-    description:
-      "Meet Sean Dinwiddie, the developer behind an independent web, software, SEO, and automation agency serving Klamath Falls and Redding.",
-  },
-  "/contact/": {
-    description:
-      "Contact Sean Dinwiddie's Webmastery about web design, development, local SEO, or business automation in Klamath Falls and Redding.",
-  },
-  "/local/oregon/klamath-falls/": {
-    title: "Klamath Falls Web Design & Local SEO | Sean Dinwiddie",
-    description:
-      "Practical web design, development, and local SEO for Klamath Falls businesses, with clear plans and long-term technical support.",
-  },
-  "/local/california/redding/": {
-    title: "Redding Web Design & Local SEO | Sean Dinwiddie",
-    description:
-      "Practical web design, development, and local SEO for Redding businesses, with clear plans and long-term technical support.",
-  },
-  "/automation/": {
-    description:
-      "AI and workflow automation for small businesses in Klamath Falls, Redding, and nearby communities, built around the tools your team already uses.",
-  },
-  "/blog/": {
-    title: "Agency Notes | Sean Dinwiddie's Webmastery",
-    description:
-      "Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.",
-  },
-  "/blog/rtk-promt-example/": {
-    title:
-      "Building a Redux Toolkit CLI App with Prompt and JSON Persistence | Sean Dinwiddie",
-    description:
-      "Build a small command-line app with Redux Toolkit, prompt-driven input, and JSON state persistence.",
-  },
-});
+const NOINDEX_ROUTES = new Set([
+  "/sitemap/",
+  "/community/sitemap/",
+  "/test-tracking.html",
+]);
 
 const EXCLUDED_DIRECTORIES = new Set([
   ".git",
+  "_site",
   "node_modules",
   "scripts",
   "wp-content",
@@ -104,7 +78,10 @@ const decodeEntities = (value) =>
     .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
     .replace(/&(?:#0?39|apos);/gi, "'")
     .replace(/&quot;/gi, '"')
+    .replace(/&(?:nbsp|#160);/gi, " ")
+    .replace(/&hellip;/gi, "…")
     .replace(/&amp;/gi, "&")
+    .replace(/&(?:nbsp|#160);/gi, " ")
     .replace(/&lt;/gi, "<")
     .replace(/&gt;/gi, ">");
 
@@ -137,13 +114,14 @@ const matchContent = (html, pattern) => {
 };
 
 const titleFor = (html, route) =>
-  PAGE_METADATA[route]?.title ||
+  metadataForRoute(route).title ||
   matchContent(html, /<title[^>]*>([\s\S]*?)<\/title>/i) ||
   SITE_NAME;
 
 const descriptionFor = (html, route, title) => {
-  if (PAGE_METADATA[route]?.description) {
-    return PAGE_METADATA[route].description;
+  const reviewed = metadataForRoute(route).description;
+  if (reviewed) {
+    return reviewed;
   }
 
   const existing = matchContent(
@@ -213,17 +191,6 @@ const removeSearchActions = (value) => {
       .filter(([, child]) => child !== undefined),
   );
 };
-
-const place = (city, state) => ({
-  "@type": "City",
-  name: city,
-  containedInPlace: { "@type": "State", name: state },
-});
-
-const SERVICE_AREAS = Object.freeze([
-  place("Klamath Falls", "Oregon"),
-  place("Redding", "California"),
-]);
 
 const CONTACT_POINTS = Object.freeze([
   {
@@ -349,6 +316,7 @@ const normalizeNode = (node, context) => {
     hasType(normalized, "ProfessionalService") ||
     hasType(normalized, "Organization")
   ) {
+    normalized["@type"] = "Organization";
     normalized["@id"] = ORGANIZATION_ID;
     normalized.name = SITE_NAME;
     normalized.url = `${ORIGIN}/`;
@@ -358,6 +326,13 @@ const normalizeNode = (node, context) => {
     normalized.email = CONTACT_EMAIL;
     normalized.areaServed = SERVICE_AREAS;
     normalized.contactPoint = CONTACT_POINTS;
+    delete normalized.address;
+    delete normalized.geo;
+    delete normalized.hasMap;
+    delete normalized.openingHours;
+    delete normalized.openingHoursSpecification;
+    delete normalized.paymentAccepted;
+    delete normalized.priceRange;
     if (Array.isArray(normalized.sameAs)) {
       normalized.sameAs = normalized.sameAs.filter(
         (url) => !String(url).includes("instagram.com/sdin.dev"),
@@ -391,7 +366,7 @@ const normalizeJsonLd = (html, context) =>
 
 const organizationSchema = () => ({
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Organization",
   "@id": ORGANIZATION_ID,
   name: SITE_NAME,
   url: `${ORIGIN}/`,
@@ -432,6 +407,165 @@ const ensureOrganizationDefinition = (html) => {
   return html.replace(
     /<\/head>/i,
     `\n<script type="application/ld+json">${JSON.stringify(organizationSchema())}</script>\n</head>`,
+  );
+};
+
+const schemaNodes = (html) => {
+  const nodes = [];
+  for (const match of html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const parsed = JSON.parse(match[1]);
+      if (Array.isArray(parsed?.["@graph"])) nodes.push(...parsed["@graph"]);
+      else nodes.push(parsed);
+    } catch {
+      // Invalid source schemas are replaced by the canonical graph below.
+    }
+  }
+  return nodes;
+};
+
+const firstSchemaValue = (nodes, key) => {
+  let result;
+  const visit = (value) => {
+    if (result !== undefined) return;
+    if (Array.isArray(value)) return value.forEach(visit);
+    if (!value || typeof value !== "object") return;
+    if (value[key] !== undefined) {
+      result = value[key];
+      return;
+    }
+    Object.values(value).forEach(visit);
+  };
+  nodes.forEach(visit);
+  return result;
+};
+
+const subjectFor = (title) =>
+  title.replace(/\s*[|—-]\s*Sean Dinwiddie(?:'s Webmastery)?\s*$/i, "");
+
+const breadcrumbItems = (context) => {
+  const home = { "@type": "ListItem", position: 1, name: "Home", item: `${ORIGIN}/` };
+  if (context.route === "/") return [home];
+  const parent = context.route.startsWith("/community/") && context.route !== "/community/"
+    ? { name: "Technical Archive", item: `${ORIGIN}/community/` }
+    : context.route.startsWith("/blog/") && context.route !== "/blog/"
+      ? { name: "Agency Notes", item: `${ORIGIN}/blog/` }
+      : context.route.startsWith("/local/") && context.route !== "/local/"
+        ? { name: "Service Areas", item: `${ORIGIN}/local/` }
+        : null;
+  const items = [home];
+  if (parent) items.push({ "@type": "ListItem", position: 2, ...parent });
+  items.push({
+    "@type": "ListItem",
+    position: items.length + 1,
+    name: subjectFor(context.title),
+    item: context.canonical,
+  });
+  return items;
+};
+
+const consolidateSchema = (html, context) => {
+  if (context.route === "/404.html") return html;
+  const existing = schemaNodes(html);
+  const aggregateRating = firstSchemaValue(existing, "aggregateRating");
+  const reviewed = metadataForRoute(context.route);
+  const datePublished = reviewed.published || firstSchemaValue(existing, "datePublished");
+  const dateModified = reviewed.modified || firstSchemaValue(existing, "dateModified");
+  const image = socialImageForRoute(context.route);
+  const serviceTypes = serviceTypesForRoute(context.route);
+  const organization = {
+    "@type": "Organization",
+    "@id": organizationId,
+    name: SITE_NAME,
+    url: `${ORIGIN}/`,
+    email: CONTACT_EMAIL,
+    description:
+      "Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.",
+    logo: {
+      "@type": "ImageObject",
+      url: `${ORIGIN}/assets/social/agency.png`,
+      width: 1200,
+      height: 630,
+    },
+    areaServed: SERVICE_AREAS,
+    contactPoint: CONTACT_POINTS,
+    ...(aggregateRating ? { aggregateRating } : {}),
+  };
+  const webPage = {
+    "@type": context.isCollection ? "CollectionPage" : "WebPage",
+    "@id": `${context.canonical}#webpage`,
+    url: context.canonical,
+    name: context.title,
+    description: context.description,
+    isPartOf: { "@id": websiteId },
+    about: { "@id": organizationId },
+    primaryImageOfPage: { "@id": `${context.canonical}#primaryimage` },
+    breadcrumb: { "@id": `${context.canonical}#breadcrumb` },
+    inLanguage: "en-US",
+    ...(datePublished ? { datePublished } : {}),
+    ...(dateModified ? { dateModified } : {}),
+  };
+  const graph = [
+    organization,
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: `${ORIGIN}/`,
+      name: SITE_NAME,
+      publisher: { "@id": organizationId },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "ImageObject",
+      "@id": `${context.canonical}#primaryimage`,
+      url: image.url,
+      contentUrl: image.url,
+      width: image.width,
+      height: image.height,
+      caption: image.alt,
+      inLanguage: "en-US",
+    },
+    webPage,
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${context.canonical}#breadcrumb`,
+      itemListElement: breadcrumbItems(context),
+    },
+  ];
+  if (serviceTypes) {
+    graph.push({
+      "@type": "Service",
+      "@id": `${context.canonical}#service`,
+      name: subjectFor(context.title),
+      url: context.canonical,
+      serviceType: serviceTypes,
+      provider: { "@id": organizationId },
+      areaServed: serviceAreasForRoute(context.route),
+    });
+  }
+  if (context.isArticle) {
+    graph.push({
+      "@type": "Article",
+      "@id": `${context.canonical}#article`,
+      headline: subjectFor(context.title),
+      description: context.description,
+      mainEntityOfPage: { "@id": `${context.canonical}#webpage` },
+      image: { "@id": `${context.canonical}#primaryimage` },
+      author: { "@type": "Person", name: "Sean Dinwiddie" },
+      publisher: { "@id": organizationId },
+      inLanguage: "en-US",
+      ...(datePublished ? { datePublished } : {}),
+      ...(dateModified ? { dateModified } : {}),
+    });
+  }
+  const cleaned = html.replace(
+    /\s*<script[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi,
+    "\n",
+  );
+  const schema = { "@context": "https://schema.org", "@graph": graph };
+  return cleaned.replace(
+    /<\/head>/i,
+    `\n<script type="application/ld+json" data-agency-schema>${JSON.stringify(schema)}</script>\n</head>`,
   );
 };
 
@@ -545,13 +679,18 @@ const normalizeSearchForms = (html) =>
     );
 
 const normalizeDeadCommentForms = (html) =>
-  html.replace(
-    /<div id=["']comments["'] class=["']comments-area(?: section-inner)?["']>[\s\S]*?<!-- (?:#comments|\.comments-area) -->/gi,
-    `<aside class="comments-area section-inner" aria-label="Comments">
+  html
+    .replace(
+      /<a\b[^>]*href=["'][^"']*#respond["'][^>]*>[\s\S]*?<\/a>/gi,
+      '<a href="/contact/">Contact Sean about this article</a>',
+    )
+    .replace(
+      /<div id=["']comments["'] class=["']comments-area(?: section-inner)?["']>[\s\S]*?<!-- (?:#comments|\.comments-area) -->/gi,
+      `<aside class="comments-area section-inner" aria-label="Comments">
   <p>Comments are archived on this static site. <a href="/contact/">Contact Sean Dinwiddie</a> to continue the conversation.</p>
 </aside>
 <!-- #comments -->`,
-  );
+    );
 
 const normalizeLandmarks = (html) => {
   if (html.includes('<section class="vcv-content ')) {
@@ -629,6 +768,322 @@ const normalizeHeadingOrder = (html) =>
     );
   });
 
+const removeLegacyRuntime = (html) =>
+  html
+    .replace(
+      /\s*<!-- Google AdSense snippet added by Site Kit -->[\s\S]*?<!-- End Google AdSense snippet added by Site Kit -->\s*/gi,
+      "\n",
+    )
+    .replace(/\s*<!-- Google tag \(gtag\.js\) -->\s*/gi, "\n")
+    .replace(
+      /\s*<script\b[^>]*src=["']https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-4CWP5L8TMC["'][^>]*><\/script>\s*/gi,
+      "\n",
+    )
+    .replace(
+      /\s*<script\b[^>]*>[\s\S]*?gtag\(["']config["']\s*,\s*["']G-4CWP5L8TMC["'][\s\S]*?<\/script>\s*/gi,
+      "\n",
+    )
+    .replace(
+      /\s*<!-- Conversion Tracking Code -->\s*<script>[\s\S]*?initializeContactPageTracking[\s\S]*?<\/script>\s*/gi,
+      "\n",
+    )
+    .replace(
+      /\s*<script\b[^>]*id=["'](?:visualcomposerstarter-script-js-extra|material-front-end-js-js-extra)["'][^>]*>[\s\S]*?<\/script>\s*/gi,
+      "\n",
+    )
+    .replace(
+      /\s*<script\b[^>]*src=["'][^"']*comment-reply(?:\.min)?\.js[^"']*["'][^>]*><\/script>\s*/gi,
+      "\n",
+    )
+    .replace(
+      /\s*<script\b[^>]*src=["'][^"']*\/visualcomposer-assets\/addons\/pluginVersionCheck\/[^"']*["'][^>]*><\/script>\s*/gi,
+      "\n",
+    )
+    .replace(
+      /\s*<div\b[^>]*style=["'][^"']*display\s*:\s*none[^"']*["'][^>]*>\s*<img\b[^>]*forms\.aweber\.com\/form\/displays\.htm[^>]*>\s*<\/div>\s*/gi,
+      "\n",
+    );
+
+const normalizeAweberDisclosure = (html) => {
+  html = html.replace(
+    /\s*<p\b[^>]*class=["']aweber-data-notice["'][^>]*>[\s\S]*?<\/p>\s*/gi,
+    "\n",
+  );
+  return html.replace(
+    /(<form\b[^>]*action=["']https:\/\/www\.aweber\.com\/scripts\/addlead\.pl["'][^>]*>)/gi,
+    '<p class="aweber-data-notice" id="aweber-data-notice">Submitting this form sends the name, email address, and form details you enter to AWeber. See the <a href="/privacy/">privacy policy</a>.</p>\n$1',
+  );
+};
+
+const ensureSharedAssets = (html) => {
+  html = html
+    .replace(/\s*<link\b[^>]*href=["']\/assets\/agency-static\.css["'][^>]*>\s*/gi, "\n")
+    .replace(/\s*<script\b[^>]*src=["']\/assets\/privacy-controls\.js["'][^>]*><\/script>\s*/gi, "\n");
+  return html.replace(
+    /<\/head>/i,
+    '\n<link rel="stylesheet" href="/assets/agency-static.css">\n<script defer src="/assets/privacy-controls.js"></script>\n</head>',
+  );
+};
+
+const currentPageAttribute = (route, prefix, exact = false) =>
+  route === prefix || (!exact && prefix !== "/" && route.startsWith(prefix))
+    ? ' aria-current="page"'
+    : "";
+
+const sharedShell = (route) => `
+<a class="agency-skip-link" href="#main-content">Skip to content</a>
+<header class="agency-shell">
+  <nav class="agency-shell__inner" aria-label="Agency navigation">
+    <a class="agency-shell__brand" href="/"${currentPageAttribute(route, "/")}>Sean Dinwiddie's Webmastery</a>
+    <ul>
+      <li><a href="/service/"${currentPageAttribute(route, "/service/")}>Services</a></li>
+      <li><a href="/local/"${currentPageAttribute(route, "/local/", true)}>Locations</a></li>
+      <li><a href="/local/oregon/klamath-falls/"${currentPageAttribute(route, "/local/oregon/klamath-falls/")}>Klamath Falls</a></li>
+      <li><a href="/local/california/redding/"${currentPageAttribute(route, "/local/california/redding/")}>Redding</a></li>
+      <li><a href="/community/"${currentPageAttribute(route, "/community/")}>Technical archive</a></li>
+      <li><a href="/contact/"${currentPageAttribute(route, "/contact/")}>Contact</a></li>
+    </ul>
+  </nav>
+</header>`;
+
+const normalizeSharedShell = (html, context) => {
+  html = html
+    .replace(/\s*<a\b[^>]*class=["'][^"']*(?:agency-skip-link|skip-link)[^"']*["'][^>]*>\s*Skip to content\s*<\/a>\s*/gi, "\n")
+    .replace(/\s*<header class=["']agency-shell["']>[\s\S]*?<\/header>\s*/gi, "\n")
+    .replace(/<main\b([^>]*)>/i, (_, attributes) => {
+      const normalizedAttributes = attributes
+        .replace(/\s+id=["'][^"']*["']/i, "")
+        .replace(/\s+tabindex=["'][^"']*["']/i, "");
+      return `<main id="main-content" tabindex="-1"${normalizedAttributes}>`;
+    });
+  if (context.route.startsWith("/community/")) {
+    html = html.replace(/<body\b([^>]*)>/i, (source, attributes) => {
+      if (/\bagency-archive\b/.test(attributes)) return source;
+      if (/\bclass=["']/.test(attributes)) {
+        return source.replace(/class=["']([^"']*)["']/i, 'class="$1 agency-archive"');
+      }
+      return `<body${attributes} class="agency-archive">`;
+    });
+  }
+  return html.replace(/<body\b[^>]*>/i, (body) => `${body}${sharedShell(context.route)}`);
+};
+
+const normalizeCommunityContext = (html, context) => {
+  if (!context.route.startsWith("/community/")) return html;
+  html = html
+    .replace(
+      /(<div\b[^>]*class=["'][^"']*site-tagline[^"']*["'][^>]*>)\s*Software Development\s*(<\/div>)/gi,
+      "$1Agency Technical Archive$2",
+    )
+    .replace(/\s*<aside class=["']agency-archive-context["']>[\s\S]*?<\/aside>\s*/gi, "\n");
+  return html.replace(
+    /(<main\b[^>]*>)/i,
+    '$1\n<aside class="agency-archive-context"><strong>Agency technical archive.</strong> These Redux, BDD, user-story, and functional-reactive-programming articles remain part of the agency site. <a href="/service/">View agency services</a> or <a href="/contact/">contact Sean</a>.</aside>',
+  );
+};
+
+const normalizePrimaryHeading = (html, context) => {
+  const opening = html.match(/<main\b[^>]*>/i);
+  if (!opening || opening.index === undefined) return html;
+  const start = opening.index;
+  const contentStart = start + opening[0].length;
+  const closingIndex = html.indexOf("</main>", contentStart);
+  if (closingIndex < 0) return html;
+  const before = html
+    .slice(0, start)
+    .replace(/<h1(\b[^>]*)>/gi, "<p$1>")
+    .replace(/<\/h1>/gi, "</p>");
+  const after = html
+    .slice(closingIndex + 7)
+    .replace(/<h1(\b[^>]*)>/gi, "<p$1>")
+    .replace(/<\/h1>/gi, "</p>");
+  let main = html.slice(start, closingIndex + 7);
+  if (context.isCollection) {
+    main = main
+      .replace(/\s*<h[12]\b[^>]*class=["'][^"']*visually-hidden[^"']*["'][^>]*>[\s\S]*?<\/h[12]>\s*/gi, "\n")
+      .replace(/<h1(\b[^>]*)>/gi, "<h2$1>")
+      .replace(/<\/h1>/gi, "</h2>")
+      .replace(
+        /(<main\b[^>]*>)/i,
+        `$1\n<h1 class="visually-hidden">${escapeAttribute(subjectFor(context.title))}</h1>`,
+      );
+    return `${before}${main}${after}`;
+  }
+  const headings = [...main.matchAll(/<h([1-6])(\b[^>]*)>([\s\S]*?)<\/h\1>/gi)];
+  if (headings.length === 0) {
+    main = main.replace(
+      /(<main\b[^>]*>)/i,
+      `$1\n<h1 class="visually-hidden">${escapeAttribute(subjectFor(context.title))}</h1>`,
+    );
+  } else {
+    let position = 0;
+    main = main.replace(
+      /<h([1-6])(\b[^>]*)>([\s\S]*?)<\/h\1>/gi,
+      (source, level, attributes, content) => {
+        position += 1;
+        if (position === 1) return `<h1${attributes}>${content}</h1>`;
+        return level === "1" ? `<h2${attributes}>${content}</h2>` : source;
+      },
+    );
+  }
+  return `${before}${main}${after}`;
+};
+
+const imageDimensions = (source) => {
+  try {
+    const url = new URL(source, `${ORIGIN}/`);
+    if (url.hostname !== new URL(ORIGIN).hostname) return null;
+    const path = decodeURIComponent(url.pathname).replace(/^\/+/, "");
+    const file = resolve(ROOT, path);
+    if (!file.startsWith(ROOT) || !existsSync(file)) return null;
+    const data = readFileSync(file);
+    if (data.subarray(1, 4).toString() === "PNG") {
+      return { width: data.readUInt32BE(16), height: data.readUInt32BE(20) };
+    }
+    if (data.subarray(0, 3).toString() === "GIF") {
+      return { width: data.readUInt16LE(6), height: data.readUInt16LE(8) };
+    }
+    if (data[0] === 0xff && data[1] === 0xd8) {
+      let offset = 2;
+      while (offset + 9 < data.length) {
+        if (data[offset] !== 0xff) {
+          offset += 1;
+          continue;
+        }
+        const marker = data[offset + 1];
+        if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+          return { height: data.readUInt16BE(offset + 5), width: data.readUInt16BE(offset + 7) };
+        }
+        const length = data.readUInt16BE(offset + 2);
+        if (length < 2) break;
+        offset += length + 2;
+      }
+    }
+    if (path.endsWith(".svg")) {
+      const svg = data.toString("utf8");
+      const width = Number(svg.match(/\bwidth=["']([\d.]+)/i)?.[1]);
+      const height = Number(svg.match(/\bheight=["']([\d.]+)/i)?.[1]);
+      if (width > 0 && height > 0) return { width, height };
+      const viewBox = svg.match(/\bviewBox=["'][^"']*?([\d.]+)\s+([\d.]+)["']/i);
+      if (viewBox) return { width: Number(viewBox[1]), height: Number(viewBox[2]) };
+    }
+  } catch {
+    return null;
+  }
+  return null;
+};
+
+const normalizeImages = (html) =>
+  html.replace(/<img\b([^>]*)>/gi, (source, attributes) => {
+    let next = attributes;
+    if (!/\balt=["']/i.test(next)) {
+      const sourceValue = next.match(/\bsrc=["']([^"']+)/i)?.[1] || "";
+      const meaningful = /custom-logo|sean-dinwiddie\.(?:jpe?g|png)/i.test(`${next} ${sourceValue}`);
+      next += ` alt="${meaningful ? "Sean Dinwiddie" : ""}"`;
+    }
+    const sourceValue = next.match(/\bsrc=["']([^"']+)/i)?.[1];
+    if (sourceValue && (!/\bwidth=["']/i.test(next) || !/\bheight=["']/i.test(next))) {
+      const dimensions = imageDimensions(sourceValue.replaceAll("&amp;", "&"));
+      if (dimensions) {
+        if (!/\bwidth=["']/i.test(next)) next += ` width="${dimensions.width}"`;
+        if (!/\bheight=["']/i.test(next)) next += ` height="${dimensions.height}"`;
+      }
+    }
+    if (!/\bdecoding=["']/i.test(next)) next += ' decoding="async"';
+    return `<img${next}>`;
+  });
+
+const accessibleLabelForUrl = (value) => {
+  try {
+    const path = new URL(value, `${ORIGIN}/`).pathname;
+    const slug = path.split("/").filter(Boolean).at(-1) || "home";
+    return `Open ${slug.replace(/[-_]+/g, " ")}`;
+  } catch {
+    return "Open related page";
+  }
+};
+
+const normalizeControls = (html) =>
+  html
+    .replace(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi, (source, attributes, content) => {
+      const visibleText = textOnly(content);
+      const iconOnly = /^(?:menu|close|search|dark_mode)$/i.test(visibleText);
+      if (/\baria-label=["']|\baria-labelledby=["']/i.test(attributes) || (visibleText && !iconOnly)) return source;
+      const label = /close/i.test(attributes)
+        ? "Close navigation menu"
+        : /menu|navigation|drawer/i.test(attributes)
+          ? "Open navigation menu"
+          : /search/i.test(attributes)
+            ? "Search"
+            : "Activate control";
+      return `<button${attributes} aria-label="${label}">${content}</button>`;
+    })
+    .replace(
+      /<a\b([^>]*class=["'][^"']*vce-post-slider-block-item-link[^"']*["'][^>]*)><\/a>/gi,
+      (source, attributes) => {
+        if (/\baria-label=["']/i.test(attributes)) return source;
+        const href = attributes.match(/\bhref=["']([^"']+)/i)?.[1] || "/";
+        return `<a${attributes} aria-label="${escapeAttribute(accessibleLabelForUrl(href))}"></a>`;
+      },
+    )
+    .replace(/<a\b([^>]*)>\s*<\/a>/gi, (source, attributes) => {
+      if (/\baria-label=["'][^"']+/i.test(attributes)) return source;
+      const href = attributes.match(/\bhref=["']([^"']+)/i)?.[1];
+      if (!href) return source;
+      const label = href.startsWith("mailto:")
+        ? "Email Sean Dinwiddie"
+        : href.startsWith("tel:")
+          ? "Call Sean Dinwiddie"
+          : accessibleLabelForUrl(href);
+      return `<a${attributes} aria-label="${escapeAttribute(label)}"></a>`;
+    })
+    .replace(
+      /<i(\b[^>]*role=["']button["'][^>]*)(>\s*search\s*<\/i>)/gi,
+      (source, attributes, rest) =>
+        /\baria-label=["']/i.test(attributes) ? source : `<i${attributes} aria-label="Search"${rest}`,
+    );
+
+const normalizeExternalEmbeds = (html) => {
+  html = html.replace(/data-external-src="([^"]+)"/gi, (_, value) =>
+    `data-external-src="${escapeAttribute(decodeEntities(decodeEntities(value)))}"`,
+  );
+  return html.replace(/<iframe\b([^>]*)>([\s\S]*?)<\/iframe>/gi, (source, attributes, content) => {
+    const sourceUrl = attributes.match(/(?:^|\s)src=["']((?:https?:)?\/\/[^"']+)["']/i)?.[1];
+    if (!sourceUrl) return source;
+    let host;
+    try {
+      host = new URL(sourceUrl.replaceAll("&amp;", "&"), `${ORIGIN}/`).hostname;
+    } catch {
+      return source;
+    }
+    if (host === new URL(ORIGIN).hostname) return source;
+    const provider = host.includes("youtube")
+      ? "YouTube"
+      : host.includes("vimeo")
+        ? "Vimeo"
+        : host.includes("smblogin")
+          ? "the external store"
+          : host;
+    const nextAttributes = attributes
+      .replace(/\s+src=["'][^"']+["']/i, ` data-external-src="${escapeAttribute(decodeEntities(sourceUrl))}"`)
+      .replace(/\s+title=["'][^"']*["']/i, "")
+      .replace(/\s+loading=["'][^"']*["']/i, "");
+    return `<div class="external-embed" data-provider="${escapeAttribute(provider)}"><div><p>This content is provided by ${escapeAttribute(provider)}.</p><button type="button" data-load-external-embed>Load external content</button></div><iframe${nextAttributes} title="External content from ${escapeAttribute(provider)}" loading="lazy">${content}</iframe></div>`;
+  });
+};
+
+const removeDraftAndLegacyPrivacyText = (html, context) => {
+  html = html.replace(/<span\b[^>]*style=["'][^"']*display\s*:\s*none[^"']*["'][^>]*>[\s\S]*?<\/span>/gi, "");
+  if (context.route === "/service/training/") {
+    html = html.replace(/(<h1\b[^>]*>)\s*Training[\s\S]*?<\/h1>/i, "$1Training</h1>");
+  }
+  if (context.route !== "/privacy/") return html;
+  return html.replace(
+    /<ul>\s*<li>Before or at the time of collecting personal information[\s\S]*?<\/ul>\s*<p>We are committed to conducting our business[\s\S]*?<\/p>/i,
+    "",
+  );
+};
+
 const normalizeLinksAndIdentity = (html) =>
   html
     .replaceAll(
@@ -695,15 +1150,32 @@ const normalizeLinksAndIdentity = (html) =>
           : `<a${attributes} rel="noopener noreferrer">`,
     );
 
+const relativizeSameOriginAttributes = (html) =>
+  html
+    .replace(
+      /\b(href|src|action|poster|data-external-src)=(["'])https?:\/\/(?:www\.)?seandinwiddie\.com([^"']*)\2/gi,
+      (_source, attribute, quote, suffix) => {
+        const path = suffix || "/";
+        const relativePath = path.startsWith("/") ? path : `/${path}`;
+        return `${attribute}=${quote}${relativePath}${quote}`;
+      },
+    )
+    .replace(/\bsrcset=(["'])([^"']*)\1/gi, (_source, quote, value) =>
+      `srcset=${quote}${value.replace(/https?:\/\/(?:www\.)?seandinwiddie\.com(?=\/)/gi, "")}${quote}`,
+    );
+
 const normalizeMetadata = (html, context) => {
   if (context.route === "/404.html") return html;
-  const robots = matchContent(
-    html,
-    /<meta\s+[^>]*name=["']robots["'][^>]*content=["']([^"']*)["'][^>]*>/i,
+  html = html.replace(
+    /\s*<meta\s+[^>]*name=["']twitter:(?:label|data)\d+["'][^>]*>\s*/gi,
+    "\n",
   );
-  const indexable = !robots.toLowerCase().includes("noindex");
-  if (!indexable) return html;
-
+  if (!context.isArticle) {
+    html = html.replace(
+      /\s*<meta\s+[^>]*property=["']article:(?:published|modified)_time["'][^>]*>\s*/gi,
+      "\n",
+    );
+  }
   html = html.replace(/<title[^>]*>[\s\S]*?<\/title>/i, `<title>${escapeAttribute(context.title)}</title>`);
   html = setMetaName(html, "description", context.description);
   html = setCanonical(html, context.canonical);
@@ -712,21 +1184,17 @@ const normalizeMetadata = (html, context) => {
   html = setMetaProperty(html, "og:description", context.description);
   html = setMetaProperty(html, "og:url", context.canonical);
   html = setMetaProperty(html, "og:site_name", SITE_NAME);
-  const existingImage = matchContent(
-    html,
-    /<meta\s+[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["'][^>]*>/i,
-  ).replace(/^http:/, "https:");
-  const socialImage = existingImage || DEFAULT_IMAGE;
-  html = setMetaProperty(html, "og:image", socialImage);
-  if (socialImage === DEFAULT_IMAGE) {
-    html = setMetaProperty(html, "og:image:width", "2560");
-    html = setMetaProperty(html, "og:image:height", "1707");
-    html = setMetaProperty(html, "og:image:type", "image/jpeg");
-  }
+  const socialImage = socialImageForRoute(context.route);
+  html = setMetaProperty(html, "og:image", socialImage.url);
+  html = setMetaProperty(html, "og:image:width", String(socialImage.width));
+  html = setMetaProperty(html, "og:image:height", String(socialImage.height));
+  html = setMetaProperty(html, "og:image:type", socialImage.type);
+  html = setMetaProperty(html, "og:image:alt", socialImage.alt);
   html = setMetaName(html, "twitter:card", "summary_large_image");
   html = setMetaName(html, "twitter:title", context.title);
   html = setMetaName(html, "twitter:description", context.description);
-  html = setMetaName(html, "twitter:image", socialImage);
+  html = setMetaName(html, "twitter:image", socialImage.url);
+  html = setMetaName(html, "twitter:image:alt", socialImage.alt);
   return html;
 };
 
@@ -736,6 +1204,9 @@ const normalizeFile = (file) => {
   if (!/<html\b/i.test(html)) return false;
 
   html = normalizeLinksAndIdentity(html);
+  html = relativizeSameOriginAttributes(html);
+  html = removeLegacyRuntime(html);
+  html = normalizeAweberDisclosure(html);
   html = removeObsoleteDiscovery(html);
   html = normalizeValidity(html);
   html = closeUnbalancedArticleDivs(html);
@@ -744,7 +1215,6 @@ const normalizeFile = (file) => {
   html = normalizeLandmarks(html);
   html = normalizeDuplicateSiteTitle(html);
   html = normalizeUtilityHeadings(html);
-  html = normalizeHeadingOrder(html);
   if (NOINDEX_ROUTES.has(route)) {
     html = setMetaName(html, "robots", "noindex, follow");
   }
@@ -758,11 +1228,22 @@ const normalizeFile = (file) => {
       /^\/(?:community|blog)\//.test(route) &&
       !["/blog/", "/community/", "/community/sitemap/"].includes(route) &&
       !/(?:\/page\/|\/author\/|\/category\/)/.test(route),
+    isCollection:
+      ["/blog/", "/community/"].includes(route) ||
+      /(?:\/page\/|\/author\/|\/category\/)/.test(route),
   });
 
+  html = removeDraftAndLegacyPrivacyText(html, context);
+  html = normalizeCommunityContext(html, context);
+  html = normalizeSharedShell(html, context);
+  html = normalizePrimaryHeading(html, context);
+  html = normalizeHeadingOrder(html);
+  html = normalizeControls(html);
+  html = normalizeImages(html);
+  html = normalizeExternalEmbeds(html);
+  html = ensureSharedAssets(html);
   html = normalizeMetadata(html, context);
-  html = normalizeJsonLd(html, context);
-  html = ensureOrganizationDefinition(html);
+  html = consolidateSchema(html, context);
   html = html
     .replace(/^[ \t]+/gm, (indentation) =>
       / \t/.test(indentation) ? indentation.replace(/\t/g, "  ") : indentation,

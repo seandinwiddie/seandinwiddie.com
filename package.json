@@ -2,10 +2,19 @@
   "name": "seandinwiddie-com-static",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
-    "build": "npm run normalize && npm run sitemap && npm run check",
+    "build": "npm run social && npm run externalize && npm run normalize && npm run sitemap && npm run check && npm run deploy:artifact",
+    "social": "node scripts/generate-social-images.mjs",
+    "externalize": "node scripts/externalize-shared-styles.mjs",
     "normalize": "node scripts/normalize-static-export.mjs",
     "sitemap": "node scripts/generate-sitemaps.mjs",
-    "check": "node scripts/check-site.mjs"
+    "check": "npm run check:site && npm run check:accessibility && npm run check:performance",
+    "check:site": "node scripts/check-site.mjs",
+    "check:accessibility": "node scripts/check-accessibility.mjs",
+    "check:performance": "node scripts/check-performance.mjs",
+    "deploy:artifact": "node scripts/build-deploy.mjs"
   }
 }

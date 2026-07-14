@@ -10,3 +10,6 @@ Thumbs.db
 
 # iCloud files
 .sean-dinwiddie.png.icloud
+
+# Generated allowlisted GitHub Pages artifact
+_site/

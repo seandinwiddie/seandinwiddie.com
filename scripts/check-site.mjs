@@ -4,6 +4,7 @@
 
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
+import { serviceTypesForRoute } from "./site-config.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const ORIGIN = "https://seandinwiddie.com";
@@ -28,10 +29,12 @@ const failures = [];
 let ratingNodes = 0;
 let googleSearchForms = 0;
 const indexableCanonicals = new Set();
+const declaredDates = new Map();
+const fragmentTargetCache = new Map();
 
 const walk = (directory) =>
   readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if ([".git", "node_modules", "scripts", "wp-content", "wp-includes", "wp-json"].includes(entry.name)) return [];
+    if ([".git", "node_modules", "scripts", "wp-content", "wp-includes", "wp-json", "_site"].includes(entry.name)) return [];
     const absolute = resolve(directory, entry.name);
     return entry.isDirectory()
       ? walk(absolute)
@@ -41,6 +44,27 @@ const walk = (directory) =>
   });
 
 const routeFor = (file) => relative(ROOT, file).split(sep).join("/");
+const publicRouteFor = (name) => {
+  if (name === "index.html") return "/";
+  if (name === "404.html") return "/404.html";
+  return `/${name.replace(/index\.html$/, "")}`;
+};
+const fileForPathname = (pathname) => {
+  const decoded = decodeURI(pathname).replace(/^\/+/, "");
+  if (!decoded) return resolve(ROOT, "index.html");
+  return /\.[a-z0-9]+$/i.test(decoded)
+    ? resolve(ROOT, decoded)
+    : resolve(ROOT, decoded, "index.html");
+};
+const fragmentTargetsFor = (file) => {
+  if (fragmentTargetCache.has(file)) return fragmentTargetCache.get(file);
+  const source = readFileSync(file, "utf8");
+  const targets = new Set(
+    [...source.matchAll(/\b(?:id|name)=["']([^"']+)["']/gi)].map((match) => match[1]),
+  );
+  fragmentTargetCache.set(file, targets);
+  return targets;
+};
 const count = (html, pattern) => [...html.matchAll(pattern)].length;
 const assertAllowedPhone = (name, value) => {
   const digits = value.replace(/\D/g, "");
@@ -63,20 +87,38 @@ for (const file of walk(ROOT)) {
   const html = readFileSync(file, "utf8");
   if (!/<html\b/i.test(html)) continue;
   const name = routeFor(file);
+  const publicRoute = publicRouteFor(name);
   if (name === "pinterest-9af13.html") continue;
   const noindex = /<meta\s+[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
   if (!noindex && name !== "404.html") {
     if (count(html, /<title\b/gi) !== 1) failures.push(`${name}: expected one title`);
     if (count(html, /<link\s+[^>]*rel=["']canonical["']/gi) !== 1) failures.push(`${name}: expected one canonical`);
     if (count(html, /<meta\s+[^>]*name=["']description["']/gi) !== 1) failures.push(`${name}: expected one description`);
+    const description = html.match(/<meta\s+[^>]*name=["']description["'][^>]*content="([^"]*)/i)?.[1] || "";
+    if (description.length < 50 || description.length > 170 || /&(?:amp;)?nbsp;|Privacy PolicyYour/i.test(description)) {
+      failures.push(`${name}: description is not reviewed, readable metadata`);
+    }
+    for (const pattern of [
+      /<meta\s+[^>]*property=["']og:image:alt["'][^>]*content=["'][^"']+["']/i,
+      /<meta\s+[^>]*name=["']twitter:image:alt["'][^>]*content=["'][^"']+["']/i,
+    ]) {
+      if (!pattern.test(html)) failures.push(`${name}: social image is missing alternative text`);
+    }
+    if (!/\/assets\/social\/(?:agency|local|services|technical-archive)\.png/i.test(html)) {
+      failures.push(`${name}: social image is not a branded 1200 x 630 variant`);
+    }
     const canonicalTag = html.match(/<link\s+[^>]*rel=["']canonical["'][^>]*>/i)?.[0];
     const canonical = canonicalTag?.match(/\bhref=["']([^"']+)["']/i)?.[1];
     if (canonical) indexableCanonicals.add(decodeURI(canonical));
   }
   if (count(html, /<h1\b/gi) !== 1) failures.push(`${name}: expected one h1`);
   if (!/<main\b/i.test(html)) failures.push(`${name}: missing main landmark`);
-  if (/sdin\.dev|logo-61192|wp-json|xmlrpc\.php|SearchAction|CommentAction/.test(html)) {
-    failures.push(`${name}: contains a retired cross-site or WordPress reference`);
+  if (/sdin\.dev|logo-61192|wp-json|xmlrpc\.php|SearchAction|CommentAction|google-adsense|googlesyndication|adsbygoogle/i.test(html)) {
+    failures.push(`${name}: contains a retired cross-site, advertising, or WordPress reference`);
+  }
+  const bodyHtml = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] || "";
+  if (/\b(?:href|src|action|poster|data-external-src|srcset)=["'][^"']*https?:\/\/(?:www\.)?seandinwiddie\.com/i.test(bodyHtml)) {
+    failures.push(`${name}: same-origin body URLs must be root-relative for portable previews`);
   }
   if (
     /rel=["'](?:shortlink|wlwmanifest)["']|<meta[^>]*name=["']generator["']|wp-comments-post\.php/i.test(
@@ -166,6 +208,58 @@ for (const file of walk(ROOT)) {
     }
   }
 
+  if (name !== "404.html" && schemas.length !== 1) {
+    failures.push(`${name}: expected one consolidated JSON-LD graph; found ${schemas.length}`);
+  }
+  const flattened = schemas.flatMap((schema) =>
+    Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema],
+  );
+  const organizations = flattened.filter(
+    (node) =>
+      node?.["@id"] === ORGANIZATION_ID &&
+      [node?.["@type"]].flat().includes("Organization"),
+  );
+  if (name !== "404.html" && organizations.length !== 1) {
+    failures.push(`${name}: expected one truthful Organization definition`);
+  }
+  const forbiddenTypes = new Set([
+    "LocalBusiness",
+    "ProfessionalService",
+    "PostalAddress",
+    "GeoCoordinates",
+  ]);
+  const inspectForbiddenSchema = (value) => {
+    if (Array.isArray(value)) return value.forEach(inspectForbiddenSchema);
+    if (!value || typeof value !== "object") return;
+    for (const type of [value["@type"]].flat().filter(Boolean)) {
+      if (forbiddenTypes.has(type)) failures.push(`${name}: contains unverified schema type ${type}`);
+    }
+    for (const key of ["address", "geo", "hasMap"]) {
+      if (key in value) failures.push(`${name}: contains unverified schema property ${key}`);
+    }
+    Object.values(value).forEach(inspectForbiddenSchema);
+  };
+  schemas.forEach(inspectForbiddenSchema);
+  const expectedServices = serviceTypesForRoute(publicRoute);
+  const services = flattened.filter((node) =>
+    [node?.["@type"]].flat().includes("Service"),
+  );
+  if (expectedServices && services.length !== 1) {
+    failures.push(`${name}: expected one Service definition`);
+  }
+  if (!expectedServices && services.length > 0) {
+    failures.push(`${name}: unexpected Service definition`);
+  }
+  const pageNode = flattened.find((node) =>
+    [node?.["@type"]].flat().some((type) =>
+      ["WebPage", "CollectionPage", "ProfilePage"].includes(type),
+    ),
+  );
+  const declared = pageNode?.dateModified || pageNode?.datePublished;
+  if (typeof declared === "string" && /^\d{4}-\d{2}-\d{2}/.test(declared)) {
+    declaredDates.set(`${ORIGIN}${publicRoute}`, declared.slice(0, 10));
+  }
+
   const definitions = new Set();
   const references = new Set();
   const inspectGraph = (value) => {
@@ -200,6 +294,23 @@ for (const file of walk(ROOT)) {
     if (!existsSync(candidate)) failures.push(`${name}: missing internal route /${target}`);
   }
 
+  for (const match of html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["']/gi)) {
+    const href = match[1].replaceAll("&amp;", "&");
+    if (!href.includes("#")) continue;
+    try {
+      const targetUrl = new URL(href, `${ORIGIN}${publicRoute}`);
+      if (targetUrl.origin !== ORIGIN || !targetUrl.hash) continue;
+      const fragment = decodeURIComponent(targetUrl.hash.slice(1));
+      if (!fragment || fragment.startsWith(":~:text=")) continue;
+      const targetFile = fileForPathname(targetUrl.pathname);
+      if (existsSync(targetFile) && !fragmentTargetsFor(targetFile).has(fragment)) {
+        failures.push(`${name}: missing fragment target ${targetUrl.pathname}#${fragment}`);
+      }
+    } catch {
+      failures.push(`${name}: invalid internal fragment link ${href}`);
+    }
+  }
+
   for (const match of html.matchAll(/src=["']\/(?!\/)([^"'?#]+)[^"']*["']/gi)) {
     const target = decodeURIComponent(match[1]);
     if (!existsSync(resolve(ROOT, target))) failures.push(`${name}: missing local asset /${target}`);
@@ -231,7 +342,7 @@ const intendedSitemaps = new Set([
 ]);
 const walkSitemapFiles = (directory) =>
   readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if ([".git", "node_modules"].includes(entry.name)) return [];
+    if ([".git", "node_modules", "_site"].includes(entry.name)) return [];
     const absolute = resolve(directory, entry.name);
     if (entry.isDirectory()) return walkSitemapFiles(absolute);
     return /sitemap.*\.xml$|.*-sitemap\.xml$/i.test(entry.name)
@@ -245,12 +356,14 @@ for (const sitemap of walkSitemapFiles(ROOT)) {
 }
 
 const sitemapMembership = new Map();
+const sitemapDates = new Map();
 for (const sitemap of ["page-sitemap.xml", "post-sitemap.xml", "community-sitemap.xml"]) {
   if (!existsSync(resolve(ROOT, sitemap))) continue;
   const xml = readFileSync(resolve(ROOT, sitemap), "utf8");
-  for (const match of xml.matchAll(/<loc>([^<]+)<\/loc>/gi)) {
+  for (const match of xml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>\s*<\/url>/gi)) {
     const url = decodeURI(match[1].replaceAll("&amp;", "&"));
     sitemapMembership.set(url, (sitemapMembership.get(url) || 0) + 1);
+    sitemapDates.set(url, match[2]);
   }
 }
 for (const canonical of indexableCanonicals) {
@@ -266,6 +379,44 @@ for (const [url, membership] of sitemapMembership) {
   if (membership !== 1) {
     failures.push(`${url}: duplicated across generated sitemaps`);
   }
+}
+for (const [url, declared] of declaredDates) {
+  if (sitemapDates.has(url) && sitemapDates.get(url) !== declared) {
+    failures.push(`${url}: sitemap lastmod ${sitemapDates.get(url)} disagrees with schema date ${declared}`);
+  }
+}
+
+for (const required of [
+  "assets/privacy-controls.js",
+  "assets/social/agency.png",
+  "assets/social/local.png",
+  "assets/social/services.png",
+  "assets/social/technical-archive.png",
+  "privacy/data-events.json",
+]) {
+  if (!existsSync(resolve(ROOT, required))) failures.push(`${required}: missing required generated asset`);
+}
+
+try {
+  const manifest = JSON.parse(readFileSync(resolve(ROOT, "privacy/data-events.json"), "utf8"));
+  const events = new Set(manifest.events?.map((event) => event.name));
+  for (const event of [
+    "page_view",
+    "contact_page_view",
+    "email_click",
+    "phone_click",
+    "privacy_preference",
+    "aweber_form_submission",
+    "external_embed_load",
+  ]) {
+    if (!events.has(event)) failures.push(`privacy/data-events.json: missing ${event}`);
+  }
+  const processors = new Set(manifest.processors?.map((processor) => processor.name));
+  for (const processor of ["GitHub Pages", "Google Analytics 4", "AWeber"]) {
+    if (!processors.has(processor)) failures.push(`privacy/data-events.json: missing ${processor}`);
+  }
+} catch {
+  failures.push("privacy/data-events.json: invalid JSON manifest");
 }
 
 if (failures.length > 0) {

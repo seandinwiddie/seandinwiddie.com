@@ -14,6 +14,7 @@ const ROOT = resolve(import.meta.dirname, "..");
 const ORIGIN = "https://seandinwiddie.com";
 const EXCLUDED = new Set([
   ".git",
+  "_site",
   "node_modules",
   "scripts",
   "wp-content",
@@ -41,7 +42,27 @@ const isIndexable = (file) => {
   );
 };
 
+const structuredDate = (file) => {
+  const html = readFileSync(file, "utf8");
+  for (const match of html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const parsed = JSON.parse(match[1]);
+      const nodes = Array.isArray(parsed?.["@graph"]) ? parsed["@graph"] : [parsed];
+      const page = nodes.find((node) =>
+        [node?.["@type"]].flat().some((type) => ["WebPage", "CollectionPage", "ProfilePage"].includes(type)),
+      );
+      const value = page?.dateModified || page?.datePublished;
+      if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}/.test(value)) return value.slice(0, 10);
+    } catch {
+      // The structural checker reports invalid JSON-LD.
+    }
+  }
+  return null;
+};
+
 const lastModified = (file) => {
+  const declared = structuredDate(file);
+  if (declared) return declared;
   const path = relative(ROOT, file);
   try {
     const changed = execFileSync(
