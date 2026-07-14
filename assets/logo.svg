@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">Sean Dinwiddie's Webmastery</title>
+  <desc id="logo-description">SD monogram in a rounded square</desc>
+  <defs>
+    <linearGradient id="logo-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5c00ff"/>
+      <stop offset="1" stop-color="#ff7200"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="20" fill="#1f2430"/>
+  <rect x="5" y="5" width="86" height="86" rx="16" fill="none" stroke="url(#logo-gradient)" stroke-width="6"/>
+  <text x="48" y="61" fill="#f3f4f5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="35" font-weight="700" text-anchor="middle">SD</text>
+</svg>

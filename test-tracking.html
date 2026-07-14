@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Conversion Tracking Test - seandinwiddie.com</title>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CWP5L8TMC"></script>
+
+    <!-- Analytics is opt-in here so opening this test page cannot pollute production data. -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-4CWP5L8TMC');
+      if (new URLSearchParams(window.location.search).get('send') === '1') {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){dataLayer.push(arguments);};
+        gtag('js', new Date());
+        gtag('config', 'G-4CWP5L8TMC');
+        const analytics = document.createElement('script');
+        analytics.async = true;
+        analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-4CWP5L8TMC';
+        document.head.appendChild(analytics);
+      }
     </script>
-    
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,29 +60,60 @@
             overflow-y: auto;
         }
     </style>
+
+	<meta name="description" content="This page tests the conversion tracking implementation for seandinwiddie.com">
+
+	<link rel="canonical" href="https://seandinwiddie.com/test-tracking.html">
+
+	<meta property="og:type" content="website">
+
+	<meta property="og:title" content="Conversion Tracking Test - seandinwiddie.com">
+
+	<meta property="og:description" content="This page tests the conversion tracking implementation for seandinwiddie.com">
+
+	<meta property="og:url" content="https://seandinwiddie.com/test-tracking.html">
+
+	<meta property="og:site_name" content="Sean Dinwiddie's Webmastery">
+
+	<meta property="og:image" content="https://seandinwiddie.com/wp-content/uploads/2019/10/AdobeStock_138021007-e1571312681920-scaled.jpeg">
+
+	<meta property="og:image:width" content="2560">
+
+	<meta property="og:image:height" content="1707">
+
+	<meta property="og:image:type" content="image/jpeg">
+
+	<meta name="twitter:card" content="summary_large_image">
+
+	<meta name="twitter:title" content="Conversion Tracking Test - seandinwiddie.com">
+
+	<meta name="twitter:description" content="This page tests the conversion tracking implementation for seandinwiddie.com">
+
+	<meta name="twitter:image" content="https://seandinwiddie.com/wp-content/uploads/2019/10/AdobeStock_138021007-e1571312681920-scaled.jpeg">
 </head>
 <body>
+    <main id="main-content">
     <h1>Conversion Tracking Test Page</h1>
-    <p>This page tests the conversion tracking implementation for seandinwiddie.com</p>
-    
+    <p>This page tests the conversion tracking implementation for seandinwiddie.com. Events are logged locally unless you explicitly add <code>?send=1</code> to the URL.</p>
+
     <div class="test-section">
         <h2>Test Conversion Events</h2>
         <p>Click the buttons below to test different conversion events. Check the browser console for tracking messages.</p>
-        
+
         <button class="test-button" onclick="testContactForm()">Test Contact Form</button>
         <button class="test-button" onclick="testEmailClick()">Test Email Click</button>
         <button class="test-button" onclick="testContactPageView()">Test Contact Page View</button>
         <button class="test-button" onclick="testPricingPageView()">Test Pricing Page View</button>
         <button class="test-button" onclick="testResourcesPageView()">Test Resources Page View</button>
         <button class="test-button" onclick="testServicePageView()">Test Service Page View</button>
-        
+
         <h3>Test Links</h3>
-        <a href="mailto:seandinwiddie@gmail.com?subject=Test%20Email" class="test-button">Email seandinwiddie@gmail.com</a>
+        <a href="mailto:hello@seandinwiddie.com?subject=Test%20Email" class="test-button">Email hello@seandinwiddie.com</a>
         <a href="/contact/" class="test-button">Contact Page</a>
         <a href="/prices/" class="test-button">Pricing Page</a>
         <a href="/resources/" class="test-button">Resources Page</a>
     </div>
-    
+
     <div class="test-section">
         <h2>Console Output</h2>
         <p>Open your browser's developer tools (F12) and check the Console tab for tracking messages.</p>
@@ -84,17 +121,19 @@
             Console output will appear here when you open developer tools...
         </div>
     </div>
-    
+
     <div class="test-section">
         <h2>GA4 Real-time Reports</h2>
         <p>To verify events are being sent to GA4:</p>
         <ol>
-            <li>Go to <a href="https://analytics.google.com" target="_blank">Google Analytics</a></li>
+            <li>Go to <a href="https://analytics.google.com" target="_blank" rel="noopener noreferrer">Google Analytics</a></li>
             <li>Select your seandinwiddie.com property</li>
             <li>Go to Reports → Real-time</li>
             <li>Click the buttons above and watch for events</li>
         </ol>
     </div>
+
+    </main>
 
     <!-- Conversion Tracking Code -->
     <script>
@@ -156,10 +195,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Conversion tracking test page loaded');
             updateConsoleOutput('🚀 Conversion tracking test page loaded');
-            
-            // Track page view
-            trackConversion('test_page_view', 'Testing', 'Conversion Tracking Test Page', 1);
-            
+
             // Track email link clicks
             const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
             emailLinks.forEach(link => {

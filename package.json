@@ -1,0 +1,11 @@
+{
+  "name": "seandinwiddie-com-static",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run normalize && npm run sitemap && npm run check",
+    "normalize": "node scripts/normalize-static-export.mjs",
+    "sitemap": "node scripts/generate-sitemaps.mjs",
+    "check": "node scripts/check-site.mjs"
+  }
+}
