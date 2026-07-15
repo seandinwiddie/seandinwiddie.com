@@ -1,54 +1,75 @@
 #!/usr/bin/env node
 
-/** Conservative budgets that prevent the legacy export from regaining dead weight. */
+/** Budgets that keep the normalized static pages small and dependency-light. */
 
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
+import { ROOT, publicPageFiles } from "./static-site.mjs";
 
-const ROOT = resolve(import.meta.dirname, "..");
-const EXCLUDED = new Set([".git", "node_modules", "scripts", "wp-content", "wp-includes", "wp-json", "_site"]);
-const MAX_HTML_BYTES = 220_000;
-const MAX_TOTAL_HTML_BYTES = 10_000_000;
-const MAX_INLINE_STYLE_BYTES = 60_000;
-const MAX_SCRIPTS_PER_PAGE = 19;
+const MAX_HTML_BYTES = 80_000;
+const MAX_TOTAL_HTML_BYTES = 3_000_000;
+const MAX_STYLE_ATTRIBUTES = 24;
+const ASSET_BUDGETS = Object.freeze({
+  "assets/site.css": 64_000,
+  "assets/site.js": 32_000,
+  "assets/fontawesome.css": 16_000,
+  "assets/dank-mono.css": 128_000,
+});
 const failures = [];
-let total = 0;
+const pages = publicPageFiles();
+let totalHtmlBytes = 0;
 
-const walk = (directory) =>
-  readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (EXCLUDED.has(entry.name)) return [];
-    const absolute = resolve(directory, entry.name);
-    return entry.isDirectory()
-      ? walk(absolute)
-      : entry.name.endsWith(".html") && entry.name !== "pinterest-9af13.html"
-        ? [absolute]
-        : [];
-  });
-
-for (const file of walk(ROOT)) {
+for (const file of pages) {
   const html = readFileSync(file, "utf8");
-  if (!/<html\b/i.test(html)) continue;
   const name = relative(ROOT, file).split(sep).join("/");
   const bytes = statSync(file).size;
-  total += bytes;
+  totalHtmlBytes += bytes;
+
   if (bytes > MAX_HTML_BYTES) failures.push(`${name}: ${bytes} HTML bytes exceeds ${MAX_HTML_BYTES}`);
-  const inlineStyleBytes = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]
-    .reduce((sum, match) => sum + Buffer.byteLength(match[1]), 0);
-  if (inlineStyleBytes > MAX_INLINE_STYLE_BYTES) {
-    failures.push(`${name}: ${inlineStyleBytes} inline CSS bytes exceeds ${MAX_INLINE_STYLE_BYTES}`);
+  if (/<style\b/i.test(html)) failures.push(`${name}: inline style block bypasses the shared stylesheet`);
+  const styleAttributes = [...html.matchAll(/\sstyle=["']/gi)].length;
+  if (styleAttributes > MAX_STYLE_ATTRIBUTES) {
+    failures.push(`${name}: ${styleAttributes} style attributes exceeds ${MAX_STYLE_ATTRIBUTES}`);
   }
-  const scripts = [...html.matchAll(/<script\b/gi)].length;
-  if (scripts > MAX_SCRIPTS_PER_PAGE) failures.push(`${name}: ${scripts} scripts exceeds ${MAX_SCRIPTS_PER_PAGE}`);
-  if (/googletagmanager\.com\/gtag\/js|gtag\(["']config["']|wp-admin\/admin-ajax|forms\.aweber\.com\/form\/displays\.htm/i.test(html)) {
-    failures.push(`${name}: immediate analytics or dead WordPress/AWeber runtime remains`);
+  if (/\bsrcset=["']/i.test(html)) failures.push(`${name}: responsive WordPress image variants remain`);
+
+  const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
+  const runtimeScripts = scripts.filter((match) => /\bsrc=["']/i.test(match[1]));
+  const inlineExecutables = scripts.filter(
+    (match) =>
+      !/\bsrc=["']/i.test(match[1]) &&
+      !/\btype=["']application\/ld\+json["']/i.test(match[1]) &&
+      match[2].trim(),
+  );
+  if (runtimeScripts.length !== 1) failures.push(`${name}: expected one shared runtime script`);
+  if (inlineExecutables.length > 0) failures.push(`${name}: contains inline executable JavaScript`);
+  if (/googletagmanager\.com\/gtag\/js|gtag\(["']config["']|wp-admin|admin-ajax|forms\.aweber\.com\/form\/displays\.htm/i.test(html)) {
+    failures.push(`${name}: immediate analytics or retired plugin runtime remains`);
   }
+
+  const stylesheets = [...html.matchAll(/<link\b[^>]*rel=["'][^"']*stylesheet[^"']*["'][^>]*>/gi)];
+  if (stylesheets.length !== 2) failures.push(`${name}: expected exactly two shared stylesheet links`);
 }
 
-if (total > MAX_TOTAL_HTML_BYTES) failures.push(`HTML total ${total} exceeds ${MAX_TOTAL_HTML_BYTES}`);
+if (totalHtmlBytes > MAX_TOTAL_HTML_BYTES) {
+  failures.push(`HTML total ${totalHtmlBytes} exceeds ${MAX_TOTAL_HTML_BYTES}`);
+}
+
+for (const [path, maximum] of Object.entries(ASSET_BUDGETS)) {
+  const file = resolve(ROOT, path);
+  if (!existsSync(file)) {
+    failures.push(`${path}: missing budgeted shared asset`);
+    continue;
+  }
+  const bytes = statSync(file).size;
+  if (bytes > maximum) failures.push(`${path}: ${bytes} bytes exceeds ${maximum}`);
+}
 
 if (failures.length > 0) {
-  process.stderr.write(`${failures.join("\n")}\n`);
+  process.stderr.write(`${[...new Set(failures)].join("\n")}\n`);
   process.exitCode = 1;
 } else {
-  process.stdout.write(`Performance budgets passed (${total} HTML bytes).\n`);
+  process.stdout.write(
+    `Performance budgets passed for ${pages.length} pages (${totalHtmlBytes} total HTML bytes).\n`,
+  );
 }

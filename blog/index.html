@@ -1,54 +1,167 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agency Notes | Sean Dinwiddie's Webmastery</title>
-	<meta name="description" content="Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.">
-	<link rel="canonical" href="https://seandinwiddie.com/blog/">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="Agency Notes | Sean Dinwiddie's Webmastery">
-	<meta property="og:description" content="Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.">
-	<meta property="og:url" content="https://seandinwiddie.com/blog/">
-	<meta property="og:site_name" content="Sean Dinwiddie's Webmastery">
-	<meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
-	<meta property="og:image:type" content="image/png">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Agency Notes | Sean Dinwiddie's Webmastery">
-	<meta name="twitter:description" content="Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.">
-	<meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
-  <link rel="stylesheet" href="/assets/vendor/simple.css">
-	<meta property="og:image:alt" content="Sean Dinwiddie's technical archive covering Redux, BDD, and functional reactive programming">
-	<meta name="twitter:image:alt" content="Sean Dinwiddie's technical archive covering Redux, BDD, and functional reactive programming">
-<link rel="stylesheet" href="/assets/agency-static.css">
-<script defer src="/assets/privacy-controls.js"></script>
-
-<script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/blog/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's technical archive covering Redux, BDD, and functional reactive programming","inLanguage":"en-US"},{"@type":"CollectionPage","@id":"https://seandinwiddie.com/blog/#webpage","url":"https://seandinwiddie.com/blog/","name":"Agency Notes | Sean Dinwiddie's Webmastery","description":"Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/blog/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/blog/#breadcrumb"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/blog/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Agency Notes","item":"https://seandinwiddie.com/blog/"}]}]}</script>
-    <link rel="stylesheet" href="/assets/dank-only.css">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Agency Notes | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.">
+  <link rel="canonical" href="https://seandinwiddie.com/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Agency Notes | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.">
+  <meta property="og:url" content="https://seandinwiddie.com/blog/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s technical archive covering Redux, BDD, and functional reactive programming">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agency Notes | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s technical archive covering Redux, BDD, and functional reactive programming">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/blog/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's technical archive covering Redux, BDD, and functional reactive programming","inLanguage":"en-US"},{"@type":"CollectionPage","@id":"https://seandinwiddie.com/blog/#webpage","url":"https://seandinwiddie.com/blog/","name":"Agency Notes | Sean Dinwiddie's Webmastery","description":"Practical notes from Sean Dinwiddie on web development, Redux Toolkit, automation, and maintaining useful software for small organizations.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/blog/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/blog/#breadcrumb"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/blog/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Agency Notes","item":"https://seandinwiddie.com/blog/"}]}]}</script>
 </head>
-<body id="top">
-<a class="agency-skip-link" href="#main-content">Skip to content</a>
-<header>
-    <nav aria-label="Primary">
-      <a href="/">Sean Dinwiddie's Webmastery</a>
-      <a href="/community/">Community</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <p>Agency Notes</p>
-    <p>Practical development and automation notes from the workbench.</p>
+<body class="site-page family-simple">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
   </header>
-  <main id="main-content" tabindex="-1">
-<h1 class="visually-hidden">Agency Notes</h1>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Agency Notes</h1>
+          <a class="hero__cta" href="/contact/">Get a Free Consultation</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
 <article>
-      <h2><a href="/blog/rtk-promt-example/">Building a Redux Toolkit CLI App with Prompt and JSON Persistence</a></h2>
-      <p>Walk through a small command-line application that uses Redux Toolkit for state, prompt-driven input, and a JSON file for persistence.</p>
-      <p><a href="/blog/rtk-promt-example/">Read the Redux Toolkit example</a></p>
-    </article>
+<h2><a href="/blog/rtk-promt-example/">Building a Redux Toolkit CLI App with Prompt and JSON Persistence</a></h2>
+<p>Walk through a small command-line application that uses Redux Toolkit for state, prompt-driven input, and a JSON file for persistence.</p>
+<p><a href="/blog/rtk-promt-example/">Read the Redux Toolkit example</a></p>
+</article>
+      </div>
+    </section>
   </main>
-  <footer>
-    <p><a href="#top">Back to top</a> · <a href="/">Agency home</a></p>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+        <article class="card">
+          <a class="card__link" href="/marketing/">
+            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
+            <div class="card__body">
+              <h2>Marketing</h2>
+              <p>Our world class SEO services will send your site soaring up the search results. Marketing – On-site SEO &amp; Off-site SEO + Ads</p>
+            </div>
+          </a>
+        </article>
+        <article class="card">
+          <a class="card__link" href="/design/">
+            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
+            <div class="card__body">
+              <h2>Design</h2>
+              <p>Elegant, attractive design that makes your customers and clients sit up and say, WOW! Design – New &amp; CRO</p>
+            </div>
+          </a>
+        </article>
+        <article class="card">
+          <a class="card__link" href="/development/">
+            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+            <div class="card__body">
+              <h2>Development</h2>
+              <p>Fast, flawless and robust development that puts you ahead of the pack. Development – Sites &amp; Apps</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Paul Payne Dinwiddie</strong> is the founder of Sean Dinwiddie's Webmastery, bringing extensive experience in full-stack web development, software engineering, and digital strategy. With expertise spanning server architecture, application development, SEO optimization, and user experience design, Sean has built a reputation for delivering comprehensive technology solutions that solve real business problems.</p>
+        <p>From startups launching their first digital presence to established companies upgrading legacy systems, Sean Dinwiddie's Webmastery provides the technical expertise and strategic insight needed to succeed in today's competitive digital landscape.</p>
+        <p class="footer__tag">Professional Excellence • Full-Stack Expertise • Reliable Partnership</p>
+      </div>
+    </div>
   </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
 </body>
 </html>

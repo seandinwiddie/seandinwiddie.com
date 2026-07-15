@@ -6,15 +6,17 @@
     "node": ">=24 <25"
   },
   "scripts": {
-    "build": "npm run social && npm run externalize && npm run normalize && npm run sitemap && npm run check && npm run deploy:artifact",
+    "build": "npm run generate && npm run check && npm run deploy:artifact",
+    "generate": "npm run social && npm run sitemap",
     "social": "node scripts/generate-social-images.mjs",
-    "externalize": "node scripts/externalize-shared-styles.mjs",
-    "normalize": "node scripts/normalize-static-export.mjs",
     "sitemap": "node scripts/generate-sitemaps.mjs",
-    "check": "npm run check:site && npm run check:accessibility && npm run check:performance",
+    "sync:components": "node scripts/sync-shared-page-components.mjs",
+    "check": "npm run check:components && npm run check:site && npm run check:accessibility && npm run check:performance",
+    "check:components": "node scripts/sync-shared-page-components.mjs --check",
     "check:site": "node scripts/check-site.mjs",
     "check:accessibility": "node scripts/check-accessibility.mjs",
     "check:performance": "node scripts/check-performance.mjs",
-    "deploy:artifact": "node scripts/build-deploy.mjs"
+    "deploy:artifact": "node scripts/build-deploy.mjs",
+    "preview": "node scripts/preview-server.cjs . 8765"
   }
 }

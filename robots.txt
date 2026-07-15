@@ -1,9 +1,4 @@
 User-agent: *
-Disallow: /wp-admin/
-Disallow: /comments/
-Disallow: /feed/
-Disallow: /*/feed/
-Disallow: /wp-json/
-Disallow: /community/wp-json/
+Allow: /
 
 Sitemap: https://seandinwiddie.com/sitemap_index.xml
