@@ -1,0 +1,51 @@
+/* ============================================================================
+   Dank Mono — the single typeface for seandinwiddie.com.
+   Loaded last on every page so it wins the cascade. Self-contained font
+   (base64 in dank-mono.css), same-origin, no external/CDN dependency.
+
+   Strategy: force "dm" on all real text via an !important rule, then RE-EXEMPT
+   the icon fonts (Font Awesome 5, Visual Composer Starter Font, Material Icons)
+   so their glyphs keep rendering. Icon <i> elements are excluded outright.
+   ========================================================================== */
+@import url("/assets/dank-mono.css");
+
+:root {
+  font-family: "dm", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* All text → Dank Mono. Skip <i> (icon glyphs). SVGs use paths, not fonts, so
+   they're unaffected; a plain :not(i) keeps this valid in every browser. */
+body,
+body *:not(i) {
+  font-family: "dm", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
+
+/* Visual Composer "Google Fonts" heading/text blocks pin their own font with
+   two-class !important rules (0,2,0). Out-specify them (0,2,1) to stay Dank Mono. */
+body [class*="vce-google-fonts"][class*="-inner"] {
+  font-family: "dm", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
+
+/* ---- Re-exempt icon fonts so glyphs survive (covers span-based icons too) ---- */
+.fa, .fas, .far, .fal, .fad, .fab,
+[class^="fa-"], [class*=" fa-"] {
+  font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome" !important;
+}
+.fab,
+[class*=" fa-"][class*="brands"] {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+[class^="vcv-ui-icon"], [class*=" vcv-ui-icon"],
+[class^="vc-icon"], [class*=" vc-icon"] {
+  font-family: "Visual Composer Starter Font" !important;
+}
+/* VC social icons use their own font — must come after the rule above. */
+.vcv-ui-icon-socials {
+  font-family: "vcv-socials" !important;
+}
+.material-icons, [class*="material-icons"] {
+  font-family: "Material Icons" !important;
+}
+.material-icons-two-tone {
+  font-family: "Material Icons Two Tone" !important;
+}
