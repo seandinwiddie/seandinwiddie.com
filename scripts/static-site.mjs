@@ -8,7 +8,7 @@ import { relative, resolve, sep } from "node:path";
 export const ROOT = resolve(process.env.SITE_ROOT || resolve(import.meta.dirname, ".."));
 export const OUTPUT = resolve(ROOT, "_site");
 export const ORIGIN = "https://seandinwiddie.com";
-export const EXPECTED_SHARED_PAGE_COUNT = 85;
+export const EXPECTED_SHARED_PAGE_COUNT = 86;
 
 export const ROUTE_ROOTS = Object.freeze([
   "about",
@@ -18,6 +18,7 @@ export const ROUTE_ROOTS = Object.freeze([
   "contact",
   "design",
   "development",
+  "examples",
   "local",
   "marketing",
   "prices",
