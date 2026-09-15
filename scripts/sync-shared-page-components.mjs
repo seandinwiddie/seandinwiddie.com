@@ -124,7 +124,7 @@ const SERVICE_TREE = [
 
 // The two pages a prospect wants next, and the two that nothing linked to from
 // inside a page before now.
-const NEXT_STEPS = [["/examples/", "Work I have built"], ["/prices/", "Prices"]];
+const NEXT_STEPS = [["/examples/", "Work we have built"], ["/prices/", "Prices"]];
 
 const routeForPage = (name) => (name === "index.html" ? "/" : `/${name.replace(/index\.html$/, "")}`);
 
@@ -146,10 +146,19 @@ ${items}
       </nav>`;
 };
 
+// Matched so the block is *replaced*, not skipped when already present. The
+// insert-once version froze the labels at whatever shipped first: editing
+// SERVICE_TREE or NEXT_STEPS changed nothing on the eight pages that already
+// had a nav, and --check could not see the drift. Same trap as
+// FEATURED_SERVICES_PATTERN below.
+const RELATED_SERVICES_PATTERN =
+  /      <nav class="related-services"[\s\S]*?<\/nav>/;
+
 const withRelatedServices = (name, html) => {
-  if (/class="related-services"/.test(html)) return html;
   const snippet = relatedServices(routeForPage(name));
-  return snippet ? insertBeforeContentEnd(html, snippet) : html;
+  if (!snippet) return html;
+  if (RELATED_SERVICES_PATTERN.test(html)) return html.replace(RELATED_SERVICES_PATTERN, snippet);
+  return insertBeforeContentEnd(html, snippet);
 };
 
 const insertAfterContentStart = (html, snippet) => {
