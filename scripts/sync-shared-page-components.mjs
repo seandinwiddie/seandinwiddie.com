@@ -5,53 +5,66 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { publicPageFiles, relativePath } from "./static-site.mjs";
 
+// The five service cards existed as three hand-maintained copies of the same
+// words: this shared block, the set inside /service/, and the set on the home
+// page. Editing one left the other two behind, and nothing could see the drift
+// because each copy was "correct" on its own terms. They are one list now, and
+// the three renderers differ only in heading level and indentation.
+const SERVICE_CARDS = [
+  ["/marketing/", "Marketing", "AdobeStock_135407660-scaled.jpeg",
+    "Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves. Marketing – On-site SEO &amp; Off-site SEO + Ads"],
+  ["/design/", "Design", "AdobeStock_207254886-scaled.jpeg",
+    "A look that is yours, on pages built for one job each. Readable in one hand on a phone. Design – New &amp; CRO"],
+  ["/development/", "Development", "AdobeStock_180105378-scaled.jpeg",
+    "The site, and the software behind it when a site is not enough. Yours to run afterwards. Development – Sites &amp; Apps"],
+  ["/automation/", "Automation", "AdobeStock_138021007-e1571312681920-scaled.jpeg",
+    "Stop paying someone to retype the same order into a second system. Automation &ndash; Process audit, custom build &amp; integration"],
+  ["/local/", "Local", "AdobeStock_104183460_111672862-1-scaled.jpeg",
+    "Turning up when someone nearby searches for what you sell. Local &ndash; Klamath Falls &amp; Redding"],
+];
+
+const serviceCards = ({ indent, heading }) => {
+  const pad = " ".repeat(indent);
+  return SERVICE_CARDS.map(([href, title, image, blurb]) => `${pad}    <article class="card">
+${pad}      <a class="card__link" href="${href}">
+${pad}        <div class="card__media" style="background-image:url('/assets/img/${image}');"></div>
+${pad}        <div class="card__body"><${heading}>${title}</${heading}><p>${blurb}</p></div>
+${pad}      </a>
+${pad}    </article>`).join("\n");
+};
+
+const serviceCardsSection = ({ indent, heading, sectionClass, label }) => {
+  const pad = " ".repeat(indent);
+  return `${pad}<section class="${sectionClass}"${label}>
+${pad}  <div class="wrap">
+${pad}    <div class="cards">
+${serviceCards({ indent: indent + 4, heading })}
+${pad}    </div>
+${pad}  </div>
+${pad}</section>`;
+};
+
 const FEATURED_SERVICES = `  <!-- featured-services:start -->
-  <section class="service-cards" aria-label="Featured services">
-    <div class="wrap">
-      <div class="cards">
-        <article class="card">
-          <a class="card__link" href="/marketing/">
-            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
-            <div class="card__body">
-              <h2>Marketing</h2>
-              <p>SEO, content, and paid campaigns that compound traffic and leads. Marketing – On-site SEO &amp; Off-site SEO + Ads</p>
-            </div>
-          </a>
-        </article>
-        <article class="card">
-          <a class="card__link" href="/design/">
-            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
-            <div class="card__body">
-              <h2>Design</h2>
-              <p>Strategic brand, UX/UI, and web design that turns visitors into customers. Design – New &amp; CRO</p>
-            </div>
-          </a>
-        </article>
-        <article class="card">
-          <a class="card__link" href="/development/">
-            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
-            <div class="card__body">
-              <h2>Development</h2>
-              <p>From idea to production: fast, reliable web apps and sites that scale. Development – Sites &amp; Apps</p>
-            </div>
-          </a>
-        </article>
-        <article class="card">
-          <a class="card__link" href="/automation/">
-            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
-            <div class="card__body"><h2>Automation</h2><p>Transform your business operations with AI automation that eliminates repetitive tasks and streamlines workflows. Automation &ndash; Process audit, custom build &amp; integration</p></div>
-          </a>
-        </article>
-        <article class="card">
-          <a class="card__link" href="/local/">
-            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
-            <div class="card__body"><h2>Local</h2><p>Web design, development, local SEO, and business automation for organizations in the two service areas. Local &ndash; Klamath Falls &amp; Redding</p></div>
-          </a>
-        </article>
-      </div>
-    </div>
-  </section>
+${serviceCardsSection({ indent: 2, heading: "h2", sectionClass: "service-cards", label: ' aria-label="Featured services"' })}
   <!-- featured-services:end -->`;
+
+const SERVICE_HUB_CARDS = serviceCardsSection({
+  indent: 4,
+  heading: "h2",
+  sectionClass: "service-cards",
+  label: ' aria-label="Featured services"',
+});
+
+const HOME_CARDS = serviceCardsSection({
+  indent: 4,
+  heading: "h3",
+  sectionClass: "section home-cards",
+  label: "",
+});
+
+const SERVICE_HUB_CARDS_PATTERN =
+  /    <section class="service-cards" aria-label="Featured services">[\s\S]*?\n    <\/section>/;
+const HOME_CARDS_PATTERN = /    <section class="section home-cards">[\s\S]*?\n    <\/section>/;
 
 const ARCHIVE_CONTEXT = `<aside class="notice archive-context" aria-label="Archive context">
 <p><strong>Agency technical archive.</strong> These Redux, BDD, user-story, and functional-reactive-programming articles remain part of the agency site. <a href="/service/">View agency services</a> or <a href="/contact/">contact Sean</a>.</p>
@@ -200,13 +213,20 @@ const withFeaturedServices = (name, html) => {
   // Two pages carry their own list of services and must not also receive the
   // shared block: the home page, and the services hub itself, which was
   // showing Design, Development and Marketing twice.
+  // These two render the same five cards themselves, so they take the card list
+  // rather than the block: the hub inside <main>, the home page with h3s. They
+  // must not also receive the shared block — the hub was showing Design,
+  // Development and Marketing twice.
   if (name === "service/index.html") {
-    if (!/class="[^"]*\bcards\b/.test(html)) throw new Error("service/index.html: missing service cards");
-    return html.replace(FEATURED_SERVICES_PATTERN, "").replace(/\n\n(  <footer)/, "\n$1");
+    if (!SERVICE_HUB_CARDS_PATTERN.test(html)) throw new Error("service/index.html: missing service cards");
+    return html
+      .replace(SERVICE_HUB_CARDS_PATTERN, SERVICE_HUB_CARDS)
+      .replace(FEATURED_SERVICES_PATTERN, "")
+      .replace(/\n\n(  <footer)/, "\n$1");
   }
   if (name === "index.html") {
-    if (!/class="[^"]*\bhome-cards\b/.test(html)) throw new Error("index.html: missing service cards");
-    return html;
+    if (!HOME_CARDS_PATTERN.test(html)) throw new Error("index.html: missing service cards");
+    return html.replace(HOME_CARDS_PATTERN, HOME_CARDS);
   }
   // Replace an existing block rather than skipping the page. Insert-once meant
   // the "shared" cards froze at whatever shipped first: editing FEATURED_SERVICES

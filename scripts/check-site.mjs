@@ -182,6 +182,15 @@ for (const file of pages) {
       failures.push(`${name}: missing shared ${marker} shell`);
     }
   }
+  // /design/ carried the five service cards twice — its own stale copy inside
+  // <main> plus the shared block after it — so the page listed every service,
+  // then listed them all again with different wording. Nothing could see it:
+  // each block was internally valid, and the sync script only ever looked at
+  // the one it owned.
+  if (countMatches(html, /<div class="cards">/g) > 1) {
+    failures.push(`${name}: renders the service cards more than once`);
+  }
+
   if (RETIRED_MARKUP.test(html)) failures.push(`${name}: contains retired WordPress/plugin markup or assets`);
   const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] || "";
   if (/\b(?:href|src|action|poster|data-external-src)=["']https?:\/\/(?:www\.)?seandinwiddie\.com/i.test(body)) {
