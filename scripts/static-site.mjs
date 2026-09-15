@@ -52,7 +52,6 @@ export const ROOT_PUBLIC_FILES = Object.freeze([
 export const REQUIRED_SHARED_ASSETS = Object.freeze([
   "assets/site.css",
   "assets/site.js",
-  "assets/fontawesome.css",
   "assets/dank-mono.css",
   "assets/img/favicon.ico",
   "assets/social/agency.png",
@@ -65,7 +64,6 @@ export const REQUIRED_SHARED_ASSETS = Object.freeze([
 export const PUBLIC_ASSET_FILES = new Set([
   "assets/site.css",
   "assets/site.js",
-  "assets/fontawesome.css",
   "assets/dank-mono.css",
 ]);
 

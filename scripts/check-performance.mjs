@@ -12,7 +12,6 @@ const MAX_STYLE_ATTRIBUTES = 24;
 const ASSET_BUDGETS = Object.freeze({
   "assets/site.css": 64_000,
   "assets/site.js": 32_000,
-  "assets/fontawesome.css": 16_000,
   "assets/dank-mono.css": 128_000,
 });
 const failures = [];
@@ -48,7 +47,7 @@ for (const file of pages) {
   }
 
   const stylesheets = [...html.matchAll(/<link\b[^>]*rel=["'][^"']*stylesheet[^"']*["'][^>]*>/gi)];
-  if (stylesheets.length !== 2) failures.push(`${name}: expected exactly two shared stylesheet links`);
+  if (stylesheets.length !== 1) failures.push(`${name}: expected exactly one shared stylesheet link`);
 }
 
 if (totalHtmlBytes > MAX_TOTAL_HTML_BYTES) {
