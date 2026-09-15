@@ -46,7 +46,16 @@ for (const file of pages) {
   for (const match of html.matchAll(/<img\b([^>]*)>/gi)) {
     const tag = match[0];
     const source = attribute(tag, "src");
-    if (!/\balt=["'][^"']*["']/i.test(tag)) failures.push(`${name}: image missing alt (${source || "unknown source"})`);
+    // An empty alt is a claim that the image carries no information, which is
+    // true for a spacer and false for a photograph. Every image here is
+    // content, so the attribute has to say something: the whole library once
+    // shipped with alt="" and passed a check that only looked for the
+    // attribute's presence.
+    if (!/\balt=["'][^"']*["']/i.test(tag)) {
+      failures.push(`${name}: image missing alt (${source || "unknown source"})`);
+    } else if (!attribute(tag, "alt").trim()) {
+      failures.push(`${name}: image has an empty alt (${source || "unknown source"})`);
+    }
     if (source.startsWith("/")) {
       const local = resolve(ROOT, source.split(/[?#]/)[0].replace(/^\/+/, ""));
       if (existsSync(local) && (!attribute(tag, "width") || !attribute(tag, "height"))) {
