@@ -1274,3 +1274,13 @@ main:focus { outline: none; }
   list-style: none;
 }
 .related-services li { margin: 0; }
+
+/* The pointer to the enterprise practice: a note under the service buttons,
+   not another button competing with them. */
+.service-menu__note {
+  max-width: 44rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
