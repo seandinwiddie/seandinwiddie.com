@@ -84,6 +84,62 @@ const archivePagination = (base, page) => {
   return `<nav class="pagination" aria-label="Archive pagination">\n${links.join("\n")}\n</nav>`;
 };
 
+/**
+ * Every service leaf reached the rest of the site through one link — "Get a
+ * Free Consultation" — so a visitor arriving from search at /design/cro/ could
+ * not find its sibling, its parent, the work, or the prices without going back
+ * to the menu. The hierarchy below is the one the hubs already describe; these
+ * links just make it work in both directions.
+ */
+const SERVICE_TREE = [
+  ["/design/", "Design", [
+    ["/design/new/", "Website design"],
+    ["/design/cro/", "Conversion rate optimization"],
+  ]],
+  ["/development/", "Development", [
+    ["/development/sites/", "Website development"],
+    ["/development/apps/", "Custom app development"],
+  ]],
+  ["/marketing/", "Marketing", [
+    ["/marketing/on-site-seo/", "On-site SEO"],
+    ["/marketing/off-site-seo-and-ads/", "Off-site SEO and ads"],
+  ]],
+  ["/local/", "Local web support", [
+    ["/local/oregon/klamath-falls/", "Klamath Falls, Oregon"],
+    ["/local/california/redding/", "Redding, California"],
+  ]],
+];
+
+// The two pages a prospect wants next, and the two that nothing linked to from
+// inside a page before now.
+const NEXT_STEPS = [["/examples/", "Work I have built"], ["/prices/", "Prices"]];
+
+const routeForPage = (name) => (name === "index.html" ? "/" : `/${name.replace(/index\.html$/, "")}`);
+
+const relatedServices = (route) => {
+  const entry = SERVICE_TREE.find(([, , leaves]) => leaves.some(([href]) => href === route));
+  if (!entry) return null;
+  const [hub, hubLabel, leaves] = entry;
+  const links = [
+    ...leaves.filter(([href]) => href !== route),
+    [hub, `All ${hubLabel.toLowerCase()} services`],
+    ...NEXT_STEPS,
+  ];
+  const items = links.map(([href, label]) => `        <li><a href="${href}">${label}</a></li>`).join("\n");
+  return `      <nav class="related-services" aria-labelledby="related-services">
+        <h2 id="related-services">Related</h2>
+        <ul>
+${items}
+        </ul>
+      </nav>`;
+};
+
+const withRelatedServices = (name, html) => {
+  if (/class="related-services"/.test(html)) return html;
+  const snippet = relatedServices(routeForPage(name));
+  return snippet ? insertBeforeContentEnd(html, snippet) : html;
+};
+
 const insertAfterContentStart = (html, snippet) => {
   const marker = '<div class="wrap content content-page">';
   if (!html.includes(marker)) throw new Error("missing shared content wrapper");
@@ -142,6 +198,7 @@ const routeTransforms = Object.freeze([
   withArchiveContext,
   withArchivePagination,
   withCargoPostRepairs,
+  withRelatedServices,
   withFeaturedServices,
 ]);
 

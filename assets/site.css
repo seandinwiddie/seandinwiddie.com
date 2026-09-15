@@ -1253,3 +1253,24 @@ main:focus { outline: none; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* Closing navigation on a service page: where to go that is not the contact
+   form. Set apart by a rule, read as a row of links rather than a list. */
+.related-services {
+  margin: 2.75rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+.related-services h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+.related-services ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.related-services li { margin: 0; }
