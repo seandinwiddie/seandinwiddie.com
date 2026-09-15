@@ -71,6 +71,26 @@ const SOCIAL_ICONS = `      <div class="nav__social">
 
 const SOCIAL_ICONS_PATTERN = /      <div class="nav__social">[\s\S]*?\n      <\/div>/;
 
+// The footer "About us" block is on all 86 pages and was byte-identical on
+// every one of them, but nothing kept it that way — it was copied by hand, so
+// any edit would have had to land 86 times or silently fork. Sharing it here
+// gives it --check coverage like the masthead and the service cards.
+//
+// The copy it replaced sold to the wrong people. "From startups launching their
+// first digital presence to established companies upgrading legacy systems" is
+// sdin.dev's audience, not this one, and the rest was filler: "extensive
+// experience", "expertise spanning", "comprehensive technology solutions",
+// "strategic insight", "competitive digital landscape". The mission line comes
+// from /prices/, which is the client's own wording.
+const FOOTER_ABOUT = `      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>`;
+
+const FOOTER_ABOUT_PATTERN = /      <div class="footer__about">[\s\S]*?\n      <\/div>/;
+
 const PAGINATED_ARCHIVES = new Map([
   ["community/author/seandinwiddie/index.html", ["/community/author/seandinwiddie/", 1]],
   ["community/author/seandinwiddie/page/2/index.html", ["/community/author/seandinwiddie/", 2]],
@@ -206,6 +226,13 @@ const withSocialIcons = (name, html) => {
   return html.replace(SOCIAL_ICONS_PATTERN, SOCIAL_ICONS);
 };
 
+const withFooterAbout = (name, html) => {
+  if (!FOOTER_ABOUT_PATTERN.test(html)) {
+    throw new Error(`${name}: missing shared footer-about marker`);
+  }
+  return html.replace(FOOTER_ABOUT_PATTERN, FOOTER_ABOUT);
+};
+
 const withArchiveContext = (name, html) => {
   if (!name.startsWith("community/") || html.includes("Agency technical archive.")) return html;
   return insertAfterContentStart(html, ARCHIVE_CONTEXT);
@@ -239,7 +266,7 @@ const routeTransforms = Object.freeze([
 ]);
 
 const normalizePage = (name, html) => {
-  const shared = withSocialIcons(name, html);
+  const shared = withFooterAbout(name, withSocialIcons(name, html));
   return name.endsWith("index.html")
     ? routeTransforms.reduce((current, transform) => transform(name, current), shared)
     : shared;
