@@ -292,6 +292,25 @@ img { max-width: 100%; height: auto; }
 .home-services { padding: 0.35rem 0 1.5rem; }
 .home-services .content > p:last-child { margin-bottom: 0; }
 .home-why { padding: 1.2rem 0 4rem; }
+
+/* Client proof. The quotes are real and each one is checkable against a
+   platform the site links to, so they get the same weight as the body copy
+   rather than being decorated into the background. */
+.home-proof { padding: 1.5rem 0 1.2rem; }
+.home-proof blockquote {
+  margin: 1.35rem 0;
+  padding: 1.2rem 1.4rem;
+  border-left: 0.35rem solid var(--blue);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background: var(--panel);
+}
+.home-proof blockquote p { margin-bottom: 0.65rem; }
+.home-proof blockquote p:last-child { margin-bottom: 0; }
+.home-proof .attribution {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: normal;
+}
 .panel {
   padding: 1.45rem 1.55rem 0.85rem;
   border-radius: 0.55rem;
