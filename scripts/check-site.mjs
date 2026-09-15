@@ -48,6 +48,22 @@ const decode = (value) => {
   }
 };
 const pathName = (file) => relative(ROOT, file).split(sep).join("/");
+// A search result truncates on what it displays, so lengths are measured after
+// entities resolve: "&#x27;" is six characters standing for one.
+const displayed = (value) =>
+  value
+    .replace(/&#x27;|&#39;|&apos;|&rsquo;|&#8217;/gi, "\u2019")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;|&#34;/gi, '"')
+    .replace(/&(?:nbsp|#160);/gi, " ")
+    .replace(/&[a-z]+;|&#\d+;/gi, "x")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const MIN_TITLE = 20;
+const MAX_TITLE = 65;
+const MAX_DESCRIPTION = 158;
+
 const text = (value) =>
   value
     .replace(/<(?:script|style|svg)\b[^>]*>[\s\S]*?<\/(?:script|style|svg)>/gi, " ")
@@ -102,6 +118,12 @@ for (const file of pages) {
   if (!/^<!doctype html>/i.test(html.trimStart())) failures.push(`${name}: missing HTML doctype`);
   if (!/<html\b[^>]*\blang=["'][^"']+["']/i.test(html)) failures.push(`${name}: missing document language`);
   if (countMatches(html, /<title\b/gi) !== 1) failures.push(`${name}: expected one title`);
+  // Only indexed pages are held to a display length: a noindex title never
+  // reaches a search result, so its width decides nothing.
+  const title = displayed(html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "");
+  if (title && !isNoindex(html) && (title.length < MIN_TITLE || title.length > MAX_TITLE)) {
+    failures.push(`${name}: title displays as ${title.length} characters; keep it ${MIN_TITLE}-${MAX_TITLE}`);
+  }
   if (!tagWith(html, "meta", "name", "viewport")) failures.push(`${name}: missing viewport metadata`);
   if (!tagWith(html, "meta", "name", "robots")) failures.push(`${name}: missing explicit robots metadata`);
 
@@ -110,8 +132,9 @@ for (const file of pages) {
   if (!is404) {
     if (!descriptionTag) failures.push(`${name}: missing meta description`);
     const description = attribute(descriptionTag || "", "content");
-    if (description && (text(description).length < 30 || text(description).length > 200)) {
-      failures.push(`${name}: meta description must be 30-200 readable characters`);
+    const shown = displayed(description);
+    if (description && (shown.length < 70 || shown.length > MAX_DESCRIPTION)) {
+      failures.push(`${name}: description displays as ${shown.length} characters; keep it 70-${MAX_DESCRIPTION}`);
     }
     if (!canonicalTag) failures.push(`${name}: missing canonical URL`);
     const canonical = decode(attribute(canonicalTag || "", "href"));
