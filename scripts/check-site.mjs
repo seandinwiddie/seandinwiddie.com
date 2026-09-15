@@ -159,7 +159,7 @@ for (const file of pages) {
   const stylesheetLinks = tags(html, "link")
     .filter((tag) => /(?:^|\s)stylesheet(?:\s|$)/i.test(attribute(tag, "rel")))
     .map((tag) => attribute(tag, "href"));
-  const expectedStyles = ["/assets/site.css"];
+  const expectedStyles = ["/assets/fontawesome.css", "/assets/site.css"];
   if (
     stylesheetLinks.length !== expectedStyles.length ||
     expectedStyles.some((href) => !stylesheetLinks.includes(href))

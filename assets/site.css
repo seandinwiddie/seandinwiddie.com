@@ -1274,12 +1274,3 @@ main:focus { outline: none; }
   list-style: none;
 }
 .related-services li { margin: 0; }
-
-/* Icons are inline SVG: six glyphs no longer justify 144 KB of icon font.
-   currentColor keeps them inheriting whatever the surrounding link uses. */
-.icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
