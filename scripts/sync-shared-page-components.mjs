@@ -36,6 +36,18 @@ const FEATURED_SERVICES = `  <!-- featured-services:start -->
             </div>
           </a>
         </article>
+        <article class="card">
+          <a class="card__link" href="/automation/">
+            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+            <div class="card__body"><h2>Automation</h2><p>Transform your business operations with AI automation that eliminates repetitive tasks and streamlines workflows. Automation &ndash; Process audit, custom build &amp; integration</p></div>
+          </a>
+        </article>
+        <article class="card">
+          <a class="card__link" href="/local/">
+            <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
+            <div class="card__body"><h2>Local</h2><p>Web design, development, local SEO, and business automation for organizations in the two service areas. Local &ndash; Klamath Falls &amp; Redding</p></div>
+          </a>
+        </article>
       </div>
     </div>
   </section>
@@ -152,12 +164,27 @@ const insertBeforeContentEnd = (html, snippet) => {
   return html.replace(marker, `\n${snippet}${marker}`);
 };
 
+const FEATURED_SERVICES_PATTERN =
+  /  <!-- featured-services:start -->[\s\S]*?<!-- featured-services:end -->/;
+
 const withFeaturedServices = (name, html) => {
+  // Two pages carry their own list of services and must not also receive the
+  // shared block: the home page, and the services hub itself, which was
+  // showing Design, Development and Marketing twice.
+  if (name === "service/index.html") {
+    if (!/class="[^"]*\bcards\b/.test(html)) throw new Error("service/index.html: missing service cards");
+    return html.replace(FEATURED_SERVICES_PATTERN, "").replace(/\n\n(  <footer)/, "\n$1");
+  }
   if (name === "index.html") {
     if (!/class="[^"]*\bhome-cards\b/.test(html)) throw new Error("index.html: missing service cards");
     return html;
   }
-  if (/aria-label="Featured services"/.test(html)) return html;
+  // Replace an existing block rather than skipping the page. Insert-once meant
+  // the "shared" cards froze at whatever shipped first: editing FEATURED_SERVICES
+  // changed the pages that lacked it and silently left the rest behind.
+  if (FEATURED_SERVICES_PATTERN.test(html)) {
+    return html.replace(FEATURED_SERVICES_PATTERN, FEATURED_SERVICES);
+  }
   const marker = '  <footer class="footer">';
   if (!html.includes(marker)) throw new Error(`${name}: missing shared footer marker`);
   return html.replace(marker, `${FEATURED_SERVICES}\n${marker}`);
