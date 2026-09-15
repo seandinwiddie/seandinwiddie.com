@@ -246,6 +246,30 @@ const withSocialIcons = (name, html) => {
   return html.replace(SOCIAL_ICONS_PATTERN, SOCIAL_ICONS);
 };
 
+// One button, "Get a Free Consultation", appeared identically on 82 pages —
+// on the Redux tutorials and the privacy policy as readily as on /design/.
+// "Consultation" is agency-speak that a shop owner hears as a sales meeting,
+// and the same words on an archive article as on a service page tell the reader
+// nothing about what happens next. The promise is unchanged (a free call); the
+// wording now matches who is reading the page. /about/ is Sean's own page and
+// is left exactly as it is.
+const CTA_LABELS = [
+  [(name) => name === "about/index.html", null],
+  [(name) => name === "contact/index.html", "Send a message"],
+  [(name) => name.startsWith("community/") || name.startsWith("blog/"), "Work with Sean"],
+  [() => true, "Book a free call"],
+];
+
+const ctaLabel = (name) => CTA_LABELS.find(([match]) => match(name))[1];
+
+const CTA_PATTERN = /(<a class="hero__cta" href="[^"]*">)([^<]*)(<\/a>)/;
+
+const withHeroCta = (name, html) => {
+  const label = ctaLabel(name);
+  if (label === null || !CTA_PATTERN.test(html)) return html;
+  return html.replace(CTA_PATTERN, `$1${label}$3`);
+};
+
 const withFooterAbout = (name, html) => {
   if (!FOOTER_ABOUT_PATTERN.test(html)) {
     throw new Error(`${name}: missing shared footer-about marker`);
@@ -286,7 +310,7 @@ const routeTransforms = Object.freeze([
 ]);
 
 const normalizePage = (name, html) => {
-  const shared = withFooterAbout(name, withSocialIcons(name, html));
+  const shared = withHeroCta(name, withFooterAbout(name, withSocialIcons(name, html)));
   return name.endsWith("index.html")
     ? routeTransforms.reduce((current, transform) => transform(name, current), shared)
     : shared;

@@ -191,6 +191,14 @@ for (const file of pages) {
     failures.push(`${name}: renders the service cards more than once`);
   }
 
+  // 39 pages shipped a description WordPress had auto-excerpted and cut
+  // mid-sentence with an ellipsis. Google prints those verbatim, so the snippet
+  // was a fragment that restated the title and stopped. A description ending in
+  // an ellipsis is always the excerpt, never a deliberate one.
+  if (/<meta name="description" content="[^"]*(?:…|\.\.\.)">/.test(html)) {
+    failures.push(`${name}: meta description is a truncated excerpt`);
+  }
+
   if (RETIRED_MARKUP.test(html)) failures.push(`${name}: contains retired WordPress/plugin markup or assets`);
   const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] || "";
   if (/\b(?:href|src|action|poster|data-external-src)=["']https?:\/\/(?:www\.)?seandinwiddie\.com/i.test(body)) {
