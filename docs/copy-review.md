@@ -50,7 +50,7 @@ The mission of Sean Dinwiddie's Webmastery: **Strengthening the service industry
 - **Elon Musk** and **Gandhi**: missions people join. See the mission above.
 - **The Future Is Faster Than You Think** (Peter Diamandis and Steven Kotler): AI and other technologies converge and reshape every industry faster than people expect.
 - **Robot Rights** (David J. Gunkel): whether machines can or should have moral standing; standing comes from relationships, not from what a thing is made of. It shapes how the copy speaks about webmasters working alongside AI.
-- **Neuromancer** (William Gibson): independent operators hired job by job in a networked world, the mood of the subcontractor model.
+- **Neuromancer** (William Gibson): a crew of specialists, each a master of a craft, assembled for one run in a networked world. The mood of a team built on mastery.
 
 **Mind and flow**
 

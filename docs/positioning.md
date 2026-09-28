@@ -1,16 +1,20 @@
 # Sean Dinwiddie's Webmastery: positioning
 
-Sean Dinwiddie's Webmastery is a network of independent webmasters serving Jefferson State (Klamath Falls, Redding, and the towns in between) under one brand. Founded by Sean Paul Payne Dinwiddie.
+Sean Dinwiddie's Webmastery is a team of webmasters serving Jefferson State (Klamath Falls, Redding, and the towns in between) under one name. Founded by Sean Paul Payne Dinwiddie.
 
 ## Mission
 
 **Strengthening the service industry of Jefferson State.** The mission is a purpose people join, not just a service they buy.
 
+## Identity
+
+The site presents Sean Dinwiddie's Webmastery as one team built on mastery: masters of the craft who keep growing in it. It never reads as a network, a marketplace or an agency. Sean picks the public wording (`todo.md`).
+
 ## How it works
 
-Independent webmasters work under the Sean Dinwiddie's Webmastery brand as subcontractors paid on commission, the way independent agents work under an insurance agency.
+Webmasters join the Sean Dinwiddie's Webmastery team as subcontractors paid on commission, the way independent agents work under an insurance agency. The structure is independent; the team is one. Every webmaster is a team member, with meaningful work, a shared mission and a real ladder. It is never a commission shop where it's all about the money.
 
-The brand serves:
+The team serves:
 
 - local service businesses: websites, local search, handover and support
 - local enterprise and government offices: fractional CTO services
@@ -28,24 +32,28 @@ They want:
 - a local webmaster who already knows their site when something breaks
 - to be found by people searching nearby
 - a site they run themselves after handover
-- prices they see up front
+- the price of every job before it starts
 
 Government offices buy through procurement, so copy for them speaks to requirements, deadlines and contracts.
 
 ### 2. Webmasters
 
-Independent junior, mid and senior webmasters who work under the brand as subcontractors.
+Webmasters at every level who join the team as subcontractors.
 
 They get:
 
-- the Sean Dinwiddie's Webmastery brand and local clients
+- the Sean Dinwiddie's Webmastery name and local clients
 - commission on the work they bring in and deliver
-- standard packages with published prices
+- standard fee agreements and a written scope for every job
 - a path from junior to mid to senior
 
 ## Pricing
 
-- Prices are published, with nothing hidden from the customer.
+Sean Dinwiddie's Webmastery charges the way a law firm or a service contract does, never from a fixed menu that invites scope creep.
+
+- Every engagement starts with a written scope and fee: a retainer, a flat fee for a defined job, or a service and maintenance contract.
+- Work outside the scope is quoted and approved before it starts.
+- Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
 
 ## Promises

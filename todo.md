@@ -7,23 +7,26 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 - [ ] Run the three-reviewer copy review in `docs/copy-review.md`. Sean decides when it starts.
 - [ ] Sean confirms the copywriter's definition of distractions in `docs/copy-review.md`.
 
-## The site speaks as the network
+## The site speaks as the team
 
-- [ ] Rewrite the shared footer About block. It calls Sean Dinwiddie's Webmastery "a local webmastery agency"; it describes independent webmasters working under the Sean Dinwiddie's Webmastery brand.
-- [ ] Bring the header tagline "Full-Service Web & Software Agency · Klamath Falls and Redding" (85 pages) in line with the network.
+- [ ] Sean picks the public wording for the team built on mastery (`docs/positioning.md`, Identity). Directions on the table:
+  - **The trades' ladder:** master electricians, master stylists and master chefs already live by mastery; the team climbs the same way.
+  - **The name on the door:** like a chef's restaurant or a law firm, "Sean Dinwiddie's" vouches for every piece of work, whoever does it.
+  - **Mastery that spreads:** the team grows in mastery, owners master their own sites after handover (self-reliance, Gandhi's mission), and the service industry of Jefferson State grows stronger.
+- [ ] Rewrite the first clause of the shared footer About block, "a local webmastery agency", in the chosen wording. The rest of the block already matches the positioning.
+- [ ] Bring the header tagline "Full-Service Web & Software Agency · Klamath Falls and Redding" (85 pages) in line with the chosen wording.
 - [ ] Give every page title the same suffix with the full brand name. Titles end in "| Sean Dinwiddie" (55 pages), "| Sean Dinwiddie's Webmastery" (13), "- Sean Dinwiddie's Webmastery" (10) and four one-offs.
-- [ ] Add a page for webmasters: the brand, commission, standard packages and the path from junior to mid to senior, and how to join.
+- [ ] Add a page for webmasters: the team, the mission, commission, the path from junior to mid to senior, and how to join.
 - [ ] Add a page for fractional CTO services for local enterprise and government offices, with the ADA Title II deadlines of April 26, 2027 and April 26, 2028.
 
 ## Prices page
 
-- [ ] Write the prices as "$6,000/month" and "$120,000/year" in place of "6k/mo 120k/annu". No "save" label: the annual price covers more work, and pricing never discounts more work.
-- [ ] Publish the standard package prices for local service businesses.
-- [ ] Add a "What's included" list.
-- [ ] Add "How it works": kickoff, term and cancellation, using only terms Sean confirms.
-- [ ] Add pricing FAQs: scope per month, prioritization, measuring return.
-- [ ] Rewrite the vision and mission block to the positioning and writing rules. It speaks of "small business problems" and "every team member at our company".
-- [ ] Add Offer and AggregateOffer schema, and link each service page's Service schema to it.
+- [ ] Explain how Sean Dinwiddie's Webmastery charges, the way a law firm or a service contract does: retainers, flat fees for defined jobs, service and maintenance contracts, and out-of-scope work quoted and approved before it starts. No fixed menu.
+- [ ] Sean decides whether "6k/mo 120k/annu" stays on the page. If it stays, it reads "$6,000/month" and "$120,000/year", each tied to its engagement, with no "save" label.
+- [ ] Add what each kind of engagement covers.
+- [ ] Add "How an engagement works": written scope, kickoff, term, scope changes and cancellation, using only terms Sean confirms.
+- [ ] Add pricing FAQs: what's in scope, what happens when scope changes, prioritization, measuring return.
+- [ ] Bring the vision and mission block in line with the size rule ("small business problems", "one small business at a time"). Keep its team and meaningful-work message: it answers the commission shop where it's all about the money.
 
 ## Homepage
 
