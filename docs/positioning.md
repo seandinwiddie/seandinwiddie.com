@@ -2,6 +2,10 @@
 
 Sean Dinwiddie's Webmastery is a network of independent webmasters serving Jefferson State (Klamath Falls, Redding, and the towns in between) under one brand. Founded by Sean Paul Payne Dinwiddie.
 
+## Mission
+
+**Strengthening the service industry of Jefferson State.** The mission is a purpose people join, not just a service they buy.
+
 ## How it works
 
 Independent webmasters work under the Sean Dinwiddie's Webmastery brand as subcontractors paid on commission, the way independent agents work under an insurance agency.

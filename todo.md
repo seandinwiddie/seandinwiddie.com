@@ -1,106 +1,77 @@
-## Website Improvement Checklist
+# Open work
 
-### 1. Pricing Clarity
-1. [x] updated prices from 2k/mo 40k/annu to 6k/mo 120k/annu
-2. [ ] Change labels to "$6,000/month" and "$120,000/year (save 17%)"
-3. [ ] Add "What’s included" list (strategy, design, dev, marketing, reporting)
-4. [ ] Add "How it works" (kickoff in 7 days • month-to-month • cancel anytime)
-5. [ ] Add primary CTA: "Check Availability"
-6. [ ] Add pricing FAQs (scope per month, prioritization, ROI measurement)
+Open work on the site. Finished work leaves this file. Every item follows `AGENTS.md` and `docs/positioning.md`.
 
-### 2. Contact
-1. [x] contact page use email and phone instead of a form
-2. [ ] Standardize mailto across site to hello@seandinwiddie.com
-3. [ ] Confirm phone/email format consistency site‑wide
-4. [ ] Update Contact H1 to "Let’s talk about your goals"
+## Copy review
 
-### 3. Messaging and Homepage
-1. [x] Clarify headline with specific value proposition and audience
-2. [x] Replace vague copy with concrete benefits and outcomes
-3. [x] Add primary CTA (e.g., “Get a Free Consultation”) above the fold
-4. [ ] Add secondary CTA (e.g., “View Work” or “See Services”) -save this for later
-5. [ ] Add social proof element on homepage (logos, testimonial snippet) -save this for later
-6. [ ] Add outcome bullet list under hero (traffic, conversion, shipping velocity)
-7. [ ] Update homepage <title> to "Fractional CTO + Web Growth for SMBs | Sean Dinwiddie"
-8. [ ] Tighten homepage meta description to be benefit‑oriented
+- [ ] Run the three-reviewer copy review in `docs/copy-review.md`. Sean decides when it starts.
+- [ ] Sean confirms the copywriter's definition of distractions in `docs/copy-review.md`.
 
-### 4. Services Pages
-1. [x] Create/expand detailed pages for Design, Development, and Marketing
-2. [x] Describe process steps for each service (discovery → delivery)
-3. [ ] Add outcomes and deliverables per service
-4. [ ] Include FAQs addressing common objections
-5. [ ] Add service‑specific CTAs (e.g., “Request Scope & Quote”)
-6. [ ] Update Design H1 to "Design that turns visitors into customers"
-7. [ ] Update Development H1 to "From idea to production—fast, reliable, maintainable"
-8. [ ] Update Marketing H1 to "SEO, content, and paid that compound traffic and leads"
-9. [ ] Replace hypey hero lines with concise, benefit‑first copy per page
-10. [ ] Add "What’s included" bullets for each service
-11. [ ] Add service‑specific primary CTA labels on each page
+## The site speaks as the network
 
-### 4.5 Services Pages
-1. [ ] Review copywriting: Design → New (`/design/new/`)
-2. [ ] Review copywriting: Design → CRO (`/design/cro/`)
-3. [ ] Review copywriting: Development → Sites (`/development/`)
-4. [ ] Review copywriting: Development → Apps (`/development/apps/`)
-5. [ ] Review copywriting: Marketing → On‑site SEO (`/marketing/on-site-seo/`)  (no separate page) -FIX THIS
-6. [ ] Review copywriting: Marketing → Off‑site SEO & Ads (`/marketing/off-site-seo-and-ads/`)  (no separate page) -FIX THIS
+- [ ] Rewrite the shared footer About block. It calls Sean Dinwiddie's Webmastery "a local webmastery agency"; it describes independent webmasters working under the Sean Dinwiddie's Webmastery brand.
+- [ ] Bring the header tagline "Full-Service Web & Software Agency · Klamath Falls and Redding" (85 pages) in line with the network.
+- [ ] Give every page title the same suffix with the full brand name. Titles end in "| Sean Dinwiddie" (55 pages), "| Sean Dinwiddie's Webmastery" (13), "- Sean Dinwiddie's Webmastery" (10) and four one-offs.
+- [ ] Add a page for webmasters: the brand, commission, standard packages and the path from junior to mid to senior, and how to join.
+- [ ] Add a page for fractional CTO services for local enterprise and government offices, with the ADA Title II deadlines of April 26, 2027 and April 26, 2028.
 
-### 4.55 Service Pages Optimization (High-Converting Landing Page Principles)
-1. [ ] Review and optimize Design → New page: improve headline clarity, add clear value proposition, stronger CTA, rewrite copy 
-2. [ ] Review and optimize Design → CRO page: enhance benefit-focused messaging, add process steps, include ROI examples, rewrite copy
-3. [ ] Create Development → Sites page with high-converting landing page structure
-4. [ ] Review and optimize Development → Apps page: improve value proposition, add detailed process, rewrite copy
-5. [ ] Create Marketing → On-site SEO page with clear benefits, process steps, and outcome-focused messaging, rewrite copy
-6. [ ] Create Marketing → Off-site SEO & Ads page with comprehensive service details and conversion-focused design, rewrite copy
-7. [ ] Add Sean Dinwiddie brand consistency across all service pages (Sean Dinwiddie's Webmastery emphasis)
-8. [ ] Implement high-quality Unsplash images with proper alt text on all service pages
-10. [ ] Optimize all service page CTAs for conversion (specific, action-oriented, urgency)
+## Prices page
 
-### 4.75 Local Pages
-1. [ ] Review and update a page for Klamath Falls, Oregon
+- [ ] Write the prices as "$6,000/month" and "$120,000/year" in place of "6k/mo 120k/annu". No "save" label: the annual price covers more work, and pricing never discounts more work.
+- [ ] Publish the standard package prices for local service businesses.
+- [ ] Add a "What's included" list.
+- [ ] Add "How it works": kickoff, term and cancellation, using only terms Sean confirms.
+- [ ] Add pricing FAQs: scope per month, prioritization, measuring return.
+- [ ] Rewrite the vision and mission block to the positioning and writing rules. It speaks of "small business problems" and "every team member at our company".
+- [ ] Add Offer and AggregateOffer schema, and link each service page's Service schema to it.
 
-### 5. SEO and Schema
-1. [ ] Tighten page titles and meta descriptions for primary pages
-2. [ ] Add internal links between services, portfolio, and contact
-3. [ ] Validate and expand schema (Organization, Service, FAQ, Breadcrumb)
-4. [ ] Ensure canonical links and XML sitemaps are accurate
-5. [ ] Add Organization (or Person) JSON‑LD with logo, sameAs, ContactPoint
-6. [ ] Reference Organization from WebSite/WebPage (publisher with @id)
-7. [ ] Add Service schema on service pages with AggregateOffer (link to prices)
-8. [ ] Mark About and Contact pages as AboutPage/ContactPage with mainEntity
-9. [ ] Add Offers/AggregateOffer on prices page (range and individual offers)
-10. [ ] Add Product + Offer schema for any store items (if applicable)
-11. [ ] Normalize @id and url fields to canonical HTTPS; ensure images ≥1200px
-12. [ ] Validate in Google Rich Results test; resolve errors/warnings
+## Homepage
 
-### 6. Performance and Media
-1. [ ] Optimize hero and background images (size, format, lazy‑load)
-2. [ ] Audit third‑party scripts and remove non‑essential assets
-3. [ ] Enable caching and compression at server/CDN level
-4. [ ] Defer non‑critical JS and inline critical CSS where feasible
+- [ ] Add a secondary call to action, such as "View work" or "See services" (parked by Sean).
+- [ ] Add outcome bullets under the hero.
+- [ ] Make the meta description benefit-first.
 
-### 7. Accessibility
-1. [ ] Provide alt text for all informative images
+## Service pages
 
-### 8. Navigation and UX
-1. [ ] Ensure all menu links route to live, relevant pages (no dead/looping links)
-2. [ ] Simplify menu structure; keep core items at top level
-3. [ ] Replace emoji hamburger with standard icon in mobile menu
-4. [ ] Add breadcrumbs across key pages
-5. [ ] Verify consistent spacing, font sizes, and color usage site‑wide
+- [ ] Add outcomes, deliverables and "What's included" bullets to each service page.
+- [ ] Add FAQs that answer common objections, with FAQPage schema. The copy review's objection lists feed them.
+- [ ] Add images with alt text; Unsplash is the source.
 
-### 9. Portfolio and Case Studies
-1. [ ] Add a portfolio index page with filterable projects
-2. [ ] Create at least 3 case studies with problem → solution → results
-3. [ ] Include metrics (SEO gains, conversion lifts, performance improvements)
-4. [ ] Add client logos and project screenshots with captions
-5. [ ] Link each case study to relevant service pages
+## Other pages
 
-### 10. Analytics and Tracking
-1. [ ] Install/verify analytics (e.g., GA4) and goal/conversion tracking
-2. [ ] Set up events for form submissions and CTA clicks
-3. [ ] Create dashboards to monitor leads, traffic sources, and conversions
+- [ ] Contact page H1: "Let's talk about your goals" in place of "Contact".
+- [ ] Mark `/about/` as an AboutPage in its schema.
+- [ ] Review the privacy policy and terms against the subcontractor model.
 
-### 11. Legal and Policies
-1. [ ] Review and update Privacy Policy and Terms for accuracy
-2. [ ] Add cookie notice if tracking technologies are used
+## Portfolio (`/examples/`)
+
+- [ ] Make the projects filterable.
+- [ ] Write case studies as problem, solution and results, with real metrics only.
+- [ ] Add client logos and project screenshots with captions, for real clients who agree.
+- [ ] Link each case study to its service pages.
+
+## Performance
+
+- [ ] Optimize hero and background images for size, format and lazy loading.
+- [ ] Audit third-party embeds, including the YouTube video on the prices page.
+- [ ] Defer non-critical JavaScript and inline critical CSS where it helps.
+
+## Navigation and design
+
+- [ ] Simplify the menu and keep the core items at the top level.
+- [ ] Check spacing, font sizes and colors across the site.
+
+## Analytics
+
+- [ ] Install analytics with conversion tracking. Only `test-tracking.html` carries a tag.
+- [ ] Track form submissions and call-to-action clicks as events.
+- [ ] Build a dashboard for leads, traffic sources and conversions.
+- [ ] Add a cookie notice once tracking is live.
+
+## Structured data
+
+- [ ] Validate the schema in Google's Rich Results Test and fix its errors and warnings.
+
+## Repo
+
+- [ ] Delete the leftover `claude/friendly-rubin-wdvzmw` branch on GitHub. Agents here have no permission to delete branches.
