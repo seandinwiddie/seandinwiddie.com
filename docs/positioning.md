@@ -50,6 +50,8 @@ They want:
 
 Government offices buy through procurement, so copy for them speaks to requirements, deadlines and contracts.
 
+The high end of the work is boutique enterprise and government; small packages serve family shops, food trucks, kiosks and every other owner-operator. Both are welcome at every level of service.
+
 ### 2. Webmasters
 
 Webmasters at every level who join the team as subcontractors.
@@ -72,7 +74,8 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
-- Pricing appears across the homepage and the service pages, not only on the prices page: the published fees, and a flat fee in writing for a defined job.
+- Pricing reads like a country club's: a clear ladder from a small package (one defined job at a flat fee, in writing) up to retainers for boutique firms and public offices. A food truck, a kiosk and a family shop each see an offer made for them. Small packages describe the size of the job, never the worth of the client, and no tier talks down.
+- Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. The small packages carry no amount until Sean sets their fees.
 - Links to the prices page stay minimal (the menu, the footer and the sitemap) and are never calls to action while Sean reworks that page himself.
 
 ## Promises
