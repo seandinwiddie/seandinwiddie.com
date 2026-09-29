@@ -8,19 +8,19 @@ Each pass, four reviewers read the whole site, each in a fresh context with no m
 
 ### 1. The local owner
 
-Reads as the first reader in the positioning brief: someone who runs something local, often wearing several hats at once (a county job, a business, a kiosk). Lists every objection that stops them from reaching out. Scores the site from 0 to 10.
+Reads as the first reader in the positioning brief: someone who runs something local, often wearing several hats at once (a county job, a business, a kiosk). Lists every objection that stops them from reaching out, and names, in their own words, what the agency firm's team does for them: why a team of local webmasters under one name beats a lone freelancer or a faraway agency. Scores the site from 0 to 10.
 
 ### 2. The webmaster or software developer
 
-Reads as an independent webmaster or developer weighing subcontracting under the brand, and as a peer judging the craft. Lists every objection that stops them from joining. Scores the site from 0 to 10.
+Reads as an independent webmaster or developer weighing subcontracting under the brand, and as a peer judging the craft. Lists every objection that stops them from joining, and names, in their own words, the benefits of joining the agency firm's team that would bring an independent webmaster in, ranked by pull. Scores the site from 0 to 10.
 
 ### 3. The copywriter
 
-Reviews the site through the reading list and the mission below. Reads the other reviewers' findings, finds the distraction behind each objection, and names the sweeping tweaks that remove it. Scores the site from 0 to 10.
+Reviews the site through the reading list and the mission below. Reads the other reviewers' findings, finds the distraction behind each objection, and names the sweeping tweaks that remove it. Turns the benefits the webmaster and the CTO name into the recruiting lines, so every line promotes what an independent webmaster gains by joining, and the benefits the local owner names into lines that show owners what the team does for them. Scores the site from 0 to 10.
 
 ### 4. The senior CTO
 
-Reads as a senior CTO at an elite, high-end boutique agency firm. Checks every claim for accuracy: technical, legal and factual, and against what the site's own build and code show. Names where the site can be more sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable. Scores the site from 0 to 10.
+Reads as a senior CTO at an elite, high-end boutique agency firm. Checks every claim for accuracy: technical, legal and factual, and against what the site's own build and code show. Names where the site can be more sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable. Names, from the firm's side, the benefits of an independent webmaster joining the agency firm's team, and checks recruiting wording for accuracy and for words that imply an employee rather than an independent subcontractor. Scores the site from 0 to 10.
 
 ## Distractions
 
@@ -52,7 +52,7 @@ The copywriter reads the site through fifteen sources:
 
 The loop works on the homepage, the service pages (the services hub, Design, Development, Marketing, Automation, Local and Training, with their sub-pages) and the contact page. The reviewers read the whole site, but tweaks land on these pages. Shared blocks that belong to them, such as the service cards and the service pages' related links, change with them.
 
-Pricing and recruiting are sprinkled across these pages: a pricing line near each page's next step, ironed from the package ladder in `docs/packages.md` into one consistent, understated line with a defined job that fits the page (a small package for one defined job at a flat fee, up to the published retainers), and a short note addressed to webmasters about joining, set apart from the client's contact details. The fee lines carry no link: Sean reworks the prices page himself, so the loop never edits it and never points a call to action at it.
+Pricing and recruiting are sprinkled across these pages: a pricing line near each page's next step, ironed from the package ladder in `docs/packages.md` into one consistent, understated line with a defined job that fits the page (a small package for one defined job at a flat fee, up to the published retainers), and a short note addressed to webmasters that promotes the benefits of joining the team, set apart from the client's contact details. The fee lines carry no link: Sean reworks the prices page himself, so the loop never edits it and never points a call to action at it.
 
 ## Each pass
 

@@ -63,7 +63,7 @@ They get:
 - standard fee agreements and a written scope for every job
 - a path from junior to mid to senior
 
-Recruiting appears across the homepage and the service pages too, in lines addressed to webmasters: subcontractors on commission, local clients and a written scope for every job. The junior-to-senior ladder stays on the webmaster page, away from owners.
+Recruiting promotes the benefits of an independent webmaster joining the agency firm's team: they stay independent and keep 70% of the fees on their work, and the name brings the local clients, the published fees and the written scope, so they don't sell alone or fight scope creep. They join a team with a shared mission and a real ladder. The team is a benefit to owners too: every webmaster works under the one name that vouches for the job, at the same published rate and with a written scope, and the owner knows which webmaster does theirs. Recruiting reads to an owner as the team's strength, never as a hiring notice. Recruiting appears across the homepage, the service pages and the contact page too, in short notes addressed to webmasters. The junior-to-senior ladder stays on the webmaster page, away from owners.
 
 ## Pricing
 
