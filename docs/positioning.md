@@ -8,7 +8,13 @@ Sean Dinwiddie's Webmastery is a team of webmasters serving Jefferson State (Kla
 
 ## Identity
 
-The site presents Sean Dinwiddie's Webmastery as one team built on mastery: masters of the craft who keep growing in it. It never reads as a network, a marketplace or an agency. Sean picks the public wording (`todo.md`).
+The site presents Sean Dinwiddie's Webmastery as one team built on mastery: masters of the craft who keep growing in it. It never reads as a network, a marketplace or an agency.
+
+The reading-list audit (`docs/reading-list.md`) gives each form of mastery one job:
+
+- **Mastery that spreads** is the public umbrella and the mission line. The team grows in mastery, owners master their own sites at handover, and the service industry of Jefferson State grows stronger.
+- **The name on the door** is the promise to clients. The name vouches for every job, and the client knows which webmaster does theirs.
+- **The trades' ladder** speaks to webmasters only, never to owners.
 
 ## How it works
 

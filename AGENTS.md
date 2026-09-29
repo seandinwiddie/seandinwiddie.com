@@ -8,12 +8,13 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 |---|---|
 | `AGENTS.md` | How to work in this repo and the writing rules |
 | `docs/positioning.md` | What Sean Dinwiddie's Webmastery is, who the site speaks to, pricing and promises |
-| `docs/copy-review.md` | The three-reviewer copy loop, the copywriter's reading list and the mission |
+| `docs/copy-review.md` | The three-reviewer copy loop, distractions and the mission |
+| `docs/reading-list.md` | The audit of the copywriter's fifteen sources: what each teaches, what the copywriter checks, and what they add up to for the site |
 | `todo.md` | Open work on the site |
 
-Read `docs/positioning.md` before any copy work, and `docs/copy-review.md` before any copy review.
+Read `docs/positioning.md` before any copy work, and `docs/copy-review.md` and `docs/reading-list.md` before any copy review.
 
-**These files stay current.** Every new instruction lands in the matching file in the same change: working and writing rules here, positioning in `docs/positioning.md`, the copy loop in `docs/copy-review.md`, open work in `todo.md`. Finished work leaves `todo.md`.
+**These files stay current.** Every new instruction lands in the matching file in the same change: working and writing rules here, positioning in `docs/positioning.md`, the copy loop in `docs/copy-review.md`, the reading list in `docs/reading-list.md`, open work in `todo.md`. Finished work leaves `todo.md`.
 
 ## Working in this repo
 

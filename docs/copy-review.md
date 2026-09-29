@@ -20,7 +20,9 @@ Reviews the site through the reading list and the mission below. Reads both obje
 
 ## Distractions
 
-A distraction is anything that breaks the reader's attention and gives an objection room to form: jargon, a stray link, a doubt the page raises and leaves unanswered, a second call to action. The copywriter removes distractions and keeps attention moving with honest pulls: a question (SPIN Selling), curiosity or a story (Dan Lok), a bucket brigade (Backlinko), the mission.
+A distraction is anything that moves the reader's attention off the page's one question, or opens a question the page doesn't close. It turns the reader from weighing the offer to counterarguing it or leaving. Distraction helps only weak messages, and the case for Sean Dinwiddie's Webmastery is strong, so every distraction costs persuasion. The kinds (exits, load, open loops, threat, ego, incoherence, hype, hidden hands, machine noise) and what keeps attention are in `docs/reading-list.md`.
+
+The copywriter removes distractions and keeps attention moving with honest pulls: a question (SPIN Selling), curiosity or a story (Dan Lok), a bucket brigade (Backlinko), the mission.
 
 Nothing distracts from prices or terms. Nothing is hidden from the customer.
 
@@ -32,30 +34,15 @@ The mission of Sean Dinwiddie's Webmastery: **Strengthening the service industry
 
 ## The copywriter's reading list
 
-**Selling and persuasion**
+The copywriter reads the site through fifteen sources:
 
-- **SPIN Selling** (Neil Rackham): Situation, Problem, Implication and Need-payoff questions let the buyer state the need and the payoff themselves. Preventing objections beats handling them.
-- **Ca$hvertising** (Drew Eric Whitman): the Life-Force 8, the core desires people buy for, such as freedom from fear, comfortable living, protecting loved ones and social approval; consumer-psychology principles like the bandwagon effect and ego morphing.
-- **Influence: 47 Forbidden Psychological Tactics You Can Use To Motivate, Influence and Persuade Your Prospect** (Dan Lok): 47 triggers, among them curiosity, storytelling, specifics, similarity, common ground, exclusivity, urgency and non-selling.
-- **Backlinko's copywriting guide** (Brian Dean, <https://backlinko.com/copywriting-guide>): Agree, Promise, Preview intros; Problem, Agitate, Solve; bucket brigades; benefits over features; short sentences; benefit-driven subheads.
+- **Selling and persuasion:** SPIN Selling, Influence: 47 Forbidden Psychological Tactics, Ca$hvertising, Backlinko's copywriting guide.
+- **Strategy and service:** Blue Ocean Strategy, The Small Firm Roadmap, Zombie Loyalists.
+- **Missions:** Elon Musk's Mars mission, Gandhi's mission.
+- **The future and machines:** The Future Is Faster Than You Think, Robot Rights, Neuromancer.
+- **Mind and flow:** Stealing Fire, Mapping Cloud Nine, Becoming Supernatural, Manifest Now.
 
-**Strategy and service**
-
-- **Blue Ocean Strategy** (W. Chan Kim and Renée Mauborgne): make competitors irrelevant instead of fighting them. Decide what to eliminate, reduce, raise and create, and win the noncustomers no one else serves.
-- **The Small Firm Roadmap** (Lawyerist: Aaron Street, Sam Glover, Stephanie Everett, Marshall Lichty): small professional practices stay healthy by putting the client first, running on systems and facing forward.
-- **Zombie Loyalists: Using Great Service to Create Rabid Fans** (Peter Shankman): service so good that customers recruit other customers.
-
-**Mission and the future**
-
-- **Elon Musk** and **Gandhi**: missions people join. See the mission above.
-- **The Future Is Faster Than You Think** (Peter Diamandis and Steven Kotler): AI and other technologies converge and reshape every industry faster than people expect.
-- **Robot Rights** (David J. Gunkel): whether machines can or should have moral standing; standing comes from relationships, not from what a thing is made of. It shapes how the copy speaks about webmasters working alongside AI.
-- **Neuromancer** (William Gibson): a crew of specialists, each a master of a craft, assembled for one run in a networked world. The mood of a team built on mastery.
-
-**Mind and flow**
-
-- **Stealing Fire** (Steven Kotler and Jamie Wheal) and **Mapping Cloud Nine** (Steven Kotler): flow and peak states, where attention is total and effortless.
-- **Becoming Supernatural** (Joe Dispenza) and **Manifest Now** (Idil Ahmed): living the future as though it's already here, the root of the present-tense, forward-facing writing rule.
+`docs/reading-list.md` holds the full audit: what each source teaches, the checks the copywriter runs because of it, and what they add up to for Sean Dinwiddie's Webmastery. That covers the identity, public prices, distractions, objection seeds for both reviewers, the mission, and what never appears on the site.
 
 ## Each pass
 
