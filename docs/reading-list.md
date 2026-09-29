@@ -484,9 +484,33 @@ The webmaster:
 - **Webmasters join meaningful work and a fair written deal.** The mission never replaces pay.
 - **The mission tops every means-end chain:** a site, found nearby, calls, a steadier business, a stronger Jefferson State.
 
+### The team, through Stealing Fire
+
+Sean asks the reviewers to think about the team's benefits the way Stealing Fire does: elite teams switch from "I" to "we" and work in group flow. Flow comes from clear goals, immediate feedback, challenge just past skill, autonomy, purpose, shared risk and familiarity. Friction and interruptions end it.
+
+- **For the independent webmaster, the team takes the friction out of the work.** Going it alone means finding clients, quoting and haggling, underpricing, scope fights, and being the only one a client can call. On the team:
+  - the name brings the local clients;
+  - the published rate ends the haggling;
+  - the written scope is the clear goal;
+  - the change rule ends the scope fights;
+  - 70/30 keeps the webmaster independent;
+  - the ladder keeps the challenge just past their skill;
+  - the mission is the purpose;
+  - one standard across the team makes it "we".
+
+  The days go to the craft.
+- **For the owner, the same structure is the benefit:**
+  - a clear goal in the written scope;
+  - a webmaster whose attention goes to the owner's site, not to chasing the next client;
+  - a webmaster who already knows the site;
+  - one standard under one name;
+  - plain notes as feedback.
+- **Independence is the point.** The benefits describe a structure an independent practice plugs into, never control over how, when or where a webmaster works.
+- **The book's cautions hold.** Sentences are about the reader, not the brand, and no line promises a feeling in place of a deliverable. The book's vocabulary stays off the site (see below).
+
 ### Never on the site
 
-- **The books' vocabulary:** flow state, ecstasis, STER, quantum, frequency, manifest, abundance, Mars, multiplanetary, moonshot, swaraj, satyagraha, console cowboy, jack in, zaibatsu, robot rights, AI teammate.
+- **The books' vocabulary:** flow state, group flow, ecstasis, STER, peak performance, Navy SEALs, quantum, frequency, manifest, abundance, Mars, multiplanetary, moonshot, swaraj, satyagraha, console cowboy, jack in, zaibatsu, robot rights, AI teammate.
 - **Musk and Gandhi:** no mention of either and no comparison to them. No quotes without a primary source, and no misattributed quotes.
 - **"Self-rule" or "independence" wording.** In this region it echoes the State of Jefferson secession movement. "Jefferson State" is geographic only, always paired with Klamath Falls, Redding and the towns in between.
 - **Fake pressure:** no fake urgency or scarcity, no guilt, and no fear without a real, dated threat and a specific fix. The ADA Title II dates are the only urgency.
