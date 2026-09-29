@@ -584,6 +584,7 @@ body.marketing-route { background: #fafafa; }
   color: rgb(255 255 255 / 90%);
   font-size: 0.9rem;
 }
+.local-contact-card__details a { color: inherit; }
 
 /* Services landing page */
 body.service-route { background: #fafafa; }

@@ -42,7 +42,7 @@ These change through the copy review, a small tweak each pass, never in one rewr
 - [ ] The top bar's "💳 Secure Payment" sits above every price on every page.
 - [ ] The structured data lists Sean's personal Freelancer, Upwork and Contra profiles as the agency's own (`sameAs`).
 - [ ] The community pages' banner keeps "agency" and drops "technical archive", which reads as retired.
-- [ ] Give every page title the same suffix with the full brand name. Titles end in "| Sean Dinwiddie" (55 pages), "| Sean Dinwiddie's Webmastery" (13), "- Sean Dinwiddie's Webmastery" (10) and four one-offs.
+- [ ] Give every page title the same suffix, "| Sean Dinwiddie's Webmastery". The homepage and the service pages have it since pass 2; the other pages still end in "| Sean Dinwiddie", "- Sean Dinwiddie's Webmastery" or a one-off, and about 30 need re-cutting to stay within 65 characters.
 - [ ] Start a page for webmasters (`/about/webmasters/`) and grow it each pass: the team, the mission, commission, the path from junior to mid to senior, and how to join. Pass 1's copywriter drafted a minimal version from `docs/positioning.md` alone, with a small footer link to it.
 - [ ] Start a page for fractional CTO services for local enterprise and government offices and grow it each pass, with the ADA Title II deadlines of April 26, 2027 and April 26, 2028.
 
@@ -76,6 +76,11 @@ These change through the copy review, a small tweak each pass, never in one rewr
 - [ ] Add outcomes, deliverables and "What's included" bullets to each service page.
 - [ ] Add FAQs that answer common objections, with FAQPage schema. The copy review's objection lists feed them.
 - [ ] Add images with alt text; Unsplash is the source.
+- [ ] Numbered process steps typed as "<p><strong>1.</strong>" become real ordered lists on the service pages.
+- [ ] The homepage lists its services twice, differently: "What we do" (Design, Development, Marketing, Keeping it running) and the cards (Marketing, Design, Development, Automation, Local).
+- [ ] Klamath Falls stacks four calls to action under "Let's work together"; `/local/` and Redding read in a consultant register.
+- [ ] The brand-identity article closes with an Adobe Express section that reads as a promotion.
+- [ ] `/service/` has no eyebrow line where every other page has one.
 
 ## Other pages
 

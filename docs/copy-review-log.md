@@ -2,6 +2,53 @@
 
 Each pass of the three-reviewer copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 2: September 29, 2026
+
+| Reviewer | Whole site | Homepage and service pages |
+|---|---|---|
+| Local owner | 4 | 6 |
+| Webmaster | 2 | 4 |
+| Copywriter | 4 | 6 |
+
+### The objections that matter most
+
+The local owner:
+
+- Every service page points to the prices page, which still shows "6k/mo" and "120k/annu" with nothing attached; the owner still leaves there.
+- Team or solo: the homepage now says you know which webmaster does your work, but no other webmaster is named, and `/contact/` still says "You deal with me directly".
+- What upkeep costs after handover, and whether it's optional.
+- Training reads like a do-it-yourself course, not the handover training the service pages promise.
+- Nothing for a county office; enterprise work goes to sdin.dev.
+
+The webmaster:
+
+- Still no way in: no page, link or terms, and the only joining material is `/community/staff/` beside paid memberships.
+- Proof and portfolio credited to Sean alone; marketplace sourcing implied on `/resources/`.
+- Craft on the focus pages: a homepage close with no next step, emoji in headings read aloud by screen readers, stock agency headlines in mixed case, Training's hype.
+
+What landed from pass 1: "not a stranger who inherited your file", the team promise, the tappable contact blocks, "Ratings of Sean Dinwiddie's own work".
+
+### Tweaks applied
+
+- **Headlines in the reader's words** on Website design, CRO, Website development, Custom apps, On-site SEO, Off-site SEO, Klamath Falls and the services hub. The Development and Marketing hub headlines and intros stay: they follow Sean's own wording.
+- **One title pattern** ending in "| Sean Dinwiddie's Webmastery" on the homepage and the service pages.
+- **The homepage close** gets a next step: the free first conversation, a tappable phone number and email.
+- **The homepage's "What we do"** loses its emoji, and "Search and ads" becomes "Marketing" to match the menu.
+- **Plain words:** "Google and Bing ads, set up and tuned, with a hard ceiling on spend"; "a webmaster to call who already knows your site" in place of "a technical lead on call".
+- **Hub buttons** named like the Related links ("Website design", "Conversion rate optimization", and so on).
+- **The price in writing:** the pages that point to prices say every job starts with a written scope and fee.
+- **One service-area phrase:** Klamath Falls, Redding, and the towns in between.
+- **Klamath Falls:** "Meet the founder", and tappable contact details.
+- **Craft:** "cost", "What it costs" on Automation, "Choose a service", bold-in-heading markup, the brand-identity article's voice and two off-topic links, Training's hype and all-caps labels, and current `dateModified` dates.
+- **Sean's direction, pricing sprinkled:** "Fees are published: $6,000 a month, or $120,000 a year for a larger scope, and a flat fee in writing for a defined job." on the homepage, the services hub, the Design, Development, Marketing and Local hubs, six service pages, Klamath Falls and Redding.
+- **Sean's direction, recruiting sprinkled:** "Webmasters join the Sean Dinwiddie's Webmastery team as subcontractors on commission, with local clients and a written scope for every job." on the homepage, the services hub, the Local hub, seven service pages and Redding.
+
+### Waiting
+
+- **Held inside the focus:** "Full-Service" in the eyebrow (Sean's tagline beside "agency"); the homepage's "Full-stack development, user experience design, and digital strategy"; numbered steps as real lists; the homepage's two service lists; Klamath Falls' stacked calls to action; the consultant register on `/local/` and Redding; the brand article's Adobe section; the eyebrow missing on `/service/`; benefit-first meta descriptions; homepage image weight.
+- **Outside the focus, limiting the scores most:** the prices page, `/contact/`'s "You deal with me directly", the webmaster page, the sitewide call-to-action label and top bar, `/about/`.
+- **Facts only Sean has:** in `todo.md`.
+
 ## Pass 1: September 29, 2026
 
 | Reviewer | Score |

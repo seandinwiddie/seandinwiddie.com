@@ -48,6 +48,8 @@ The copywriter reads the site through fifteen sources:
 
 The loop works on the homepage and the service pages: the services hub, Design, Development, Marketing, Automation, Local and Training, with their sub-pages. The reviewers read the whole site, but tweaks land on these pages. Shared blocks that belong to them, such as the service cards and the service pages' related links, change with them.
 
+Pricing and recruiting are sprinkled across these pages: a line with the published fees near each page's next step, and a line addressed to webmasters about joining.
+
 ## Each pass
 
 1. The three reviewers score the site and list their objections, distractions and tweaks.

@@ -61,6 +61,8 @@ They get:
 - standard fee agreements and a written scope for every job
 - a path from junior to mid to senior
 
+Recruiting appears across the homepage and the service pages too, in lines addressed to webmasters: subcontractors on commission, local clients and a written scope for every job. The junior-to-senior ladder stays on the webmaster page, away from owners.
+
 ## Pricing
 
 Sean Dinwiddie's Webmastery charges the way a law firm or a service contract does, never from a fixed menu that invites scope creep.
@@ -70,6 +72,7 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
+- Pricing appears across the homepage and the service pages, not only on the prices page: the published fees, and a flat fee in writing for a defined job.
 
 ## Promises
 
