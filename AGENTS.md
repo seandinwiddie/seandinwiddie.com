@@ -16,6 +16,8 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 
 Read `docs/positioning.md` before any copy work, and `docs/copy-review.md` and `docs/reading-list.md` before any copy review.
 
+Sean's pending decisions (`todo.md`, "Facts only Sean has", and the open decisions in `docs/packages.md`) can go through the llm-council skill (`.claude/skills/llm-council/`): five advisors, an anonymous peer review and a chairman's verdict. A verdict is a recommendation. Nothing it recommends lands in the docs or on the site until Sean approves it, and facts only Sean knows never come from a council.
+
 **These files stay current.** Every new instruction lands in the matching file in the same change: working and writing rules here, positioning in `docs/positioning.md`, the copy loop in `docs/copy-review.md`, the reading list in `docs/reading-list.md`, each pass in `docs/copy-review-log.md`, open work in `todo.md`. Finished work leaves `todo.md`.
 
 ## Working in this repo
