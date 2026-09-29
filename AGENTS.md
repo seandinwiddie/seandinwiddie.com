@@ -8,7 +8,7 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 |---|---|
 | `AGENTS.md` | How to work in this repo and the writing rules |
 | `docs/positioning.md` | What Sean Dinwiddie's Webmastery is, who the site speaks to, pricing and promises |
-| `docs/copy-review.md` | The three-reviewer copy loop, distractions and the mission |
+| `docs/copy-review.md` | The four-reviewer copy loop, its focus, distractions and the mission |
 | `docs/reading-list.md` | The audit of the copywriter's fifteen sources: what each teaches, what the copywriter checks, and what they add up to for the site |
 | `docs/copy-review-log.md` | Each copy review pass: scores, the objections that matter most, the tweaks applied and what waits |
 | `todo.md` | Open work on the site |

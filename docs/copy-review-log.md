@@ -1,6 +1,6 @@
 # Copy review log
 
-Each pass of the three-reviewer copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
+Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
 ## Pass 2: September 29, 2026
 

@@ -84,7 +84,7 @@ These change through the copy review, a small tweak each pass, never in one rewr
 
 ## Other pages
 
-- [ ] Contact page H1: "Let's talk about your goals" in place of "Contact".
+- [ ] Contact page H1: "Let's talk about your goals" in place of "Contact". The contact page is in the copy review's focus since pass 3.
 - [ ] `/about/`: the title "Independent Web Developer"; the unfinished sentence "is one of the most important."; the "spread your wings… with finess!" line; "affordable prices"; "Act now by contacting me"; "likewise individuals"; and naming Sean as the founder of Sean Dinwiddie's Webmastery.
 - [ ] `/contact/`: "You deal with me directly", "Tell me what the business needs", "+1 (530) 638-3238" and "nearby communities".
 - [ ] `/examples/`: "the websites I have built" credits the work to Sean by name.

@@ -27,7 +27,7 @@ The team serves:
 
 ## Character
 
-Boutique, high-end and classy: understated and assured, never loud, never hustling. High-end describes the standard of the work and the service, never who is welcome; every client gets it.
+Sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable: understated and assured, never loud, never hustling. High-end describes the standard of the work and the service, never who is welcome; every client gets it.
 
 ## The community
 

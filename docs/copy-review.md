@@ -1,10 +1,10 @@
-# Copy review: the three-reviewer dream loop
+# Copy review: the four-reviewer dream loop
 
 The copy review runs the dream-loop skill (`.claude/skills/dream-loop/`) on words instead of images. The target is the site fully expressing Sean Dinwiddie's Webmastery as `docs/positioning.md` defines it. Every edit follows the writing rules in `AGENTS.md`.
 
 ## The reviewers
 
-Each pass, three reviewers read the whole site, each in a fresh context with no memory of earlier passes beyond the previous scores and objections.
+Each pass, four reviewers read the whole site, each in a fresh context with no memory of earlier passes beyond the previous scores and objections.
 
 ### 1. The local owner
 
@@ -16,7 +16,11 @@ Reads as an independent webmaster or developer weighing subcontracting under the
 
 ### 3. The copywriter
 
-Reviews the site through the reading list and the mission below. Reads both objection lists, finds the distraction behind each objection, and names the sweeping tweaks that remove it. Scores the site from 0 to 10.
+Reviews the site through the reading list and the mission below. Reads the other reviewers' findings, finds the distraction behind each objection, and names the sweeping tweaks that remove it. Scores the site from 0 to 10.
+
+### 4. The senior CTO
+
+Reads as a senior CTO at an elite, high-end boutique agency firm. Checks every claim for accuracy: technical, legal and factual, and against what the site's own build and code show. Names where the site can be more sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable. Scores the site from 0 to 10.
 
 ## Distractions
 
@@ -46,17 +50,17 @@ The copywriter reads the site through fifteen sources:
 
 ## Focus
 
-The loop works on the homepage and the service pages: the services hub, Design, Development, Marketing, Automation, Local and Training, with their sub-pages. The reviewers read the whole site, but tweaks land on these pages. Shared blocks that belong to them, such as the service cards and the service pages' related links, change with them.
+The loop works on the homepage, the service pages (the services hub, Design, Development, Marketing, Automation, Local and Training, with their sub-pages) and the contact page. The reviewers read the whole site, but tweaks land on these pages. Shared blocks that belong to them, such as the service cards and the service pages' related links, change with them.
 
 Pricing and recruiting are sprinkled across these pages: a line with the published fees near each page's next step, and a line addressed to webmasters about joining.
 
 ## Each pass
 
-1. The three reviewers score the site and list their objections, distractions and tweaks.
+1. The four reviewers score the site and list their objections, accuracy findings, distractions and tweaks.
 2. The edits are small tweaks swept across the whole site: the same small improvement applied everywhere it fits. No pass makes a large edit to any one section. This holds for every page, the prices page and the footer included, and before the first pass too: nothing is rewritten all at once. A page the site doesn't have yet starts small and grows a little each pass.
 3. `npm run build` passes before the pass is committed.
 4. The pass is recorded in `docs/copy-review-log.md`: the three scores, the objections that matter most, the tweaks applied and what waits.
 
 ## Stopping
 
-The loop ends when all three reviewers score the site 9 or higher. When scores stop improving, the loop pauses for Sean's direction instead of escalating to large edits.
+The loop ends when all four reviewers score the site 9 or higher. When scores stop improving, the loop pauses for Sean's direction instead of escalating to large edits.
