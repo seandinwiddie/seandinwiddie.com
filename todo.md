@@ -18,6 +18,8 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Webmaster terms: the commission basis, who keeps the client relationship, what moves a webmaster up each rung, and the latitude to make things right for a client.
 - [ ] Whether the team uses AI tools with a webmaster reviewing and answering for the work.
 - [ ] Whether enterprise work belongs to Sean Dinwiddie's Webmastery's fractional CTO service or to the sister practice at sdin.dev, which the homepage and `/service/` send it to.
+- [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
+- [ ] Whether the "Team Staff Earnings" on `/community/staff/` is how webmasters are paid. Its worked example shows "-0.8%" and "-$7,200" where the result is a $7,200 payout, so the percentages read as errors.
 
 ## The site speaks as the team
 

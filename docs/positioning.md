@@ -25,6 +25,10 @@ The team serves:
 - local service businesses: websites, local search, handover and support
 - local enterprise and government offices: fractional CTO services
 
+## The community
+
+The site's community pages (`/community/`) offer an online country club for administrators: free beta access for early signups, General Access at $1,000 a month and the Inner Circle at $4,000 a month, with course content, community recordings, member demonstrations, user guides and manuals. Sean confirms the country club is accurate. It is a real offering, never a distraction to remove; the copy gives it context.
+
 ## Audiences
 
 Site copy speaks to one of two readers.
