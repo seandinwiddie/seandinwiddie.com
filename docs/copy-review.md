@@ -52,7 +52,7 @@ The copywriter reads the site through fifteen sources:
 
 The loop works on the homepage, the service pages (the services hub, Design, Development, Marketing, Automation, Local and Training, with their sub-pages) and the contact page. The reviewers read the whole site, but tweaks land on these pages. Shared blocks that belong to them, such as the service cards and the service pages' related links, change with them.
 
-Pricing and recruiting are sprinkled across these pages: a line with the published fees near each page's next step, and a line addressed to webmasters about joining.
+Pricing and recruiting are sprinkled across these pages: a line with the published fees near each page's next step, and a line addressed to webmasters about joining. The fee lines carry no link: Sean reworks the prices page himself, so the loop never edits it and never points a call to action at it.
 
 ## Each pass
 

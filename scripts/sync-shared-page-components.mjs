@@ -155,9 +155,9 @@ const SERVICE_TREE = [
   ]],
 ];
 
-// The two pages a prospect wants next, and the two that nothing linked to from
-// inside a page before now.
-const NEXT_STEPS = [["/examples/", "Sites Sean has built"], ["/prices/", "Prices"]];
+// The page a prospect wants next. Prices stay out of these links: Sean is
+// reworking the prices page, so links to it are kept to the menu and footer.
+const NEXT_STEPS = [["/examples/", "Sites Sean has built"]];
 
 const routeForPage = (name) => (name === "index.html" ? "/" : `/${name.replace(/index\.html$/, "")}`);
 

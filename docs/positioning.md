@@ -73,6 +73,7 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
 - Pricing appears across the homepage and the service pages, not only on the prices page: the published fees, and a flat fee in writing for a defined job.
+- Links to the prices page stay minimal (the menu, the footer and the sitemap) and are never calls to action while Sean reworks that page himself.
 
 ## Promises
 

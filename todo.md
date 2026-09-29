@@ -48,7 +48,7 @@ These change through the copy review, a small tweak each pass, never in one rewr
 
 ## Prices page
 
-These change through the copy review, a small tweak each pass, never in one rewrite. The page works toward the order in `docs/reading-list.md` (Public prices): the need, the pricing philosophy, each price with its engagement, the change rule, FAQs, one next step.
+Sean reworks the prices page himself; these notes are input for him, and the copy review neither edits the page nor points calls to action at it. The page works toward the order in `docs/reading-list.md` (Public prices): the need, the pricing philosophy, each price with its engagement, the change rule, FAQs, one next step.
 
 - [ ] First distractions to go: "inexpensive" beside $6,000/month, "mindless scam offerings", "Our unique value proposition", the Inquiry/Insight labels, "you can literally depend on us", "dramatically improved sleep", "Then contact us immediately!", the YouTube embed, and the call to action above the prices.
 - [ ] "Shasta County" becomes Klamath Falls, Redding and the towns in between.
