@@ -26,7 +26,7 @@ Reads as a senior CTO at an elite, high-end boutique agency firm. Checks every c
 
 A distraction is anything that moves the reader's attention off the page's one question, or opens a question the page doesn't close. It turns the reader from weighing the offer to counterarguing it or leaving. Distraction helps only weak messages, and the case for Sean Dinwiddie's Webmastery is strong, so every distraction costs persuasion. The kinds (exits, load, open loops, threat, ego, incoherence, hype, hidden hands, machine noise) and what keeps attention are in `docs/reading-list.md`.
 
-The copywriter removes distractions and keeps attention moving with honest pulls: a question (SPIN Selling), curiosity or a story (Dan Lok), a bucket brigade (Backlinko), the mission.
+Every deliverable carries the feeling it brings the reader, in the reader's own day, and no feeling stands without a deliverable behind it (`docs/reading-list.md`, "Feeling rides on the deliverable"). The copywriter removes distractions and keeps attention moving with honest pulls: a question (SPIN Selling), curiosity or a story (Dan Lok), a bucket brigade (Backlinko), the mission.
 
 Nothing distracts from prices or terms. Nothing is hidden from the customer.
 

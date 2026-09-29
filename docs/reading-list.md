@@ -310,7 +310,7 @@ The copywriter checks:
 4. Concrete, local detail the reader can picture, without density that slows reading.
 5. "We" reads as one team, without invented counts.
 6. Risk is lowered (written scope, approval first, handover, no lock-in) and the reward is stated plainly.
-7. No line promises a feeling in place of a deliverable.
+7. Every feeling rides on a deliverable: the line names what the reader gets and the feeling it brings, never the feeling alone.
 
 ### Mapping Cloud Nine (Steven Kotler, 2019)
 
@@ -493,7 +493,7 @@ Sean asks the reviewers to think about the team's benefits the way Stealing Fire
   - the published rate ends the haggling;
   - the written scope is the clear goal;
   - the change rule ends the scope fights;
-  - 70/30 keeps the webmaster independent;
+  - the subcontractor structure keeps the webmaster's own practice, and they keep 70% of the fee;
   - the ladder keeps the challenge just past their skill;
   - the mission is the purpose;
   - one standard across the team makes it "we".
@@ -506,8 +506,18 @@ Sean asks the reviewers to think about the team's benefits the way Stealing Fire
   - one standard under one name;
   - plain notes as feedback.
 - **Learning compounds on the team.** What one webmaster learns on one job becomes the team's, and it builds job after job, like interest. The standard rises with every job. Alone, a webmaster learns only from their own jobs, and the lessons stop with them. On the team, a webmaster grows faster than they could alone, and every owner gets a webmaster who brings what the whole team has learned. The site states the result plainly and names a mechanism (peer review, shared notes, team calls) only when Sean confirms it runs.
-- **Independence is the point.** The benefits describe a structure an independent practice plugs into, never control over how, when or where a webmaster works.
-- **The book's cautions hold.** Sentences are about the reader, not the brand, and no line promises a feeling in place of a deliverable. The book's vocabulary stays off the site (see below).
+- **Their own practice is the point.** The benefits describe a structure a webmaster's own practice plugs into, never control over how, when or where a webmaster works. On the site this reads as "your own practice", never "independence", and "independent" never shares a line with "Jefferson State" (see below).
+- **The book's cautions hold.** Sentences are about the reader, not the brand, and every feeling rides on a deliverable (see "Feeling rides on the deliverable"). The book's vocabulary stays off the site (see below).
+
+### Feeling rides on the deliverable
+
+The reading list is plain that feeling sells. Ca$hvertising: emotion decides and logic justifies, and every section serves a Life-Force 8 desire through a mental movie. Becoming Supernatural: the copy opens in relief and confidence. Manifest Now: each section leaves one thought worth keeping. SPIN Selling: the need-payoff is the buyer feeling the benefit. Zombie Loyalists: service people talk about. So the copy names the feeling each deliverable brings, in the reader's own day:
+
+- **The deliverable is the proof; the feeling is the reason.** "You change your own hours on a Sunday night without calling anyone" is a handover and the relief of not waiting on anyone. "You know the price before work begins" is a written scope and the calm of no surprise bill.
+- **Owners:** relief, control, confidence, pride in a business that looks like the work they do, time back for family, and the quiet of a phone that rings with customers.
+- **Webmasters:** days spent on the craft, pride in work the name stands behind, being part of a team, and growing past where they could alone.
+- **In the site's register:** understated and assured, a feeling the reader recognizes, never a hyped or clinical one.
+- **Never a feeling alone:** no "peace of mind" with nothing behind it, and no health or sleep promise.
 
 ### Never on the site
 
@@ -522,4 +532,4 @@ Sean asks the reviewers to think about the team's benefits the way Stealing Fire
 - **Hustle:** "hardcore", "grind", "all in".
 - **AI with a human name or face.**
 - **Webmasters as "resources", "bandwidth" or "on-demand talent",** and "master" in any sense but mastery of a craft.
-- **Health or feeling promises,** such as "dramatically improved sleep".
+- **Health promises, or a feeling with no deliverable behind it,** such as "dramatically improved sleep".

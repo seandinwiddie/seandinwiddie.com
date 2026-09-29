@@ -18,7 +18,7 @@ The reading-list audit (`docs/reading-list.md`) gives each form of mastery one j
 
 ## How it works
 
-Webmasters join the Sean Dinwiddie's Webmastery team as subcontractors paid on commission, the way independent agents work under an insurance agency: the house keeps 30%, and the webmaster keeps 70%. The structure is independent; the team is one. Every webmaster is a team member, with meaningful work, a shared mission and a real ladder. It is never a commission shop where it's all about the money.
+Webmasters join the Sean Dinwiddie's Webmastery team as subcontractors paid on commission, the way independent agents work under an insurance agency: the house keeps 30%, and the webmaster keeps 70%. The split sits inside the published fee and is never added to the owner's bill. On the site the split reads "keep 70% of the fee" and "the agency keeps 30%", in the third person on owner-facing pages ("their work", since "your work" there means the owner's job); the insurance comparison stays off owner-facing pages. The structure is independent; the team is one. Every webmaster is a team member, with meaningful work, a shared mission and a real ladder. It is never a commission shop where it's all about the money.
 
 The team serves:
 
