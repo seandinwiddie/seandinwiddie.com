@@ -60,7 +60,7 @@ The mission of Sean Dinwiddie's Webmastery: **Strengthening the service industry
 ## Each pass
 
 1. The three reviewers score the site and list their objections, distractions and tweaks.
-2. The edits are small tweaks swept across the whole site: the same small improvement applied everywhere it fits. No pass makes a large edit to any one section.
+2. The edits are small tweaks swept across the whole site: the same small improvement applied everywhere it fits. No pass makes a large edit to any one section. This holds for every page, the prices page and the footer included, and before the first pass too: nothing is rewritten all at once. A page the site doesn't have yet starts small and grows a little each pass.
 3. `npm run build` passes before the pass is committed.
 
 ## Stopping

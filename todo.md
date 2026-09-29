@@ -10,6 +10,8 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 ## The site speaks as the team
 
+These change through the copy review, a small tweak each pass, never in one rewrite.
+
 - [ ] Sean picks the public wording for the team built on mastery (`docs/positioning.md`, Identity). Directions on the table:
   - **The trades' ladder:** master electricians, master stylists and master chefs already live by mastery; the team climbs the same way.
   - **The name on the door:** like a chef's restaurant or a law firm, "Sean Dinwiddie's" vouches for every piece of work, whoever does it.
@@ -17,10 +19,12 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 - [ ] Rewrite the first clause of the shared footer About block, "a local webmastery agency", in the chosen wording. The rest of the block already matches the positioning.
 - [ ] Bring the header tagline "Full-Service Web & Software Agency · Klamath Falls and Redding" (85 pages) in line with the chosen wording.
 - [ ] Give every page title the same suffix with the full brand name. Titles end in "| Sean Dinwiddie" (55 pages), "| Sean Dinwiddie's Webmastery" (13), "- Sean Dinwiddie's Webmastery" (10) and four one-offs.
-- [ ] Add a page for webmasters: the team, the mission, commission, the path from junior to mid to senior, and how to join.
-- [ ] Add a page for fractional CTO services for local enterprise and government offices, with the ADA Title II deadlines of April 26, 2027 and April 26, 2028.
+- [ ] Start a page for webmasters and grow it each pass: the team, the mission, commission, the path from junior to mid to senior, and how to join.
+- [ ] Start a page for fractional CTO services for local enterprise and government offices and grow it each pass, with the ADA Title II deadlines of April 26, 2027 and April 26, 2028.
 
 ## Prices page
+
+These change through the copy review, a small tweak each pass, never in one rewrite.
 
 - [ ] Explain how Sean Dinwiddie's Webmastery charges, the way a law firm or a service contract does: retainers, flat fees for defined jobs, service and maintenance contracts, and out-of-scope work quoted and approved before it starts. No fixed menu.
 - [ ] Write "6k/mo 120k/annu" as "$6,000/month" and "$120,000/year", each tied to its engagement, with no "save" label. Prices stay public.
