@@ -25,9 +25,13 @@ The team serves:
 - local service businesses: websites, local search, handover and support
 - local enterprise and government offices: fractional CTO services
 
+## Character
+
+Boutique, high-end and classy: understated and assured, never loud, never hustling. High-end describes the standard of the work and the service, never who is welcome; every client gets it.
+
 ## The community
 
-The site's community pages (`/community/`) offer an online country club for administrators: free beta access for early signups, General Access at $1,000 a month and the Inner Circle at $4,000 a month, with course content, community recordings, member demonstrations, user guides and manuals. Sean confirms the country club is accurate. It is a real offering, never a distraction to remove; the copy gives it context.
+The online country club for administrators (`/community/`) is part of the brand's boutique, high-end character, not a headline. Its pages list free beta access for early signups, General Access at $1,000 a month and the Inner Circle at $4,000 a month, with course content, community recordings, member demonstrations, user guides and manuals; Sean confirms the country club is accurate. The copy mentions it lightly and in context. It is never removed and never made the pitch.
 
 ## Audiences
 
