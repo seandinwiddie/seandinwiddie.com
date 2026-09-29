@@ -255,7 +255,7 @@ const withSocialIcons = (name, html) => {
 // is left exactly as it is.
 const CTA_LABELS = [
   [(name) => name === "about/index.html", null],
-  [(name) => name === "contact/index.html", "Send a message"],
+  [(name) => name === "contact/index.html", "Call or email"],
   [(name) => name.startsWith("community/") || name.startsWith("blog/"), "Work with Sean"],
   [() => true, "Book a free call"],
 ];

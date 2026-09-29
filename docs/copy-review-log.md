@@ -2,6 +2,87 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 3: September 29, 2026
+
+| Reviewer | Whole site | Homepage, service pages and contact |
+|---|---|---|
+| Local owner | 3.5 | 5 |
+| Webmaster | 3 | 5 |
+| Copywriter | 4 | 5.5 |
+| Senior CTO | 3.5 | 5.5 |
+
+These scores read the site before this pass's tweaks. The benefit reviews that followed Sean's directions score the final recruiting note 8 (webmaster), 8 (local owner), 7.5 (senior CTO) and 8 (copywriter).
+
+### The objections that matter most
+
+The local owner:
+
+- The line "$6,000 a month, or $120,000 a year for a larger scope" told a food truck the site isn't for them.
+- The recruiting line under the phone number read as upsell and strangers.
+- `/contact/` said "You deal with me directly" while the homepage promises a team.
+
+The webmaster:
+
+- There was one price story on the service pages, another on Automation and a third on the prices page.
+- There were no terms for joining.
+- `/community/staff/` reads as a multi-level scheme.
+
+The senior CTO:
+
+- Claims the site's own code or facts contradict: stars and a map pin from on-site markup, "eight seconds", "five years", "penalized", a daily ad ceiling called hard.
+- Review counts were missing.
+- `/contact/`'s title and its 2020 date.
+- Pages of 1.4 to 2.4 MB against "lean pages".
+- Buttons at 3.9:1 contrast against the accessibility claims.
+
+### Sean's directions this pass
+
+- Work with the package ladder in `docs/packages.md`, with amounts, and iron the pricing across the focus pages. Keep fractional CTO work minimal and point it to sdin.dev. Commission: the house keeps 30%.
+- The reviewers promote the benefits of an independent webmaster joining the agency firm's team, and owners see the team as a benefit too, through Stealing Fire and the results of compounding group collaboration and learning.
+- Feeling belongs in the copy: every deliverable carries the feeling it brings.
+
+### Tweaks applied
+
+- **One ladder on every focus page.** Each page names a defined job at its share of the $6,000 monthly engagement: a kiosk's listings at a tenth ($600), a food truck's menu page at a quarter ($1,500), a family shop's website at a full share ($6,000). It rises to the monthly engagement, and the annual engagement appears on the homepage and Local only. The Year Share appears on Klamath Falls and Redding for a public office's accessibility review. The Care Contract prices upkeep. "Fees are published…" is gone.
+- **Automation:** one automation is a quarter share ($1,500), fixed in writing after the free audit. Keeping it running is the Care Contract.
+- **The recruiting note:** a labelled "For webmasters" aside, set apart from the client's contact details. It leads with what the team takes off a webmaster's desk: "the name brings the local clients, the fee is published and every job has a written scope, so a webmaster's days go to the craft". The split comes last, "keep 70% of the fee on their work", in the third person. The fuller form on the homepage, `/service/` and `/contact/` adds "The client decides every addition" and "a lesson learned on one job doesn't stop with one webmaster". The note carries a "Joining the team" subject line, and it now also appears on the three hubs, Klamath Falls and `/contact/`.
+- **The team as the owner's benefit:** the homepage adds "One team under one name… every job ends the same way: a check that it works and a plain note you can keep", and "brings to it what the whole team has learned".
+- **`/contact/` speaks as the team:**
+  - "Tell us", and "You know which webmaster does your work".
+  - The ladder, and the change rule.
+  - "Call or email", one phone format and the service-area phrase.
+  - The title "Contact | Sean Dinwiddie's Webmastery", the H1 "Start with a free conversation", and a current date.
+- **Feeling on the deliverables:** a fee you know before work begins, the site in your hands at handover, upkeep off your desk, nothing starting without your approval, changing your own hours on a Sunday night.
+- **Accuracy:**
+  - The homepage review counts: Upwork and Contra, 5.0 from 2 each.
+  - On-site markup sets out hours, prices and the address, not stars or the map pin.
+  - Speed without borrowed statistics.
+  - "a hard monthly ceiling on spend".
+  - Review requests to every customer, not only the happy ones.
+  - Bought links break Google's spam policies.
+  - "widely supported tools"; "Many people find you"; "measuring whether the fix worked".
+  - Redding's "Who does your work".
+
+### Waiting
+
+- **Needs Sean** (in `todo.md`, and being counciled):
+  - the webmaster terms;
+  - joining free;
+  - continuity for owners;
+  - the learning mechanism and confidentiality;
+  - `/community/staff/`'s pay plan;
+  - whether Care is optional;
+  - the accessibility claims against the button contrast.
+- **Sean's wording that clashes:** the Marketing hub's H1 "SEO and campaigns that compound traffic and leads" uses a word the recruiting rules keep away from pay.
+- **Held inside the focus:**
+  - "Book a free call", the sitewide label, which would also change `/prices/`;
+  - the footer and top bar;
+  - numbered steps as real lists;
+  - the homepage's two service lists;
+  - Klamath Falls' stacked calls to action;
+  - image weight.
+- **Outside the focus, limiting the scores most:** `/prices/` (Sean's), `/community/staff/`, a webmaster page, `/about/`, Training's content.
+
 ## Pass 2: September 29, 2026
 
 | Reviewer | Whole site | Homepage and service pages |

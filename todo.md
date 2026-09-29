@@ -31,6 +31,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Sean's role on each site on `/examples/`, and which of them are local.
 - [ ] Whether a webmaster meets Redding owners in person, as the Klamath Falls page offers at Brevada, and a word on what Brevada is.
 - [ ] The 🧙 brand mark in the header.
+- [ ] The Marketing hub's H1, "SEO and campaigns that compound traffic and leads", is Sean's wording, but "compound" is a word the recruiting rules keep away from pay.
 - [ ] The terms of service: they cover website use only, under California law, while Sean works from Klamath Falls, Oregon.
 - [ ] The SMS terms name an "Inquiry Form" and SMS opt-in the site doesn't have.
 - [ ] Whether to keep the empty blog post titled "https://en.wikipedia.org/wiki/Cargo_cult_programming".
@@ -88,9 +89,7 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 
 ## Other pages
 
-- [ ] Contact page H1: "Let's talk about your goals" in place of "Contact". The contact page is in the copy review's focus since pass 3.
 - [ ] `/about/`: the title "Independent Web Developer"; the unfinished sentence "is one of the most important."; the "spread your wings… with finess!" line; "affordable prices"; "Act now by contacting me"; "likewise individuals"; and naming Sean as the founder of Sean Dinwiddie's Webmastery.
-- [ ] `/contact/`: "You deal with me directly", "Tell me what the business needs", "+1 (530) 638-3238" and "nearby communities".
 - [ ] `/examples/`: "the websites I have built" credits the work to Sean by name.
 - [ ] `/tools/`: the card of unsourced quotes and "surcui" (Sucuri).
 - [ ] Community pages: the unsourced Jillian Michaels quote, "D ocumentation Creation", "Developing Modules a cyclically." and "elevate your game??".
