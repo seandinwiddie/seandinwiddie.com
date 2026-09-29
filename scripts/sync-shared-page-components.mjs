@@ -12,15 +12,15 @@ import { publicPageFiles, relativePath } from "./static-site.mjs";
 // the three renderers differ only in heading level and indentation.
 const SERVICE_CARDS = [
   ["/marketing/", "Marketing", "AdobeStock_135407660-scaled.jpeg",
-    "Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves. Marketing – On-site SEO &amp; Off-site SEO + Ads"],
+    "Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves."],
   ["/design/", "Design", "AdobeStock_207254886-scaled.jpeg",
-    "A look that is yours, on pages built for one job each. Readable in one hand on a phone. Design – New &amp; CRO"],
+    "A look that is yours, on pages built for one job each. Readable in one hand on a phone."],
   ["/development/", "Development", "AdobeStock_180105378-scaled.jpeg",
-    "The site, and the software behind it when a site is not enough. Yours to run afterwards. Development – Sites &amp; Apps"],
+    "The site, and the software behind it when a site is not enough. Yours to run afterwards."],
   ["/automation/", "Automation", "AdobeStock_138021007-e1571312681920-scaled.jpeg",
-    "Stop paying someone to retype the same order into a second system. Automation &ndash; Process audit, custom build &amp; integration"],
+    "Stop paying someone to retype the same order into a second system."],
   ["/local/", "Local", "AdobeStock_104183460_111672862-1-scaled.jpeg",
-    "Turning up when someone nearby searches for what you sell. Local &ndash; Klamath Falls &amp; Redding"],
+    "Web help in Klamath Falls, Redding, and the towns in between."],
 ];
 
 const serviceCards = ({ indent, heading }) => {
@@ -157,7 +157,7 @@ const SERVICE_TREE = [
 
 // The two pages a prospect wants next, and the two that nothing linked to from
 // inside a page before now.
-const NEXT_STEPS = [["/examples/", "Work we have built"], ["/prices/", "Prices"]];
+const NEXT_STEPS = [["/examples/", "Sites Sean has built"], ["/prices/", "Prices"]];
 
 const routeForPage = (name) => (name === "index.html" ? "/" : `/${name.replace(/index\.html$/, "")}`);
 

@@ -44,11 +44,16 @@ The copywriter reads the site through fifteen sources:
 
 `docs/reading-list.md` holds the full audit: what each source teaches, the checks the copywriter runs because of it, and what they add up to for Sean Dinwiddie's Webmastery. That covers the identity, public prices, distractions, objection seeds for both reviewers, the mission, and what never appears on the site.
 
+## Focus
+
+The loop works on the homepage and the service pages: the services hub, Design, Development, Marketing, Automation, Local and Training, with their sub-pages. The reviewers read the whole site, but tweaks land on these pages. Shared blocks that belong to them, such as the service cards and the service pages' related links, change with them.
+
 ## Each pass
 
 1. The three reviewers score the site and list their objections, distractions and tweaks.
 2. The edits are small tweaks swept across the whole site: the same small improvement applied everywhere it fits. No pass makes a large edit to any one section. This holds for every page, the prices page and the footer included, and before the first pass too: nothing is rewritten all at once. A page the site doesn't have yet starts small and grows a little each pass.
 3. `npm run build` passes before the pass is committed.
+4. The pass is recorded in `docs/copy-review-log.md`: the three scores, the objections that matter most, the tweaks applied and what waits.
 
 ## Stopping
 

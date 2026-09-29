@@ -5,7 +5,7 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 ## Copy review
 
 - [ ] Make the loop runnable: a project skill that runs `docs/copy-review.md` with `docs/reading-list.md`, in place of the installed dream-loop skill's image-and-3D process.
-- [ ] Run the three-reviewer copy review in `docs/copy-review.md`. Sean decides when it starts.
+- [ ] Keep running the copy review, pass by pass, until all three reviewers score 9 or higher. Pass 1 is in `docs/copy-review-log.md`.
 
 ## Facts only Sean has
 
@@ -20,19 +20,30 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Whether enterprise work belongs to Sean Dinwiddie's Webmastery's fractional CTO service or to the sister practice at sdin.dev, which the homepage and `/service/` send it to.
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
 - [ ] Whether the "Team Staff Earnings" on `/community/staff/` is how webmasters are paid. Its worked example shows "-0.8%" and "-$7,200" where the result is a $7,200 payout, so the percentages read as errors.
+- [ ] Upkeep after handover: what it costs, what it includes, and whether an owner can decline it and call only when something breaks.
+- [ ] Hours and reply times for calls and email on `/contact/`.
+- [ ] What "Starting at $1,000-$2,000" on `/automation/` covers.
+- [ ] Whether Medford is in the service area. `/automation/` names it; everywhere else says Klamath Falls, Redding and the towns in between.
+- [ ] Sean's role on each site on `/examples/`, and which of them are local.
+- [ ] Whether a webmaster meets Redding owners in person, as the Klamath Falls page offers at Brevada, and a word on what Brevada is.
+- [ ] The 🧙 brand mark in the header.
+- [ ] The terms of service: they cover website use only, under California law, while Sean works from Klamath Falls, Oregon.
+- [ ] The SMS terms name an "Inquiry Form" and SMS opt-in the site doesn't have.
+- [ ] Whether to keep the empty blog post titled "https://en.wikipedia.org/wiki/Cargo_cult_programming".
+- [ ] The training pages' content, including Page setup's advice to use WordPress.
+- [ ] The empty `/store/`.
 
 ## The site speaks as the team
 
 These change through the copy review, a small tweak each pass, never in one rewrite. The wording follows `docs/positioning.md` (Identity): mastery that spreads is the umbrella, the name on the door is the promise to clients, and the ladder speaks to webmasters only.
 
-- [ ] The shared footer About block's first clause, "a local webmastery agency", becomes one team of webmasters built on mastery. The rest of the block already matches the positioning.
-- [ ] The header tagline "Full-Service Web & Software Agency · Klamath Falls and Redding" (85 pages).
-- [ ] "Agency" in the schema on every page ("business automation agency") and in meta descriptions, such as the prices page's "the agency's project approach".
-- [ ] The homepage's founder-only promises ("you deal with Sean from the first conversation", "the person who builds it is the person who answers the phone") become promises the whole team keeps: the webmaster who builds the site is the one the client calls.
-- [ ] The homepage's "not a junior who inherited your file" undercuts the ladder.
-- [ ] The homepage ratings are labeled as reviews of Sean's work, not the team's.
+- [ ] The footer's "you call someone who already knows your site" becomes the webmaster who already knows it, matching the homepage.
+- [ ] The call-to-action labels: "Book a free call" leads to no booking, and "Work with Sean" on the community pages speaks for one person.
+- [ ] The top bar's "💳 Secure Payment" sits above every price on every page.
+- [ ] The structured data lists Sean's personal Freelancer, Upwork and Contra profiles as the agency's own (`sameAs`).
+- [ ] The community pages' banner keeps "agency" and drops "technical archive", which reads as retired.
 - [ ] Give every page title the same suffix with the full brand name. Titles end in "| Sean Dinwiddie" (55 pages), "| Sean Dinwiddie's Webmastery" (13), "- Sean Dinwiddie's Webmastery" (10) and four one-offs.
-- [ ] Start a page for webmasters and grow it each pass: the team, the mission, commission, the path from junior to mid to senior, and how to join.
+- [ ] Start a page for webmasters (`/about/webmasters/`) and grow it each pass: the team, the mission, commission, the path from junior to mid to senior, and how to join. Pass 1's copywriter drafted a minimal version from `docs/positioning.md` alone, with a small footer link to it.
 - [ ] Start a page for fractional CTO services for local enterprise and government offices and grow it each pass, with the ADA Title II deadlines of April 26, 2027 and April 26, 2028.
 
 ## Prices page
@@ -52,6 +63,7 @@ These change through the copy review, a small tweak each pass, never in one rewr
 - [ ] Add pricing FAQs: what's in scope, what happens when scope changes, prioritization, measuring return.
 - [ ] Bring the vision and mission block in line with the size rule ("small business problems", "one small business at a time", which becomes "one handover at a time"). Keep its team and meaningful-work message: it answers the commission shop where it's all about the money. `/community/introduction/` repeats part of the block.
 - [ ] Define "retainer" on the page, and name flat fees for defined jobs so the two large numbers never tell a kiosk owner "not for you".
+- [ ] Under the prices, one line from the positioning: every engagement starts with a written scope and fee, and work outside that scope is quoted and approved before it starts.
 
 ## Homepage
 
@@ -68,6 +80,12 @@ These change through the copy review, a small tweak each pass, never in one rewr
 ## Other pages
 
 - [ ] Contact page H1: "Let's talk about your goals" in place of "Contact".
+- [ ] `/about/`: the title "Independent Web Developer"; the unfinished sentence "is one of the most important."; the "spread your wings… with finess!" line; "affordable prices"; "Act now by contacting me"; "likewise individuals"; and naming Sean as the founder of Sean Dinwiddie's Webmastery.
+- [ ] `/contact/`: "You deal with me directly", "Tell me what the business needs", "+1 (530) 638-3238" and "nearby communities".
+- [ ] `/examples/`: "the websites I have built" credits the work to Sean by name.
+- [ ] `/tools/`: the card of unsourced quotes and "surcui" (Sucuri).
+- [ ] Community pages: the unsourced Jillian Michaels quote, "D ocumentation Creation", "Developing Modules a cyclically." and "elevate your game??".
+- [ ] `/sitemap/` lists "Design Portfolio" for `/design/`; the 404 page's meta description repeats the brand name.
 - [ ] Mark `/about/` as an AboutPage in its schema.
 - [ ] Review the privacy policy and terms against the subcontractor model.
 

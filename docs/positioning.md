@@ -8,7 +8,7 @@ Sean Dinwiddie's Webmastery is a team of webmasters serving Jefferson State (Kla
 
 ## Identity
 
-The site presents Sean Dinwiddie's Webmastery as one team built on mastery: masters of the craft who keep growing in it. It never reads as a network, a marketplace or an agency.
+The site presents Sean Dinwiddie's Webmastery as an agency: one team built on mastery, masters of the craft who keep growing in it. "Agency" stays; the site never moves away from it. It never reads as a network or a marketplace.
 
 The reading-list audit (`docs/reading-list.md`) gives each form of mastery one job:
 

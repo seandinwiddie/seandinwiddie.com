@@ -385,7 +385,7 @@ The sources agree on four rules:
 - **Never show the ladder to owners.** It raises "will I get the junior?", an objection the page creates itself, and it collides with the size rule.
 - **The client always knows who does the work.** Without that, the name reads bigger than its people: Neuromancer's corporations that outlive everyone in them, or a founder's name carrying one person's conduct.
 - **"Master" means mastery of a craft only.** It never implies a licence or credential ("master electrician" is a licence), and no one holds a "master" title the ladder doesn't define.
-- **The footer's first clause is the first tweak.** "A local webmastery agency" becomes one team of webmasters built on mastery. The rest of the footer already matches: handover, "someone who already knows your site", the mission.
+- **"Agency" stays.** Sean Dinwiddie's Webmastery is an agency, and the site never moves away from the word; Blue Ocean's warning is against "more of everything" claims, not against the agency itself. The footer already carries handover, "someone who already knows your site" and the mission.
 
 ### Public prices
 
