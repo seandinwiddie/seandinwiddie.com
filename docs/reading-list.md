@@ -532,4 +532,9 @@ The reading list is plain that feeling sells. Ca$hvertising: emotion decides and
 - **Hustle:** "hardcore", "grind", "all in".
 - **AI with a human name or face.**
 - **Webmasters as "resources", "bandwidth" or "on-demand talent",** and "master" in any sense but mastery of a craft.
+- **Recruiting words that imply an employee or a scheme** (the CTO's list; worker classification is counsel's call):
+  - **Employment and control:** hire, staff, employee, position, opening, careers, "work for us", "our webmasters", assigned, report to, manager, supervision, set hours, on call, required tools, "our process", mandatory training, performance review, promotion, salary, hourly, exclusive, non-compete.
+  - **Legal status:** partner, associate, agent, affiliate; apprentice and journeyman (the ladder is junior, mid and senior).
+  - **MLM, commission shop and marketplace:** earn up to, income, opportunity, unlimited, passive, financial freedom, be your own boss, build your team, refer a friend, recruiting bonuses, network, marketplace, platform, gig, talent pool, "compound" or "interest" beside pay, "the house".
+  - **Pay rules:** pay is tied only to delivered client work, never to recruiting, memberships or the community's growth. Earnings appear only as arithmetic on one job from the published figures. Joining never requires a payment.
 - **Health promises, or a feeling with no deliverable behind it,** such as "dramatically improved sleep".

@@ -84,7 +84,7 @@ Sean works with the model as it stands: one rate sold in shares, the year as twe
 - Ownership (recommended: the owner holds the domain, hosting and accounts; code and content are the owner's once paid; the webmaster's pre-existing tools are licensed, not transferred).
 - Third-party costs (recommended: billed to the owner directly by each provider, so every fee stays a share).
 - Payment schedules, how far the free first conversation and automation audit go, travel between Klamath Falls and Redding.
-- Commission: the house keeps 30% and the webmaster keeps 70%. Still open: whether the split differs for work a webmaster brings in and work the house assigns. No incentive to upsell; every out-of-scope quote needs the client's approval.
+- Commission: the house keeps 30% and the webmaster keeps 70%, inside the published fee. Still open: whether the split differs for work a webmaster brings in and work the agency refers, and whether it applies to Care and Standing contracts. Commission is an incentive, so the protection is the change rule: the client decides every addition, and every out-of-scope quote needs the client's approval.
 - Procurement: registration (OregonBuys, Cal eProcure), insurance, W-9 and licenses. Oregon's small procurement goes up to $25,000 (ORS 279B.065), so the $24,000 year share fits under it; $25,000 to $250,000 needs three quotes (ORS 279B.070), where the $120,000 year falls. Splitting a procurement to stay under a threshold is prohibited, so the year share is never pitched that way.
 
 Legal cautions:
