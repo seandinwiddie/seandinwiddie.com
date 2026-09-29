@@ -69,13 +69,14 @@ Recruiting appears across the homepage and the service pages too, in lines addre
 
 Sean Dinwiddie's Webmastery charges the way a law firm or a service contract does, never from a fixed menu that invites scope creep.
 
-- Prices are public. The prices page shows the fees, the way a law firm publishes its rates and retainers.
+- Prices are public. The prices page shows the fees, the way a law firm publishes its rates and retainers. It is the cornerstone: it stays accurate, and Sean owns it and edits it himself.
+- Every offer and package elsewhere works within the prices page's two published figures, $6,000 a month and $120,000 a year. No offer carries a price of its own; any figure a reader could compute traces back to those two.
 - Every engagement starts with a written scope and fee: a retainer, a flat fee for a defined job, or a service and maintenance contract.
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
 - Pricing reads like a country club's: a clear ladder from a small package (one defined job at a flat fee, in writing) up to retainers for boutique firms and public offices. A food truck, a kiosk and a family shop each see an offer made for them. Small packages describe the size of the job, never the worth of the client, and no tier talks down.
-- Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. The small packages carry no amount until Sean sets their fees.
+- Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. Small packages are defined portions of the same published rates, never separate price points, and carry no amount until Sean approves them.
 - Links to the prices page stay minimal (the menu, the footer and the sitemap) and are never calls to action while Sean reworks that page himself.
 
 ## Promises
