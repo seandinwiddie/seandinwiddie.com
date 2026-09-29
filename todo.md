@@ -5,27 +5,23 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 ## Copy review
 
 - [ ] Make the loop runnable: a project skill that runs `docs/copy-review.md` with `docs/reading-list.md`, in place of the installed dream-loop skill's image-and-3D process.
-- [ ] Keep running the copy review, pass by pass, until all three reviewers score 9 or higher. Pass 1 is in `docs/copy-review-log.md`.
+- [ ] Keep running the copy review, pass by pass, until all four reviewers score 9 or higher. Each pass is in `docs/copy-review-log.md`.
 
 ## Facts only Sean has
 
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.
 
-- [ ] Which engagement $6,000/month is, which engagement $120,000/year is, and what each covers and excludes.
 - [ ] The hero and hub buttons' white text on blue measures about 3.9:1, under WCAG 2.1 AA's 4.5:1, while `/development/` and `/design/` claim the work is usable by everyone. Colors and fonts stay as they are, so Sean decides whether those claims are reworded.
 - [ ] Whether Sean's Dank Mono licence covers serving the font on the web; `assets/dank-mono.css` says the font is subject to an end-user licence.
-- [ ] Approve the package ladder in `docs/packages.md`: the share model, names, what each includes and excludes, and the amounts, all within $6,000 a month and $120,000 a year. Approved packages are sprinkled on the homepage, the service pages and the contact page; until then the lines name packages without amounts.
-- [ ] How the small packages (a food truck's menu page, a kiosk's listing, a shop's first site) fit within $6,000 a month and $120,000 a year; until Sean approves, the site names them without an amount.
+- [ ] The open decisions in `docs/packages.md`: names ("the monthly engagement" or "the Month"), retainer terms, ownership, third-party costs, payment schedules and procurement registration.
 - [ ] Engagement terms: kickoff, term, cancellation, third-party costs, response times.
 - [ ] Whether the first call ends with a written scope and fee.
-- [ ] Webmaster terms: the commission basis, who keeps the client relationship, what moves a webmaster up each rung, and the latitude to make things right for a client.
+- [ ] Webmaster terms (the house keeps 30%, the webmaster 70%): whether the split differs for work a webmaster brings in and work the house assigns, who keeps the client relationship, what moves a webmaster up each rung, and the latitude to make things right for a client.
 - [ ] Whether the team uses AI tools with a webmaster reviewing and answering for the work.
-- [ ] Whether enterprise work belongs to Sean Dinwiddie's Webmastery's fractional CTO service or to the sister practice at sdin.dev, which the homepage and `/service/` send it to.
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
 - [ ] Whether the "Team Staff Earnings" on `/community/staff/` is how webmasters are paid. Its worked example shows "-0.8%" and "-$7,200" where the result is a $7,200 payout, so the percentages read as errors.
-- [ ] Upkeep after handover: what it costs, what it includes, and whether an owner can decline it and call only when something breaks.
+- [ ] Upkeep after handover (the Care Contract, $300 or $600 a month): whether an owner can decline it and call only when something breaks.
 - [ ] Hours and reply times for calls and email on `/contact/`.
-- [ ] What "Starting at $1,000-$2,000" on `/automation/` covers.
 - [ ] Whether Medford is in the service area. `/automation/` names it; everywhere else says Klamath Falls, Redding and the towns in between.
 - [ ] Sean's role on each site on `/examples/`, and which of them are local.
 - [ ] Whether a webmaster meets Redding owners in person, as the Klamath Falls page offers at Brevada, and a word on what Brevada is.
@@ -47,7 +43,7 @@ These change through the copy review, a small tweak each pass, never in one rewr
 - [ ] The community pages' banner keeps "agency" and drops "technical archive", which reads as retired.
 - [ ] Give every page title the same suffix, "| Sean Dinwiddie's Webmastery". The homepage and the service pages have it since pass 2; the other pages still end in "| Sean Dinwiddie", "- Sean Dinwiddie's Webmastery" or a one-off, and about 30 need re-cutting to stay within 65 characters.
 - [ ] Start a page for webmasters (`/about/webmasters/`) and grow it each pass: the team, the mission, commission, the path from junior to mid to senior, and how to join. Pass 1's copywriter drafted a minimal version from `docs/positioning.md` alone, with a small footer link to it.
-- [ ] Start a page for fractional CTO services for local enterprise and government offices and grow it each pass, with the ADA Title II deadlines of April 26, 2027 and April 26, 2028.
+- [ ] Start a page for public offices and grow it each pass: accessibility work toward the ADA Title II deadlines of April 26, 2027 and April 26, 2028, the Year Share and the annual engagement, with fractional CTO work pointed at the sister practice at sdin.dev.
 
 ## Prices page
 

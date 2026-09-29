@@ -18,12 +18,12 @@ The reading-list audit (`docs/reading-list.md`) gives each form of mastery one j
 
 ## How it works
 
-Webmasters join the Sean Dinwiddie's Webmastery team as subcontractors paid on commission, the way independent agents work under an insurance agency. The structure is independent; the team is one. Every webmaster is a team member, with meaningful work, a shared mission and a real ladder. It is never a commission shop where it's all about the money.
+Webmasters join the Sean Dinwiddie's Webmastery team as subcontractors paid on commission, the way independent agents work under an insurance agency: the house keeps 30%, and the webmaster keeps 70%. The structure is independent; the team is one. Every webmaster is a team member, with meaningful work, a shared mission and a real ladder. It is never a commission shop where it's all about the money.
 
 The team serves:
 
 - local service businesses: websites, local search, handover and support
-- local enterprise and government offices: fractional CTO services
+- local enterprise and government offices: accessibility work and technology planning. Fractional CTO work stays minimal on this site and points to the sister practice at sdin.dev.
 
 ## Character
 
@@ -59,7 +59,7 @@ Webmasters at every level who join the team as subcontractors.
 They get:
 
 - the Sean Dinwiddie's Webmastery name and local clients
-- commission on the work they bring in and deliver
+- commission on the work they bring in and deliver: they keep 70%, and the house keeps 30%
 - standard fee agreements and a written scope for every job
 - a path from junior to mid to senior
 
@@ -76,7 +76,7 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
 - Pricing reads like a country club's: a clear ladder from a small package (one defined job at a flat fee, in writing) up to retainers for boutique firms and public offices. A food truck, a kiosk and a family shop each see an offer made for them. Small packages describe the size of the job, never the worth of the client, and no tier talks down.
-- Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. Small packages are defined portions of the same published rates, never separate price points, and carry no amount until Sean approves them.
+- Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. Small packages are defined shares of the same published rates, never separate price points. The package ladder in `docs/packages.md` is Sean's working set of offers, and the site's pricing lines follow it.
 - Links to the prices page stay minimal (the menu, the footer and the sitemap) and are never calls to action while Sean reworks that page himself.
 
 ## Promises
@@ -86,4 +86,4 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 
 ## Government opening
 
-ADA Title II requires state and local government websites and apps to meet WCAG 2.1 AA. The compliance dates are April 26, 2027 for public entities serving 50,000 or more people (Redding, Shasta County, Klamath County) and April 26, 2028 for smaller entities and special districts (the City of Klamath Falls). Accessibility compliance opens fractional CTO work with government offices. Source: [DOJ interim final rule of April 20, 2026](https://www.jacksonlewis.com/insights/doj-extends-public-entities-compliance-deadline-ada-related-website-accessibility-hhss-may-2026-deadline-still-looms).
+ADA Title II requires state and local government websites and apps to meet WCAG 2.1 AA. The compliance dates are April 26, 2027 for public entities serving 50,000 or more people (Redding, Shasta County, Klamath County) and April 26, 2028 for smaller entities and special districts (the City of Klamath Falls). Accessibility compliance opens accessibility work with government offices; fractional CTO work goes through the sister practice at sdin.dev. Source: [DOJ interim final rule of April 20, 2026](https://www.jacksonlewis.com/insights/doj-extends-public-entities-compliance-deadline-ada-related-website-accessibility-hhss-may-2026-deadline-still-looms).

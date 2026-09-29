@@ -52,14 +52,14 @@ The copywriter reads the site through fifteen sources:
 
 The loop works on the homepage, the service pages (the services hub, Design, Development, Marketing, Automation, Local and Training, with their sub-pages) and the contact page. The reviewers read the whole site, but tweaks land on these pages. Shared blocks that belong to them, such as the service cards and the service pages' related links, change with them.
 
-Pricing and recruiting are sprinkled across these pages: a pricing line near each page's next step, in the country-club ladder from `docs/positioning.md` (a small package for one defined job at a flat fee, up to the published retainers) with a defined job that fits the page, and a line addressed to webmasters about joining. The fee lines carry no link: Sean reworks the prices page himself, so the loop never edits it and never points a call to action at it.
+Pricing and recruiting are sprinkled across these pages: a pricing line near each page's next step, ironed from the package ladder in `docs/packages.md` into one consistent, understated line with a defined job that fits the page (a small package for one defined job at a flat fee, up to the published retainers), and a short note addressed to webmasters about joining, set apart from the client's contact details. The fee lines carry no link: Sean reworks the prices page himself, so the loop never edits it and never points a call to action at it.
 
 ## Each pass
 
 1. The four reviewers score the site and list their objections, accuracy findings, distractions and tweaks.
 2. The edits are small tweaks swept across the whole site: the same small improvement applied everywhere it fits. No pass makes a large edit to any one section. This holds for every page, the prices page and the footer included, and before the first pass too: nothing is rewritten all at once. A page the site doesn't have yet starts small and grows a little each pass.
 3. `npm run build` passes before the pass is committed.
-4. The pass is recorded in `docs/copy-review-log.md`: the three scores, the objections that matter most, the tweaks applied and what waits.
+4. The pass is recorded in `docs/copy-review-log.md`: the four reviewers' scores, the objections that matter most, the tweaks applied and what waits.
 
 ## Stopping
 
