@@ -4,6 +4,7 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 ## Copy review
 
+- [ ] Deep-audit the copywriter's reading list and apply it to Sean Dinwiddie's Webmastery. The audit answers the open questions (the team's public wording, how public prices read, distractions) before the copy review starts.
 - [ ] Run the three-reviewer copy review in `docs/copy-review.md`. Sean decides when it starts.
 - [ ] Sean confirms the copywriter's definition of distractions in `docs/copy-review.md`.
 
@@ -22,7 +23,7 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 ## Prices page
 
 - [ ] Explain how Sean Dinwiddie's Webmastery charges, the way a law firm or a service contract does: retainers, flat fees for defined jobs, service and maintenance contracts, and out-of-scope work quoted and approved before it starts. No fixed menu.
-- [ ] Sean decides whether "6k/mo 120k/annu" stays on the page. If it stays, it reads "$6,000/month" and "$120,000/year", each tied to its engagement, with no "save" label.
+- [ ] Write "6k/mo 120k/annu" as "$6,000/month" and "$120,000/year", each tied to its engagement, with no "save" label. Prices stay public.
 - [ ] Add what each kind of engagement covers.
 - [ ] Add "How an engagement works": written scope, kickoff, term, scope changes and cancellation, using only terms Sean confirms.
 - [ ] Add pricing FAQs: what's in scope, what happens when scope changes, prioritization, measuring return.

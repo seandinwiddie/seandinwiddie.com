@@ -51,6 +51,7 @@ They get:
 
 Sean Dinwiddie's Webmastery charges the way a law firm or a service contract does, never from a fixed menu that invites scope creep.
 
+- Prices are public. The prices page shows the fees, the way a law firm publishes its rates and retainers.
 - Every engagement starts with a written scope and fee: a retainer, a flat fee for a defined job, or a service and maintenance contract.
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
