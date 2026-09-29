@@ -20,6 +20,7 @@ Read `docs/positioning.md` before any copy work, and `docs/copy-review.md` and `
 ## Working in this repo
 
 - Work directly on `master`, the main branch. Never create branches.
+- Never change the site's colors or fonts.
 - Pushing to `master` deploys the live site through GitHub Pages. Run `npm run build` before every push: it regenerates the social images and sitemaps, runs the site, accessibility and performance checks, and builds the deploy artifact in `_site/`.
 
 ## Writing rules
