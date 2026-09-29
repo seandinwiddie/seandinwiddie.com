@@ -12,6 +12,7 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.
 
 - [ ] Which engagement $6,000/month is, which engagement $120,000/year is, and what each covers and excludes.
+- [ ] Approve the package ladder the senior CTO agency designs: names, what each includes and excludes, and prices for every budget. Approved packages are sprinkled on the homepage, the service pages and the contact page; until then the lines name packages without amounts.
 - [ ] The small packages' flat fees for defined jobs (a food truck's menu page, a kiosk's listing, a shop's first site), once they're set; until then the site names the package without an amount.
 - [ ] Engagement terms: kickoff, term, cancellation, third-party costs, response times.
 - [ ] Whether the first call ends with a written scope and fee.
