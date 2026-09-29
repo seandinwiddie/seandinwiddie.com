@@ -484,9 +484,9 @@ The webmaster:
 - **Webmasters join meaningful work and a fair written deal.** The mission never replaces pay.
 - **The mission tops every means-end chain:** a site, found nearby, calls, a steadier business, a stronger Jefferson State.
 
-### The team, through Stealing Fire
+### The team, through Stealing Fire and compounding learning
 
-Sean asks the reviewers to think about the team's benefits the way Stealing Fire does: elite teams switch from "I" to "we" and work in group flow. Flow comes from clear goals, immediate feedback, challenge just past skill, autonomy, purpose, shared risk and familiarity. Friction and interruptions end it.
+Sean asks the reviewers to think about the team's benefits the way Stealing Fire does, and through the results of compounding group collaboration and learning: elite teams switch from "I" to "we" and work in group flow. Flow comes from clear goals, immediate feedback, challenge just past skill, autonomy, purpose, shared risk and familiarity. Friction and interruptions end it.
 
 - **For the independent webmaster, the team takes the friction out of the work.** Going it alone means finding clients, quoting and haggling, underpricing, scope fights, and being the only one a client can call. On the team:
   - the name brings the local clients;
@@ -505,6 +505,7 @@ Sean asks the reviewers to think about the team's benefits the way Stealing Fire
   - a webmaster who already knows the site;
   - one standard under one name;
   - plain notes as feedback.
+- **Learning compounds on the team.** What one webmaster learns on one job becomes the team's, and it builds job after job, like interest. The standard rises with every job. Alone, a webmaster learns only from their own jobs, and the lessons stop with them. On the team, a webmaster grows faster than they could alone, and every owner gets a webmaster who brings what the whole team has learned. The site states the result plainly and names a mechanism (peer review, shared notes, team calls) only when Sean confirms it runs.
 - **Independence is the point.** The benefits describe a structure an independent practice plugs into, never control over how, when or where a webmaster works.
 - **The book's cautions hold.** Sentences are about the reader, not the brand, and no line promises a feeling in place of a deliverable. The book's vocabulary stays off the site (see below).
 
