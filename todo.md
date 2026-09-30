@@ -46,6 +46,11 @@ These change through the copy review, a small tweak each pass, never in one rewr
 - [ ] Start a page for webmasters (`/about/webmasters/`) and grow it each pass: the team, the mission, commission, the path from junior to mid to senior, and how to join. Pass 1's copywriter drafted a minimal version from `docs/positioning.md` alone, with a small footer link to it.
 - [ ] Start a page for public offices and grow it each pass: accessibility work toward the ADA Title II deadlines of April 26, 2027 and April 26, 2028, the Year Share and the annual engagement, with fractional CTO work pointed at the sister practice at sdin.dev.
 
+## Sean's pages
+
+- [ ] The errors listed in `docs/seans-pages-audit.md` on Training, `/prices/`, `/tools/` and `/resources/` (Sean fixes these himself).
+- [ ] Sitewide: `aria-current="page"` sits on the parent menu item ("Services" or "About") instead of the current page's link; the loop fixes it in the shared header for its own pages.
+
 ## Prices page
 
 Sean reworks the prices page himself; these notes are input for him, and the copy review neither edits the page nor points calls to action at it. The page works toward the order in `docs/reading-list.md` (Public prices): the need, the pricing philosophy, each price with its engagement, the change rule, FAQs, one next step.
