@@ -85,14 +85,13 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 ## Performance
 
-- [ ] Optimize hero and background images for size, format and lazy loading.
+- [ ] Optimize hero and background images for format and lazy loading. Photos are served at 1600 px and budgeted at 350 KB each since pass 8; smaller card-sized copies and WebP or AVIF are next.
 - [ ] Defer non-critical JavaScript and inline critical CSS where it helps.
 
 ## Navigation and design
 
 - [ ] Simplify the menu and keep the core items at the top level.
 - [ ] Check spacing and sizes across the site, and add a contrast check to `npm run build` covering the text and background pairs in `assets/site.css`, including hover and focus states.
-- [ ] Image weight against "lean pages": focus pages weigh 1.7 to 2.5 MB from 2560 px card and hero JPEGs shown at about 300 px. Resize to WebP or AVIF and add an image budget to `check-performance.mjs`.
 - [ ] The top bar's "💳 Secure Payment" goes to a personal PayPal.me link, at odds with the payment terms on `/contact/`.
 - [ ] CRO's session recordings need a line in the privacy policy (session replay is the pattern behind California CIPA suits).
 
@@ -116,12 +115,12 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 The senior CTO's order for the community pages, a few small tweaks each pass (pass 6 review, `scratchpad` report summarized here):
 
 - [ ] **Trust first (done in passes 6 and 7, except):** "Technical Archive" still in the community's page 2–4 titles, its sitemap and the og:image alt text on 49 pages; the remaining Rx steps ("Model data as observables", "State Management") and RxJava in the FRP lists.
-- [ ] **Levels and starting points (Sean's direction; order done in pass 7):** mark each lesson apprentice, journeyman or master (a level column in `LESSONS`); "Where to start" on the hub and the outline for each level; retitle the outline "Course Outline" and link its topics; an ordered, levelled lesson list on each module page; the community sitemap and archives in teaching order.
+- [ ] **Levels and starting points (Sean's direction; order done in pass 7):** mark each lesson apprentice, journeyman or master (a level column in `LESSONS`); the Introduction as where every level starts (the banner says "Start with the course outline", and the hub points elsewhere), with any guidance by level on the Introduction itself; retitle the outline "Course Outline" and link its topics; an ordered, levelled lesson list on each module page; the community sitemap and archives in teaching order.
 - [ ] **A path:** the course outline's title and typos; link each outline topic to its lesson; a line on the curriculum page pointing to the outline; a closing line on the last FRP lesson; Gherkin's "But" and "Scenario Outline"; lecture links on Module 3.
 - [ ] **Modules 1 and 2:** an ordered lesson list on each module page; the password-reset criteria (single use, no account enumeration); BDD scenarios run below the interface; attribution lines for Dan North, Bill Wake and Matt Wynne.
 - [ ] **Module 3:** an ordered list; one line each on FRP versus Rx (Elliott and Hudak), signals, and marble tests; the "efficiency" and "scalability" overclaims.
 - [ ] **Register:** "Welcome back…" openers become outcome lines; "Stay tuned" becomes "The next lesson…"; the full brand name on the "How We Can Help" blocks; the Introduction softened a line per pass; then previous/next re-pointed to the taught order, with the offer, staff, P.S. and cut-sheet pages out of the lesson chain.
-- [ ] **Larger, for later:** Module 4 has no lessons; duplicate lessons in Modules 2 and 3; a short Redux Toolkit lesson built on the lectures; whether the community teaches owners after handover as well as webmasters (Sean's direction); community titles ending "| Sean Dinwiddie"; the "Work with Sean" button; `/community/staff/`'s slug; `/community/` loads 5.8 MB of card images.
+- [ ] **Larger, for later:** Module 4 has no lessons; duplicate lessons in Modules 2 and 3; a short Redux Toolkit lesson built on the lectures; whether the community teaches owners after handover as well as webmasters (Sean's direction); community titles ending "| Sean Dinwiddie"; the "Work with Sean" button; `/community/staff/`'s slug; `/community/` loads about 2 MB of card images (5.8 MB before pass 8's resize).
 - [ ] **Sean's:** the cut-sheet (`/community/from-marketing-to-development/`) is a concept Sean builds out himself; the loop leaves it alone.
 - [ ] **The curriculum follows the team's practice:** user stories → BDD tests → Redux Toolkit slices and RTK Query endpoints → minimal React views, with the lectures underneath. Backend lessons, where they come, use Haskell (Servant) and Rust. The FRP module moves, a lesson at a time, toward the functional state layer the team actually builds.
 - [ ] **For Sean (a date, unverified here):** the CTO reports HHS moved its Section 504 WCAG 2.1 AA dates for recipients of its funding (clinics that take Medicaid, for example) to May 11, 2027 (15 or more employees) and May 10, 2028 (smaller), per the Federal Register of May 11, 2026. If confirmed, it is a second accessibility date for the site's clinic owners.
