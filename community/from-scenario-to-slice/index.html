@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>From Scenario to Slice | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="How a Gherkin scenario becomes a Redux Toolkit slice: the Given sets the state, the When dispatches one event, and each Then reads a selector.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/from-scenario-to-slice/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From Scenario to Slice | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="How a Gherkin scenario becomes a Redux Toolkit slice: the Given sets the state, the When dispatches one event, and each Then reads a selector.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/from-scenario-to-slice/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-09-30T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-09-30">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="From Scenario to Slice | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="How a Gherkin scenario becomes a Redux Toolkit slice: the Given sets the state, the When dispatches one event, and each Then reads a selector.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#webpage","url":"https://seandinwiddie.com/community/from-scenario-to-slice/","name":"From Scenario to Slice | Sean Dinwiddie's Webmastery","description":"How a Gherkin scenario becomes a Redux Toolkit slice: the Given sets the state, the When dispatches one event, and each Then reads a selector.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"From Scenario to Slice","item":"https://seandinwiddie.com/community/from-scenario-to-slice/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#article","headline":"From Scenario to Slice","description":"How a Gherkin scenario becomes a Redux Toolkit slice: the Given sets the state, the When dispatches one event, and each Then reads a selector.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/from-scenario-to-slice/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/kelly-sikkema-o2TRWThve_I-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>From Scenario to Slice</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development, functional programming and the API behind them. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p class="lesson-place">Lesson 2 of 2 in Module 4</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/from-scenario-to-slice/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
+
+<a aria-label="
+Category: Development						" href="/community/category/development/" rel="category">
+Development					</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>A scenario says what a feature does; a slice holds the state it does it with. On the Sean Dinwiddie&rsquo;s Webmastery team, one maps onto the other a line at a time: the Given is the state before, the When is one event, and each Then is a value a selector returns. This lesson follows one of Module 2&rsquo;s scenarios into a Redux Toolkit slice and its test.</p>
+<h2>1. Read the scenario for its parts</h2>
+<p>The scenario from <a href="/community/writing-bdd-scenarios/">Writing BDD Scenarios</a>, under a Feature line:</p>
+<pre class="code-block"><code>Feature: Cart
+
+  Scenario: Adding a product to the cart
+    Given "Widget A" is in stock at $25
+    And the cart is empty
+    When the customer adds "Widget A" to the cart
+    Then the cart contains "Widget A"
+    And the cart total is $25</code></pre>
+<p>Read it for three things. The nouns in the Given (a cart, a product, a price) are the state. The verb in the When is one event, named for what happened: <code>itemAdded</code>, rather than <code>setCart</code>. And each Then names a fact that can be read back: what the cart holds, and what it totals.</p>
+<h2>2. The Given is the state before</h2>
+<p>The slice starts where the Given starts. Here that is an empty cart, and the slice&rsquo;s initial state already says so. Prices are kept in cents, as whole numbers, so $25 is <code>2500</code> and no total drifts by a fraction of a cent.</p>
+<pre class="code-block"><code>// features/cart/cartSlice.ts
+import { createSelector, createSlice, type PayloadAction } from '@reduxjs/toolkit'
+
+type CartLine = { productId: string; name: string; priceCents: number; quantity: number }
+type CartState = { lines: CartLine[] }
+
+const initialState: CartState = { lines: [] }
+
+export const cartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    itemAdded(state, action: PayloadAction&lt;Omit&lt;CartLine, 'quantity'&gt;&gt;) {
+      const line = state.lines.find((l) =&gt; l.productId === action.payload.productId)
+      if (line) line.quantity += 1
+      else state.lines.push({ ...action.payload, quantity: 1 })
+    },
+  },
+  selectors: {
+    selectLines: (state) =&gt; state.lines,
+  },
+})
+
+export const { itemAdded } = cartSlice.actions
+export const { selectLines } = cartSlice.selectors</code></pre>
+<h2>3. The When is one event</h2>
+<p>The When becomes one dispatched action, named in the past tense for what happened. The reducer takes the last state and the event and decides the next state; the caller never computes it. Adding a second Widget A is the same event, and the reducer, not the view, knows to raise the quantity. A When that seems to need two events usually hides two scenarios. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#setter-style-actions-instead-of-event-style-actions">Redux Toolkit and Functional Programming</a> sets the setter-style action this replaces beside the event-style one.</p>
+<h2>4. Each Then reads a selector</h2>
+<p>A Then never reaches into the slice&rsquo;s fields; it reads a selector, so the test still holds when the state&rsquo;s shape changes. The total is derived, never stored: it is computed from the lines, and <code>createSelector</code> recomputes it only when the lines change.</p>
+<pre class="code-block"><code>export const selectTotalCents = createSelector([selectLines], (lines) =&gt;
+  lines.reduce((sum, line) =&gt; sum + line.priceCents * line.quantity, 0),
+)</code></pre>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#derive-views-with-selectors">Redux Toolkit and RTK Query Best Practices</a> holds to the same rule: a total, a count or a label that can be derived from the state is never stored beside it.</p>
+<h2>5. The scenario becomes the test</h2>
+<p>In the codebase&rsquo;s own runner, the test carries the scenario&rsquo;s name, and its three parts follow the scenario&rsquo;s. It runs the reducer and the selectors directly, with no store, no view and no browser:</p>
+<pre class="code-block"><code>// features/cart/cart.test.ts
+import { describe, expect, it } from 'vitest'
+import { cartSlice, itemAdded, selectLines, selectTotalCents } from './cartSlice'
+
+const widgetA = { productId: 'widget-a', name: 'Widget A', priceCents: 2500 }
+
+describe('Feature: Cart', () =&gt; {
+  it('Scenario: Adding a product to the cart', () =&gt; {
+    // Given "Widget A" is in stock at $25, and the cart is empty
+    const before = cartSlice.getInitialState()
+    // When the customer adds "Widget A" to the cart
+    const after = cartSlice.reducer(before, itemAdded(widgetA))
+    // Then the cart contains "Widget A", and the cart total is $25
+    expect(selectLines({ cart: after }).map((line) =&gt; line.name)).toEqual(['Widget A'])
+    expect(selectTotalCents({ cart: after })).toBe(2500)
+  })
+})</code></pre>
+<p>A failing test names the behavior that broke. Run as executable steps with cucumber-js instead, each line of the scenario gets a step definition, and the step definitions call the same reducer and selectors; either way, the words the owner read are the words that fail. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#test-transitions-and-derivations">Redux Toolkit and Functional Programming</a> tests a slice the same way, through its events and what its selectors return.</p>
+<h2>6. One scenario, two owners</h2>
+<p>Module 2&rsquo;s <a href="/community/creating-bdd-scenarios-for-real-world-cases/">&ldquo;Placing the order&rdquo;</a> ends with two Thens: the order is recorded at $25, and her cart is empty. The first belongs to the API, and the Hspec test in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> proves it. The second belongs to the slice, and the cart empties when the API accepts the order, not when the button is pressed. The slice listens for the fulfilled action of <code>placeOrder</code>, the endpoint the client generates from the API&rsquo;s contract (its name comes from the route&rsquo;s operationId):</p>
+<pre class="code-block"><code>// in createSlice({ ... }), beside reducers
+extraReducers: (builder) =&gt; {
+  builder.addMatcher(ordersApi.endpoints.placeOrder.matchFulfilled, (state) =&gt; {
+    state.lines = []
+  })
+},</code></pre>
+<p>Both tests carry the scenario&rsquo;s name, so a failure on either side names the same behavior.</p>
+<div class="notice depth"><p><strong>Where it bends.</strong> Not every noun in a Given belongs to the slice. &ldquo;Widget A is in stock at $25&rdquo; is the server&rsquo;s fact: RTK Query owns the catalog, and the slice sees the product only as the event&rsquo;s payload, which is why the test builds it as a plain fixture. A cart that must follow the customer from phone to laptop belongs to the server too; then the slice gives way to an endpoint and its cache, and the same scenario runs against the endpoint instead. The scenario stays, and only its owner moves. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#decide-who-owns-the-state">Redux Toolkit and RTK Query Best Practices</a> sets out which owner holds which kind of state.</p></div>
+<p>The view that shows the cart stays minimal: it reads <code>selectLines</code> and <code>selectTotalCents</code> and dispatches <code>itemAdded</code>, and every decision it depends on lives in the slice, where the scenario tests it.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/the-api-haskell-servant-and-nile/" rel="prev">Previous lesson: The API: Haskell Servant and Nile</a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

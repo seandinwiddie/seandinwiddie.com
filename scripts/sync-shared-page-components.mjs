@@ -93,7 +93,7 @@ const archiveContext = (name) => {
       : 'the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course';
   const index = lessonIndex(name);
   return `<aside class="notice archive-context" aria-label="About these lessons">
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. ${start}, and ${map}.</p>${index === -1 ? "" : `\n${lessonPlace(index)}`}
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development, functional programming and the API behind them. ${start}, and ${map}.</p>${index === -1 ? "" : `\n${lessonPlace(index)}`}
 </aside>`;
 };
 
@@ -149,7 +149,7 @@ const PARTS = Object.freeze({
   m1: { name: "Module 1: Understanding User Stories", opener: "welcome-to-module-1-understanding-user-stories" },
   m2: { name: "Module 2: Behavior-Driven Development (BDD)", opener: "module-2-behavior-driven-development-bdd" },
   m3: { name: "Module 3: Functional Reactive Programming (FRP)", opener: "module-3-functional-reactive-programming-frp" },
-  m4: { name: "Module 4: The Cyclical Workflow", opener: "the-api-haskell-servant-and-nile" },
+  m4: { name: "Module 4: The Chain End to End", opener: "the-api-haskell-servant-and-nile" },
 });
 
 const LESSONS = [
@@ -191,6 +191,7 @@ const LESSONS = [
   ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules", "m3"],
   // Module 4: the chain end to end, from the API behind the app.
   ["the-api-haskell-servant-and-nile", "The API: Haskell Servant and Nile", "m4"],
+  ["from-scenario-to-slice", "From Scenario to Slice", "m4"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
@@ -513,7 +514,7 @@ const SCHEMA_PATTERN = /(<script type="application\/ld\+json" data-agency-schema
 const withLessonSchema = (name, html) => {
   const index = lessonIndex(name);
   if (index === -1) return html;
-  const [, title] = LESSONS[index];
+  const [slug, title] = LESSONS[index];
   const match = html.match(SCHEMA_PATTERN);
   if (!match) throw new Error(`${name}: missing the agency schema`);
   const schema = JSON.parse(match[2]);
@@ -523,6 +524,8 @@ const withLessonSchema = (name, html) => {
   delete article.educationalLevel;
   const breadcrumbs = schema["@graph"].find((node) => node["@type"] === "BreadcrumbList");
   if (breadcrumbs) breadcrumbs.itemListElement.at(-1).name = title;
+  const page = schema["@graph"].find((node) => node["@type"] === "WebPage");
+  if (page) page.name = headTitle(slug, title);
   return html.replace(SCHEMA_PATTERN, (_, open, _json, close) => `${open}${JSON.stringify(schema)}${close}`);
 };
 
@@ -661,6 +664,79 @@ const withWebmasterNote = (name, html) =>
     ? html.replace(WEBMASTER_NOTE_PATTERN, (_, open, close) => `${open}${WEBMASTER_NOTE}${close}`)
     : html;
 
+// Each lesson's page title is its LESSONS title with the site's suffix, or a
+// shorter head title here when that would pass the 65 characters a search result
+// shows. The <title>, og:title, twitter:title and the WebPage name stay in step.
+const SITE_SUFFIX = " | Sean Dinwiddie's Webmastery";
+const HEAD_TITLES = new Map([
+  ["introduction", "Course Introduction"],
+  ["functional-reactive-programming-frp", "Functional Reactive Programming"],
+  ["welcome-to-module-1-understanding-user-stories", "Module 1: User Stories"],
+  ["understanding-the-importance-of-user-centric-design", "Why User-Centric Design Matters"],
+  ["capturing-user-requirements-effectively", "Capturing User Requirements"],
+  ["translating-user-needs-into-user-stories", "From User Needs to User Stories"],
+  ["writing-clear-and-concise-user-stories", "Writing Clear User Stories"],
+  ["practical-exercises-in-creating-user-stories", "Practical User Story Exercises"],
+  ["collaborative-sessions-to-review-and-refine-user-stories", "Reviewing and Refining User Stories"],
+  ["module-2-behavior-driven-development-bdd", "Module 2: BDD"],
+  ["introduction-to-behavior-driven-development-bdd", "Introduction to BDD"],
+  ["principles-of-behavior-driven-development-bdd", "Principles of BDD"],
+  ["how-bdd-aligns-development-with-user-expectations", "How BDD Aligns Work with Users"],
+  ["given-when-then-gherkin-syntax-in-bdd", "Gherkin: Given-When-Then Syntax"],
+  ["writing-bdd-scenarios-for-software-modules", "BDD Scenarios for Software Modules"],
+  ["creating-bdd-scenarios-for-real-world-cases", "BDD Scenarios for Real-World Cases"],
+  ["reviewing-and-enhancing-bdd-scenarios-as-a-group", "Reviewing BDD Scenarios as a Group"],
+  ["module-3-functional-reactive-programming-frp", "Module 3: FRP"],
+  ["introduction-to-functional-reactive-programming-frp", "Introduction to FRP"],
+  ["event-streams-and-reactive-programming", "Event Streams in FRP"],
+  ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals"],
+  ["discover-how-frp-enhances-user-interaction-and-responsiveness", "How FRP Improves User Interaction"],
+  ["apply-frp-concepts-to-software-modules", "Applying FRP to Software Modules"],
+]);
+const headTitle = (slug, title) => `${HEAD_TITLES.get(slug) ?? title}${SITE_SUFFIX}`;
+const TITLE_PATTERNS = [
+  /(<title>)[^<]*(<\/title>)/,
+  /(<meta property="og:title" content=")[^"]*(">)/,
+  /(<meta name="twitter:title" content=")[^"]*(">)/,
+];
+
+const withLessonTitle = (name, html) => {
+  const index = lessonIndex(name);
+  if (index === -1) return html;
+  const [slug, title] = LESSONS[index];
+  const full = headTitle(slug, title);
+  if (full.length > 65) throw new Error(`${name}: "${full}" passes 65 characters; add a HEAD_TITLES entry`);
+  const escaped = full.replaceAll("'", "&#x27;");
+  return TITLE_PATTERNS.reduce(
+    (page, pattern) => page.replace(pattern, (_, open, close) => `${open}${escaped}${close}`),
+    html,
+  );
+};
+
+// The main sitemap's community list was alphabetical and kept by hand, so a new
+// lesson landed wherever it was typed. It renders from LESSONS, in teaching order.
+const MAIN_SITEMAP = "sitemap/index.html";
+const MAIN_SITEMAP_COMMUNITY_PATTERN = /(<h3>Community<\/h3>\n<ul>\n)[\s\S]*?(\n<\/ul>)/;
+const MAIN_SITEMAP_OFF_PATH = [
+  ["/community/staff/", "Joining the Team"],
+  ["/community/our-community-unveiling-our-offer-and-prices/", "Our Community: Offer and Prices"],
+  ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%E2%9C%8C%F0%9F%8F%BB/", "P.S. Coding Redux JS Apps + Sublime Text"],
+  ["/community/from-marketing-to-development/", "From Marketing to Development"],
+  ["/community/category/development/", "Software Development (category)"],
+  ["/community/author/seandinwiddie/", "Technical Articles by Sean Dinwiddie (author)"],
+  ["/community/sitemap/", "Community Sitemap"],
+];
+const mainSitemapCommunity = () =>
+  [["/community/", "Community Home"], ...LESSONS.map(([slug, title]) => [`/community/${slug}/`, title]), ...MAIN_SITEMAP_OFF_PATH]
+    .map(([href, title]) => `<li><a href="${href}">${title}</a></li>`)
+    .join("\n");
+
+const withMainSitemap = (name, html) => {
+  if (name !== MAIN_SITEMAP) return html;
+  if (!MAIN_SITEMAP_COMMUNITY_PATTERN.test(html)) throw new Error(`${name}: missing the community list`);
+  return html.replace(MAIN_SITEMAP_COMMUNITY_PATTERN, (_, open, close) => `${open}${mainSitemapCommunity()}${close}`);
+};
+
 // Guards, not transforms: a focus page that names a retired offer or free work,
 // or a lesson that teaches Rx vocabulary, fails the sync (docs/packages.md,
 // docs/terms.md, docs/positioning.md). The one Rx word a lesson may carry is the
@@ -674,8 +750,11 @@ const mainText = (html) => (html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? "").re
 const withGuards = (name, html) => {
   const text = mainText(html);
   if (isFocusPage(name) && RETIRED_OFFERS.test(text)) throw new Error(`${name}: names a retired offer or free work`);
-  if (lessonIndex(name) !== -1 && RX_WORDS.test(text.replaceAll(RX_HISTORY, ""))) {
-    throw new Error(`${name}: teaches Rx vocabulary`);
+  // The Rx check reads the whole main element, images and alt text included, on
+  // the lessons and on the archives that show their cards.
+  const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? "";
+  if ((lessonIndex(name) !== -1 || PAGINATED_ARCHIVES.has(name)) && RX_WORDS.test(main.replaceAll(RX_HISTORY, ""))) {
+    throw new Error(`${name}: teaches Rx vocabulary in its text, images or alt text`);
   }
   return html;
 };
@@ -692,8 +771,10 @@ const routeTransforms = Object.freeze([
   withModuleLessons,
   withCommunitySitemap,
   withWebmasterNote,
+  withMainSitemap,
   withRelatedServices,
   withFeaturedServices,
+  withLessonTitle,
   withGuards,
 ]);
 

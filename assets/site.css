@@ -808,6 +808,7 @@ body.service-route { background: #fafafa; }
 .archive-context .lesson-place { margin-top: 0.5rem; color: var(--muted); font-size: 0.88rem; }
 .level-paths { margin: 0 0 1.5rem; }
 .level-paths li { margin-bottom: 0.35rem; }
+.notice.depth { border-left: 3px solid var(--primary); }
 .module-lessons { margin: 0 0 2rem; }
 .module-lessons ol, .sitemap-list ol { padding-left: 1.4rem; }
 .button,
