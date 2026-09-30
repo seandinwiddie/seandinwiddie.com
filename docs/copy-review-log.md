@@ -2,6 +2,90 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 6: September 30, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 5.5 | 8 | |
+| Webmaster | 5 | 7 (8 on pass 5's focus set) | |
+| Copywriter | 5.5 | 8 | 3.5 |
+| Senior CTO | 5.5 | 8 | 3.5 |
+
+These scores read the site after pass 5 and before this pass's tweaks. The copywriter expects about 6 for the whole site, 8.5 for the focus pages and 4.5 for the community after them.
+
+### The objections that matter most
+
+- **The owner:**
+  - A $600 "new hours" example undercut "you can run it yourself".
+  - The old payout plan was visible from the community hub.
+  - Open questions: what is in a $6,000 site, minimum terms, and the $24,000 year.
+- **The webmaster:**
+  - Two opposite pay stories: the hub's "Staff" card showed "-0.5% per day" next to "Joining the team".
+  - Nothing linked to "Joining the team", which looked like a 2023 post.
+  - "Begins with the work itself" read as an unpaid trial.
+- **The CTO:** the community pages have no learning path, and they carry technical errors (Elm and FRP, SpecFlow, Gherkin's "But", Rx confused with FRP). They also carry a retired "technical archive" framing, a false comments notice, and no lecture links.
+
+### Sean's directions this pass
+
+- **Memberships and the club.** Memberships are for administrators who keep learning after handover. Team members belong to the club through the quality of their work, never by buying in.
+- **Pricing.** Fees pay for results, never time; a retainer grants access and results.
+- **Sean's pages.** His pages (prices, tools, resources, Training, and now the cut-sheet, a concept he builds out himself) are as he intends. Reviewers don't count their content.
+- **The menu.** It marks the right page for screen readers.
+- **The team's practice.** User stories → BDD tests → Redux Toolkit slices and RTK Query endpoints → minimal React views, with Haskell (Servant) and Rust on the backend. The site never recommends tools the team doesn't use.
+- **Research.** Sean's repositories and the ForbocAI repositories can be researched for community content.
+- **Training.** It links to the community, and the community pages link to the lectures where one fits.
+
+### Tweaks applied
+
+- **Community trust:**
+  - The hub card, the "Staff" labels and both sitemaps read "Joining the team", and the stale payout excerpt is gone.
+  - The hub is retitled "Community: User Stories, BDD & FRP | Sean Dinwiddie's Webmastery". It opens with how the team builds software and links the lectures.
+  - The archive banner becomes "Agency lessons…", replaced by pattern in the sync script so `--check` sees changes. It is left off the staff and offer pages.
+  - The comments notice becomes "Questions about this page? Call or email Sean Dinwiddie's Webmastery."
+  - The lessons drop tool lists the team doesn't use.
+  - Gherkin's "But" is right.
+  - Elm is gone from the lists.
+  - Applying FRP chooses the Redux Toolkit state layer.
+  - The Redux page describes one store and pure reducers, points to Redux Toolkit and links two lectures.
+  - The Introduction carries the mission as it stands.
+- **Joining the team:**
+  - The first job is paid like every other.
+  - The fee is split, never "pay" or "share".
+  - The ladder is named: junior, mid and senior; moving up on delivered, reviewed results; any rung takes any job.
+  - The review checks results, never how the work was done.
+  - The club line.
+  - "Updated September 30, 2026".
+  - The hero points to `/contact/#for-webmasters`.
+- **The offer page:** "$1,000 a month" and "$4,000 a month"; membership prices can change, but a fee in a signed scope does not; the 70% never comes from recruiting, memberships or the community's growth.
+- **The focus pages:**
+  - Changes, not repairs, in six places.
+  - "Tell us what the business needs".
+  - Accounts in the owner's name.
+  - Hosting "managed in your own account".
+  - A $600 example an owner wouldn't do alone ("a new field on a form").
+  - The team makes good on its own work either way, and changes are scoped.
+  - The year share is held for a year.
+  - Monthly lines are held month to month, and Care is a twentieth.
+  - The long note links to the terms.
+  - Custom apps scope each feature as a user story.
+
+### Waiting
+
+- **Sean's:**
+  - his pages and the cut-sheet;
+  - `/contact/`'s "if it is a repair";
+  - the footer's "When something breaks";
+  - "Full-Service";
+  - "Independent" in the schema;
+  - Medford, hours, days to scope, Redding meetings, "over a decade", the KLounge address, notice for ending Care;
+  - whether the site may say Sean reviews launches today;
+  - the offer page's "+4k/m", "inhouse team", "hiring contractors" and contractor-packages lines.
+- **Counsel:** the webmaster terms beyond the notes.
+- **Later passes:**
+  - the CTO's path for the community (outline links, lesson order, the Rx lessons, modules 1 to 3, register);
+  - "Technical Archive" left in page 2–4 titles, the community sitemap and the og alt text;
+  - the research brief from Sean's repositories.
+
 ## Pass 5: September 30, 2026
 
 | Reviewer | Whole site | Homepage, service pages and contact |

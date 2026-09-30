@@ -115,7 +115,7 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 The senior CTO's order for the community pages, a few small tweaks each pass (pass 6 review, `scratchpad` report summarized here):
 
-- [ ] **Trust first:** the hub's "Staff" card and "Staff" labels, the hub title and the archive banner (replaced by pattern in the sync script), the false "Comments are archived" notice, lessons that name tools the team doesn't use (Elm, SpecFlow, Rx) move toward the team's practice (`docs/positioning.md`, "How the team builds software"), lecture links on the hub, the curriculum and the Redux page.
+- [ ] **Trust first (mostly done in pass 6):** "Technical Archive" still in the community's page 2–4 titles, its sitemap and the og:image alt text on 49 pages; the remaining Rx steps ("Model data as observables", "State Management") and RxJava in the FRP lists.
 - [ ] **A path:** the course outline's title and typos; link each outline topic to its lesson; a line on the curriculum page pointing to the outline; a closing line on the last FRP lesson; Gherkin's "But" and "Scenario Outline"; lecture links on Module 3.
 - [ ] **Modules 1 and 2:** an ordered lesson list on each module page; the password-reset criteria (single use, no account enumeration); BDD scenarios run below the interface; attribution lines for Dan North, Bill Wake and Matt Wynne.
 - [ ] **Module 3:** an ordered list; one line each on FRP versus Rx (Elliott and Hudak), signals, and marble tests; the "efficiency" and "scalability" overclaims.
