@@ -30,7 +30,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] The terms of service: they cover website use only, under California law, while Sean works from Klamath Falls, Oregon.
 - [ ] The SMS terms name an "Inquiry Form" and SMS opt-in the site doesn't have.
 - [ ] Whether to keep the empty blog post titled "https://en.wikipedia.org/wiki/Cargo_cult_programming".
-- [ ] The training pages' content, including Page setup's advice to use WordPress.
+- [ ] The training pages' content, including Page setup's advice to use WordPress (Sean's pages).
 - [ ] The empty `/store/`.
 
 ## The site speaks as the team
@@ -112,7 +112,7 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 - [ ] Image weight against "lean pages": focus pages weigh 1.7 to 2.5 MB from 2560 px card and hero JPEGs shown at about 300 px. Resize to WebP or AVIF and add an image budget to `check-performance.mjs`.
 - [ ] The top bar's "💳 Secure Payment" goes to a personal PayPal.me link, at odds with the payment terms on `/contact/`.
 - [ ] CRO's session recordings need a line in the privacy policy (session replay is the pattern behind California CIPA suits).
-- [ ] Training's remaining content claims ("ready-to-adjust solutions", "Pre-prepared files", empty topic headings, an AWeber form with no stated offer, "meals, clothes", Page setup's WordPress advice).
+- [ ] Training (Sean's page): its remaining content claims ("ready-to-adjust solutions", "Pre-prepared files", empty topic headings, an AWeber form with no stated offer, "meals, clothes", Page setup's WordPress advice).
 
 ## Analytics
 

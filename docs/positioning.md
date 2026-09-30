@@ -31,7 +31,7 @@ The team serves:
 
 ## Character
 
-Sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable: understated and assured, never loud, never hustling. High-end describes the standard of the work and the service, never who is welcome; every client gets it.
+Sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable: understated and assured, never loud, never hustling. High-end describes the standard of the work and the service, never who is welcome; every client gets it. The register is a boutique country club's: quality work, held to one standard, for people who value it. The site answers a worry with the standard, calmly and briefly, never defensively and never with a sales rebuttal.
 
 The team are advanced AI and software users. AI tools, bots and algorithms are part of the software craft, and the site speaks of them plainly, as software, never as hype.
 

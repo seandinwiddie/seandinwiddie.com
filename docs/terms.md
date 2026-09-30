@@ -5,7 +5,8 @@ Sean's working terms for owners and for webmasters, as they stand, and his direc
 ## Owner terms
 
 - **One name on the engagement.** The owner's engagement is with Sean Dinwiddie's Webmastery. The name vouches for the job, and the owner knows which webmaster does it.
-- **Care is optional.** After handover an owner can decline the Care Contract and call when something breaks. A repair is a tenth share ($600) for one named fix; anything larger is quoted before it starts.
+- **Care keeps the site running, and it is optional.** Care covers the upkeep: hosting managed in the owner's own account, certificates, updates, backups, watching that the site stays up, security patches, and making good on the team's own work. It never pays the owner's bills: hosting, the domain and tools are billed to the owner by each provider. An owner can cancel Care any month. Without Care, each change after handover is scoped and priced like any other job.
+- **Changes, not repairs.** The site speaks of Care as keeping a site running and of new requests as changes, each scoped and priced; it never leads with repairs. Work the team delivered is made good as part of the job; most of what owners call a repair is a change, and a change is scoped.
 - **Paying for a one-time job.** A tenth share is paid at signing. A quarter share and up is half at signing and half on acceptance. Public offices pay on their own invoice terms.
 - **A date in every scope.** Every scope names a delivery date and the date the owner's materials are due; delivery moves back a day for each day the materials arrive late. Each scope opens like a receipt: the job, the fee, the date and the webmaster.
 - **Names.** "The monthly engagement" and "the annual engagement".
@@ -17,7 +18,7 @@ Sean's working terms for owners and for webmasters, as they stand, and his direc
 ## Webmaster terms
 
 - **"Webmaster" is the craft.** It names what the team does and who it is by what it produces. It is a trade identity, never a legal or government category.
-- **Joining is free.** No fee, membership, course or purchase is required to join the team. The community's memberships are separate, and joining never depends on them.
+- **Joining is beginning.** A webmaster joins by starting work under the name. The vetting is in the work, not in a gate: every job has a written scope and is reviewed against it before it goes live, and the name vouches for the result. No fee, membership, course or purchase is required to join the team. The community's memberships are separate, and joining never depends on them.
 - **The builder keeps the Care Contract** for as long as the owner wants them, and the owner can choose another webmaster.
 - **Portfolio credit.** Webmasters show their work under their own name, credited "for Sean Dinwiddie's Webmastery".
 - **Making things right.** A webmaster fixes defects in their own delivered work at no charge, without asking. Anything else is quoted, because free extra work is a discount.

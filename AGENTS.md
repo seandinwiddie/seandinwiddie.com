@@ -25,6 +25,7 @@ Sean's pending decisions (`todo.md`, "Facts only Sean has", and the open decisio
 ## Working in this repo
 
 - Work directly on `master`, the main branch. Never create branches.
+- Sean owns `/prices/`, `/tools/`, `/resources/` and Training (`/service/training/` and its pages) and edits them himself. The copy loop owns the homepage, the service pages, `/contact/`, `/community/staff/` and the community offer page, and changes them only by many small tweaks, never a large change to one section at once.
 - Sizes can change. Colors change only by small tweaks, such as darkening a shade until text passes WCAG 2.1 AA contrast. The fonts (the typefaces) never change.
 - Pushing to `master` deploys the live site through GitHub Pages. Run `npm run build` before every push: it regenerates the social images and sitemaps, runs the site, accessibility and performance checks, and builds the deploy artifact in `_site/`.
 
