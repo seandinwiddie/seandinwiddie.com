@@ -93,7 +93,7 @@ const archiveContext = (name) => {
       : 'the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course';
   const index = lessonIndex(name);
   return `<aside class="notice archive-context" aria-label="About these lessons">
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development, functional programming and the API behind them. ${start}, and ${map}.</p>${index === -1 ? "" : `\n${lessonPlace(index)}`}
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. ${start}, and ${map}.</p>${index === -1 ? "" : `\n${lessonPlace(index)}`}
 </aside>`;
 };
 
