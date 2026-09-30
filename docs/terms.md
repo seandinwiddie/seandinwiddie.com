@@ -18,7 +18,7 @@ Sean's working terms for owners and for webmasters, as they stand, and his direc
 ## Webmaster terms
 
 - **"Webmaster" is the craft.** It names what the team does and who it is by what it produces. It is a trade identity, never a legal or government category.
-- **Joining is beginning.** A webmaster joins by starting work under the name. The vetting is in the work, not in a gate: every job has a written scope and is reviewed against it before it goes live, and the name vouches for the result. No fee, membership, course or purchase is required to join the team. The community's memberships are for administrators who keep learning after handover; the community is part of the brand, and joining the team never depends on a membership.
+- **Joining is beginning.** A webmaster joins by starting work under the name. The vetting is in the work, not in a gate: every job has a written scope and is reviewed against it before it goes live, and the name vouches for the result. No fee, membership, course or purchase is required to join the team. The community's memberships are for administrators who keep learning after handover. Webmasters on the team belong to the club through the quality of their work, never by buying in; joining the team never depends on a membership.
 - **The builder keeps the Care Contract** for as long as the owner wants them, and the owner can choose another webmaster.
 - **Portfolio credit.** Webmasters show their work under their own name, credited "for Sean Dinwiddie's Webmastery".
 - **Making things right.** A webmaster fixes defects in their own delivered work at no charge, without asking. Anything else is quoted, because free extra work is a discount.
