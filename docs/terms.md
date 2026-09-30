@@ -12,8 +12,11 @@ Sean's working terms for owners and for webmasters, as they stand, and his direc
 - **Names.** "The monthly engagement" and "the annual engagement".
 - **The owner's own accounts.** Owners sign up for hosting, domains and tools in their own name. The team recommends the third-party tools and services it uses itself, and never resells or marks up a third-party cost.
 - **AI is software.** The team are advanced AI and software users. AI tools, bots and algorithms are part of the software craft, as they long have been, and a webmaster reviews and answers for every piece of work. The site speaks of AI plainly, as software, never as hype.
+- **Owners meet Sean.** For now Sean is the face, the owner and the guardian of the practice. Owners speak with him, he stands behind every job, and the written scope names the webmaster on it. The site can say that Sean reviews the results before launch.
 - **Meeting.** Sean works from Klamath Falls. Klamath Falls owners can meet at the KLounge or at their own shop. Redding owners work by phone, video and email; the site promises no in-person Redding meetings until Sean decides on the drive.
 - **One phone number.** (530) 638-3238.
+- **No promised reply time.** Sean answers with respect, but he is not on call. Serious inquiries get a reply: a defined job, its timing, and a fit with the published fees. Many inquiries need no answer, the way most comments on a public post need none. The site promises no reply time. It never says an inquiry is ignored, and it never sounds defensive. `/contact/` says what makes a reply likely, in the country-club register.
+- **The standard vets.** Fees stay at the team's standard and are never discounted to win a job. The published fees and the written scope screen out inquiries that aren't serious. Sean asked the senior CTO to work out the pricing lines on the focus pages within the two published figures (pass 8).
 
 ## Webmaster terms
 
@@ -22,7 +25,7 @@ Sean's working terms for owners and for webmasters, as they stand, and his direc
 - **The builder keeps the Care Contract** for as long as the owner wants them, and the owner can choose another webmaster.
 - **Portfolio credit.** Webmasters show their work under their own name, credited "for Sean Dinwiddie's Webmastery".
 - **Making things right.** A webmaster fixes defects in their own delivered work at no charge, without asking. Anything else is quoted, because free extra work is a discount.
-- **One review before launch.** The results are reviewed against the written scope before every launch; the review checks results, never how the work was done. Today Sean does the review, with AI tools; as the team grows, a second webmaster does it. The site says "reviewed against the written scope" and names no second person until one is on the team. Shared notes, team calls and pairing stay optional.
+- **One review before launch.** The results are reviewed against the written scope before every launch; the review checks results, never how the work was done. Today Sean does the review, with AI tools; as the team grows, a second webmaster does it. The site says "reviewed against the written scope", may name Sean as the one who reviews (he is the guardian of the practice), and names no second person until one is on the team. Shared notes, team calls and pairing stay optional.
 - **The ladder by review, never by job size.** The split stays the same at every rung, and any rung takes any job. A junior's launch gets a senior's review, a mid's gets any peer's, and seniors review others' work. Webmasters enter and move up on delivered, reviewed results. No rung maps to a client's size.
 
 ## Sean's direction, for counsel to put in legal form

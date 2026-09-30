@@ -33,6 +33,8 @@ The team serves:
 
 Sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable: understated and assured, never loud, never hustling. High-end describes the standard of the work and the service, never who is welcome; every client gets it. The register is a boutique country club's: quality work, held to one standard, for people who value it. The site answers a worry with the standard, calmly and briefly, never defensively and never with a sales rebuttal.
 
+Owners meet Sean. For now he is the face, the owner and the guardian of the practice: he stands behind every job, and the written scope names the webmaster on it. The site promises no reply time; serious inquiries get a reply, and the site says what makes one likely, never that an inquiry is ignored.
+
 The team are advanced AI and software users. AI tools, bots and algorithms are part of the software craft, and the site speaks of them plainly, as software, never as hype.
 
 ## How the team builds software
@@ -87,6 +89,7 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
+- The standard vets. Fees are never lowered to win a job, and the published fees and the written scope screen out inquiries that aren't serious.
 - Fees pay for results, never time. There are no hourly or daily rates. A flat fee buys a defined result, and a retainer grants access to the team and the results its written scope names.
 - Pricing reads like a country club's: a clear ladder from a small package (one defined job at a flat fee, in writing) up to retainers for boutique firms and public offices. A food truck, a kiosk and a family shop each see an offer made for them. Small packages describe the size of the job, never the worth of the client, and no tier talks down.
 - Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. Small packages are defined shares of the same published rates, never separate price points. The package ladder in `docs/packages.md` is Sean's working set of offers, and the site's pricing lines follow it.

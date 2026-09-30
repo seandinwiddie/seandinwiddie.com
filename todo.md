@@ -22,7 +22,6 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] The community pages after pass 5: `/community/staff/` now reads "Joining the team" with the 70/30 terms, and the offer page has lost "Team Staff Discounts", "Team Staff Earnings" and "COMMISSIONS CLOSED". Still open: "Staff" link labels on `/sitemap/`, `/community/` and `/community/curriculum/`; whether to add `noindex`; the offer page's "+4k/m Retainer Services", "prices are subject to change", "our inhouse team" and "hiring contractors". (The cut-sheet, `/community/from-marketing-to-development/`, is Sean's to build out.)
 - [ ] The webmaster page says joining is free (the notes say so since pass 4), with portfolio credit and the ladder.
 - [ ] Worker classification: the subcontract per job (payment amount and due date), non-solicit terms, and the model's fit with Oregon's ORS 670.600 and California's AB5 business-to-business exemption (Lab. Code §2776), where webmasters serving the agency's clients under the agency's name and one published rate need counsel's review.
-- [ ] Hours and reply times for calls and email on `/contact/`.
 - [ ] Whether Medford is in the service area. `/automation/` names it; everywhere else says Klamath Falls, Redding and the towns in between.
 - [ ] Sean's role on each site on `/examples/`, and which of them are local.
 - [ ] Whether Sean drives to Redding for in-person meetings. Until he decides, Redding owners work by phone, video and email, and the site promises no Redding meetings.
