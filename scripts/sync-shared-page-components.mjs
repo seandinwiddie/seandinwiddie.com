@@ -74,7 +74,7 @@ const HOME_CARDS_PATTERN = /    <section class="section home-cards">[\s\S]*?\n  
 // nothing on the pages that already had a banner, and --check passed without
 // seeing the drift.
 const ARCHIVE_CONTEXT = `<aside class="notice archive-context" aria-label="About these lessons">
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds software: user stories, behavior-driven development and functional programming. Start with the <a href="/community/user-story_bdd_frp-workflow/">course outline</a>, or <a href="/service/">view agency services</a>.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Start with the <a href="/community/user-story_bdd_frp-workflow/">course outline</a>, or <a href="/service/">view agency services</a>.</p>
 </aside>`;
 
 const ARCHIVE_CONTEXT_PATTERN = /\n<aside class="notice archive-context"[\s\S]*?<\/aside>/;
@@ -98,6 +98,94 @@ const COMMENTS_NOTICE = `<aside aria-label="Questions" class="notice">
 </aside>`;
 
 const COMMENTS_NOTICE_PATTERN = /<aside aria-label="(?:Comments|Questions)" class="notice">[\s\S]*?<\/aside>/;
+
+// The lessons in teaching order (docs/copy-review.md, Focus): an introduction
+// before the lessons that build on it, never publication order. The previous and
+// next links were hand-kept copies of the WordPress publication order, so 29 of
+// them sent a learner backwards, sideways or out of the course (into the fee
+// split, the membership offer and a note about Sublime Text), and nothing could
+// see it. Every lesson's links now come from this one list and are replaced by
+// pattern: moving a lesson here re-points both of its neighbours, and --check
+// sees any page that drifts. Each entry is [slug, the title its links show].
+const LESSONS = [
+  // The course: every level enters here.
+  ["introduction", "Introduction"],
+  ["user-stories", "User Stories"],
+  ["behavior-driven-development-bdd", "Behavior-Driven Development (BDD)"],
+  ["functional-reactive-programming-frp", "Functional Reactive Programming (FRP)"],
+  ["curriculum", "Curriculum"],
+  ["user-story_bdd_frp-workflow", "User-Story_BDD_FRP Workflow"],
+  // Module 1: why, what, finding, capturing, translating, writing well, practice, review.
+  ["welcome-to-module-1-understanding-user-stories", "Welcome to Module 1: Understanding User Stories"],
+  ["understanding-the-importance-of-user-centric-design", "Understanding the Importance of User-Centric Design"],
+  ["defining-user-stories", "Defining User Stories"],
+  ["identifying-user-needs", "Identifying User Needs"],
+  ["capturing-user-requirements-effectively", "Capturing User Requirements Effectively"],
+  ["translating-user-needs-into-user-stories", "Translating User Needs into User Stories"],
+  ["writing-clear-and-concise-user-stories", "Writing Clear and Concise User Stories"],
+  ["practical-exercises-in-creating-user-stories", "Practical Exercises in Creating User Stories"],
+  ["collaborative-sessions-to-review-and-refine-user-stories", "Collaborative Sessions to Review and Refine User Stories"],
+  // Module 2: the introduction first, then Gherkin, writing, review and testing.
+  ["module-2-behavior-driven-development-bdd", "Module 2: Behavior-Driven Development (BDD)"],
+  ["introduction-to-behavior-driven-development-bdd", "Introduction to Behavior-Driven Development (BDD)"],
+  ["principles-of-behavior-driven-development-bdd", "Principles of Behavior-Driven Development (BDD)"],
+  ["how-bdd-aligns-development-with-user-expectations", "How BDD Aligns Development with User Expectations"],
+  ["given-when-then-gherkin-syntax-in-bdd", "Given-When-Then (Gherkin) Syntax in BDD"],
+  ["writing-bdd-scenarios", "Writing BDD Scenarios"],
+  ["writing-bdd-scenarios-for-software-modules", "Writing BDD Scenarios for Software Modules"],
+  ["creating-bdd-scenarios-for-real-world-cases", "Creating BDD Scenarios for Real-World Cases"],
+  ["reviewing-and-enhancing-bdd-scenarios-as-a-group", "Reviewing and Enhancing BDD Scenarios as a Group"],
+  ["bdd-and-unit-testing", "BDD and Unit Testing"],
+  ["bdd-testing-framework", "BDD Testing Framework"],
+  // Module 3: the introduction first; Apply FRP ends the course.
+  ["module-3-functional-reactive-programming-frp", "Module 3: Functional Reactive Programming (FRP)"],
+  ["introduction-to-functional-reactive-programming-frp", "Introduction to Functional Reactive Programming (FRP)"],
+  ["event-streams-and-reactive-programming", "Event streams and reactive programming"],
+  ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals in Software Development"],
+  ["discover-how-frp-enhances-user-interaction-and-responsiveness", "Discover how FRP enhances user interaction and responsiveness"],
+  ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules"],
+];
+
+// Community pages that are not lessons: the team's terms, the membership offer
+// and Sean's Redux note. Inside the chain, a learner's "next" landed on a fee
+// split. Each links back to the community instead.
+const OFF_THE_PATH = new Set([
+  "community/staff/index.html",
+  "community/our-community-unveiling-our-offer-and-prices/index.html",
+  "community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-\u270c\ud83c\udffb/index.html",
+]);
+
+const PAGE_NAV_PATTERN = /<(div|nav) class="page-nav"[^>]*>[\s\S]*?<\/\1>/;
+
+const lessonLink = ([slug, title], rel, label) =>
+  `<a href="/community/${slug}/" rel="${rel}">${label}: ${title}</a>`;
+
+const lessonNav = (name) => {
+  const index = LESSONS.findIndex(([slug]) => name === `community/${slug}/index.html`);
+  if (index === -1) {
+    return OFF_THE_PATH.has(name)
+      ? '<nav class="page-nav" aria-label="Community">\n<a href="/community/">Back to the community</a>\n</nav>'
+      : null;
+  }
+  const links = [
+    index > 0 && lessonLink(LESSONS[index - 1], "prev", "Previous lesson"),
+    index < LESSONS.length - 1 && lessonLink(LESSONS[index + 1], "next", "Next lesson"),
+  ].filter(Boolean);
+  return `<nav class="page-nav" aria-label="Lessons">\n${links.join("\n")}\n</nav>`;
+};
+
+const withLessonNav = (name, html) => {
+  if (!name.startsWith("community/") || SEANS_COMMUNITY_PAGES.has(name)) return html;
+  const nav = lessonNav(name);
+  if (nav === null) {
+    // Lesson links on a page in neither list mean a lesson LESSONS is missing:
+    // fail rather than leave it on the old chain.
+    if (PAGE_NAV_PATTERN.test(html)) throw new Error(`${name}: lesson links on a page missing from LESSONS`);
+    return html;
+  }
+  if (!PAGE_NAV_PATTERN.test(html)) throw new Error(`${name}: missing lesson links`);
+  return html.replace(PAGE_NAV_PATTERN, () => nav);
+};
 
 const SOCIAL_ICONS = `      <div class="nav__social">
         <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
@@ -357,6 +445,7 @@ const routeTransforms = Object.freeze([
   withArchivePagination,
   withCargoPostRepairs,
   withCommentsNotice,
+  withLessonNav,
   withRelatedServices,
   withFeaturedServices,
 ]);
