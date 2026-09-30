@@ -115,8 +115,8 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 The senior CTO's order for the community pages, a few small tweaks each pass (pass 6 review, `scratchpad` report summarized here):
 
-- [ ] **Trust first (mostly done in pass 6):** "Technical Archive" still in the community's page 2–4 titles, its sitemap and the og:image alt text on 49 pages; the remaining Rx steps ("Model data as observables", "State Management") and RxJava in the FRP lists.
-- [ ] **Order and levels (Sean's direction):** fix every lesson chain that runs in reverse or publication order; each module lists its lessons in teaching order; mark each lesson apprentice, journeyman or master.
+- [ ] **Trust first (done in passes 6 and 7, except):** "Technical Archive" still in the community's page 2–4 titles, its sitemap and the og:image alt text on 49 pages; the remaining Rx steps ("Model data as observables", "State Management") and RxJava in the FRP lists.
+- [ ] **Levels and starting points (Sean's direction; order done in pass 7):** mark each lesson apprentice, journeyman or master (a level column in `LESSONS`); "Where to start" on the hub and the outline for each level; retitle the outline "Course Outline" and link its topics; an ordered, levelled lesson list on each module page; the community sitemap and archives in teaching order.
 - [ ] **A path:** the course outline's title and typos; link each outline topic to its lesson; a line on the curriculum page pointing to the outline; a closing line on the last FRP lesson; Gherkin's "But" and "Scenario Outline"; lecture links on Module 3.
 - [ ] **Modules 1 and 2:** an ordered lesson list on each module page; the password-reset criteria (single use, no account enumeration); BDD scenarios run below the interface; attribution lines for Dan North, Bill Wake and Matt Wynne.
 - [ ] **Module 3:** an ordered list; one line each on FRP versus Rx (Elliott and Hudak), signals, and marble tests; the "efficiency" and "scalability" overclaims.
@@ -127,6 +127,9 @@ The senior CTO's order for the community pages, a few small tweaks each pass (pa
 - [ ] **For Sean (a date, unverified here):** the CTO reports HHS moved its Section 504 WCAG 2.1 AA dates for recipients of its funding (clinics that take Medicaid, for example) to May 11, 2027 (15 or more employees) and May 10, 2028 (smaller), per the Federal Register of May 11, 2026. If confirmed, it is a second accessibility date for the site's clinic owners.
 
 ## Lectures
+
+- [ ] The FRP Fundamentals lesson's hero is a 1.3 MB RxJS screenshot; it needs a new image.
+- [ ] The og alt text on 5 blog pages still reads "technical archive".
 
 - [ ] The blog post `/blog/rtk-promt-example/` links to a private repository (`rtk-prompt-example`); Sean reviews and fixes it later.
 

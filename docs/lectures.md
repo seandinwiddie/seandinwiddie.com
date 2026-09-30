@@ -29,7 +29,7 @@ The community pages carry at least one link to a lecture where one fits the page
 
 ## Where they fit on the community pages
 
-Linked since pass 6: the community hub (the lectures' index), the curriculum, the Redux page (Redux Standard Patterns and Redux Toolkit and Functional Programming) and the FRP lesson on applying it to modules (Redux Toolkit and Functional Programming).
+Linked since pass 6: the community hub (the lectures' index), the curriculum, the Redux page (Redux Toolkit and Functional Programming, and Modern Redux Architecture Patterns) and the FRP lesson on applying it to modules (Redux Toolkit and Functional Programming, and Modern Redux Architecture Patterns, which carries on where the course ends).
 
 
 A starting map for the copy loop; it adds links a few pages at a time, never all at once.

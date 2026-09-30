@@ -2,6 +2,107 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 7: September 30, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 6 | 8.5 | |
+| Webmaster | 5.5 | 7.5 | 4 |
+| Copywriter | 6 | 8.5 | 4.5 |
+| Senior CTO | 6 | 8.5 | 4.5 |
+
+These scores read the site after pass 6. The copywriter expects 6.5, close to 9 and 5.5 after this pass.
+
+### The objections that matter most
+
+- **Owner:**
+  - `/about/` reads as a solo "Independent Web Developer"; outside the focus.
+  - No reply times or date for the scope (Sean's).
+  - A one-time listing fee read as monthly.
+  - The two ADA dates left a county office unsure which was theirs.
+  - The long webmaster note read like trial terms.
+- **Webmaster:**
+  - Where the practice applies.
+  - Terms beyond the split.
+  - The lessons contradicted themselves: Rx next to Redux Toolkit.
+  - "Scenario Outline" was misused.
+  - The staff page read like a pay stub.
+- **CTO:**
+  - 29 of 64 lesson links were wrong, and the lessons ran in publication order.
+  - Lines implied one stack for every job.
+  - "Technical Archive" leftovers.
+
+### Sean's directions this pass
+
+- **Principles over code:** feature scope → user story → Gherkin test → endpoint, slice and view → the Haskell (Servant) API. Code is evidence, never the authority.
+- **Tools:** leading edge on battle-tested tools, always researched and iterated. The stack is chosen by the project: WordPress for many brochure sites, and the full chain for custom apps. The backend is Haskell (Servant) and Rust.
+- **The community:** intuitive for every level, in teaching order, with apprentice, journeyman and master marks.
+- **Testing:** both ways of running Gherkin, cucumber-js steps and scenario-named tests in Vitest or Hspec.
+- **Planning:** hybrid and fluid.
+- **ForbocAI** stays out of the lessons for now.
+- **Research:** Sean's repositories were researched for the community (`docs/community-plan.md`; private findings stay out of this public repository).
+
+### Tweaks applied
+
+- **Teaching order:**
+  - One ordered `LESSONS` list in the sync script renders "Previous lesson" and "Next lesson" inside a labelled nav on all 32 lessons.
+  - The offer, staff and Redux pages link back to the community.
+  - Closing lines name the real next lesson, and "Stay tuned" is gone.
+  - Applying FRP says it ends the course and points to the next lecture.
+- **The stack follows the project:**
+  - `/development/sites/`: "No platform you rent and can't take with you…", and "Websites built for your business…".
+  - The banner says "custom software".
+  - The hub's stack line.
+  - Module 2: "each feature that holds state".
+  - Applying FRP: "In custom apps".
+- **The lessons:**
+  - The Rx lists give way to FRP's origins (Elliott and Hudak, 1997) and the Redux Toolkit practice.
+  - Applying FRP models events as actions and keeps state in the slice.
+  - "Scenario Outline" is used correctly, and Gherkin's Examples and Rule are explained.
+  - The testing lesson presents both approaches.
+  - The curriculum speaks to learners, not "inhouse members".
+  - The outline's typo and intro are fixed.
+  - "FRP Fundamentals in Software Development".
+  - Module 1's collaborative sessions note hybrid planning.
+  - "Technical Archive" is gone from the community's titles, sitemap and image text.
+- **The focus pages:**
+  - "handover" on `/local/` and Redding.
+  - Klamath Falls' free first conversation.
+  - Custom apps' acceptance criteria become automated checks.
+  - "Joining the team": "Your 70% is $4,200…", and outside clients stay the webmaster's.
+  - One-time listings say "a flat fee".
+  - The ADA dates by office size.
+  - The owner-page notes say only "Joining is free".
+
+### Waiting
+
+- **Pass 8:**
+  - levels and "Where to start";
+  - the outline retitled and linked;
+  - module lesson lists;
+  - attributions;
+  - the password-reset criteria;
+  - scenarios below the interface;
+  - lecture links on Module 3;
+  - the community sitemap in order.
+- **Pass 9:**
+  - the remaining Rx steps (Fundamentals, Discover, Event streams, Module 3's principles);
+  - the archives in order;
+  - the register.
+- **Sean's:**
+  - `/about/`;
+  - reply times and days to scope;
+  - naming the reviewer;
+  - Redding meetings;
+  - the KLounge address;
+  - how-to calls under Care;
+  - how long the team makes good;
+  - webmaster pay timing, how jobs reach webmasters, what a rung carries;
+  - the offer page's firm name, "inhouse team", SPAs, "+4k/m" and contractor lines;
+  - the blog's private-repository link;
+  - Next.js.
+- **Counsel:** the legal form of the webmaster terms.
+
 ## Pass 6: September 30, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |
