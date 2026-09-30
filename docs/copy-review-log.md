@@ -2,6 +2,106 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 9: September 30, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 6.5 | 8.5 | |
+| Webmaster | 6.5 | 8 | 5.5 |
+| Copywriter | 7 | 8.5 | 6 |
+| Senior CTO | 7 | 8.5 | 6 |
+
+These scores read the site after pass 8. The copywriter expects 7.5, 9 and 7.5 after this pass.
+
+### The objections that matter most
+
+- **Owner:**
+  - what a call after handover costs;
+  - "fix what trips them up" after a flat-fee launch;
+  - "Book a free call" on the pages around the focus;
+  - the automation fee's dangling "or more";
+  - what counts as a "serious inquiry".
+- **Webmaster:**
+  - the Introduction still reads as a sales letter;
+  - Module 3 still teaches observables;
+  - scenario examples that break the Gherkin lesson's own rule;
+  - WordPress missing from recruiting;
+  - `/contact/#for-webmasters` as one long paragraph.
+- **CTO:**
+  - post-launch work with no scope or price;
+  - the annual engagement read as 12 months of the monthly one;
+  - "Small improvements can make a big difference" against the floors;
+  - archives in reverse order with stale hand-copied excerpts;
+  - no lesson for the back half of the chain.
+
+### Sean's directions this pass
+
+- **The header button:** "Call or email" on every page, his own and `/about/` included. No button offers a free call or consultation.
+- **The API lesson:** focused on Haskell Servant and Nile, and added now.
+- **Lecture links** all through the community pages.
+- **Work in progress isn't an error.** Lines describing the practice or the course stay while their lessons are built; only what is actually wrong is corrected.
+
+### Tweaks applied
+
+- **The API lesson:** "The API: Haskell Servant and Nile" opens Module 4.
+  - The API is a Servant type, and handlers stay thin over a pure core.
+  - Each tenant's data is kept apart in Nile (`SET LOCAL nile.tenant_id`, with `tenant_id` in the primary key), checked against Nile's own docs.
+  - One OpenAPI contract serves both the server and the client.
+  - The scenarios become scenario-named Hspec tests.
+  - Apply FRP, the Course Outline and both sitemaps link to it.
+- **The sync script:**
+  - The archives render from `LESSONS` in teaching order, with excerpts taken from each page's meta description.
+  - Pagination is replaced by pattern.
+  - The owner-page note to webmasters is one shared constant.
+  - The Introduction names the depth passages.
+  - Guards fail the sync if a focus page names a retired offer or free work, or a lesson teaches Rx vocabulary.
+- **Rx out of Module 3:**
+  - Events are actions, and state is a fold.
+  - Selectors, listener middleware and RTK Query take the Rx concepts' places.
+  - "Efficiency" and "Scalability" become "Predictability" and "Clear ownership".
+- **Layers of depth** in the Gherkin lesson, Event streams and Apply FRP.
+- **Gherkin:**
+  - Feature, Examples and Tags are added.
+  - The Given, When and Then lists number correctly.
+  - The booking and checkout examples run below the interface, with checkout split into three scenarios.
+  - Scenario Outline replaces "Scenario Templates".
+  - Gherkin is described as Cucumber's language for Given-When-Then.
+- **The register:**
+  - The three "Welcome back" openers and the "Software Engineering Consultant" lines are gone.
+  - The Introduction's "REFINE AND ELEVATE" and "Then contact us immediately!" are replaced.
+- **Lecture links on 34 of 36 lessons**, plus the hub, the outline and the P.S. note (`docs/lectures.md`).
+- **The focus pages:**
+  - Post-launch testing happens before launch, and adjusting after it is the monthly engagement.
+  - Fees trace to the two figures.
+  - Automation starts at a third share.
+  - A serious inquiry is defined as one that names the job, its timing and the fee it fits.
+  - The accessibility review covers the templates the scope names.
+  - Klamath Falls says "each improvement is a defined job".
+  - The recruiting pages name the stack following the project.
+  - "Joining the team" has real subheads and adds "and wants you" and the $1,400 example.
+
+### Waiting
+
+- **Pass 10:**
+  - "Our online community is here to support you every step of the way" on the overview posts;
+  - "Reactive Streams" becomes "Events and Behaviors";
+  - the rest of the Introduction;
+  - the Introduction and Outline naming the API;
+  - the next Module 4 lessons (scenario to slice, endpoints);
+  - the next layers of depth;
+  - the RxJS hero image;
+  - lesson titles.
+- **Sean's:**
+  - the footer's "When something breaks";
+  - whether a client a webmaster brought can leave with them;
+  - the offer page's "+4k/m";
+  - Training's "$600";
+  - the prices page's floor;
+  - Module 1's Scrum ceremonies;
+  - the Adobe Express links on the brand article;
+  - `/about/`.
+- **Counsel:** the legal form of the terms.
+
 ## Pass 8: September 30, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |

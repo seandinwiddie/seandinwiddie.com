@@ -148,8 +148,8 @@ Development					</a>
 <p><strong>7. Define Expected Outcomes in the “Then” Section:</strong></p>
 <p>The “Then” section is where you specify the expected outcomes or results of the action described in the “When” section. This is the behavior you are testing. For example:</p>
 <ul>
-<li>Then the system should display a confirmation message</li>
-<li>Then the user’s account balance should be updated to $150</li>
+<li>Then the deposit is recorded</li>
+<li>Then the account balance is $150</li>
 </ul>
 <p><strong>8. Keep Scenarios Small and Focused:</strong></p>
 <p>BDD scenarios should be focused on testing a single aspect of behavior. Keep your scenarios small and specific, addressing one user interaction at a time. This makes it easier to understand, implement, and maintain scenarios.</p>
@@ -164,7 +164,7 @@ And the cart is empty
 When the customer adds "Widget A" to the cart
 Then the cart contains "Widget A"
 And the cart total is $25</code></pre>
-<p>This scenario describes the expected behavior when a user adds a product to their shopping cart.</p>
+<p>This scenario describes the expected behavior when a user adds a product to their shopping cart. Its When is the event a cart slice would name <code>itemAdded</code>; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#event-oriented-slices">Redux Toolkit and RTK Query Best Practices</a> names actions after events the same way.</p>
 <p>By following these guidelines, you can write clear, structured, and effective BDD scenarios that accurately describe how the software should behave from the user’s perspective. BDD scenarios serve as the foundation for creating tests and ensuring that your software aligns with user expectations.</p>
 
 <!-- .entry-content -->

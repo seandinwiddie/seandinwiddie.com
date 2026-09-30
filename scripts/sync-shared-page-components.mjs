@@ -661,6 +661,25 @@ const withWebmasterNote = (name, html) =>
     ? html.replace(WEBMASTER_NOTE_PATTERN, (_, open, close) => `${open}${WEBMASTER_NOTE}${close}`)
     : html;
 
+// Guards, not transforms: a focus page that names a retired offer or free work,
+// or a lesson that teaches Rx vocabulary, fails the sync (docs/packages.md,
+// docs/terms.md, docs/positioning.md). The one Rx word a lesson may carry is the
+// history line that sets observable libraries apart from FRP.
+const RETIRED_OFFERS =
+  /tenth share|quarter share|Care Contract|Standing Share|Year Share|free (?:call|consultation|conversation|audit)|at no charge|makes good/i;
+const RX_WORDS = /\b(?:observables?|RxJS|RxJava|ReactiveX|multicasting)\b/i;
+const RX_HISTORY = "Observable libraries often borrow the name";
+const mainText = (html) => (html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? "").replace(/<[^>]+>/g, " ");
+
+const withGuards = (name, html) => {
+  const text = mainText(html);
+  if (isFocusPage(name) && RETIRED_OFFERS.test(text)) throw new Error(`${name}: names a retired offer or free work`);
+  if (lessonIndex(name) !== -1 && RX_WORDS.test(text.replaceAll(RX_HISTORY, ""))) {
+    throw new Error(`${name}: teaches Rx vocabulary`);
+  }
+  return html;
+};
+
 const routeTransforms = Object.freeze([
   withArchiveContext,
   withArchiveCards,
@@ -675,6 +694,7 @@ const routeTransforms = Object.freeze([
   withWebmasterNote,
   withRelatedServices,
   withFeaturedServices,
+  withGuards,
 ]);
 
 const normalizePage = (name, html) => {

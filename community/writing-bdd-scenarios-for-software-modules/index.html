@@ -117,7 +117,7 @@ Development					</a>
 
 <p>Behavior-Driven Development (BDD) scenarios are a powerful tool for specifying and testing the expected behavior of software modules. Writing BDD scenarios helps ensure that your software aligns with user expectations and business requirements. Here’s a step-by-step guide on how to write BDD scenarios for software modules:</p>
 <p><strong>1. Identify the Software Module:</strong></p>
-<p>Begin by identifying the specific software module or feature you want to create scenarios for. This could be a module within a larger software application or a standalone software component.</p>
+<p>Begin by identifying the specific software module or feature you want to create scenarios for. This could be a module within a larger software application or a standalone software component. In a Redux Toolkit app, a module is a feature folder; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#organize-by-feature">Redux Toolkit and Functional Programming</a> shows the layout.</p>
 <p><strong>2. Understand User Expectations:</strong></p>
 <p>Before writing BDD scenarios, you need a clear understanding of what the users expect from the software module. This might involve user stories, product requirements, or direct communication with stakeholders.</p>
 <p><strong>3. Define the High-Level Behavior:</strong></p>
@@ -125,28 +125,30 @@ Development					</a>
 <p><strong>4. Group the Scenarios Under a Feature:</strong></p>
 <p>A Feature block names the module and holds its scenarios, with the user story beneath the title. (In Gherkin, a Scenario Outline is something else: one scenario run once for each row of an Examples table.)</p>
 <p><strong>5. List User Actions (When):</strong></p>
-<p>Identify the user actions or interactions with the software module that you want to test. This could involve actions like data input, button clicks, or navigation.</p>
+<p>Identify the user actions or interactions with the software module that you want to test. Name each as the event it is, such as placing an order or cancelling a booking, rather than the clicks that trigger it.</p>
 <p><strong>6. Describe the Initial State (Given):</strong></p>
 <p>In the Given section of your scenario, describe the initial state or context before the user actions take place. This sets up the preconditions for the scenario. It may involve data setup, system initialization, or user authentication.</p>
 <p><strong>7. Define the Expected Outcomes (Then):</strong></p>
-<p>In the Then section, specify the expected outcomes or results of the user actions. What should happen after the user interacts with the module? This could include changes in the user interface, data updates, or system responses.</p>
+<p>In the Then section, specify the expected outcomes or results of the user actions. What should happen after the user interacts with the module? This could include what a selector returns, what an endpoint answers, or the data that changed.</p>
 <p><strong>8. Add Additional Details (And or But):</strong></p>
 <p>To make your scenarios more comprehensive and precise, you can use the “And” or “But” keywords to include additional steps or conditions. These can be used to clarify complex interactions or to cover alternative paths.</p>
 <p><strong>9. Consider Edge Cases:</strong></p>
 <p>Think about edge cases or exceptional scenarios that might occur. These are situations where the software module might behave differently or where specific conditions need to be met.</p>
 <p><strong>10. Review and Refine:</strong></p>
 <p>Review your scenarios for clarity, completeness, and accuracy. Ensure that they accurately represent the intended behavior of the software module. Make revisions as necessary.</p>
-<p><strong>11. Use Scenario Templates:</strong></p>
-<p>Consider using scenario templates or pre-defined formats that follow the Given-When-Then structure. These templates can make it easier to write consistent and well-structured scenarios.</p>
+<p><strong>11. Use a Scenario Outline for Variations:</strong></p>
+<p>When one behavior holds across several inputs, write it once as a Scenario Outline and list the inputs in an Examples table, one row per case.</p>
 <p><strong>Example BDD Scenario for a Software Module:</strong></p>
-<p>Here’s an example of a BDD scenario for a login module:</p>
-<pre class="code-block"><code>Scenario: Logging into the system
+<p>Here’s an example of a BDD scenario for a booking module:</p>
+<pre class="code-block"><code>Feature: Booking a table
+  As a diner, I want to book a table so that I have a seat when I arrive.
 
-Given the user is on the login page
-When the user enters a valid username and password
-Then the user should be successfully logged into the system
-And the user should be redirected to the dashboard</code></pre>
-<p>In this scenario, the Given section sets the initial state, the When section describes the user action, and the Then section specifies the expected outcomes.</p>
+  Scenario: Booking the last table at seven
+    Given one table left at 7:00 pm on Friday
+    When Ada books it for two
+    Then her booking is confirmed
+    And no tables are left at 7:00 pm on Friday</code></pre>
+<p>The Feature names the module and carries its user story; the Given sets the starting state, the When names one event, and each Then names a result the team can check below the interface.</p>
 <p>By following these steps, you can create effective BDD scenarios for your software modules. These scenarios provide a clear and testable specification of the module’s behavior, ensuring that it aligns with user expectations and business requirements.</p>
 
 <!-- .entry-content -->

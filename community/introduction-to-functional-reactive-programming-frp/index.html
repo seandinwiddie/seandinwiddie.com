@@ -122,7 +122,7 @@ Development					</a>
 <li>
 <strong>Reactive Streams:</strong> At the core of FRP are reactive streams, which represent sequences of events or data changes over time. These streams can include user interactions, sensor data, network responses, or any time-varying data.</li>
 <li>
-<strong>Observables:</strong> Observables are a central concept in FRP. They represent asynchronous data streams and allow developers to observe and react to changes over time. Observables can be created from various sources, such as user interactions, timers, or external data sources.</li>
+<strong>State as a Fold:</strong> The state at any moment is every event so far, folded through a pure function. In Redux Toolkit that is <code>actions.reduce(reducer, initialState)</code>: the reducer combines the last state with the next action and reads nothing else.</li>
 <li>
 <strong>Declarative Programming:</strong> FRP promotes a declarative approach to programming, where developers specify what should happen in response to events, rather than how it should happen. This results in more concise and readable code.</li>
 <li>
@@ -131,10 +131,10 @@ Development					</a>
 <strong>Event-Driven Programming:</strong> FRP is well-suited for event-driven programming, where code reacts to events or signals as they occur. Events can be filtered, transformed, and combined in a functional way.</li>
 </ol>
 <p>How FRP Works:</p>
-<p>FRP works by modeling data and events as reactive streams and observables. Developers define how they want to respond to events or changes in these streams using a declarative approach. They can apply various operators to observables to transform, filter, or combine data, making it easier to create complex functionality from simple and reusable parts.</p>
+<p>FRP works by modeling what happens as events and what the program knows as values derived from them. Developers declare how each event changes the state and how each value is derived, and compose small pure functions into larger ones, rather than writing callbacks that change things in place.</p>
 <p>FRP is used in a wide range of applications, including real-time web applications, interactive user interfaces, games, simulations, and more. It is particularly valuable in scenarios where data and events are constantly changing, and a responsive and declarative approach is beneficial.</p>
 <p>Where FRP Comes From:</p>
-<p>FRP starts with Conal Elliott and Paul Hudak’s <em>Functional Reactive Animation</em> (1997), built on two ideas: behaviors, values that change over time, and events, things that happen at a moment. Observable libraries often borrow the name but model only streams of events. In custom apps, the Sean Dinwiddie’s Webmastery team builds the same ideas in Redux Toolkit: actions are the events, reducers fold them into state, and selectors derive the values a view shows.</p>
+<p>FRP starts with Conal Elliott and Paul Hudak’s <em>Functional Reactive Animation</em> (1997), built on two ideas: behaviors, values that change over time, and events, things that happen at a moment. Observable libraries often borrow the name but model only streams of events. In custom apps, the Sean Dinwiddie’s Webmastery team builds the same ideas in Redux Toolkit: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows the boundary that keeps those reducers pure: a pure core decides, and a thin shell acts.</p>
 <p>In summary, Functional Reactive Programming (FRP) offers a powerful and declarative approach to handling asynchronous data streams and events. It simplifies event-driven programming, promotes a functional and immutable approach to data, and is widely used in various real-time and event-driven applications.</p>
 
 <!-- .entry-content -->

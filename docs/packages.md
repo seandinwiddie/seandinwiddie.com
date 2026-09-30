@@ -53,13 +53,13 @@ Sean edits the prices page himself. A suggestion: "The monthly engagement is $6,
 Since pass 8 every fee line on the focus pages follows the floors, one short line near each page's next step, and none links to the prices page:
 
 - **Homepage:** a one-time job from a third share ($2,000) for a food truck's menu page to a full share ($6,000) for a family shop's website; the annual engagement for a public office or firm, or an accessibility review at a half share ($3,000). "Keeping it running": the site runs in the owner's accounts, and the monthly engagement keeps it in hand.
-- **`/service/`:** bought once, from a third to whole shares, or held as the whole engagement, month to month or across the year.
-- **`/contact/`:** a one-time job from a third, the monthly engagement or the annual engagement; payment terms; a consultation at a third share.
+- **`/service/`:** bought once, from a third to whole shares, or held as the monthly engagement ($6,000 a month) or the annual engagement ($120,000 a year).
+- **`/contact/`:** every fee traces to the two published figures: a one-time job from a third, the monthly engagement or the annual engagement; payment terms; a consultation at a third share.
 - **Design:** a menu page at a third share, a website at a full share; artwork is its own one-time job. **Website design:** one page at a third, a website at a full share, two for a site that takes orders. **CRO:** one leak at a third share; conversion work month to month is the monthly engagement.
 - **Development:** a website at a full share, custom builds in whole shares, work on an existing site from a third. **Website development:** a new site at one or two shares; after handover, a one-time job from a third or the monthly engagement. **Custom apps:** whole shares; a consultation at a third.
 - **Marketing:** local search set up for one location at a third share; search and ads month to month are the monthly engagement. **On-site SEO:** one site's fix list at a third. **Off-site SEO and ads:** listings for one location at a third; ads are the monthly engagement, never a percentage of spend.
-- **Automation:** one automation from a third share; the audit a third share of its own; upkeep in the monthly engagement.
-- **Local, Klamath Falls and Redding:** one-time work from a third share; a public office's accessibility review at a half share, and the annual engagement for the whole program; "a kiosk and a county office pay the same rate".
+- **Automation:** one automation starts at a third share, its share fixed in writing before work starts; the audit, when the tasks need finding, a third share of its own; upkeep in the monthly engagement.
+- **Local, Klamath Falls and Redding:** one-time work from a third share; a public office's accessibility review of the templates the scope names at a half share, and the annual engagement for the whole program; "a kiosk and a county office pay the same rate".
 - **Training (Sean's page):** it still prices a session at a tenth share ($600); Sean updates it.
 
 ## Decisions and guardrails

@@ -141,11 +141,11 @@ Development					</a>
 <p><strong>Key Principles:</strong></p>
 <ol>
 <li>
-<strong>Observables:</strong> In FRP, observables are a central concept. An observable is a sequence of values that can be observed over time. It represents an asynchronous data stream. Observables can be created from various sources, such as user interactions, timers, or external data sources.</li>
+<strong>Events as Actions:</strong> Each event is a plain action object named for what happened, such as <code>orderPlaced</code>, whether a person, a timer or the server caused it; the sequence of dispatched actions is the application’s event stream.</li>
 <li>
-<strong>Subscriptions:</strong> A subscription represents an active connection to an observable. It allows you to observe and respond to values emitted by the observable. Subscriptions can be managed, and you can unsubscribe when you no longer want to receive events.</li>
+<strong>Subscriptions:</strong> A React view subscribes to the store through <code>useAppSelector</code>, and an RTK Query hook subscribes to a cached request; both end when the view unmounts, so none is managed by hand.</li>
 <li>
-<strong>Operators:</strong> FRP provides a wide range of operators that can be applied to observables to transform, filter, or combine their data. Operators enable complex operations to be composed from simpler ones, promoting code reusability and readability.</li>
+<strong>Selectors:</strong> <code>createSelector</code> composes small pure functions into derived values, the way FRP derives one behavior from another, and recomputes a value only when its inputs change.</li>
 <li>
 <strong>Event Handling:</strong> FRP simplifies event handling by allowing you to describe how to react to events in a declarative manner. This reduces the need for callbacks and imperative event handling code.</li>
 </ol>

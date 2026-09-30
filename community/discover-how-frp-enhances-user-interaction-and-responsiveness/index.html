@@ -123,15 +123,15 @@ Development					</a>
 <li>
 <strong>Declarative Event Handling:</strong> FRP promotes a declarative approach to event handling. Instead of specifying how an event should be handled, developers define what should happen when an event occurs. This results in more concise and understandable code, making it easier to manage user interactions.</li>
 <li>
-<strong>Efficient State Management:</strong> FRP facilitates efficient state management by representing data and events as reactive streams. This stream-based approach ensures that state changes are propagated automatically, reducing the need for manual state management and enabling applications to stay in sync with user input.</li>
+<strong>State Management:</strong> The store holds the facts, reducers fold events into the next state, and memoized selectors recompute derived values only when their inputs change, so a view stays in step with every action without manual bookkeeping.</li>
 <li>
-<strong>Complex Event Compositions:</strong> FRP allows developers to compose complex interactions from simple events. Reactive operators enable the combination, transformation, and filtering of events and data streams. This makes it easier to implement advanced user interactions, such as drag-and-drop, autocomplete, and gesture recognition.</li>
+<strong>Complex Event Compositions:</strong> FRP allows developers to compose complex interactions from simple events. Small pure functions and selectors combine, transform and filter what events leave in state, and listener middleware handles timing such as debouncing. This makes it easier to implement advanced user interactions, such as drag-and-drop, autocomplete, and gesture recognition.</li>
 <li>
 <strong>Responsive User Interfaces:</strong> With FRP, user interfaces can be highly responsive. Applications can immediately reflect user actions, providing instant feedback and a smoother user experience. Complex user interfaces, like interactive dashboards or real-time collaboration tools, benefit from FRP’s ability to handle multiple concurrent events seamlessly.</li>
 <li>
 <strong>Error Handling and Recovery:</strong> FRP simplifies error handling by providing mechanisms to deal with errors in a declarative manner. When errors occur, FRP allows developers to define how the application should respond, which can include providing informative error messages or triggering recovery actions.</li>
 <li>
-<strong>Asynchronous Operations:</strong> FRP is well-suited for managing asynchronous operations, such as network requests, by treating them as reactive streams. This enables applications to handle network communication while maintaining a responsive user interface.</li>
+<strong>Asynchronous Operations:</strong> Network requests stay at the boundary: RTK Query fetches, caches and refetches server data, and the view shows its loading, error or data state without handling the request itself. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#side-effect-architecture">Modern Redux Architecture Patterns</a> sets out which tool owns which effect.</li>
 <li>
 <strong>Modular Code:</strong> FRP promotes modular code that is easier to understand and maintain. Each event and its handling logic can be encapsulated in a clear and isolated manner, contributing to code maintainability and scalability.</li>
 <li>
@@ -141,7 +141,7 @@ Development					</a>
 <li>
 <strong>Reduced Callback Hell:</strong> FRP reduces the “callback hell” often associated with managing asynchronous operations and event handling. Instead of chaining callbacks, FRP allows developers to express complex sequences of events and reactions in a structured and readable manner.</li>
 </ol>
-<p>In summary, FRP empowers developers to create highly responsive and interactive user interfaces by providing a clear and concise way to manage user interactions and asynchronous events. By promoting a declarative approach and offering a range of operators for handling events and data streams, FRP simplifies complex event-driven scenarios and ensures that applications respond promptly to user input.</p>
+<p>In summary, FRP empowers developers to create highly responsive and interactive user interfaces by providing a clear and concise way to manage user interactions and asynchronous events. By promoting a declarative approach and composing small pure functions over events and state, FRP simplifies complex event-driven scenarios and ensures that applications respond promptly to user input.</p>
 
 <!-- .entry-content -->
 <footer>

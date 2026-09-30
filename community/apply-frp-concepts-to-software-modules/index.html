@@ -127,7 +127,7 @@ Development					</a>
 <li>
 <strong>Derive with Selectors:</strong> Compute what a view shows from the state with selectors, composed with createSelector, so each derived value has one definition and recomputes only when its inputs change.</li>
 <li>
-<strong>Compose Operations with Operators:</strong> Apply operators to your observables and event streams. Operators allow you to transform, filter, and combine data in a declarative manner. For example, you can use operators to map user input to specific actions, debounce input, or filter events based on certain criteria.</li>
+<strong>Put Effects at the Boundary:</strong> RTK Query fetches and caches server data, a thunk runs a workflow started from one place, and listener middleware debounces, cancels and reacts to later actions; reducers and selectors stay pure.</li>
 <li>
 <strong>Declarative Event Handling:</strong> Write code that handles events and user interactions in a declarative way. Instead of writing complex event handlers with callbacks, use the FRP approach to define what should happen when events occur. This results in cleaner and more maintainable code.</li>
 <li>
@@ -135,7 +135,7 @@ Development					</a>
 <li>
 <strong>Error Handling:</strong> Implement error handling using FRP principles. Define how your module should respond to errors or exceptional situations in a declarative manner, ensuring that your module remains stable and responsive.</li>
 <li>
-<strong>Modularize Code:</strong> Modularize your code by encapsulating related functionality in separate observables and event streams. This modular approach makes your code more organized and easier to maintain.</li>
+<strong>Modularize Code:</strong> Organize the module by feature: its slice, selectors, endpoints and view in one folder, with the slice’s actions and selectors as its public interface.</li>
 <li>
 <strong>Testing:</strong> Module 2’s scenarios become the slice’s tests: each Given sets the starting state, each When dispatches one action, and each Then checks what a selector returns. Pure reducers and selectors need no browser to test.</li>
 <li>
@@ -147,6 +147,9 @@ Development					</a>
 <li>
 <strong>Continuous Improvement:</strong> Continuously monitor and refine your FRP-based modules to improve their responsiveness and maintainability. Stay open to adopting new FRP techniques and best practices.</li>
 </ol>
+<div class="notice depth">
+<p><strong>Where it bends.</strong> Not every value belongs in a slice. Ask in order, and stop at the first yes: can it be derived from other state (a selector computes it); should it survive a refresh or be shared as a link (the router owns it); is it a server document reused across the app (RTK Query owns it); is it shared by unrelated components, with transitions worth recording (a slice owns it)? Anything else stays in the component. Two owners for one value drift apart, and a derived value stored in state goes stale. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#a-decision-procedure-for-one-piece-of-state">Modern Redux Architecture Patterns</a> sets out the procedure.</p>
+</div>
 <p>By following these steps, you can apply FRP concepts to your software modules and create more responsive, user-centric, and maintainable software. FRP provides a powerful paradigm for handling asynchronous events and data streams, making it a valuable addition to modern software development practices.</p>
 <p>The next lesson, <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a>, carries the chain to the server. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/">Modern Redux Architecture Patterns</a> goes further on the client, with listener middleware reacting to events over time beside slices and RTK Query.</p>
 

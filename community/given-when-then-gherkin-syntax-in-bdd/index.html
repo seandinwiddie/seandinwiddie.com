@@ -115,7 +115,7 @@ Development					</a>
 <div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Gherkin is the plain-language format behind Given-When-Then, used in Behavior-Driven Development (BDD) to define and describe the expected behavior of a software system; Given, When and Then are three of its keywords. Gherkin syntax is designed to be human-readable, so the people who asked for a feature can read its scenarios, and each scenario becomes an automated test. It provides a clear and uniform way to express behavior scenarios.</p>
+<p>Gherkin is Cucumber’s plain-language format for Given-When-Then scenarios, used in Behavior-Driven Development (BDD) to define and describe the expected behavior of a software system; Given, When and Then are three of its keywords. Gherkin syntax is designed to be human-readable, so the people who asked for a feature can read its scenarios, and each scenario becomes an automated test. It provides a clear and uniform way to express behavior scenarios.</p>
 <p><strong>The Gherkin Structure:</strong></p>
 <p>Gherkin scenarios follow a specific structure with three main sections: Given, When, and Then. Each section serves a distinct purpose in describing the expected behavior.</p>
 <ol>
@@ -126,14 +126,14 @@ Development					</a>
 <li>It sets up the preconditions necessary for the scenario to make sense.</li>
 <li>“Given” statements establish the starting point for the behavior you want to test.</li>
 </ul>
-<ol>
+<ol start="2">
 <li><strong>When:</strong></li>
 </ol>
 <ul>
 <li>The “When” section describes an action or event that occurs, typically triggered by the user or some external factor.</li>
 <li>It represents the action you are testing—the specific behavior that you want to observe or verify.</li>
 </ul>
-<ol>
+<ol start="3">
 <li><strong>Then:</strong></li>
 </ol>
 <ul>
@@ -142,13 +142,16 @@ Development					</a>
 </ul>
 <p><strong>Example Using Gherkin Syntax:</strong></p>
 <p>Here’s an example of a BDD scenario written in Gherkin syntax:</p>
-<pre class="code-block"><code>Scenario: Signing in with the correct password
+<pre class="code-block"><code>Feature: Signing in
+  A registered customer signs in to see their orders.
 
-Given a registered account for "ada@example.com"
-When Ada signs in with the correct password
-Then her session starts</code></pre>
+  Scenario: Signing in with the correct password
+    Given a registered account for "ada@example.com"
+    When Ada signs in with the correct password
+    Then her session starts</code></pre>
 <p>In this scenario:</p>
 <ul>
+<li>The Feature line names what the scenarios belong to, with a short description beneath it, often the user story.</li>
 <li>The “Given” section establishes the context: an account that already exists.</li>
 <li>The “When” section names the one event under test: signing in with the correct password.</li>
 <li>The “Then” section names the outcome: a started session. No step names a page or a button, so the scenario can run below the interface as well as in the browser.</li>
@@ -156,6 +159,7 @@ Then her session starts</code></pre>
 <p><strong>Additional Keywords in Gherkin:</strong></p>
 <p>In addition to the primary Given-When-Then structure, Gherkin syntax also includes other keywords that can be used to enhance scenarios:</p>
 <ul>
+<li><strong>Feature:</strong> The first keyword in a feature file. It names the feature and holds its description, often the user story, above its scenarios.</li>
 <li>
 <strong>And:</strong> The “And” keyword can be used to continue a section that has already started. For example, “Given,” “When,” or “Then” can be followed by “And” to add more context, actions, or expected outcomes.</li>
 <li>
@@ -164,9 +168,30 @@ Then her session starts</code></pre>
 <strong>Background:</strong> The “Background” keyword is used to define a set of Given steps that are common to multiple scenarios within the same feature file. This helps avoid repetition and keeps feature files concise.</li>
 <li>
 <strong>Scenario Outline:</strong> The “Scenario Outline” keyword is used to create parameterized scenarios. It runs the same scenario once for each row of its Examples table, filling each &lt;placeholder&gt; in the steps from that row.</li>
+<li><strong>Examples:</strong> The table beneath a Scenario Outline; its header row names the placeholders, and each row below it runs the outline once.</li>
 <li>
 <strong>Rule:</strong> The “Rule” keyword (Gherkin 6 and later) groups the scenarios that illustrate one business rule. A user story’s acceptance criteria map onto Rules, and each Rule’s scenarios are its examples.</li>
+<li><strong>Tags:</strong> Not a keyword but a label, such as <code>@checkout</code>, written above a Feature, Scenario, Scenario Outline or Examples table, so a runner can select or skip what it marks.</li>
 </ul>
+<div class="notice depth">
+<p><strong>The rule behind the examples.</strong> A scenario is one example of a rule. When the same rule holds across several cases, a Scenario Outline states it once and an Examples table lists the cases, so the rule reads in one place and each row runs as its own test. Module 1’s password-reset criteria, written this way:</p>
+<pre class="code-block"><code>Feature: Resetting a password
+
+  Rule: A reset link works once, within 24 hours
+
+    Scenario Outline: Opening a reset link
+      Given a reset link issued &lt;age&gt; ago
+      And the link &lt;history&gt;
+      When Ada opens the link
+      Then the reset form is &lt;result&gt;
+
+      Examples:
+        | age      | history       | result  |
+        | 1 hour   | is unused     | shown   |
+        | 1 hour   | was used once | refused |
+        | 25 hours | is unused     | refused |</code></pre>
+<p>A failing row names the case that broke. The steps name the domain, never the page, so the same table runs against a slice, an endpoint or the browser. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> takes the rule one step further, with property tests that check it across generated inputs.</p>
+</div>
 <p>Gherkin syntax provides a standardized and human-readable way to express behavior scenarios in BDD. By following this structure, development teams can create clear, structured, and unambiguous descriptions of how the software should behave from the user’s perspective.</p>
 
 <!-- .entry-content -->

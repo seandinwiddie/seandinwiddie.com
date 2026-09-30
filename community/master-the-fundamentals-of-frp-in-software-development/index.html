@@ -121,21 +121,21 @@ Development					</a>
 <li>
 <strong>Understand Reactive Streams:</strong> Start by grasping the concept of reactive streams. These are sequences of events or data changes over time. Learn how to create and work with reactive streams in your chosen programming language or framework.</li>
 <li>
-<strong>Learn Observables:</strong> Observables are central to FRP. They represent asynchronous data streams. Study how to create and manipulate observables. Familiarize yourself with operators that allow you to transform, filter, and combine observables.</li>
+<strong>Learn Reducers and Selectors:</strong> A reducer folds each event into the next state, and a selector derives a value from state. Practice both as pure functions with plain inputs and outputs.</li>
 <li>
-<strong>Event Handling:</strong> Explore event handling in FRP. Understand how to react to events using observables. Practice creating event-driven code that reacts to user interactions, data changes, or external events.</li>
+<strong>Event Handling:</strong> Explore event handling in FRP. Understand how to react to events by dispatching actions named for what happened. Practice creating event-driven code that reacts to user interactions, data changes, or external events.</li>
 <li>
 <strong>Immutability:</strong> FRP often promotes immutability, where data is treated as unchangeable. Learn how to work with immutable data structures to maintain the purity of your functions and minimize side effects.</li>
 <li>
-<strong>Declarative Programming:</strong> Embrace declarative programming, which emphasizes specifying what should happen rather than how it should happen. Write code that clearly expresses the desired behavior and leverages observables to achieve it.</li>
+<strong>Declarative Programming:</strong> Embrace declarative programming, which emphasizes specifying what should happen rather than how it should happen. Write code that clearly expresses the desired behavior and leaves the how to reducers and selectors.</li>
 <li>
-<strong>Subscriptions:</strong> Study subscriptions, which establish an active connection to observables. Learn how to create and manage subscriptions and when to unsubscribe to prevent resource leaks.</li>
+<strong>Listeners:</strong> Study listener middleware, which reacts to later actions over time, and learn when to cancel work that has gone stale.</li>
 <li>
 <strong>Use Cases:</strong> Apply FRP to real-world use cases. Build small applications or features using FRP to gain practical experience. This could include creating reactive user interfaces or handling real-time data.</li>
 <li>
-<strong>Operators:</strong> Explore the wide range of operators available in your chosen FRP library or framework. Practice using these operators to transform and manipulate data streams effectively.</li>
+<strong>Composition:</strong> Build larger functions from small ones with pipe and compose, and larger selectors from smaller ones. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#pipe-and-compose">Functional Composition</a> covers both directions.</li>
 <li>
-<strong>Testing:</strong> Learn how to test code written with FRP principles. Understand how to write unit tests for observables and ensure that your reactive code behaves as expected.</li>
+<strong>Testing:</strong> Learn how to test code written with FRP principles. Test a reducer through a sequence of actions and a selector through its output; neither needs a browser.</li>
 <li>
 <strong>Error Handling:</strong> Study error handling in FRP. Discover how to handle errors and exceptions gracefully within your reactive code, maintaining the stability of your applications.</li>
 <li>
@@ -149,7 +149,7 @@ Development					</a>
 <li>
 <strong>Projects and Collaboration:</strong> Collaborate with others on projects that use FRP. Working on real projects allows you to apply your knowledge and learn from others’ experiences.</li>
 <li>
-<strong>Advanced Topics:</strong> Delve into advanced topics, such as time-based operations, multicasting, and integrating FRP with other paradigms like object-oriented programming.</li>
+<strong>Advanced Topics:</strong> Delve into advanced topics, such as effects over time with listener middleware, normalized entity collections, and FRP’s origin in continuous-time behaviors.</li>
 <li>
 <strong>Continuous Learning:</strong> FRP is a dynamic field, and new developments and tools emerge. Stay up to date with the latest trends and technologies related to FRP.</li>
 </ol>

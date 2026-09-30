@@ -127,12 +127,15 @@ Development					</a>
 <li>
 <strong>Ordered:</strong> Events in a stream maintain their order of occurrence, allowing developers to respond to events sequentially.</li>
 <li>
-<strong>Continuous:</strong> Event streams can be continuous, providing a constant flow of data, or they can be finite, representing a specific sequence of events.</li>
+<strong>Discrete:</strong> Each event happens at a moment; values that change continuously are FRP’s behaviors, which Redux Toolkit derives with selectors.</li>
 </ul>
 </li>
 </ul>
+<div class="notice depth">
+<p><strong>The rule behind the examples.</strong> A store’s state is a fold of its events: <code>state = actions.reduce(reducer, initialState)</code>. Because the reducer is pure, the same actions in the same order always give the same state. That is why a slice’s test is a list of actions and an expected result, and why Redux DevTools can replay a session step by step. The lecture <a href="https://seandinwiddie.github.io/lectures/basic-functional-programming-knowledge/#every-for-loop-is-a-fold-in-disguise">Basic Functional Programming TypeScript Knowledge</a> shows the fold on its own.</p>
+</div>
 <p><strong>2. Reactive Programming:</strong></p>
-<p>Reactive programming is a programming paradigm that focuses on reacting to changes or events as they occur, rather than relying on explicit control flow or callbacks. It emphasizes the use of reactive data structures, such as observables, and the application of reactive operators to transform and respond to data and events.</p>
+<p>Reactive programming is a programming paradigm that focuses on reacting to changes or events as they occur, rather than relying on explicit control flow or callbacks. It emphasizes declaring how the program responds to each event, and deriving values from state rather than updating them by hand.</p>
 <ul>
 <li>
 <strong>Key Principles of Reactive Programming:</strong>
@@ -140,16 +143,16 @@ Development					</a>
 <li>
 <strong>Declarative Approach:</strong> Reactive programming encourages a declarative approach to event handling, where developers specify what should happen in response to events, rather than how it should happen.</li>
 <li>
-<strong>Composability:</strong> Reactive programming promotes the use of operators to compose complex functionality from simpler building blocks. Operators allow for transformations, filtering, and combination of data and event streams.</li>
+<strong>Composability:</strong> Reactive programming composes complex behavior from small pure functions: <code>map</code>, <code>filter</code> and <code>reduce</code> over events, and selectors built from smaller selectors.</li>
 <li>
 <strong>Efficiency and Responsiveness:</strong> Reactive programming aims to create highly responsive and efficient applications by enabling real-time updates and immediate reactions to user interactions.</li>
 </ul>
 </li>
 <li>
-<strong>Reactive Operators:</strong> Reactive programming provides a range of operators that can be applied to observables and event streams to modify their behavior. These operators include mapping, filtering, combining, and timing operators, among others.</li>
+<strong>Effects over Time:</strong> Timing belongs at the boundary, never in a reducer: in Redux Toolkit, listener middleware debounces, delays and cancels work in response to later actions.</li>
 </ul>
 <p><strong>3. Integration in FRP:</strong></p>
-<p>In the context of FRP, event streams and reactive programming are integral to the handling of asynchronous events and data changes. Event streams are often represented as observables, which can be observed and transformed using reactive operators. This allows developers to build declarative, responsive, and efficient systems that react to real-time data and user interactions.</p>
+<p>In the context of FRP, event streams and reactive programming are integral to the handling of asynchronous events and data changes. Each event is an action, each reducer a pure step from one state to the next, and each derived value a selector. This allows developers to build declarative, responsive, and efficient systems that react to real-time data and user interactions.</p>
 <p><strong>4. Example Use Cases:</strong></p>
 <ul>
 <li>Real-time updates in web applications: Event streams can capture user interactions, such as clicks or keystrokes, and immediately update the user interface in response.</li>

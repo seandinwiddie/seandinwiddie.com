@@ -13,6 +13,8 @@ Lessons grow layers of depth over the passes, a few lessons at a time. A layer i
 - **Room for a journeyman's layer:** Background, Scenario Outline and Rule in the Gherkin lesson and the scenario-writing lessons; Module 3's FRP lessons.
 - **Room for a master's layer:** a codebase's test strategy (BDD and Unit Testing, BDD Testing Framework), and designing a module's state layer (Apply FRP).
 
+Since pass 9, layers sit in the Gherkin lesson (the rule behind the examples: a Rule, a Scenario Outline and an Examples table), Event streams (state as a fold) and Apply FRP (where it bends: who owns a piece of state), plus the API lesson's "Where it bends". Next: BDD Testing Framework, Writing BDD Scenarios and Defining User Stories. Pass 9 also took the Rx vocabulary out of Module 3 (the sync now fails a lesson that teaches it), split the checkout scenario into three, added Feature, Examples and Tags to the Gherkin lesson, and replaced the P.S. note's "secret sauce".
+
 The banner names each lesson's place ("Lesson 3 of 9 in Module 1"), each module's opener lists its lessons in order, and the community sitemap runs in teaching order. All of it renders from `LESSONS`.
 
 ## Module 4: the chain end to end (pass 9)
