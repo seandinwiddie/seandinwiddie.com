@@ -20,7 +20,7 @@ Reviews the site through the reading list and the mission below. Reads the other
 
 ### 4. The senior CTO
 
-Reads as a senior CTO at an elite, high-end boutique agency firm. Checks every claim for accuracy: technical, legal and factual, and against what the site's own build and code show. Names where the site can be more sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable. Names, from the firm's side, the benefits of an independent webmaster joining the agency firm's team, and checks recruiting wording for accuracy and for words that imply an employee rather than an independent subcontractor. Scores the site from 0 to 10.
+Reads as a senior CTO at an elite, high-end boutique agency firm. Checks every claim for accuracy: technical, legal and factual, and against what the site's own build and code show. Names where the site can be more sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable. Names, from the firm's side, the benefits of an independent webmaster joining the agency firm's team, and checks recruiting wording for accuracy and for words that imply an employee rather than an independent subcontractor. Reviews the community pages as training content: technical accuracy and currency of what they teach, their structure as lessons, what's missing or unfinished, and where a lecture link (`docs/lectures.md`) would help. Names improvements the loop can make there in small tweaks. Scores the site from 0 to 10.
 
 ## Distractions
 
