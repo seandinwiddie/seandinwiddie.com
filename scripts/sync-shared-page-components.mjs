@@ -192,6 +192,7 @@ const LESSONS = [
   // Module 4: the chain end to end, from the API behind the app.
   ["the-api-haskell-servant-and-nile", "The API: Haskell Servant and Nile", "m4"],
   ["from-scenario-to-slice", "From Scenario to Slice", "m4"],
+  ["endpoints-at-the-boundary", "Endpoints at the Boundary", "m4"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
@@ -737,6 +738,45 @@ const withMainSitemap = (name, html) => {
   return html.replace(MAIN_SITEMAP_COMMUNITY_PATTERN, (_, open, close) => `${open}${mainSitemapCommunity()}${close}`);
 };
 
+// Accessibility, swept through the sync so every page stays in step.
+// A wide code block scrolls sideways; where a browser doesn't make a scroller
+// focusable, a keyboard can't reach it (WCAG 2.1.1).
+const CODE_BLOCK_PATTERN = /<pre class="code-block"(?: tabindex="0")?>/g;
+const withFocusableCode = (name, html) => html.replace(CODE_BLOCK_PATTERN, '<pre class="code-block" tabindex="0">');
+
+// WordPress wrapped the category link's label and text in a newline and tabs,
+// which a screen reader reads out as pauses.
+const CATEGORY_LINK_PATTERN =
+  /<a aria-label="\s*Category: ([^"]*?)\s*" href="([^"]+)" rel="category">\s*([^<]*?)\s*<\/a>/g;
+const withTrimmedCategory = (name, html) =>
+  html.replace(
+    CATEGORY_LINK_PATTERN,
+    (_, label, href, text) => `<a aria-label="Category: ${label}" href="${href}" rel="category">${text}</a>`,
+  );
+
+// Depth passages open with their title ("The rule behind the examples", "Where it
+// bends"), which the Introduction names; as a labelled aside each is named where
+// it sits.
+const DEPTH_PATTERN = /<(div|aside) class="notice depth"[^>]*>([\s\S]*?)<\/\1>/g;
+const withDepthPassages = (name, html) =>
+  html.replace(DEPTH_PATTERN, (_, _tag, body) => {
+    const title = body.match(/^\s*<p><strong>([^<]+?)\.?<\/strong>/)?.[1];
+    if (!title) throw new Error(`${name}: a depth passage must open with its title in <strong>`);
+    return `<aside class="notice depth" aria-label="${title}">${body}</aside>`;
+  });
+
+// The avatar sits beside the author's name, so it is decorative, and the link
+// shows the name rather than the WordPress username.
+const BYLINE_PATTERN =
+  /<img alt="[^"]*"(?: class="byline-avatar")?( decoding="async" height="36" loading="lazy" src="\/assets\/img\/sean-dinwiddie\.jpg" width="36"\/>)<a href="\/community\/author\/seandinwiddie\/">[^<]*<\/a>/g;
+const withByline = (name, html) =>
+  name.startsWith("community/") && !SEANS_COMMUNITY_PAGES.has(name)
+    ? html.replace(
+        BYLINE_PATTERN,
+        (_, rest) => `<img alt="" class="byline-avatar"${rest}<a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>`,
+      )
+    : html;
+
 // Guards, not transforms: a focus page that names a retired offer or free work,
 // or a lesson that teaches Rx vocabulary, fails the sync (docs/packages.md,
 // docs/terms.md, docs/positioning.md). The one Rx word a lesson may carry is the
@@ -775,6 +815,10 @@ const routeTransforms = Object.freeze([
   withRelatedServices,
   withFeaturedServices,
   withLessonTitle,
+  withFocusableCode,
+  withTrimmedCategory,
+  withDepthPassages,
+  withByline,
   withGuards,
 ]);
 

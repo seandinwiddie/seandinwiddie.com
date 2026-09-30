@@ -107,13 +107,11 @@
 <div class="page-meta">
 <a href="/community/apply-frp-concepts-to-software-modules/" rel="bookmark"><time datetime="2023-10-28T19:24:53+00:00">October 28, 2023</time></a>·
 
-<a aria-label="
-Category: Development						" href="/community/category/development/" rel="category">
-Development					</a>
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
 </div>
 <!-- .entry-meta -->
-<div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
 <p>Applying Functional Reactive Programming (FRP) concepts to software modules involves leveraging the principles of FRP to build modules that are more responsive, maintainable, and user-centric. Here are steps to apply FRP to software modules:</p>
@@ -147,9 +145,9 @@ Development					</a>
 <li>
 <strong>Continuous Improvement:</strong> Continuously monitor and refine your FRP-based modules to improve their responsiveness and maintainability. Stay open to adopting new FRP techniques and best practices.</li>
 </ol>
-<div class="notice depth">
+<aside class="notice depth" aria-label="Where it bends">
 <p><strong>Where it bends.</strong> Not every value belongs in a slice. Ask in order, and stop at the first yes: can it be derived from other state (a selector computes it); should it survive a refresh or be shared as a link (the router owns it); is it a server document reused across the app (RTK Query owns it); is it shared by unrelated components, with transitions worth recording (a slice owns it)? Anything else stays in the component. Two owners for one value drift apart, and a derived value stored in state goes stale. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#a-decision-procedure-for-one-piece-of-state">Modern Redux Architecture Patterns</a> sets out the procedure.</p>
-</div>
+</aside>
 <p>By following these steps, you can apply FRP concepts to your software modules and create more responsive, user-centric, and maintainable software. FRP provides a powerful paradigm for handling asynchronous events and data streams, making it a valuable addition to modern software development practices.</p>
 <p>The next lesson, <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a>, carries the chain to the server. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/">Modern Redux Architecture Patterns</a> goes further on the client, with listener middleware reacting to events over time beside slices and RTK Query.</p>
 

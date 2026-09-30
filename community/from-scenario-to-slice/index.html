@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
-<p class="lesson-place">Lesson 2 of 2 in Module 4</p>
+<p class="lesson-place">Lesson 2 of 3 in Module 4</p>
 </aside>
 <article>
 
@@ -107,18 +107,16 @@
 <div class="page-meta">
 <a href="/community/from-scenario-to-slice/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
 
-<a aria-label="
-Category: Development						" href="/community/category/development/" rel="category">
-Development					</a>
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
 </div>
 <!-- .entry-meta -->
-<div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 <p>A scenario says what a feature does; a slice holds the state it does it with. On the Sean Dinwiddie&rsquo;s Webmastery team, one maps onto the other a line at a time: the Given is the state before, the When is one event, and each Then is a value a selector returns. This lesson follows one of Module 2&rsquo;s scenarios into a Redux Toolkit slice and its test.</p>
 <h2>1. Read the scenario for its parts</h2>
 <p>The scenario from <a href="/community/writing-bdd-scenarios/">Writing BDD Scenarios</a>, under a Feature line:</p>
-<pre class="code-block"><code>Feature: Cart
+<pre class="code-block" tabindex="0"><code>Feature: Cart
 
   Scenario: Adding a product to the cart
     Given "Widget A" is in stock at $25
@@ -129,7 +127,7 @@ Development					</a>
 <p>Read it for three things. The nouns in the Given (a cart, a product, a price) are the state. The verb in the When is one event, named for what happened: <code>itemAdded</code>, rather than <code>setCart</code>. And each Then names a fact that can be read back: what the cart holds, and what it totals.</p>
 <h2>2. The Given is the state before</h2>
 <p>The slice starts where the Given starts. Here that is an empty cart, and the slice&rsquo;s initial state already says so. Prices are kept in cents, as whole numbers, so $25 is <code>2500</code> and no total drifts by a fraction of a cent.</p>
-<pre class="code-block"><code>// features/cart/cartSlice.ts
+<pre class="code-block" tabindex="0"><code>// features/cart/cartSlice.ts
 import { createSelector, createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 type CartLine = { productId: string; name: string; priceCents: number; quantity: number }
@@ -158,13 +156,13 @@ export const { selectLines } = cartSlice.selectors</code></pre>
 <p>The When becomes one dispatched action, named in the past tense for what happened. The reducer takes the last state and the event and decides the next state; the caller never computes it. Adding a second Widget A is the same event, and the reducer, not the view, knows to raise the quantity. A When that seems to need two events usually hides two scenarios. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#setter-style-actions-instead-of-event-style-actions">Redux Toolkit and Functional Programming</a> sets the setter-style action this replaces beside the event-style one.</p>
 <h2>4. Each Then reads a selector</h2>
 <p>A Then never reaches into the slice&rsquo;s fields; it reads a selector, so the test still holds when the state&rsquo;s shape changes. The total is derived, never stored: it is computed from the lines, and <code>createSelector</code> recomputes it only when the lines change.</p>
-<pre class="code-block"><code>export const selectTotalCents = createSelector([selectLines], (lines) =&gt;
+<pre class="code-block" tabindex="0"><code>export const selectTotalCents = createSelector([selectLines], (lines) =&gt;
   lines.reduce((sum, line) =&gt; sum + line.priceCents * line.quantity, 0),
 )</code></pre>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#derive-views-with-selectors">Redux Toolkit and RTK Query Best Practices</a> holds to the same rule: a total, a count or a label that can be derived from the state is never stored beside it.</p>
 <h2>5. The scenario becomes the test</h2>
 <p>In the codebase&rsquo;s own runner, the test carries the scenario&rsquo;s name, and its three parts follow the scenario&rsquo;s. It runs the reducer and the selectors directly, with no store, no view and no browser:</p>
-<pre class="code-block"><code>// features/cart/cart.test.ts
+<pre class="code-block" tabindex="0"><code>// features/cart/cart.test.ts
 import { describe, expect, it } from 'vitest'
 import { cartSlice, itemAdded, selectLines, selectTotalCents } from './cartSlice'
 
@@ -184,14 +182,14 @@ describe('Feature: Cart', () =&gt; {
 <p>A failing test names the behavior that broke. Run as executable steps with cucumber-js instead, each line of the scenario gets a step definition, and the step definitions call the same reducer and selectors; either way, the words the owner read are the words that fail. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#test-transitions-and-derivations">Redux Toolkit and Functional Programming</a> tests a slice the same way, through its events and what its selectors return.</p>
 <h2>6. One scenario, two owners</h2>
 <p>Module 2&rsquo;s <a href="/community/creating-bdd-scenarios-for-real-world-cases/">&ldquo;Placing the order&rdquo;</a> ends with two Thens: the order is recorded at $25, and her cart is empty. The first belongs to the API, and the Hspec test in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> proves it. The second belongs to the slice, and the cart empties when the API accepts the order, not when the button is pressed. The slice listens for the fulfilled action of <code>placeOrder</code>, the endpoint the client generates from the API&rsquo;s contract (its name comes from the route&rsquo;s operationId):</p>
-<pre class="code-block"><code>// in createSlice({ ... }), beside reducers
+<pre class="code-block" tabindex="0"><code>// in createSlice({ ... }), beside reducers
 extraReducers: (builder) =&gt; {
   builder.addMatcher(ordersApi.endpoints.placeOrder.matchFulfilled, (state) =&gt; {
     state.lines = []
   })
 },</code></pre>
 <p>Both tests carry the scenario&rsquo;s name, so a failure on either side names the same behavior.</p>
-<div class="notice depth"><p><strong>Where it bends.</strong> Not every noun in a Given belongs to the slice. &ldquo;Widget A is in stock at $25&rdquo; is the server&rsquo;s fact: RTK Query owns the catalog, and the slice sees the product only as the event&rsquo;s payload, which is why the test builds it as a plain fixture. A cart that must follow the customer from phone to laptop belongs to the server too; then the slice gives way to an endpoint and its cache, and the same scenario runs against the endpoint instead. The scenario stays, and only its owner moves. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#decide-who-owns-the-state">Redux Toolkit and RTK Query Best Practices</a> sets out which owner holds which kind of state.</p></div>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every noun in a Given belongs to the slice. &ldquo;Widget A is in stock at $25&rdquo; is the server&rsquo;s fact: RTK Query owns the catalog, and the slice sees the product only as the event&rsquo;s payload, which is why the test builds it as a plain fixture. A cart that must follow the customer from phone to laptop belongs to the server too; then the slice gives way to an endpoint and its cache, and the same scenario runs against the endpoint instead. The scenario stays, and only its owner moves. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#decide-who-owns-the-state">Redux Toolkit and RTK Query Best Practices</a> sets out which owner holds which kind of state.</p></aside>
 <p>The view that shows the cart stays minimal: it reads <code>selectLines</code> and <code>selectTotalCents</code> and dispatches <code>itemAdded</code>, and every decision it depends on lives in the slice, where the scenario tests it.</p>
 
 <!-- .entry-content -->
@@ -200,6 +198,7 @@ extraReducers: (builder) =&gt; {
 </article>
 <nav class="page-nav" aria-label="Lessons">
 <a href="/community/the-api-haskell-servant-and-nile/" rel="prev">Previous lesson: The API: Haskell Servant and Nile</a>
+<a href="/community/endpoints-at-the-boundary/" rel="next">Next lesson: Endpoints at the Boundary</a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
 <p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>

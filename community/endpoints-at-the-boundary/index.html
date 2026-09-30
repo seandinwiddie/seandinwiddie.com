@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Endpoints at the Boundary | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Where the client meets the API: one RTK Query root per base URL, generated endpoints reviewed, tags that refetch, and every response decoded.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/endpoints-at-the-boundary/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Endpoints at the Boundary | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Where the client meets the API: one RTK Query root per base URL, generated endpoints reviewed, tags that refetch, and every response decoded.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/endpoints-at-the-boundary/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-09-30T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-09-30">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Endpoints at the Boundary | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Where the client meets the API: one RTK Query root per base URL, generated endpoints reviewed, tags that refetch, and every response decoded.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#webpage","url":"https://seandinwiddie.com/community/endpoints-at-the-boundary/","name":"Endpoints at the Boundary | Sean Dinwiddie's Webmastery","description":"Where the client meets the API: one RTK Query root per base URL, generated endpoints reviewed, tags that refetch, and every response decoded.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Endpoints at the Boundary","item":"https://seandinwiddie.com/community/endpoints-at-the-boundary/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#article","headline":"Endpoints at the Boundary","description":"Where the client meets the API: one RTK Query root per base URL, generated endpoints reviewed, tags that refetch, and every response decoded.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/endpoints-at-the-boundary/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/pankaj-patel-yEAOfWSdzgM-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Endpoints at the Boundary</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p class="lesson-place">Lesson 3 of 3 in Module 4</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/endpoints-at-the-boundary/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>An endpoint is where the client meets the API. On the Sean Dinwiddie&rsquo;s Webmastery team, endpoints are generated from the API&rsquo;s own contract into one API root, reviewed like any other code, decoded before a view sees what they return, and tagged so the right views refetch. This lesson carries the orders from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> into the client, beside the cart from <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a>.</p>
+<h2>1. One API root per base URL</h2>
+<p>Every endpoint that talks to the same server joins one API root: one cache, one middleware, and tags that reach across features, so an order placed at checkout refreshes the order history on another screen. A second backend, such as a payment provider&rsquo;s, gets a root of its own. The root starts with no endpoints, declares its tag types, and sends the signed-in user&rsquo;s token on every request as the bearer token the API&rsquo;s <code>Auth</code> combinator reads:</p>
+<pre class="code-block" tabindex="0"><code>// app/api.ts
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import type { RootState } from './store'
+
+const baseQuery = fetchBaseQuery({
+  baseUrl: 'https://api.example.com/',
+  prepareHeaders: (headers, { getState }) =&gt; {
+    const token = (getState() as RootState).session.token
+    if (token) headers.set('Authorization', `Bearer ${token}`)
+    return headers
+  },
+})
+
+export const api = createApi({
+  reducerPath: 'api',
+  baseQuery,
+  tagTypes: ['Order'],
+  endpoints: () =&gt; ({}),
+})</code></pre>
+<p>The store registers the root&rsquo;s reducer and its middleware once; without the middleware, nothing subscribes, refetches or invalidates. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#create-one-api-per-base-url">Redux Toolkit and RTK Query Best Practices</a> shows what a second root for the same backend costs.</p>
+<h2>2. Generate the endpoints, then review them</h2>
+<p>The API writes its contract to an OpenAPI document from the Servant type on every build. RTK Query&rsquo;s code generator reads that document and injects typed endpoints into the root:</p>
+<pre class="code-block" tabindex="0"><code>// openapi-config.ts
+import type { ConfigFile } from '@rtk-query/codegen-openapi'
+
+const config = {
+  schemaFile: './openapi.json',
+  apiFile: './src/app/api.ts',
+  apiImport: 'api',
+  outputFile: './src/features/orders/ordersApi.generated.ts',
+  exportName: 'generatedOrdersApi',
+  hooks: true,
+  filterEndpoints: ['listOrders', 'placeOrder'],
+} satisfies ConfigFile
+
+export default config</code></pre>
+<p>Each endpoint is named for its route&rsquo;s operationId, which the API sets as it builds the document; without one, the generator would build a name from the method and the path. <code>filterEndpoints</code> keeps only the routes this feature owns. When the generator guesses wrong, such as a search sent as a POST, which it would make a mutation, an entry in <code>endpointOverrides</code> corrects it. The generated file is read in review like any other source and never edited by hand: the config changes, the generator runs again, and the diff is reviewed. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> lists what that review checks.</p>
+<h2>3. Decode at the boundary</h2>
+<p>The generated types say what the API promised; they don&rsquo;t check what arrives. A server deployed ahead of its client, or a proxy&rsquo;s error page, can answer with something else. So every response is <code>unknown</code> until a decoder accepts it, written as a pure function that returns the lectures&rsquo; small <code>Either</code>:</p>
+<pre class="code-block" tabindex="0"><code>// features/orders/decodeOrders.ts
+import { left, right, type Either } from '../../shared/either'
+import type { Order } from './ordersApi.generated'
+
+const isRecord = (value: unknown): value is Record&lt;string, unknown&gt; =&gt;
+  typeof value === 'object' &amp;&amp; value !== null
+
+const isLine = (value: unknown) =&gt;
+  isRecord(value) &amp;&amp;
+  typeof value.productId === 'string' &amp;&amp;
+  typeof value.name === 'string' &amp;&amp;
+  Number.isInteger(value.priceCents) &amp;&amp;
+  Number.isInteger(value.quantity)
+
+const isOrder = (value: unknown): value is Order =&gt;
+  isRecord(value) &amp;&amp;
+  typeof value.id === 'string' &amp;&amp;
+  Number.isInteger(value.totalCents) &amp;&amp;
+  Array.isArray(value.lines) &amp;&amp;
+  value.lines.every(isLine)
+
+export const decodeOrder = (raw: unknown): Either&lt;string, Order&gt; =&gt;
+  isOrder(raw) ? right(raw) : left('Expected an order')
+
+export const decodeOrders = (raw: unknown): Either&lt;string, Order[]&gt; =&gt;
+  Array.isArray(raw) &amp;&amp; raw.every(isOrder) ? right(raw) : left('Expected a list of orders')</code></pre>
+<p>The root runs the decoder an endpoint names before anything is cached, and a payload that fails becomes an ordinary error the view can show, never a crash:</p>
+<pre class="code-block" tabindex="0"><code>// app/api.ts, continued
+import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
+import type { Either } from '../shared/either'
+
+type Decode = (raw: unknown) =&gt; Either&lt;string, unknown&gt;
+
+const decodingBaseQuery: BaseQueryFn&lt;string | FetchArgs, unknown, FetchBaseQueryError, { decode?: Decode }&gt; =
+  async (args, queryApi, extraOptions) =&gt; {
+    const result = await baseQuery(args, queryApi, {})
+    const decode = extraOptions?.decode
+    if (result.error || !decode) return result
+    const decoded = decode(result.data)
+    return decoded._tag === 'Right'
+      ? { data: decoded.value, meta: result.meta }
+      : { error: { status: 'CUSTOM_ERROR', error: decoded.error, data: result.data }, meta: result.meta }
+  }</code></pre>
+<p><code>createApi</code> then takes <code>decodingBaseQuery</code> in place of <code>baseQuery</code>. RTK Query can also run the same check itself, as an endpoint&rsquo;s <code>responseSchema</code>, for validators written to the Standard Schema interface. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#react-and-rtk-query">Practical Applications of Functional Programming</a> holds to the same rule: an endpoint checks the response before any component receives it.</p>
+<h2>4. Tags say what to refetch</h2>
+<p>A query provides tags for what it holds, and a mutation invalidates the tags its change makes stale. The generated endpoints take their decoders and tags in one reviewed file beside the generated one:</p>
+<pre class="code-block" tabindex="0"><code>// features/orders/ordersApi.ts
+import { generatedOrdersApi } from './ordersApi.generated'
+import { decodeOrder, decodeOrders } from './decodeOrders'
+
+export const ordersApi = generatedOrdersApi.enhanceEndpoints({
+  endpoints: {
+    listOrders: {
+      extraOptions: { decode: decodeOrders },
+      providesTags: (orders = []) =&gt; [
+        { type: 'Order', id: 'LIST' },
+        ...orders.map(({ id }) =&gt; ({ type: 'Order' as const, id })),
+      ],
+    },
+    placeOrder: {
+      extraOptions: { decode: decodeOrder },
+      invalidatesTags: (order) =&gt; (order ? [{ type: 'Order', id: 'LIST' }] : []),
+    },
+  },
+})
+
+export const { useListOrdersQuery, usePlaceOrderMutation } = ordersApi</code></pre>
+<p>When the API accepts an order, the list is stale, and every view showing it refetches. When the API refuses, the callback returns no tags: RTK Query invalidates on a handled error too, and a refused order changes nothing. A list with no view subscribed is dropped instead, and fetched fresh when a view next asks for it. The tags are written here, where they are reviewed, because tags generated from the document are only as fine as the document&rsquo;s own grouping. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#understand-invalidation">Redux Toolkit and RTK Query Best Practices</a> walks through invalidation.</p>
+<h2>5. The scenario at the endpoint</h2>
+<p>An endpoint is tested against a controlled boundary: a real store with the root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>. The view builds the new order from the slice&rsquo;s lines, product and quantity only; the price the customer saw is for display, and the API prices the order in its own transaction. The test carries the same scenario name as the API&rsquo;s and the slice&rsquo;s:</p>
+<pre class="code-block" tabindex="0"><code>// features/orders/ordersApi.test.ts
+import { configureStore } from '@reduxjs/toolkit'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { api } from '../../app/api'
+import { ordersApi } from './ordersApi'
+
+const tenantId = '018ade1a-7830-7981-b23f-f3a7f7b8f09f'
+const placed = {
+  id: 'order-1',
+  lines: [{ productId: 'widget-a', name: 'Widget A', priceCents: 2500, quantity: 1 }],
+  totalCents: 2500,
+}
+
+// The server, controlled: it records what is posted and lists what it holds.
+const fakeServer = () =&gt; {
+  const orders: (typeof placed)[] = []
+  return async (request: Request) =&gt; {
+    if (request.method === 'POST') {
+      orders.push(placed)
+      return Response.json(placed, { status: 201 })
+    }
+    return Response.json(orders)
+  }
+}
+
+const makeStore = () =&gt;
+  configureStore({
+    reducer: { [api.reducerPath]: api.reducer, session: () =&gt; ({ token: 'test-token' }) },
+    middleware: (getDefaultMiddleware) =&gt; getDefaultMiddleware().concat(api.middleware),
+  })
+
+afterEach(() =&gt; vi.unstubAllGlobals())
+
+describe('Feature: Checkout', () =&gt; {
+  it('Scenario: Placing the order', async () =&gt; {
+    const server = vi.fn(fakeServer())
+    vi.stubGlobal('fetch', server)
+    const store = makeStore()
+    // Given Ada's cart holds "Widget A" at $25, and her order history is on screen
+    const history = store.dispatch(ordersApi.endpoints.listOrders.initiate({ tenantId }))
+    await history
+    // When she places the order
+    await store.dispatch(
+      ordersApi.endpoints.placeOrder.initiate({
+        tenantId,
+        newOrder: { lines: [{ productId: 'widget-a', quantity: 1 }] },
+      }),
+    )
+    // Then the order is recorded at $25, and her history shows it
+    await vi.waitFor(() =&gt;
+      expect(ordersApi.endpoints.listOrders.select({ tenantId })(store.getState()).data).toEqual([placed]),
+    )
+    expect(server.mock.calls[0][0].headers.get('Authorization')).toBe('Bearer test-token')
+    history.unsubscribe()
+  })
+})</code></pre>
+<p>The same file checks the failure paths: a response that isn&rsquo;t an order ends as a <code>CUSTOM_ERROR</code> with the raw payload beside it, and a refused order leaves the history as it was. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what each layer&rsquo;s tests cover, tag invalidation and optimistic rollback included.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Tags wait for the API, and most of the time that is right. When a change should show at once, the mutation patches the cache itself and undoes the patch if the API refuses. <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> ends with the cart moving to the server when it must follow the customer from phone to laptop, and adding to that cart is the classic case. The read endpoint is injected first, so the mutation can patch its cache with full types:</p>
+<pre class="code-block" tabindex="0"><code>// features/cart/cartApi.ts
+import { api } from '../../app/api'
+import type { CartLine } from './cartSlice'
+
+type Cart = { lines: CartLine[] }
+
+const cartReadApi = api.injectEndpoints({
+  endpoints: (build) =&gt; ({
+    getCart: build.query&lt;Cart, { tenantId: string }&gt;({
+      query: ({ tenantId }) =&gt; `tenants/${tenantId}/cart`,
+    }),
+  }),
+})
+
+export const cartApi = cartReadApi.injectEndpoints({
+  endpoints: (build) =&gt; ({
+    addCartItem: build.mutation&lt;Cart, { tenantId: string; item: Omit&lt;CartLine, 'quantity'&gt; }&gt;({
+      query: ({ tenantId, item }) =&gt; ({ url: `tenants/${tenantId}/cart/lines`, method: 'POST', body: item }),
+      async onQueryStarted({ tenantId, item }, { dispatch, queryFulfilled }) {
+        const patch = dispatch(
+          cartReadApi.util.updateQueryData('getCart', { tenantId }, (cart) =&gt; {
+            const line = cart.lines.find((l) =&gt; l.productId === item.productId)
+            if (line) line.quantity += 1
+            else cart.lines.push({ ...item, quantity: 1 })
+          }),
+        )
+        try {
+          await queryFulfilled
+        } catch {
+          patch.undo()
+        }
+      },
+    }),
+  }),
+})</code></pre>
+<p>The patch and its undo live in the mutation&rsquo;s own lifecycle, never in a view, so success and rollback stay together. Optimism suits a change the API almost always accepts and the customer can watch undone. Placing the order is never optimistic: a declined card must never look like a placed order, which is why the slice empties the cart only on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#patching-the-cache-from-a-component">Redux Toolkit and RTK Query Best Practices</a> sets the patch in the wrong place beside the right one.</p></aside>
+<p>The endpoint sits between the slice and the API, and each owner proves its own part of one scenario under the same name: the Hspec test that the API records the order, the slice&rsquo;s test that the cart empties, and the endpoint&rsquo;s test that the history shows it. The view that places the order stays minimal: it reads <code>selectLines</code>, calls <code>usePlaceOrderMutation</code> with each line&rsquo;s product and quantity, and shows what the endpoint returns.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/from-scenario-to-slice/" rel="prev">Previous lesson: From Scenario to Slice</a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

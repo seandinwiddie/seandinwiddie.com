@@ -53,7 +53,9 @@ for (const file of pages) {
     // attribute's presence.
     if (!/\balt=["'][^"']*["']/i.test(tag)) {
       failures.push(`${name}: image missing alt (${source || "unknown source"})`);
-    } else if (!attribute(tag, "alt").trim()) {
+    } else if (!attribute(tag, "alt").trim() && !/\bclass=["']byline-avatar["']/i.test(tag)) {
+      // The one exception is the byline avatar, which sits beside the author's
+      // name: read aloud, it would only repeat it.
       failures.push(`${name}: image has an empty alt (${source || "unknown source"})`);
     }
     if (source.startsWith("/")) {
@@ -62,6 +64,16 @@ for (const file of pages) {
         failures.push(`${name}: local image missing intrinsic dimensions (${source})`);
       }
     }
+  }
+
+  // A code block scrolls sideways, so the keyboard has to be able to reach it.
+  for (const match of html.matchAll(/<pre\b([^>]*)>/gi)) {
+    if (attribute(match[1], "tabindex") !== "0") failures.push(`${name}: a scrolling code block needs tabindex="0"`);
+  }
+  if (/<div class="notice depth"/.test(html)) failures.push(`${name}: a depth passage must be a labelled aside`);
+  const asides = [...html.matchAll(/<aside\b([^>]*)>/gi)];
+  if (asides.length > 1 && asides.some(([, attrs]) => !attribute(attrs, "aria-label") && !attribute(attrs, "aria-labelledby"))) {
+    failures.push(`${name}: every aside needs a label when a page has more than one`);
   }
 
   for (const match of html.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)) {

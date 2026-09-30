@@ -106,13 +106,11 @@
 <div class="page-meta">
 <a href="/community/event-streams-and-reactive-programming/" rel="bookmark"><time datetime="2023-10-28T19:30:15+00:00">October 28, 2023</time></a>·
 
-<a aria-label="
-Category: Development						" href="/community/category/development/" rel="category">
-Development					</a>
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
 </div>
 <!-- .entry-meta -->
-<div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
 <p>Event streams and reactive programming are core concepts in Functional Reactive Programming (FRP) that play a crucial role in managing asynchronous data and events in a declarative and composable way. Let’s explore these concepts in more detail:</p>
@@ -131,9 +129,9 @@ Development					</a>
 </ul>
 </li>
 </ul>
-<div class="notice depth">
+<aside class="notice depth" aria-label="The rule behind the examples">
 <p><strong>The rule behind the examples.</strong> A store’s state is a fold of its events: <code>state = actions.reduce(reducer, initialState)</code>. Because the reducer is pure, the same actions in the same order always give the same state. That is why a slice’s test is a list of actions and an expected result, and why Redux DevTools can replay a session step by step. The lecture <a href="https://seandinwiddie.github.io/lectures/basic-functional-programming-knowledge/#every-for-loop-is-a-fold-in-disguise">Basic Functional Programming TypeScript Knowledge</a> shows the fold on its own.</p>
-</div>
+</aside>
 <p><strong>2. Reactive Programming:</strong></p>
 <p>Reactive programming is a programming paradigm that focuses on reacting to changes or events as they occur, rather than relying on explicit control flow or callbacks. It emphasizes declaring how the program responds to each event, and deriving values from state rather than updating them by hand.</p>
 <ul>

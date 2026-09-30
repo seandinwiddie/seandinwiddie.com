@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
-<p class="lesson-place">Lesson 1 of 2 in Module 4</p>
+<p class="lesson-place">Lesson 1 of 3 in Module 4</p>
 </aside>
 <article>
 
@@ -107,25 +107,24 @@
 <div class="page-meta">
 <a href="/community/the-api-haskell-servant-and-nile/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
 
-<a aria-label="
-Category: Development						" href="/community/category/development/" rel="category">
-Development					</a>
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
 </div>
 <!-- .entry-meta -->
-<div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 <nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
 <ol>
 <li><a href="/community/from-scenario-to-slice/">From Scenario to Slice</a></li>
+<li><a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a></li>
 </ol>
 </nav>
 
 <p>The last link in the team&rsquo;s chain is the API behind the app. Module 2&rsquo;s scenarios already say what each endpoint answers. On the Sean Dinwiddie&rsquo;s Webmastery team, a Haskell Servant type states it, thin handlers carry it out, and Nile, Postgres built for apps that serve many customers, keeps each customer&rsquo;s data apart.</p>
 <h2>1. The API is a type</h2>
 <p>In Servant, the API is written as a Haskell type before any handler exists. Each route names its path, what it takes and what it returns, and the compiler holds every handler to it:</p>
-<pre class="code-block"><code>type OrdersAPI =
+<pre class="code-block" tabindex="0"><code>type OrdersAPI =
   Auth '[JWT] UserId :&gt;
   "tenants" :&gt; Capture "tenantId" TenantId :&gt; "orders" :&gt;
     (    Get '[JSON] [Order]
@@ -133,7 +132,7 @@ Development					</a>
 <p>The type reads like the scenario it serves: for a signed-in user and one customer, list the orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
 <h2>2. Handlers stay thin</h2>
 <p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction: it reads what a decision needs, such as today&rsquo;s prices, lets the pure code decide, and writes the result. The decisions, such as whether an order is valid and what it totals, live in plain functions with no database in sight, the same boundary Redux Toolkit keeps between reducers and RTK Query. The names below are the lesson&rsquo;s own:</p>
-<pre class="code-block"><code>server :: Pool Connection -&gt; Server OrdersAPI
+<pre class="code-block" tabindex="0"><code>server :: Pool Connection -&gt; Server OrdersAPI
 server pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
   where
     listOrders = liftIO (withTenant pool user tenantId selectOrders)
@@ -144,7 +143,7 @@ server _ _ _ = throwAll err401</code></pre>
 <p>A request without a valid sign-in never reaches a handler: <code>throwAll err401</code> answers every route. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
 <h2>3. Each customer&rsquo;s data stays apart in Nile</h2>
 <p>Nile is Postgres built for apps that serve many organizations, each a tenant. A table that holds a tenant&rsquo;s rows carries a <code>tenant_id</code> and includes it in its primary key, and the tenants themselves live in Nile&rsquo;s built-in <code>tenants</code> table:</p>
-<pre class="code-block"><code>CREATE TABLE orders (
+<pre class="code-block" tabindex="0"><code>CREATE TABLE orders (
   tenant_id uuid REFERENCES tenants (id),
   id uuid DEFAULT gen_random_uuid(),
   item text NOT NULL,
@@ -152,7 +151,7 @@ server _ _ _ = throwAll err401</code></pre>
   PRIMARY KEY (tenant_id, id)
 );</code></pre>
 <p>Inside <code>withTenant</code>, the handler opens a transaction and names the tenant and the user before its queries:</p>
-<pre class="code-block"><code>SET LOCAL nile.tenant_id = '018ade1a-7830-7981-b23f-f3a7f7b8f09f';
+<pre class="code-block" tabindex="0"><code>SET LOCAL nile.tenant_id = '018ade1a-7830-7981-b23f-f3a7f7b8f09f';
 SET LOCAL nile.user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';
 SELECT id, item, total_cents FROM orders;</code></pre>
 <p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one customer into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
@@ -162,7 +161,7 @@ SELECT id, item, total_cents FROM orders;</code></pre>
 <p>The contract is only as honest as the JSON behind it: in the Hspec suite, servant-openapi3&rsquo;s <code>validateEveryToJSON</code> checks generated values of every JSON type in the API against the published schema.</p>
 <h2>5. The scenarios test the API</h2>
 <p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no HTTP server, against Nile running locally in Docker so the tenant checks run too, and each test carries its scenario&rsquo;s name, such as <code>it "Scenario: Placing the order"</code>, so a failing test names the behavior that broke. The pure core, such as <code>validateOrder</code>, is tested on its own, with no database at all. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations cannot.</p>
-<div class="notice depth"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet. And a route that only reshapes data another service already owns usually belongs to that service, not to a new API. Nile has edges of its own: a tenant table can&rsquo;t carry a foreign key into a shared table, and one transaction can&rsquo;t write to both, which is why an order records the item it sold rather than pointing into a shared catalog.</p></div>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet. And a route that only reshapes data another service already owns usually belongs to that service, not to a new API. Nile has edges of its own: a tenant table can&rsquo;t carry a foreign key into a shared table, and one transaction can&rsquo;t write to both, which is why an order records the item it sold rather than pointing into a shared catalog.</p></aside>
 <p>The API closes the chain the course began with: a feature scoped as a user story, its scenarios in Gherkin, the slice and endpoint that pass them, and the typed API and tenant-safe data behind them. The next lesson follows one of those scenarios back into the client, as a Redux Toolkit slice.</p>
 
 <!-- .entry-content -->

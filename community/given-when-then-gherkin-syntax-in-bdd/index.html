@@ -106,13 +106,11 @@
 <div class="page-meta">
 <a href="/community/given-when-then-gherkin-syntax-in-bdd/" rel="bookmark"><time datetime="2023-10-28T18:37:32+00:00">October 28, 2023</time></a>·
 
-<a aria-label="
-Category: Development						" href="/community/category/development/" rel="category">
-Development					</a>
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
 </div>
 <!-- .entry-meta -->
-<div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
 <p>Gherkin is Cucumber’s plain-language format for Given-When-Then scenarios, used in Behavior-Driven Development (BDD) to define and describe the expected behavior of a software system; Given, When and Then are three of its keywords. Gherkin syntax is designed to be human-readable, so the people who asked for a feature can read its scenarios, and each scenario becomes an automated test. It provides a clear and uniform way to express behavior scenarios.</p>
@@ -142,7 +140,7 @@ Development					</a>
 </ul>
 <p><strong>Example Using Gherkin Syntax:</strong></p>
 <p>Here’s an example of a BDD scenario written in Gherkin syntax:</p>
-<pre class="code-block"><code>Feature: Signing in
+<pre class="code-block" tabindex="0"><code>Feature: Signing in
   A registered customer signs in to see their orders.
 
   Scenario: Signing in with the correct password
@@ -173,9 +171,9 @@ Development					</a>
 <strong>Rule:</strong> The “Rule” keyword (Gherkin 6 and later) groups the scenarios that illustrate one business rule. A user story’s acceptance criteria map onto Rules, and each Rule’s scenarios are its examples.</li>
 <li><strong>Tags:</strong> Not a keyword but a label, such as <code>@checkout</code>, written above a Feature, Scenario, Scenario Outline or Examples table, so a runner can select or skip what it marks.</li>
 </ul>
-<div class="notice depth">
+<aside class="notice depth" aria-label="The rule behind the examples">
 <p><strong>The rule behind the examples.</strong> A scenario is one example of a rule. When the same rule holds across several cases, a Scenario Outline states it once and an Examples table lists the cases, so the rule reads in one place and each row runs as its own test. Module 1’s password-reset criteria, written this way:</p>
-<pre class="code-block"><code>Feature: Resetting a password
+<pre class="code-block" tabindex="0"><code>Feature: Resetting a password
 
   Rule: A reset link works once, within 24 hours
 
@@ -191,7 +189,7 @@ Development					</a>
         | 1 hour   | was used once | refused |
         | 25 hours | is unused     | refused |</code></pre>
 <p>A failing row names the case that broke. The steps name the domain, never the page, so the same table runs against a slice, an endpoint or the browser. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> takes the rule one step further, with property tests that check it across generated inputs.</p>
-</div>
+</aside>
 <p>Gherkin syntax provides a standardized and human-readable way to express behavior scenarios in BDD. By following this structure, development teams can create clear, structured, and unambiguous descriptions of how the software should behave from the user’s perspective.</p>
 
 <!-- .entry-content -->
