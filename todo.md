@@ -30,7 +30,6 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] The terms of service: they cover website use only, under California law, while Sean works from Klamath Falls, Oregon.
 - [ ] The SMS terms name an "Inquiry Form" and SMS opt-in the site doesn't have.
 - [ ] Whether to keep the empty blog post titled "https://en.wikipedia.org/wiki/Cargo_cult_programming".
-- [ ] The training pages' content, including Page setup's advice to use WordPress (Sean's pages).
 - [ ] The empty `/store/`.
 
 ## The site speaks as the team
@@ -48,27 +47,8 @@ These change through the copy review, a small tweak each pass, never in one rewr
 
 ## Sean's pages
 
-- [ ] The errors listed in `docs/seans-pages-audit.md` on Training, `/prices/`, `/tools/` and `/resources/` (Sean fixes these himself).
-- [ ] Sitewide: `aria-current="page"` sits on the parent menu item ("Services" or "About") instead of the current page's link; the loop fixes it in the shared header for its own pages.
+Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he intends them. The loop doesn't list their content as open work.
 
-## Prices page
-
-Sean reworks the prices page himself; these notes are input for him, and the copy review neither edits the page nor points calls to action at it. The page works toward the order in `docs/reading-list.md` (Public prices): the need, the pricing philosophy, each price with its engagement, the change rule, FAQs, one next step.
-
-- [ ] First distractions to go: "inexpensive" beside $6,000/month, "mindless scam offerings", "Our unique value proposition", the Inquiry/Insight labels, "you can literally depend on us", "dramatically improved sleep", "Then contact us immediately!", the YouTube embed, and the call to action above the prices.
-- [ ] "Shasta County" becomes Klamath Falls, Redding and the towns in between.
-- [ ] "Sean Dinwiddie produces software" uses the full brand name.
-- [ ] "It's no longer just about the money" implies it once was; the message stays, in the present tense.
-- [ ] Keep "What keeps you awake?", a real problem question, and answer it in the reader's words.
-- [ ] The title "Project Pricing and Scope" and the H1 "Prices" agree. The meta description stops sending readers to "contact Sean Dinwiddie for a scope and price", because the prices are public.
-- [ ] Explain how Sean Dinwiddie's Webmastery charges, the way a law firm or a service contract does: retainers, flat fees for defined jobs, service and maintenance contracts, and out-of-scope work quoted and approved before it starts. No fixed menu.
-- [ ] Write "6k/mo 120k/annu" as "$6,000/month" and "$120,000/year", each tied to its engagement, with no "save" label. Prices stay public.
-- [ ] Add what each kind of engagement covers.
-- [ ] Add "How an engagement works": written scope, kickoff, term, scope changes and cancellation, using only terms Sean confirms.
-- [ ] Add pricing FAQs: what's in scope, what happens when scope changes, prioritization, measuring return.
-- [ ] Bring the vision and mission block in line with the size rule ("small business problems", "one small business at a time", which becomes "one handover at a time"). Keep its team and meaningful-work message: it answers the commission shop where it's all about the money. `/community/introduction/` repeats part of the block.
-- [ ] Define "retainer" on the page, and name flat fees for defined jobs so the two large numbers never tell a kiosk owner "not for you".
-- [ ] Under the prices, one line from the positioning: every engagement starts with a written scope and fee, and work outside that scope is quoted and approved before it starts.
 
 ## Homepage
 
@@ -91,7 +71,6 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 
 - [ ] `/about/`: the title "Independent Web Developer"; the unfinished sentence "is one of the most important."; the "spread your wings… with finess!" line; "affordable prices"; "Act now by contacting me"; "likewise individuals"; and naming Sean as the founder of Sean Dinwiddie's Webmastery.
 - [ ] `/examples/`: "the websites I have built" credits the work to Sean by name.
-- [ ] `/tools/`: the card of unsourced quotes and "surcui" (Sucuri).
 - [ ] Community pages: the unsourced Jillian Michaels quote, "D ocumentation Creation", "Developing Modules a cyclically." and "elevate your game??".
 - [ ] `/sitemap/` lists "Design Portfolio" for `/design/`; the 404 page's meta description repeats the brand name.
 - [ ] Mark `/about/` as an AboutPage in its schema.
@@ -107,7 +86,6 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 ## Performance
 
 - [ ] Optimize hero and background images for size, format and lazy loading.
-- [ ] Audit third-party embeds, including the YouTube video on the prices page.
 - [ ] Defer non-critical JavaScript and inline critical CSS where it helps.
 
 ## Navigation and design
@@ -117,7 +95,6 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 - [ ] Image weight against "lean pages": focus pages weigh 1.7 to 2.5 MB from 2560 px card and hero JPEGs shown at about 300 px. Resize to WebP or AVIF and add an image budget to `check-performance.mjs`.
 - [ ] The top bar's "💳 Secure Payment" goes to a personal PayPal.me link, at odds with the payment terms on `/contact/`.
 - [ ] CRO's session recordings need a line in the privacy policy (session replay is the pattern behind California CIPA suits).
-- [ ] Training (Sean's page), whose training content the loop now builds on the community pages instead: its remaining content claims ("ready-to-adjust solutions", "Pre-prepared files", empty topic headings, an AWeber form with no stated offer, "meals, clothes", Page setup's WordPress advice).
 
 ## Analytics
 

@@ -13,7 +13,6 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 | `docs/packages.md` | The package ladder within the prices page's two figures: Sean's working set of offers |
 | `docs/terms.md` | Sean's working terms for owners and webmasters, and his direction for counsel to put in legal form |
 | `docs/lectures.md` | Sean's Functional Programming Lectures, and where the community pages link to them |
-| `docs/seans-pages-audit.md` | Errors found on the pages Sean owns (Training, prices, tools, resources), for him to fix |
 | `docs/council-verdicts.md` | The llm-council's verdicts on Sean's pending decisions, awaiting his approval |
 | `docs/copy-review-log.md` | Each copy review pass: scores, the objections that matter most, the tweaks applied and what waits |
 | `todo.md` | Open work on the site |
@@ -27,7 +26,7 @@ Sean's pending decisions (`todo.md`, "Facts only Sean has", and the open decisio
 ## Working in this repo
 
 - Work directly on `master`, the main branch. Never create branches.
-- Sean owns `/prices/`, `/tools/`, `/resources/` and Training (`/service/training/` and its pages) and edits them himself. Training links to `/community/`, and training content the loop adds or adjusts goes on the community pages. The copy loop owns the homepage, the service pages, `/contact/`, the community pages (for training content, `/community/staff/` and the offer page), and changes them only by many small tweaks, never a large change to one section at once.
+- Sean owns `/prices/`, `/tools/`, `/resources/` and Training (`/service/training/` and its pages) and edits them himself. Their content is as he intends it: agents and reviewers never report it as errors or objections for the loop. Training links to `/community/`, and training content the loop adds or adjusts goes on the community pages. The copy loop owns the homepage, the service pages, `/contact/`, the community pages (for training content, `/community/staff/` and the offer page), and changes them only by many small tweaks, never a large change to one section at once.
 - Sizes can change. Colors change only by small tweaks, such as darkening a shade until text passes WCAG 2.1 AA contrast. The fonts (the typefaces) never change.
 - Pushing to `master` deploys the live site through GitHub Pages. Run `npm run build` before every push: it regenerates the social images and sitemaps, runs the site, accessibility and performance checks, and builds the deploy artifact in `_site/`.
 
