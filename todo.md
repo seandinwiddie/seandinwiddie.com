@@ -128,6 +128,8 @@ The senior CTO's order for the community pages, a few small tweaks each pass (pa
 
 ## Lectures
 
+- [ ] The blog post `/blog/rtk-promt-example/` links to a private repository (`rtk-prompt-example`); Sean reviews and fixes it later.
+
 - [ ] Sean hasn't decided whether seandinwiddie.com itself moves to Next.js; the static build stays until he does.
 
 - [ ] Link the community pages to the lectures where a lecture fits (`docs/lectures.md`), a few pages each pass.
