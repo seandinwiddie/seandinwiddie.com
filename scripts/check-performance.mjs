@@ -2,13 +2,16 @@
 
 /** Budgets that keep the normalized static pages small and dependency-light. */
 
-import { existsSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
 import { ROOT, publicPageFiles } from "./static-site.mjs";
 
 const MAX_HTML_BYTES = 80_000;
 const MAX_TOTAL_HTML_BYTES = 3_000_000;
 const MAX_STYLE_ATTRIBUTES = 24;
+// Photos are served at no more than 1600 px on the long edge; the budget
+// catches a full-resolution upload before it reaches a page.
+const MAX_IMAGE_BYTES = 350_000;
 const ASSET_BUDGETS = Object.freeze({
   "assets/site.css": 64_000,
   "assets/site.js": 32_000,
@@ -63,6 +66,13 @@ for (const [path, maximum] of Object.entries(ASSET_BUDGETS)) {
   }
   const bytes = statSync(file).size;
   if (bytes > maximum) failures.push(`${path}: ${bytes} bytes exceeds ${maximum}`);
+}
+
+for (const entry of readdirSync(resolve(ROOT, "assets/img"), { recursive: true })) {
+  const path = `assets/img/${entry.split(sep).join("/")}`;
+  if (!/\.(jpe?g|png|webp|avif)$/i.test(path)) continue;
+  const bytes = statSync(resolve(ROOT, path)).size;
+  if (bytes > MAX_IMAGE_BYTES) failures.push(`${path}: ${bytes} image bytes exceeds ${MAX_IMAGE_BYTES}`);
 }
 
 if (failures.length > 0) {
