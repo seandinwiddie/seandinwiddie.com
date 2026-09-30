@@ -15,7 +15,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Counsel puts Sean's direction in legal form (`docs/terms.md`): the subcontract per job, the scope template, retainer terms, continuity, ownership, confidentiality, and the California structure before a California webmaster signs.
 - [ ] The legal pages, approved in direction and waiting for the focus to reach them: the SMS terms come down, the privacy policy says client information reaches Sean Dinwiddie's Webmastery and the webmaster on the job, and the terms follow Oregon law.
 - [ ] Whether the first call ends with a written scope and fee, and within how many business days.
-- [ ] Webmaster terms still open beyond `docs/terms.md`: who writes the scope and sets the share count, when a webmaster's 70% is paid against the owner's payment schedule (and on a public office's invoice terms), whether the reviewer is paid, whether a free audit is unpaid time, insurance, tools and licences, and how many engagements a webmaster carries at once.
+- [ ] Webmaster terms still open beyond `docs/terms.md`: who writes the scope and sets the share count, when a webmaster's 70% is paid against the owner's payment schedule (and on a public office's invoice terms), whether the reviewer is paid, insurance, tools and licences, and how many engagements a webmaster carries at once.
 - [ ] Shared learning for owners: the confidentiality sentence (what the team shares is technique, never an owner's customers, passwords or numbers), in counsel's wording. The review before launch is named on the site since pass 4.
 - [ ] How the team's learning is shared (peer review, shared notes of fixes and patterns, team calls, pairing), so the site can name the mechanism behind "learning compounds on the team".
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
@@ -36,7 +36,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 These change through the copy review, a small tweak each pass, never in one rewrite. The wording follows `docs/positioning.md` (Identity): mastery that spreads is the umbrella, the name on the door is the promise to clients, and the ladder speaks to webmasters only.
 
 - [ ] The footer's "When something breaks, you call someone who already knows your site" leads with breakage, against Sean's direction; the footer is shared with Sean's pages, so it changes with his OK.
-- [ ] The call-to-action labels: the focus pages read "Call or email" since pass 5; "Book a free call" remains on Sean's pages and the pages outside the focus, and "Work with Sean" on the community pages speaks for one person.
+- [ ] The call-to-action labels: the focus pages read "Call or email" since pass 5; "Book a free call" remains on Sean's pages and the pages outside the focus, against Sean's direction that the team provides no free work (his pages change with his OK), and "Work with Sean" on the community pages speaks for one person.
 - [ ] The top bar's "💳 Secure Payment" sits above every price on every page.
 - [ ] The structured data lists Sean's personal Freelancer, Upwork and Contra profiles as the agency's own (`sameAs`).
 - [ ] The community pages' banner keeps "agency" and drops "technical archive", which reads as retired.
