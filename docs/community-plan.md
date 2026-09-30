@@ -45,7 +45,7 @@ Module 4 opens with the API lesson, "The API: Haskell Servant and Nile" (`/commu
 - "BDD Testing Framework" is a generic wish list (cross-browser testing, parallel execution) and names no runner.
 - The real-world example scenario bundles four behaviors under one When.
 - Overclaims: FRP "efficiency" and "scalability"; the P.S. page's "secret sauce" and "error-free code".
-- Module 1 teaches Scrum ceremonies (sprints, stand-ups, estimation), while the practice scopes work as a written scope per job (Sean's OK needed on how the team plans).
+- Module 1 teaches Scrum ceremonies (sprints, stand-ups, estimation). They stay (Sean, pass 10): planning is fluid and hybrid, and the team uses Scrum when a job needs it.
 - "Sean Dinwiddie – Software Engineering Consultant" in the "How We Can Help" blocks.
 
 **The practice has, and no lesson covers:**
