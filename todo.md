@@ -41,7 +41,6 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 These change through the copy review, a small tweak each pass, never in one rewrite. The wording follows `docs/positioning.md` (Identity): mastery that spreads is the umbrella, the name on the door is the promise to clients, and the ladder speaks to webmasters only.
 
 - [ ] The footer's "When something breaks, you call someone who already knows your site" leads with breakage, against Sean's direction; the footer is shared with Sean's pages, so it changes with his OK.
-- [ ] The call-to-action labels: the focus pages read "Call or email" since pass 5; "Book a free call" remains on Sean's pages and the pages outside the focus, against Sean's direction that the team provides no free work, consulting included (his pages change with his OK; `/about/` has "Get a Free Consultation"), and "Work with Sean" on the community pages speaks for one person.
 - [ ] The top bar's "💳 Secure Payment" sits above every price on every page.
 - [ ] The structured data lists Sean's personal Freelancer, Upwork and Contra profiles as the agency's own (`sameAs`).
 - [ ] The community pages' banner keeps "agency" and drops "technical archive", which reads as retired.

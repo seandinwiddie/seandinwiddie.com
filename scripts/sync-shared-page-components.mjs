@@ -427,15 +427,15 @@ const withSocialIcons = (name, html) => {
 // on the Redux tutorials and the privacy policy as readily as on /design/.
 // "Consultation" is agency-speak that a shop owner hears as a sales meeting,
 // and the same words on an archive article as on a service page tell the reader
-// nothing about what happens next. The promise is unchanged (a free call); the
-// wording now matches who is reading the page. /about/ is Sean's own page and
-// is left exactly as it is.
+// nothing about what happens next. The wording now matches who is reading
+// the page.
 //
 // "Book a free call" promised a booking the site doesn't have: /contact/ offers a
-// phone number and an email address. The pages the copy review owns (the homepage,
-// the service pages, /contact/ and two community pages) now name exactly that.
-// Training, /prices/, /tools/ and /resources/ are Sean's pages and keep their
-// label, as do the pages the review hasn't reached.
+// phone number and an email address, so the button names exactly that. The team
+// does no free work, consulting included (docs/terms.md), so no button offers a
+// free call or a free consultation anywhere, Sean's own pages and /about/
+// included, at his direction. The lessons and blog posts keep "Work with Sean":
+// owners meet Sean, who stands behind every job.
 const FOCUS_PREFIXES = ["design/", "development/", "marketing/", "automation/", "local/"];
 const FOCUS_PAGES = new Set([
   "index.html",
@@ -448,10 +448,9 @@ const isFocusPage = (name) =>
   FOCUS_PAGES.has(name) || FOCUS_PREFIXES.some((prefix) => name.startsWith(prefix));
 
 const CTA_LABELS = [
-  [(name) => name === "about/index.html", null],
   [isFocusPage, "Call or email"],
   [(name) => name.startsWith("community/") || name.startsWith("blog/"), "Work with Sean"],
-  [() => true, "Book a free call"],
+  [() => true, "Call or email"],
 ];
 
 const ctaLabel = (name) => CTA_LABELS.find(([match]) => match(name))[1];
@@ -460,7 +459,7 @@ const CTA_PATTERN = /(<a class="hero__cta" href="[^"]*">)([^<]*)(<\/a>)/;
 
 const withHeroCta = (name, html) => {
   const label = ctaLabel(name);
-  if (label === null || !CTA_PATTERN.test(html)) return html;
+  if (!CTA_PATTERN.test(html)) return html;
   return html.replace(CTA_PATTERN, `$1${label}$3`);
 };
 
