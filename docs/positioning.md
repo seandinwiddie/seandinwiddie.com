@@ -89,7 +89,7 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
-- No free work. Every piece of work, audits included, is a share of the published figures in writing. Owner copy never advertises fixes to the team's own work, which invites scope creep; every request after handover is a change, scoped and priced. A first conversation about a defined job isn't billed, and the site never advertises it as free.
+- No free work, audits and consulting included. Every piece of work is a share of the published figures in writing, and the site offers no free call, conversation or consultation; the way in is an inquiry that names the job, and a serious inquiry leads to a written scope and fee. Owner copy never advertises fixes to the team's own work, which invites scope creep; every request after handover is a change, scoped and priced.
 - The standard vets. Fees are never lowered to win a job, and the published fees and the written scope screen out inquiries that aren't serious.
 - Fees pay for results, never time. There are no hourly or daily rates. A flat fee buys a defined result, and a retainer grants access to the team and the results its written scope names.
 - Pricing reads like a country club's: a clear ladder from a small package (one defined job at a flat fee, in writing) up to retainers for boutique firms and public offices. A food truck, a kiosk and a family shop each see an offer made for them. Small packages describe the size of the job, never the worth of the client, and no tier talks down.
