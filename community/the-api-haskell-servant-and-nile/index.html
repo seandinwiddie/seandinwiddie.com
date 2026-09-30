@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>The API: Haskell Servant and Nile | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer&#x27;s data kept apart in Nile&#x27;s Postgres.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The API: Haskell Servant and Nile | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer&#x27;s data kept apart in Nile&#x27;s Postgres.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-09-30T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-09-30">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The API: Haskell Servant and Nile | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer&#x27;s data kept apart in Nile&#x27;s Postgres.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#webpage","url":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/","name":"The API: Haskell Servant and Nile | Sean Dinwiddie's Webmastery","description":"The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer's data kept apart in Nile's Postgres.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"The API: Haskell Servant and Nile","item":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#article","headline":"The API: Haskell Servant and Nile","description":"The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer's data kept apart in Nile's Postgres.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/ilya-pavlov-OqtafYT5kTw-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>The API: Haskell Servant and Nile</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p class="lesson-place">Lesson 1 of 1 in Module 4</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/the-api-haskell-servant-and-nile/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
+
+<a aria-label="
+Category: Development						" href="/community/category/development/" rel="category">
+Development					</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
+</div> </header><!-- .entry-header -->
+
+<p>The last link in the team&rsquo;s chain is the API behind the app. Module 2&rsquo;s scenarios already say what each endpoint answers. On the Sean Dinwiddie&rsquo;s Webmastery team, a Haskell Servant type states it, thin handlers carry it out, and Nile, Postgres built for apps that serve many customers, keeps each customer&rsquo;s data apart.</p>
+<h2>1. The API is a type</h2>
+<p>In Servant, the API is written as a Haskell type before any handler exists. Each route names its path, what it takes and what it returns, and the compiler holds every handler to it:</p>
+<pre class="code-block"><code>type OrdersAPI =
+  "tenants" :&gt; Capture "tenantId" TenantId :&gt; "orders" :&gt;
+    (    Get '[JSON] [Order]
+    :&lt;|&gt; ReqBody '[JSON] NewOrder :&gt; PostCreated '[JSON] Order )</code></pre>
+<p>The type reads like the scenario it serves: for one customer, list the orders, or place one and answer 201 Created with the order. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
+<h2>2. Handlers stay thin</h2>
+<p>A handler parses the request, calls pure functions that decide, and performs the one effect the route needs: a read or a write. The decisions, such as whether an order is valid and what it totals, live in plain functions with no database in sight, the same boundary Redux Toolkit keeps between reducers and RTK Query. The names below are the lesson&rsquo;s own:</p>
+<pre class="code-block"><code>server :: Pool -&gt; Server OrdersAPI
+server pool tenantId = listOrders :&lt;|&gt; placeOrder
+  where
+    listOrders = liftIO (withTenant pool tenantId selectOrders)
+    placeOrder new = case validateOrder new of
+      Left problem -&gt; throwError err422 { errBody = encode problem }
+      Right order  -&gt; liftIO (withTenant pool tenantId (insertOrder order))</code></pre>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
+<h2>3. Each customer&rsquo;s data stays apart in Nile</h2>
+<p>Nile is Postgres built for apps that serve many organizations, each a tenant. A table that holds a tenant&rsquo;s rows carries a <code>tenant_id</code> and includes it in its primary key, and the tenants themselves live in Nile&rsquo;s built-in <code>tenants</code> table:</p>
+<pre class="code-block"><code>CREATE TABLE orders (
+  tenant_id uuid REFERENCES tenants (id),
+  id uuid DEFAULT gen_random_uuid(),
+  item text NOT NULL,
+  total_cents integer NOT NULL,
+  PRIMARY KEY (tenant_id, id)
+);</code></pre>
+<p>Inside <code>withTenant</code>, the handler opens a transaction and names the tenant before its queries:</p>
+<pre class="code-block"><code>SET LOCAL nile.tenant_id = '018ade1a-7830-7981-b23f-f3a7f7b8f09f';
+SELECT id, item, total_cents FROM orders;</code></pre>
+<p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one customer into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
+<h2>4. One contract at both ends</h2>
+<p>The same Servant type can describe itself as an OpenAPI document (the servant-openapi3 package), and RTK Query&rsquo;s OpenAPI code generator turns that document into the client&rsquo;s endpoints and hooks. Server and client then share one contract: when a route changes, the regenerated client shows every mismatch as a type error before it reaches a customer. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> sets up the client side, generated into one API root and reviewed like any other source.</p>
+<h2>5. The scenarios test the API</h2>
+<p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no network, and each test carries its scenario&rsquo;s name, such as <code>it "Scenario: Placing the order"</code>, so a failing test names the behavior that broke. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations cannot.</p>
+<div class="notice depth"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet. And a route that only reshapes data another service already owns usually belongs to that service, not to a new API.</p></div>
+<p>This is the last lesson in the course. It closes the chain the course began with: a feature scoped as a user story, its scenarios in Gherkin, the slice and endpoint that pass them, and the typed API and tenant-safe data behind them.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/apply-frp-concepts-to-software-modules/" rel="prev">Previous lesson: Apply FRP concepts to software modules</a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

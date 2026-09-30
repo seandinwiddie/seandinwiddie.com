@@ -15,6 +15,10 @@ Lessons grow layers of depth over the passes, a few lessons at a time. A layer i
 
 The banner names each lesson's place ("Lesson 3 of 9 in Module 1"), each module's opener lists its lessons in order, and the community sitemap runs in teaching order. All of it renders from `LESSONS`.
 
+## Module 4: the chain end to end (pass 9)
+
+Module 4 opens with the API lesson, "The API: Haskell Servant and Nile" (`/community/the-api-haskell-servant-and-nile/`), at Sean's direction: the API as a Servant type, thin handlers over a pure core, each tenant's data kept apart in Nile (`SET LOCAL nile.tenant_id` inside the request's transaction; tenant-aware tables carry `tenant_id` in the primary key), one OpenAPI contract for server and client, and Module 2's scenarios as scenario-named Hspec tests. Nile's facts are checked against its public documentation repository (`niledatabase/niledatabase`). The lessons between the slice and the API (from scenario to slice, endpoints at the boundary) follow, a lesson per pass.
+
 ## The functional state layer (Module 3's direction)
 
 - **Evidence.**

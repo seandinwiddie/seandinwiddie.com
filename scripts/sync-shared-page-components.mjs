@@ -3,7 +3,8 @@
 /** Keep repeated, content-bearing page components synchronized across the static site. */
 
 import { readFileSync, writeFileSync } from "node:fs";
-import { publicPageFiles, relativePath } from "./static-site.mjs";
+import { resolve } from "node:path";
+import { ROOT, fileForPathname, publicPageFiles, read, relativePath } from "./static-site.mjs";
 
 // The five service cards existed as three hand-maintained copies of the same
 // words: this shared block, the set inside /service/, and the set on the home
@@ -148,6 +149,7 @@ const PARTS = Object.freeze({
   m1: { name: "Module 1: Understanding User Stories", opener: "welcome-to-module-1-understanding-user-stories" },
   m2: { name: "Module 2: Behavior-Driven Development (BDD)", opener: "module-2-behavior-driven-development-bdd" },
   m3: { name: "Module 3: Functional Reactive Programming (FRP)", opener: "module-3-functional-reactive-programming-frp" },
+  m4: { name: "Module 4: The Cyclical Workflow", opener: "the-api-haskell-servant-and-nile" },
 });
 
 const LESSONS = [
@@ -187,6 +189,8 @@ const LESSONS = [
   ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals in Software Development", "m3"],
   ["discover-how-frp-enhances-user-interaction-and-responsiveness", "Discover how FRP enhances user interaction and responsiveness", "m3"],
   ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules", "m3"],
+  // Module 4: the chain end to end, from the API behind the app.
+  ["the-api-haskell-servant-and-nile", "The API: Haskell Servant and Nile", "m4"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
@@ -281,16 +285,6 @@ const FOOTER_ABOUT = `      <div class="footer__about">
 
 const FOOTER_ABOUT_PATTERN = /      <div class="footer__about">[\s\S]*?\n      <\/div>/;
 
-const PAGINATED_ARCHIVES = new Map([
-  ["community/author/seandinwiddie/index.html", ["/community/author/seandinwiddie/", 1]],
-  ["community/author/seandinwiddie/page/2/index.html", ["/community/author/seandinwiddie/", 2]],
-  ["community/author/seandinwiddie/page/3/index.html", ["/community/author/seandinwiddie/", 3]],
-  ["community/author/seandinwiddie/page/4/index.html", ["/community/author/seandinwiddie/", 4]],
-  ["community/category/development/index.html", ["/community/category/development/", 1]],
-  ["community/category/development/page/2/index.html", ["/community/category/development/", 2]],
-  ["community/category/development/page/3/index.html", ["/community/category/development/", 3]],
-  ["community/category/development/page/4/index.html", ["/community/category/development/", 4]],
-]);
 
 const pageHref = (base, page) => (page === 1 ? base : `${base}page/${page}/`);
 const paginationLink = (base, page, label, rel = "") =>
@@ -300,8 +294,8 @@ const archivePagination = (base, page) => {
   const links = [
     ...(page > 1 ? [paginationLink(base, 1, "First page")]: []),
     ...(page > 1 ? [paginationLink(base, page - 1, "Previous page", "prev")]: []),
-    ...(page < 4 ? [paginationLink(base, page + 1, "Next page", "next")]: []),
-    ...(page < 4 ? [paginationLink(base, 4, "Last page")]: []),
+    ...(page < ARCHIVE_PAGE_COUNT ? [paginationLink(base, page + 1, "Next page", "next")]: []),
+    ...(page < ARCHIVE_PAGE_COUNT ? [paginationLink(base, ARCHIVE_PAGE_COUNT, "Last page")]: []),
   ];
   return `<nav class="pagination" aria-label="Archive pagination">\n${links.join("\n")}\n</nav>`;
 };
@@ -484,10 +478,18 @@ const withCommentsNotice = (name, html) =>
     ? html
     : html.replace(COMMENTS_NOTICE_PATTERN, () => commentsNotice(name));
 
+// Replaced by pattern, never inserted once: the insert-once version skipped any
+// page that already had pagination, so the hub kept WordPress's list, with tabs
+// in its link titles, and a change here reached no page that had one.
+const PAGINATION_PATTERN = /<(ul|nav) class="pagination"[^>]*>[\s\S]*?<\/\1>/;
+
 const withArchivePagination = (name, html) => {
   const config = PAGINATED_ARCHIVES.get(name);
-  if (!config || /class="pagination"/.test(html)) return html;
-  return insertBeforeContentEnd(html, archivePagination(...config));
+  if (!config) return html;
+  const nav = archivePagination(...config);
+  return PAGINATION_PATTERN.test(html)
+    ? html.replace(PAGINATION_PATTERN, () => nav)
+    : insertBeforeContentEnd(html, nav);
 };
 
 const withCargoPostRepairs = (name, html) => {
@@ -534,6 +536,7 @@ const LEVEL_PATHS = `<div class="level-paths">
 <li><strong>Journeyman</strong> (intermediate): use each lesson on real work, and find the rule behind its examples.</li>
 <li><strong>Master</strong> (advanced): read each lesson for its edges, where it bends and where it breaks, and for how to teach it.</li>
 </ul>
+<p>Some lessons carry short passages that go deeper, headed <em>The rule behind the examples</em> and <em>Where it bends</em>. They are part of the lesson, for every reader. Sean&rsquo;s <a href="https://seandinwiddie.github.io/lectures/">Functional Programming Lectures</a> run beneath the course, from Beginner to Advanced.</p>
 </div>`;
 
 const LEVEL_PATHS_PATTERN = /\n<(ul|div) class="level-paths"[\s\S]*?<\/\1>/;
@@ -559,7 +562,7 @@ const ENTRY_HEADER_END = "</header><!-- .entry-header -->";
 
 const withModuleLessons = (name, html) => {
   const part = Object.keys(PARTS).find((key) => key !== "course" && name === `community/${PARTS[key].opener}/index.html`);
-  if (!part) return html;
+  if (!part || partOf(part).length < 2) return html.replace(MODULE_LESSONS_PATTERN, "");
   if (MODULE_LESSONS_PATTERN.test(html)) return html.replace(MODULE_LESSONS_PATTERN, () => `\n${moduleLessons(part)}`);
   if (html.split(ENTRY_HEADER_END).length !== 2) throw new Error(`${name}: expected one entry header`);
   return html.replace(ENTRY_HEADER_END, () => `${ENTRY_HEADER_END}\n${moduleLessons(part)}`);
@@ -595,8 +598,72 @@ const withCommunitySitemap = (name, html) => {
   return html.replace(SITEMAP_LIST_PATTERN, communitySitemap);
 };
 
+// The archives list the course in teaching order (docs/copy-review.md, Focus).
+// They carried WordPress order, newest first, and each card's excerpt was a hand
+// copy of a lesson's opening, so fixing an opener left three stale copies behind.
+// Cards render from LESSONS, then the pages off the path, ten to a page. Each
+// card keeps its image, its title follows LESSONS, and its excerpt is its page's
+// meta description. A new lesson needs one card, added by hand to any archive
+// page, before the sync can place it. Sean's cut-sheet page itself is untouched.
+const ARCHIVE_BASES = ["/community/", "/community/author/seandinwiddie/", "/community/category/development/"];
+const CARDS_PER_PAGE = 10;
+const CARD_ORDER = [
+  ...LESSONS.map(([slug, title]) => [`/community/${slug}/`, title]),
+  ...ALSO_IN_THE_COMMUNITY.filter(([href]) => href !== "/community/"),
+];
+const ARCHIVE_PAGE_COUNT = Math.ceil(CARD_ORDER.length / CARDS_PER_PAGE);
+const archiveFile = (base, page) => `${pageHref(base, page).slice(1)}index.html`;
+const PAGINATED_ARCHIVES = new Map(
+  ARCHIVE_BASES.flatMap((base) =>
+    Array.from({ length: ARCHIVE_PAGE_COUNT }, (_, index) => [archiveFile(base, index + 1), [base, index + 1]]),
+  ),
+);
+
+const CARD_PATTERN = /<div class="post-card__container">[\s\S]*?<\/a>\n<\/div>\n<\/div>/g;
+const ARCHIVE_CARDS_PATTERN = /<div class="archive-cards">\n[\s\S]*?<\/a>\n<\/div>\n<\/div>\n<\/div>/;
+const cardHref = (card) => card.match(/class="post-card__link" href="([^"]*)"/)[1];
+
+// Read once, before any page is rewritten, so every run starts from the same cards.
+const HARVESTED_CARDS = new Map(
+  [...PAGINATED_ARCHIVES.keys()].flatMap((file) =>
+    (read(resolve(ROOT, file)).match(CARD_PATTERN) ?? []).map((card) => [cardHref(card), card]),
+  ),
+);
+
+const archiveCard = ([href, title]) => {
+  const card = HARVESTED_CARDS.get(href);
+  if (!card) throw new Error(`archives: no card for ${href}; add one to an archive page by hand`);
+  const description = read(fileForPathname(href)).match(/<meta name="description" content="([^"]*)"/)?.[1];
+  if (!description) throw new Error(`${href}: no meta description for its card`);
+  return card
+    .replace(/(<h2 class="post-card__title">)[\s\S]*?(<\/h2>)/, (_, open, close) => `${open}${title}${close}`)
+    .replace(/(<div class="post-card__secondary">\n<p>)[\s\S]*?(<\/p>)/, (_, open, close) => `${open}${description}${close}`);
+};
+
+const withArchiveCards = (name, html) => {
+  const config = PAGINATED_ARCHIVES.get(name);
+  if (!config) return html;
+  if (!ARCHIVE_CARDS_PATTERN.test(html)) throw new Error(`${name}: missing the archive cards`);
+  const cards = CARD_ORDER.slice((config[1] - 1) * CARDS_PER_PAGE, config[1] * CARDS_PER_PAGE).map(archiveCard);
+  return html.replace(ARCHIVE_CARDS_PATTERN, () => `<div class="archive-cards">\n${cards.join("\n")}\n</div>`);
+};
+
+// The note to webmasters on the owner pages was one sentence kept by hand on 15
+// pages. It is one constant, replaced by pattern, so --check sees drift; each
+// page keeps its own wrapper.
+const WEBMASTER_NOTE =
+  "on the Sean Dinwiddie&rsquo;s Webmastery team, a webmaster at any stage of the craft keeps their own practice while the name brings in the work, with a published fee and a written scope; the team&rsquo;s lessons teach the practice, and every launch is reviewed before it goes live.";
+const WEBMASTER_NOTE_PATTERN =
+  /(<strong>For webmasters:<\/strong> )[\s\S]*?( <a href="\/contact\/#for-webmasters">How joining works<\/a>\.)/;
+
+const withWebmasterNote = (name, html) =>
+  isFocusPage(name) && WEBMASTER_NOTE_PATTERN.test(html)
+    ? html.replace(WEBMASTER_NOTE_PATTERN, (_, open, close) => `${open}${WEBMASTER_NOTE}${close}`)
+    : html;
+
 const routeTransforms = Object.freeze([
   withArchiveContext,
+  withArchiveCards,
   withArchivePagination,
   withCargoPostRepairs,
   withCommentsNotice,
@@ -605,6 +672,7 @@ const routeTransforms = Object.freeze([
   withLevelPaths,
   withModuleLessons,
   withCommunitySitemap,
+  withWebmasterNote,
   withRelatedServices,
   withFeaturedServices,
 ]);
