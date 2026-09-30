@@ -2,6 +2,8 @@
 
 Status: **Sean's working set of offers since September 29, 2026.** The senior CTO agency designed them; Sean works with them as they stand and can change any share, name or amount. The site's pricing lines on the homepage, the service pages and the contact page follow them. The prices page stays the cornerstone, and Sean owns it; every figure here is a share of its two published figures, $6,000 a month and $120,000 a year.
 
+**The floors (Sean's direction, pass 8) override the ladder below.** The team takes no ongoing client below the $6,000 monthly engagement, and a one-time job starts at a third share ($2,000), set by demand. So the tenth and quarter shares, the Care Contract, the Standing Shares and the Year Share are held, and the senior CTO reworks the ladder within the two figures. Small edits aren't offered because the team hasn't the entry-level webmasters for quick jobs; recruiting comes first.
+
 ## The model: one rate, bought in shares
 
 - **The unit is the monthly engagement at $6,000:** a retainer that grants access to the team and the results its written scope names, each month. Fees pay for results, never time: no hourly or daily rates, and a share is never a count of hours or days.

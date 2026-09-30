@@ -85,6 +85,7 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 
 - Prices are public. The prices page shows the fees, the way a law firm publishes its rates and retainers. It is the cornerstone: it stays accurate, and Sean owns it and edits it himself.
 - Every offer and package elsewhere works within the prices page's two published figures, $6,000 a month and $120,000 a year. No offer carries a price of its own; any figure a reader could compute traces back to those two.
+- **The floors** (Sean's direction, pass 8). The team takes no ongoing client below the $6,000 monthly engagement, and a one-time job starts at a third share ($2,000), a floor set by demand. Small edits aren't offered: the team hasn't the entry-level webmasters for quick jobs, so the site promotes recruiting first. Owner pages state the floors calmly and never apologize for them.
 - Every engagement starts with a written scope and fee: a retainer, a flat fee for a defined job, or a service and maintenance contract.
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.

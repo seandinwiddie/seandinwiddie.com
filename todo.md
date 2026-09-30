@@ -7,6 +7,10 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 - [ ] Make the loop runnable: a project skill that runs `docs/copy-review.md` with `docs/reading-list.md`, in place of the installed dream-loop skill's image-and-3D process.
 - [ ] Keep running the copy review, pass by pass, until all four reviewers score 9 or higher. Each pass is in `docs/copy-review-log.md`.
 
+## Pricing floors (Sean, pass 8)
+
+- [ ] The site's fee lines follow the floors: no ongoing client below the $6,000 monthly engagement, one-time jobs from a third share ($2,000). The senior CTO reworks the ladder and the lines on every focus page; recruiting is promoted first, since small edits wait on entry-level webmasters.
+
 ## Facts only Sean has
 
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.
