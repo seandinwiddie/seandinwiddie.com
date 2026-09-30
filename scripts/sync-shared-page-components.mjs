@@ -66,13 +66,38 @@ const SERVICE_HUB_CARDS_PATTERN =
   /    <section class="service-cards" aria-label="Featured services">[\s\S]*?\n    <\/section>/;
 const HOME_CARDS_PATTERN = /    <section class="section home-cards">[\s\S]*?\n    <\/section>/;
 
-const ARCHIVE_CONTEXT = `<aside class="notice archive-context" aria-label="Archive context">
-<p><strong>Agency technical archive.</strong> These Redux, BDD, user-story, and functional-reactive-programming articles remain part of the agency site. <a href="/service/">View agency services</a> or <a href="/contact/">contact Sean</a>.</p>
+// The community banner said "technical archive" and "remain part of the agency
+// site", which read as retired while Training sends learners here for guides and
+// a curriculum. It names what the lessons teach and where to start. It is
+// replaced by pattern, like the footer-about block: the insert-once version
+// looked only for the old literal sentence, so editing these words changed
+// nothing on the pages that already had a banner, and --check passed without
+// seeing the drift.
+const ARCHIVE_CONTEXT = `<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds software: user stories, behavior-driven development and functional programming. Start with the <a href="/community/user-story_bdd_frp-workflow/">course outline</a>, or <a href="/service/">view agency services</a>.</p>
 </aside>`;
 
-const COMMENTS_NOTICE = `<aside aria-label="Comments" class="notice">
-<p>Comments are archived on this static site. <a href="/contact/">Contact Sean Dinwiddie</a> to continue the conversation.</p>
+const ARCHIVE_CONTEXT_PATTERN = /\n<aside class="notice archive-context"[\s\S]*?<\/aside>/;
+
+// Two community pages are not lessons: the team's terms and the membership
+// offer. A lessons banner made live terms read like an old post, so it comes off.
+const NOT_LESSONS = new Set([
+  "community/staff/index.html",
+  "community/our-community-unveiling-our-offer-and-prices/index.html",
+]);
+
+// The cut-sheet is Sean's: a concept he builds out himself. The banner and the
+// notice below leave it exactly as it is.
+const SEANS_COMMUNITY_PAGES = new Set(["community/from-marketing-to-development/index.html"]);
+
+// "Comments are archived on this static site" described an archive that does
+// not exist: no page carries comment markup. The notice says what is true, and
+// it is replaced by pattern for the same reason as the banner.
+const COMMENTS_NOTICE = `<aside aria-label="Questions" class="notice">
+<p>Questions about this page? <a href="/contact/">Call or email</a> Sean Dinwiddie&rsquo;s Webmastery.</p>
 </aside>`;
+
+const COMMENTS_NOTICE_PATTERN = /<aside aria-label="(?:Comments|Questions)" class="notice">[\s\S]*?<\/aside>/;
 
 const SOCIAL_ICONS = `      <div class="nav__social">
         <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
@@ -295,9 +320,18 @@ const withFooterAbout = (name, html) => {
 };
 
 const withArchiveContext = (name, html) => {
-  if (!name.startsWith("community/") || html.includes("Agency technical archive.")) return html;
+  if (!name.startsWith("community/") || SEANS_COMMUNITY_PAGES.has(name)) return html;
+  if (NOT_LESSONS.has(name)) return html.replace(ARCHIVE_CONTEXT_PATTERN, "");
+  if (ARCHIVE_CONTEXT_PATTERN.test(html)) {
+    return html.replace(ARCHIVE_CONTEXT_PATTERN, () => `\n${ARCHIVE_CONTEXT}`);
+  }
   return insertAfterContentStart(html, ARCHIVE_CONTEXT);
 };
+
+const withCommentsNotice = (name, html) =>
+  SEANS_COMMUNITY_PAGES.has(name) || !COMMENTS_NOTICE_PATTERN.test(html)
+    ? html
+    : html.replace(COMMENTS_NOTICE_PATTERN, () => COMMENTS_NOTICE);
 
 const withArchivePagination = (name, html) => {
   const config = PAGINATED_ARCHIVES.get(name);
@@ -313,7 +347,7 @@ const withCargoPostRepairs = (name, html) => {
     "background-image:url('/assets/img/sean-dinwiddie.jpg')",
     "background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg')",
   );
-  return withHero.includes("Comments are archived on this static site.")
+  return COMMENTS_NOTICE_PATTERN.test(withHero)
     ? withHero
     : insertBeforeContentEnd(withHero, COMMENTS_NOTICE);
 };
@@ -322,6 +356,7 @@ const routeTransforms = Object.freeze([
   withArchiveContext,
   withArchivePagination,
   withCargoPostRepairs,
+  withCommentsNotice,
   withRelatedServices,
   withFeaturedServices,
 ]);
