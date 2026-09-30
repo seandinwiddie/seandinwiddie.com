@@ -35,7 +35,7 @@ body, p, a, h1, h2, h3, h4, h5, h6, span, li, div, button, input, textarea, sele
 }
 h1, h2, h3, h4 { color: var(--ink); }
 a { color: var(--primary); text-underline-offset: 0.18em; }
-a:hover { color: var(--blue); }
+a:hover { color: #0057b8; }
 img { max-width: 100%; height: auto; }
 .wrap { width: min(calc(100% - 2rem), var(--page-width)); margin-inline: auto; }
 .skip-link {
@@ -155,7 +155,7 @@ img { max-width: 100%; height: auto; }
   text-decoration: none;
   text-transform: uppercase;
 }
-.nav__menu > li > a:hover { color: var(--blue); }
+.nav__menu > li > a:hover { color: #0057b8; }
 .nav__menu .sub {
   position: absolute;
   left: 0;
@@ -178,7 +178,7 @@ img { max-width: 100%; height: auto; }
   color: var(--ink-soft);
   text-decoration: none;
 }
-.nav__menu .sub a:hover { color: var(--blue); background: #f3f6fb; }
+.nav__menu .sub a:hover { color: #0057b8; background: #f3f6fb; }
 .nav__social {
   justify-self: end;
   display: flex;
@@ -564,7 +564,7 @@ body.marketing-route { background: #fafafa; }
   padding: 2rem;
   border-radius: 0.5rem;
   color: #fff;
-  background: #28a745;
+  background: #1e7e34;
   text-align: center;
 }
 .local-contact-card h3 { color: #fff; font-size: 1.5rem; }
@@ -581,7 +581,7 @@ body.marketing-route { background: #fafafa; }
 .local-contact-card__button:hover { color: #145523; background: #f4f4f4; }
 .local-contact-card .local-contact-card__details {
   margin-top: 0.5rem;
-  color: rgb(255 255 255 / 90%);
+  color: #fff;
   font-size: 0.9rem;
 }
 .local-contact-card__details a { color: inherit; }
@@ -1040,7 +1040,7 @@ body.service-route { background: #fafafa; }
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: 3px solid #ffb454 !important;
   outline-offset: 3px !important;
-  box-shadow: 0 0 0 5px rgb(31 36 48 / 45%);
+  box-shadow: 0 0 0 5px rgb(31 36 48 / 85%);
 }
 main:focus { outline: none; }
 .visually-hidden {
@@ -1304,3 +1304,15 @@ main:focus { outline: none; }
   color: var(--muted);
   font-size: 0.95rem;
 }
+
+/* The note to webmasters: a quieter voice than the owner's copy, and on the
+   homepage set apart below the owner's phone and email, not centred inside
+   that call to action. The visible "For webmasters:" is its only label. */
+.webmaster-note { color: var(--muted); font-size: 0.9em; }
+.home-why .webmaster-note {
+  max-width: 48rem;
+  margin: 2.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.home-why .webmaster-note p { margin-bottom: 0; }
