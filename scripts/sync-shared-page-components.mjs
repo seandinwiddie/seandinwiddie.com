@@ -73,9 +73,28 @@ const HOME_CARDS_PATTERN = /    <section class="section home-cards">[\s\S]*?\n  
 // looked only for the old literal sentence, so editing these words changed
 // nothing on the pages that already had a banner, and --check passed without
 // seeing the drift.
-const ARCHIVE_CONTEXT = `<aside class="notice archive-context" aria-label="About these lessons">
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Start with the <a href="/community/user-story_bdd_frp-workflow/">course outline</a>, or <a href="/service/">view agency services</a>.</p>
+//
+// It sent every learner to the course outline while the lessons began at the
+// Introduction, so the community had two front doors. The Introduction is where
+// every level starts (docs/copy-review.md, Focus), and the outline is the
+// course's map. On a lesson, the banner also names its level and its place.
+const INTRODUCTION = "community/introduction/index.html";
+const COURSE_OUTLINE = "community/user-story_bdd_frp-workflow/index.html";
+
+const archiveContext = (name) => {
+  const start =
+    name === INTRODUCTION
+      ? "Every level starts here"
+      : 'Every level starts with the <a href="/community/introduction/">Introduction</a>';
+  const map =
+    name === COURSE_OUTLINE
+      ? "this outline maps the course"
+      : 'the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course';
+  const index = lessonIndex(name);
+  return `<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. ${start}, and ${map}.</p>${index === -1 ? "" : `\n${lessonLevel(index)}`}
 </aside>`;
+};
 
 const ARCHIVE_CONTEXT_PATTERN = /\n<aside class="notice archive-context"[\s\S]*?<\/aside>/;
 
@@ -92,12 +111,22 @@ const SEANS_COMMUNITY_PAGES = new Set(["community/from-marketing-to-development/
 
 // "Comments are archived on this static site" described an archive that does
 // not exist: no page carries comment markup. The notice says what is true, and
-// it is replaced by pattern for the same reason as the banner.
-const COMMENTS_NOTICE = `<aside aria-label="Questions" class="notice">
+// it is replaced by pattern for the same reason as the banner. "Questions about
+// this page?" invited free consulting, and the team does no free work
+// (docs/terms.md): a lesson points to the work itself, and only the team's terms
+// and the membership offer keep a questions line.
+const QUESTIONS_NOTICE = `<aside aria-label="Questions" class="notice">
 <p>Questions about this page? <a href="/contact/">Call or email</a> Sean Dinwiddie&rsquo;s Webmastery.</p>
 </aside>`;
 
-const COMMENTS_NOTICE_PATTERN = /<aside aria-label="(?:Comments|Questions)" class="notice">[\s\S]*?<\/aside>/;
+const WORK_NOTICE = `<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>`;
+
+const commentsNotice = (name) => (NOT_LESSONS.has(name) ? QUESTIONS_NOTICE : WORK_NOTICE);
+
+const COMMENTS_NOTICE_PATTERN =
+  /<aside aria-label="(?:Comments|Questions|Working with the team)" class="notice">[\s\S]*?<\/aside>/;
 
 // The lessons in teaching order (docs/copy-review.md, Focus): an introduction
 // before the lessons that build on it, never publication order. The previous and
@@ -106,45 +135,103 @@ const COMMENTS_NOTICE_PATTERN = /<aside aria-label="(?:Comments|Questions)" clas
 // split, the membership offer and a note about Sublime Text), and nothing could
 // see it. Every lesson's links now come from this one list and are replaced by
 // pattern: moving a lesson here re-points both of its neighbours, and --check
-// sees any page that drifts. Each entry is [slug, the title its links show].
+// sees any page that drifts. Each entry is [slug, the title its links show,
+// its level, its part of the course]. The banner, the module lists, the
+// community sitemap, the Introduction's level paths and each lesson's JSON-LD
+// all render from it.
+//
+// Levels echo the craft's ladder as learning levels, matching the lectures'
+// Beginner, Intermediate and Advanced; on "Joining the team" the webmaster
+// ladder stays junior, mid and senior.
+const LEVELS = Object.freeze({
+  apprentice: { label: "Apprentice", plain: "beginner", schema: "Beginner" },
+  journeyman: { label: "Journeyman", plain: "intermediate", schema: "Intermediate" },
+  master: { label: "Master", plain: "advanced", schema: "Advanced" },
+});
+const [A, J, M] = ["apprentice", "journeyman", "master"];
+
+const PARTS = Object.freeze({
+  course: { name: "Course overview", opener: "introduction" },
+  m1: { name: "Module 1: Understanding User Stories", opener: "welcome-to-module-1-understanding-user-stories" },
+  m2: { name: "Module 2: Behavior-Driven Development (BDD)", opener: "module-2-behavior-driven-development-bdd" },
+  m3: { name: "Module 3: Functional Reactive Programming (FRP)", opener: "module-3-functional-reactive-programming-frp" },
+});
+
 const LESSONS = [
-  // The course: every level enters here.
-  ["introduction", "Introduction"],
-  ["user-stories", "User Stories"],
-  ["behavior-driven-development-bdd", "Behavior-Driven Development (BDD)"],
-  ["functional-reactive-programming-frp", "Functional Reactive Programming (FRP)"],
-  ["curriculum", "Curriculum"],
-  ["user-story_bdd_frp-workflow", "User-Story_BDD_FRP Workflow"],
+  // The course overview: every level enters at the Introduction.
+  ["introduction", "Introduction", A, "course"],
+  ["user-stories", "User Stories", A, "course"],
+  ["behavior-driven-development-bdd", "Behavior-Driven Development (BDD)", A, "course"],
+  ["functional-reactive-programming-frp", "Functional Reactive Programming (FRP)", A, "course"],
+  ["curriculum", "Curriculum", A, "course"],
+  ["user-story_bdd_frp-workflow", "Course Outline", A, "course"],
   // Module 1: why, what, finding, capturing, translating, writing well, practice, review.
-  ["welcome-to-module-1-understanding-user-stories", "Welcome to Module 1: Understanding User Stories"],
-  ["understanding-the-importance-of-user-centric-design", "Understanding the Importance of User-Centric Design"],
-  ["defining-user-stories", "Defining User Stories"],
-  ["identifying-user-needs", "Identifying User Needs"],
-  ["capturing-user-requirements-effectively", "Capturing User Requirements Effectively"],
-  ["translating-user-needs-into-user-stories", "Translating User Needs into User Stories"],
-  ["writing-clear-and-concise-user-stories", "Writing Clear and Concise User Stories"],
-  ["practical-exercises-in-creating-user-stories", "Practical Exercises in Creating User Stories"],
-  ["collaborative-sessions-to-review-and-refine-user-stories", "Collaborative Sessions to Review and Refine User Stories"],
+  ["welcome-to-module-1-understanding-user-stories", "Welcome to Module 1: Understanding User Stories", A, "m1"],
+  ["understanding-the-importance-of-user-centric-design", "Understanding the Importance of User-Centric Design", A, "m1"],
+  ["defining-user-stories", "Defining User Stories", A, "m1"],
+  ["identifying-user-needs", "Identifying User Needs", A, "m1"],
+  ["capturing-user-requirements-effectively", "Capturing User Requirements Effectively", A, "m1"],
+  ["translating-user-needs-into-user-stories", "Translating User Needs into User Stories", A, "m1"],
+  ["writing-clear-and-concise-user-stories", "Writing Clear and Concise User Stories", A, "m1"],
+  ["practical-exercises-in-creating-user-stories", "Practical Exercises in Creating User Stories", A, "m1"],
+  ["collaborative-sessions-to-review-and-refine-user-stories", "Collaborative Sessions to Review and Refine User Stories", A, "m1"],
   // Module 2: the introduction first, then Gherkin, writing, review and testing.
-  ["module-2-behavior-driven-development-bdd", "Module 2: Behavior-Driven Development (BDD)"],
-  ["introduction-to-behavior-driven-development-bdd", "Introduction to Behavior-Driven Development (BDD)"],
-  ["principles-of-behavior-driven-development-bdd", "Principles of Behavior-Driven Development (BDD)"],
-  ["how-bdd-aligns-development-with-user-expectations", "How BDD Aligns Development with User Expectations"],
-  ["given-when-then-gherkin-syntax-in-bdd", "Given-When-Then (Gherkin) Syntax in BDD"],
-  ["writing-bdd-scenarios", "Writing BDD Scenarios"],
-  ["writing-bdd-scenarios-for-software-modules", "Writing BDD Scenarios for Software Modules"],
-  ["creating-bdd-scenarios-for-real-world-cases", "Creating BDD Scenarios for Real-World Cases"],
-  ["reviewing-and-enhancing-bdd-scenarios-as-a-group", "Reviewing and Enhancing BDD Scenarios as a Group"],
-  ["bdd-and-unit-testing", "BDD and Unit Testing"],
-  ["bdd-testing-framework", "BDD Testing Framework"],
+  ["module-2-behavior-driven-development-bdd", "Module 2: Behavior-Driven Development (BDD)", A, "m2"],
+  ["introduction-to-behavior-driven-development-bdd", "Introduction to Behavior-Driven Development (BDD)", A, "m2"],
+  ["principles-of-behavior-driven-development-bdd", "Principles of Behavior-Driven Development (BDD)", A, "m2"],
+  ["how-bdd-aligns-development-with-user-expectations", "How BDD Aligns Development with User Expectations", A, "m2"],
+  ["given-when-then-gherkin-syntax-in-bdd", "Given-When-Then (Gherkin) Syntax in BDD", J, "m2"],
+  ["writing-bdd-scenarios", "Writing BDD Scenarios", J, "m2"],
+  ["writing-bdd-scenarios-for-software-modules", "Writing BDD Scenarios for Software Modules", J, "m2"],
+  ["creating-bdd-scenarios-for-real-world-cases", "Creating BDD Scenarios for Real-World Cases", J, "m2"],
+  ["reviewing-and-enhancing-bdd-scenarios-as-a-group", "Reviewing and Enhancing BDD Scenarios as a Group", J, "m2"],
+  ["bdd-and-unit-testing", "BDD and Unit Testing", M, "m2"],
+  ["bdd-testing-framework", "BDD Testing Framework", M, "m2"],
   // Module 3: the introduction first; Apply FRP ends the course.
-  ["module-3-functional-reactive-programming-frp", "Module 3: Functional Reactive Programming (FRP)"],
-  ["introduction-to-functional-reactive-programming-frp", "Introduction to Functional Reactive Programming (FRP)"],
-  ["event-streams-and-reactive-programming", "Event streams and reactive programming"],
-  ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals in Software Development"],
-  ["discover-how-frp-enhances-user-interaction-and-responsiveness", "Discover how FRP enhances user interaction and responsiveness"],
-  ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules"],
+  ["module-3-functional-reactive-programming-frp", "Module 3: Functional Reactive Programming (FRP)", J, "m3"],
+  ["introduction-to-functional-reactive-programming-frp", "Introduction to Functional Reactive Programming (FRP)", J, "m3"],
+  ["event-streams-and-reactive-programming", "Event streams and reactive programming", J, "m3"],
+  ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals in Software Development", J, "m3"],
+  ["discover-how-frp-enhances-user-interaction-and-responsiveness", "Discover how FRP enhances user interaction and responsiveness", J, "m3"],
+  ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules", M, "m3"],
 ];
+
+// Where a journeyman and a master pick up, named on the Introduction.
+const LEVEL_STARTS = Object.freeze({
+  journeyman: "given-when-then-gherkin-syntax-in-bdd",
+  master: "bdd-and-unit-testing",
+});
+
+const partOf = (key) => LESSONS.filter(([, , , part]) => part === key);
+for (const [slug, , level, part] of LESSONS) {
+  if (!LEVELS[level] || !PARTS[part]) throw new Error(`LESSONS: ${slug} has an unknown level or part`);
+}
+for (const [key, { opener }] of Object.entries(PARTS)) {
+  const lessons = partOf(key);
+  const first = LESSONS.indexOf(lessons[0]);
+  if (lessons[0]?.[0] !== opener) throw new Error(`LESSONS: ${key} must open with ${opener}`);
+  if (LESSONS.slice(first, first + lessons.length).some((lesson) => lesson[3] !== key)) {
+    throw new Error(`LESSONS: the lessons of ${key} must run together`);
+  }
+}
+for (const [level, slug] of Object.entries(LEVEL_STARTS)) {
+  if (LESSONS.find(([candidate]) => candidate === slug)?.[2] !== level) {
+    throw new Error(`LEVEL_STARTS: ${slug} is not a ${level} lesson`);
+  }
+}
+
+const lessonIndex = (name) => LESSONS.findIndex(([slug]) => name === `community/${slug}/index.html`);
+const lessonTitle = (slug) => LESSONS.find(([candidate]) => candidate === slug)[1];
+
+const lessonLevel = (index) => {
+  const [, , level, part] = LESSONS[index];
+  const lessons = partOf(part);
+  const { label, plain } = LEVELS[level];
+  const where = part === "course" ? "the course overview" : PARTS[part].name.split(":")[0];
+  return `<p class="lesson-level">Level: <strong>${label}</strong> (${plain}) &middot; Lesson ${lessons.indexOf(LESSONS[index]) + 1} of ${lessons.length} in ${where}</p>`;
+};
+
+const levelTag = (level) => `<span class="lesson-level">${LEVELS[level].label}</span>`;
 
 // Community pages that are not lessons: the team's terms, the membership offer
 // and Sean's Redux note. Inside the chain, a learner's "next" landed on a fee
@@ -161,7 +248,7 @@ const lessonLink = ([slug, title], rel, label) =>
   `<a href="/community/${slug}/" rel="${rel}">${label}: ${title}</a>`;
 
 const lessonNav = (name) => {
-  const index = LESSONS.findIndex(([slug]) => name === `community/${slug}/index.html`);
+  const index = lessonIndex(name);
   if (index === -1) {
     return OFF_THE_PATH.has(name)
       ? '<nav class="page-nav" aria-label="Community">\n<a href="/community/">Back to the community</a>\n</nav>'
@@ -411,15 +498,15 @@ const withArchiveContext = (name, html) => {
   if (!name.startsWith("community/") || SEANS_COMMUNITY_PAGES.has(name)) return html;
   if (NOT_LESSONS.has(name)) return html.replace(ARCHIVE_CONTEXT_PATTERN, "");
   if (ARCHIVE_CONTEXT_PATTERN.test(html)) {
-    return html.replace(ARCHIVE_CONTEXT_PATTERN, () => `\n${ARCHIVE_CONTEXT}`);
+    return html.replace(ARCHIVE_CONTEXT_PATTERN, () => `\n${archiveContext(name)}`);
   }
-  return insertAfterContentStart(html, ARCHIVE_CONTEXT);
+  return insertAfterContentStart(html, archiveContext(name));
 };
 
 const withCommentsNotice = (name, html) =>
   SEANS_COMMUNITY_PAGES.has(name) || !COMMENTS_NOTICE_PATTERN.test(html)
     ? html
-    : html.replace(COMMENTS_NOTICE_PATTERN, () => COMMENTS_NOTICE);
+    : html.replace(COMMENTS_NOTICE_PATTERN, () => commentsNotice(name));
 
 const withArchivePagination = (name, html) => {
   const config = PAGINATED_ARCHIVES.get(name);
@@ -437,7 +524,93 @@ const withCargoPostRepairs = (name, html) => {
   );
   return COMMENTS_NOTICE_PATTERN.test(withHero)
     ? withHero
-    : insertBeforeContentEnd(withHero, COMMENTS_NOTICE);
+    : insertBeforeContentEnd(withHero, commentsNotice(name));
+};
+
+// Each lesson's JSON-LD Article carries its level, and its headline and last
+// breadcrumb follow its LESSONS title, so a retitle lands everywhere at once.
+const SCHEMA_PATTERN = /(<script type="application\/ld\+json" data-agency-schema>)([\s\S]*?)(<\/script>)/;
+
+const withLessonSchema = (name, html) => {
+  const index = lessonIndex(name);
+  if (index === -1) return html;
+  const [, title, level] = LESSONS[index];
+  const match = html.match(SCHEMA_PATTERN);
+  if (!match) throw new Error(`${name}: missing the agency schema`);
+  const schema = JSON.parse(match[2]);
+  const article = schema["@graph"].find((node) => node["@type"] === "Article");
+  if (!article) throw new Error(`${name}: the schema has no Article`);
+  article.headline = title;
+  article.educationalLevel = LEVELS[level].schema;
+  const breadcrumbs = schema["@graph"].find((node) => node["@type"] === "BreadcrumbList");
+  if (breadcrumbs) breadcrumbs.itemListElement.at(-1).name = title;
+  return html.replace(SCHEMA_PATTERN, (_, open, _json, close) => `${open}${JSON.stringify(schema)}${close}`);
+};
+
+// The Introduction is where every level starts; a journeyman and a master skim
+// it and pick up at the lesson LEVEL_STARTS names.
+const levelPaths = () => `<ul class="level-paths" aria-label="Where each level picks up">
+<li><strong>${LEVELS.apprentice.label}</strong> (${LEVELS.apprentice.plain}): read straight through; each lesson ends with a link to the next.</li>
+${["journeyman", "master"].map((level) => `<li><strong>${LEVELS[level].label}</strong> (${LEVELS[level].plain}): skim to <a href="/community/${LEVEL_STARTS[level]}/">${lessonTitle(LEVEL_STARTS[level])}</a> and pick up there.</li>`).join("\n")}
+</ul>`;
+
+const LEVEL_PATHS_PATTERN = /\n<ul class="level-paths"[\s\S]*?<\/ul>/;
+const FIRST_PARAGRAPH_PATTERN = /(<\/header><!-- \.entry-header -->\s*<p>[\s\S]*?<\/p>)/;
+
+const withLevelPaths = (name, html) => {
+  if (name !== INTRODUCTION) return html;
+  if (LEVEL_PATHS_PATTERN.test(html)) return html.replace(LEVEL_PATHS_PATTERN, () => `\n${levelPaths()}`);
+  if (!FIRST_PARAGRAPH_PATTERN.test(html)) throw new Error(`${name}: no first paragraph for the level paths`);
+  return html.replace(FIRST_PARAGRAPH_PATTERN, (paragraph) => `${paragraph}\n${levelPaths()}`);
+};
+
+// Each module's opening page lists the module's lessons in order, with levels.
+const moduleLessons = (part) => `<nav class="module-lessons" aria-labelledby="module-lessons">
+<h2 id="module-lessons">Lessons in this module</h2>
+<ol>
+${partOf(part).slice(1).map(([slug, title, level]) => `<li><a href="/community/${slug}/">${title}</a> &middot; ${levelTag(level)}</li>`).join("\n")}
+</ol>
+</nav>`;
+
+const MODULE_LESSONS_PATTERN = /\n<nav class="module-lessons"[\s\S]*?<\/nav>/;
+const ENTRY_HEADER_END = "</header><!-- .entry-header -->";
+
+const withModuleLessons = (name, html) => {
+  const part = Object.keys(PARTS).find((key) => key !== "course" && name === `community/${PARTS[key].opener}/index.html`);
+  if (!part) return html;
+  if (MODULE_LESSONS_PATTERN.test(html)) return html.replace(MODULE_LESSONS_PATTERN, () => `\n${moduleLessons(part)}`);
+  if (html.split(ENTRY_HEADER_END).length !== 2) throw new Error(`${name}: expected one entry header`);
+  return html.replace(ENTRY_HEADER_END, () => `${ENTRY_HEADER_END}\n${moduleLessons(part)}`);
+};
+
+// The community sitemap listed pages in WordPress publication order, with the
+// last lesson before the first. It renders from LESSONS, part by part, and the
+// pages off the path follow.
+const COMMUNITY_SITEMAP = "community/sitemap/index.html";
+const SITEMAP_LIST_PATTERN = /<div class="sitemap-list"[^>]*>[\s\S]*?\n<\/div>/;
+const ALSO_IN_THE_COMMUNITY = [
+  ["/community/", "Community home"],
+  ["/community/staff/", "Joining the team"],
+  ["/community/our-community-unveiling-our-offer-and-prices/", "Our Community: Unveiling Our Offer and Prices"],
+  ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/", "P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! \u270c\ud83c\udffb"],
+  ["/community/from-marketing-to-development/", "From marketing to development"],
+];
+
+const communitySitemap = () => `<div class="sitemap-list">
+${Object.entries(PARTS).map(([key, { name }]) => `<h2>${name}</h2>
+<ol>
+${partOf(key).map(([slug, title, level]) => `<li><a href="/community/${slug}/">${title}</a> &middot; ${levelTag(level)}</li>`).join("\n")}
+</ol>`).join("\n")}
+<h2>Also in the community</h2>
+<ul>
+${ALSO_IN_THE_COMMUNITY.map(([href, title]) => `<li><a href="${href}">${title}</a></li>`).join("\n")}
+</ul>
+</div>`;
+
+const withCommunitySitemap = (name, html) => {
+  if (name !== COMMUNITY_SITEMAP) return html;
+  if (!SITEMAP_LIST_PATTERN.test(html)) throw new Error(`${name}: missing the sitemap list`);
+  return html.replace(SITEMAP_LIST_PATTERN, communitySitemap);
 };
 
 const routeTransforms = Object.freeze([
@@ -446,6 +619,10 @@ const routeTransforms = Object.freeze([
   withCargoPostRepairs,
   withCommentsNotice,
   withLessonNav,
+  withLessonSchema,
+  withLevelPaths,
+  withModuleLessons,
+  withCommunitySitemap,
   withRelatedServices,
   withFeaturedServices,
 ]);

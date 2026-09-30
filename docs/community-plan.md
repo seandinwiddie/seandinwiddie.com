@@ -4,6 +4,18 @@ The plan for the community pages as training, from a September 30, 2026 review o
 
 The stack is chosen by the project (`docs/positioning.md`): the full chain is for custom apps and features that hold state, while many brochure sites run on WordPress set to update itself, so owners can maintain them. The community hub says so in one sentence. The loop applies this plan a few small tweaks per pass, never a whole section at once, in teaching order and with lessons marked apprentice, journeyman or master (`docs/copy-review.md`). Anything in square brackets, and any tool or case study not named below, waits for Sean's OK. Lessons teach Gherkin as the principle. The team explores both ways of running it and the lessons may name both: Gherkin run as executable steps with cucumber-js, Cucumber's official runner; and tests named after the scenarios in the codebase's own runner, Vitest for TypeScript and Hspec for Haskell. Module 1 teaches planning as a hybrid, fluid practice: a written scope per job, with short iterations, stand-ups and reviews where they help. ForbocAI stays out of the lessons for now (a young project; at most a minimal mention, with Sean's OK).
 
+## Where each level starts (pass 8)
+
+The Introduction is where every level starts: first in `LESSONS`, pointed to by the banner on every community page, and carrying the paths by level. An apprentice reads straight through. A journeyman skims to "Given-When-Then (Gherkin) Syntax in BDD", where Background, Scenario Outline and Rule begin. A master skims to "BDD and Unit Testing", where scenarios set a codebase's test strategy. The Course Outline is the course's map, not its start.
+
+Each lesson's level lives in `LESSONS` (19 apprentice, 10 journeyman, 3 master, from the senior CTO's pass 8 review):
+
+- **Apprentice:** the course overview (Introduction, User Stories, BDD, FRP, Curriculum, Course Outline), all of Module 1, and Module 2's opener, Introduction, Principles and "How BDD Aligns".
+- **Journeyman:** Given-When-Then (Gherkin), Writing BDD Scenarios, …for Software Modules, …for Real-World Cases, Reviewing… as a Group; Module 3's opener, Introduction to FRP, Event streams, FRP Fundamentals and "Discover how FRP…".
+- **Master:** BDD and Unit Testing, BDD Testing Framework, and Apply FRP concepts to software modules.
+
+The banner names each lesson's level and place ("Lesson 3 of 9 in Module 1"), each module's opener lists its lessons with their levels, the community sitemap runs in teaching order, and each lesson's JSON-LD carries `educationalLevel`. All of it renders from `LESSONS`.
+
 ## The functional state layer (Module 3's direction)
 
 - **Evidence.**
