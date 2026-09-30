@@ -2,6 +2,117 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 4: September 30, 2026
+
+| Reviewer | Whole site | Homepage, service pages and contact |
+|---|---|---|
+| Local owner | 4.5 | 6.5 |
+| Webmaster | 4 | 7 |
+| Copywriter | 4.5 | 6.5 |
+| Senior CTO | 4.5 | 6.5 |
+
+These scores read the site after pass 3 and before this pass's tweaks. The copywriter expects about 7.5 on the focus pages after them. Every reviewer's scores rose from pass 3.
+
+### The objections that matter most
+
+The local owner:
+
+- `/prices/` in the menu still shows "6k/mo" and "120k/annu".
+- A booking site was $6,000 on one page and $12,000 on another.
+- "Year share" was undefined, so a county office couldn't tell $24,000 from $120,000.
+- Care was priced but never called optional.
+- There is one phone number beside "the webmaster who builds it is the one who answers the phone".
+- Klamath Falls was written as "I".
+
+The webmaster:
+
+- `/community/staff/` still shows a multi-level pay plan.
+- "The client decides every addition" never said additions are paid.
+- The short note dropped "from their own practice".
+- The homepage note sat inside the owner's call to action.
+- The terms stop at the split.
+
+The senior CTO:
+
+- The Klamath Falls green card (3.13:1), the focus ring (1.76:1) and link hovers failed contrast under an accessibility offer.
+- The annual engagement left out technology planning.
+- Automation's Care line quoted the wrong tier.
+- Accuracy lines on on-site SEO, CRO and the Marketing hub.
+- Page weight against "lean pages".
+
+### Sean's directions this pass
+
+- Sizes can change, and colors change by small tweaks; the typefaces never change.
+- The 🧙 stays.
+- "Webmaster" is the craft.
+- AI is part of the software craft.
+- Owners' accounts are in their own name, with nothing resold or marked up.
+- Meetings are at the KLounge.
+- The owner and webmaster terms and the direction for counsel are approved (`docs/terms.md`).
+- Iterate pass after pass.
+
+### Tweaks applied
+
+- **One booking rule:** a full share ($6,000) with a link to the booking tool the owner already uses; two shares ($12,000) when the site takes orders, bookings or payments itself.
+- **The year share, defined:** "a fifth of the $120,000 annual engagement ($24,000 a year)". The annual engagement names technology planning and an accessibility program.
+- **Care is optional:** without it, a repair is a tenth share for one named fix.
+- **Hosting, domain and tools in the owner's name,** with no third-party cost resold or marked up. Ad spend goes from the owner to Google or Meta directly.
+- **Automation upkeep** is the $600 Care tier.
+- **`/contact/`:**
+  - the scope "opens like a receipt" (the job, the fee, the delivery date and the webmaster);
+  - payment terms for one-time jobs;
+  - "The number above reaches Sean, the founder";
+  - continuity: Sean covers, and the owner can choose another webmaster;
+  - meetings at the KLounge or the owner's shop, with Redding by phone, video and email.
+- **The homepage:**
+  - the mission in the intro;
+  - "the one who answers for it";
+  - the second webmaster's review before launch;
+  - the date in every scope;
+  - one-time fees called one-time;
+  - fractional CTO leadership alone sent to sdin.dev.
+- **Klamath Falls in the team's voice,** with Google Business Profile, "sized to the job" and the five named listing platforms.
+- **Training:** handover training is included and leads the page; a session after handover is a tenth share; the claims of a video library and "already done for you" are gone.
+- **The notes to webmasters:**
+  - "the name brings in local work… so the time on each job goes to the craft";
+  - additions quoted in writing and paid;
+  - the review before launch;
+  - joining is free;
+  - "from their own practice" in every form;
+  - the builder looks after the site;
+  - one label, and the homepage note set apart below the owner's contact details.
+- **Accessibility:** the Klamath Falls card background is darker green, the focus ring's halo is stronger, and link hovers use the darker blue; "checked against WCAG 2.1 AA" replaces "works for everyone".
+- **Accuracy:**
+  - the chalkboard menu;
+  - structured data "matching your Business Profile";
+  - the five listing platforms;
+  - "Google, Facebook and Instagram ads";
+  - CRO's "the visits you already get" and "long enough for the numbers to mean something".
+
+### Waiting
+
+- **Sean's:**
+  - `/prices/`;
+  - Medford, contact hours, days until the written scope, Redding meetings;
+  - "over a decade" against "since 2010";
+  - Training's remaining content;
+  - the Marketing H1's "compound".
+- **Counsel:**
+  - the webmaster terms beyond the notes;
+  - the confidentiality sentence;
+  - the assignment of work;
+  - the California structure before a California webmaster signs.
+- **Outside the focus or not a tweak:**
+  - image weight;
+  - a contrast check in the build;
+  - `/community/staff/`;
+  - `/about/`;
+  - the PayPal.me top bar;
+  - `sameAs`;
+  - "Book a free call";
+  - numbered steps as lists;
+  - stock titles.
+
 ## Pass 3: September 29, 2026
 
 | Reviewer | Whole site | Homepage, service pages and contact |

@@ -16,12 +16,11 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] The legal pages, approved in direction and waiting for the focus to reach them: the SMS terms come down, the privacy policy says client information reaches Sean Dinwiddie's Webmastery and the webmaster on the job, and the terms follow Oregon law.
 - [ ] Whether the first call ends with a written scope and fee, and within how many business days.
 - [ ] Webmaster terms (the house keeps 30%, the webmaster 70%): whether the split differs for work a webmaster brings in and work the house assigns; that there is no fee to join and no membership to buy; who keeps the client relationship, whether webmasters keep their own clients and outside work, and any non-solicit clause; who takes the first call, writes the scope, invoices and collects, when webmasters are paid and who carries a client's non-payment; how many engagements a webmaster carries at once; insurance, tools and licences; whether the builder of a site keeps its Care Contract; portfolio credit; what moves a webmaster up each rung; and the latitude to make things right for a client. The arrangement stays business-to-business under Oregon's ORS 670.600 and California's AB5 test; counsel decides.
-- [ ] Shared learning for owners: that what the team shares is technique, never an owner's customers, passwords or numbers; and whether the team serves direct competitors. Needed before the site says "your webmaster brings what the whole team has learned".
-- [ ] Continuity for owners: who covers when a webmaster is away, what happens to a site and its Care Contract if a webmaster leaves the team, and whether an owner can ask for a different webmaster. The owner reviewer puts this at the gap between 8 and 9.
+- [ ] Shared learning for owners: the confidentiality sentence (what the team shares is technique, never an owner's customers, passwords or numbers), in counsel's wording. The review before launch is named on the site since pass 4.
 - [ ] How the team's learning is shared (peer review, shared notes of fixes and patterns, team calls, pairing), so the site can name the mechanism behind "learning compounds on the team".
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
 - [ ] `/community/staff/` and the community cut-sheet and offer pages show a different pay plan from the 70/30 split: pay from "community earnings" by team size, negative percentages ("-0.8%" with a "-$7,200" example that is really 80%), payouts that grow "as the community expands", "team staff", "Team Staff Discounts" and "COMMISSIONS CLOSED". All three reviewers say this reads as a multi-level scheme and caps recruiting at about 3/10 whatever the notes say. The CTO suggests one line at the top of each page: "Archived, October 2023. Webmasters on the Sean Dinwiddie's Webmastery team are subcontractors who keep 70% of the fee on their work; the payout options below are not how they are paid." It needs Sean's confirmation, and whether to add `noindex` is his call.
-- [ ] Joining is free: no fee, membership or course is required to join the team (the FTC Business Opportunity Rule, 16 CFR 437, covers a required payment paired with a promise of clients). Once Sean confirms, the webmaster page says so.
+- [ ] The webmaster page says joining is free (the notes say so since pass 4), with portfolio credit and the ladder.
 - [ ] Worker classification: the subcontract per job (payment amount and due date), non-solicit terms, and the model's fit with Oregon's ORS 670.600 and California's AB5 business-to-business exemption (Lab. Code §2776), where webmasters serving the agency's clients under the agency's name and one published rate need counsel's review.
 - [ ] Hours and reply times for calls and email on `/contact/`.
 - [ ] Whether Medford is in the service area. `/automation/` names it; everywhere else says Klamath Falls, Redding and the towns in between.
@@ -109,7 +108,11 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 ## Navigation and design
 
 - [ ] Simplify the menu and keep the core items at the top level.
-- [ ] Check spacing and sizes across the site, and add a contrast check to `npm run build` so white text on the blues stays at 4.5:1 or better.
+- [ ] Check spacing and sizes across the site, and add a contrast check to `npm run build` covering the text and background pairs in `assets/site.css`, including hover and focus states.
+- [ ] Image weight against "lean pages": focus pages weigh 1.7 to 2.5 MB from 2560 px card and hero JPEGs shown at about 300 px. Resize to WebP or AVIF and add an image budget to `check-performance.mjs`.
+- [ ] The top bar's "💳 Secure Payment" goes to a personal PayPal.me link, at odds with the payment terms on `/contact/`.
+- [ ] CRO's session recordings need a line in the privacy policy (session replay is the pattern behind California CIPA suits).
+- [ ] Training's remaining content claims ("ready-to-adjust solutions", "Pre-prepared files", empty topic headings, an AWeber form with no stated offer, "meals, clothes", Page setup's WordPress advice).
 
 ## Analytics
 

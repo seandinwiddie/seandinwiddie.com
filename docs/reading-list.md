@@ -498,7 +498,7 @@ Sean asks the reviewers to think about the team's benefits the way Stealing Fire
   - the mission is the purpose;
   - one standard across the team makes it "we".
 
-  The days go to the craft.
+  The time on each job goes to the craft (never a promise of full days).
 - **For the owner, the same structure is the benefit:**
   - a clear goal in the written scope;
   - a webmaster whose attention goes to the owner's site, not to chasing the next client;
