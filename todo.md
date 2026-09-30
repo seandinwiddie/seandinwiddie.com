@@ -112,7 +112,7 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 - [ ] Image weight against "lean pages": focus pages weigh 1.7 to 2.5 MB from 2560 px card and hero JPEGs shown at about 300 px. Resize to WebP or AVIF and add an image budget to `check-performance.mjs`.
 - [ ] The top bar's "💳 Secure Payment" goes to a personal PayPal.me link, at odds with the payment terms on `/contact/`.
 - [ ] CRO's session recordings need a line in the privacy policy (session replay is the pattern behind California CIPA suits).
-- [ ] Training (Sean's page): its remaining content claims ("ready-to-adjust solutions", "Pre-prepared files", empty topic headings, an AWeber form with no stated offer, "meals, clothes", Page setup's WordPress advice).
+- [ ] Training (Sean's page), whose training content the loop now builds on the community pages instead: its remaining content claims ("ready-to-adjust solutions", "Pre-prepared files", empty topic headings, an AWeber form with no stated offer, "meals, clothes", Page setup's WordPress advice).
 
 ## Analytics
 
