@@ -1,0 +1,117 @@
+# Community plan: the lessons, grounded in the practice
+
+The plan for the community pages as training, from a September 30, 2026 review of Sean's lectures and repositories. The lessons teach the principles in `docs/positioning.md` ("How the team builds software"): **feature scope → user story → Gherkin test → endpoint, slice and view → the Haskell (Servant) API behind it.** Code is evidence of the practice, never its authority. This file holds only what the lessons need; findings about Sean's private repositories stay out of this public repository.
+
+The loop applies this plan a few small tweaks per pass, never a whole section at once, in teaching order and with lessons marked apprentice, journeyman or master (`docs/copy-review.md`). Anything in square brackets, and any tool or case study not named below, waits for Sean's OK. Naming a BDD runner other than Vitest (for TypeScript) waits for Sean.
+
+## The functional state layer (Module 3's direction)
+
+- **Evidence.**
+  - No Rx anywhere; no `rxjs` dependency in any repo.
+  - LEC frames the one-way dataflow as FP: event → pure reducer → selector → render, with RTK Query for server documents and listener middleware as "the reactive workflow boundary" (`modern-redux-architecture-patterns`, `redux-standard-patterns…`, `technology-maintenance.md`).
+- **Honest FRP mapping to teach:**
+  - **Events are actions:** plain data, past-tense names.
+  - **The state is a fold of the event stream:** `state = actions.reduce(reducer, initial)`. A reducer is pure; Immer only changes the syntax.
+  - **Behaviors are selectors:** values derived from state, composed with `createSelector` and memoized.
+  - **Subscriptions** are `useAppSelector` and RTK Query hooks, which end on unmount.
+  - **Effects live at the boundary.** RTK Query owns server data; thunks run imperative workflows; listener middleware reacts over time (debounce, cancel).
+  - **History.** FRP is Conal Elliott and Paul Hudak's (Fran, ICFP 1997): continuous-time behaviors and discrete events. Rx-style observables use the name more loosely. One line, as `todo.md` asks.
+- **Title.** "Module 3: The Functional State Layer (FRP)". Slugs stay; the rename is a judgment call (section 6).
+
+## Where the lessons and the practice part ways
+
+**The lessons contradict the practice:**
+- Rx vocabulary: observables, subscriptions and operators on 6 FRP pages. RxJS, RxJava, ReactiveX and Combine lists on the Module 3 page and "Introduction to FRP" (`todo.md` "Trust first" tracks the remaining Rx steps).
+- BDD examples at the UI: "clicks the “Add to Cart” button", "clicks the “Submit” button", "is on the email login page". The practice scenarios run below the interface.
+- "Scenario Outline" is misused to mean a feature grouping ("Writing BDD Scenarios for Software Modules" step 4; "Creating BDD Scenarios for Real-World Cases" step 4). In Gherkin it means a parameterized scenario with Examples.
+- "BDD scenarios typically focus on high-level end-to-end behavior" ("BDD and Unit Testing").
+- "BDD Testing Framework" is a generic wish list (cross-browser testing, parallel execution) and names no runner.
+- The real-world example scenario bundles four behaviors under one When.
+- Overclaims: FRP "efficiency" and "scalability"; the P.S. page's "secret sauce" and "error-free code".
+- Module 1 teaches Scrum ceremonies (sprints, stand-ups, estimation), while the practice scopes work as a written scope per job (Sean's OK needed on how the team plans).
+- "Sean Dinwiddie – Software Engineering Consultant" in the "How We Can Help" blocks.
+
+**The practice has, and no lesson covers:**
+- The chain as a whole (Module 4 is empty).
+- Acceptance criteria as Gherkin, and scenario words as test names.
+- Event-named actions; state ownership (component / router / slice / RTK Query / selector).
+- RTK Query: one root, injected endpoints, tags, decoding at the boundary, OpenAPI codegen.
+- Listeners versus thunks versus RTK Query.
+- Minimal views and view-model selectors.
+- Testing a slice through event sequences and selectors, and testing endpoints against a controlled boundary.
+- A Servant API from its types; one contract shared by the API and the client.
+- Functional core with an imperative shell; Maybe/Either at the boundary; one FP vocabulary across TypeScript and Rust.
+
+## The lesson map: Lesson → change map (small tweaks, a few per pass)
+
+The rule: many small tweaks, never a section rewrite. Wording uses the full brand name and present tense, with no hype and no quotation of Sean. "Current" text is the rendered page text (verified by grep against the HTML on 2026-09-30; the pages may change as the loop runs). The lecture base is `https://seandinwiddie.github.io/lectures/`.
+
+**Order.** Trust first (Rx removal, the brand line), then the bridge (story → Gherkin → slice), then attributions and lecture links.
+
+### Hub (`/community/`) and curriculum
+- **Direction:** name the whole chain once.
+- **Tweak (hub):** "Features are scoped from user stories, the stories become behavior-driven tests, and the tests drive Redux Toolkit slices and RTK Query endpoints behind minimal React views." → "Features are scoped from user stories, each story becomes a Gherkin scenario, and the scenarios drive the RTK Query endpoints, Redux Toolkit slices and minimal React views, with a Haskell (Servant) API behind them."
+- **Tweak (curriculum):** after "The lessons follow the course outline, …" add: "They follow the order the Sean Dinwiddie's Webmastery team builds in: feature scope, user story, Gherkin scenario, then endpoint, slice and view, and the API behind them."
+- **Link:** the lectures' index (in place).
+
+### Course outline (`/community/user-story_bdd_frp-workflow/`)
+- **Direction:** a map of the chain, and Module 3 renamed toward the state layer.
+- **Tweaks:**
+  1. "Developing Modules a cyclically." → "Developing modules in a cycle."
+  2. After the "Welcome to the Community Course Manual Curriculum…" paragraph add: "On the Sean Dinwiddie's Webmastery team, every feature follows one chain: the feature scope names its user stories, each story becomes a Gherkin scenario, and the scenario drives an RTK Query endpoint, a Redux Toolkit slice and a minimal React view, with a Haskell (Servant) API behind them."
+  3. "Remember, software development is a dynamic field, and this curriculum empowers you to stay ahead of the curve." → "The lessons are revised as the team's practice improves."
+  4. Later: Module 3 topic "Event streams and reactive programming." → "Events as actions, reducers and selectors."
+- **Link:** the lectures' index.
+
+### Module 1: user stories (welcome, "User Stories", "Defining", "Writing Clear and Concise", "Translating")
+- **Direction:** stories come out of the scope, and their acceptance criteria are Gherkin.
+- **Tweaks:**
+  1. Welcome: "User Stories are the first step in our cyclical workflow, and understanding them is crucial for creating user-centric software modules." → "User stories come first after the feature scope: the written scope names each feature by its stories, and each story carries the scenarios that test it."
+  2. "Defining User Stories": after "Acceptance criteria provide additional details about what the User Story entails. They serve as a guideline for development and testing." add: "On the Sean Dinwiddie's Webmastery team, each criterion is written as a Given, When, Then scenario: Given a customer with two past orders, When they open their order history, Then both orders are listed with date, items and status."
+  3. "Writing Clear and Concise": "Consider using the INVEST criteria to evaluate the quality of your User Stories." → "Bill Wake's INVEST criteria (2003) test the quality of a user story." Also "Small: Stories should be small enough to complete within a single development iteration." → "Small: Stories should be small enough to name as one line in the written scope and finish within one iteration."
+  4. "Writing Clear and Concise" and "Translating": "The password reset link in the email must be valid for 24 hours." → "The reset link works once and expires after 24 hours." Then add the criterion "The reset form shows the same message whether or not the email belongs to an account."
+- **Later ("User Stories" post):**
+  - "At Sean Dinwiddie – Software Engineering Consultant, we specialize in crafting User Stories tailored to your unique needs as an administrator." → "Sean Dinwiddie's Webmastery writes the scope of every feature as user stories, so the owner reads the job in plain terms before it starts."
+  - "Stay tuned for our next post where we’ll dive deeper into the world of Behavior-Driven Development (BDD)…" → "The next lesson turns each story's acceptance criteria into Given, When, Then scenarios."
+- **Link:** none fits. Confirmed.
+
+### Module 2: BDD (module page, "BDD" post, "Given-When-Then", "Writing BDD Scenarios", "…for Software Modules", "…Real-World Cases", "BDD and Unit Testing", "BDD Testing Framework")
+- **Direction:** Gherkin as the bridge; scenarios in domain words, below the interface; correct Gherkin terms; name the runner honestly.
+- **Tweaks:**
+  1. Module page: "Example Mapping: Example mapping is a technique that helps refine behavior scenarios." → "Example Mapping: Matt Wynne's example mapping (2015) lays out a story's rules and examples on cards before any scenario is written." And open with "Behavior-Driven Development (BDD), introduced by Dan North in 2006, is…". Add the link Redux Toolkit and Functional Programming `#test-transitions-and-derivations` after the existing "these tests drive the Redux Toolkit slices…" sentence.
+  2. "BDD" post: "When the user clicks the “Add to Cart” button" → "When the user adds the item to the cart". "Writing BDD Scenarios": "When the user clicks the “Submit” button" → "When the user submits the order". Then add to step 6: "On the Sean Dinwiddie's Webmastery team, each When step names one event, the same event a Redux Toolkit slice's reducer handles, and each Then step names what a selector or an endpoint returns."
+  3. "…for Software Modules": "4. Create a Scenario Outline:" → "4. Group the Scenarios Under a Feature:". "A scenario outline provides an overarching structure for your scenarios. It typically includes a title or description of the module and a list of possible user interactions. This outline helps organize your scenarios logically." → "A Feature block names the module and holds its scenarios, with the user story beneath the title. (In Gherkin, a Scenario Outline is something else: one scenario run once for each row of an Examples table.)" "…Real-World Cases" gets the same fix: "4. Create Scenario Outlines:" → "4. Group Scenarios by Feature:". Then, after its checkout example, add: "Split it before it becomes a test: one scenario for choosing an address and payment, one for placing the order, one for the confirmation email, so each failure names one behavior."
+  4. "BDD and Unit Testing": "BDD scenarios typically focus on high-level end-to-end behavior, while unit testing delves into the internal details of code components." → "BDD scenarios describe behavior a user can name, and on the Sean Dinwiddie's Webmastery team most of them run below the interface, against a slice's reducer and selectors or an RTK Query endpoint; end-to-end tests stay few and cover the critical journeys, while unit tests cover the pure functions underneath." Links: Modern Redux Architecture Patterns `#testing-architecture`; Practical Applications of Functional Programming `#test-laws-and-boundaries`.
+- **Later:**
+  - "Given-When-Then": replace the email-login scenario with "Scenario: Signing in with the correct password / Given a registered account for "ada@example.com" / When Ada signs in with the correct password / Then her session starts". Add *Feature* and *Tags* to the keyword list, and "listed in an Examples table" to Scenario Outline.
+  - "BDD Testing Framework": add after the first paragraph: "The Sean Dinwiddie's Webmastery team writes its scenarios in Gherkin and runs them in each codebase's own test runner, Vitest for TypeScript [and Hspec for the Haskell API: Sean's OK]; each scenario's words name its test."
+
+### Module 3: FRP → the functional state layer (module page, "FRP" post, "Introduction", "Master the fundamentals", "Discover…", "Apply…", "Event streams…")
+- **Direction:** keep the FRP ideas and teach them through Redux Toolkit: events as actions, state as a fold, selectors as behaviors, and effects at the boundary.
+- **Tweaks:**
+  1. Module page and "Introduction": remove the "RxJava: An implementation of FRP for the Java programming language." bullet (both pages). On the module page, "FRP in Practice:" gains: "The Sean Dinwiddie's Webmastery team applies these ideas through Redux Toolkit rather than an observable library: actions are the events, pure reducers fold them into state, selectors derive values, and RTK Query and listener middleware keep effects at the boundary." Add the history line: "Conal Elliott and Paul Hudak introduced functional reactive programming in 1997; observable libraries came later and use the name more loosely." Link Redux Standard Patterns and Functional Programming `#the-one-way-dataflow`.
+  2. Module page, Key Principles:
+     - "Observables: In FRP, observables are a central concept. …" → "Events as actions: Each event is a plain action object with a past-tense name, such as itemSoldOut; the sequence of dispatched actions is the application's event stream."
+     - "Subscriptions: A subscription represents an active connection to an observable. …" → "Subscriptions: A React view subscribes to a selector through useAppSelector, and an RTK Query hook subscribes to a cached request; both end when the view unmounts."
+     - "Operators: FRP provides a wide range of operators…" → "Selectors: createSelector composes small pure functions into derived values, the way FRP derives one behavior from another."
+  3. "Apply FRP concepts":
+     - "Model Data as Observables: Begin by modeling your data as observables. …" → "Model Events as Actions: Name each action for what happened, such as orderPlaced rather than setOrders; the reducer decides the next state."
+     - "State Management: Utilize observables to manage the state of your software module. Whenever data changes, a new observable is created, allowing you to maintain the integrity of the state and track changes efficiently." → "State Management: A slice owns shared client state; each reducer returns the next state from the previous state and an event, and Immer keeps the result immutable."
+     - Next pass: "Define Event Streams" → "Derive with Selectors"; "Compose Operations with Operators" → "Put Effects at the Boundary: RTK Query fetches and caches server data, thunks run a workflow started from one place, and listener middleware debounces, cancels and reacts to later actions."
+  4. "FRP" post:
+     - "Efficiency: The declarative and functional nature of FRP leads to more efficient code." → "Predictability: Pure reducers and selectors return the same output for the same input, so they're easier to reason about, test and maintain."
+     - "Scalability: FRP scales well for applications with a high degree of complexity. It keeps your codebase manageable as your project grows." → "Clear ownership: Each piece of state has one owner (a component, the router, a slice or RTK Query), which keeps a growing codebase readable."
+- **Later:**
+  - "Event streams": "In the context of FRP, event streams are often modeled as observables." → "In Redux Toolkit, the event stream is the sequence of dispatched actions, and the store's state is that sequence folded through the reducer." Link Redux Standard Patterns `#the-one-way-dataflow`.
+  - "Master the fundamentals": "Learn Observables: …" → "Learn Reducers and Selectors: A reducer folds each event into the next state, and a selector derives values from state; practice both as pure functions with plain inputs and outputs." And "Subscriptions: Study subscriptions…" → "Listeners: Study listener middleware, which reacts to later actions, and learn when to cancel stale work." Link Functional Composition.
+  - "Discover…": "Efficient State Management: FRP facilitates efficient state management by representing data and events as reactive streams. …" → "State Management: The store holds the facts, reducers fold events into the next state, and memoized selectors recompute derived values only when their inputs change." Link Modern Redux Architecture Patterns `#side-effect-architecture`.
+  - "Introduction": link What Is a Function? `#push-effects-to-the-edges`.
+  - Title change for the module (section 6).
+
+### Redux P.S. page
+- **Direction:** from affection to the actual state layer.
+- **Tweak:** "It’s the secret sauce behind many successful web applications, providing the kind of user experience that keeps clients coming back for more." → "On the Sean Dinwiddie's Webmastery team, Redux Toolkit holds shared client state in slices, RTK Query holds server data, and the React views stay minimal."
+- **Tweak:** "it’s a tool that helps us write clean, error-free code and deliver the best possible software solutions to you." → drop "error-free" (for example "it's a quiet, fast place to write careful code"). Sean's OK, since this page is his personal note.
+- **Link:** add RTK Query Best Practices `#create-one-api-per-base-url`.
+
+---
