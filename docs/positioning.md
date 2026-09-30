@@ -64,7 +64,7 @@ They want:
 
 Government offices buy through procurement, so copy for them speaks to requirements, deadlines and contracts.
 
-The high end of the work is boutique enterprise and government; small packages serve family shops, food trucks, kiosks and every other owner-operator. Both are welcome at every level of service.
+The high end of the work is boutique enterprise and government; one-time jobs serve family shops, food trucks, kiosks and every other owner-operator. Both are welcome at every level of service.
 
 ### 2. Webmasters
 
@@ -77,7 +77,7 @@ They get:
 - standard fee agreements and a written scope for every job
 - a path from junior to mid to senior
 
-Recruiting promotes the benefits of an independent webmaster joining the agency firm's team: they stay independent and keep 70% of the fees on their work, and the name brings the local clients, the published fees and the written scope, so they don't sell alone or fight scope creep. They join a team with a shared mission and a real ladder. The team is a benefit to owners too: every webmaster works under the one name that vouches for the job, at the same published rate and with a written scope, and the owner knows which webmaster does theirs. Collaboration and learning compound on the team: what one webmaster learns on one job becomes the team's, so webmasters grow faster than they could alone, and every owner gets a webmaster who brings what the whole team has learned. Recruiting reads to an owner as the team's strength, never as a hiring notice. Joining is never called free, because it asks for work that produces results (Sean's direction, pass 8); the notes say quality work is the one requirement, with no fee, course or purchase in the way. Since pass 7 the notes on owner pages keep the joining terms short; the first job paid like every other, and outside clients staying the webmaster's, are on "Joining the team" and `/contact/#for-webmasters`. Since pass 4 the notes name the review of results against the written scope before launch, say additions are quoted and paid, and say the builder looks after the site for as long as the owner wants. Recruiting appears across the homepage, the service pages and the contact page too, in short notes addressed to webmasters. The junior-to-senior ladder stays on the webmaster page, away from owners.
+Recruiting promotes the benefits of an independent webmaster joining the agency firm's team: they stay independent and keep 70% of the fees on their work, and the name brings the local clients, the published fees and the written scope, so they don't sell alone or fight scope creep. They join a team with a shared mission and a real ladder. The team is a benefit to owners too: every webmaster works under the one name that vouches for the job, at the same published rate and with a written scope, and the owner knows which webmaster does theirs. Collaboration and learning compound on the team: what one webmaster learns on one job becomes the team's, so webmasters grow faster than they could alone, and every owner gets a webmaster who brings what the whole team has learned. Recruiting reads to an owner as the team's strength, never as a hiring notice. Joining is never called free, because it asks for work that produces results (Sean's direction, pass 8); the notes say quality work is the one requirement, with no fee, course or purchase in the way. Recruiting comes first (Sean, pass 8): small edits aren't offered until the team has the entry-level webmasters for quick jobs, so the notes invite webmasters at every stage of the craft. The note on owner pages is one sentence: a webmaster at any stage of the craft keeps their own practice while the name brings in the work, with a published fee and a written scope; the team's lessons teach the practice; every launch is reviewed before it goes live. "Junior included", the first job paid like every other, outside clients staying the webmaster's and looking after the sites they build for as long as the owner holds the monthly engagement are on "Joining the team" and `/contact/#for-webmasters`. Nothing promises future small jobs, and nothing says the team is short of staff. Recruiting appears across the homepage, the service pages and the contact page too, in short notes addressed to webmasters. The junior-to-senior ladder stays on the webmaster page, away from owners.
 
 ## Pricing
 
@@ -86,20 +86,20 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Prices are public. The prices page shows the fees, the way a law firm publishes its rates and retainers. It is the cornerstone: it stays accurate, and Sean owns it and edits it himself.
 - Every offer and package elsewhere works within the prices page's two published figures, $6,000 a month and $120,000 a year. No offer carries a price of its own; any figure a reader could compute traces back to those two.
 - **The floors** (Sean's direction, pass 8). The team takes no ongoing client below the $6,000 monthly engagement, and a one-time job starts at a third share ($2,000), a floor set by demand. Small edits aren't offered: the team hasn't the entry-level webmasters for quick jobs, so the site promotes recruiting first. Owner pages state the floors calmly and never apologize for them.
-- Every engagement starts with a written scope and fee: a retainer, a flat fee for a defined job, or a service and maintenance contract.
+- Every engagement starts with a written scope and fee: a retainer (the monthly or annual engagement) or a flat fee for a defined job. Ongoing care is part of the monthly engagement.
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
 - No free work, audits and consulting included. Every piece of work is a share of the published figures in writing, and the site offers no free call, conversation or consultation; the way in is an inquiry that names the job, and a serious inquiry leads to a written scope and fee. Owner copy never advertises fixes to the team's own work, which invites scope creep; every request after handover is a change, scoped and priced.
 - The standard vets. Fees are never lowered to win a job, and the published fees and the written scope screen out inquiries that aren't serious.
 - Fees pay for results, never time. There are no hourly or daily rates. A flat fee buys a defined result, and a retainer grants access to the team and the results its written scope names.
-- Pricing reads like a country club's: a clear ladder from a small package (one defined job at a flat fee, in writing) up to retainers for boutique firms and public offices. A food truck, a kiosk and a family shop each see an offer made for them. Small packages describe the size of the job, never the worth of the client, and no tier talks down.
-- Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. Small packages are defined shares of the same published rates, never separate price points. The package ladder in `docs/packages.md` is Sean's working set of offers, and the site's pricing lines follow it.
+- Pricing reads like a country club's: a clear ladder from a one-time job at a third share ($2,000), through half and whole shares, to the monthly engagement ($6,000 a month) and the annual engagement ($120,000 a year). A food truck and a family shop each see a one-time job made for them, such as a menu page or a site built and handed over. The floor is the smallest job the team takes, never a measure of the client, and no tier talks down.
+- Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. One-time jobs are defined shares of the same published rates, never separate price points. The package ladder in `docs/packages.md` is Sean's working set of offers, and the site's pricing lines follow it.
 - Links to the prices page stay minimal (the menu, the footer and the sitemap) and are never calls to action while Sean reworks that page himself.
 
 ## Promises
 
-- Handover: clients run their own sites, with no lock-in.
+- Handover: clients run their own sites, set to update themselves where the stack allows, with no lock-in.
 - A real ladder from junior to senior for webmasters.
 
 ## Government opening

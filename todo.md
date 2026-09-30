@@ -9,7 +9,8 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 ## Pricing floors (Sean, pass 8)
 
-- [ ] The site's fee lines follow the floors: no ongoing client below the $6,000 monthly engagement, one-time jobs from a third share ($2,000). The senior CTO reworks the ladder and the lines on every focus page; recruiting is promoted first, since small edits wait on entry-level webmasters.
+- [ ] Sean's pages still carry the old ladder: Training prices a session at "a tenth share ($600)", and `/prices/` shows only "6k/mo" and "120k/annu", not the $2,000 one-time floor. They're his to update. The focus pages follow the floors since pass 8.
+- [ ] The "For webmasters" note on 15 owner pages is one identical sentence kept by hand; move it into the sync script as a shared constant, replaced by pattern, so `--check` catches drift.
 
 ## Facts only Sean has
 
@@ -24,7 +25,6 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] How the team's learning is shared (peer review, shared notes of fixes and patterns, team calls, pairing), so the site can name the mechanism behind "learning compounds on the team".
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
 - [ ] The community pages after pass 5: `/community/staff/` now reads "Joining the team" with the 70/30 terms, and the offer page has lost "Team Staff Discounts", "Team Staff Earnings" and "COMMISSIONS CLOSED". Still open: "Staff" link labels on `/sitemap/`, `/community/` and `/community/curriculum/`; whether to add `noindex`; the offer page's "+4k/m Retainer Services", "prices are subject to change", "our inhouse team" and "hiring contractors". (The cut-sheet, `/community/from-marketing-to-development/`, is Sean's to build out.)
-- [ ] "Joining is free" comes off the notes, "Joining the team" and the community hub (Sean, pass 8: joining asks for work that produces results; quality work is the one requirement). The cut-sheet's "free beta access" is Sean's to change.
 - [ ] Much later (Sean): the community's membership tiers, General Access ($1,000 a month) and the Inner Circle ($4,000 a month), are for webmasters who want more mentorship and camaraderie. The offer page's "Memberships are for administrators…" line follows when Sean works them out; until then the loop leaves them as they are.
 - [ ] Worker classification: the subcontract per job (payment amount and due date), non-solicit terms, and the model's fit with Oregon's ORS 670.600 and California's AB5 business-to-business exemption (Lab. Code §2776), where webmasters serving the agency's clients under the agency's name and one published rate need counsel's review.
 - [ ] Whether Medford is in the service area. `/automation/` names it; everywhere else says Klamath Falls, Redding and the towns in between.
@@ -75,7 +75,7 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 - [ ] `/about/`: the title "Independent Web Developer"; the unfinished sentence "is one of the most important."; the "spread your wings… with finess!" line; "affordable prices"; "Act now by contacting me"; "likewise individuals"; and naming Sean as the founder of Sean Dinwiddie's Webmastery.
 - [ ] `/examples/`: "the websites I have built" credits the work to Sean by name.
-- [ ] Community pages: the unsourced Jillian Michaels quote, "D ocumentation Creation", "Developing Modules a cyclically." and "elevate your game??".
+- [ ] Community pages: the unsourced Jillian Michaels quote and "D ocumentation Creation" on the Introduction.
 - [ ] `/sitemap/` lists "Design Portfolio" for `/design/`; the 404 page's meta description repeats the brand name.
 - [ ] Mark `/about/` as an AboutPage in its schema.
 - [ ] Review the privacy policy and terms against the subcontractor model.
@@ -118,12 +118,12 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 The senior CTO's order for the community pages, a few small tweaks each pass (pass 6 review, `scratchpad` report summarized here):
 
-- [ ] **Trust first (done in passes 6 and 7, except):** "Technical Archive" still in the community's page 2–4 titles, its sitemap and the og:image alt text on 49 pages; the remaining Rx steps ("Model data as observables", "State Management") and RxJava in the FRP lists.
+- [ ] **Trust first (done in passes 6–8, except):** the remaining Rx steps in Module 3 (Operators, "Modularize… observables", the module page's Key Principles, Introduction to FRP's "Observables", Fundamentals' "Learn Observables", Discover's "Efficient State Management").
 - [ ] **Every lesson for every level (Sean's direction, pass 8):** no lesson is gated or labelled by level. Done in pass 8: the Introduction as the one start and how each level reads the course; each lesson's place in the banner; the module lesson lists; the community sitemap in teaching order. Next: layers of depth inside lessons, a few lessons per pass (`docs/community-plan.md`), and the archives in teaching order.
-- [ ] **A path:** the course outline's title and typos; link each outline topic to its lesson; a line on the curriculum page pointing to the outline; a closing line on the last FRP lesson; Gherkin's "But" and "Scenario Outline"; lecture links on Module 3.
-- [ ] **Modules 1 and 2:** an ordered lesson list on each module page; the password-reset criteria (single use, no account enumeration); BDD scenarios run below the interface; attribution lines for Dan North, Bill Wake and Matt Wynne.
+- [ ] **A path (outline retitled and linked, closing lines and Module 3 lecture links done in pass 8):** the outline's Module 4 becomes one present-tense line or goes (Sean's choice); Module 3's Activities stay unlinked until their lessons exist.
+- [ ] **Modules 1 and 2 (lesson lists, password reset, attributions and scenarios below the interface done in pass 8):** split "Real-World Cases"' checkout scenario into three; the Gherkin lesson adds Feature, Examples and Tags; "…for Software Modules" loses its click-level login example and "Scenario Templates" step; Defining User Stories' acceptance criteria in Given/When/Then.
 - [ ] **Module 3:** an ordered list; one line each on FRP versus Rx (Elliott and Hudak), signals, and marble tests; the "efficiency" and "scalability" overclaims.
-- [ ] **Register:** "Welcome back…" openers become outcome lines; "Stay tuned" becomes "The next lesson…"; the full brand name on the "How We Can Help" blocks; the Introduction softened a line per pass; then previous/next re-pointed to the taught order, with the offer, staff, P.S. and cut-sheet pages out of the lesson chain.
+- [ ] **Register:** six "Welcome back…" openers become outcome lines; seven "Sean Dinwiddie – Software Engineering Consultant" lines take the full brand name; the Introduction, two or three lines per pass (the Jillian Michaels quote, "Then contact us immediately!", "D ocumentation", the three empty h2s, Vim beside Sublime); the archives (`/community/` pages 1–4, author and category) in teaching order.
 - [ ] **Larger, for later:** Module 4 has no lessons; duplicate lessons in Modules 2 and 3; a short Redux Toolkit lesson built on the lectures; whether the community teaches owners after handover as well as webmasters (Sean's direction); community titles ending "| Sean Dinwiddie"; the "Work with Sean" button; `/community/staff/`'s slug; `/community/` loads about 2 MB of card images (5.8 MB before pass 8's resize).
 - [ ] **Sean's:** the cut-sheet (`/community/from-marketing-to-development/`) is a concept Sean builds out himself; the loop leaves it alone.
 - [ ] **The curriculum follows the team's practice:** user stories → BDD tests → Redux Toolkit slices and RTK Query endpoints → minimal React views, with the lectures underneath. Backend lessons, where they come, use Haskell (Servant) and Rust. The FRP module moves, a lesson at a time, toward the functional state layer the team actually builds.
@@ -131,11 +131,11 @@ The senior CTO's order for the community pages, a few small tweaks each pass (pa
 
 ## Lectures
 
-- [ ] The FRP Fundamentals lesson's hero is a 1.3 MB RxJS screenshot; it needs a new image.
+- [ ] The FRP Fundamentals lesson's hero is an RxJS screenshot (250 KB since pass 8's resize); it needs a new image, since the team doesn't teach Rx.
 - [ ] The og alt text on 5 blog pages still reads "technical archive".
 
 - [ ] The blog post `/blog/rtk-promt-example/` links to a private repository (`rtk-prompt-example`); Sean reviews and fixes it later.
 
 - [ ] Sean hasn't decided whether seandinwiddie.com itself moves to Next.js; the static build stays until he does.
 
-- [ ] Link the community pages to the lectures where a lecture fits (`docs/lectures.md`), a few pages each pass.
+- [ ] Link the community pages to the lectures where a lecture fits (`docs/lectures.md`), a few pages each pass. Next (pass 9): Module 2 (Redux Toolkit and FP `#test-transitions-and-derivations`), Introduction to FRP (What Is a Function? `#push-effects-to-the-edges`), Fundamentals (Functional Composition), Discover (Modern Redux `#side-effect-architecture`).

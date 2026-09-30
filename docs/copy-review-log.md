@@ -2,6 +2,104 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 8: September 30, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 6.5 | 8.5 | |
+| Webmaster | 6 | 8 | 5 |
+| Copywriter | 6.5 | 8.5 | 5.5 |
+| Senior CTO | 6.5 | 8.5 | 5.5 |
+
+These scores read the site after pass 7. The copywriter and the CTO expect about 7, 9 and 7 after this pass.
+
+### The objections that matter most
+
+- **Owner:**
+  - who the team is besides Sean;
+  - automation upkeep cost more a month than the build;
+  - no reply time;
+  - the long webmaster note;
+  - what a $6,000 site holds.
+- **Webmaster:**
+  - two front doors to the community, and lesson 1 read as a sales letter;
+  - observables still taught as FRP's core;
+  - the outline promised a Module 4;
+  - no lesson teaches the back half of the chain;
+  - gaps on "Joining the team" (cover when away, team learning, whether the split covers ongoing work).
+- **CTO:**
+  - free work advertised on eight pages;
+  - no-charge fixes;
+  - Care tiers that contradicted each other;
+  - maintenance and artwork read as included in the build fee;
+  - the banner and the lesson order starting in different places.
+
+### Sean's directions this pass
+
+- **Owners meet Sean.** For now he is the face, the owner and the guardian of the practice; the site may say he reviews results before launch.
+- **No promised reply time.** Serious inquiries get a reply.
+- **No free work:** no free calls, conversations, consultations or audits.
+- **Owner copy never advertises fixes** to the team's own work; they invite scope creep.
+- **Joining is never called free.** It asks for quality work. The community and the team are one membership; the membership tiers are for webmasters who want more mentorship and camaraderie, which comes much later.
+- **The Introduction is the one start**, and **no lesson is gated by level**: every lesson serves every level, with layers of depth.
+- **The floors:** no ongoing client below the $6,000 monthly engagement; a one-time job starts at a third share ($2,000), set by demand. Small edits wait on entry-level webmasters, so recruiting comes first. The senior CTO worked out the ladder.
+
+### Tweaks applied
+
+- **Photos:** served at 1600 px, with an image budget in the build; `assets/img` went from 17.2 MB to 6.6 MB.
+- **The community's structure, from `LESSONS`:**
+  - The banner sends every level to the Introduction and names each lesson's place.
+  - The Introduction says how each level reads the course.
+  - Each module opener lists its lessons.
+  - The community sitemap runs in teaching order.
+  - Each lesson's JSON-LD headline and breadcrumb follow its title.
+  - The note below each lesson points to work in a written scope.
+- **No free work, no fixes, owners meet Sean:**
+  - The inquiry line replaces "The first conversation is free" on eight pages.
+  - `/contact/` opens "Start with the job".
+  - The audit and the consultation are paid third shares.
+  - "Makes good… at no charge" and the repair line are gone.
+  - Owners speak with Sean, who reviews results against the written scope.
+- **Pricing to the floors on every focus page:**
+  - One-time jobs from a third share ($2,000).
+  - A public office's accessibility review at a half share ($3,000).
+  - Ongoing care, search, ads and conversion work in the monthly engagement.
+  - The site runs in the owner's own accounts after handover.
+  - The tenth, quarter, Care, Standing and Year Share offers are retired.
+- **Recruiting first:**
+  - The owner-page note invites webmasters at any stage of the craft.
+  - `/contact/#for-webmasters` and "Joining the team" say junior included, name the lessons, and show $4,200 a month for each monthly engagement a webmaster holds.
+  - Joining asks one thing, quality work.
+- **The lessons:**
+  - The Course Outline is retitled and every topic linked.
+  - The Introduction's first lines soften.
+  - Dan North, Bill Wake and Matt Wynne are credited.
+  - The password-reset criteria are single use and don't reveal accounts.
+  - Scenarios name behavior, not clicks, and run below the interface.
+  - Gherkin is the language, and Given, When and Then are its keywords.
+  - Apply FRP derives with selectors and tests its slices with Module 2's scenarios.
+  - Lecture links on Module 3, Event streams, and BDD and Unit Testing.
+
+### Waiting
+
+- **Pass 9:**
+  - the remaining Rx steps;
+  - the archives in teaching order;
+  - the register ("Welcome back", "Software Engineering Consultant", two or three Introduction lines);
+  - the Gherkin follow-ups;
+  - the webmaster note as a shared constant.
+- **Pass 10:** layers of depth inside lessons; the chain end to end (story to Servant API).
+- **Sean's:**
+  - Training's "a tenth share ($600)" and the prices page's floor;
+  - "Book a free call" on his pages and `/about/`'s "Get a Free Consultation";
+  - the footer's "When something breaks";
+  - Module 4;
+  - days to a written scope;
+  - Redding meetings;
+  - webmaster pay timing;
+  - the offer page's firm name and "inhouse team".
+- **Counsel:** the legal form of the terms.
+
 ## Pass 7: September 30, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |
