@@ -42,7 +42,7 @@ These change through the copy review, a small tweak each pass, never in one rewr
 - [ ] The top bar's "💳 Secure Payment" sits above every price on every page.
 - [ ] The structured data lists Sean's personal Freelancer, Upwork and Contra profiles as the agency's own (`sameAs`).
 - [ ] The community pages' banner keeps "agency" and drops "technical archive", which reads as retired.
-- [ ] Give every page title the same suffix, "| Sean Dinwiddie's Webmastery". The homepage and the service pages have it since pass 2; the other pages still end in "| Sean Dinwiddie", "- Sean Dinwiddie's Webmastery" or a one-off, and about 30 need re-cutting to stay within 65 characters.
+- [ ] Give every page title the same suffix, "| Sean Dinwiddie's Webmastery". The homepage, the service pages and every lesson have it (lessons since pass 10, rendered from `LESSONS`); the offer page, the P.S. note, the archives and the pages outside the focus still end otherwise.
 - [ ] Start a page for webmasters (`/about/webmasters/`) and grow it each pass: the team, the mission, commission, the path from junior to mid to senior, and how to join. Pass 1's copywriter drafted a minimal version from `docs/positioning.md` alone, with a small footer link to it.
 - [ ] Start a page for public offices and grow it each pass: accessibility work toward the ADA Title II deadlines of April 26, 2027 and April 26, 2028, the review at a half share and the annual engagement, with fractional CTO work pointed at the sister practice at sdin.dev.
 
@@ -118,14 +118,13 @@ The senior CTO's order for the community pages, a few small tweaks each pass (pa
 - [ ] **Every lesson for every level (Sean's direction, pass 8):** no lesson is gated or labelled by level. Done in pass 8: the Introduction as the one start and how each level reads the course; each lesson's place in the banner; the module lesson lists; the community sitemap in teaching order. Next: layers of depth inside lessons, a few lessons per pass (`docs/community-plan.md`), and the archives in teaching order.
 - [ ] **A path (outline retitled and linked, closing lines and Module 3 lecture links done in pass 8):** the outline's Module 4 becomes one present-tense line or goes (Sean's choice); Module 3's Activities stay unlinked until their lessons exist.
 - [ ] **Register (the overview openers, Consultant lines and three Introduction lines done in pass 9):** the three overview posts' "Our online community is here to support you every step of the way" (reads as free support) first; the Introduction's Jillian Michaels quote, its empty h2s, "Don't hesitate…" and Vim beside Sublime; the Introduction's "three top-level subjects" and the Outline's opener and description leave out the API.
-- [ ] **Larger, for later:** Module 4 grows a lesson per pass (from scenario to slice, endpoints at the boundary) after the API lesson (pass 9); four Module 2 pages repeat each other (the opener, Introduction, Principles, How BDD Aligns); layers of depth next in BDD Testing Framework, Writing BDD Scenarios and Defining User Stories; lesson titles ending "| Sean Dinwiddie"; `/sitemap/`'s community list rendered from `LESSONS`; `noindex` or a canonical on the author and category archives.
+- [ ] **Larger, for later:** Module 4 grows a lesson per pass (Endpoints at the Boundary next, after the API lesson and From Scenario to Slice); four Module 2 pages repeat each other (the opener, Introduction, Principles, How BDD Aligns); layers of depth next in BDD Testing Framework, Writing BDD Scenarios and Defining User Stories; `noindex` or a canonical on the author and category archives.
 - [ ] **Sean's:** the cut-sheet (`/community/from-marketing-to-development/`) is a concept Sean builds out himself; the loop leaves it alone.
 - [ ] **The curriculum follows the team's practice:** user stories → BDD tests → Redux Toolkit slices and RTK Query endpoints → minimal React views, with the lectures underneath. Backend lessons, where they come, use Haskell (Servant) and Rust. The FRP module moves, a lesson at a time, toward the functional state layer the team actually builds.
 - [ ] **For Sean (a date, unverified here):** the CTO reports HHS moved its Section 504 WCAG 2.1 AA dates for recipients of its funding (clinics that take Medicaid, for example) to May 11, 2027 (15 or more employees) and May 10, 2028 (smaller), per the Federal Register of May 11, 2026. If confirmed, it is a second accessibility date for the site's clinic owners.
 
 ## Lectures
 
-- [ ] The FRP Fundamentals lesson's hero is an RxJS screenshot (250 KB since pass 8's resize); it needs a new image, since the team doesn't teach Rx.
 - [ ] The og alt text on 5 blog pages still reads "technical archive".
 
 - [ ] The blog post `/blog/rtk-promt-example/` links to a private repository (`rtk-prompt-example`); Sean reviews and fixes it later.

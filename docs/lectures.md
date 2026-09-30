@@ -41,6 +41,8 @@ Linked in pass 9, at Sean's direction to link the lectures all through the commu
 - **Module 3:** Introduction to FRP → What Is a Function? `#push-effects-to-the-edges`; Event streams → Basic Functional Programming TypeScript Knowledge `#every-for-loop-is-a-fold-in-disguise`; Fundamentals → Functional Composition `#pipe-and-compose`; Discover → Modern Redux Architecture Patterns `#side-effect-architecture`; Apply FRP → the same lecture's `#a-decision-procedure-for-one-piece-of-state`.
 - **Off the path:** the hub → What Is a Function? and Modern Redux Architecture Patterns; the P.S. note → Redux Toolkit and RTK Query Best Practices `#create-one-api-per-base-url`.
 
+Linked in pass 10: From Scenario to Slice → Redux Toolkit and Functional Programming (`#setter-style-actions-instead-of-event-style-actions`, `#test-transitions-and-derivations`) and Redux Toolkit and RTK Query Best Practices (`#derive-views-with-selectors`, `#decide-who-owns-the-state`).
+
 Every anchor is checked against the lectures repository's headings with its own `slugify`.
 
 
