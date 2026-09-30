@@ -573,7 +573,7 @@ body.marketing-route { background: #fafafa; }
   margin: 1.5rem 0 0.5rem;
   padding: 1rem 1.5rem;
   border-radius: 0.375rem;
-  color: #218838;
+  color: #1e7e34;
   background: #fff;
   font-weight: 700;
   text-decoration: none;
@@ -1316,3 +1316,14 @@ main:focus { outline: none; }
   border-top: 1px solid var(--line);
 }
 .home-why .webmaster-note p { margin-bottom: 0; }
+.service-menu .webmaster-note {
+  max-width: 44rem;
+  margin: 2.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(80 84 91 / 30%);
+}
+.service-menu .webmaster-note .service-menu__note {
+  margin-top: 0;
+  text-align: left;
+  font-size: 0.9rem;
+}

@@ -253,9 +253,26 @@ const withSocialIcons = (name, html) => {
 // nothing about what happens next. The promise is unchanged (a free call); the
 // wording now matches who is reading the page. /about/ is Sean's own page and
 // is left exactly as it is.
+//
+// "Book a free call" promised a booking the site doesn't have: /contact/ offers a
+// phone number and an email address. The pages the copy review owns (the homepage,
+// the service pages, /contact/ and two community pages) now name exactly that.
+// Training, /prices/, /tools/ and /resources/ are Sean's pages and keep their
+// label, as do the pages the review hasn't reached.
+const FOCUS_PREFIXES = ["design/", "development/", "marketing/", "automation/", "local/"];
+const FOCUS_PAGES = new Set([
+  "index.html",
+  "service/index.html",
+  "contact/index.html",
+  "community/staff/index.html",
+  "community/our-community-unveiling-our-offer-and-prices/index.html",
+]);
+const isFocusPage = (name) =>
+  FOCUS_PAGES.has(name) || FOCUS_PREFIXES.some((prefix) => name.startsWith(prefix));
+
 const CTA_LABELS = [
   [(name) => name === "about/index.html", null],
-  [(name) => name === "contact/index.html", "Call or email"],
+  [isFocusPage, "Call or email"],
   [(name) => name.startsWith("community/") || name.startsWith("blog/"), "Work with Sean"],
   [() => true, "Book a free call"],
 ];
