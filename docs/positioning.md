@@ -37,7 +37,7 @@ The team are advanced AI and software users. AI tools, bots and algorithms are p
 
 ## How the team builds software
 
-Features are scoped from user stories, and the written scope names them that way. User stories become behavior-driven development (BDD) tests. The tests drive Redux Toolkit slices and RTK Query endpoints, and the React views stay minimal. Sean's lectures (`docs/lectures.md`) teach the functional TypeScript and Redux foundation underneath. The site and the community pages teach this practice. They never recommend tools the team doesn't use, such as Elm, SpecFlow, Reqnroll or Rx observables; where a lesson names one, it moves toward the team's own practice.
+Features are scoped from user stories, and the written scope names them that way. User stories become behavior-driven development (BDD) tests. The tests drive Redux Toolkit slices and RTK Query endpoints, and the React views stay minimal. On the backend the team builds with Haskell (Servant) and Rust, and with Python, Go or another language when a project calls for it. Sean's lectures (`docs/lectures.md`) teach the functional TypeScript and Redux foundation underneath. The site and the community pages teach this practice. They never recommend tools the team doesn't use, such as Elm, SpecFlow, Reqnroll or Rx observables; where a lesson names one, it moves toward the team's own practice.
 
 ## The community
 
