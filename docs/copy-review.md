@@ -63,4 +63,4 @@ Pricing and recruiting are sprinkled across these pages: a pricing line near eac
 
 ## Stopping
 
-The loop ends when all four reviewers score the site 9 or higher. When scores stop improving, the loop pauses for Sean's direction instead of escalating to large edits.
+The loop proceeds pass after pass without waiting to be asked: each pass is applied, built, pushed and logged, and the next one starts. It ends when all four reviewers score the site 9 or higher. A tweak that needs a fact only Sean has waits for it while the rest of the pass goes ahead. When scores stop improving, the loop pauses for Sean's direction instead of escalating to large edits.

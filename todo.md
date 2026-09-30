@@ -11,25 +11,21 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.
 
-- [ ] Whether Sean's Dank Mono licence covers serving the font on the web; `assets/dank-mono.css` says the font is subject to an end-user licence.
 - [ ] The open decisions in `docs/packages.md`: names ("the monthly engagement" or "the Month"), retainer terms, ownership, third-party costs, payment schedules and procurement registration.
-- [ ] Engagement terms: kickoff, term, cancellation, third-party costs, response times.
-- [ ] Whether the first call ends with a written scope and fee.
+- [ ] Engagement terms that wait for counsel (`docs/terms.md`, "Waiting on counsel, with the lean"): retainer term and notice, continuity, ownership, confidentiality, the subcontract and the split.
+- [ ] Whether the first call ends with a written scope and fee, and within how many business days.
 - [ ] Webmaster terms (the house keeps 30%, the webmaster 70%): whether the split differs for work a webmaster brings in and work the house assigns; that there is no fee to join and no membership to buy; who keeps the client relationship, whether webmasters keep their own clients and outside work, and any non-solicit clause; who takes the first call, writes the scope, invoices and collects, when webmasters are paid and who carries a client's non-payment; how many engagements a webmaster carries at once; insurance, tools and licences; whether the builder of a site keeps its Care Contract; portfolio credit; what moves a webmaster up each rung; and the latitude to make things right for a client. The arrangement stays business-to-business under Oregon's ORS 670.600 and California's AB5 test; counsel decides.
 - [ ] Shared learning for owners: that what the team shares is technique, never an owner's customers, passwords or numbers; and whether the team serves direct competitors. Needed before the site says "your webmaster brings what the whole team has learned".
 - [ ] Continuity for owners: who covers when a webmaster is away, what happens to a site and its Care Contract if a webmaster leaves the team, and whether an owner can ask for a different webmaster. The owner reviewer puts this at the gap between 8 and 9.
-- [ ] Whether the team uses AI tools with a webmaster reviewing and answering for the work.
 - [ ] How the team's learning is shared (peer review, shared notes of fixes and patterns, team calls, pairing), so the site can name the mechanism behind "learning compounds on the team".
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
 - [ ] `/community/staff/` and the community cut-sheet and offer pages show a different pay plan from the 70/30 split: pay from "community earnings" by team size, negative percentages ("-0.8%" with a "-$7,200" example that is really 80%), payouts that grow "as the community expands", "team staff", "Team Staff Discounts" and "COMMISSIONS CLOSED". All three reviewers say this reads as a multi-level scheme and caps recruiting at about 3/10 whatever the notes say. The CTO suggests one line at the top of each page: "Archived, October 2023. Webmasters on the Sean Dinwiddie's Webmastery team are subcontractors who keep 70% of the fee on their work; the payout options below are not how they are paid." It needs Sean's confirmation, and whether to add `noindex` is his call.
 - [ ] Joining is free: no fee, membership or course is required to join the team (the FTC Business Opportunity Rule, 16 CFR 437, covers a required payment paired with a promise of clients). Once Sean confirms, the webmaster page says so.
 - [ ] Worker classification: the subcontract per job (payment amount and due date), non-solicit terms, and the model's fit with Oregon's ORS 670.600 and California's AB5 business-to-business exemption (Lab. Code §2776), where webmasters serving the agency's clients under the agency's name and one published rate need counsel's review.
-- [ ] Upkeep after handover (the Care Contract, $300 or $600 a month): whether an owner can decline it and call only when something breaks.
 - [ ] Hours and reply times for calls and email on `/contact/`.
 - [ ] Whether Medford is in the service area. `/automation/` names it; everywhere else says Klamath Falls, Redding and the towns in between.
 - [ ] Sean's role on each site on `/examples/`, and which of them are local.
-- [ ] Whether a webmaster meets Redding owners in person, as the Klamath Falls page offers at the KLounge or the owner's shop.
-- [ ] The 🧙 brand mark in the header.
+- [ ] Whether Sean drives to Redding for in-person meetings. Until he decides, Redding owners work by phone, video and email, and the site promises no Redding meetings.
 - [ ] The Marketing hub's H1, "SEO and campaigns that compound traffic and leads", is Sean's wording, but "compound" is a word the recruiting rules keep away from pay.
 - [ ] The terms of service: they cover website use only, under California law, while Sean works from Klamath Falls, Oregon.
 - [ ] The SMS terms name an "Inquiry Form" and SMS opt-in the site doesn't have.

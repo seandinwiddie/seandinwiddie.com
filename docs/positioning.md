@@ -16,6 +16,10 @@ The reading-list audit (`docs/reading-list.md`) gives each form of mastery one j
 - **The name on the door** is the promise to clients. The name vouches for every job, and the client knows which webmaster does theirs.
 - **The trades' ladder** speaks to webmasters only, never to owners.
 
+"Webmaster" names the craft: what the team does and who it is by what it produces. It is a trade identity, never a legal or government category.
+
+The 🧙 in the header is the brand's mark and part of Sean's personality. It stays, and the brand link reads the full name to screen readers.
+
 ## How it works
 
 Webmasters join the Sean Dinwiddie's Webmastery team as subcontractors paid on commission, the way independent agents work under an insurance agency: the house keeps 30%, and the webmaster keeps 70%. The split sits inside the published fee and is never added to the owner's bill. On the site the split reads "keep 70% of the fee" and "the agency keeps 30%", in the third person on owner-facing pages ("their work", since "your work" there means the owner's job); the insurance comparison stays off owner-facing pages. The structure is independent; the team is one. Every webmaster is a team member, with meaningful work, a shared mission and a real ladder. It is never a commission shop where it's all about the money.
@@ -28,6 +32,8 @@ The team serves:
 ## Character
 
 Sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable: understated and assured, never loud, never hustling. High-end describes the standard of the work and the service, never who is welcome; every client gets it.
+
+The team are advanced AI and software users. AI tools, bots and algorithms are part of the software craft, and the site speaks of them plainly, as software, never as hype.
 
 ## The community
 

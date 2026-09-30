@@ -11,6 +11,7 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 | `docs/copy-review.md` | The four-reviewer copy loop, its focus, distractions and the mission |
 | `docs/reading-list.md` | The audit of the copywriter's fifteen sources: what each teaches, what the copywriter checks, and what they add up to for the site |
 | `docs/packages.md` | The package ladder within the prices page's two figures: Sean's working set of offers |
+| `docs/terms.md` | Sean's working terms for owners and webmasters, and the lean on what waits for counsel |
 | `docs/council-verdicts.md` | The llm-council's verdicts on Sean's pending decisions, awaiting his approval |
 | `docs/copy-review-log.md` | Each copy review pass: scores, the objections that matter most, the tweaks applied and what waits |
 | `todo.md` | Open work on the site |
@@ -34,4 +35,5 @@ These apply to every doc and all site copy.
 - **Full brand name, always.** Write "Sean Dinwiddie's Webmastery". Never shorten it to "Webmastery"; the short form is too ambiguous.
 - **Present tense, forward-facing.** Describe Sean Dinwiddie's Webmastery as it operates: "The Sean Dinwiddie's Webmastery team builds the site and hands it over." Never "we plan to", "soon", "eventually", "we're building" or "coming soon".
 - **Never rank clients by size.** Junior, mid and senior describe the webmaster career ladder, not who serves whom. Never tie a client's size to a webmaster's level, and never write copy that makes a smaller business feel it gets less experienced help.
+- **Never quote Sean.** Sean's words in conversation show where he's coming from. Copy and docs carry the meaning in the site's own voice, never his phrasing as a quotation.
 - **No invented specifics.** Present tense describes the model; it never invents facts. No counts of webmasters or clients, named clients, testimonials, credentials or results unless they are real.
