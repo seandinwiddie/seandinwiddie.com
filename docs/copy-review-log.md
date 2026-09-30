@@ -2,6 +2,103 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 5: September 30, 2026
+
+| Reviewer | Whole site | Homepage, service pages and contact |
+|---|---|---|
+| Local owner | 5 | 7.5 |
+| Webmaster | 4.5 | 7.5 |
+| Copywriter | 5 | 7.5 |
+| Senior CTO | 5 | 7.5 |
+
+These scores read the site after pass 4 and before this pass's tweaks. The copywriter expects about 8 on the focus pages after them.
+
+### The objections that matter most
+
+- **The local owner:**
+  - `/prices/` and `/about/` read like another business.
+  - "Joining is free" made owners wonder whether anyone could sign up and do their job.
+  - What Care buys, and whether it pays the host.
+  - `/design/new/` priced a clinic's booking page against its own booking rule.
+  - "Book a free call" books nothing.
+- **The webmaster:** `/community/staff/`'s payout plan and the offer page's "Team Staff Discounts" read as a multi-level scheme next to "Joining is free".
+- **The senior CTO:**
+  - A sponsored event counted as a vouching link.
+  - CRO recordings need a privacy-policy line.
+  - Two absolutes on on-site SEO.
+  - "Independent … agency".
+  - A button at 4.52:1.
+
+### Sean's directions this pass
+
+- **Reviews:** today Sean reviews his own launches, with AI tools. The site says every launch "is reviewed against the written scope before it goes live" and names no second reviewer.
+- **Care:** it keeps the site running and never pays the owner's bills. Owners can cancel any month.
+- **Changes, not repairs:** the site doesn't lead with repairs; changes are scoped.
+- **Joining is beginning:** the vetting is in the work.
+- **The register** is a boutique country club's.
+- **Page ownership:** Sean owns `/prices/`, `/tools/`, `/resources/` and Training. The loop owns `/community/staff/` and the community offer page, and builds training content on the community pages. Training links to the community.
+- **Lectures:** the community pages link to Sean's lectures where one fits (`docs/lectures.md`).
+
+### Tweaks applied
+
+- **One-line fixes on the focus pages:**
+  - `/design/new/`'s quarter-share example is an event page or a food truck's menu.
+  - The focus pages' hero button reads "Call or email"; Training, `/prices/` and the pages outside the focus keep "Book a free call".
+  - The homepage defines the monthly engagement, and one-time jobs are flat fees.
+  - `/contact/`'s range reaches the annual engagement.
+  - Stacked monthlies are one quarter share per line of work.
+- **Care:**
+  - it lists the upkeep;
+  - the owner's providers bill the owner, never through Care;
+  - owners can cancel any month;
+  - changes after handover are scoped;
+  - upkeep lines no longer lead with breakage;
+  - the $600 tier replaces the $300 tier.
+- **Examples:** the $600 examples are defined changes, such as new hours carried across a site and its listings.
+- **One standard:**
+  - The name holds every webmaster to one standard: a written scope, and a review against it before launch.
+  - The long note says joining begins with the work, credits webmasters' portfolios and ends on "as long as the owner chooses".
+  - The short note on the service and local pages is one sentence, linking to `/contact/#for-webmasters`.
+  - On `/service/` the note sits apart from the owner's pricing.
+- **Klamath Falls:** the founder line is in the third person.
+- **Accuracy:**
+  - The sponsored event is gone.
+  - Session recordings run "where your privacy policy covers it".
+  - The two absolutes on on-site SEO are gone.
+  - "Many" replaces "most".
+  - `/service/`'s description drops "Independent".
+  - "Fractional CTO leadership" is explained as a part-time head of technology.
+  - The Klamath Falls button is 5.14:1.
+- **`/community/staff/` becomes "Joining the team":**
+  - joining is free and begins with the work;
+  - 70% of the fee, with 30% to the agency inside the fee;
+  - pay comes from client work, never from recruiting or memberships;
+  - one worked example ($6,000 × 70% = $4,200, the same at every rung);
+  - the negative-percent payout plan is gone.
+- **The community offer page:**
+  - "Memberships and the team": memberships are separate, and joining never depends on one.
+  - "How webmasters on the team are paid".
+  - "COMMISSIONS CLOSED" is gone.
+
+### Waiting
+
+- **Sean's:**
+  - his pages (an error report is in progress);
+  - `/contact/`'s "if it is a repair" line;
+  - the footer's "When something breaks";
+  - "Full-Service";
+  - "Independent" in the Organization schema;
+  - Medford, contact hours, days to scope, Redding meetings, "over a decade", the KLounge's address;
+  - notice for ending Care.
+- **Counsel:** the webmaster terms beyond the notes, the confidentiality sentence and California.
+- **Pass 6:**
+  - repair wording in lists on `/local/`, Redding, Klamath Falls and the Development meta;
+  - the offer page's remaining lines;
+  - "Staff" labels elsewhere;
+  - lecture links on the community pages;
+  - the community hub's "Technical Archive" title and banner.
+- **Not a tweak:** image weight, a contrast check in the build, structural markup.
+
 ## Pass 4: September 30, 2026
 
 | Reviewer | Whole site | Homepage, service pages and contact |

@@ -19,7 +19,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Shared learning for owners: the confidentiality sentence (what the team shares is technique, never an owner's customers, passwords or numbers), in counsel's wording. The review before launch is named on the site since pass 4.
 - [ ] How the team's learning is shared (peer review, shared notes of fixes and patterns, team calls, pairing), so the site can name the mechanism behind "learning compounds on the team".
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
-- [ ] `/community/staff/` and the community cut-sheet and offer pages show a different pay plan from the 70/30 split: pay from "community earnings" by team size, negative percentages ("-0.8%" with a "-$7,200" example that is really 80%), payouts that grow "as the community expands", "team staff", "Team Staff Discounts" and "COMMISSIONS CLOSED". All three reviewers say this reads as a multi-level scheme and caps recruiting at about 3/10 whatever the notes say. The CTO suggests one line at the top of each page: "Archived, October 2023. Webmasters on the Sean Dinwiddie's Webmastery team are subcontractors who keep 70% of the fee on their work; the payout options below are not how they are paid." It needs Sean's confirmation, and whether to add `noindex` is his call.
+- [ ] The community pages after pass 5: `/community/staff/` now reads "Joining the team" with the 70/30 terms, and the offer page has lost "Team Staff Discounts", "Team Staff Earnings" and "COMMISSIONS CLOSED". Still open: "Staff" link labels on `/sitemap/`, `/community/` and `/community/curriculum/`; whether to add `noindex`; the offer page's "+4k/m Retainer Services", "prices are subject to change", "our inhouse team" and "hiring contractors"; the cut-sheet's Fiverr line; `/community/from-marketing-to-development/`'s "-$7.2k payout".
 - [ ] The webmaster page says joining is free (the notes say so since pass 4), with portfolio credit and the ladder.
 - [ ] Worker classification: the subcontract per job (payment amount and due date), non-solicit terms, and the model's fit with Oregon's ORS 670.600 and California's AB5 business-to-business exemption (Lab. Code §2776), where webmasters serving the agency's clients under the agency's name and one published rate need counsel's review.
 - [ ] Hours and reply times for calls and email on `/contact/`.
@@ -37,8 +37,8 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 
 These change through the copy review, a small tweak each pass, never in one rewrite. The wording follows `docs/positioning.md` (Identity): mastery that spreads is the umbrella, the name on the door is the promise to clients, and the ladder speaks to webmasters only.
 
-- [ ] The footer's "you call someone who already knows your site" becomes the webmaster who already knows it, matching the homepage.
-- [ ] The call-to-action labels: "Book a free call" leads to no booking, and "Work with Sean" on the community pages speaks for one person.
+- [ ] The footer's "When something breaks, you call someone who already knows your site" leads with breakage, against Sean's direction; the footer is shared with Sean's pages, so it changes with his OK.
+- [ ] The call-to-action labels: the focus pages read "Call or email" since pass 5; "Book a free call" remains on Sean's pages and the pages outside the focus, and "Work with Sean" on the community pages speaks for one person.
 - [ ] The top bar's "💳 Secure Payment" sits above every price on every page.
 - [ ] The structured data lists Sean's personal Freelancer, Upwork and Contra profiles as the agency's own (`sameAs`).
 - [ ] The community pages' banner keeps "agency" and drops "technical archive", which reads as retired.
@@ -128,3 +128,7 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 ## Repo
 
 - [ ] Delete the leftover `claude/friendly-rubin-wdvzmw` branch on GitHub. Agents here have no permission to delete branches.
+
+## Lectures
+
+- [ ] Link the community pages to the lectures where a lecture fits (`docs/lectures.md`), a few pages each pass.

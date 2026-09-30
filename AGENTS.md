@@ -12,6 +12,7 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 | `docs/reading-list.md` | The audit of the copywriter's fifteen sources: what each teaches, what the copywriter checks, and what they add up to for the site |
 | `docs/packages.md` | The package ladder within the prices page's two figures: Sean's working set of offers |
 | `docs/terms.md` | Sean's working terms for owners and webmasters, and his direction for counsel to put in legal form |
+| `docs/lectures.md` | Sean's Functional Programming Lectures, and where the community pages link to them |
 | `docs/council-verdicts.md` | The llm-council's verdicts on Sean's pending decisions, awaiting his approval |
 | `docs/copy-review-log.md` | Each copy review pass: scores, the objections that matter most, the tweaks applied and what waits |
 | `todo.md` | Open work on the site |
