@@ -2,6 +2,111 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 10: September 30, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 7 | 8.5 | |
+| Webmaster | 7 | 8.5 | 6.5 |
+| Copywriter | 7.5 | 8.5 | 7 |
+| Senior CTO | 7.5 | 8.5 | 7 |
+
+These scores read the site after pass 9. The copywriter expects 8, 9 and 7.5 after this pass.
+
+### The objections that matter most
+
+- **Owner:**
+  - payment in full at signing for the smallest job;
+  - ads only inside the monthly engagement;
+  - "the two published figures";
+  - the inquiry recipe not matching itself on `/contact/`.
+  - Its after-handover "support" objections are settled as scope creep.
+- **Webmaster:**
+  - the API example never checked that the caller belongs to the tenant;
+  - the Introduction still read as a sales letter;
+  - the course never pointed a webmaster to "Joining the team";
+  - meta descriptions promised depth the pages lacked;
+  - BDD Testing Framework showed no test.
+- **CTO:**
+  - the same authorization gap;
+  - `Pool` without its type argument;
+  - the Introduction and Outline leaving out the API;
+  - the RxJS hero and its cards;
+  - the lesson titles.
+
+### Sean's directions this pass
+
+- **The footer stays.** Knowing the site belongs to a standing agreement, and the site doesn't cater to trolls or looky-loos.
+- **A webmaster's clients stay theirs**, which is obvious.
+- **"+4k/m" is the Inner Circle mentorship tier**, separate from the $6,000 client retainer.
+- **The Adobe Express section stays.**
+- **Planning is fluid and hybrid,** with Scrum when a job needs it.
+- **Don't be pedantic about software.**
+- **The team stands by its work.** After-handover repair questions are scope creep.
+- **Payment for the smallest job is the CTO's to settle.** Keep Sean's workload light until more webmasters join.
+
+### Tweaks applied
+
+- **Module 4:** its second lesson, "From Scenario to Slice", lands, and the module is named "The Chain End to End".
+- **The API lesson:**
+  - The caller is authorized: servant-auth in the type, and `nile.user_id` so Nile checks tenant membership.
+  - `SET` is explained: the IDs are safe to write into the statement because they're already parsed as UUIDs.
+  - One transaction reads, the pure code decides, and the transaction writes.
+  - `validateEveryToJSON` keeps the contract honest, and the tests run against Nile in Docker.
+  - Nile's limits on shared tables are named.
+- **The sync script:**
+  - Lesson titles, og, twitter and the WebPage name follow `LESSONS` with the site's suffix.
+  - The banner names the API, and the main sitemap renders from `LESSONS`.
+  - The Rx guard reads images and alt text.
+  - The RxJS screenshot is gone.
+- **FRP:** "Events and Behaviors" in place of "Reactive Streams".
+  - Selectors read the state after each action rather than in continuous time.
+  - Discover's drag-and-drop becomes an autocomplete that listener middleware debounces.
+  - Event streams' examples become a kitchen queue and table bookings.
+- **The register:**
+  - "Every step of the way" is gone from the overview posts and the Curriculum.
+  - The Introduction loses its quote, its empty headings, "Don't hesitate" and "the prime moment", and names four subjects, the API included.
+  - The Outline names the API.
+- **Layers of depth** in Defining User Stories, Writing BDD Scenarios and BDD Testing Framework.
+- **The focus pages:**
+  - The payment line keeps a third share paid at signing, against a written scope that names the result and its delivery date (the CTO's decision).
+  - "Every fee traces to two figures, $6,000 a month and $120,000 a year".
+  - The inquiry ask matches its test.
+  - `/service/` reads "the fees above".
+  - The homepage drops "digital strategy".
+  - `/local/` has a new description.
+- **Recruiting:**
+  - The hub points webmasters to "Joining the team".
+  - The clients a webmaster brings in stay theirs.
+  - On a custom app, its passing scenarios are part of the result.
+  - "Joining the team" gains three subheads.
+  - The offer page drops "inhouse" and names the API.
+
+### Waiting
+
+- **Pass 11:**
+  - Module 4's "Endpoints at the Boundary";
+  - the next layers of depth;
+  - BDD Testing Framework showing one scenario both ways;
+  - the rest of the Introduction's register;
+  - the offer page's register;
+  - "with 30 days' notice" on `/contact/`;
+  - the accessibility sweep;
+  - the hub's title naming the API;
+  - whether servant-openapi3 needs an instance for `Auth`.
+- **Sean's:**
+  - Training's "$600";
+  - the prices page's floor;
+  - ads as a one-time job;
+  - procurement wording;
+  - the KLounge;
+  - "since 2010";
+  - Medford;
+  - the testimonial names;
+  - the topbar's PayPal.me link;
+  - `/about/`.
+- **Counsel:** the legal form of the terms.
+
 ## Pass 9: September 30, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |

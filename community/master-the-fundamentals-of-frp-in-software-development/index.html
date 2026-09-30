@@ -119,7 +119,7 @@ Development					</a>
 <p>Mastering the fundamentals of Functional Reactive Programming (FRP) in software development requires a solid understanding of its core concepts and principles. Here’s a step-by-step guide to help you become proficient in FRP:</p>
 <ol>
 <li>
-<strong>Understand Reactive Streams:</strong> Start by grasping the concept of reactive streams. These are sequences of events or data changes over time. Learn how to create and work with reactive streams in your chosen programming language or framework.</li>
+<strong>Understand Events and Behaviors:</strong> Start with FRP&rsquo;s two ideas: events, things that happen at a moment, and behaviors, values that change over time. In Redux Toolkit, the events are dispatched actions and the behaviors are selectors over the state.</li>
 <li>
 <strong>Learn Reducers and Selectors:</strong> A reducer folds each event into the next state, and a selector derives a value from state. Practice both as pure functions with plain inputs and outputs.</li>
 <li>
@@ -139,11 +139,11 @@ Development					</a>
 <li>
 <strong>Error Handling:</strong> Study error handling in FRP. Discover how to handle errors and exceptions gracefully within your reactive code, maintaining the stability of your applications.</li>
 <li>
-<strong>Combine with Frameworks:</strong> Explore how FRP can be used in conjunction with popular frameworks and libraries in your chosen programming language. Many languages and ecosystems offer FRP support.</li>
+<strong>Connect the View:</strong> A React view reads shared state through <code>useAppSelector</code> and server data through RTK Query hooks, dispatches events, and keeps only local drafts in its own state.</li>
 <li>
 <strong>Performance and Optimization:</strong> Learn about performance considerations and optimization techniques when using FRP. Understand how to ensure your reactive code is efficient and responsive.</li>
 <li>
-<strong>Read FRP Documentation:</strong> Refer to the documentation of the FRP library or framework you’re using. Documentation provides valuable insights into best practices, examples, and advanced usage.</li>
+<strong>Read the Sources:</strong> The Redux Toolkit documentation and the Redux Style Guide set the current patterns, and Elliott and Hudak&rsquo;s <em>Functional Reactive Animation</em> (1997) sets out behaviors and events.</li>
 <li>
 <strong>Join FRP Communities:</strong> Engage with the FRP community for knowledge sharing and troubleshooting. Online forums, discussion groups, and social media can be great sources of information and support.</li>
 <li>

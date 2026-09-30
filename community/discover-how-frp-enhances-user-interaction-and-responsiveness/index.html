@@ -125,7 +125,7 @@ Development					</a>
 <li>
 <strong>State Management:</strong> The store holds the facts, reducers fold events into the next state, and memoized selectors recompute derived values only when their inputs change, so a view stays in step with every action without manual bookkeeping.</li>
 <li>
-<strong>Complex Event Compositions:</strong> FRP allows developers to compose complex interactions from simple events. Small pure functions and selectors combine, transform and filter what events leave in state, and listener middleware handles timing such as debouncing. This makes it easier to implement advanced user interactions, such as drag-and-drop, autocomplete, and gesture recognition.</li>
+<strong>Complex Event Compositions:</strong> FRP allows developers to compose complex interactions from simple events. Small pure functions and selectors combine, transform and filter what events leave in state, and listener middleware handles timing such as debouncing. This makes interactions such as autocomplete easier to build: listener middleware debounces the search and RTK Query fetches the suggestions, while a drag in progress stays in the component and lands in the store as one action when it drops.</li>
 <li>
 <strong>Responsive User Interfaces:</strong> With FRP, user interfaces can be highly responsive. Applications can immediately reflect user actions, providing instant feedback and a smoother user experience. Complex user interfaces, like interactive dashboards or real-time collaboration tools, benefit from FRP’s ability to handle multiple concurrent events seamlessly.</li>
 <li>

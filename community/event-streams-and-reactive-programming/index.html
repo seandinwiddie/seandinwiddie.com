@@ -127,7 +127,7 @@ Development					</a>
 <li>
 <strong>Ordered:</strong> Events in a stream maintain their order of occurrence, allowing developers to respond to events sequentially.</li>
 <li>
-<strong>Discrete:</strong> Each event happens at a moment; values that change continuously are FRP’s behaviors, which Redux Toolkit derives with selectors.</li>
+<strong>Discrete:</strong> Each event happens at a moment. Values that change over time are FRP’s behaviors; Redux Toolkit derives them with selectors, which read the state after each action rather than in continuous time.</li>
 </ul>
 </li>
 </ul>
@@ -156,9 +156,9 @@ Development					</a>
 <p><strong>4. Example Use Cases:</strong></p>
 <ul>
 <li>Real-time updates in web applications: Event streams can capture user interactions, such as clicks or keystrokes, and immediately update the user interface in response.</li>
-<li>Sensor data in IoT applications: Event streams can represent sensor readings, enabling immediate actions based on real-time data.</li>
+<li>A restaurant&rsquo;s kitchen queue: each order placed, started and picked up is an event, and the queue on screen is derived from them.</li>
 <li>Interactive gaming: Event streams can manage user input and game events, allowing for dynamic gameplay and responsiveness.</li>
-<li>Financial trading applications: Event streams can track real-time market data and execute trades based on specific conditions.</li>
+<li>Table bookings: each booking made, changed or cancelled is an event, and the evening&rsquo;s open tables are derived from them.</li>
 </ul>
 <p>Event streams and reactive programming are fundamental to the success of FRP, enabling developers to build responsive, event-driven applications while maintaining a clear and declarative code structure.</p>
 
