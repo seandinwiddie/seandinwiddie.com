@@ -128,4 +128,6 @@ The senior CTO's order for the community pages, a few small tweaks each pass (pa
 
 ## Lectures
 
+- [ ] Sean hasn't decided whether seandinwiddie.com itself moves to Next.js; the static build stays until he does.
+
 - [ ] Link the community pages to the lectures where a lecture fits (`docs/lectures.md`), a few pages each pass.
