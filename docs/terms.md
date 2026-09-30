@@ -21,7 +21,7 @@ Sean's working terms for owners and for webmasters, as they stand, and his direc
 - **The builder keeps the Care Contract** for as long as the owner wants them, and the owner can choose another webmaster.
 - **Portfolio credit.** Webmasters show their work under their own name, credited "for Sean Dinwiddie's Webmastery".
 - **Making things right.** A webmaster fixes defects in their own delivered work at no charge, without asking. Anything else is quoted, because free extra work is a discount.
-- **One review before launch.** A second webmaster reviews the results before launch; it checks results against the scope, never how the work was done. Shared notes, team calls and pairing stay optional.
+- **One review before launch.** The results are reviewed against the written scope before every launch; the review checks results, never how the work was done. Today Sean does the review, with AI tools; as the team grows, a second webmaster does it. The site says "reviewed against the written scope" and names no second person until one is on the team. Shared notes, team calls and pairing stay optional.
 - **The ladder by review, never by job size.** The split stays the same at every rung, and any rung takes any job. A junior's launch gets a senior's review, a mid's gets any peer's, and seniors review others' work. Webmasters enter and move up on delivered, reviewed results. No rung maps to a client's size.
 
 ## Sean's direction, for counsel to put in legal form
