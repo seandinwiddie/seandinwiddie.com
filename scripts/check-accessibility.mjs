@@ -21,6 +21,8 @@ const text = (value) =>
     .trim();
 const nameFor = (file) => relative(ROOT, file).split(sep).join("/");
 
+const SEANS_PAGES = ["prices/", "tools/", "resources/", "service/training/", "community/from-marketing-to-development/"];
+
 for (const file of pages) {
   const html = readFileSync(file, "utf8");
   const name = nameFor(file);
@@ -37,6 +39,16 @@ for (const file of pages) {
   }
   const firstHeading = mainMatch?.[2].match(/<h([1-6])\b/i)?.[1];
   if (firstHeading !== "1") failures.push(`${name}: first main heading must be h1`);
+  // Headings never skip a level going down, so a screen reader's outline has no
+  // gaps. Sean's own pages are his to edit and stay out of the check.
+  if (!SEANS_PAGES.some((prefix) => name.startsWith(prefix))) {
+    const levels = [...(mainMatch?.[2] ?? "").matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1]));
+    levels.forEach((level, index) => {
+      if (index > 0 && level > levels[index - 1] + 1) {
+        failures.push(`${name}: heading jumps from h${levels[index - 1]} to h${level}`);
+      }
+    });
+  }
 
   const ids = [...html.matchAll(/\bid=["']([^"']+)["']/gi)].map((match) => match[1]);
   for (const id of unique(ids)) {

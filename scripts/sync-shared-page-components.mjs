@@ -193,6 +193,7 @@ const LESSONS = [
   ["the-api-haskell-servant-and-nile", "The API: Haskell Servant and Nile", "m4"],
   ["from-scenario-to-slice", "From Scenario to Slice", "m4"],
   ["endpoints-at-the-boundary", "Endpoints at the Boundary", "m4"],
+  ["the-view-stays-minimal", "The View Stays Minimal", "m4"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
@@ -754,6 +755,26 @@ const withTrimmedCategory = (name, html) =>
     (_, label, href, text) => `<a aria-label="Category: ${label}" href="${href}" rel="category">${text}</a>`,
   );
 
+// Lesson subheads typed as a bold paragraph read as body text to a screen
+// reader's heading list. On the pages converted so far, a line that is one
+// plain bold phrase becomes an h2; a bold lead-in with text after it is left
+// alone. Pages join this list a few at a time.
+const HEADING_PAGES = new Set([
+  "community/collaborative-sessions-to-review-and-refine-user-stories/index.html",
+  "community/creating-bdd-scenarios-for-real-world-cases/index.html",
+]);
+const SUBHEAD_PATTERN = /^<p><strong>([^<]+?):?<\/strong><\/p>$/gm;
+const ARTICLE_BODY_PATTERN = /(<\/header><!-- \.entry-header -->)([\s\S]*?)(<!-- \.entry-content -->)/;
+const withLessonHeadings = (name, html) => {
+  if (!HEADING_PAGES.has(name)) return html;
+  if (!ARTICLE_BODY_PATTERN.test(html)) throw new Error(`${name}: no article body for headings`);
+  return html.replace(ARTICLE_BODY_PATTERN, (_, open, body, close) => {
+    const converted = body.replace(SUBHEAD_PATTERN, (_m, title) => `<h2>${title}</h2>`);
+    if (/^<p><strong>[^<]*<\/strong><\/p>$/m.test(converted)) throw new Error(`${name}: a subhead is still a bold paragraph`);
+    return `${open}${converted}${close}`;
+  });
+};
+
 // Depth passages open with their title ("The rule behind the examples", "Where it
 // bends"), which the Introduction names; as a labelled aside each is named where
 // it sits.
@@ -817,6 +838,7 @@ const routeTransforms = Object.freeze([
   withLessonTitle,
   withFocusableCode,
   withTrimmedCategory,
+  withLessonHeadings,
   withDepthPassages,
   withByline,
   withGuards,

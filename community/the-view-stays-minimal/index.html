@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>The View Stays Minimal | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="The view that places the order: view-model selectors shape what it shows, the hooks stay thin, and its test reads the screen the way the customer does.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/the-view-stays-minimal/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The View Stays Minimal | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="The view that places the order: view-model selectors shape what it shows, the hooks stay thin, and its test reads the screen the way the customer does.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/the-view-stays-minimal/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-09-30T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-09-30">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The View Stays Minimal | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="The view that places the order: view-model selectors shape what it shows, the hooks stay thin, and its test reads the screen the way the customer does.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#webpage","url":"https://seandinwiddie.com/community/the-view-stays-minimal/","name":"The View Stays Minimal | Sean Dinwiddie's Webmastery","description":"The view that places the order: view-model selectors shape what it shows, the hooks stay thin, and its test reads the screen the way the customer does.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"The View Stays Minimal","item":"https://seandinwiddie.com/community/the-view-stays-minimal/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#article","headline":"The View Stays Minimal","description":"The view that places the order: view-model selectors shape what it shows, the hooks stay thin, and its test reads the screen the way the customer does.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/the-view-stays-minimal/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-09-30"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/roberto-nickson-rn4LOoEpdOc-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>The View Stays Minimal</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p class="lesson-place">Lesson 4 of 4 in Module 4</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/the-view-stays-minimal/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>A view shows what the state already holds and forwards what the customer does. On the Sean Dinwiddie&rsquo;s Webmastery team, a view decides nothing a scenario tests: selectors shape what it reads, the endpoint&rsquo;s hook carries the request, and the view&rsquo;s own test reads the screen the way the customer does. This lesson builds the checkout that places the order, from the cart in <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> and the endpoint in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>.</p>
+<h2>1. What a view may decide</h2>
+<p>Every rule in the checkout already has an owner. The cart&rsquo;s lines and total belong to the slice and its selectors; the order, and whether the API accepted it, belong to RTK Query; what is on the screen for a moment, such as a note being typed or a panel left open, belongs to the component&rsquo;s own <code>useState</code>. What is left for the view is small: read, show, and forward an event. A view that sums a line, formats a price or empties the cart after a click holds a rule no scenario can reach without a browser. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#select-close-to-the-render">Redux Standard Patterns and Functional Programming</a> shows a view that subscribes to the smallest values it renders and dispatches one event.</p>
+<h2>2. A view model is a selector</h2>
+<p>The checkout shows each line the way the customer reads it: a name, a quantity and a price in dollars, then the total. That shape is a view model, and like the total it is derived, never stored. One selector builds it from the slice&rsquo;s own selectors, and a second builds what the checkout sends, product and quantity only, because the API prices the order itself:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/checkoutSelectors.ts
+import { createSelector } from '@reduxjs/toolkit'
+import { selectLines, selectTotalCents } from '../cart/cartSlice'
+
+const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+const dollars = (cents: number) =&gt; usd.format(cents / 100)
+
+// What the checkout shows: every line as the customer reads it, and the total.
+export const selectCheckout = createSelector([selectLines, selectTotalCents], (lines, totalCents) =&gt; ({
+  lines: lines.map((line) =&gt; ({
+    id: line.productId,
+    name: line.name,
+    quantity: line.quantity,
+    price: dollars(line.priceCents * line.quantity),
+  })),
+  total: dollars(totalCents),
+  canPlace: lines.length &gt; 0,
+}))
+
+// What the checkout sends: product and quantity only; the API sets the prices.
+export const selectNewOrder = createSelector([selectLines], (lines) =&gt; ({
+  lines: lines.map(({ productId, quantity }) =&gt; ({ productId, quantity })),
+}))</code></pre>
+<p><code>createSelector</code> returns the same object until the lines change, so the view re-renders only when there is something new to show. React Redux checks this in development: a selector that returns a new object for the same state logs a warning. Both selectors are tested like the slice&rsquo;s, with plain state and no view. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#selector-layers">Modern Redux Architecture Patterns</a> makes simple selectors a feature&rsquo;s public read API, and memoizes where reference stability matters.</p>
+<h2>3. The view reads, shows and forwards</h2>
+<p>The store&rsquo;s hooks are typed once, so no view imports the store:</p>
+<pre class="code-block" tabindex="0"><code>// app/hooks.ts
+import { useDispatch, useSelector } from 'react-redux'
+import type { AppDispatch, RootState } from './store'
+
+export const useAppDispatch = useDispatch.withTypes&lt;AppDispatch&gt;()
+export const useAppSelector = useSelector.withTypes&lt;RootState&gt;()</code></pre>
+<p>The view that places the order reads the two selectors, takes the mutation hook the endpoint generated, and renders:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/PlaceOrder.tsx
+import { useAppSelector } from '../../app/hooks'
+import { usePlaceOrderMutation } from '../orders/ordersApi'
+import { selectCheckout, selectNewOrder } from './checkoutSelectors'
+import { orderNotice } from './orderNotice'
+
+export function PlaceOrder({ tenantId }: { tenantId: string }) {
+  const checkout = useAppSelector(selectCheckout)
+  const newOrder = useAppSelector(selectNewOrder)
+  const [placeOrder, request] = usePlaceOrderMutation()
+
+  return (
+    &lt;section aria-labelledby="checkout-title"&gt;
+      &lt;h2 id="checkout-title"&gt;Your order&lt;/h2&gt;
+      &lt;ul&gt;
+        {checkout.lines.map((line) =&gt; (
+          &lt;li key={line.id}&gt;
+            {line.name}, {line.quantity}: {line.price}
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+      &lt;p&gt;Total: {checkout.total}&lt;/p&gt;
+      &lt;button
+        type="button"
+        disabled={!checkout.canPlace || request.isLoading}
+        onClick={() =&gt; placeOrder({ tenantId, newOrder })}
+      &gt;
+        Place order
+      &lt;/button&gt;
+      &lt;p role="status"&gt;{orderNotice(request)}&lt;/p&gt;
+    &lt;/section&gt;
+  )
+}</code></pre>
+<p>The click calls <code>placeOrder</code> and nothing more. The view doesn&rsquo;t await the answer or empty the cart: the slice empties it on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>, and the hook&rsquo;s state says whether the request is under way, done or refused. The button stays disabled while the request runs, so an order can&rsquo;t go twice. The status line is on the page from the start, so a screen reader announces the change when its text arrives. What it says comes from a pure function of the request, tested with no view at all:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/orderNotice.ts
+type OrderRequest = { isSuccess: boolean; isError: boolean; error?: unknown }
+
+const isRecord = (value: unknown): value is Record&lt;string, unknown&gt; =&gt;
+  typeof value === 'object' &amp;&amp; value !== null
+
+// The API answers a refusal as data, such as 422 with { reason: 'card-declined' }.
+const declined = (error: unknown) =&gt;
+  isRecord(error) &amp;&amp; isRecord(error.data) &amp;&amp; error.data.reason === 'card-declined'
+
+export const orderNotice = ({ isSuccess, isError, error }: OrderRequest): string =&gt;
+  isSuccess
+    ? 'Order placed.'
+    : !isError
+      ? ''
+      : declined(error)
+        ? 'Your card was declined. Please choose another card.'
+        : 'The order wasn’t placed, and your cart is as it was.'</code></pre>
+<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; any other refusal says the cart is as it was, because it is. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#use-query-and-mutation-hooks">Redux Toolkit and RTK Query Best Practices</a> reads a mutation&rsquo;s state the same way.</p>
+<h2>4. Read only what the view shows</h2>
+<p>The order history reads the list the endpoint caches. <code>selectFromResult</code> narrows the hook to the fields the view shows, so the view re-renders when they change and not for the rest of the request&rsquo;s state:</p>
+<pre class="code-block" tabindex="0"><code>// features/orders/OrderHistory.tsx
+import type { Order } from './ordersApi.generated'
+import { useListOrdersQuery } from './ordersApi'
+
+const NO_ORDERS: Order[] = []
+
+export function OrderHistory({ tenantId }: { tenantId: string }) {
+  const { orders, isLoading, isError } = useListOrdersQuery(
+    { tenantId },
+    {
+      selectFromResult: ({ data, isLoading, isError }) =&gt; ({
+        orders: data ?? NO_ORDERS,
+        isLoading,
+        isError,
+      }),
+    },
+  )
+
+  if (isLoading) return &lt;p&gt;Loading your orders…&lt;/p&gt;
+  if (isError) return &lt;p&gt;Your orders couldn’t be loaded.&lt;/p&gt;
+  return (
+    &lt;ul aria-label="Past orders"&gt;
+      {orders.map((order) =&gt; (
+        &lt;li key={order.id}&gt;Order {order.id}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )
+}</code></pre>
+<p>RTK Query compares what <code>selectFromResult</code> returns field by field. A fallback written as <code>data ?? []</code> is a new array each time the callback runs, so it reads as a change and costs a render for nothing; <code>NO_ORDERS</code>, declared once outside the component, keeps one reference. <code>isLoading</code> is true only for the first load, so after an order is placed the list stays on the screen while its tag refetches it. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> warns against the copied array for the same reason.</p>
+<h2>5. The test reads the screen</h2>
+<p>The view&rsquo;s test renders it in a real store, with the cart slice, the API root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>, as the endpoint&rsquo;s test does. It finds what the customer finds, by role and by visible text, clicks through Testing Library&rsquo;s user-event, and never mocks a hook or reads the component&rsquo;s state. Its two tests carry the names Module 2 gave the scenarios:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/PlaceOrder.test.tsx
+import { configureStore } from '@reduxjs/toolkit'
+import { cleanup, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { Provider } from 'react-redux'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { api } from '../../app/api'
+import { cartSlice, itemAdded } from '../cart/cartSlice'
+import { PlaceOrder } from './PlaceOrder'
+
+const tenantId = '018ade1a-7830-7981-b23f-f3a7f7b8f09f'
+const widgetA = { productId: 'widget-a', name: 'Widget A', priceCents: 2500 }
+const placed = { id: 'order-1', lines: [{ ...widgetA, quantity: 1 }], totalCents: 2500 }
+
+// Given Ada's cart holds "Widget A" at $25, with the server's answer set by the test
+const renderCheckout = (answer: () =&gt; Response) =&gt; {
+  vi.stubGlobal('fetch', vi.fn(async () =&gt; answer()))
+  const store = configureStore({
+    reducer: {
+      [cartSlice.reducerPath]: cartSlice.reducer,
+      [api.reducerPath]: api.reducer,
+      session: () =&gt; ({ token: 'test-token' }),
+    },
+    middleware: (getDefaultMiddleware) =&gt; getDefaultMiddleware().concat(api.middleware),
+  })
+  store.dispatch(itemAdded(widgetA))
+  render(
+    &lt;Provider store={store}&gt;
+      &lt;PlaceOrder tenantId={tenantId} /&gt;
+    &lt;/Provider&gt;,
+  )
+}
+
+afterEach(() =&gt; {
+  cleanup()
+  vi.unstubAllGlobals()
+})
+
+describe('Feature: Checkout', () =&gt; {
+  it('Scenario: Placing the order', async () =&gt; {
+    const user = userEvent.setup()
+    renderCheckout(() =&gt; Response.json(placed, { status: 201 }))
+    expect(screen.getByRole('listitem')).toHaveTextContent('Widget A, 1: $25.00')
+    expect(screen.getByText('Total: $25.00')).toBeInTheDocument()
+    // When she places the order
+    await user.click(screen.getByRole('button', { name: 'Place order' }))
+    // Then she sees the order placed, and her cart is empty
+    expect(await screen.findByText('Order placed.')).toBeInTheDocument()
+    expect(screen.queryByRole('listitem')).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Place order' })).toBeDisabled()
+  })
+
+  it('Scenario: Placing the order with a declined card', async () =&gt; {
+    const user = userEvent.setup()
+    // And her card will be declined
+    renderCheckout(() =&gt; Response.json({ reason: 'card-declined' }, { status: 422 }))
+    // When she places the order
+    await user.click(screen.getByRole('button', { name: 'Place order' }))
+    // Then her cart still holds "Widget A", and she is asked for another card
+    expect(await screen.findByText(/choose another card/)).toBeInTheDocument()
+    expect(screen.getByRole('listitem')).toHaveTextContent('Widget A')
+  })
+})</code></pre>
+<p>Vitest runs the file in jsdom (<code>environment: 'jsdom'</code> in its config), with jest-dom&rsquo;s matchers loaded once in the setup file (<code>import '@testing-library/jest-dom/vitest'</code>). Without Vitest&rsquo;s globals, Testing Library can&rsquo;t clean up between tests on its own, so the file calls <code>cleanup</code> itself; otherwise the second test finds two checkouts on the page. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> tests components the same way, through what they show rather than how they work.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not all state leaves the view. A note to the kitchen being typed, or whether the order summary is open, is the component&rsquo;s own: it stays in <code>useState</code> until the customer submits, and only then becomes an event or a mutation&rsquo;s argument. A view model that takes an argument, such as one row of the checkout by its product, needs no selector per row: the <code>createSelector</code> that Redux Toolkit 2 ships, from Reselect 5, keeps a result for each argument it sees, where older guides built one selector per component:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/checkoutSelectors.ts, continued
+import type { RootState } from '../../app/store'
+
+export const selectCheckoutLine = createSelector(
+  [selectCheckout, (_state: RootState, productId: string) =&gt; productId],
+  (checkout, productId) =&gt; checkout.lines.find((line) =&gt; line.id === productId),
+)
+
+// in each row of the checkout, one selector for every row
+const line = useAppSelector((state) =&gt; selectCheckoutLine(state, productId))</code></pre>
+<p>Results kept for a value that never repeats, such as a timestamp, pile up; current Reselect gives the memoizer a <code>maxSize</code> for that, and warns in development when a cache keeps growing. And when a view model starts to carry a rule, such as a minimum order before <code>canPlace</code> turns true, the rule has outgrown it: it gets a scenario of its own, and the slice or the API decides it, where the scenario can test it.</p></aside>
+<p>One scenario now runs through the whole chain, and each owner proves its own part under the same name: the API records the order in the Hspec test, the endpoint refetches the history, the slice empties the cart, and the view shows the customer the order placed and the cart empty. The view holds none of those rules, which is why it stays small enough to read on one screen.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/endpoints-at-the-boundary/" rel="prev">Previous lesson: Endpoints at the Boundary</a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>
