@@ -150,7 +150,7 @@ Development					</a>
 <strong>Event Handling:</strong> FRP simplifies event handling by allowing you to describe how to react to events in a declarative manner. This reduces the need for callbacks and imperative event handling code.</li>
 </ol>
 <p><strong>FRP in Practice:</strong></p>
-<p>FRP starts with Conal Elliott and Paul Hudak’s <em>Functional Reactive Animation</em> (1997), built on two ideas: behaviors, values that change over time, and events, things that happen at a moment. Observable libraries often borrow the name but model only streams of events. In custom apps, the Sean Dinwiddie’s Webmastery team builds the same ideas in Redux Toolkit: actions are the events, reducers fold them into state, and selectors derive the values a view shows.</p>
+<p>FRP starts with Conal Elliott and Paul Hudak’s <em>Functional Reactive Animation</em> (1997), built on two ideas: behaviors, values that change over time, and events, things that happen at a moment. Observable libraries often borrow the name but model only streams of events. In custom apps, the Sean Dinwiddie’s Webmastery team builds the same ideas in Redux Toolkit: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#the-one-way-dataflow">Redux Standard Patterns and Functional Programming</a> traces that one-way dataflow, from event to reducer to selector to view.</p>
 <p><strong>Benefits of FRP:</strong></p>
 <ul>
 <li>

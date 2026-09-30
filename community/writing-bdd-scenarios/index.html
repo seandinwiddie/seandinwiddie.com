@@ -141,9 +141,10 @@ Development					</a>
 <p><strong>6. Describe Actions in the “When” Section:</strong></p>
 <p>The “When” section is where you describe the action or event you are testing. This is typically the action that a user takes. For example:</p>
 <ul>
-<li>When the user clicks the “Submit” button</li>
-<li>When the user enters their login credentials</li>
+<li>When the user deposits $50</li>
+<li>When the user signs in with the correct password</li>
 </ul>
+<p>On the Sean Dinwiddie’s Webmastery team, each When names one event, the same event a Redux Toolkit slice’s reducer handles, and each Then names what a selector or an endpoint returns, so most scenarios run below the interface.</p>
 <p><strong>7. Define Expected Outcomes in the “Then” Section:</strong></p>
 <p>The “Then” section is where you specify the expected outcomes or results of the action described in the “When” section. This is the behavior you are testing. For example:</p>
 <ul>
@@ -152,17 +153,17 @@ Development					</a>
 </ul>
 <p><strong>8. Keep Scenarios Small and Focused:</strong></p>
 <p>BDD scenarios should be focused on testing a single aspect of behavior. Keep your scenarios small and specific, addressing one user interaction at a time. This makes it easier to understand, implement, and maintain scenarios.</p>
-<p><strong>9. Include Acceptance Criteria:</strong></p>
-<p>To ensure clarity and testability, it’s a good practice to include acceptance criteria within or alongside your BDD scenarios. Acceptance criteria provide specific conditions that must be met for the scenario to be considered complete.</p>
+<p><strong>9. Tie Scenarios to Acceptance Criteria:</strong></p>
+<p>Each acceptance criterion from the user story becomes a Rule, and its scenarios are the examples that test it; a scenario passes when its Then holds.</p>
 <p><strong>Example BDD Scenario:</strong></p>
 <p>Here’s an example of a BDD scenario for an e-commerce website:</p>
-<pre class="code-block"><code>Scenario: Adding a product to the shopping cart
+<pre class="code-block"><code>Scenario: Adding a product to the cart
 
-Given the user is on the product page
-And the product "Widget A" is available for purchase
-When the user clicks the "Add to Cart" button
-Then the user's shopping cart should contain "Widget A"
-And the user's shopping cart total should reflect the price of "Widget A"</code></pre>
+Given "Widget A" is in stock at $25
+And the cart is empty
+When the customer adds "Widget A" to the cart
+Then the cart contains "Widget A"
+And the cart total is $25</code></pre>
 <p>This scenario describes the expected behavior when a user adds a product to their shopping cart.</p>
 <p>By following these guidelines, you can write clear, structured, and effective BDD scenarios that accurately describe how the software should behave from the user’s perspective. BDD scenarios serve as the foundation for creating tests and ensuring that your software aligns with user expectations.</p>
 

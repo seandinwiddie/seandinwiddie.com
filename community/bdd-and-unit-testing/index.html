@@ -131,7 +131,7 @@ Development					</a>
 <li>
 <strong>Early Issue Detection:</strong> Both BDD and unit testing contribute to early issue detection. BDD scenarios help identify high-level behavior issues, while unit tests catch low-level code bugs. By addressing issues early in the development process, you reduce the cost and effort required to fix them.</li>
 <li>
-<strong>Test Coverage:</strong> BDD scenarios typically focus on high-level end-to-end behavior, while unit testing delves into the internal details of code components. Together, they provide comprehensive test coverage, verifying both the macro-level user interactions and micro-level code functionality.</li>
+<strong>Test Coverage:</strong> BDD scenarios describe behavior a user can name, and on the Sean Dinwiddie’s Webmastery team most of them run below the interface, against a slice’s reducer and selectors or an RTK Query endpoint; end-to-end tests stay few and cover the critical journeys, while unit tests cover the pure functions underneath. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">Modern Redux Architecture Patterns</a> sets out which test covers which layer.</li>
 <li>
 <strong>Documentation and Communication:</strong> BDD scenarios serve as living documentation that communicates the expected behavior of the software to all stakeholders. Unit tests, on the other hand, document how specific code units are intended to work.</li>
 <li>
@@ -140,7 +140,7 @@ Development					</a>
 <p><strong>Challenges and Considerations:</strong></p>
 <ul>
 <li>
-<strong>Overlap:</strong> There may be some overlap between BDD and unit tests, as certain BDD scenarios may also cover aspects tested by unit tests. It’s essential to strike a balance and avoid redundancy.</li>
+<strong>Overlap:</strong> There may be some overlap between BDD and unit tests, as certain BDD scenarios may also cover aspects tested by unit tests. Test each rule once, at the lowest layer that shows it: a scenario covers the behavior a user can name, and a unit test covers the edge cases of the pure function beneath it.</li>
 <li>
 <strong>Integration Testing:</strong> While BDD and unit testing focus on specific levels of testing, integration testing is also important to verify that different components of the software work together seamlessly.</li>
 <li>

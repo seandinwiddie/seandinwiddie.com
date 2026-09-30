@@ -130,13 +130,13 @@ Development					</a>
 <p><strong>6. Avoid Technical Details:</strong></p>
 <p>User Stories are not the place for technical details or implementation specifics. The focus should be on the user’s needs, not the development process.</p>
 <p><strong>7. Use the INVEST Criteria:</strong></p>
-<p>Consider using the INVEST criteria to evaluate the quality of your User Stories. INVEST stands for Independent, Negotiable, Valuable, Estimable, Small, and Testable.</p>
+<p>Bill Wake’s INVEST criteria (2003) test the quality of a user story. INVEST stands for Independent, Negotiable, Valuable, Estimable, Small, and Testable.</p>
 <ul>
 <li>Independent: Each User Story should be self-contained and not dependent on other stories.</li>
 <li>Negotiable: User Stories should be open to discussion and collaboration.</li>
 <li>Valuable: Each story should deliver value to the user.</li>
 <li>Estimable: It should be possible to estimate the effort required to complete the story.</li>
-<li>Small: Stories should be small enough to complete within a single development iteration.</li>
+<li>Small: Stories should be small enough to name as one line in the written scope and finish within one iteration.</li>
 <li>Testable: There should be clear criteria for testing the story’s completion.</li>
 </ul>
 <p><strong>8. Prioritize User Stories:</strong></p>
@@ -153,9 +153,10 @@ Development					</a>
 </ul>
 <p><strong>Example Acceptance Criteria:</strong></p>
 <ul>
-<li>The user must receive a password reset email.</li>
-<li>The password reset link in the email must be valid for 24 hours.</li>
-<li>After resetting the password, the user should be able to log in with the new password.</li>
+<li>Asking for a reset sends a reset link to the email on the account.</li>
+<li>The reset form shows the same message whether or not the email belongs to an account.</li>
+<li>The reset link works once and expires after 24 hours.</li>
+<li>After the reset, the new password signs in and the old one no longer does.</li>
 </ul>
 <p>Writing clear and concise User Stories is an essential skill in user-centric software development. When User Stories are well-crafted, they guide the development process effectively and ensure that the software aligns with user needs and expectations.</p>
 <p>In the next section, we’ll explore practical exercises for creating User Stories and collaborative sessions for reviewing and refining them.</p>

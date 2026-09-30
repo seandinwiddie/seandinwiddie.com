@@ -115,7 +115,7 @@ Development					</a>
 <div class="page-meta"> <img alt="Sean Dinwiddie - Local web developer in Klamath Falls, Oregon" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">seandinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Given-When-Then, often referred to as Gherkin syntax, is a structured language used in Behavior-Driven Development (BDD) to define and describe the expected behavior of a software system. Gherkin syntax is designed to be human-readable, so the people who asked for a feature can read its scenarios, and each scenario becomes an automated test. It provides a clear and uniform way to express behavior scenarios.</p>
+<p>Gherkin is the plain-language format behind Given-When-Then, used in Behavior-Driven Development (BDD) to define and describe the expected behavior of a software system; Given, When and Then are three of its keywords. Gherkin syntax is designed to be human-readable, so the people who asked for a feature can read its scenarios, and each scenario becomes an automated test. It provides a clear and uniform way to express behavior scenarios.</p>
 <p><strong>The Gherkin Structure:</strong></p>
 <p>Gherkin scenarios follow a specific structure with three main sections: Given, When, and Then. Each section serves a distinct purpose in describing the expected behavior.</p>
 <ol>
@@ -142,16 +142,16 @@ Development					</a>
 </ul>
 <p><strong>Example Using Gherkin Syntax:</strong></p>
 <p>Here’s an example of a BDD scenario written in Gherkin syntax:</p>
-<pre class="code-block"><code>Scenario: Logging into an email account
+<pre class="code-block"><code>Scenario: Signing in with the correct password
 
-Given the user is on the email login page
-When the user enters their valid username and password
-Then the user should be logged into their email account</code></pre>
+Given a registered account for "ada@example.com"
+When Ada signs in with the correct password
+Then her session starts</code></pre>
 <p>In this scenario:</p>
 <ul>
-<li>The “Given” section establishes the context by placing the user on the email login page.</li>
-<li>The “When” section describes the action of entering a valid username and password.</li>
-<li>The “Then” section specifies the expected outcome, which is that the user should be successfully logged into their email account.</li>
+<li>The “Given” section establishes the context: an account that already exists.</li>
+<li>The “When” section names the one event under test: signing in with the correct password.</li>
+<li>The “Then” section names the outcome: a started session. No step names a page or a button, so the scenario can run below the interface as well as in the browser.</li>
 </ul>
 <p><strong>Additional Keywords in Gherkin:</strong></p>
 <p>In addition to the primary Given-When-Then structure, Gherkin syntax also includes other keywords that can be used to enhance scenarios:</p>

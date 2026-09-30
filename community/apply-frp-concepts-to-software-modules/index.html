@@ -125,7 +125,7 @@ Development					</a>
 <li>
 <strong>Model Events as Actions:</strong> Name each action for what happened, such as orderPlaced rather than setOrders; the reducer decides the next state.</li>
 <li>
-<strong>Define Event Streams:</strong> Use event streams to represent sequences of events. Event streams are observables that capture user interactions and other asynchronous events. These event streams are the core of FRP and provide the basis for building reactive modules.</li>
+<strong>Derive with Selectors:</strong> Compute what a view shows from the state with selectors, composed with createSelector, so each derived value has one definition and recomputes only when its inputs change.</li>
 <li>
 <strong>Compose Operations with Operators:</strong> Apply operators to your observables and event streams. Operators allow you to transform, filter, and combine data in a declarative manner. For example, you can use operators to map user input to specific actions, debounce input, or filter events based on certain criteria.</li>
 <li>
@@ -137,7 +137,7 @@ Development					</a>
 <li>
 <strong>Modularize Code:</strong> Modularize your code by encapsulating related functionality in separate observables and event streams. This modular approach makes your code more organized and easier to maintain.</li>
 <li>
-<strong>Testing:</strong> Write unit tests for your FRP-based modules. FRP code is highly testable, and you can use testing frameworks to ensure that your reactive components behave as expected under various scenarios.</li>
+<strong>Testing:</strong> Module 2’s scenarios become the slice’s tests: each Given sets the starting state, each When dispatches one action, and each Then checks what a selector returns. Pure reducers and selectors need no browser to test.</li>
 <li>
 <strong>Real-Time Updates:</strong> Leverage FRP to enable real-time updates and dynamic user interfaces. Implement features like auto-updating search results, live notifications, and interactive charts.</li>
 <li>
