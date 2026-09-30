@@ -149,6 +149,15 @@
 <li>
 <strong>Effects over Time:</strong> Timing belongs at the boundary, never in a reducer: in Redux Toolkit, listener middleware debounces, delays and cancels work in response to later actions.</li>
 </ul>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> FRP samples a behavior when an event occurs: it reads the value something has at that moment. Redux Toolkit has no continuous time, so a sample is taken in one of two places. A listener samples the state when an action arrives, with <code>listenerApi.getState()</code>, or <code>listenerApi.getOriginalState()</code> for the state just before it. The clock is sampled when the action is created, never in a reducer: a <code>prepare</code> callback stamps the event with the time it happened.</p>
+<pre class="code-block" tabindex="0"><code>orderPickedUp: {
+  reducer(state, action: PayloadAction&lt;{ orderId: string; at: string }&gt;) {
+    const order = state.queue.find((o) =&gt; o.id === action.payload.orderId)
+    if (order) order.pickedUpAt = action.payload.at
+  },
+  prepare: (orderId: string) =&gt; ({ payload: { orderId, at: new Date().toISOString() } }),
+},</code></pre>
+<p>The kitchen&rsquo;s wait times are then part of the events themselves, and replaying the same actions gives the same state tomorrow as today. A reducer or selector that reads <code>Date.now()</code> breaks the fold. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#listener-middleware">Modern Redux Architecture Patterns</a> sets out what listeners are for.</p></aside>
 <p><strong>3. Integration in FRP:</strong></p>
 <p>In the context of FRP, event streams and reactive programming are integral to the handling of asynchronous events and data changes. Each event is an action, each reducer a pure step from one state to the next, and each derived value a selector. This allows developers to build declarative, responsive, and efficient systems that react to real-time data and user interactions.</p>
 <p><strong>4. Example Use Cases:</strong></p>

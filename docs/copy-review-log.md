@@ -2,6 +2,101 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 11: September 30, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 7 | 8.5 | |
+| Webmaster | 7.5 | 8.5 | 7.5 |
+| Copywriter | 7.5 | 8.5 | 7.5 |
+| Senior CTO | 7.5 | 8.5 | 7.5 |
+
+These scores read the site after pass 10. The copywriter expects 8, 9 and 8 after this pass.
+
+### The objections that matter most
+
+- **Owner:**
+  - the ads page sold a short burst that only runs inside the monthly engagement;
+  - no word on ending the monthly engagement;
+  - the public-office offer buried in a pricing paragraph;
+  - `/development/` read a website as part of a retainer.
+- **Webmaster and CTO:**
+  - the API lesson's code contradicted its prose: no 403, and no prices read;
+  - `toOpenApi` couldn't compile with `Auth`;
+  - the foreign-key caveat sat beside `REFERENCES tenants`;
+  - the two Module 4 lessons' data didn't meet;
+  - the operationId claim;
+  - the Introduction and offer page register;
+  - what the 30% buys;
+  - the accessibility gaps.
+
+### Sean's directions this pass
+
+- **The course's description leads with Sean's messaging** (user stories, BDD and functional programming). The API comes up where it fits, as judgment rather than a rule.
+- **Don't be so exacting.**
+
+### Tweaks applied
+
+- **Module 4's third lesson, "Endpoints at the Boundary":**
+  - one RTK Query root with the bearer token;
+  - endpoints generated from the API's contract and reviewed;
+  - responses decoded at the boundary;
+  - tags that refetch;
+  - the checkout scenario tested at the endpoint;
+  - an optimistic cart update and its rollback as the depth passage.
+- **The API lesson:**
+  - one transaction reads prices, decides and writes, and Nile's refusal answers 403;
+  - `orders` and `order_lines` share the client's shapes;
+  - a small orphan instance describes `Auth` as a bearer scheme, and the operationIds are named;
+  - the Hspec test signs tokens: Ada gets 201, and Grace from another shop gets 403;
+  - the foreign-key caveat excepts Nile's built-in `tenants`.
+- **From Scenario to Slice:** exports `CartLine` and says where the operation's name is set.
+- **The accessibility sweep, through the sync and held by the build:**
+  - code blocks take `tabindex="0"`;
+  - category links lose their tabs;
+  - depth passages become labelled asides;
+  - the byline reads "Sean Dinwiddie" beside a decorative avatar.
+- **Depth passages:**
+  - Reviewing as a Group;
+  - Collaborative Sessions;
+  - Real-World Cases (the declined card);
+  - Event streams (sampling);
+  - BDD Testing Framework runs one scenario both ways, as cucumber-js steps and as a Vitest test.
+- **Register:**
+  - eight Introduction lines;
+  - the overview posts' "committed to providing" lines;
+  - the offer page's "propel" and closing line, and its title with the site's suffix;
+  - the hub and Introduction invite webmasters "at any stage of the craft".
+- **Focus pages:**
+  - month to month with 30 days' notice (homepage and `/contact/`);
+  - "Under the monthly engagement, the webmaster you reach in a year…";
+  - ads run month after month;
+  - `/development/`'s website is a one-time flat fee;
+  - CRO is measured over the scope's period;
+  - the city pages' descriptions and public-office lines;
+  - "Joining the team" says what the 30% pays for and that each job comes with a written subcontract.
+
+### Waiting
+
+- **Pass 12:**
+  - "The View Stays Minimal";
+  - depth in Identifying User Needs, Practical Exercises and Principles;
+  - `<p><strong>` subheads as real headings;
+  - the main menu in a `nav`;
+  - the Outline's duplicate link;
+  - the rest of the Introduction and offer page register.
+- **Sean's:**
+  - the KLounge;
+  - "since 2010";
+  - Medford;
+  - procurement wording;
+  - the testimonial names;
+  - the topbar's PayPal.me link;
+  - Training's "$600";
+  - the prices page's floor;
+  - `/about/`.
+- **Counsel:** the legal form of the terms.
+
 ## Pass 10: September 30, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |

@@ -131,37 +131,98 @@
     :&lt;|&gt; ReqBody '[JSON] NewOrder :&gt; PostCreated '[JSON] Order )</code></pre>
 <p>The type reads like the scenario it serves: for a signed-in user and one customer, list the orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
 <h2>2. Handlers stay thin</h2>
-<p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction: it reads what a decision needs, such as today&rsquo;s prices, lets the pure code decide, and writes the result. The decisions, such as whether an order is valid and what it totals, live in plain functions with no database in sight, the same boundary Redux Toolkit keeps between reducers and RTK Query. The names below are the lesson&rsquo;s own:</p>
+<p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction: it reads what a decision needs, such as today&rsquo;s prices, lets the pure code decide, and writes the result. The client&rsquo;s total is for display; the API prices the order from its own catalog. The decisions, such as whether an order is valid and what it totals, live in plain functions with no database in sight, the same boundary Redux Toolkit keeps between reducers and RTK Query. The names below are the lesson&rsquo;s own:</p>
 <pre class="code-block" tabindex="0"><code>server :: Pool Connection -&gt; Server OrdersAPI
 server pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
   where
-    listOrders = liftIO (withTenant pool user tenantId selectOrders)
-    placeOrder new = case validateOrder new of
-      Left problem -&gt; throwError err422 { errBody = encode problem }
-      Right order  -&gt; liftIO (withTenant pool user tenantId (insertOrder order))
-server _ _ _ = throwAll err401</code></pre>
-<p>A request without a valid sign-in never reaches a handler: <code>throwAll err401</code> answers every route. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
+    listOrders = withTenant pool user tenantId selectOrders
+    placeOrder new = do
+      decided &lt;- withTenant pool user tenantId $ \conn -&gt; do
+        prices &lt;- selectPrices conn new
+        traverse (insertOrder conn) (validateOrder prices new)
+      either (\problem -&gt; throwError err422 { errBody = encode problem }) pure decided
+server _ _ _ = throwAll err401
+
+-- One transaction per request: name the tenant and the user, run the work, commit.
+-- Nile refuses a user outside the tenant, and the refusal answers 403.
+withTenant :: Pool Connection -&gt; UserId -&gt; TenantId -&gt; (Connection -&gt; IO a) -&gt; Handler a
+withTenant pool user tenantId work = do
+  result &lt;- liftIO . try . withResource pool $ \conn -&gt;
+    withTransaction conn (setTenantAndUser conn tenantId user *&gt; work conn)
+  case result of
+    Left err | notAMember err -&gt; throwError err403
+             | otherwise      -&gt; liftIO (throwIO err)
+    Right a -&gt; pure a</code></pre>
+<p>servant-auth doesn&rsquo;t refuse a request itself: it hands the server an <code>AuthResult</code>, and the last clause answers every route with 401 when the sign-in isn&rsquo;t valid, while <code>withTenant</code> answers 403 when Nile refuses the user. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
 <h2>3. Each customer&rsquo;s data stays apart in Nile</h2>
 <p>Nile is Postgres built for apps that serve many organizations, each a tenant. A table that holds a tenant&rsquo;s rows carries a <code>tenant_id</code> and includes it in its primary key, and the tenants themselves live in Nile&rsquo;s built-in <code>tenants</code> table:</p>
 <pre class="code-block" tabindex="0"><code>CREATE TABLE orders (
   tenant_id uuid REFERENCES tenants (id),
   id uuid DEFAULT gen_random_uuid(),
-  item text NOT NULL,
   total_cents integer NOT NULL,
   PRIMARY KEY (tenant_id, id)
+);
+
+CREATE TABLE order_lines (
+  tenant_id uuid,
+  order_id uuid,
+  product_id text,
+  name text NOT NULL,
+  price_cents integer NOT NULL,
+  quantity integer NOT NULL CHECK (quantity &gt; 0),
+  PRIMARY KEY (tenant_id, order_id, product_id),
+  FOREIGN KEY (tenant_id, order_id) REFERENCES orders (tenant_id, id)
 );</code></pre>
+<p>On the wire, a <code>NewOrder</code> carries only each line&rsquo;s product and quantity, and the <code>Order</code> the API returns adds each line&rsquo;s name and price and the total, in cents: the shapes <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a> decodes.</p>
 <p>Inside <code>withTenant</code>, the handler opens a transaction and names the tenant and the user before its queries:</p>
 <pre class="code-block" tabindex="0"><code>SET LOCAL nile.tenant_id = '018ade1a-7830-7981-b23f-f3a7f7b8f09f';
 SET LOCAL nile.user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';
-SELECT id, item, total_cents FROM orders;</code></pre>
+SELECT id, total_cents FROM orders;</code></pre>
 <p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one customer into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
 <p>The tenant in the path is only a claim. With <code>nile.user_id</code> set, Nile raises an error unless that user belongs to the tenant in its built-in <code>users.tenant_users</code> table, and the shell answers 403 Forbidden; an app that keeps its own users checks membership the same way before <code>withTenant</code> runs. <code>SET</code> takes no bind parameters, so both IDs are written into the statement, which is safe only because the Capture and the auth layer have already parsed them as UUIDs.</p>
 <h2>4. One contract at both ends</h2>
 <p>The same Servant type can describe itself as an OpenAPI document (the servant-openapi3 package), and RTK Query&rsquo;s OpenAPI code generator turns that document into the client&rsquo;s endpoints and hooks. Server and client then share one contract: when a route changes, the regenerated client shows every mismatch as a type error before it reaches a customer. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> sets up the client side, generated into one API root and reviewed like any other source.</p>
-<p>The contract is only as honest as the JSON behind it: in the Hspec suite, servant-openapi3&rsquo;s <code>validateEveryToJSON</code> checks generated values of every JSON type in the API against the published schema.</p>
+<p>servant-openapi3 knows nothing of servant-auth, so the API adds one small instance that describes <code>Auth</code> as a bearer token, and names each route&rsquo;s operation, which RTK Query&rsquo;s generator uses as the endpoint&rsquo;s name. A small program writes the document to <code>openapi.json</code> on every build.</p>
+<pre class="code-block" tabindex="0"><code>{-# OPTIONS_GHC -Wno-orphans #-}
+
+-- Every route under Auth takes a bearer token.
+instance HasOpenApi api =&gt; HasOpenApi (Auth '[JWT] a :&gt; api) where
+  toOpenApi _ =
+    toOpenApi (Proxy :: Proxy api)
+      &amp; components . securitySchemes &lt;&gt;~ SecurityDefinitions (fromList [("jwt", jwt)])
+      &amp; allOperations . security &lt;&gt;~ [SecurityRequirement (fromList [("jwt", [])])]
+    where
+      jwt = SecurityScheme (SecuritySchemeHttp (HttpSchemeBearer (Just "JWT"))) Nothing
+
+ordersOpenApi :: OpenApi
+ordersOpenApi =
+  toOpenApi (Proxy :: Proxy OrdersAPI)
+    &amp; paths . traverse . get . _Just . operationId ?~ "listOrders"
+    &amp; paths . traverse . post . _Just . operationId ?~ "placeOrder"</code></pre>
+<p>With one path, a traversal over every path is enough; a larger API picks each route out with servant-openapi3&rsquo;s <code>subOperations</code>.</p>
+<p>The contract is only as honest as the JSON behind it: in the Hspec suite, servant-openapi3&rsquo;s <code>validateEveryToJSON</code> checks values of every JSON type in the API against the published schema, generating them from each type&rsquo;s <code>Arbitrary</code> instance, so <code>Order</code> and <code>NewOrder</code> need one.</p>
 <h2>5. The scenarios test the API</h2>
-<p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no HTTP server, against Nile running locally in Docker so the tenant checks run too, and each test carries its scenario&rsquo;s name, such as <code>it "Scenario: Placing the order"</code>, so a failing test names the behavior that broke. The pure core, such as <code>validateOrder</code>, is tested on its own, with no database at all. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations cannot.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet. And a route that only reshapes data another service already owns usually belongs to that service, not to a new API. Nile has edges of its own: a tenant table can&rsquo;t carry a foreign key into a shared table, and one transaction can&rsquo;t write to both, which is why an order records the item it sold rather than pointing into a shared catalog.</p></aside>
+<p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no HTTP server, against Nile running locally in Docker so the tenant checks run too. Every route sits behind <code>Auth</code>, so each test signs a token with the test&rsquo;s own key and sends it as a bearer token: Ada, a member of the shop&rsquo;s tenant, gets 201 Created, and Grace, a user from another shop, gets 403 Forbidden.</p>
+<pre class="code-block" tabindex="0"><code>app :: JWTSettings -&gt; Pool Connection -&gt; Application
+app jwt pool =
+  serveWithContext (Proxy :: Proxy OrdersAPI) (defaultCookieSettings :. jwt :. EmptyContext) (server pool)
+
+spec :: Spec
+spec = do
+  jwt &lt;- runIO (defaultJWTSettings &lt;$&gt; generateKey)
+  pool &lt;- runIO localNile   -- Nile in Docker, with Ada a member of the shop's tenant
+  let signIn user = either (error . show) toStrict &lt;$&gt; makeJWT user jwt Nothing
+      asUser token = [(hAuthorization, "Bearer " &lt;&gt; token), (hContentType, "application/json")]
+  with (pure (app jwt pool)) $
+    describe "Feature: Checkout" $ do
+      it "Scenario: Placing the order" $ do
+        token &lt;- liftIO (signIn ada)
+        request methodPost (ordersPath shop) (asUser token) widgetAOrder `shouldRespondWith` 201
+      it "Scenario: Placing an order in someone else's shop" $ do
+        token &lt;- liftIO (signIn grace)
+        request methodPost (ordersPath shop) (asUser token) widgetAOrder `shouldRespondWith` 403</code></pre>
+<p>Each test carries its scenario&rsquo;s name, such as <code>it "Scenario: Placing the order"</code>, so a failing test names the behavior that broke. The pure core, such as <code>validateOrder</code>, is tested on its own, with no database at all. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations cannot.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet. And a route that only reshapes data another service already owns usually belongs to that service, not to a new API. Nile has edges of its own: a tenant table can&rsquo;t carry a foreign key into a shared table other than Nile&rsquo;s built-in <code>tenants</code>, and one transaction can&rsquo;t write to both, which is why each order line records the name and price it sold at rather than pointing into the shared catalog.</p></aside>
 <p>The API closes the chain the course began with: a feature scoped as a user story, its scenarios in Gherkin, the slice and endpoint that pass them, and the typed API and tenant-safe data behind them. The next lesson follows one of those scenarios back into the client, as a Redux Toolkit slice.</p>
 
 <!-- .entry-content -->

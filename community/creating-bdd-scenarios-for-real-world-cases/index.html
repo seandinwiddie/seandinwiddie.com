@@ -159,6 +159,15 @@
     When she places an order
     Then a confirmation email goes to "ada@example.com"</code></pre>
 <p>The first draft of this case bundled four behaviors under one When; split into three scenarios, each When names one event and each failure names one behavior.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The three scenarios above all succeed. A declined card is the failure this case can&rsquo;t leave out, and it is a scenario of its own, with Thens that say what doesn&rsquo;t happen as well as what does:</p>
+<pre class="code-block" tabindex="0"><code>  Scenario: Placing the order with a declined card
+    Given Ada's cart holds "Widget A" at $25
+    And her card will be declined
+    When she places the order
+    Then no order is recorded
+    And her cart still holds "Widget A"
+    And she is asked for another card</code></pre>
+<p>A decline is expected, so it is answered as data, never thrown as an exception: the API returns the refusal with its reason, the slice leaves the cart alone because it empties only when the order is accepted, and the view asks for another card.</p></aside>
 <p>By following this structured approach, you can create comprehensive and accurate BDD scenarios for real-world cases. These scenarios provide a clear and testable specification of how the software should behave in complex, real-world situations, ensuring that it aligns with user needs and expectations.</p>
 
 <!-- .entry-content -->

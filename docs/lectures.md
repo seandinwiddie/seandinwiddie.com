@@ -43,6 +43,8 @@ Linked in pass 9, at Sean's direction to link the lectures all through the commu
 
 Linked in pass 10: From Scenario to Slice → Redux Toolkit and Functional Programming (`#setter-style-actions-instead-of-event-style-actions`, `#test-transitions-and-derivations`) and Redux Toolkit and RTK Query Best Practices (`#derive-views-with-selectors`, `#decide-who-owns-the-state`).
 
+Linked in pass 11: Endpoints at the Boundary → Redux Toolkit and RTK Query Best Practices (`#create-one-api-per-base-url`, `#generate-endpoints-from-openapi`, `#understand-invalidation`, `#testing`, `#patching-the-cache-from-a-component`) and Practical Applications of Functional Programming (`#react-and-rtk-query`); Event streams' depth passage → Modern Redux Architecture Patterns (`#listener-middleware`).
+
 Every anchor is checked against the lectures repository's headings with its own `slugify`.
 
 
