@@ -111,6 +111,19 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 - [ ] Delete the leftover `claude/friendly-rubin-wdvzmw` branch on GitHub. Agents here have no permission to delete branches.
 
+## Community pages as training
+
+The senior CTO's order for the community pages, a few small tweaks each pass (pass 6 review, `scratchpad` report summarized here):
+
+- [ ] **Trust first:** the hub's "Staff" card and "Staff" labels, a dated note on the cut-sheet's old payout lines, the hub title and the archive banner (replaced by pattern in the sync script), the false "Comments are archived" notice, SpecFlow → Reqnroll, the Elm/FRP line, lecture links on the hub, the curriculum and the Redux page.
+- [ ] **A path:** the course outline's title and typos; link each outline topic to its lesson; a line on the curriculum page pointing to the outline; a closing line on the last FRP lesson; Gherkin's "But" and "Scenario Outline"; lecture links on Module 3.
+- [ ] **Modules 1 and 2:** an ordered lesson list on each module page; the password-reset criteria (single use, no account enumeration); BDD scenarios run below the interface; attribution lines for Dan North, Bill Wake and Matt Wynne.
+- [ ] **Module 3:** an ordered list; one line each on FRP versus Rx (Elliott and Hudak), signals, and marble tests; the "efficiency" and "scalability" overclaims.
+- [ ] **Register:** "Welcome back…" openers become outcome lines; "Stay tuned" becomes "The next lesson…"; the full brand name on the "How We Can Help" blocks; the Introduction softened a line per pass; then previous/next re-pointed to the taught order, with the offer, staff, P.S. and cut-sheet pages out of the lesson chain.
+- [ ] **Larger, for later:** Module 4 has no lessons; duplicate lessons in Modules 2 and 3; a short Redux Toolkit lesson built on the lectures; whether the community teaches owners after handover as well as webmasters (Sean's direction); community titles ending "| Sean Dinwiddie"; the "Work with Sean" button; `/community/staff/`'s slug; `/community/` loads 5.8 MB of card images.
+- [ ] **For Sean:** the cut-sheet's payout block, "+1k" course and "+4k/m" retainer lines: remove, or `noindex` the page.
+- [ ] **For Sean (a date, unverified here):** the CTO reports HHS moved its Section 504 WCAG 2.1 AA dates for recipients of its funding (clinics that take Medicaid, for example) to May 11, 2027 (15 or more employees) and May 10, 2028 (smaller), per the Federal Register of May 11, 2026. If confirmed, it is a second accessibility date for the site's clinic owners.
+
 ## Lectures
 
 - [ ] Link the community pages to the lectures where a lecture fits (`docs/lectures.md`), a few pages each pass.
