@@ -4,7 +4,7 @@ Status: **Sean's working set of offers since September 29, 2026.** The senior CT
 
 ## The model: one rate, bought in shares
 
-- **The unit is the monthly engagement at $6,000:** a month of webmaster work on a written scope. It is a scope, never a count of hours or days.
+- **The unit is the monthly engagement at $6,000:** a retainer that grants access to the team and the results its written scope names, each month. Fees pay for results, never time: no hourly or daily rates, and a share is never a count of hours or days.
 - **A share** is a defined portion of that engagement at the same rate: a tenth, a quarter, a half or a full share, and larger jobs in whole shares. Bought once, a share is a flat fee for a defined job. Held each month, it is a service and maintenance contract. The whole engagement held each month is the retainer.
 - **The annual engagement at $120,000 is twenty months of work carried across twelve** (20 × $6,000): the monthly engagement's own scope every month (12 × $6,000 = $72,000), four months of technology planning ($24,000) and four months of an ADA Title II / WCAG 2.1 AA accessibility program ($24,000). It is a larger scope at the same rate, never 12 × the month and never a discount.
 - **Fractional CTO work stays minimal here.** The site mentions it lightly and points it to the sister practice at sdin.dev; the annual engagement's technology planning is the part that stays with Sean Dinwiddie's Webmastery.
@@ -40,7 +40,7 @@ The community's memberships (General Access at $1,000 a month and the Inner Circ
 
 ## How the prices page could explain the month and the year
 
-Sean edits the prices page himself. A suggestion: "The monthly engagement is $6,000 a month: a month of webmaster work on a written scope. The annual engagement is $120,000 a year: twenty months of work across twelve. It carries the monthly engagement every month, plus technology planning and an accessibility program. It is a larger scope, not a longer term. Every other fee is a share of the monthly engagement, at the same rate."
+Sean edits the prices page himself. A suggestion: "The monthly engagement is $6,000 a month: a retainer that grants access to the team and the results its written scope names. The annual engagement is $120,000 a year: twenty months of work across twelve. It carries the monthly engagement every month, plus technology planning and an accessibility program. It is a larger scope, not a longer term. Every other fee is a share of the monthly engagement, at the same rate."
 
 ## Settled, and still open
 

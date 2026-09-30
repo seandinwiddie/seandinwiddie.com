@@ -81,6 +81,7 @@ Sean Dinwiddie's Webmastery charges the way a law firm or a service contract doe
 - Work outside the scope is quoted and approved before it starts.
 - Nothing is hidden: the client knows the price of every piece of work before it begins.
 - More work costs more. Pricing never discounts more work.
+- Fees pay for results, never time. There are no hourly or daily rates. A flat fee buys a defined result, and a retainer grants access to the team and the results its written scope names.
 - Pricing reads like a country club's: a clear ladder from a small package (one defined job at a flat fee, in writing) up to retainers for boutique firms and public offices. A food truck, a kiosk and a family shop each see an offer made for them. Small packages describe the size of the job, never the worth of the client, and no tier talks down.
 - Pricing appears across the homepage, the service pages and the contact page, not only on the prices page, with examples of defined jobs that fit each page. Small packages are defined shares of the same published rates, never separate price points. The package ladder in `docs/packages.md` is Sean's working set of offers, and the site's pricing lines follow it.
 - Links to the prices page stay minimal (the menu, the footer and the sitemap) and are never calls to action while Sean reworks that page himself.
