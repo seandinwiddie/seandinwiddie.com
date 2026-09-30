@@ -15,7 +15,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Counsel puts Sean's direction in legal form (`docs/terms.md`): the subcontract per job, the scope template, retainer terms, continuity, ownership, confidentiality, and the California structure before a California webmaster signs.
 - [ ] The legal pages, approved in direction and waiting for the focus to reach them: the SMS terms come down, the privacy policy says client information reaches Sean Dinwiddie's Webmastery and the webmaster on the job, and the terms follow Oregon law.
 - [ ] Whether the first call ends with a written scope and fee, and within how many business days.
-- [ ] Webmaster terms (the house keeps 30%, the webmaster 70%): whether the split differs for work a webmaster brings in and work the house assigns; that there is no fee to join and no membership to buy; who keeps the client relationship, whether webmasters keep their own clients and outside work, and any non-solicit clause; who takes the first call, writes the scope, invoices and collects, when webmasters are paid and who carries a client's non-payment; how many engagements a webmaster carries at once; insurance, tools and licences; whether the builder of a site keeps its Care Contract; portfolio credit; what moves a webmaster up each rung; and the latitude to make things right for a client. The arrangement stays business-to-business under Oregon's ORS 670.600 and California's AB5 test; counsel decides.
+- [ ] Webmaster terms still open beyond `docs/terms.md`: who writes the scope and sets the share count, when a webmaster's 70% is paid against the owner's payment schedule (and on a public office's invoice terms), whether the reviewer is paid, whether a free audit is unpaid time, insurance, tools and licences, and how many engagements a webmaster carries at once.
 - [ ] Shared learning for owners: the confidentiality sentence (what the team shares is technique, never an owner's customers, passwords or numbers), in counsel's wording. The review before launch is named on the site since pass 4.
 - [ ] How the team's learning is shared (peer review, shared notes of fixes and patterns, team calls, pairing), so the site can name the mechanism behind "learning compounds on the team".
 - [ ] The community's place: whether the "administrators" it serves are the same people who run something local, and whether the country club runs under Sean Dinwiddie's Webmastery (its pages say "Sean Paul Payne Dinwiddie – Software Firm/Practice/Consults"). Every community page carries a banner calling it an "agency technical archive", which reads as retired.
@@ -116,7 +116,7 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 
 ## Analytics
 
-- [ ] Install analytics with conversion tracking. Only `test-tracking.html` carries a tag.
+- [ ] Analytics: `assets/site.js` loads GA4 after consent, with `phone_click` and `email_click` events. Its `anonymize_ip` setting does nothing in GA4 (GA4 doesn't log or store IP addresses), so the privacy page's line about IP anonymization needs rewording.
 - [ ] Track form submissions and call-to-action clicks as events.
 - [ ] Build a dashboard for leads, traffic sources and conversions.
 - [ ] Add a cookie notice once tracking is live.
