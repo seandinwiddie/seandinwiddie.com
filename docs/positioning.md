@@ -35,6 +35,10 @@ Sophisticated and classy, neo-rustic and homey, boutique, academic and niche, ad
 
 The team are advanced AI and software users. AI tools, bots and algorithms are part of the software craft, and the site speaks of them plainly, as software, never as hype.
 
+## How the team builds software
+
+Features are scoped from user stories, and the written scope names them that way. User stories become behavior-driven development (BDD) tests. The tests drive Redux Toolkit slices and RTK Query endpoints, and the React views stay minimal. Sean's lectures (`docs/lectures.md`) teach the functional TypeScript and Redux foundation underneath. The site and the community pages teach this practice. They never recommend tools the team doesn't use, such as Elm, SpecFlow, Reqnroll or Rx observables; where a lesson names one, it moves toward the team's own practice.
+
 ## The community
 
 The online country club for administrators (`/community/`) is part of the brand's boutique, high-end character, not a headline. Its pages list free beta access for early signups, General Access at $1,000 a month and the Inner Circle at $4,000 a month, with course content, community recordings, member demonstrations, user guides and manuals; Sean confirms the country club is accurate. The copy mentions it lightly and in context. It is never removed and never made the pitch. Webmasters on the team belong to the club through the quality of the work they produce, never because they bought in; memberships are for administrators who keep learning after handover.
