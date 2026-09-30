@@ -11,7 +11,6 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.
 
-- [ ] The hero and hub buttons' white text on blue measures about 3.9:1, under WCAG 2.1 AA's 4.5:1, while `/development/` and `/design/` claim the work is usable by everyone. Colors and fonts stay as they are, so Sean decides whether those claims are reworded.
 - [ ] Whether Sean's Dank Mono licence covers serving the font on the web; `assets/dank-mono.css` says the font is subject to an end-user licence.
 - [ ] The open decisions in `docs/packages.md`: names ("the monthly engagement" or "the Month"), retainer terms, ownership, third-party costs, payment schedules and procurement registration.
 - [ ] Engagement terms: kickoff, term, cancellation, third-party costs, response times.
@@ -29,7 +28,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Hours and reply times for calls and email on `/contact/`.
 - [ ] Whether Medford is in the service area. `/automation/` names it; everywhere else says Klamath Falls, Redding and the towns in between.
 - [ ] Sean's role on each site on `/examples/`, and which of them are local.
-- [ ] Whether a webmaster meets Redding owners in person, as the Klamath Falls page offers at Brevada, and a word on what Brevada is.
+- [ ] Whether a webmaster meets Redding owners in person, as the Klamath Falls page offers at the KLounge or the owner's shop.
 - [ ] The 🧙 brand mark in the header.
 - [ ] The Marketing hub's H1, "SEO and campaigns that compound traffic and leads", is Sean's wording, but "compound" is a word the recruiting rules keep away from pay.
 - [ ] The terms of service: they cover website use only, under California law, while Sean works from Klamath Falls, Oregon.
@@ -113,7 +112,7 @@ Sean reworks the prices page himself; these notes are input for him, and the cop
 ## Navigation and design
 
 - [ ] Simplify the menu and keep the core items at the top level.
-- [ ] Check spacing, font sizes and colors across the site.
+- [ ] Check spacing and sizes across the site, and add a contrast check to `npm run build` so white text on the blues stays at 4.5:1 or better.
 
 ## Analytics
 

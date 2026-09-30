@@ -24,7 +24,7 @@ Sean's pending decisions (`todo.md`, "Facts only Sean has", and the open decisio
 ## Working in this repo
 
 - Work directly on `master`, the main branch. Never create branches.
-- Never change the site's colors or fonts.
+- Sizes can change. Colors change only by small tweaks, such as darkening a shade until text passes WCAG 2.1 AA contrast. The fonts (the typefaces) never change.
 - Pushing to `master` deploys the live site through GitHub Pages. Run `npm run build` before every push: it regenerates the social images and sitemaps, runs the site, accessibility and performance checks, and builds the deploy artifact in `_site/`.
 
 ## Writing rules

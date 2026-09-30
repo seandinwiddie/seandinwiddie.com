@@ -4,7 +4,12 @@ Sean's pending decisions went through the llm-council skill (`.claude/skills/llm
 
 **Status: recommendations only.** Nothing here is a fact or a rule until Sean approves it. An approved line moves into `docs/positioning.md`, `docs/packages.md` or `todo.md`, and leaves this file. Lines marked "needs counsel" wait for counsel even after Sean approves the direction. Facts only Sean knows never come from a council: the Dank Mono licence, "since 2010", Brevada, Sean's role on each example site, and the phone numbers.
 
-One correction to the verdicts: council 3 took the package ladder as unapproved. Sean works with the ladder as it stands (`docs/packages.md`), so the prices-page direction is his to paste in.
+Corrections and progress:
+
+- Council 3 took the package ladder as unapproved. Sean works with the ladder as it stands (`docs/packages.md`), so the prices-page direction is his to paste in.
+- **Done, September 30, 2026: council 3, decision 1.** Sean allows size changes and small color tweaks, so the buttons' blues were darkened slightly. White text now measures at least 4.56:1 on every blue, against WCAG 2.1 AA's 4.5:1. The top bar's payment link turns dark text on green when hovered. The accessibility offer and the claims on Design and Development no longer contradict the site's own buttons.
+- Council 3's worry that screen readers read the 🧙 aloud as "mage" doesn't apply. The brand link carries an `aria-label` with the brand name, so screen readers announce "Sean Dinwiddie's Webmastery — home". Whether to keep the mark is still Sean's call.
+- Klamath Falls meetings are at the KLounge or the owner's shop; Sean no longer goes to Brevada.
 
 ## Council 1: the webmaster deal
 ## Where the Council Agrees

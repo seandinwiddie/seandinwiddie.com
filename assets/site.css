@@ -14,7 +14,7 @@
   --nav: #cfe2f3;
   --line: #e0e3e7;
   --primary: #5c00ff;
-  --blue: #007bff;
+  --blue: #0073e6;
   --green: #25b84a;
   --topbar: #2c2c2c;
   --page-width: 71.25rem;
@@ -87,7 +87,7 @@ img { max-width: 100%; height: auto; }
   text-decoration: none;
   white-space: nowrap;
 }
-.topbar__pay:hover { color: #fff !important; background: var(--green); }
+.topbar__pay:hover { color: var(--topbar) !important; background: var(--green); }
 
 /* Sticky primary navigation */
 .nav {
@@ -250,7 +250,7 @@ img { max-width: 100%; height: auto; }
   padding: 0.95rem 2rem;
   border-radius: 999px;
   color: #fff;
-  background: linear-gradient(135deg, #087ff5 0%, #0061c9 100%);
+  background: linear-gradient(135deg, #0774e2 0%, #0061c9 100%);
   box-shadow: 0 0.35rem 0.9rem rgb(0 123 255 / 28%);
   font-size: 0.83rem;
   font-weight: 700;
@@ -418,14 +418,14 @@ body.marketing-route { background: #fafafa; }
   justify-self: center;
   padding: 1.25rem 3.5rem;
   border-radius: 4em;
-  background: #007bff;
+  background: #0073e6;
   box-shadow: 0 1.125rem 1.75rem rgb(0 0 0 / 20%);
   font-size: 1.3125rem;
   font-weight: 400;
   line-height: 1.24;
 }
 .live-actions .button:nth-child(2) { grid-column: 3; }
-.live-actions .button:hover { background: #006fe6; }
+.live-actions .button:hover { background: #0066cc; }
 .marketing-panel {
   padding-top: 7.3125rem;
   padding-bottom: 0;
@@ -640,14 +640,14 @@ body.service-route { background: #fafafa; }
 .service-menu__links .button {
   justify-self: center;
   padding: 1.25rem 3.5rem;
-  background: #007bff;
+  background: #0073e6;
   box-shadow: 0 1.125rem 1.75rem rgb(0 0 0 / 20%);
   font-size: 1.3125rem;
   font-weight: 400;
   line-height: 1.2;
 }
 .service-menu__links .button:hover {
-  background: #006fe6;
+  background: #0066cc;
   transform: translateY(-2px);
 }
 .service-cards { padding: 5rem 0 3.75rem; }
@@ -813,7 +813,7 @@ body.service-route { background: #fafafa; }
   border: 0;
   border-radius: 999px;
   color: #fff;
-  background: linear-gradient(135deg, #087ff5 0%, #0061c9 100%);
+  background: linear-gradient(135deg, #0774e2 0%, #0061c9 100%);
   box-shadow: 0 0.25rem 0.7rem rgb(0 123 255 / 24%);
   font-weight: 700;
   line-height: 1.25;
