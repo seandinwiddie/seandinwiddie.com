@@ -8,7 +8,7 @@ Each pass, four reviewers read the whole site, each in a fresh context with no m
 
 ### 1. The local owner
 
-Reads as the first reader in the positioning brief: someone who runs something local, often wearing several hats at once (a county job, a business, a kiosk). Lists every objection that stops them from reaching out, and names, in their own words, what the agency firm's team does for them: why a team of local webmasters under one name beats a lone freelancer or a faraway agency. Scores the site from 0 to 10. Owners meet Sean, the face and guardian of the practice, and the site promises no reply time (`docs/terms.md`). Neither is an objection in itself; the owner judges whether the site makes them clear and reassuring.
+Reads as the first reader in the positioning brief: someone who runs something local, often wearing several hats at once (a county job, a business, a kiosk). Lists every objection that stops them from reaching out, and names, in their own words, what the agency firm's team does for them: why a team of local webmasters under one name beats a lone freelancer or a faraway agency. Scores the site from 0 to 10. Owners meet Sean, the face and guardian of the practice, and the site promises no reply time (`docs/terms.md`). Neither is an objection in itself; the owner judges whether the site makes them clear and reassuring. What a one-time client gets when something breaks after handover is scope creep, not an objection: the team stands by its work, and the site doesn't cater to it.
 
 ### 2. The webmaster or software developer
 

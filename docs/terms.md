@@ -13,6 +13,7 @@ Sean's working terms for owners and for webmasters, as they stand, and his direc
 - **The owner's own accounts.** Owners sign up for hosting, domains and tools in their own name. The team recommends the third-party tools and services it uses itself, and never resells or marks up a third-party cost.
 - **AI is software.** The team are advanced AI and software users. AI tools, bots and algorithms are part of the software craft, as they long have been, and a webmaster reviews and answers for every piece of work. The site speaks of AI plainly, as software, never as hype.
 - **Owners meet Sean.** For now Sean is the face, the owner and the guardian of the practice. Owners speak with him, he stands behind every job, and the written scope names the webmaster on it. The site can say that Sean reviews the results before launch.
+- **The team stands by its work.** That is the standard, never an offer of fixes; after-handover repair questions are scope creep, and the site doesn't cater to them (Sean, pass 10).
 - **Knowing the site.** The footer's promise, a call to someone who already knows the owner's site, belongs to a standing agreement: the monthly engagement. The footer stays as it is (Sean, pass 10), and the site writes no copy to answer repair-seekers or looky-loos.
 - **Meeting.** Sean works from Klamath Falls. Klamath Falls owners can meet at the KLounge or at their own shop. Redding owners work by phone, video and email; the site promises no in-person Redding meetings until Sean decides on the drive.
 - **One phone number.** (530) 638-3238.
