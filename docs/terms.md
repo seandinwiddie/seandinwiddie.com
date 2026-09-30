@@ -1,6 +1,6 @@
 # Terms
 
-Sean's working terms for owners and for webmasters, as they stand. They came through the llm-council (`docs/council-verdicts.md`) and Sean approved them on September 30, 2026. Site copy uses them in the site's own voice, never as a quotation. The fees themselves are in `docs/packages.md`.
+Sean's working terms for owners and for webmasters, as they stand, and his direction on what counsel puts in legal form. They came through the llm-council (`docs/council-verdicts.md`) and Sean approved them on September 30, 2026. Site copy uses them in the site's own voice, never as a quotation. The fees themselves are in `docs/packages.md`.
 
 ## Owner terms
 
@@ -24,15 +24,15 @@ Sean's working terms for owners and for webmasters, as they stand. They came thr
 - **One review before launch.** A second webmaster reviews the results before launch; it checks results against the scope, never how the work was done. Shared notes, team calls and pairing stay optional.
 - **The ladder by review, never by job size.** The split stays the same at every rung, and any rung takes any job. A junior's launch gets a senior's review, a mid's gets any peer's, and seniors review others' work. Webmasters enter and move up on delivered, reviewed results. No rung maps to a client's size.
 
-## Waiting on counsel, with the lean
+## Sean's direction, for counsel to put in legal form
 
-Counsel decides these. The lean is what the councils and the CTO favor, so counsel reviews a concrete proposal.
+Sean approved this direction on September 30, 2026. Counsel confirms the legal form (the subcontract, the scope template, the legal pages) and flags anything that doesn't hold; until then the site states the owner-facing parts plainly and makes no legal claim beyond them.
 
-- **The subcontract and the split.** Lean: a flat 70/30 on work run through the agency, with the 30% buying services (the name, the contract, billing, collection and the review before launch), never access. Webmasters run their own practice: their own registration, tools, insurance, hours and clients, with a written subcontract per job naming the fee and the pay date. Oregon's test fits this well. For a webmaster in California, counsel confirms the structure before the first one signs.
-- **Clients.** Lean: no non-solicit. Webmasters keep their outside clients, and work under an agency contract is billed through the agency while that contract runs.
-- **Retainers.** Lean: month to month, billed monthly in advance, 30 days' notice from either side. Nothing rolls over, and any undelivered scope is finished the next month. The annual engagement is billed monthly and can be ended for convenience, which public offices require.
-- **Continuity.** Lean: the engagement stays with Sean Dinwiddie's Webmastery, Sean covers, a departing webmaster's access is removed the same day, and the owner can move on with notice.
-- **Ownership.** Lean: accounts in the owner's name from day one (already the practice), the work assigned to the owner once paid, and any pre-existing tools licensed permanently with the site.
-- **Confidentiality and competitors.** Lean: one plain sentence in every scope; the team serves competitors, but never runs local search for two direct rivals in the same market.
-- **Legal pages.** Lean: the SMS terms come down (the site has no SMS form), the privacy policy says client information reaches Sean Dinwiddie's Webmastery and the webmaster on the job, and the terms follow Oregon law. These pages sit outside the copy review's focus.
-- **Public offices.** Lean: Oregon first, since Sean works from Klamath Falls. File the business name, then a W-9, general and professional liability insurance, and OregonBuys. Cal eProcure follows.
+- **The subcontract and the split.** a flat 70/30 on work run through the agency, with the 30% buying services (the name, the contract, billing, collection and the review before launch), never access. Webmasters run their own practice: their own registration, tools, insurance, hours and clients, with a written subcontract per job naming the fee and the pay date. Oregon's test fits this well. For a webmaster in California, counsel confirms the structure before the first one signs.
+- **Clients.** no non-solicit. Webmasters keep their outside clients, and work under an agency contract is billed through the agency while that contract runs.
+- **Retainers.** month to month, billed monthly in advance, 30 days' notice from either side. Nothing rolls over, and any undelivered scope is finished the next month. The annual engagement is billed monthly and can be ended for convenience, which public offices require.
+- **Continuity.** the engagement stays with Sean Dinwiddie's Webmastery, Sean covers, a departing webmaster's access is removed the same day, and the owner can move on with notice.
+- **Ownership.** accounts in the owner's name from day one (already the practice), the work assigned to the owner once paid, and any pre-existing tools licensed permanently with the site.
+- **Confidentiality and competitors.** one plain sentence in every scope; the team serves competitors, but never runs local search for two direct rivals in the same market.
+- **Legal pages.** the SMS terms come down (the site has no SMS form), the privacy policy says client information reaches Sean Dinwiddie's Webmastery and the webmaster on the job, and the terms follow Oregon law. These pages sit outside the copy review's focus.
+- **Public offices.** Oregon first, since Sean works from Klamath Falls. File the business name, then a W-9, general and professional liability insurance, and OregonBuys. Cal eProcure follows.
