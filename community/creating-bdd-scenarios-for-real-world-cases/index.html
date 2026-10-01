@@ -137,7 +137,7 @@
 <h2>11. Review and Revise</h2>
 <p>After creating your scenarios, review them for clarity, accuracy, and completeness. Make sure that they accurately reflect the real-world case and that the expected behavior aligns with user expectations.</p>
 <h2>12. Collaborate with Stakeholders</h2>
-<p>Engage with stakeholders, including the owner, the people who use the result and anyone who knows the trade, to validate the scenarios. Their feedback can help refine the scenarios and ensure that they address the real-world case effectively.</p>
+<p>Read the scenarios with the owner, the people who use the result and anyone who knows the trade, before work starts. They know the cases a scenario misses: the rush, the refund, the regular who orders by phone.</p>
 <h2>Example BDD Scenario for a Real-World Case</h2>
 <p>Here’s an example of a BDD scenario for a real-world case involving an e-commerce order:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Checkout
@@ -168,7 +168,7 @@
     And her cart still holds "Widget A"
     And she is asked for another card</code></pre>
 <p>A decline is expected, so it is answered as data, never thrown as an exception: the API returns the refusal with its reason, the slice leaves the cart alone because it empties only when the order is accepted, and the view asks for another card.</p></aside>
-<p>By following this structured approach, you can create comprehensive and accurate BDD scenarios for real-world cases. These scenarios provide a clear and testable specification of how the software should behave in complex, real-world situations, ensuring that it aligns with user needs and expectations.</p>
+<p>By following this structured approach, you can create comprehensive and accurate BDD scenarios for real-world cases. These scenarios provide a clear and testable specification of how the software should behave in complex, real-world situations, in words the owner can check against the business.</p>
 
 <!-- .entry-content -->
 <footer>

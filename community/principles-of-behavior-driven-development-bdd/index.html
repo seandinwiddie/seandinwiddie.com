@@ -116,11 +116,11 @@
 <p>Behavior-Driven Development (BDD) is founded on several key principles that guide its approach to software development. These principles help ensure that the focus remains on the behavior of the software from the user’s perspective. Below are the fundamental principles of BDD:</p>
 <ol>
 <li>
-<strong>User-Centric Perspective:</strong> At the core of BDD is a deep commitment to understanding and prioritizing the needs and expectations of the end users. BDD starts with a clear and empathetic understanding of how users will interact with the software and what outcomes they desire. By consistently putting the user at the center of the development process, BDD ensures that software delivers real value.</li>
+<strong>User-Centric Perspective:</strong> Every scenario is told from where a user stands, with an outcome that user would notice. A scenario that can only be told from the database&rsquo;s side, a row inserted or a flag set, means the need behind it hasn&rsquo;t been found yet, and the conversation goes back to the people who use the result.</li>
 <li>
 <strong>Collaboration:</strong> Behavior is settled between the people who know the business and the people who build the software. On a Sean Dinwiddie&rsquo;s Webmastery job, that is the owner, with the staff who use the result, and the webmaster, reading the scenarios together before work starts; what they settle goes into the written scope.</li>
 <li>
-<strong>Common Language:</strong> BDD encourages the use of a common and accessible language that is easily understood by both technical and non-technical team members. On the Sean Dinwiddie&rsquo;s Webmastery team, it is the owner&rsquo;s own words for the business, kept the same from the written scope to the code, so everyone reads the software&rsquo;s behavior the same way.</li>
+<strong>Common Language:</strong> Each thing keeps one name, the owner&rsquo;s, from the written scope through the scenario to the action and the test. Where a name has to change, the owner and the webmaster agree on the new one, and it changes everywhere at once, so no reader has to translate.</li>
 <li>
 <strong>Behavior Specifications:</strong> BDD relies on behavior specifications, which describe how the software should behave in specific situations or scenarios. These specifications are often written in a Given-When-Then format. Each scenario turns one expected behavior into a check a test can run.</li>
 <li>
@@ -128,7 +128,7 @@
 <li>
 <strong>Continuous Feedback:</strong> A scenario is read before work starts and run on every change after it, so the owner hears about a misunderstanding while it is still a sentence, and the webmaster hears about a regression the moment it happens.</li>
 <li>
-<strong>Automation:</strong> BDD scenarios serve as the basis for automated tests. Automated tests help ensure that the software behaves as expected and that it continues to do so as it evolves. This automation provides a safety net that helps detect regressions early and reduces the risk of introducing defects.</li>
+<strong>Automation:</strong> A scenario is finished when it runs as a test on every change and fails under its own name when the behavior breaks. The team runs scenarios both ways, as cucumber-js steps or as scenario-named tests in Vitest or Hspec, and <a href="/community/bdd-testing-framework/">BDD Testing Framework</a> runs one scenario each way.</li>
 <li>
 <strong>Integration with Development Practices:</strong> BDD is not a standalone practice but is often integrated with other development practices, such as Test-Driven Development (TDD). TDD complements BDD by focusing on writing tests to drive development. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#test-the-contract">Functional Composition</a> ends the same way at the smallest scale, stating the laws its functions must keep as tests.</li>
 </ol>
@@ -142,7 +142,7 @@
     Then the order is recorded at $25
     And her cart is empty</code></pre>
 <p>Ada is a person with an outcome she would notice, never a row in a table: the user&rsquo;s perspective. The owner reads it in the written scope before work starts and can say where it&rsquo;s wrong: collaboration, in a common language. Its words carry into the code as names, <code>placeOrder</code> and a cart that empties, so the owner&rsquo;s word and the test&rsquo;s word stay the same. It runs on every change as a test named for it, and a failure names the behavior that broke: automation and continuous feedback. Underneath it, unit tests pin the pure functions it rests on, such as the cart&rsquo;s total: behavior-driven on the outside, test-driven within. A principle that shows up in no scenario is only a slogan, and <a href="/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/">Reviewing and Enhancing BDD Scenarios as a Group</a> looks for exactly that.</p></aside>
-<p>By adhering to these principles, BDD helps development teams create software that consistently meets user expectations, fosters collaboration and clear communication, and embraces change as part of the development process. BDD’s user-centric approach ensures that the software is developed with the end user’s needs in mind, delivering value and enhancing the user experience.</p>
+<p>Held together, these principles keep each scenario aligned with a person&rsquo;s need, readable by the owner and run as a test on every change.</p>
 <p>The next lesson, How BDD Aligns Development with User Expectations, shows where that alignment holds, and where a scenario can pass while the need still fails.</p>
 
 <!-- .entry-content -->

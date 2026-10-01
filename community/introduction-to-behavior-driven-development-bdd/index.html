@@ -117,7 +117,7 @@
 <p><strong>Key Concepts of BDD:</strong></p>
 <ol>
 <li>
-<strong>User-Centric Approach:</strong> BDD begins by understanding the needs, expectations, and behaviors of the end users. It prioritizes creating software that directly addresses these user needs, ensuring that the end product is valuable and user-friendly.</li>
+<strong>User-Centric Approach:</strong> BDD begins with the people who use the software and what they need to get done, and describes each behavior from where they stand: a customer placing an order, a cook marking a dish sold out.</li>
 <li>
 <strong>Collaboration:</strong> The owner, the people who use the result and the webmaster agree on the behavior before it is built, in scenarios all of them can read.</li>
 <li>
@@ -136,7 +136,7 @@
 <li>
 <strong>Continuous Feedback:</strong> Questions and corrections come back while the work goes on, and a behavior the written scope never named is quoted and approved before it is built.</li>
 <li>
-<strong>Automation:</strong> BDD scenarios serve as the basis for automated tests. These tests validate that the software behaves as expected based on user scenarios. Run on every change, they fail the moment the software stops doing what a scenario describes. Pure code makes that automation cheap; the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#benefits-of-pure-functions">What Is a Function?</a> shows why code that returns the same output for the same input is the easiest to test.</li>
+<strong>Automation:</strong> BDD scenarios serve as the basis for automated tests. Run on every change, they fail the moment the software stops doing what a scenario describes. Pure code makes that automation cheap; the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#benefits-of-pure-functions">What Is a Function?</a> shows why code that returns the same output for the same input is the easiest to test.</li>
 </ol>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> The common language is not plain English in general. It is the owner&rsquo;s own words for the business, kept the same from the written scope to the code. Dan North introduced behavior-driven development in 2006 by writing tests as sentences about behavior, and Eric Evans&rsquo; <em>Domain-Driven Design</em> (2003) calls a vocabulary shared this way a ubiquitous language. On the Sean Dinwiddie&rsquo;s Webmastery team the words travel unchanged: a food truck owner says the brisket sold out, so the scenario in <a href="/community/identifying-user-needs/">Identifying User Needs</a> says <code>Given "Brisket" sold out at 1 p.m.</code>, the Redux Toolkit action that records it is <code>itemSoldOut</code>, and the test carries the scenario&rsquo;s name. When a word changes on the way, say the code calls it <code>inventoryZero</code>, every reader has to translate, and a translation is where a misunderstanding hides. Collaboration, feedback and automation all rest on that one habit: the owner can read the scenario, the webmaster can find its words in the code, and each can check the other.</p></aside>
 <p><strong>Benefits of BDD:</strong></p>
@@ -154,7 +154,7 @@
 <li>
 <strong>Improved Collaboration:</strong> Collaboration between technical and non-technical team members is enhanced, leading to more effective development.</li>
 </ol>
-<p>BDD is a valuable approach for teams that want to ensure that their software consistently delivers real value to users and aligns with business objectives. It fosters a culture of user-centric development and clear communication, ultimately leading to more reliable and valuable software products.</p>
+<p>BDD suits a team that wants to check its software against what its users need, on every change. The next lesson, Principles of Behavior-Driven Development (BDD), turns these concepts into the rules each scenario is held to.</p>
 
 <!-- .entry-content -->
 <footer>

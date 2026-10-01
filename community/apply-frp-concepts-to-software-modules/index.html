@@ -139,9 +139,9 @@
 <li>
 <strong>Collaboration and Integration:</strong> Other modules reach this one only through its public interface, its actions and selectors, so the rest of the app never depends on the shape of its state.</li>
 <li>
-<strong>Documentation:</strong> Document your FRP-based modules, explaining how they work and how other developers can work with them. Good documentation is essential for effective collaboration.</li>
+<strong>Documentation:</strong> The module&rsquo;s scenarios are its first documentation: they say what it does in the owner&rsquo;s words, and they fail when it stops. A short note beside them covers what they can&rsquo;t, such as why a value is derived rather than stored, for the next webmaster who opens the folder.</li>
 <li>
-<strong>Continuous Improvement:</strong> Continuously monitor and refine your FRP-based modules to improve their responsiveness and maintainability. Stay open to adopting new FRP techniques and best practices.</li>
+<strong>Continuous Improvement:</strong> A module changes the way it was built: a new behavior starts as a scenario, and a slow screen is measured before its code changes. The team keeps researching better ways to do each step, and adopts one once it has proven itself.</li>
 </ol>
 <aside class="notice depth" aria-label="Where it bends">
 <p><strong>Where it bends.</strong> Not every value belongs in a slice. Ask in order, and stop at the first yes: can it be derived from other state (a selector computes it); should it survive a refresh or be shared as a link (the router owns it); is it a server document reused across the app (RTK Query owns it); is it shared by unrelated components, with transitions worth recording (a slice owns it)? Anything else stays in the component. Two owners for one value drift apart, and a derived value stored in state goes stale. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#a-decision-procedure-for-one-piece-of-state">Modern Redux Architecture Patterns</a> sets out the procedure.</p>

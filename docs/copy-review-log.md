@@ -2,6 +2,109 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 15: October 1, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 8 | 9 | |
+| Webmaster | 8.5 | 9 | 9 |
+| Copywriter | 8.5 | 9 | 9 |
+| Senior CTO | 8.5 | 9 | 9 |
+
+These scores read the site after pass 14. The CTO and the copywriter expect focus pages at 9.5 and community at 9.5 after this pass. The whole site holds at 8.5 until Sean settles `/about/`, the Secure Payment link and `/prices/`, which every reviewer names as what an owner reaches from the menu.
+
+### The objections that matter most
+
+- **Owner:**
+  - `/contact/` and `/service/` still asked for a fee rather than an example, and four pages ended without the inquiry line;
+  - the homepage repeated itself, with the price last in its money paragraph;
+  - agency-speak in hub headlines and descriptions;
+  - Klamath Falls' "Meeting Sean", which was muddled and dropped video;
+  - one "we'll tell you" left on the ads page.
+- **Webmaster:**
+  - the capstone shipped a provider-down path that its own scope, tests and review never named;
+  - "Unavailable… so nothing was charged" overclaimed after a timeout;
+  - `statusOf`'s wildcard;
+  - "Joining the team" read as handing over 30% on one's own client;
+  - one slogan repeated on six FRP pages;
+  - the Outline's Module 3 map;
+  - the Introduction's owner-marketing paragraph.
+- **CTO:**
+  - the same points;
+  - Principles of BDD's split list;
+  - a Klamath Falls cascade bug that rendered the contact card's heading dark instead of the white the CSS declared;
+  - `/development/`'s H1 is Sean's wording.
+
+### Sean's directions this pass
+
+None new. Pass 15 worked within the standing ones:
+- **Bringing a client under the name** is the webmaster's choice, made for what the 30% pays for. `docs/terms.md` already settles it: no non-solicit, and outside clients stay theirs.
+- **The `/marketing/` and `/development/` H1s** are Sean's, so they stay. Their intro lines and descriptions are the loop's.
+- **Shared card photos:** the five lesson pairs that share a photo are accepted, since no unused photo is left.
+
+### Tweaks applied
+
+- **The capstone:**
+  - "Placing the order while payments are down" is in the scope, tested in Hspec (503 and no order), at the endpoint and slice (one test per refusal) and at the view, and listed in the review;
+  - `Unavailable` means the connection never opened, and a timeout is retried with the same key and otherwise reads "wasn't confirmed";
+  - `statusOf` names every `Problem`;
+  - type-checked, with 19 tests run against RTK 2.13 and React 19.3.
+- **Depth passages:** Introduction to FRP (continuous behaviors against state sampled at each dispatch), Writing BDD Scenarios for Software Modules (Background, a Scenario Outline) and Welcome to Module 1 (card, conversation, confirmation). Every module lesson now has one.
+- **Headings and structure:**
+  - h2 subheads on Writing Clear and on User-Centric Design;
+  - Principles of BDD is one list.
+- **Lesson bodies:**
+  - the declarative contrast is given once, and the slogan is cut elsewhere;
+  - BDD Testing Framework holds twelve requirements;
+  - Collaborative Sessions keeps Scrum where a job runs in sprints;
+  - the shared BDD items are split across Introduction to BDD, Principles and How BDD Aligns;
+  - "stakeholders" become the owner, the counter staff and the webmasters;
+  - closings claim only what a scenario does;
+  - the FRP overview's "How We Can Help" becomes the team's work.
+- **The Course Outline:** its Module 3 map points to Apply FRP and to the fold exercise.
+- **The Introduction:** the owner-marketing paragraph is cut and the shorthand is written out.
+- **Focus pages:**
+  - the inquiry line on every page that ends in contact details, asking for the closest example;
+  - the homepage's money paragraph opens with the one-time job, and its repeats are gone;
+  - benefit-first descriptions on the homepage, `/design/`, `/development/` and `/automation/`;
+  - `/automation/` speaks of hours given back;
+  - `/local/` and Redding in plain words;
+  - Klamath Falls gets real h2s, plain words and its declared white heading;
+  - the ads page: "the written scope names which of the two your money belongs in".
+- **Recruiting:**
+  - bringing a client under the name is the webmaster's choice;
+  - the course and the review come with joining;
+  - the fee is never lowered on "Joining the team";
+  - the engagement stays with the name when a webmaster leaves;
+  - `/contact/` calls the review a check of results, never method.
+- **The offer page:** "hot leads" and "marketing funnels" become the serious inquiry.
+
+### Waiting
+
+- **Pass 16:**
+  - h2 subheads on Defining User Stories and Identifying User Needs;
+  - the service pages' process steps as real ordered lists;
+  - the four repeated "Prioritize" items;
+  - Introduction to BDD's Benefits list;
+  - the closings on Defining and Practical Exercises;
+  - an "end users" sweep;
+  - whether the Course Outline takes a depth passage.
+- **Sean's:**
+  - the Secure Payment link;
+  - `/about/` and `/examples/`;
+  - `/prices/`;
+  - how work reaches a webmaster, the share count and declining a job;
+  - whether peer review is paid;
+  - the `/marketing/` and `/development/` H1s;
+  - the offer page's firm name;
+  - the nav landmark on his pages;
+  - memberships for administrators or webmasters;
+  - the KLounge;
+  - "since 2010";
+  - Medford;
+  - the testimonial names;
+  - Training's $600.
+
 ## Pass 14: October 1, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |

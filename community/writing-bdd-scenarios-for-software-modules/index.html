@@ -117,7 +117,7 @@
 <h2>1. Identify the Software Module</h2>
 <p>Begin by identifying the specific software module or feature you want to create scenarios for. This could be a module within a larger software application or a standalone software component. In a Redux Toolkit app, a module is a feature folder; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#organize-by-feature">Redux Toolkit and Functional Programming</a> shows the layout.</p>
 <h2>2. Understand User Expectations</h2>
-<p>Before writing BDD scenarios, you need a clear understanding of what the users expect from the software module. This might involve user stories, product requirements, or direct communication with stakeholders.</p>
+<p>Before writing BDD scenarios, you need a clear understanding of what the users expect from the software module. On a Sean Dinwiddie&rsquo;s Webmastery job, that is the module&rsquo;s user stories in the written scope, and a conversation with the owner wherever a story leaves a question open.</p>
 <h2>3. Define the High-Level Behavior</h2>
 <p>Start by defining the high-level behavior or functionality of the software module. What is its primary purpose, and how does it contribute to the overall system? This high-level understanding will guide the creation of more detailed scenarios.</p>
 <h2>4. Group the Scenarios Under a Feature</h2>
@@ -169,7 +169,7 @@
       | 6      | confirmed |
       | 7      | refused   |</code></pre>
 <p>A Background holds only Givens, and only those every scenario needs. A fact one scenario needs stays in that scenario, where its reader sees it; a Background that grows past a few lines turns each scenario into a puzzle whose start is somewhere else. In Vitest, the Background is a <code>beforeEach</code> inside the <code>describe</code> block named for the Feature; in Hspec, a <code>before_</code> around its <code>describe</code>. A Feature often outgrows one module: the Checkout in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> is proved at the API, the endpoint, the slice and the view, and each of their tests carries the same Feature and scenario names, so a report reads the same at every owner. When a Feature&rsquo;s scenarios stop sharing a Background or a story, it is usually two Features, and the place they part is where the scope can split them.</p></aside>
-<p>By following these steps, you can create effective BDD scenarios for your software modules. These scenarios provide a clear and testable specification of the module’s behavior, ensuring that it aligns with user expectations and business requirements.</p>
+<p>By following these steps, you can create effective BDD scenarios for your software modules. These scenarios provide a clear and testable specification of the module’s behavior, one the owner can read before it is built and a test can check after.</p>
 
 <!-- .entry-content -->
 <footer>

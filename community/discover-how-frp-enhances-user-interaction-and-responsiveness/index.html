@@ -127,13 +127,13 @@
 <li>
 <strong>Responsive User Interfaces:</strong> Every view that reads a value shows its new state after the action that changed it, so views reading the same fact show the same value. Screens with many moving parts, such as a kitchen queue or a booking calendar, stay consistent because every change runs through the same reducers.</li>
 <li>
-<strong>Error Handling and Recovery:</strong> FRP simplifies error handling by providing mechanisms to deal with errors in a declarative manner. When errors occur, FRP allows developers to define how the application should respond, which can include providing informative error messages or triggering recovery actions.</li>
+<strong>Error Handling and Recovery:</strong> A refused request arrives as an action carrying the API&rsquo;s reason as data. The slice decides what stays, as a cart that empties only on success, and a pure function chooses the words the customer reads, including whether to try again.</li>
 <li>
 <strong>Asynchronous Operations:</strong> Network requests stay at the boundary: RTK Query fetches, caches and refetches server data, and the view shows its loading, error or data state without handling the request itself. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#side-effect-architecture">Modern Redux Architecture Patterns</a> sets out which tool owns which effect.</li>
 <li>
 <strong>Modular Code:</strong> Each feature keeps its events, reducer, selectors and endpoints in one folder, so a change to how the cart works stays in the cart&rsquo;s folder.</li>
 <li>
-<strong>Testability:</strong> FRP code is highly testable. With its declarative nature and clear separation of concerns, it becomes easier to write unit tests for individual components and interactions, ensuring that user interactions behave as expected.</li>
+<strong>Testability:</strong> An interaction is tested where its logic lives. Its rule is a list of actions and the value a selector returns after them, with no browser; only the wiring, a click that dispatches and the words that appear, needs a rendered view, as in <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a>.</li>
 <li>
 <strong>Event-Driven User Interfaces:</strong> User interfaces can be designed with a strong focus on user events, allowing for rich and interactive user experiences. Features like auto-updating search results, live order status and interactive charts become more straightforward to implement.</li>
 <li>
