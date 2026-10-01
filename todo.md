@@ -5,7 +5,7 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 ## Copy review
 
 - [ ] Make the loop runnable: a project skill that runs `docs/copy-review.md` with `docs/reading-list.md`, in place of the installed dream-loop skill's image-and-3D process.
-- [ ] Keep running the copy review, pass by pass, until all four reviewers score 9 or higher. Each pass is in `docs/copy-review-log.md`.
+- [ ] Keep running the copy review, pass by pass, until all four reviewers score 9 or higher. Each pass is in `docs/copy-review-log.md`. Paused after pass 17 for Sean's direction (`docs/copy-review.md`: scores stopped improving): every reviewer holds the focus pages and the community at 9.5, and the whole site waits on Sean's `/prices/`, `/about/` and Secure Payment link.
 
 ## Pricing floors (Sean, pass 8)
 

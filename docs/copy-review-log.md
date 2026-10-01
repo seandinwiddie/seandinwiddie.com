@@ -2,6 +2,66 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 17: October 1, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 8 | 9.5 | |
+| Webmaster | 8.5 | 9.5 | 9.5 |
+| Copywriter | 8.5 | 9.5 | 9.5 |
+| Senior CTO | 8.5 | 9.5 | 9.5 |
+
+These scores read the site after pass 16. Every reviewer has held the focus pages and the community at 9.5 for two passes. The whole site hasn't moved since pass 15, and what holds it down is entirely Sean's: `/about/`, `/prices/` and the Secure Payment link, all reached from the menu.
+
+### The objections that matter most
+
+- **Owner:** nothing stops them reaching out. What remained, mostly on Klamath Falls:
+  - Klamath Falls named no webmaster and no review before launch;
+  - Klamath Falls said "simple" three times next to $6,000;
+  - meeting Sean could read as the paid consultation;
+  - `/contact/`'s month carried only billing terms;
+  - "templates" meant nothing to a county clerk.
+- **Webmaster:**
+  - the capstone's `Unavailable` rule held only on the first attempt;
+  - pushed live data skipped the decoder (checked in RTK 2.13);
+  - "every lesson belongs to one of three subjects" didn't fit Module 4;
+  - a few generic items in Module 1.
+- **CTO:** the same points. The loop's own pages are at polish only.
+
+### Sean's directions this pass
+
+None new. This pass ends the loop's run under `docs/copy-review.md`, which says: "When scores stop improving, the loop pauses for Sean's direction instead of escalating to large edits." The copywriter and the CTO both recommend the pause, because the last faults found came from the pass's own new copy.
+
+### Tweaks applied
+
+- **Klamath Falls:**
+  - it names the webmaster and Sean's review before launch;
+  - it says what its sites do instead of "simple";
+  - the meeting settles the written scope and fee for a job already named, and working the job out stays the paid consultation.
+- **`/contact/`:** the monthly engagement names the site kept running and the written work list agreed with the owner.
+- **The accessibility review:** "templates" is glossed as the page layouts the site is built from (homepage, Klamath Falls, Redding).
+- **`/automation/`:** "businesses and offices".
+- **The capstone:** `Unavailable` holds on the first attempt only.
+- **Live data:** Discover and Apply FRP run pushed data through the endpoint's decoder, and Endpoints at the Boundary says an endpoint with no decoder passes unchecked.
+- **The Introduction:** "rests on three subjects", and "a local business".
+- **Headings:** h2s on Writing BDD Scenarios, Practical Exercises and Welcome to Module 1, so every Module 1 page has real headings.
+- **Module 1 and 2 items:**
+  - Contextual Inquiry, Walk-throughs, and Collaborative's workshop, shared-words and outcomes items;
+  - fourteen generic "ensure" lines replaced.
+- **The copywriter's four rhythm fixes**, to the pass's own new copy.
+
+### Waiting
+
+- **Sean's decisions that would move the whole-site score, most valuable first:**
+  1. `/prices/`' tone against the two figures and the $2,000 floor;
+  2. `/about/`;
+  3. the Secure Payment link;
+  4. the `/design/`, `/marketing/` and `/development/` H1s;
+  5. the facts behind the trust lines (the KLounge, "since 2010", Medford, the testimonial names).
+
+  For the webmaster's score: how work reaches a webmaster, the share count, declining a job, and whether peer review is paid.
+- **Upkeep while paused:** h2s on six flat lessons (mechanical accessibility work that moves no score).
+
 ## Pass 16: October 1, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |
