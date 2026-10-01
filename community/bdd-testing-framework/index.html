@@ -123,27 +123,23 @@
 <li>
 <strong>Given-When-Then Structure:</strong> The framework should support the Given-When-Then structure for writing scenarios. It should allow users to define the initial context (Given), the actions taken (When), and the expected outcomes (Then) for each scenario.</li>
 <li>
-<strong>Parameterization:</strong> The framework should support parameterization to create reusable scenarios with varying inputs. This is especially useful for testing scenarios with multiple data combinations.</li>
+<strong>Parameterization:</strong> The framework should run one scenario once for each row of an Examples table, which Gherkin calls a Scenario Outline, so a rule with many cases stays one scenario.</li>
 <li>
 <strong>Scenario Tags and Labels:</strong> The framework should allow for tagging or labeling of scenarios, making it easy to categorize and filter them. Tags can be used to specify scenarios for specific purposes, such as regression testing.</li>
 <li>
 <strong>Test Automation:</strong> The framework should enable the automation of BDD scenarios. It should provide hooks or interfaces to integrate with automation tools and execute tests automatically.</li>
 <li>
-<strong>Data-Driven Testing:</strong> Support for data-driven testing is crucial. The framework should allow scenarios to be executed with different sets of data, improving test coverage and versatility.</li>
+<strong>Reporting and Logging:</strong> The framework should report each result under its scenario&rsquo;s name, so a failure reads in the written scope&rsquo;s own words, and keep the log that explains it.</li>
 <li>
-<strong>Reporting and Logging:</strong> The framework should generate detailed test reports and logs, providing insights into test results and failures. It should capture information on which scenarios passed and which failed.</li>
-<li>
-<strong>Integration with Development Tools:</strong> The framework should seamlessly integrate with popular development tools and continuous integration/continuous deployment (CI/CD) pipelines. This ensures that BDD tests can be easily incorporated into the development workflow.</li>
+<strong>Integration with Development Tools:</strong> The framework should run in the continuous integration pipeline on every change, so nothing merges with a failing scenario.</li>
 <li>
 <strong>Parallel Execution:</strong> To save time and improve efficiency, the framework should support parallel execution of scenarios across multiple environments or configurations.</li>
 <li>
-<strong>Environment Configuration:</strong> The ability to configure test environments (e.g., development, testing, staging, production) is crucial. The framework should allow testers to specify the environment in which scenarios are run.</li>
+<strong>Environment Configuration:</strong> The framework should let a run name its environment, such as development, testing or staging, and never production, where a scenario that places an order places a real one.</li>
 <li>
 <strong>Cross-Browser Testing:</strong> For web applications, the framework should support cross-browser testing to verify that the software functions correctly in different web browsers.</li>
 <li>
 <strong>Extensibility:</strong> A good framework should be extensible, allowing users to create custom step definitions or plugins to meet specific testing needs.</li>
-<li>
-<strong>Parameterized Reporting:</strong> The framework should provide customizable reporting capabilities, enabling users to tailor reports to their specific requirements.</li>
 <li>
 <strong>Scenario Reusability:</strong> Scenarios should be designed for reusability, so common steps or scenarios can be reused in multiple tests. This reduces redundancy and maintenance effort.</li>
 <li>

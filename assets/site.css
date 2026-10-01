@@ -406,6 +406,7 @@ body.marketing-route { background: #fafafa; }
 }
 .live-panel ol { padding-left: 2.5rem; }
 .live-panel li { margin: 0; }
+.live-panel h3 { margin: 0 0 0.5rem; color: #000; font-size: 1em; font-weight: 700; line-height: 1.4; }
 .live-actions {
   display: grid;
   grid-template-columns: 43.5% 13% 43.5%;

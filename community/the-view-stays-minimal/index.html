@@ -84,7 +84,7 @@
   <main id="main" tabindex="-1">
     <div class="page-stage">
       <div class="hero-banner page-hero">
-        <div class="hero-banner__img" style="background-image:url('/assets/img/community/roberto-nickson-rn4LOoEpdOc-unsplash-scaled.jpg');"></div>
+        <div class="hero-banner__img" style="background-image:url('/assets/img/sigmund-Zs1zHhHBG8g-unsplash-scaled.jpg');"></div>
         <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
       </div>
       <section class="page-lead">
@@ -186,24 +186,78 @@ export function PlaceOrder({ tenantId }: { tenantId: string }) {
 }</code></pre>
 <p>The click calls <code>placeOrder</code> and nothing more. The view doesn&rsquo;t await the answer or empty the cart: the slice empties it on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>, and the hook&rsquo;s state says whether the request is under way, done or refused. The button stays disabled while the request runs, so an order can&rsquo;t go twice. The status line is on the page from the start, so a screen reader announces the change when its text arrives. What it says comes from a pure function of the request, tested with no view at all:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/orderNotice.ts
-type OrderRequest = { isSuccess: boolean; isError: boolean; error?: unknown }
+import type { QueryStatus } from '@reduxjs/toolkit/query'
+
+type OrderRequest = { status: QueryStatus; error?: unknown }
 
 const isRecord = (value: unknown): value is Record&lt;string, unknown&gt; =&gt;
   typeof value === 'object' &amp;&amp; value !== null
 
 // The API answers a refusal as data, such as 422 with { reason: 'card-declined' }.
-const declined = (error: unknown) =&gt;
-  isRecord(error) &amp;&amp; isRecord(error.data) &amp;&amp; error.data.reason === 'card-declined'
+const reasonOf = (error: unknown): unknown =&gt;
+  isRecord(error) &amp;&amp; isRecord(error.data) ? error.data.reason : undefined
 
-export const orderNotice = ({ isSuccess, isError, error }: OrderRequest): string =&gt;
-  isSuccess
-    ? 'Order placed.'
-    : !isError
-      ? ''
-      : declined(error)
-        ? 'Your card was declined. Please choose another card.'
-        : 'The order wasn’t confirmed, and your cart is as it was.'</code></pre>
-<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; any other failure says the order wasn&rsquo;t confirmed and the cart is as it was, because both are true: when the connection drops, the client can&rsquo;t know whether the API recorded the order. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#use-query-and-mutation-hooks">Redux Toolkit and RTK Query Best Practices</a> reads a mutation&rsquo;s state the same way.</p>
+// What the customer can do about each refusal, keyed by the API's reason.
+const REFUSALS = new Map&lt;unknown, string&gt;([
+  ['card-declined', 'Your card was declined. Please choose another card.'],
+  ['payments-unavailable', 'Payment is unavailable for a moment, and your card wasn’t charged. Please try again shortly.'],
+])
+// Any other failure, including a dropped connection, can't say whether the order was recorded.
+const NOT_CONFIRMED = 'The order wasn’t confirmed, and your cart is as it was.'
+
+// One notice for every state a request can be in: leave one out and this fails to compile.
+const NOTICES: Record&lt;QueryStatus, (error: unknown) =&gt; string&gt; = {
+  uninitialized: () =&gt; '',
+  pending: () =&gt; '',
+  fulfilled: () =&gt; 'Order placed.',
+  rejected: (error) =&gt; REFUSALS.get(reasonOf(error)) ?? NOT_CONFIRMED,
+}
+
+export const orderNotice = ({ status, error }: OrderRequest): string =&gt; NOTICES[status](error)</code></pre>
+<p>The function chooses by key rather than through a chain of conditions, as the lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#match-dispatch-or-broadcast">Functional Composition</a> advises: the request&rsquo;s <code>status</code> picks one entry from a table that has to name all four states, so a state left out fails to compile, and a refusal&rsquo;s reason picks its words from a <code>Map</code>, which, unlike an object literal, holds no inherited keys such as <code>constructor</code>. A reason the map doesn&rsquo;t hold gets the notice that is always true.</p>
+<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; a payment provider that is down comes back as a 503 with a reason of its own, and the customer is asked to try again. Any other failure says the order wasn&rsquo;t confirmed and the cart is as it was, because both are true: when the connection drops, the client can&rsquo;t know whether the API recorded the order. The words follow the API&rsquo;s reason, never the status alone, because a 503 page from a proxy in front of the API says nothing about the order. The function is tested on its own, branch by branch, including the failures no scenario names:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/orderNotice.test.ts
+import { QueryStatus } from '@reduxjs/toolkit/query'
+import { describe, expect, it } from 'vitest'
+import { orderNotice } from './orderNotice'
+
+const rejected = (error: unknown) =&gt; orderNotice({ status: QueryStatus.rejected, error })
+
+describe('orderNotice', () =&gt; {
+  it('says nothing before the order is placed, or while it is on its way', () =&gt; {
+    expect(orderNotice({ status: QueryStatus.uninitialized })).toBe('')
+    expect(orderNotice({ status: QueryStatus.pending })).toBe('')
+  })
+
+  it('says the order is placed when the API accepts it', () =&gt; {
+    expect(orderNotice({ status: QueryStatus.fulfilled })).toBe('Order placed.')
+  })
+
+  it('asks for another card when the API refuses the card', () =&gt; {
+    expect(rejected({ status: 422, data: { reason: 'card-declined' } })).toBe(
+      'Your card was declined. Please choose another card.',
+    )
+  })
+
+  it('asks her to try again when the payment provider is down', () =&gt; {
+    expect(rejected({ status: 503, data: { reason: 'payments-unavailable' } })).toBe(
+      'Payment is unavailable for a moment, and your card wasn’t charged. Please try again shortly.',
+    )
+  })
+
+  it('says the order wasn’t confirmed for every other failure', () =&gt; {
+    const others = [
+      { status: 'FETCH_ERROR', error: 'TypeError: Failed to fetch' }, // the connection dropped
+      { status: 422, data: { reason: 'unknown-product' } }, // a refusal with no words of its own here
+      { status: 'PARSING_ERROR', originalStatus: 503, data: '&lt;html&gt;Service Unavailable&lt;/html&gt;', error: 'SyntaxError' }, // a proxy's page, not the API's
+      undefined,
+    ]
+    for (const error of others) {
+      expect(rejected(error)).toBe('The order wasn’t confirmed, and your cart is as it was.')
+    }
+  })
+})</code></pre>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#use-query-and-mutation-hooks">Redux Toolkit and RTK Query Best Practices</a> reads a mutation&rsquo;s state the same way, and the review checklist in <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#code-review-checklist">Functional Programming Maintenance Strategy</a> keeps ternaries to leaf values, like the one in <code>reasonOf</code>.</p>
 <h2>4. Read only what the view shows</h2>
 <p>The order history reads the list the endpoint caches. <code>selectFromResult</code> narrows the hook to the fields the view shows, so the view re-renders when they change and not for the rest of the request&rsquo;s state:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/OrderHistory.tsx

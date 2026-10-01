@@ -133,7 +133,7 @@
 <p>FRP is used in a wide range of applications, including real-time web applications, interactive user interfaces, games, simulations, and more. It is particularly valuable in scenarios where data and events are constantly changing, and a responsive and declarative approach is beneficial.</p>
 <p>Where FRP Comes From:</p>
 <p>FRP starts with Conal Elliott and Paul Hudak’s <em>Functional Reactive Animation</em> (1997), built on two ideas: behaviors, values that change over time, and events, things that happen at a moment. Observable libraries often borrow the name but model only streams of events. In custom apps, the Sean Dinwiddie’s Webmastery team builds the same ideas in Redux Toolkit: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows the boundary that keeps those reducers pure: a pure core decides, and a thin shell acts.</p>
-<p>In summary, Functional Reactive Programming (FRP) offers a powerful and declarative approach to handling asynchronous data streams and events. It simplifies event-driven programming, promotes a functional and immutable approach to data, and is widely used in various real-time and event-driven applications.</p>
+<p>In summary, FRP describes a program as events and the values derived from them, with a pure function at every step between. Redux Toolkit builds it from actions, a reducer that folds them into state, and selectors; the next lesson, Event streams and reactive programming, shows the event stream as the sequence of dispatched actions.</p>
 
 <!-- .entry-content -->
 <footer>

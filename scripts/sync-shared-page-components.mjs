@@ -4,7 +4,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { ROOT, fileForPathname, publicPageFiles, read, relativePath } from "./static-site.mjs";
+import { ROOT, fileForPathname, isNoindex, publicPageFiles, read, relativePath } from "./static-site.mjs";
 
 // The five service cards existed as three hand-maintained copies of the same
 // words: this shared block, the set inside /service/, and the set on the home
@@ -779,6 +779,8 @@ const HEADING_PAGES = new Set([
   "community/creating-bdd-scenarios-for-real-world-cases/index.html",
   "community/reviewing-and-enhancing-bdd-scenarios-as-a-group/index.html",
   "community/writing-bdd-scenarios-for-software-modules/index.html",
+  "community/capturing-user-requirements-effectively/index.html",
+  "community/translating-user-needs-into-user-stories/index.html",
 ]);
 const SUBHEAD_PATTERN = /^<p><strong>([^<]+?):?<\/strong><\/p>$/gm;
 const ARTICLE_BODY_PATTERN = /(<\/header><!-- \.entry-header -->)([\s\S]*?)(<!-- \.entry-content -->)/;
@@ -828,6 +830,12 @@ const mainText = (html) => (html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? "").re
 const withGuards = (name, html) => {
   const text = mainText(html);
   if (isFocusPage(name) && RETIRED_OFFERS.test(text)) throw new Error(`${name}: names a retired offer or free work`);
+  // The archives repeat the same cards in the same order on three bases, so only
+  // /community/ itself is indexed; every other archive page is noindex, follow and
+  // keeps its own canonical, which check-site requires.
+  if (PAGINATED_ARCHIVES.has(name) && name !== "community/index.html" && !isNoindex(html)) {
+    throw new Error(`${name}: a repeated archive page must be noindex`);
+  }
   // The Rx check reads the whole main element, images and alt text included, on
   // the lessons and on the archives that show their cards.
   const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? "";

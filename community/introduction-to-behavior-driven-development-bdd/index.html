@@ -123,8 +123,7 @@
 <li>
 <strong>Common Language:</strong> BDD promotes the use of a common language, typically plain English, to describe the behavior of the software. This language is accessible to both technical and non-technical team members, making it easier to communicate and define expectations.</li>
 <li>
-<strong>Behavior Specifications:</strong> BDD scenarios are used to specify how the software should behave in different situations. These scenarios follow the Given-When-Then format and provide a clear and structured way to describe expected behavior.</li>
-</ol>
+<strong>Behavior Specifications:</strong> BDD scenarios are used to specify how the software should behave in different situations. These scenarios follow the Given-When-Then format and provide a clear and structured way to describe expected behavior.
 <ul>
 <li>
 <strong>Given:</strong> Describes the initial context or state.</li>
@@ -133,12 +132,13 @@
 <li>
 <strong>Then:</strong> Describes the expected outcome or behavior.</li>
 </ul>
-<ol>
+</li>
 <li>
 <strong>Continuous Feedback:</strong> BDD encourages continuous feedback throughout the development process. Team members provide feedback, ask questions, and collaborate to refine and improve behavior specifications. This iterative approach allows the development team to adapt to changing user expectations and requirements.</li>
 <li>
 <strong>Automation:</strong> BDD scenarios serve as the basis for automated tests. These tests validate that the software behaves as expected based on user scenarios. Automated testing ensures that the software consistently meets user expectations, even as it evolves. Pure code makes that automation cheap; the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#benefits-of-pure-functions">What Is a Function?</a> shows why code that returns the same output for the same input is the easiest to test.</li>
 </ol>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> The common language is not plain English in general. It is the owner&rsquo;s own words for the business, kept the same from the written scope to the code. Dan North introduced behavior-driven development in 2006 by writing tests as sentences about behavior, and Eric Evans&rsquo; <em>Domain-Driven Design</em> (2003) calls a vocabulary shared this way a ubiquitous language. On the Sean Dinwiddie&rsquo;s Webmastery team the words travel unchanged: a food truck owner says the brisket sold out, so the scenario in <a href="/community/identifying-user-needs/">Identifying User Needs</a> says <code>Given "Brisket" sold out at 1 p.m.</code>, the Redux Toolkit action that records it is <code>itemSoldOut</code>, and the test carries the scenario&rsquo;s name. When a word changes on the way, say the code calls it <code>inventoryZero</code>, every reader has to translate, and a translation is where a misunderstanding hides. Collaboration, feedback and automation all rest on that one habit: the owner can read the scenario, the webmaster can find its words in the code, and each can check the other.</p></aside>
 <p><strong>Benefits of BDD:</strong></p>
 <ol>
 <li>
