@@ -2,6 +2,92 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 12: October 1, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 7.5 | 8.5 | |
+| Webmaster | 8 | 8.5 | 8 |
+| Copywriter | 8 | 8.5 | 8 |
+| Senior CTO | 8 | 8.5 | 8 |
+
+These scores read the site after pass 11. The copywriter expects 8, 9 and 8.5 after this pass.
+
+### The objections that matter most
+
+- **Owner:**
+  - the change clause read as $2,000 on top of the $6,000 month;
+  - whether upkeep, search, ads and conversion work share one month;
+  - when the month is billed;
+  - the public-office offer buried on the homepage;
+  - "the whole engagement" tripping on `/contact/`.
+- **Webmaster:**
+  - the slice's cart-empties test cited but never shown;
+  - the optimistic cart posted the client's price;
+  - the Outline missing a Module 4 lesson;
+  - the ladder not saying what a rung carries;
+  - whether a custom app needs Haskell.
+- **CTO:**
+  - the same points;
+  - openapi3's `InsOrd.Compat` map for `fromList`;
+  - `decodingBaseQuery` used before its declaration in file order;
+  - the FRP overview's Rx-style description;
+  - a card alt that didn't match its photo.
+
+### Sean's directions this pass
+
+None new. Pass 12 settled what the docs already answered: billing in advance and 30 days' notice (`docs/terms.md`), and what a rung carries.
+
+### Tweaks applied
+
+- **Module 4's fourth lesson, "The View Stays Minimal":**
+  - view-model selectors;
+  - product and quantity sent, never the price;
+  - the mutation hook carrying the request;
+  - `selectFromResult` with a stable fallback;
+  - the view tested by role and text for the placed order and the declined card;
+  - type-checked, with its tests run against RTK 2.13 and React 19.
+- **Endpoints at the Boundary:**
+  - the test sets up the cart, asserts it empties, and checks the posted body;
+  - the optimistic cart posts the product only and takes the server's cart;
+  - `FetchBaseQueryMeta` added, `decodingBaseQuery` placed in file order, and the codegen's TypeScript-config note.
+- **The API lesson:** `InsOrd.fromList`, and the price snapshot led by "prices change after the sale".
+- **Accessibility:** h2 subheads on Collaborative Sessions and Real-World Cases through the sync, and a heading-order check in the build.
+- **Depth passages:** Identifying User Needs, Practical Exercises and Principles of BDD.
+- **Focus pages:**
+  - under the monthly engagement, changes go on the month's written work list;
+  - one month covers upkeep, local search, ads and conversion work;
+  - the month is billed in advance, and the year monthly at $10,000;
+  - a public-office paragraph on the homepage with the ADA dates and sdin.dev;
+  - "the monthly engagement itself";
+  - a plain Marketing panel intro.
+- **Recruiting:** what a rung changes (who reviews whose launch), and that each written scope names the stack.
+- **Register:**
+  - five Introduction lines;
+  - four offer-page lines, with DFY/DWY labelled as the Inner Circle's mentorship.
+- **The Course Outline:** lists all four Module 4 lessons, and its duplicate link now points to From Scenario to Slice.
+- **Cards:** the FRP overview's description and the Welcome card's alt.
+
+### Waiting
+
+- **Pass 13:**
+  - the capstone, "One Feature, Scope to Launch";
+  - the next depth passages;
+  - h2 subheads on two more lessons;
+  - the Outline's Module 4 list from `LESSONS`;
+  - the rest of the Introduction and offer page register.
+- **Sean's:**
+  - the nav landmark on his pages;
+  - how jobs reach webmasters and who sets the share count;
+  - memberships for administrators or webmasters;
+  - the KLounge;
+  - "since 2010";
+  - Medford;
+  - the testimonial names;
+  - `/about/`;
+  - Training's $600;
+  - the prices page's floor.
+
 ## Pass 11: September 30, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |

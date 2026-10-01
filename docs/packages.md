@@ -29,7 +29,7 @@ Status: **Sean's working set of offers since September 29, 2026, reworked for hi
 4. **The Monthly Engagement ($6,000 a month):** a site and systems held every month: ongoing care (hosting managed in the owner's own account, certificates, updates, backups, the uptime watch, security patches, and a webmaster who knows the site), local search, ads at a flat fee (never a percentage of spend; the owner pays the platform directly under a written ceiling), conversion work, automation upkeep, and the monthly work list and planning call, with a written monthly note. New builds beyond the work list are scoped as shares; ad spend and third-party fees are outside it; technology planning and the accessibility program belong to the year. It never pays the owner's bills: hosting, the domain and tools are billed to the owner by each provider.
 5. **The Annual Engagement ($120,000 a year, billed monthly):** the monthly engagement every month, plus technology planning (an annual technology plan, vendor and contract review, procurement support, a security review; fractional CTO leadership beyond it goes through sdin.dev) and an accessibility program (a review of sites, apps and key documents, remediation of the office's own web content within scope, an Accessibility Conformance Report, the statement and reporting process, staff training, quarterly conformance notes).
 
-**After handover.** The site runs in the owner's own accounts, set to update itself where the stack allows (WordPress core, plugins and theme on auto-update), and the owner is shown how to run it. A change after handover is a one-time job from a third share; ongoing care is part of the monthly engagement.
+**After handover.** The site runs in the owner's own accounts, set to update itself where the stack allows (WordPress core, plugins and theme on auto-update), and the owner is shown how to run it. Under the monthly engagement, changes go on the month's written work list; outside it, a change after handover is a one-time job from a third share.
 
 **Public offices.** An office starts with an accessibility review at a half share ($3,000), then remediation in whole shares, each scoped after the review, or holds the annual engagement, which carries the whole program.
 
@@ -68,7 +68,7 @@ Sean works with the model as it stands: one rate sold in shares, the year as twe
 
 - Names: "the monthly engagement" and "the annual engagement", or "the Month" and "the Year".
 - Delivery: shares are not time; each scope names its own delivery date.
-- Retainer terms: the first term, notice, whether unused work rolls over, billing in advance, termination for convenience.
+- **Settled: retainer terms** (Sean's direction, September 30, 2026; `docs/terms.md`): month to month, billed monthly in advance, 30 days' notice from either side; nothing rolls over; the annual engagement is billed monthly ($10,000) and can be ended for convenience. On the site since pass 12.
 - Ownership (recommended: the owner holds the domain, hosting and accounts; code and content are the owner's once paid; the webmaster's pre-existing tools are licensed, not transferred).
 - Third-party costs (recommended: billed to the owner directly by each provider, so every fee stays a share).
 - Payment schedules and travel between Klamath Falls and Redding.
