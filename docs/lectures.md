@@ -49,6 +49,8 @@ Linked in pass 12: The View Stays Minimal → Redux Standard Patterns and Functi
 
 Linked in pass 13: One Feature, Scope to Launch → Redux Toolkit and RTK Query Best Practices (`#decide-who-owns-the-state`), Practical Applications of Functional Programming (`#represent-expected-failure-as-plain-data`), Functional Programming in Other Languages (`#functional-core-imperative-shell`, `#cross-language-conformance-tests`), Functional Programming Maintenance Strategy (`#code-review-checklist`) and Modern Redux Architecture Patterns (`#testing-architecture`); Discover's depth passage → Modern Redux Architecture Patterns (`#narrow-subscriptions-and-preserve-references`); Master the Fundamentals' depth passage → What Is a Function? (`#pure-functions`).
 
+Linked in pass 14: The View Stays Minimal → Functional Composition (`#match-dispatch-or-broadcast`) and Functional Programming Maintenance Strategy (`#code-review-checklist`); BDD and Unit Testing's depth passage → Practical Applications of Functional Programming (`#test-laws-and-boundaries`).
+
 Every anchor is checked against the lectures repository's headings with its own `slugify`.
 
 
