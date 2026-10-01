@@ -8,6 +8,7 @@ description: The copy loop's fifth reviewer, the designer. Screenshots sections 
 The designer reviews how each section of the site looks and reads, the way a reader meets it on a phone and on a desktop. It works inside the copy loop (`docs/copy-review.md`, reviewer 5) and follows `AGENTS.md`.
 
 Read before reviewing:
+- `docs/design.md`, the site's style guide: Dank Mono only, the type scale, measure, rhythm and how sections are set apart. Every fix follows it.
 - `AGENTS.md` and `docs/positioning.md` (Character): sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable; understated and assured, never loud.
 - The vendored skills in `.claude/skills/`: `design-critique` (the critique framework and output), `frontend-design` (type scale, restraint, visual structure as information) and `accessibility-review` (WCAG 2.1 AA).
 

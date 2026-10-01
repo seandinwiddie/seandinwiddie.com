@@ -8,6 +8,7 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 |---|---|
 | `AGENTS.md` | How to work in this repo and the writing rules |
 | `docs/positioning.md` | What Sean Dinwiddie's Webmastery is, who the site speaks to, pricing and promises |
+| `docs/design.md` | The site's style guide: Dank Mono only, the type scale, measure, rhythm and how sections are set apart |
 | `docs/copy-review.md` | The five-reviewer copy loop (the designer joined after pass 17), its focus, distractions and the mission |
 | `docs/reading-list.md` | The audit of the copywriter's fifteen sources: what each teaches, what the copywriter checks, and what they add up to for the site |
 | `docs/packages.md` | The package ladder within the prices page's two figures: Sean's working set of offers |
@@ -18,7 +19,7 @@ This repo is the site for **Sean Dinwiddie's Webmastery**. These instructions ap
 | `docs/copy-review-log.md` | Each copy review pass: scores, the objections that matter most, the tweaks applied and what waits |
 | `todo.md` | Open work on the site |
 
-Read `docs/positioning.md` before any copy work, and `docs/copy-review.md` and `docs/reading-list.md` before any copy review.
+Read `docs/positioning.md` before any copy work, `docs/copy-review.md` and `docs/reading-list.md` before any copy review, and `docs/design.md` before any design work.
 
 Keep Sean's workload light until more webmasters join: decisions the senior CTO reviewer or the llm-council can work out within Sean's directions (pricing lines, payment terms, wording) are worked out there, and only facts only Sean knows, or choices that change his own work, go to him, a few at a time. Sean's pending decisions (`todo.md`, "Facts only Sean has", and the open decisions in `docs/packages.md`) can go through the llm-council skill (`.claude/skills/llm-council/`): five advisors, an anonymous peer review and a chairman's verdict. A verdict is a recommendation. Nothing it recommends lands in the docs or on the site until Sean approves it, and facts only Sean knows never come from a council.
 

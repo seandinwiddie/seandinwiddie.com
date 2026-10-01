@@ -89,6 +89,7 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 ## Navigation and design
 
 - [ ] Simplify the menu and keep the core items at the top level.
+- [ ] Design, held for Sean (design pass 1, `docs/design.md`): his pages keep their own settings (a 1.06rem body at 58.5rem, about 100 characters a line), and the shared page title (`.page-lead h1`) and call-to-action button (a gradient with a glow) are on his pages too. With his OK, the reading-page measure reaches his pages, the title gets its display step, and the button settles into its plain blue.
 - [ ] Check spacing and sizes across the site, and add a contrast check to `npm run build` covering the text and background pairs in `assets/site.css`, including hover and focus states.
 - [ ] The top bar's "💳 Secure Payment" goes to a personal PayPal.me link, at odds with the payment terms on `/contact/`. It is a shared component on Sean's pages too, so what owners pay through is Sean's call (pass 14's owner review reads it as a tip jar beside $2,000 to $120,000 jobs).
 - [ ] CRO's session recordings need a line in the privacy policy (session replay is the pattern behind California CIPA suits).
