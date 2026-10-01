@@ -161,7 +161,7 @@
 <p>Instant feedback is a choice made per action: adding to a cart can show at once and be undone if the API refuses, as <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a> shows, while placing an order waits for the API.</p>
 <p>A failure is an event like any other, never an exception for a view to catch. When the API refuses an order, RTK Query dispatches the request&rsquo;s rejected action with the API&rsquo;s reason as plain data. The slice, which empties the cart only on <code>matchFulfilled</code>, leaves it alone, and a pure function turns the request&rsquo;s state into the words the customer reads, as <code>orderNotice</code> does in <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a>.</p>
 <p>A response that isn&rsquo;t what the API promised fails its decoder and arrives the same way, as a <code>CUSTOM_ERROR</code> the view can show.</p></aside>
-<p>So FRP gives developers a clear, concise way to manage user interactions and the requests they start. Declared once and composed from small pure functions over events and state, complex event-driven behavior gets simpler, and every response to user input traces back to the event behind it.</p>
+<p>So FRP gives every user interaction, and every request it starts, a name, a place and a test. Declared once and composed from small pure functions over events and state, complex event-driven behavior gets simpler, and every response to user input traces back to the event behind it.</p>
 
 <!-- .entry-content -->
 <footer>

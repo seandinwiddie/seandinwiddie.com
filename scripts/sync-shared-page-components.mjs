@@ -305,12 +305,13 @@ const pageHref = (base, page) => (page === 1 ? base : `${base}page/${page}/`);
 const paginationLink = (base, page, label, rel = "") =>
   `<a href="${pageHref(base, page)}"${rel ? ` rel="${rel}"` : ""}>${label}</a>`;
 
+// A first or last page link that would repeat the previous or next link is left out.
 const archivePagination = (base, page) => {
   const links = [
-    ...(page > 1 ? [paginationLink(base, 1, "First page")]: []),
-    ...(page > 1 ? [paginationLink(base, page - 1, "Previous page", "prev")]: []),
-    ...(page < ARCHIVE_PAGE_COUNT ? [paginationLink(base, page + 1, "Next page", "next")]: []),
-    ...(page < ARCHIVE_PAGE_COUNT ? [paginationLink(base, ARCHIVE_PAGE_COUNT, "Last page")]: []),
+    ...(page > 2 ? [paginationLink(base, 1, "First page")]: []),
+    ...(page > 1 ? [paginationLink(base, page - 1, `Previous page: ${archivePagePart(page - 1)}`, "prev")]: []),
+    ...(page < ARCHIVE_PAGE_COUNT ? [paginationLink(base, page + 1, `Next page: ${archivePagePart(page + 1)}`, "next")]: []),
+    ...(page < ARCHIVE_PAGE_COUNT - 1 ? [paginationLink(base, ARCHIVE_PAGE_COUNT, "Last page")]: []),
   ];
   return `<nav class="pagination" aria-label="Archive pagination">\n${links.join("\n")}\n</nav>`;
 };
@@ -658,9 +659,18 @@ const CARD_ORDER = [
 ];
 // The parts each archive page opens with: the overview (with Module 1), Module 2,
 // Module 3 (with Module 4) and Module 5 (with the pages off the path).
-const ARCHIVE_PAGE_STARTS = ["course", "m2", "m3", "m5"].map((key) =>
+const ARCHIVE_PAGE_PARTS = ["course", "m2", "m3", "m5"];
+const ARCHIVE_PAGE_STARTS = ARCHIVE_PAGE_PARTS.map((key) =>
   CARD_ORDER.findIndex(([href]) => href === `/community/${PARTS[key].opener}/`),
 );
+// The previous and next links name the part the page they lead to opens with, as a
+// lesson's links name the lesson: "Next page: Module 2". The part's full name is the
+// heading the reader lands on; in the link it kept each page's links from fitting one
+// row on a desktop, and a later page's link wrapped to the left.
+const archivePagePart = (page) => {
+  const key = ARCHIVE_PAGE_PARTS[page - 1];
+  return key === "course" ? "Overview" : PARTS[key].name.split(":")[0];
+};
 const ARCHIVE_PAGE_COUNT = ARCHIVE_PAGE_STARTS.length;
 const archiveFile = (base, page) => `${pageHref(base, page).slice(1)}index.html`;
 const PAGINATED_ARCHIVES = new Map(

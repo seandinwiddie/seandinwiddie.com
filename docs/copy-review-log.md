@@ -2,7 +2,7 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
-## Lesson posts: copy rounds 1–3 and post design rounds 1–3: October 1, 2026
+## Lesson posts: copy rounds 1–4 and post design rounds 1–3: October 1, 2026
 
 After design pass 5 Sean asked for the community pages to read easier and carry more diagrams, in the voice of experts having a blast with the craft, and for several rounds with the designer to bring the lesson template to an AAA polish. Each round is a copy round and a design round, with a review between.
 
@@ -20,10 +20,12 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 
 - **Post design round 3:** the hub reads as the course's front door: its first page maps the course (the overview and five modules, each with its lesson count, linked to its first lesson), each archive page starts where a part of the course starts (the overview and Module 1, Module 2, Modules 3 and 4, Module 5 and the pages off the path) under the part's name, and each card names its place ("Start here", "Lesson 4"); the pagination reads left to right. Lessons with four or more sections open with a quiet "On this page" list (24 lessons, 181 links), in two columns on a desktop when it runs long. Diagram captions hold a 66-character measure. Every text in the community column stays AAA (2,039 pairs), and site.css grows 57 bytes, the dead rules it found freeing most of what it adds.
 
+- **Copy round 4 (59 edits on 22 pages and the sync):** the hub's previous and next links name the part their page opens with ("Next page: Module 2"; the full names wrapped the row to three lines), and a first or last link that repeated one of them goes. "User Stories" in running text reads "user stories" (22 places), titles and module names aside. Reviewing as a Group's thirteen steps stand under three stages (before, in and after the session) and Real-World Cases' twelve under three (before you write, as you write, before work starts), each step an h3 that keeps its id. Five voice edits, among them FRP giving every user interaction, and every request it starts, a name, a place and a test.
+
 ### Waiting
 
-- The hub's pagination naming where it leads ("Next page: Module 2"), for the copywriter; the "On this page" label in the margin on a wide screen, as the depth label hangs; a shorter first page on the hub.
-- Title Case "User Stories" mid-sentence on Practical Exercises and the course outline.
+- The "On this page" label in the margin on a wide screen, as the depth label hangs; a shorter first page on the hub.
+- Five more lessons of eight to eleven steps, grouped under stages a lesson at a time (todo.md).
 - For Sean: whether lesson titles move to sentence case too (it changes head titles, cards and structured data).
 
 ## Design passes 6–9: October 1, 2026

@@ -1731,6 +1731,7 @@ figure.diagram { margin: 2.25rem 0; }
 /* A lesson's h2 links to itself (docs/design.md, Lesson posts): a "#" in the margin on
    hover, focus or target, clear of the menu. */
 h2:has(> .heading-anchor) { position: relative; scroll-margin-top: 7.5rem; }
+.family-community h3[id] { scroll-margin-top: 7.5rem; }
 .heading-anchor, .heading-anchor:hover { color: inherit; text-decoration: none; }
 .heading-anchor::before {
   content: "#";
