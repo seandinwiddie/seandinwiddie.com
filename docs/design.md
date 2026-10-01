@@ -52,7 +52,9 @@ Centered text is for a title, a short lead or a call to action: the page title, 
 
 - A heading sits closer to what it introduces than to what came before it: at least twice the space above it as below.
 - The homepage's sections sit about 4rem apart, from each heading to the text above. On the longer pages an h2 takes 2.8rem above and 1rem below, and an h3 about 2.2rem above and under 1rem below.
-- Paragraphs sit 1.2 to 1.7rem apart. List items keep the paragraph's leading and part by 0.35rem, so a wrapped item stays one item.
+- Paragraphs sit 1.2 to 1.7rem apart. List items keep the paragraph's leading and part by 0.35rem, so a wrapped item stays one item. A hub's bullets and numbers hang from one indent (2.1875rem, 1.75rem on a phone), the bullet at the text's own size.
+- A set-apart passage or group stands 2rem from the text around it: a lesson's depth passage, the community's lesson cards, Klamath Falls' cards. Code inside a depth passage keeps to its frame. Code blocks in a row (the code, the line that runs it, what it prints) sit 0.75rem apart, one example.
+- The rule over the note to webmasters sits 2.5rem under the text above it and 1.5rem over the note, on every page that carries the note.
 - Room is the luxury. When a section feels crowded, add space before adding a rule, a box or a color.
 
 ## How sections are set apart
@@ -61,7 +63,7 @@ In order of preference:
 
 1. **Space and a heading.** Most sections need nothing more.
 2. **A hairline rule** (1px, `--line`) where the reader changes: the note to webmasters, the related links that close a service page.
-3. **A tinted panel** (#e9ecef on the page, white within the homepage's grey) for a page's body, or for promises read together.
+3. **A tinted panel** (#e9ecef on the page, white within the homepage's grey) for a page's body, or for promises read together. A panel under the title band continues it: no border or rounded corner where the two meet. Cards on one page share one padding (1.5rem, 1.25rem on a phone).
 4. **A card** only for parallel choices that each lead somewhere (the services, the service areas), and **a rule down the left** only for a quotation.
 
 ## Choices and buttons
@@ -92,7 +94,8 @@ Each design pass takes at most one small step, and the steps lead here:
 
 - **The title's display step, in Dank Mono.** The page title takes a little more size and tighter leading, so it out-ranks everything below it. The loop's pages carry it (design pass 2); its shared style reaches Sean's pages with his OK.
 - **Quieter color.** The link violet settles a few points deeper and less electric (its first step, #5c00ff to #5909e1, sits inside the loop's pages' main text since design pass 2), and the call-to-action button's gradient and glow settle into its plain blue: one approved step per pass, reaching Sean's pages only with his OK.
-- **One rhythm for the service areas.** Klamath Falls and Redding are set alike. Klamath Falls' headings, lead and cards sit on the text's edge, as Redding's do (design pass 2); its four colored card rules and its green call-to-action card are color decisions, held for approval.
+- **One rhythm for the service areas.** Klamath Falls and Redding are set alike. Klamath Falls' headings, lead and cards sit on the text's edge, as Redding's do (design pass 2), its cards share one padding and "Not sure what you need yet" takes the page's section step, as on contact (design pass 3); its four services are white cards on a hairline, as Redding's are (design pass 3's color step), and its green call-to-action card is a color decision, held for approval.
+- **Rules that read on the grey panels.** The hairline over the note to webmasters and the related links on the service pages and Klamath Falls is `--line` (#e0e3e7) on #e9ecef, 1.04:1, so it all but vanishes, where the hubs draw the same rule in the muted grey at 30%. A later color step gives the panels' rules the hubs' tone.
 
 ## Checking a page
 
