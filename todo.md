@@ -114,7 +114,7 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 ## Community pages as training
 
-- [ ] **Lesson titles in sentence case (the loop's call after design pass 9, AGENTS.md):** each lesson's h1, its card, lesson lists, previous and next links, the course map and its structured data's headline; the head `<title>` keeps Title Case, as every page's does, and no URL changes.
+- [ ] **Lesson titles quoted in running text (after copy round 5 set lesson titles in sentence case):** about 46 linked citations in lesson bodies take the new sentence-case title, since the link marks it as a title; the 15 plain closing lines ("The next lesson, Identifying User Needs, finds…") and the banner's "the Course Outline maps the course" get a small rewording. Subject names in running text ("Behavior-Driven Development (BDD) describes…") are terms and read in lowercase as the course writes them elsewhere; the Introduction's "Our Vision:" and "Our Mission:" heads in sentence case.
 
 The senior CTO's order for the community pages, a few small tweaks each pass (pass 6 review, `scratchpad` report summarized here):
 

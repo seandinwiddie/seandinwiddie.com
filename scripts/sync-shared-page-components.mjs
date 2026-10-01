@@ -138,77 +138,83 @@ const COMMENTS_NOTICE_PATTERN =
 // split, the membership offer and a note about Sublime Text), and nothing could
 // see it. Every lesson's links now come from this one list and are replaced by
 // pattern: moving a lesson here re-points both of its neighbours, and --check
-// sees any page that drifts. Each entry is [slug, the title its links show,
-// its part of the course]. The banner, the module lists and the community
-// sitemap render from it, and each lesson's JSON-LD headline and breadcrumb
-// follow its title.
+// sees any page that drifts. Each entry is [slug, its title, its part of the
+// course], then its name in Title Case where that reads differently. The title
+// is in sentence case, as every heading on the loop's pages is (AGENTS.md): the
+// h1, the links, the cards, the module lists and the community sitemap render
+// from it, and each lesson's JSON-LD headline and breadcrumb follow it. The head
+// title keeps Title Case, as every page's does, and so does the site's sitemap,
+// so both take the Title Case name.
 //
 // No lesson is gated by level (docs/copy-review.md, Focus): every lesson is a
 // reference for every level of practice, and a more practiced reader takes
 // more depth from the same page. So the list names places, never levels.
 const PARTS = Object.freeze({
   course: { name: "Course overview", opener: "introduction" },
-  m1: { name: "Module 1: Understanding User Stories", opener: "welcome-to-module-1-understanding-user-stories" },
-  m2: { name: "Module 2: Behavior-Driven Development (BDD)", opener: "module-2-behavior-driven-development-bdd" },
-  m3: { name: "Module 3: Functional Reactive Programming (FRP)", opener: "module-3-functional-reactive-programming-frp" },
-  m4: { name: "Module 4: The Chain End to End", opener: "the-api-haskell-servant-and-nile" },
-  m5: { name: "Module 5: Python and Model Training", opener: "module-5-python-and-model-training" },
+  m1: { name: "Module 1: Understanding user stories", opener: "welcome-to-module-1-understanding-user-stories" },
+  m2: { name: "Module 2: Behavior-driven development (BDD)", opener: "module-2-behavior-driven-development-bdd" },
+  m3: { name: "Module 3: Functional reactive programming (FRP)", opener: "module-3-functional-reactive-programming-frp" },
+  m4: { name: "Module 4: The chain end to end", opener: "the-api-haskell-servant-and-nile" },
+  m5: { name: "Module 5: Python and model training", opener: "module-5-python-and-model-training" },
 });
 
 const LESSONS = [
   // The course overview: every level enters at the Introduction.
   ["introduction", "Introduction", "course"],
-  ["user-stories", "User Stories", "course"],
-  ["behavior-driven-development-bdd", "Behavior-Driven Development (BDD)", "course"],
-  ["functional-reactive-programming-frp", "Functional Reactive Programming (FRP)", "course"],
+  ["user-stories", "User stories", "course", "User Stories"],
+  ["behavior-driven-development-bdd", "Behavior-driven development (BDD)", "course", "Behavior-Driven Development (BDD)"],
+  ["functional-reactive-programming-frp", "Functional reactive programming (FRP)", "course", "Functional Reactive Programming (FRP)"],
   ["curriculum", "Curriculum", "course"],
-  ["user-story_bdd_frp-workflow", "Course Outline", "course"],
+  ["user-story_bdd_frp-workflow", "Course outline", "course", "Course Outline"],
   // Module 1: why, what, finding, capturing, translating, writing well, practice, review.
-  ["welcome-to-module-1-understanding-user-stories", "Welcome to Module 1: Understanding User Stories", "m1"],
-  ["understanding-the-importance-of-user-centric-design", "Understanding the Importance of User-Centric Design", "m1"],
-  ["defining-user-stories", "Defining User Stories", "m1"],
-  ["identifying-user-needs", "Identifying User Needs", "m1"],
-  ["capturing-user-requirements-effectively", "Capturing User Requirements Effectively", "m1"],
-  ["translating-user-needs-into-user-stories", "Translating User Needs into User Stories", "m1"],
-  ["writing-clear-and-concise-user-stories", "Writing Clear and Concise User Stories", "m1"],
-  ["practical-exercises-in-creating-user-stories", "Practical Exercises in Creating User Stories", "m1"],
-  ["collaborative-sessions-to-review-and-refine-user-stories", "Collaborative Sessions to Review and Refine User Stories", "m1"],
+  ["welcome-to-module-1-understanding-user-stories", "Welcome to Module 1: Understanding user stories", "m1", "Welcome to Module 1: Understanding User Stories"],
+  ["understanding-the-importance-of-user-centric-design", "Understanding the importance of user-centric design", "m1", "Understanding the Importance of User-Centric Design"],
+  ["defining-user-stories", "Defining user stories", "m1", "Defining User Stories"],
+  ["identifying-user-needs", "Identifying user needs", "m1", "Identifying User Needs"],
+  ["capturing-user-requirements-effectively", "Capturing user requirements effectively", "m1", "Capturing User Requirements Effectively"],
+  ["translating-user-needs-into-user-stories", "Translating user needs into user stories", "m1", "Translating User Needs into User Stories"],
+  ["writing-clear-and-concise-user-stories", "Writing clear and concise user stories", "m1", "Writing Clear and Concise User Stories"],
+  ["practical-exercises-in-creating-user-stories", "Practical exercises in creating user stories", "m1", "Practical Exercises in Creating User Stories"],
+  ["collaborative-sessions-to-review-and-refine-user-stories", "Collaborative sessions to review and refine user stories", "m1", "Collaborative Sessions to Review and Refine User Stories"],
   // Module 2: the introduction first, then Gherkin, writing, review and testing.
-  ["module-2-behavior-driven-development-bdd", "Module 2: Behavior-Driven Development (BDD)", "m2"],
-  ["introduction-to-behavior-driven-development-bdd", "Introduction to Behavior-Driven Development (BDD)", "m2"],
-  ["principles-of-behavior-driven-development-bdd", "Principles of Behavior-Driven Development (BDD)", "m2"],
-  ["how-bdd-aligns-development-with-user-expectations", "How BDD Aligns Development with User Expectations", "m2"],
-  ["given-when-then-gherkin-syntax-in-bdd", "Given-When-Then (Gherkin) Syntax in BDD", "m2"],
-  ["writing-bdd-scenarios", "Writing BDD Scenarios", "m2"],
-  ["writing-bdd-scenarios-for-software-modules", "Writing BDD Scenarios for Software Modules", "m2"],
-  ["creating-bdd-scenarios-for-real-world-cases", "Creating BDD Scenarios for Real-World Cases", "m2"],
-  ["reviewing-and-enhancing-bdd-scenarios-as-a-group", "Reviewing and Enhancing BDD Scenarios as a Group", "m2"],
-  ["bdd-and-unit-testing", "BDD and Unit Testing", "m2"],
-  ["bdd-testing-framework", "BDD Testing Framework", "m2"],
+  ["module-2-behavior-driven-development-bdd", "Module 2: Behavior-driven development (BDD)", "m2", "Module 2: Behavior-Driven Development (BDD)"],
+  ["introduction-to-behavior-driven-development-bdd", "Introduction to behavior-driven development (BDD)", "m2", "Introduction to Behavior-Driven Development (BDD)"],
+  ["principles-of-behavior-driven-development-bdd", "Principles of behavior-driven development (BDD)", "m2", "Principles of Behavior-Driven Development (BDD)"],
+  ["how-bdd-aligns-development-with-user-expectations", "How BDD aligns development with user expectations", "m2", "How BDD Aligns Development with User Expectations"],
+  ["given-when-then-gherkin-syntax-in-bdd", "Given-When-Then (Gherkin) syntax in BDD", "m2", "Given-When-Then (Gherkin) Syntax in BDD"],
+  ["writing-bdd-scenarios", "Writing BDD scenarios", "m2", "Writing BDD Scenarios"],
+  ["writing-bdd-scenarios-for-software-modules", "Writing BDD scenarios for software modules", "m2", "Writing BDD Scenarios for Software Modules"],
+  ["creating-bdd-scenarios-for-real-world-cases", "Creating BDD scenarios for real-world cases", "m2", "Creating BDD Scenarios for Real-World Cases"],
+  ["reviewing-and-enhancing-bdd-scenarios-as-a-group", "Reviewing and enhancing BDD scenarios as a group", "m2", "Reviewing and Enhancing BDD Scenarios as a Group"],
+  ["bdd-and-unit-testing", "BDD and unit testing", "m2", "BDD and Unit Testing"],
+  ["bdd-testing-framework", "BDD testing framework", "m2", "BDD Testing Framework"],
   // Module 3: the introduction first; Apply FRP ends the course.
-  ["module-3-functional-reactive-programming-frp", "Module 3: Functional Reactive Programming (FRP)", "m3"],
-  ["introduction-to-functional-reactive-programming-frp", "Introduction to Functional Reactive Programming (FRP)", "m3"],
+  ["module-3-functional-reactive-programming-frp", "Module 3: Functional reactive programming (FRP)", "m3", "Module 3: Functional Reactive Programming (FRP)"],
+  ["introduction-to-functional-reactive-programming-frp", "Introduction to functional reactive programming (FRP)", "m3", "Introduction to Functional Reactive Programming (FRP)"],
   ["event-streams-and-reactive-programming", "Event streams and reactive programming", "m3"],
-  ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals in Software Development", "m3"],
+  ["master-the-fundamentals-of-frp-in-software-development", "FRP fundamentals in software development", "m3", "FRP Fundamentals in Software Development"],
   ["discover-how-frp-enhances-user-interaction-and-responsiveness", "Discover how FRP enhances user interaction and responsiveness", "m3"],
   ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules", "m3"],
   // Module 4: the chain end to end, from the API behind the app.
   ["the-api-haskell-servant-and-nile", "The API: Haskell Servant and Nile", "m4"],
-  ["from-scenario-to-slice", "From Scenario to Slice", "m4"],
-  ["endpoints-at-the-boundary", "Endpoints at the Boundary", "m4"],
-  ["the-view-stays-minimal", "The View Stays Minimal", "m4"],
-  ["one-feature-scope-to-launch", "One Feature, Scope to Launch", "m4"],
+  ["from-scenario-to-slice", "From scenario to slice", "m4", "From Scenario to Slice"],
+  ["endpoints-at-the-boundary", "Endpoints at the boundary", "m4", "Endpoints at the Boundary"],
+  ["the-view-stays-minimal", "The view stays minimal", "m4", "The View Stays Minimal"],
+  ["one-feature-scope-to-launch", "One feature, scope to launch", "m4", "One Feature, Scope to Launch"],
   // Module 5: the team's Python, the geometry its model training rests on, then the
   // path from fine-tune to release. The same principles, in a different stack.
-  ["module-5-python-and-model-training", "Module 5: Python and Model Training", "m5"],
-  ["python-the-teams-way", "Python, the Team\u2019s Way", "m5"],
-  ["geometric-reasoning-in-model-training", "Geometric Reasoning in Model Training", "m5"],
-  ["from-fine-tune-to-release", "From Fine-Tune to Release", "m5"],
+  ["module-5-python-and-model-training", "Module 5: Python and model training", "m5", "Module 5: Python and Model Training"],
+  ["python-the-teams-way", "Python, the team\u2019s way", "m5", "Python, the Team\u2019s Way"],
+  ["geometric-reasoning-in-model-training", "Geometric reasoning in model training", "m5", "Geometric Reasoning in Model Training"],
+  ["from-fine-tune-to-release", "From fine-tune to release", "m5", "From Fine-Tune to Release"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
-for (const [slug, , part] of LESSONS) {
+for (const [slug, title, part, name] of LESSONS) {
   if (!PARTS[part]) throw new Error(`LESSONS: ${slug} has an unknown part`);
+  if (name !== undefined && (name === title || name.toLowerCase() !== title.toLowerCase())) {
+    throw new Error(`LESSONS: ${slug}'s Title Case name must be its title's words, in Title Case`);
+  }
 }
 for (const [key, { opener }] of Object.entries(PARTS)) {
   const lessons = partOf(key);
@@ -529,7 +535,7 @@ const SCHEMA_PATTERN = /(<script type="application\/ld\+json" data-agency-schema
 const withLessonSchema = (name, html) => {
   const index = lessonIndex(name);
   if (index === -1) return html;
-  const [slug, title] = LESSONS[index];
+  const [, title] = LESSONS[index];
   const match = html.match(SCHEMA_PATTERN);
   if (!match) throw new Error(`${name}: missing the agency schema`);
   const schema = JSON.parse(match[2]);
@@ -540,7 +546,7 @@ const withLessonSchema = (name, html) => {
   const breadcrumbs = schema["@graph"].find((node) => node["@type"] === "BreadcrumbList");
   if (breadcrumbs) breadcrumbs.itemListElement.at(-1).name = title;
   const page = schema["@graph"].find((node) => node["@type"] === "WebPage");
-  if (page) page.name = headTitle(slug, title);
+  if (page) page.name = headTitle(LESSONS[index]);
   return html.replace(SCHEMA_PATTERN, (_, open, _json, close) => `${open}${JSON.stringify(schema)}${close}`);
 };
 
@@ -594,16 +600,25 @@ const withModuleLessons = (name, html) => {
 // The Course Outline's Module 4 list was kept by hand, so each new lesson had
 // to be typed into it. Module 4's and Module 5's lists render from LESSONS, like
 // each module's own list; the objectives, topics and activities below each stay
-// as written. An opener that is a page about its module (its title is the
+// as written. Each module's heading is its PARTS name, as on the hub's map and the
+// community sitemap. An opener that is a page about its module (its title is the
 // module's name) stays out of the list, since the module's heading links it.
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const OUTLINE_MODULES = ["m4", "m5"];
+const OUTLINE_HEADINGS = Object.keys(PARTS).filter((key) => key !== "course");
+const outlineHeadingPattern = (key) =>
+  new RegExp(`(<h2><a href="/community/${PARTS[key].opener}/">)[^<]*(</a></h2>)`);
 const outlinePattern = (key) =>
   new RegExp(
     `(<h2><a href="/community/${PARTS[key].opener}/">${escapeRegExp(PARTS[key].name)}</a></h2>\\n<ul>\\n)[\\s\\S]*?(\\n<li><em>Objectives:</em></li>)`,
   );
 const withOutlineModules = (name, html) => {
   if (name !== COURSE_OUTLINE) return html;
+  const headed = OUTLINE_HEADINGS.reduce((page, key) => {
+    const pattern = outlineHeadingPattern(key);
+    if (!pattern.test(page)) throw new Error(`${name}: missing ${PARTS[key].name.split(":")[0]}'s heading`);
+    return page.replace(pattern, (_, open, close) => `${open}${PARTS[key].name}${close}`);
+  }, html);
   return OUTLINE_MODULES.reduce((page, key) => {
     const pattern = outlinePattern(key);
     if (!pattern.test(page)) throw new Error(`${name}: missing ${PARTS[key].name.split(":")[0]}'s lesson list`);
@@ -611,7 +626,7 @@ const withOutlineModules = (name, html) => {
       .filter(([, title]) => title !== PARTS[key].name)
       .map(([slug, title]) => `<li><a href="/community/${slug}/">${title}.</a></li>`);
     return page.replace(pattern, (_, open, close) => `${open}${items.join("\n")}${close}`);
-  }, html);
+  }, headed);
 };
 
 // The community sitemap listed pages in WordPress publication order, with the
@@ -622,7 +637,7 @@ const SITEMAP_LIST_PATTERN = /<div class="sitemap-list"[^>]*>[\s\S]*?\n<\/div>/;
 const ALSO_IN_THE_COMMUNITY = [
   ["/community/", "Community home"],
   ["/community/staff/", "Joining the team"],
-  ["/community/our-community-unveiling-our-offer-and-prices/", "Our Community: Unveiling Our Offer and Prices"],
+  ["/community/our-community-unveiling-our-offer-and-prices/", "Our community: Unveiling our offer and prices"],
   ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/", "P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! \u270c\ud83c\udffb"],
   ["/community/from-marketing-to-development/", "From marketing to development"],
 ];
@@ -766,9 +781,10 @@ const withWebmasterNote = (name, html) =>
     ? html.replace(WEBMASTER_NOTE_PATTERN, (_, open, close) => `${open}${WEBMASTER_NOTE}${close}`)
     : html;
 
-// Each lesson's page title is its LESSONS title with the site's suffix, or a
-// shorter head title here when that would pass the 65 characters a search result
-// shows. The <title>, og:title, twitter:title and the WebPage name stay in step.
+// Each lesson's page title is its LESSONS name in Title Case, as every page's head
+// title is, with the site's suffix, or a shorter head title here when that would
+// pass the 65 characters a search result shows. The <title>, og:title,
+// twitter:title and the WebPage name stay in step.
 const SITE_SUFFIX = " | Sean Dinwiddie's Webmastery";
 const HEAD_TITLES = new Map([
   ["introduction", "Course Introduction"],
@@ -796,7 +812,8 @@ const HEAD_TITLES = new Map([
   ["apply-frp-concepts-to-software-modules", "Applying FRP to Software Modules"],
   ["geometric-reasoning-in-model-training", "Geometric Reasoning in Training"],
 ]);
-const headTitle = (slug, title) => `${HEAD_TITLES.get(slug) ?? title}${SITE_SUFFIX}`;
+const titleCaseName = ([, title, , name]) => name ?? title;
+const headTitle = (lesson) => `${HEAD_TITLES.get(lesson[0]) ?? titleCaseName(lesson)}${SITE_SUFFIX}`;
 const TITLE_PATTERNS = [
   /(<title>)[^<]*(<\/title>)/,
   /(<meta property="og:title" content=")[^"]*(">)/,
@@ -806,8 +823,7 @@ const TITLE_PATTERNS = [
 const withLessonTitle = (name, html) => {
   const index = lessonIndex(name);
   if (index === -1) return html;
-  const [slug, title] = LESSONS[index];
-  const full = headTitle(slug, title);
+  const full = headTitle(LESSONS[index]);
   if (full.length > 65) throw new Error(`${name}: "${full}" passes 65 characters; add a HEAD_TITLES entry`);
   const escaped = full.replaceAll("'", "&#x27;");
   return TITLE_PATTERNS.reduce(
@@ -816,8 +832,19 @@ const withLessonTitle = (name, html) => {
   );
 };
 
+// Each lesson's h1 is its LESSONS title, so it can't drift from the links, cards and
+// headline that name it.
+const H1_PATTERN = /(<h1>)[^<]*(<\/h1>)/;
+const withLessonHeading = (name, html) => {
+  const index = lessonIndex(name);
+  if (index === -1) return html;
+  if (!H1_PATTERN.test(html)) throw new Error(`${name}: missing its h1`);
+  return html.replace(H1_PATTERN, (_, open, close) => `${open}${LESSONS[index][1]}${close}`);
+};
+
 // The main sitemap's community list was alphabetical and kept by hand, so a new
-// lesson landed wherever it was typed. It renders from LESSONS, in teaching order.
+// lesson landed wherever it was typed. It renders from LESSONS, in teaching order,
+// each lesson by its Title Case name, as the rest of that page's labels are.
 const MAIN_SITEMAP = "sitemap/index.html";
 const MAIN_SITEMAP_COMMUNITY_PATTERN = /(<h3>Community<\/h3>\n<ul>\n)[\s\S]*?(\n<\/ul>)/;
 const MAIN_SITEMAP_OFF_PATH = [
@@ -830,7 +857,7 @@ const MAIN_SITEMAP_OFF_PATH = [
   ["/community/sitemap/", "Community Sitemap"],
 ];
 const mainSitemapCommunity = () =>
-  [["/community/", "Community Home"], ...LESSONS.map(([slug, title]) => [`/community/${slug}/`, title]), ...MAIN_SITEMAP_OFF_PATH]
+  [["/community/", "Community Home"], ...LESSONS.map((lesson) => [`/community/${lesson[0]}/`, titleCaseName(lesson)]), ...MAIN_SITEMAP_OFF_PATH]
     .map(([href, title]) => `<li><a href="${href}">${title}</a></li>`)
     .join("\n");
 
@@ -1044,6 +1071,7 @@ const routeTransforms = Object.freeze([
   withRelatedServices,
   withFeaturedServices,
   withLessonTitle,
+  withLessonHeading,
   withFocusableCode,
   withTrimmedCategory,
   withLessonHeadings,

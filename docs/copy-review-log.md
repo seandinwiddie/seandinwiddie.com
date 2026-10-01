@@ -2,7 +2,7 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
-## Lesson posts: copy rounds 1–4 and post design rounds 1–3: October 1, 2026
+## Lesson posts: copy rounds 1–5 and post design rounds 1–3: October 1, 2026
 
 After design pass 5 Sean asked for the community pages to read easier and carry more diagrams, in the voice of experts having a blast with the craft, and for several rounds with the designer to bring the lesson template to an AAA polish. Each round is a copy round and a design round, with a review between.
 
@@ -22,11 +22,13 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 
 - **Copy round 4 (59 edits on 22 pages and the sync):** the hub's previous and next links name the part their page opens with ("Next page: Module 2"; the full names wrapped the row to three lines), and a first or last link that repeated one of them goes. "User Stories" in running text reads "user stories" (22 places), titles and module names aside. Reviewing as a Group's thirteen steps stand under three stages (before, in and after the session) and Real-World Cases' twelve under three (before you write, as you write, before work starts), each step an h3 that keeps its id. Five voice edits, among them FRP giving every user interaction, and every request it starts, a name, a place and a test.
 
+- **Copy round 5 (87 edits on 54 pages and the sync):** Sean left lesson titles to the loop, so they read in sentence case as every heading on the loop's pages does: 35 lesson titles, the five module names, and the hub's, offer page's, sitemap's and archives' h1s ("Writing BDD scenarios", "Module 2: Behavior-driven development (BDD)"), with names and acronyms kept. Each lesson's h1 now renders from `LESSONS`, so it can't drift from its card, list entry, previous and next links or structured data, and the Course Outline's module heads render from `PARTS`. Head `<title>`s, social titles and URLs are unchanged.
+
 ### Waiting
 
+- Lesson titles quoted in running text, still in Title Case (todo.md).
 - The "On this page" label in the margin on a wide screen, as the depth label hangs; a shorter first page on the hub.
 - Five more lessons of eight to eleven steps, grouped under stages a lesson at a time (todo.md).
-- For Sean: whether lesson titles move to sentence case too (it changes head titles, cards and structured data).
 
 ## Design passes 6–9: October 1, 2026
 
