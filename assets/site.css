@@ -204,12 +204,13 @@ img { max-width: 100%; height: auto; }
 .nav__social a:hover { color: #fff; background: var(--blue); }
 
 /* Contained homepage hero and gray content surface */
-/* The white band between the menu and the photograph narrows one step at a time
-   (docs/design.md, Rhythm): 6.25rem until design pass 6, 5rem until design pass 7, now
-   4rem, the homepage's section rhythm. A phone keeps 2rem. */
+/* The white band between the menu and the photograph narrowed one step at a time
+   (docs/design.md, Rhythm): 6.25rem until design pass 6, 5rem until design pass 7, and
+   4rem since, the homepage's section rhythm. Since design pass 8 it scales with the
+   screen from a phone's 2rem to the desktop's 4rem, where it jumped at 52rem. */
 .home-stage {
   width: min(calc(100% - 2rem), var(--page-width));
-  margin: 4rem auto 0;
+  margin: clamp(2rem, 7.7vw, 4rem) auto 0;
 }
 .hero-banner { position: relative; width: 100%; margin: 0; }
 .hero-banner__img {
@@ -252,17 +253,17 @@ img { max-width: 100%; height: auto; }
   line-height: 1.45;
   text-wrap: balance;
 }
-/* The call to action settles toward the plain blue of the site's choices one step at a
-   time (docs/design.md, Direction). Design pass 6 moved the gradient's ends halfway to
-   #0073e6; design pass 7 takes away the glow and the lift: on hover the pill turns the
-   flat #0066cc the site's other choices take. */
+/* The call to action has settled into the plain blue of the site's choices, one step a
+   pass (docs/design.md, Direction): design pass 6 moved the gradient's ends halfway to
+   #0073e6, design pass 7 took away the glow and the lift, and design pass 8 the gradient:
+   the pill is the pills' flat #0073e6 and turns their #0066cc on hover. */
 .hero__cta {
   display: inline-block;
   padding: 0.95rem 2rem;
   border-radius: 999px;
   color: #fff;
-  background: linear-gradient(135deg, #0474e4 0%, #006ad8 100%);
-  font-size: 0.83rem;
+  background: #0073e6;
+  font-size: 0.9rem; /* 0.83rem until design pass 8 */
   font-weight: 700;
   text-decoration: none;
 }
@@ -358,13 +359,12 @@ img { max-width: 100%; height: auto; }
   border: 1px solid var(--line);
   border-radius: 0.3rem;
   background: #fff;
-  box-shadow: 0 0.2rem 0.55rem rgb(31 36 48 / 12%);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0.1rem 0.275rem rgb(31 36 48 / 12%);
+  transition: box-shadow 0.2s ease;
 }
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0.55rem 1.2rem rgb(31 36 48 / 14%);
-}
+/* The featured cards settle by approved steps (docs/design.md): since design pass 8 their
+   shadow is half as deep, at rest and on hover, and hover no longer lifts them 3px. */
+.card:hover { box-shadow: 0 0.275rem 0.6rem rgb(31 36 48 / 14%); }
 .card a.card__link { display: block; color: inherit; text-decoration: none; }
 /* Five services stand three over two, the two centered under the three, where the last
    two sat alone on the left of their row (docs/design.md, design pass 6). Each card
@@ -751,7 +751,7 @@ body.service-route { background: #fafafa; }
 /* Shared interior-page layout */
 .page-stage {
   width: min(calc(100% - 2rem), var(--page-width));
-  margin: 4rem auto 0;
+  margin: clamp(2rem, 7.7vw, 4rem) auto 0;
 }
 .page-hero .hero-banner__img { height: 19rem; }
 .page-lead {
@@ -951,7 +951,7 @@ body.service-route { background: #fafafa; }
   border: 0;
   border-radius: 999px;
   color: #fff;
-  background: linear-gradient(135deg, #0474e4 0%, #006ad8 100%);
+  background: #0073e6;
   font-weight: 700;
   line-height: 1.25;
   text-decoration: none;
@@ -1264,6 +1264,17 @@ main:focus { outline: none; }
   }
 }
 .privacy-preferences-button[hidden] { display: none; }
+/* Keyboard focus rings the button inside its edges, where the ring outside them was cut
+   off by the viewport's edge and the page's end (docs/design.md, design pass 8): along
+   the corner tab's inside edge, on its own dark ground; inside the bar, on a dark halo. */
+.privacy-preferences-button:focus-visible { outline-offset: -3px !important; box-shadow: none; }
+@media (max-width: 84.9375rem) {
+  .privacy-preferences-button:focus-visible {
+    outline-offset: -6px !important;
+    box-shadow: inset 0 0 0 3px rgb(31 36 48 / 85%);
+  }
+}
+.privacy-preferences-button:hover { text-decoration: underline; text-underline-offset: 0.18em; }
 
 /* Responsive layout */
 @media (max-width: 78rem) {
@@ -1308,10 +1319,7 @@ main:focus { outline: none; }
     background: transparent;
     box-shadow: none;
   }
-  .home-stage {
-    width: min(calc(100% - 1rem), var(--page-width));
-    margin-top: 2rem;
-  }
+  .home-stage { width: min(calc(100% - 1rem), var(--page-width)); }
   .hero-banner__img { height: 14rem; }
   .hero-banner__eyebrow { left: 1.25rem; max-width: calc(100% - 2.5rem); }
   .hero-banner__eyebrow span { font-size: 0.88rem; }
@@ -1329,10 +1337,7 @@ main:focus { outline: none; }
   .archive-cards,
   .privacy-consent { grid-template-columns: 1fr; }
   .local-overview-route .local-location-grid { grid-template-columns: 1fr; }
-  .page-stage {
-    width: min(calc(100% - 1rem), var(--page-width));
-    margin-top: 2rem;
-  }
+  .page-stage { width: min(calc(100% - 1rem), var(--page-width)); }
   .page-hero .hero-banner__img { height: 14rem; }
   .page-lead { padding: 2.5rem 1rem 2.25rem; }
   .page-lead h1 { font-size: clamp(1.8rem, 9vw, 2.4rem); }

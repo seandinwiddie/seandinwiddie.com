@@ -23,17 +23,19 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 - Post design round 3: the hub as the front door, an "On this page" list on long lessons, caption width, the hub's pagination.
 - For Sean: whether lesson titles move to sentence case too (it changes head titles, cards and structured data).
 
-## Design passes 6–7: October 1, 2026
+## Design passes 6–8: October 1, 2026
 
-The first two subtle steps on the four shared pieces Sean opened after design pass 5, site-wide, his pages included only in those pieces.
+The first three subtle steps on the four shared pieces Sean opened after design pass 5, site-wide, his pages included only in those pieces.
 
 | Pass | Score before | After |
 |---|---|---|
 | 6 | 8.1 | 8.4 |
 | 7 | 8.4 | 8.5 |
+| 8 | 8.6 | 9.0 |
 
 - **Pass 6:** the call-to-action gradient halfway to the flat blue, its glow halved (4.54:1); the band under the menu 6.25rem to 5rem; the featured cards three over two with titles at 2rem; "Privacy choices" a tab in the corner; /local/, Klamath Falls and Redding take warm photographs already in the repo.
 - **Pass 7:** the button's glow and lift go, every blue button hovers to #0066cc; the band to 4rem; the featured cards two by two on a tablet; "Privacy choices" a bar at the page's foot below 85rem; Automation, Website development, On-site SEO and Off-site SEO and ads take photographs from the repo.
+- **Pass 8:** the pass's color step: the call to action drops its gradient for the pills' flat #0073e6 (white 4.57:1), so every blue button on the site is one blue at rest and one on hover; its label 0.83rem to 0.9rem, no longer smaller than the phone's body text; the band under the menu scales from 2rem to 4rem with the screen, where it jumped at 52rem; the featured cards' shadow halved and their hover lift gone; "Privacy choices" rings its keyboard focus inside its edges, where the viewport cut the ring off, and underlines on hover. No hero changed. Held to pass 9: the privacy bar on the bottom bar's light ground, so the page ends on one band. The designer's next steps: the call to action's label to 1rem, and the cards' hover darkening a hairline, as the community hub's cards do.
 - **Sean, after pass 7:** the homepage's hero photograph stays as it is, and `/contact/`'s waits for his word. Whether the seven heroes passes 6 and 7 changed stay waits on him too.
 
 ## Community accuracy review: October 1, 2026
