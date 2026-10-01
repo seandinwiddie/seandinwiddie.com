@@ -521,7 +521,7 @@ body.marketing-route { background: #fafafa; }
 }
 .legal-panel__body h2,
 .sitemap-panel__body h2 { font-size: clamp(1.8rem, 3vw, 2.25rem); }
-.klamath-falls-route .detail-live-panel__body > img {
+.klamath-falls-route .content-page > img {
   display: block;
   width: 10.625rem;
   height: 10.625rem;
@@ -539,7 +539,7 @@ body.marketing-route { background: #fafafa; }
   font-size: 1.11em;
   font-weight: 500;
 }
-.klamath-falls-route .detail-live-panel__body > img { margin-inline: 0; }
+.klamath-falls-route .content-page > img { margin-inline: 0; }
 .local-accent-cards {
   display: grid;
   gap: 1.5rem;
@@ -566,7 +566,7 @@ body.marketing-route { background: #fafafa; }
 /* Under .content-page so the card's margin outranks the page's h3 margin, which
    left 3.7rem of empty card above each title; the size is the page's h3 step. */
 .content-page .local-accent-card h3 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
   color: #000;
 }
 /* Under .content-page so it outranks the page's paragraph margin: a card ends at its
@@ -582,7 +582,8 @@ body.marketing-route { background: #fafafa; }
 
 /* Local service-area cards retain the live pages' grouped geometry. */
 .local-overview-route .local-location-grid,
-.redding-route .redding-help-grid {
+.redding-route .redding-help-grid,
+.klamath-falls-route .local-accent-cards {
   display: grid;
   gap: 1.5rem;
   margin: 1.25rem 0 2rem;
@@ -590,8 +591,10 @@ body.marketing-route { background: #fafafa; }
 .local-overview-route .local-location-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-/* Four services, two by two: three across left the fourth alone on its row. */
-.redding-route .redding-help-grid {
+/* Four services, two by two: three across left the fourth alone on its row. Klamath
+   Falls' four are set as Redding's (docs/design.md, One rhythm for the service areas). */
+.redding-route .redding-help-grid,
+.klamath-falls-route .local-accent-cards {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .local-overview-route .local-location-card,
@@ -789,12 +792,11 @@ body.service-route { background: #fafafa; }
 .content-page li { margin: 0.35rem 0; }
 .content-page li > ul,
 .content-page li > ol { margin: 0.35rem 0 0.65rem; }
-/* The service pages' process steps are one ordered list (WCAG 1.3.1), set the way
-   the numbered paragraphs they replace were: the number bold and inline, and each
-   step spaced like a paragraph. */
-.content-page ol.process-steps { margin: 0; padding-left: 0; list-style-position: inside; }
-.content-page .process-steps li { margin: 0 0 1.25rem; }
-.content-page .process-steps li::marker { font-weight: 700; }
+/* The service pages' process steps are one ordered list (WCAG 1.3.1), set as a hub's
+   process is (docs/design.md): the numbers hang from the hub's indent in the text's
+   own weight, and the steps part as list items do. They were bold, inline and a
+   paragraph apart, a second style for the same thing. */
+.content-page ol.process-steps { padding-left: 2.1875rem; }
 .content-page hr {
   margin: 2.75rem 0;
   border: 0;
@@ -803,6 +805,10 @@ body.service-route { background: #fafafa; }
 /* The rule over the note to webmasters sits as it does on the hubs and the homepage:
    2.5rem under the text, the note 1.5rem under the rule (docs/design.md). */
 .content-page hr:has(+ .webmaster-note) { margin: 2.5rem 0 1.5rem; }
+/* On a service page's grey panel the rules over the note and the related links take
+   the hubs' tone (docs/design.md): --line sat at 1.04:1 there. Sean's brand-identity
+   article keeps its own. */
+.service-detail-route:not(.brand-article-route) .detail-live-panel :is(hr, .related-services) { border-top-color: rgb(80 84 91 / 30%); }
 .content-page img {
   display: block;
   border-radius: 0.45rem;
@@ -849,6 +855,16 @@ body.service-route { background: #fafafa; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) pre:has(+ pre) { margin-bottom: 0.75rem; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) pre + pre { margin-top: 0.75rem; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) :is(sup, sub) { line-height: 0; }
+/* What a run shows (a program's printed output, or a terminal session with the line
+   that runs it) is set apart from the code that makes it: the lesson's own ink and
+   paper inside the hairline its notices carry, where code is the dark block
+   (docs/design.md). */
+.family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) pre.code-output {
+  padding: calc(1.2rem - 1px) calc(1.35rem - 1px);
+  border: 1px solid var(--line);
+  color: inherit;
+  background: transparent;
+}
 /* Dank Mono draws => and !== as single glyphs; they are part of its character. */
 .content-page :is(pre, code) { font-variant-ligatures: common-ligatures contextual; }
 .table-wrap { max-width: 100%; overflow-x: auto; }
@@ -896,9 +912,9 @@ body.service-route { background: #fafafa; }
 .archive-context .lesson-place { margin-top: 0.5rem; color: var(--muted); font-size: 0.88rem; }
 .level-paths { margin: 0 0 1.5rem; }
 .level-paths li { margin-bottom: 0.35rem; }
-.notice.depth { border-left: 3px solid var(--primary); }
-/* A depth passage's label ("Where it bends.", "The rule behind the examples.") is
-   set apart in Dank Mono's cursive italic (docs/design.md). */
+/* A depth passage is a notice: its frame, its room and its label ("Where it bends.",
+   "The rule behind the examples."), set apart in Dank Mono's cursive italic, set it
+   apart, with no rule down the left, which is a quotation's (docs/design.md). */
 .notice.depth > p:first-child > strong:first-child { font-style: italic; }
 /* A depth passage stands 2rem apart from the text on both sides (docs/design.md); it
    sat flush on the paragraph after it. */
@@ -1005,6 +1021,8 @@ body.service-route { background: #fafafa; }
 .post-card__title { margin: 0 !important; font-size: 1.25rem !important; }
 .post-card__secondary { padding: 0.8rem 1.2rem 1.25rem; }
 .post-card__secondary p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+/* A lesson card's description takes the small step (docs/design.md). */
+.family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .post-card__secondary p { font-size: 0.9em; }
 .sitemap-list > ul { columns: 2; column-gap: 2rem; }
 .sitemap-list > ul > li { break-inside: avoid; }
 .sitemap-list ul ul { columns: 1; }
@@ -1269,7 +1287,8 @@ main:focus { outline: none; }
   .archive-cards,
   .privacy-consent { grid-template-columns: 1fr; }
   .local-overview-route .local-location-grid,
-  .redding-route .redding-help-grid { grid-template-columns: 1fr; }
+  .redding-route .redding-help-grid,
+  .klamath-falls-route .local-accent-cards { grid-template-columns: 1fr; }
   .page-stage {
     width: min(calc(100% - 1rem), var(--page-width));
     margin-top: 2rem;
@@ -1356,10 +1375,13 @@ main:focus { outline: none; }
   /* A hub's lists indent 1.75rem, and Klamath Falls' cards set their text 1.25rem in:
      at 35 to 40px and 2rem they took a tenth or more of a 358px column. */
   .live-panel ul,
-  .live-panel ol { padding-left: 1.75rem; }
+  .live-panel ol,
+  .content-page ol.process-steps { padding-left: 1.75rem; }
   .local-accent-card,
   .local-support-card,
-  .local-contact-card { padding: 1.25rem; }
+  .local-contact-card,
+  .local-overview-route .local-location-card,
+  .redding-route .redding-help-card { padding: 1.25rem; }
   .hero-banner__eyebrow { left: 0.75rem; }
   .page-lead { padding-inline: 0.5rem; }
   .content-card,
@@ -1426,11 +1448,13 @@ main:focus { outline: none; }
    homepage set apart below the owner's phone and email, not centred inside
    that call to action. The visible "For webmasters:" is its only label. */
 .webmaster-note { color: var(--muted); font-size: 0.9em; }
+/* On the homepage's grey the rule over the note takes the hubs' tone (docs/design.md):
+   --line sat at 1.04:1 there. */
 .home-why .webmaster-note {
   max-width: 48rem;
   margin: 2.5rem auto 0;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgb(80 84 91 / 30%);
 }
 .home-why .webmaster-note p { margin-bottom: 0; }
 .live-panel .webmaster-note {
@@ -1485,7 +1509,8 @@ main:focus { outline: none; }
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) pre,
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .archive-cards,
   .local-overview-route .local-location-grid,
-  .redding-route .redding-help-grid { max-width: none; margin-inline: -8.75rem; }
+  .redding-route .redding-help-grid,
+  .klamath-falls-route .local-accent-cards { max-width: none; margin-inline: -8.75rem; }
   /* Code inside a depth passage keeps to the passage's frame. */
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .notice pre { margin-inline: 0; }
 }

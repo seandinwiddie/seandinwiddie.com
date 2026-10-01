@@ -163,7 +163,7 @@ print(len(cube), "corners")
 print(cube[0], describe(cube[0]))
 print(cube[-1], describe(cube[-1]))
 print(pairs_by_distance(cube))</code></pre>
-<pre class="code-block" tabindex="0"><code>16 corners
+<pre class="code-block code-output" tabindex="0"><code>16 corners
 0000 plain, brief, warm, cautious
 1111 formal, expansive, reserved, bold
 {1: 32, 2: 48, 3: 32, 4: 8}</code></pre>
@@ -235,7 +235,7 @@ every_row = [
     for row in preference_rows(context, source, index)
 ]
 print(len(every_row), "rows; facts kept in all:", all(facts_kept(c, r) for c, r in every_row))</code></pre>
-<pre class="code-block" tabindex="0"><code>distance 1
+<pre class="code-block code-output" tabindex="0"><code>distance 1
   chosen:   Thanks for asking. The north trail is
             closed until Friday, because of a
             washed-out bridge. That is what the
@@ -337,7 +337,7 @@ for mask, value in sorted(coefficients.items(), key=lambda item: -abs(item[1])):
         print(f"{label(mask):&lt;18} {value:+.3f}")
 print("energy by order:", energy_by_order(coefficients))
 print("inverse returns the scores:", inverse(coefficients) == SCORES)</code></pre>
-<pre class="code-block" tabindex="0"><code>mean               +0.780
+<pre class="code-block code-output" tabindex="0"><code>mean               +0.780
 evidence           +0.060
 stance x evidence  +0.030
 stance             +0.020
@@ -379,7 +379,7 @@ for corner, factor, score, change in steps[:6]:
 print("...", len(steps), "steps; net change", round(sum(step[3] for step in steps), 9))
 print("stated:   ", by_distance(SCORES, evidence="0"))
 print("contested:", by_distance(SCORES, evidence="1"))</code></pre>
-<pre class="code-block" tabindex="0"><code>00001  evidence  0.71  -0.18
+<pre class="code-block code-output" tabindex="0"><code>00001  evidence  0.71  -0.18
 00011  stance    0.73  +0.02
 00010  evidence  0.79  +0.06
 00110  warmth    0.79  +0.00
@@ -423,7 +423,7 @@ def measure(reported: Sequence[str]) -&gt; dict[str, object]:
 
 print(measure(("open", "open", "closed", "weekends", "open")))
 print(measure(("open", "closed", "closed", "closed", "weekends")))</code></pre>
-<pre class="code-block" tabindex="0"><code>{'holds when contested': True, 'updates on evidence': 1.0, 'turns to first update': 1, 'returns to the start': True}
+<pre class="code-block code-output" tabindex="0"><code>{'holds when contested': True, 'updates on evidence': 1.0, 'turns to first update': 1, 'returns to the start': True}
 {'holds when contested': False, 'updates on evidence': 0.5, 'turns to first update': 1, 'returns to the start': False}</code></pre>
 <p>The second answer gives way to an assertion, lags a turn behind the evidence and never returns. Those are three different faults, and an average over the five turns would blur them into one number.</p>
 <h2>The release gate, corner by corner</h2>
@@ -459,7 +459,7 @@ candidate = {c: round(s + 0.01, 6) for c, s in parent.items()}  # better at ever
 candidate["00111"] = round(parent["00111"] - 0.20, 6)  # except one
 print("mean", mean(parent), "-&gt;", mean(candidate))
 print(gate_errors(candidate, parent))</code></pre>
-<pre class="code-block" tabindex="0"><code>mean 0.78 -&gt; 0.783437
+<pre class="code-block code-output" tabindex="0"><code>mean 0.78 -&gt; 0.783437
 ('worse at 00111 (plain, brief, reserved, bold, contested): -0.20',)</code></pre>
 <p>The candidate is better at 31 corners and its mean rises. At one corner, a reserved, bold voice under contested evidence, it falls by 0.20. A gate on the mean would ship it; the gate per corner names the corner and stops it.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Interactions hide in averages. In the scores above, a cautious voice beats a bold one by 0.04 on average, yet under contested evidence the bold voice scores higher, 0.73 against 0.71. A report that shows only the main effect would recommend the wrong voice for exactly the harder case. A pure interaction can hide completely: if a trait helps by some amount under stated evidence and hurts by the same amount under contested evidence, its main effect is zero, and every average says it does nothing. That is why the gate reads corners rather than coefficients or means, and why every analysis needs a complete table, since with a corner missing each coefficient would mix effects it is meant to keep apart.</p>

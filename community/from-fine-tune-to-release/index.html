@@ -152,7 +152,7 @@ try:
     rank((*results, Result("candidate-d", "eval-2", failures=0, overlap=0.80, seconds=0.5)))
 except ValueError as error:
     print(error)</code></pre>
-<pre class="code-block" tabindex="0"><code>('candidate-c', 'candidate-b', 'candidate-a')
+<pre class="code-block code-output" tabindex="0"><code>('candidate-c', 'candidate-b', 'candidate-a')
 results from different evaluations: ['eval-1', 'eval-2']</code></pre>
 <p>Fixing the rule in advance keeps a favourite from winning on whichever measure flatters it. A base chosen for training is still only a starting point: what ships is decided at the end, by comparing the trained model with its parent.</p>
 <h2>Deterministic data in disjoint splits</h2>
@@ -187,7 +187,7 @@ try:
     ])
 except ValueError as error:
     print(error)</code></pre>
-<pre class="code-block" tabindex="0"><code>['train', 'train', 'train', 'validation', 'train', 'train', 'development', 'release']
+<pre class="code-block code-output" tabindex="0"><code>['train', 'train', 'train', 'validation', 'train', 'train', 'development', 'release']
 held-out rows offered to training: row-041</code></pre>
 <p>The release split is held back for the release decision and nothing else. It never guides training, tuning or the choice of a checkpoint. Once its evidence has informed a decision, it is retired for a fresh set the model has never been measured on, so it can&rsquo;t slowly become one more thing the model was fitted to.</p>
 <h2>Oracles as the hard boundary</h2>
@@ -236,7 +236,7 @@ print("chosen:  ", oracle_errors(oracle, row["chosen"]))
 print("rejected:", oracle_errors(oracle, row["rejected"]))
 print("negative:", oracle_errors(oracle, "Good news: the north trail is open."))
 print("unknown: ", oracle_errors(Oracle(unknown=True), "The annex opens at nine."))</code></pre>
-<pre class="code-block" tabindex="0"><code>chosen:   ()
+<pre class="code-block code-output" tabindex="0"><code>chosen:   ()
 rejected: ()
 negative: ("missing 'closed'", "missing 'Friday'", "missing 'washed-out bridge'", "says 'is open'")
 unknown:  ('does not admit it does not know',)</code></pre>
@@ -343,7 +343,7 @@ try:
     require(input_checks(recorded))
 except ValueError as error:
     print(error)</code></pre>
-<pre class="code-block" tabindex="0"><code>[{'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3}]
+<pre class="code-block code-output" tabindex="0"><code>[{'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3}]
 inputs match the record
 data/train.jsonl unchanged: expected {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3}, found {'path': 'data/train.jsonl', 'bytes': 72, 'lines': 4}</code></pre>
 <p>A failed check says which input changed and how, so the record can&rsquo;t quietly describe a different run from the one that made the model.</p>
@@ -409,7 +409,7 @@ def test_one_worse_corner_blocks_promotion():
 def test_a_different_evaluation_blocks_promotion():
     with pytest.raises(ValueError, match="same evaluation as the parent"):
         require(promotion_checks(candidate(evaluation="eval-2"), PARENT))</code></pre>
-<pre class="code-block" tabindex="0"><code>$ python -m pytest -v --no-header tests/test_promote.py
+<pre class="code-block code-output" tabindex="0"><code>$ python -m pytest -v --no-header tests/test_promote.py
 ============================= test session starts ==============================
 collecting ... collected 5 items
 

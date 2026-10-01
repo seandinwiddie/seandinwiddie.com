@@ -160,13 +160,13 @@ def main(argv: list[str] | None = None) -&gt; int:
 
 if __name__ == "__main__":
     raise SystemExit(main())</code></pre>
-<pre class="code-block" tabindex="0"><code>$ python -m pipeline.data.build_rows
+<pre class="code-block code-output" tabindex="0"><code>$ python -m pipeline.data.build_rows
 {"id": "row-000", "place": "the north trail"}
 {"id": "row-001", "place": "the east parking lot"}
 {"id": "row-002", "place": "the library annex"}
 {"id": "row-003", "place": "the north trail"}</code></pre>
 <p>Run as a file, the same code fails, because Python puts the file&rsquo;s own folder first on the import path instead of the root:</p>
-<pre class="code-block" tabindex="0"><code>$ python pipeline/data/build_rows.py 2&gt;&amp;1 | tail -1
+<pre class="code-block code-output" tabindex="0"><code>$ python pipeline/data/build_rows.py 2&gt;&amp;1 | tail -1
 ModuleNotFoundError: No module named 'pipeline'</code></pre>
 <h2>A locked environment</h2>
 <p>Each project has its own virtual environment, and it installs from a lock, never from a list of names. People edit <code>requirements.in</code>, a short list of what the project uses. uv compiles it into <code>requirements.lock</code>, with every package and every dependency pinned, for a fixed Python version and with nothing published after a fixed date, so compiling it again next month gives the same lock:</p>
@@ -188,7 +188,7 @@ case "${1:-}" in
     compile requirements.lock ;;
 esac</code></pre>
 <p>The check compiles a fresh lock beside the real one and fails on any difference, so a package added to <code>requirements.in</code> without a new lock stops the run before anything installs it:</p>
-<pre class="code-block" tabindex="0"><code>$ bin/lock --check
+<pre class="code-block code-output" tabindex="0"><code>$ bin/lock --check
 requirements.lock is current
 $ echo six &gt;&gt; requirements.in
 $ bin/lock --check; echo "exit $?"
@@ -202,7 +202,7 @@ $ bin/lock --check; echo "exit $?"
 +    # via -r requirements.in
 exit 1</code></pre>
 <p>The environment is made from the lock alone. <code>--no-deps</code> installs exactly what the lock names, and nothing it doesn&rsquo;t:</p>
-<pre class="code-block" tabindex="0"><code>$ python3 -m venv .venv
+<pre class="code-block code-output" tabindex="0"><code>$ python3 -m venv .venv
 $ .venv/bin/python -m pip install --no-deps -r requirements.lock</code></pre>
 <h2>Pure functions, the same answer every time</h2>
 <p>A function that reads only its arguments and returns a new value can be tested with plain data and trusted on any machine. Data generation holds to that strictly. A row&rsquo;s content is chosen by its index, turning through a fixed catalog, never drawn at random. Where an order has to be shuffled, the shuffle gets a generator of its own, seeded from the run&rsquo;s settings, never the global one that any library can disturb:</p>
@@ -228,7 +228,7 @@ def seeded_order(count: int, seed: int, epoch: int) -&gt; tuple[int, ...]:
     rng.shuffle(indices)
     return tuple(indices)</code></pre>
 <p>Python&rsquo;s built-in <code>hash()</code> is the trap here. For strings it is salted afresh in every process, so anything derived from it changes from run to run, while the seeded order doesn&rsquo;t:</p>
-<pre class="code-block" tabindex="0"><code>$ for run in 1 2 3; do python -c "print(hash('north trail') % 1000)"; done
+<pre class="code-block code-output" tabindex="0"><code>$ for run in 1 2 3; do python -c "print(hash('north trail') % 1000)"; done
 928
 563
 205
@@ -271,7 +271,7 @@ except FrozenInstanceError as error:
 reopened = replace(trail, state="open")
 print(reopened)
 print(trail)</code></pre>
-<pre class="code-block" tabindex="0"><code>refused: cannot assign to field 'state'
+<pre class="code-block code-output" tabindex="0"><code>refused: cannot assign to field 'state'
 Context(place='the north trail', state='open', reason='a washed-out bridge')
 Context(place='the north trail', state='closed until Friday', reason='a washed-out bridge')</code></pre>
 <h2>JSON as the one authority for config</h2>
@@ -314,7 +314,7 @@ def compose(manifest: Path, seen: tuple[Path, ...] = ()) -&gt; dict[str, Any]:
         part = compose(path, (*seen, manifest)) if "parts" in raw else raw
         document = place(document, entry, part)
     return document</code></pre>
-<pre class="code-block" tabindex="0"><code>$ python -m pipeline.config.compose config/train.json
+<pre class="code-block code-output" tabindex="0"><code>$ python -m pipeline.config.compose config/train.json
 {
   "data": {
     "train": "data/train.jsonl",
@@ -379,7 +379,7 @@ try:
     validate(rows, declared={"train": 2})
 except ValueError as error:
     print(error)</code></pre>
-<pre class="code-block" tabindex="0"><code>row-001: unexpected keys ['note']
+<pre class="code-block code-output" tabindex="0"><code>row-001: unexpected keys ['note']
 row-001: unknown split 'trian'
 row-001: empty prompt
 row-001: chosen and rejected are the same
@@ -433,7 +433,7 @@ def test_the_rotation_test_fails_when_the_rotation_breaks(monkeypatch):
     monkeypatch.setattr(build, "rotate", lambda items, index: items[0])  # broken on purpose
     with pytest.raises(AssertionError):
         test_rows_rotate_through_the_catalog()</code></pre>
-<pre class="code-block" tabindex="0"><code>$ python -m pytest -v --no-header tests/test_contract.py tests/test_rows.py
+<pre class="code-block code-output" tabindex="0"><code>$ python -m pytest -v --no-header tests/test_contract.py tests/test_rows.py
 ============================= test session starts ==============================
 collecting ... collected 11 items
 
@@ -468,7 +468,7 @@ def pytest_sessionfinish(session):
     if skipped(session.config):
         session.exitstatus = 1</code></pre>
 <p>With a skipped test added, the run reports it and exits non-zero:</p>
-<pre class="code-block" tabindex="0"><code>$ python -m pytest -q; echo "exit $?"
+<pre class="code-block code-output" tabindex="0"><code>$ python -m pytest -q; echo "exit $?"
 ....................s..................
 1 skipped: every test must run
 38 passed, 1 skipped in 0.08s
@@ -484,7 +484,7 @@ python -m pipeline.config.compose config/train.json &gt; /dev/null &amp;&amp; ec
 python -m pipeline.data.contract data/rows.jsonl data/counts.json
 python -m pytest -q
 echo "verified"</code></pre>
-<pre class="code-block" tabindex="0"><code>$ bin/verify
+<pre class="code-block code-output" tabindex="0"><code>$ bin/verify
 requirements.lock is current
 config composes
 6 rows match their contract
