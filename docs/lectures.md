@@ -47,6 +47,8 @@ Linked in pass 11: Endpoints at the Boundary → Redux Toolkit and RTK Query Bes
 
 Linked in pass 12: The View Stays Minimal → Redux Standard Patterns and Functional Programming (`#select-close-to-the-render`), Modern Redux Architecture Patterns (`#selector-layers`, `#narrow-subscriptions-and-preserve-references`) and Redux Toolkit and RTK Query Best Practices (`#use-query-and-mutation-hooks`, `#testing`).
 
+Linked in pass 13: One Feature, Scope to Launch → Redux Toolkit and RTK Query Best Practices (`#decide-who-owns-the-state`), Practical Applications of Functional Programming (`#represent-expected-failure-as-plain-data`), Functional Programming in Other Languages (`#functional-core-imperative-shell`, `#cross-language-conformance-tests`), Functional Programming Maintenance Strategy (`#code-review-checklist`) and Modern Redux Architecture Patterns (`#testing-architecture`); Discover's depth passage → Modern Redux Architecture Patterns (`#narrow-subscriptions-and-preserve-references`); Master the Fundamentals' depth passage → What Is a Function? (`#pure-functions`).
+
 Every anchor is checked against the lectures repository's headings with its own `slugify`.
 
 
