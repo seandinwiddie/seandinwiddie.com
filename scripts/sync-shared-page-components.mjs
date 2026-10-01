@@ -579,7 +579,7 @@ const withModuleLessons = (name, html) => {
 // objectives, topics and activities below it stay as written.
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const OUTLINE_M4_PATTERN = new RegExp(
-  `(<p><strong><a href="/community/${PARTS.m4.opener}/">${escapeRegExp(PARTS.m4.name)}</a></strong></p>\\n<ul>\\n)[\\s\\S]*?(\\n<li><em>Objectives:</em></li>)`,
+  `(<h2><a href="/community/${PARTS.m4.opener}/">${escapeRegExp(PARTS.m4.name)}</a></h2>\\n<ul>\\n)[\\s\\S]*?(\\n<li><em>Objectives:</em></li>)`,
 );
 const withOutlineModule4 = (name, html) => {
   if (name !== COURSE_OUTLINE) return html;
@@ -783,6 +783,8 @@ const HEADING_PAGES = new Set([
   "community/translating-user-needs-into-user-stories/index.html",
   "community/writing-clear-and-concise-user-stories/index.html",
   "community/understanding-the-importance-of-user-centric-design/index.html",
+  "community/defining-user-stories/index.html",
+  "community/identifying-user-needs/index.html",
 ]);
 const SUBHEAD_PATTERN = /^<p><strong>([^<]+?):?<\/strong><\/p>$/gm;
 const ARTICLE_BODY_PATTERN = /(<\/header><!-- \.entry-header -->)([\s\S]*?)(<!-- \.entry-content -->)/;
@@ -818,6 +820,26 @@ const withByline = (name, html) =>
         (_, rest) => `<img alt="" class="byline-avatar"${rest}<a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>`,
       )
     : html;
+
+// "Joining the team" shows when its terms last changed. The visible date renders from
+// the page's dateModified, so the byline and the structured data can't disagree, and a
+// change to the terms needs one date edited, not two.
+const UPDATED_PAGES = new Set(["community/staff/index.html"]);
+const UPDATED_PATTERN = /(rel="bookmark">Updated )<time datetime="[^"]*">[^<]*<\/time>/;
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const withUpdatedByline = (name, html) => {
+  if (!UPDATED_PAGES.has(name)) return html;
+  const dates = [...html.matchAll(/"dateModified":"(\d{4})-(\d{2})-(\d{2})/g)].map((match) => match.slice(1));
+  if (!dates.length || new Set(dates.map((date) => date.join("-"))).size !== 1) {
+    throw new Error(`${name}: needs one dateModified for its Updated byline`);
+  }
+  if (!UPDATED_PATTERN.test(html)) throw new Error(`${name}: missing its Updated byline`);
+  const [year, month, day] = dates[0];
+  return html.replace(
+    UPDATED_PATTERN,
+    (_, open) => `${open}<time datetime="${year}-${month}-${day}">${MONTHS[Number(month) - 1]} ${Number(day)}, ${year}</time>`,
+  );
+};
 
 // Guards, not transforms: a focus page that names a retired offer or free work,
 // or a lesson that teaches Rx vocabulary, fails the sync (docs/packages.md,
@@ -869,6 +891,7 @@ const routeTransforms = Object.freeze([
   withLessonHeadings,
   withDepthPassages,
   withByline,
+  withUpdatedByline,
   withGuards,
 ]);
 

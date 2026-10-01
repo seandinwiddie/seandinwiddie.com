@@ -143,7 +143,7 @@
 
   Scenario: Booking the last table at seven
     Given one table left at 7:00 pm on Friday
-    When Ada books it for two
+    When Ada books it for 2 guests
     Then her booking is confirmed
     And no tables are left at 7:00 pm on Friday</code></pre>
 <p>The Feature names the module and carries its user story; the Given sets the starting state, the When names one event, and each Then names a result the team can check below the interface.</p>
@@ -156,12 +156,12 @@
     And one table left at 7:00 pm on Friday
 
   Scenario: Booking the last table at seven
-    When Ada books it for two
+    When Ada books it for 2 guests
     Then her booking is confirmed
     And no tables are left at 7:00 pm on Friday
 
   Scenario Outline: Booking for a party of a given size
-    When Ada books it for &lt;guests&gt;
+    When Ada books it for &lt;guests&gt; guests
     Then her booking is &lt;answer&gt;
 
     Examples:

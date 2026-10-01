@@ -114,19 +114,19 @@
 </div> </header><!-- .entry-header -->
 
 <p>User Stories are the building blocks of user-centric software development. They provide a concise and user-focused description of a feature or functionality. In this section, we look at the essential elements of a User Story, the parts that let it communicate the user’s needs and expectations.</p>
-<p><strong>1. User Perspective:</strong></p>
+<h2>1. User Perspective</h2>
 <p>User Stories are always written from the user’s perspective. They should begin with “As a [user role]…” to clearly identify who the user is. This sets the context for the story and helps everyone understand for whom the feature is intended.</p>
-<p><strong>2. User Action:</strong></p>
+<h2>2. User Action</h2>
 <p>The core of a User Story is the user’s desired action. This part typically starts with “I want to…” or “I need to…” and outlines what the user intends to achieve. It’s essential to be specific and action-oriented in this part.</p>
-<p><strong>3. Benefit or Value:</strong></p>
+<h2>3. Benefit or Value</h2>
 <p>Every User Story should articulate the benefit or value that the user expects to gain from the action. This is expressed as “so that…” or “in order to…” and provides the rationale behind the user’s request.</p>
-<p><strong>4. Independence:</strong></p>
+<h2>4. Independence</h2>
 <p>User Stories should be independent and self-contained. Each Story should represent a distinct piece of functionality or a user need. This makes it easier to prioritize, estimate, and develop them individually.</p>
-<p><strong>5. Keep It Simple:</strong></p>
+<h2>5. Keep It Simple</h2>
 <p>User Stories should be simple and focused. They are not the place to specify technical details or implementation. Instead, they should describe what the user wants to accomplish, leaving the how to the development team.</p>
-<p><strong>6. Non-Prescriptive:</strong></p>
+<h2>6. Non-Prescriptive</h2>
 <p>User Stories should avoid prescribing a specific solution. Instead, they should focus on the user’s problem or need, allowing the development team the freedom to devise the best solution.</p>
-<p><strong>Example User Story:</strong></p>
+<h2>Example User Story</h2>
 <p>“As a customer (user perspective), I want to be able to view my order history (user action) so that I can track my past purchases and check the status of current orders (benefit or value).”</p>
 <p>In this example:</p>
 <ul>
@@ -137,15 +137,15 @@
 <li>
 <strong>Benefit or Value:</strong> The benefit is to “track past purchases and check order status.”</li>
 </ul>
-<p><strong>Example User Story Acceptance Criteria:</strong></p>
+<h2>Example User Story Acceptance Criteria</h2>
 <ul>
 <li>The customer can open their order history from their account.</li>
 <li>The order history lists past purchases, each with its order date, items and status.</li>
 <li>Each order in the history opens to show its details.</li>
 </ul>
 <p>Acceptance criteria provide additional details about what the User Story entails. They serve as a guideline for development and testing. On the Sean Dinwiddie’s Webmastery team, each criterion becomes a Rule, shown by one or more Given, When, Then scenarios: Given a customer with two past orders, When they open their order history, Then both orders are listed with date, items and status.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Independence is a goal, not a law. A story that shows order history depends on the story that records orders, so the written scope puts them in order and each one still ships something a person can use. When a story is too large, split it by its acceptance criteria, one Rule and its scenarios at a time, never by layer, the database this week and the screen the next: a story split by layer ships nothing anyone can use until the last piece lands.</p></aside>
-<p>By defining User Stories with a clear user perspective, user action, and benefit/value, you create a foundation for user-centric design and development. These stories help ensure that your software solutions are focused on meeting the needs and expectations of your users. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#test-transitions-and-derivations">Redux Toolkit and Functional Programming</a> shows where a criterion like these ends up in a custom app: a test that runs a slice through its events and checks what a selector returns.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Independence is a goal, not a law. A story that shows order history needs orders to show, yet its scenarios start from &ldquo;Given a customer with two past orders&rdquo;, so it can be built and tested before the story that records orders, and the written scope lists the two in the order they ship. When a story is too large, split it by its acceptance criteria, one Rule and its scenarios at a time, never by layer, the database this week and the screen the next: a story split by layer ships nothing anyone can use until the last piece lands.</p></aside>
+<p>A story with all three parts says who the work is for, what they do and why it matters to them, and its acceptance criteria say when it is done. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#test-transitions-and-derivations">Redux Toolkit and Functional Programming</a> shows where a criterion like these ends up in a custom app: a test that runs a slice through its events and checks what a selector returns.</p>
 <p>The next lesson, Identifying User Needs, finds the need behind a request before a story is written.</p>
 
 <!-- .entry-content -->

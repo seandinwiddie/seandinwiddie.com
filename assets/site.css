@@ -723,6 +723,12 @@ body.service-route { background: #fafafa; }
 .content-page li { margin: 0.35rem 0; }
 .content-page li > ul,
 .content-page li > ol { margin: 0.35rem 0 0.65rem; }
+/* The service pages' process steps are one ordered list (WCAG 1.3.1), set the way
+   the numbered paragraphs they replace were: the number bold and inline, and each
+   step spaced like a paragraph. */
+.content-page ol.process-steps { margin: 0; padding-left: 0; list-style-position: inside; }
+.content-page .process-steps li { margin: 0 0 1.25rem; }
+.content-page .process-steps li::marker { font-weight: 700; }
 .content-page hr {
   margin: 2.75rem 0;
   border: 0;
@@ -1327,6 +1333,11 @@ main:focus { outline: none; }
   border-top: 1px solid var(--line);
 }
 .home-why .webmaster-note p { margin-bottom: 0; }
+.live-panel .webmaster-note {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(80 84 91 / 30%);
+}
 .service-menu .webmaster-note {
   max-width: 44rem;
   margin: 2.5rem auto 0;
