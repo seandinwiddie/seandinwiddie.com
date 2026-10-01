@@ -205,11 +205,11 @@ img { max-width: 100%; height: auto; }
 
 /* Contained homepage hero and gray content surface */
 /* The white band between the menu and the photograph narrows one step at a time
-   (docs/design.md, Rhythm): 6.25rem until design pass 6, now 5rem, the room the
-   featured cards stand under the page. A phone keeps 2rem. */
+   (docs/design.md, Rhythm): 6.25rem until design pass 6, 5rem until design pass 7, now
+   4rem, the homepage's section rhythm. A phone keeps 2rem. */
 .home-stage {
   width: min(calc(100% - 2rem), var(--page-width));
-  margin: 5rem auto 0;
+  margin: 4rem auto 0;
 }
 .hero-banner { position: relative; width: 100%; margin: 0; }
 .hero-banner__img {
@@ -253,24 +253,22 @@ img { max-width: 100%; height: auto; }
   text-wrap: balance;
 }
 /* The call to action settles toward the plain blue of the site's choices one step at a
-   time (docs/design.md, Direction). Design pass 6: the gradient's ends move halfway to
-   #0073e6 and the glow is half as deep and half as strong. */
+   time (docs/design.md, Direction). Design pass 6 moved the gradient's ends halfway to
+   #0073e6; design pass 7 takes away the glow and the lift: on hover the pill turns the
+   flat #0066cc the site's other choices take. */
 .hero__cta {
   display: inline-block;
   padding: 0.95rem 2rem;
   border-radius: 999px;
   color: #fff;
   background: linear-gradient(135deg, #0474e4 0%, #006ad8 100%);
-  box-shadow: 0 0.175rem 0.45rem rgb(0 123 255 / 14%);
   font-size: 0.83rem;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .hero__cta:hover {
   color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 0.25rem 0.55rem rgb(0 123 255 / 18%);
+  background: #0066cc;
 }
 
 /* Homepage copy */
@@ -753,7 +751,7 @@ body.service-route { background: #fafafa; }
 /* Shared interior-page layout */
 .page-stage {
   width: min(calc(100% - 2rem), var(--page-width));
-  margin: 5rem auto 0;
+  margin: 4rem auto 0;
 }
 .page-hero .hero-banner__img { height: 19rem; }
 .page-lead {
@@ -953,7 +951,6 @@ body.service-route { background: #fafafa; }
   border-radius: 999px;
   color: #fff;
   background: linear-gradient(135deg, #0474e4 0%, #006ad8 100%);
-  box-shadow: 0 0.125rem 0.35rem rgb(0 123 255 / 12%);
   font-weight: 700;
   line-height: 1.25;
   text-decoration: none;
@@ -961,7 +958,7 @@ body.service-route { background: #fafafa; }
 }
 .button:hover,
 .site-form input[type="submit"]:hover,
-.site-form button:hover { color: #fff; background: #0057b8; }
+.site-form button:hover { color: #fff; background: #0066cc; }
 
 /* Article and archive components */
 .page-meta {
@@ -1249,6 +1246,20 @@ main:focus { outline: none; }
   border-radius: 0.35rem 0 0 0;
   font-size: 0.7rem;
 }
+/* Below 85rem the corner tab can't clear the 71.25rem column, so the button closes the
+   page after the footer, as on a phone (docs/design.md, design pass 7). */
+@media (max-width: 84.9375rem) {
+  .privacy-preferences-button {
+    position: static;
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-width: 1px 0 0;
+    border-radius: 0;
+    font-size: 0.75rem;
+  }
+}
+.privacy-preferences-button[hidden] { display: none; }
 
 /* Responsive layout */
 @media (max-width: 78rem) {
@@ -1371,6 +1382,18 @@ main:focus { outline: none; }
   .service-menu__links .button { padding: 0.85rem 0.75rem; font-size: 1rem; }
 }
 
+/* On a tablet the five featured services stand two by two, the fifth centered under the
+   four, where they stacked in one column of screen-wide squares (docs/design.md, design
+   pass 7). Their titles scale with the card down to 1.5rem, so the longest fits the
+   narrowest card. A phone keeps one column. */
+@media (min-width: 30.0625rem) and (max-width: 52rem) {
+  .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cards > .card { grid-column: span 2; }
+  .cards > .card:nth-child(odd):last-child { grid-column: 2 / span 2; }
+  .card__body h3,
+  .service-cards .card__body h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
+}
+
 @media (max-width: 30rem) {
   .topbar__contact {
     flex-direction: column;
@@ -1410,15 +1433,6 @@ main:focus { outline: none; }
   .content-card,
   .notice,
   .site-form { padding: 1rem; }
-  .privacy-preferences-button {
-    position: static;
-    display: block;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-width: 1px 0 0;
-    border-radius: 0;
-    font-size: 0.75rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
