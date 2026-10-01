@@ -263,7 +263,7 @@ img { max-width: 100%; height: auto; }
   border-radius: 999px;
   color: #fff;
   background: #0073e6;
-  font-size: 0.9rem; /* 0.83rem until design pass 8 */
+  font-size: 1rem; /* 0.9rem until design pass 9 */
   font-weight: 700;
   text-decoration: none;
 }
@@ -360,15 +360,17 @@ img { max-width: 100%; height: auto; }
   border-radius: 0.3rem;
   background: #fff;
   box-shadow: 0 0.1rem 0.275rem rgb(31 36 48 / 12%);
-  transition: box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
-/* The featured cards settle by approved steps (docs/design.md): since design pass 8 their
-   shadow is half as deep, at rest and on hover, and hover no longer lifts them 3px. */
-.card:hover { box-shadow: 0 0.275rem 0.6rem rgb(31 36 48 / 14%); }
+/* The featured cards settle by approved steps (docs/design.md): design pass 8 halved their
+   shadow and took away the lift; since design pass 9 hover darkens the hairline instead. */
+.card:hover { border-color: var(--muted); }
 .card a.card__link { display: block; color: inherit; text-decoration: none; }
-/* Five services stand three over two, the two centered under the three, where the last
-   two sat alone on the left of their row (docs/design.md, design pass 6). Each card
-   spans two of six columns, the width it had in three. */
+/* Focus rings the whole card, as the community's (docs/design.md, design pass 9). */
+.card:has(> .card__link:focus-visible) { outline: 3px solid #ffb454; outline-offset: 3px; box-shadow: 0 0 0 5px rgb(31 36 48 / 85%); }
+.card:has(> .card__link:focus-visible) > .card__link { outline: none !important; box-shadow: none; }
+/* Five services stand three over two, the two centered (docs/design.md, design pass 6):
+   each card spans two of six columns. */
 @media (min-width: 52.0625rem) {
   .cards { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .cards > .card { grid-column: span 2; }
@@ -380,9 +382,8 @@ img { max-width: 100%; height: auto; }
   background-size: cover;
 }
 .card__body { padding: 0.95rem 1rem 1.2rem; }
-/* A card's title takes the house weight, 700, as every heading does (docs/design.md):
-   it stood regular, in grey, beside its own text. The featured cards' titles share
-   this 2rem. */
+/* A card's title takes the house weight, as every heading does, at one 2rem
+   (docs/design.md). */
 .card__body h3 {
   margin: 0 0 0.6rem;
   color: #454545;
@@ -427,7 +428,7 @@ body.marketing-route { background: #fafafa; }
   text-align: center;
 }
 .live-panel p { margin: 0 0 1.6875rem; }
-.live-panel__intro { text-align: center; }
+.live-panel__intro { text-align: center; text-wrap: balance; }
 .live-panel ul,
 .live-panel ol {
   margin: 0 0 1.6875rem;
@@ -500,9 +501,10 @@ body.marketing-route { background: #fafafa; }
   border-radius: 0.3125rem;
 }
 /* A hub's or a service page's panel continues the title band above it, as contact's
-   and Klamath Falls' do: no light hairline or rounded notch where the two meet. */
+   and Klamath Falls' do: no hairline, notch or seam (its grey since design pass 9). */
 .live-panel,
 .service-detail-route:not(.brand-article-route) .detail-live-panel {
+  background: var(--soft);
   border-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -614,12 +616,12 @@ body.marketing-route { background: #fafafa; }
 .klamath-falls-route .local-accent-cards { display: block; }
 .content-page :is(.redding-help-card, .local-accent-card) h3 { margin: 2.2rem 0 0.85rem; }
 .content-page :is(.redding-help-card, .local-accent-card):first-child h3 { margin-top: 0; }
+/* A hairline, no shadow, as the community's cards (docs/design.md, pass 9). */
 .local-overview-route .local-location-card {
   padding: 1.5rem;
   border: 1px solid #d9e0e7;
   border-radius: 0.55rem;
   background: #fff;
-  box-shadow: 0 0.65rem 1.4rem rgb(31 36 48 / 8%);
 }
 .local-overview-route .local-location-card h3 {
   margin: 0 0 0.85rem;
@@ -636,7 +638,7 @@ body.marketing-route { background: #fafafa; }
   margin: 2rem 0;
   padding: 2rem;
   border-radius: 0.5rem;
-  background: #e9ecef;
+  background: var(--soft);
   text-align: center;
 }
 /* Klamath Falls' cards after its services carry their own h2s, at the card size.
@@ -669,7 +671,7 @@ body.service-route { background: #fafafa; }
 .service-stage {
   overflow: hidden;
   border-radius: 0.25rem;
-  background: #e9ecef;
+  background: var(--soft);
 }
 .service-hero {
   padding: 6.25rem 1.875rem 9.375rem;
@@ -704,7 +706,7 @@ body.service-route { background: #fafafa; }
   padding: 4rem 0;
   border: 1px solid #ededed;
   border-radius: 0.25rem;
-  background: #e9ecef;
+  background: var(--soft);
 }
 .service-menu h2 {
   margin: 0 0 1.6rem;
@@ -1035,7 +1037,8 @@ body.service-route { background: #fafafa; }
   outline-offset: 3px;
   box-shadow: 0 0 0 5px rgb(31 36 48 / 85%);
 }
-.post-card__link:focus-visible { outline: none !important; box-shadow: none; }
+/* Under :has, so a browser without it keeps the link's own ring. */
+.post-card:has(> .post-card__link:focus-visible) > .post-card__link { outline: none !important; box-shadow: none; }
 .post-card__link { display: block; height: 100%; color: inherit; text-decoration: none; }
 .post-card__link:hover { color: inherit; }
 .post-card__media { aspect-ratio: 16 / 9; overflow: hidden; background: var(--soft); }
@@ -1391,10 +1394,8 @@ main:focus { outline: none; }
   .service-menu__links .button { padding: 0.85rem 0.75rem; font-size: 1rem; }
 }
 
-/* On a tablet the five featured services stand two by two, the fifth centered under the
-   four, where they stacked in one column of screen-wide squares (docs/design.md, design
-   pass 7). Their titles scale with the card down to 1.5rem, so the longest fits the
-   narrowest card. A phone keeps one column. */
+/* On a tablet the five featured services stand two by two, the fifth centered, their
+   titles scaling to 1.5rem to fit (docs/design.md, design pass 7); a phone stacks them. */
 @media (min-width: 30.0625rem) and (max-width: 52rem) {
   .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .cards > .card { grid-column: span 2; }
