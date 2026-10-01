@@ -77,6 +77,10 @@ Structure carries information: numbers only where the order matters (process ste
 
 Each page has one thing the eye goes to first: the photograph and the title at the top. Everything after it stays quiet. A second hero, a deep shadow that floats a button, a lift on hover or a band of color behind a paragraph each compete with it, and each has to earn its place.
 
+## Diagrams
+
+Lessons carry diagrams wherever a picture shows the mechanism faster than prose: a data flow, a cube of traits, a request's path from view to API, a test's place in the chain (Sean, after design pass 5). Each is an inline SVG in a `<figure>` with a `<figcaption>`, drawn in the page's own ink, rule grey and link violet, its labels in Dank Mono, scaled to the column (`width: 100%; height: auto`) and legible at 390 px. The SVG carries `role="img"` and an `aria-labelledby` pointing at its `<title>` and `<desc>`, so a screen reader hears what it shows; nothing in it is only color. One idea per diagram, no decoration, and the prose around it still says what it shows.
+
 ## Tells to avoid
 
 - a subhead at body size or lighter;
