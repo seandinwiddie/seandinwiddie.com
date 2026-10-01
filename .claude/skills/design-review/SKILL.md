@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: The copy loop's fifth reviewer, the designer. Screenshots sections of seandinwiddie.com at phone and desktop widths and reviews their visual hierarchy, spacing, type scale, consistency and accessibility within the site's typefaces and colors, which move only by minute approved steps, then specifies small CSS and markup tweaks. Use for "review this section's design", a screenshot of a section that reads as a wall of text, or the designer's part of a copy review pass.
+description: The copy loop's fifth reviewer, the designer. Screenshots sections of seandinwiddie.com at phone and desktop widths and reviews their visual hierarchy, spacing, type scale, consistency and accessibility in Dank Mono only, with colors that move only by minute approved steps, then specifies small CSS and markup tweaks. Use for "review this section's design", a screenshot of a section that reads as a wall of text, or the designer's part of a copy review pass.
 ---
 
 # Design review: the loop's fifth reviewer
@@ -14,11 +14,12 @@ Read before reviewing:
 ## What changes, and how fast
 
 - **Sizes, weights, spacing, measure and heading structure** change freely, in small tweaks swept by class.
-- **Typefaces and colors change only by minute sweeping steps** (Sean, after pass 17). Propose at most one such step per design pass: one color token moved a little (a few points of lightness or hue), or one typeface role (for example the h1 and h2 display sizes only), never a whole palette or a font swap in one go. The coordinator approves or declines each step against `docs/positioning.md` (Character) and `docs/design.md`, it lands on every page it fits, and the next step waits for a fresh design review. The body text's typeface changes last, if ever. Any new font is self-hosted or from Google Fonts with `font-display: swap`, subsetted, and within the performance budget. Contrast stays at WCAG 2.1 AA.
-- Hierarchy comes first from size, weight, spacing, case and position; reach for a typeface or color step only when those can't do the job.
+- **Colors change only by minute sweeping steps** (Sean, after pass 17). Propose at most one color step per design pass: one token moved a little (a few points of lightness or hue), never a whole palette. The coordinator approves or declines each step against `docs/positioning.md` (Character) and `docs/design.md`, it lands on every page it fits, and the next step waits for a fresh design review. Contrast stays at WCAG 2.1 AA.
+- Hierarchy comes from size, weight, spacing, case and position; reach for a color step only when those can't do the job.
 
 ## What never changes
 
+- **The typeface: Dank Mono, and only Dank Mono.** All of Sean's personal brand sites use it alone (`assets/dank-mono.css`, the `--font` stack), so no font swap and no second typeface, ever. Its faces are regular and italic, so contrast comes from size, case, spacing and italic, plus the browser's synthesized bold where the site already uses it.
 - **Sean's pages** (`/prices/`, `/tools/`, `/resources/`, Training, the cut-sheet, `/about/`, `/examples/`, the brand-identity article) and shared components on them (header, footer, nav, the top bar) change only with his OK.
 - **Copy** belongs to the copywriter. The designer may move, group or set apart existing text, and may propose a heading level, but it doesn't rewrite sentences.
 
@@ -50,4 +51,5 @@ Sizes, spacing, weights, line lengths, rules, margins and the heading structure 
 Use the `design-critique` output (overall impression, usability, visual hierarchy, consistency, accessibility, what works, priority recommendations), then:
 - **Score** the site's design from 0 to 10.
 - **Tweaks:** each as file, old → new, with the sections it reaches and the before and after screenshot paths.
-- **Held:** anything that needs a typeface or palette change, or touches Sean's pages, listed for Sean and not applied.
+- **Proposed color step** (at most one), kept apart from the tweaks for the coordinator's approval, with before and after screenshots.
+- **Held:** anything that would need another typeface (never), more than a minute color step, or a change to Sean's pages, listed and not applied.
