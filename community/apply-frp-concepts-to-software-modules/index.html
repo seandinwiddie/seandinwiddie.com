@@ -131,7 +131,7 @@
 <li>
 <strong>State Management:</strong> Keep the module’s state in its slice. Each reducer takes the current state and an action and returns the next state, so every change is a named event and no earlier state is overwritten.</li>
 <li>
-<strong>Error Handling:</strong> Implement error handling using FRP principles. Define how your module should respond to errors or exceptional situations in a declarative manner, ensuring that your module remains stable and responsive.</li>
+<strong>Error Handling:</strong> Give each expected failure a name and a shape the module can read: the API answers a declined card with its reason, the slice leaves the cart alone because it empties only on success, and a pure function turns the request&rsquo;s state into the message the view shows, as <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> follows end to end.</li>
 <li>
 <strong>Modularize Code:</strong> Organize the module by feature: its slice, selectors, endpoints and view in one folder, with the slice’s actions and selectors as its public interface.</li>
 <li>

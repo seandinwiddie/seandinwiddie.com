@@ -194,6 +194,7 @@ const LESSONS = [
   ["from-scenario-to-slice", "From Scenario to Slice", "m4"],
   ["endpoints-at-the-boundary", "Endpoints at the Boundary", "m4"],
   ["the-view-stays-minimal", "The View Stays Minimal", "m4"],
+  ["one-feature-scope-to-launch", "One Feature, Scope to Launch", "m4"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
@@ -573,6 +574,20 @@ const withModuleLessons = (name, html) => {
   return html.replace(ENTRY_HEADER_END, () => `${ENTRY_HEADER_END}\n${moduleLessons(part)}`);
 };
 
+// The Course Outline's Module 4 list was kept by hand, so each new lesson had
+// to be typed into it. It renders from LESSONS, like the module's own list; the
+// objectives, topics and activities below it stay as written.
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const OUTLINE_M4_PATTERN = new RegExp(
+  `(<p><strong><a href="/community/${PARTS.m4.opener}/">${escapeRegExp(PARTS.m4.name)}</a></strong></p>\\n<ul>\\n)[\\s\\S]*?(\\n<li><em>Objectives:</em></li>)`,
+);
+const withOutlineModule4 = (name, html) => {
+  if (name !== COURSE_OUTLINE) return html;
+  if (!OUTLINE_M4_PATTERN.test(html)) throw new Error(`${name}: missing Module 4's lesson list`);
+  const items = partOf("m4").map(([slug, title]) => `<li><a href="/community/${slug}/">${title}.</a></li>`);
+  return html.replace(OUTLINE_M4_PATTERN, (_, open, close) => `${open}${items.join("\n")}${close}`);
+};
+
 // The community sitemap listed pages in WordPress publication order, with the
 // last lesson before the first. It renders from LESSONS, part by part, and the
 // pages off the path follow.
@@ -606,12 +621,12 @@ const withCommunitySitemap = (name, html) => {
 // The archives list the course in teaching order (docs/copy-review.md, Focus).
 // They carried WordPress order, newest first, and each card's excerpt was a hand
 // copy of a lesson's opening, so fixing an opener left three stale copies behind.
-// Cards render from LESSONS, then the pages off the path, ten to a page. Each
+// Cards render from LESSONS, then the pages off the path, twelve to a page. Each
 // card keeps its image, its title follows LESSONS, and its excerpt is its page's
 // meta description. A new lesson needs one card, added by hand to any archive
 // page, before the sync can place it. Sean's cut-sheet page itself is untouched.
 const ARCHIVE_BASES = ["/community/", "/community/author/seandinwiddie/", "/community/category/development/"];
-const CARDS_PER_PAGE = 10;
+const CARDS_PER_PAGE = 12;
 const CARD_ORDER = [
   ...LESSONS.map(([slug, title]) => [`/community/${slug}/`, title]),
   ...ALSO_IN_THE_COMMUNITY.filter(([href]) => href !== "/community/"),
@@ -762,6 +777,8 @@ const withTrimmedCategory = (name, html) =>
 const HEADING_PAGES = new Set([
   "community/collaborative-sessions-to-review-and-refine-user-stories/index.html",
   "community/creating-bdd-scenarios-for-real-world-cases/index.html",
+  "community/reviewing-and-enhancing-bdd-scenarios-as-a-group/index.html",
+  "community/writing-bdd-scenarios-for-software-modules/index.html",
 ]);
 const SUBHEAD_PATTERN = /^<p><strong>([^<]+?):?<\/strong><\/p>$/gm;
 const ARTICLE_BODY_PATTERN = /(<\/header><!-- \.entry-header -->)([\s\S]*?)(<!-- \.entry-content -->)/;
@@ -830,6 +847,7 @@ const routeTransforms = Object.freeze([
   withLessonSchema,
   withLevelPaths,
   withModuleLessons,
+  withOutlineModule4,
   withCommunitySitemap,
   withWebmasterNote,
   withMainSitemap,

@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
-<p class="lesson-place">Lesson 4 of 4 in Module 4</p>
+<p class="lesson-place">Lesson 4 of 5 in Module 4</p>
 </aside>
 <article>
 
@@ -202,8 +202,8 @@ export const orderNotice = ({ isSuccess, isError, error }: OrderRequest): string
       ? ''
       : declined(error)
         ? 'Your card was declined. Please choose another card.'
-        : 'The order wasn’t placed, and your cart is as it was.'</code></pre>
-<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; any other refusal says the cart is as it was, because it is. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#use-query-and-mutation-hooks">Redux Toolkit and RTK Query Best Practices</a> reads a mutation&rsquo;s state the same way.</p>
+        : 'The order wasn’t confirmed, and your cart is as it was.'</code></pre>
+<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; any other failure says the order wasn&rsquo;t confirmed and the cart is as it was, because both are true: when the connection drops, the client can&rsquo;t know whether the API recorded the order. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#use-query-and-mutation-hooks">Redux Toolkit and RTK Query Best Practices</a> reads a mutation&rsquo;s state the same way.</p>
 <h2>4. Read only what the view shows</h2>
 <p>The order history reads the list the endpoint caches. <code>selectFromResult</code> narrows the hook to the fields the view shows, so the view re-renders when they change and not for the rest of the request&rsquo;s state:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/OrderHistory.tsx
@@ -321,6 +321,7 @@ const line = useAppSelector((state) =&gt; selectCheckoutLine(state, productId))<
 </article>
 <nav class="page-nav" aria-label="Lessons">
 <a href="/community/endpoints-at-the-boundary/" rel="prev">Previous lesson: Endpoints at the Boundary</a>
+<a href="/community/one-feature-scope-to-launch/" rel="next">Next lesson: One Feature, Scope to Launch</a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
 <p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>

@@ -124,7 +124,7 @@
 </ol>
 </nav>
 
-<p>Functional Reactive Programming (FRP) is a programming paradigm that combines functional programming and reactive programming to handle asynchronous data streams and events in a declarative and composable way. FRP is used to build systems that are responsive, maintainable, and easy to reason about. Let’s explore the key concepts and principles of FRP:</p>
+<p>Functional Reactive Programming (FRP) describes a program with two ideas, events that happen at a moment and behaviors that change over time, and derives everything else from them with pure functions, which keeps a program easy to reason about as it grows. Its key concepts and principles:</p>
 <p><strong>Key Concepts:</strong></p>
 <ol>
 <li>
@@ -134,7 +134,7 @@
 <li>
 <strong>Immutable Data:</strong> In FRP, data is often treated as immutable. When data changes, a new version of the data is created rather than modifying the existing data. This supports referential transparency and reduces side effects.</li>
 <li>
-<strong>Event-Driven Programming:</strong> FRP is well-suited for event-driven programming, where code reacts to events or signals as they occur. Events can be filtered, transformed, and combined in a functional way.</li>
+<strong>Event-Driven Programming:</strong> FRP is well-suited for event-driven programming, where code reacts to events or signals as they occur. In Redux Toolkit, a reducer decides what each event changes, and selectors combine what the events have left in state.</li>
 </ol>
 <p><strong>Key Principles:</strong></p>
 <ol>
@@ -148,7 +148,7 @@
 <strong>Event Handling:</strong> FRP simplifies event handling by allowing you to describe how to react to events in a declarative manner. This reduces the need for callbacks and imperative event handling code.</li>
 </ol>
 <p><strong>FRP in Practice:</strong></p>
-<p>FRP starts with Conal Elliott and Paul Hudak’s <em>Functional Reactive Animation</em> (1997), built on two ideas: behaviors, values that change over time, and events, things that happen at a moment. Observable libraries often borrow the name but model only streams of events. In custom apps, the Sean Dinwiddie’s Webmastery team builds the same ideas in Redux Toolkit: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#the-one-way-dataflow">Redux Standard Patterns and Functional Programming</a> traces that one-way dataflow, from event to reducer to selector to view.</p>
+<p>In custom apps, the Sean Dinwiddie’s Webmastery team builds FRP’s ideas in Redux Toolkit, and <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> traces where they come from: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#the-one-way-dataflow">Redux Standard Patterns and Functional Programming</a> traces that one-way dataflow, from event to reducer to selector to view.</p>
 <p><strong>Benefits of FRP:</strong></p>
 <ul>
 <li>

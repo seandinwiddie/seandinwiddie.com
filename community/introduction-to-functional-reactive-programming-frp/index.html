@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Functional Reactive Programming (FRP) is a programming paradigm that combines functional programming and reactive programming to handle asynchronous data streams and events in a declarative and composable way. It provides a powerful approach to managing the flow of data and events in real-time or event-driven applications.</p>
+<p>Functional Reactive Programming (FRP) describes a program with two ideas, events that happen at a moment and behaviors that change over time, and derives everything the program shows from them with pure functions.</p>
 <p>Key Concepts in FRP:</p>
 <ol>
 <li>
@@ -126,7 +126,7 @@
 <li>
 <strong>Immutable Data:</strong> In FRP, data is often treated as immutable. When data changes, a new version of the data is created rather than modifying the existing data. This supports referential transparency and reduces side effects.</li>
 <li>
-<strong>Event-Driven Programming:</strong> FRP is well-suited for event-driven programming, where code reacts to events or signals as they occur. Events can be filtered, transformed, and combined in a functional way.</li>
+<strong>Event-Driven Programming:</strong> FRP is well-suited for event-driven programming, where code reacts to events or signals as they occur. In Redux Toolkit, a reducer decides what each event changes, and selectors combine what the events have left in state.</li>
 </ol>
 <p>How FRP Works:</p>
 <p>FRP works by modeling what happens as events and what the program knows as values derived from them. Developers declare how each event changes the state and how each value is derived, and compose small pure functions into larger ones, rather than writing callbacks that change things in place.</p>

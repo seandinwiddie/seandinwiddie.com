@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
-<p class="lesson-place">Lesson 1 of 4 in Module 4</p>
+<p class="lesson-place">Lesson 1 of 5 in Module 4</p>
 </aside>
 <article>
 
@@ -119,6 +119,7 @@
 <li><a href="/community/from-scenario-to-slice/">From Scenario to Slice</a></li>
 <li><a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a></li>
 <li><a href="/community/the-view-stays-minimal/">The View Stays Minimal</a></li>
+<li><a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a></li>
 </ol>
 </nav>
 
@@ -141,7 +142,7 @@ server pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
       decided &lt;- withTenant pool user tenantId $ \conn -&gt; do
         prices &lt;- selectPrices conn new
         traverse (insertOrder conn) (validateOrder prices new)
-      either (\problem -&gt; throwError err422 { errBody = encode problem }) pure decided
+      either (\problem -&gt; throwError err422 { errBody = encode problem, errHeaders = [(hContentType, "application/json")] }) pure decided
 server _ _ _ = throwAll err401
 
 -- One transaction per request: name the tenant and the user, run the work, commit.

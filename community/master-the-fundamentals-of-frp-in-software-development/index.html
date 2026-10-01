@@ -135,7 +135,7 @@
 <li>
 <strong>Testing:</strong> Learn how to test code written with FRP principles. Test a reducer through a sequence of actions and a selector through its output; neither needs a browser.</li>
 <li>
-<strong>Error Handling:</strong> Study error handling in FRP. Discover how to handle errors and exceptions gracefully within your reactive code, maintaining the stability of your applications.</li>
+<strong>Error Handling:</strong> Treat an expected failure, such as a declined card, as data, never as an exception: the client decodes what arrives into an <code>Either</code> in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>, and the API refuses with its reason in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a>.</li>
 <li>
 <strong>Connect the View:</strong> A React view reads shared state through <code>useAppSelector</code> and server data through RTK Query hooks, dispatches events, and keeps only local drafts in its own state.</li>
 <li>
@@ -143,14 +143,34 @@
 <li>
 <strong>Read the Sources:</strong> The Redux Toolkit documentation and the Redux Style Guide set the current patterns, and Elliott and Hudak&rsquo;s <em>Functional Reactive Animation</em> (1997) sets out behaviors and events.</li>
 <li>
-<strong>Join FRP Communities:</strong> Engage with the FRP community for knowledge sharing and troubleshooting. Online forums, discussion groups, and social media can be great sources of information and support.</li>
+<strong>Ask Where the Patterns Live:</strong> Bring questions to the team&rsquo;s own <a href="/community/">community</a> and to the <a href="https://redux.js.org/">Redux documentation</a>, whose guides teach the patterns this course builds on; general FRP forums mostly cover stream libraries, which model only events.</li>
 <li>
 <strong>Projects and Collaboration:</strong> Collaborate with others on projects that use FRP. Working on real projects allows you to apply your knowledge and learn from others’ experiences.</li>
 <li>
 <strong>Advanced Topics:</strong> Delve into advanced topics, such as effects over time with listener middleware, normalized entity collections, and FRP’s origin in continuous-time behaviors.</li>
 <li>
-<strong>Continuous Learning:</strong> FRP is a dynamic field, and new developments and tools emerge. Stay up to date with the latest trends and technologies related to FRP.</li>
+<strong>Continuous Learning:</strong> The lessons are revised as the team&rsquo;s practice improves; come back to them, and to Sean&rsquo;s lectures, as your practice grows.</li>
 </ol>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> The steps above come back to three pure pieces and one boundary. An event is a plain value that names what happened; the state is every event so far, folded through a pure function; a behavior is a value derived from that state; and every effect, from a network request to a timer, waits at the edge. Practice the three with no library at all:</p>
+<pre class="code-block" tabindex="0"><code>// Events, a fold and a derived value, with no library.
+type ItemAdded = { type: 'itemAdded'; productId: string; priceCents: number }
+type Line = { productId: string; priceCents: number; quantity: number }
+
+const next = (lines: Line[], event: ItemAdded): Line[] =&gt;
+  lines.some((line) =&gt; line.productId === event.productId)
+    ? lines.map((line) =&gt; (line.productId === event.productId ? { ...line, quantity: line.quantity + 1 } : line))
+    : [...lines, { productId: event.productId, priceCents: event.priceCents, quantity: 1 }]
+
+const totalCents = (lines: Line[]) =&gt; lines.reduce((sum, line) =&gt; sum + line.priceCents * line.quantity, 0)
+
+const events: ItemAdded[] = [
+  { type: 'itemAdded', productId: 'widget-a', priceCents: 2500 },
+  { type: 'itemAdded', productId: 'widget-b', priceCents: 1200 },
+  { type: 'itemAdded', productId: 'widget-a', priceCents: 2500 },
+]
+
+totalCents(events.reduce(next, [])) // 6200</code></pre>
+<p>Redux Toolkit then adds what the fold leaves out: Immer for the update syntax, <code>createSelector</code> to remember derived values, the store to tell each view when to read again, and RTK Query and listener middleware for the effects. Learned in that order, each reads as a convenience rather than magic, and a reducer that misbehaves can be run by hand on a list of events. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> starts from the same place.</p></aside>
 <p>Remember that mastering FRP is an ongoing process, and practice is key to becoming proficient. The more you work with FRP in practical scenarios, the more confident and skilled you will become in leveraging its principles for building responsive and efficient software.</p>
 
 <!-- .entry-content -->
