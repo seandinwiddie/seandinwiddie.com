@@ -223,9 +223,37 @@
     if (preference === null) showPanel();
   };
 
+  // A lesson's code blocks carry a Copy button (docs/design.md, Lesson posts). It
+  // copies the code as written and says so for a moment; a printout of what a run
+  // shows has none. The frame holds the button still while the code scrolls.
+  const initializeCodeCopy = () => {
+    if (!navigator.clipboard) return;
+    for (const pre of document.querySelectorAll(".content-page pre.code-block:not(.code-output)")) {
+      const code = pre.querySelector("code");
+      if (!code) continue;
+      const frame = document.createElement("div");
+      frame.className = "code-frame";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy";
+      button.textContent = "Copy";
+      button.setAttribute("aria-live", "polite");
+      button.addEventListener("click", () => {
+        navigator.clipboard.writeText(code.textContent).then(
+          () => { button.textContent = "Copied"; },
+          () => { button.textContent = "Select to copy"; },
+        );
+        setTimeout(() => { button.textContent = "Copy"; }, 2000);
+      });
+      pre.before(frame);
+      frame.append(pre, button);
+    }
+  };
+
   const initialize = () => {
     initializeNavigation();
     initializePrivacyControls();
+    initializeCodeCopy();
   };
 
   if (document.readyState === "loading") {

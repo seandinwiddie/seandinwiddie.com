@@ -83,6 +83,21 @@ for (const file of pages) {
     if (attribute(match[1], "tabindex") !== "0") failures.push(`${name}: a scrolling code block needs tabindex="0"`);
   }
   if (/<div class="notice depth"/.test(html)) failures.push(`${name}: a depth passage must be a labelled aside`);
+  // A diagram is an inline SVG that names itself (docs/design.md, Diagrams): role="img" and an
+  // aria-labelledby whose ids are all inside it, one of them its <title>.
+  for (const match of html.matchAll(/<svg\b([^>]*)>([\s\S]*?)<\/svg>/gi)) {
+    const ids = attribute(match[1], "aria-labelledby").split(/\s+/).filter(Boolean);
+    const has = (pattern) => new RegExp(pattern, "i").test(match[2]);
+    const escape = (id) => id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    if (
+      attribute(match[1], "role") !== "img" ||
+      !ids.length ||
+      !ids.every((id) => has(`\\bid=["']${escape(id)}["']`)) ||
+      !ids.some((id) => has(`<title\\b[^>]*\\bid=["']${escape(id)}["']`))
+    ) {
+      failures.push(`${name}: a diagram's svg needs role="img" and aria-labelledby naming its own <title>`);
+    }
+  }
   const asides = [...html.matchAll(/<aside\b([^>]*)>/gi)];
   if (asides.length > 1 && asides.some(([, attrs]) => !attribute(attrs, "aria-label") && !attribute(attrs, "aria-labelledby"))) {
     failures.push(`${name}: every aside needs a label when a page has more than one`);

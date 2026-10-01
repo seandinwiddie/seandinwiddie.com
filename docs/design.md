@@ -44,7 +44,7 @@ Body text runs at about 66 characters a line or fewer. Dank Mono gives every cha
 - the reading pages: 41rem at 1.125rem, about 66, and the services page's prices and inquiry text, on the same column as its six choices;
 - a note at 0.9em shares its page's column and runs a little over 70, which a short note carries.
 
-A lesson's code and a set of cards (the community's lessons, /local/'s service areas) run wider on a wide screen, at 58.5rem centered under the text, and the code scrolls sideways. A phone sets 35 to 45 characters and needs no rule.
+A lesson's code and a set of cards (the community's lessons, /local/'s service areas) run wider on a wide screen, at 58.5rem centered under the text, and the code scrolls sideways; on a phone a lesson's code runs to the screen's edges, about 46 characters a line. A phone sets 35 to 45 characters of text and needs no rule.
 
 Centered text is for a title, a short lead or a call to action: the page title, a hub's panel title and its one-line lead, the closing call to action on the homepage and Klamath Falls. A section heading sits on the edge of the text it heads, and a paragraph past a few lines is set left.
 
@@ -84,9 +84,46 @@ Each page has one thing the eye goes to first: the photograph and the title at t
 
 The community's lesson pages are held to an AAA standard: polish of the kind a premium studio ships, and contrast at WCAG 2.1 AAA for body text (7:1) wherever the palette allows (Sean, after design pass 5). The post template (title band, lesson banner, prose column, code and output blocks, figures, depth passages, the lesson's place and its previous and next links, the cards) is designed as one reading experience and refined over several rounds, each a copy round and a design round with a review between.
 
+The template as post design round 1 sets it, every rule on the reading pages' community hook in `assets/site.css`, so Sean's cut-sheet keeps its own settings:
+
+- **The banner** leads with the lesson's place, "Lesson 2 of 4 in Module 5", in the page's ink, with one tick for each lesson in the module: the lessons so far in ink, the rest in the panels' rule tone. The ticks repeat the words for the eye and say nothing of their own. The course's preface follows at 0.875em in the muted grey, and a hairline closes the banner; the lesson starts under it. The sync renders the banner, the ticks from the lesson's number and the module's count.
+- **The byline** is one line under the banner: the avatar and the author, then the date and the category, in the muted grey, underlined on hover.
+- **The lede.** A lesson's first paragraph steps up to 1.2em (1.125em on a phone) at 1.65 leading. With the banner's ticks, it is the lesson's one memorable element.
+- **Prose** reads at 1.75 leading, paragraphs 1.4rem apart, a lesson's sections (its h2s) 3.25rem apart. List markers take the muted grey. Inline code is a chip at 0.9em that keeps its padding where it breaks across a line.
+- **Code** takes its own size, 0.875em at 1.6 leading, in Dank Mono with its ligatures on. It runs 58.5rem wide on a desktop and to the screen's edges on a phone. A soft shadow at an edge says more code runs past it. Each code block, never a printout, carries a Copy button in a band across its top (`assets/site.js`); the band is set before the script runs, so nothing moves. A file's name is the code's first line, a comment (`// features/checkout/checkoutSelectors.ts`), as the TypeScript lessons write it; the template adds no label of its own.
+- **The depth passage** keeps its frame and its room. On a screen 75rem wide or wider its cursive label hangs in the left margin beside its first line, in the muted grey, like a master's note in the margin; narrower, the label stays a run-in. Its paper is a few points warmer than a notice's, #f7f6f2 where a notice is #f5f7f9 (post design round 1's color step). It reads best in short paragraphs.
+- **Moving on.** The previous and next lessons are a pair of framed links, each its label ("Previous lesson:") in the muted grey over its title in bold violet, the next on the right, one column on a phone. A module's lesson list is its table of contents: the numbers hang in the margin, each title on its own hairline.
+- **Contrast.** Body text #171717 on white is 17.9:1, the muted grey 7.6:1 on white and 7.1:1 on a notice's #f5f7f9, the link violet 8.2:1, code #f7f7f7 on #202631 14.2:1: every text in a lesson meets AAA.
+
 ## Diagrams
 
-Lessons carry diagrams wherever a picture shows the mechanism faster than prose: a data flow, a cube of traits, a request's path from view to API, a test's place in the chain (Sean, after design pass 5). Each is an inline SVG in a `<figure>` with a `<figcaption>`, drawn in the page's own ink, rule grey and link violet, its labels in Dank Mono, scaled to the column (`width: 100%; height: auto`) and legible at 390 px. The SVG carries `role="img"` and an `aria-labelledby` pointing at its `<title>` and `<desc>`, so a screen reader hears what it shows; nothing in it is only color. One idea per diagram, no decoration, and the prose around it still says what it shows.
+Lessons carry diagrams wherever a picture shows the mechanism faster than prose: a data flow, a cube of traits, a request's path from view to API, a test's place in the chain (Sean, after design pass 5). Each is an inline SVG in a `<figure>` with a `<figcaption>`, drawn in the page's own ink, muted grey and link violet, its labels in Dank Mono, scaled to the column (`width: 100%; height: auto`) and legible at 390 px. The rule grey (1.3:1) frames the figure; a line that carries meaning takes the muted grey, since a graphic needs 3:1 (WCAG 1.4.11). The SVG carries `role="img"` and an `aria-labelledby` pointing at its `<title>` and `<desc>`, so a screen reader hears what it shows; nothing in it is only color. One idea per diagram, no decoration, and the prose around it still says what it shows.
+
+### Writing a diagram
+
+- **The grid.** Draw on a `viewBox` 360 units wide, any height. The page frames the figure across the column in the printouts' hairline and draws it no wider than 30rem, so a 14-unit label reads near the body's size on a desktop; on a phone the frame runs to the screen's edges, as code does, and the label reads at about 14px. Nothing is smaller than 13 units.
+- **The parts are classes**, and the page gives them their colors: `text` is a label in ink, centered on its point; `.note` is a quieter label in the muted grey; `.edge` is a line in the muted grey; `.path` is the line the diagram is about, in violet and three units thick; `.node` is a box on the page's paper with a muted outline, and `.node on` outlines it in violet. Write no colors, fonts, `style` attributes or `<style>` blocks in the SVG.
+- **Nothing only in color.** What the violet marks is also thicker, and the caption names it.
+- **Ids** are unique on the page: prefix them with the diagram's name (`cube-title`, `cube-desc`). The build checks that every inline SVG has `role="img"` and an `aria-labelledby` pointing at its own `<title>`, and the page-title check counts only the page's own `<title>`, outside any SVG.
+- **Its place.** The figure follows the paragraph that introduces it, and its caption says in a sentence or two what to see. The `<desc>` says what the diagram shows for a reader who can't see it.
+
+```html
+<figure class="diagram">
+<svg role="img" aria-labelledby="cube-title cube-desc" viewBox="0 0 360 352">
+<title id="cube-title">The four-trait cube</title>
+<desc id="cube-desc">Sixteen corners in rows of 1, 4, 6, 4 and 1, from 0000 to 1111; lines join corners one trait apart, and a highlighted path runs from 0000 to 1111 in four steps.</desc>
+<text class="note" x="180" y="18">plain · brief · warm · cautious</text>
+<g class="edge"><line x1="180" y1="63" x2="144" y2="105"/><!-- … --></g>
+<g class="path"><line x1="180" y1="63" x2="72" y2="105"/><!-- … --></g>
+<rect class="node on" x="157" y="41" width="46" height="22" rx="4"/>
+<rect class="node" x="121" y="105" width="46" height="22" rx="4"/>
+<g><text x="180" y="52">0000</text><text x="144" y="116">0010</text><!-- … --></g>
+</svg>
+<figcaption>The cube, drawn by how many traits sit at their second pole. A line joins two corners one trait apart, and the violet path walks from 0000 to its opposite, 1111, one trait at a time.</figcaption>
+</figure>
+```
+
+Lines and boxes come before the labels, so a label sits on top. A line stops at the edge of the boxes it joins.
 
 ## Tells to avoid
 

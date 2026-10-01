@@ -92,8 +92,10 @@ const archiveContext = (name) => {
       ? "this outline maps the course"
       : 'the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course';
   const index = lessonIndex(name);
-  return `<aside class="notice archive-context" aria-label="About these lessons">
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. ${start}, and ${map}.</p>${index === -1 ? "" : `\n${lessonPlace(index)}`}
+  // The lesson's place leads the banner (docs/design.md, Lesson posts), over the
+  // course's preface.
+  return `<aside class="notice archive-context" aria-label="About these lessons">${index === -1 ? "" : `\n${lessonPlace(index)}`}
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. ${start}, and ${map}.</p>
 </aside>`;
 };
 
@@ -222,7 +224,9 @@ const lessonPlace = (index) => {
   const [, , part] = LESSONS[index];
   const lessons = partOf(part);
   const where = part === "course" ? "the course overview" : PARTS[part].name.split(":")[0];
-  return `<p class="lesson-place">Lesson ${lessons.indexOf(LESSONS[index]) + 1} of ${lessons.length} in ${where}</p>`;
+  const number = lessons.indexOf(LESSONS[index]) + 1;
+  // The custom properties draw the module's ticks, one per lesson (site.css).
+  return `<p class="lesson-place" style="--lesson: ${number}; --lessons: ${lessons.length}">Lesson ${number} of ${lessons.length} in ${where}</p>`;
 };
 
 // Community pages that are not lessons: the team's terms, the membership offer
@@ -237,7 +241,7 @@ const OFF_THE_PATH = new Set([
 const PAGE_NAV_PATTERN = /<(div|nav) class="page-nav"[^>]*>[\s\S]*?<\/\1>/;
 
 const lessonLink = ([slug, title], rel, label) =>
-  `<a href="/community/${slug}/" rel="${rel}">${label}: ${title}</a>`;
+  `<a href="/community/${slug}/" rel="${rel}"><span class="page-nav__label">${label}:</span> <span class="page-nav__title">${title}</span></a>`;
 
 const lessonNav = (name) => {
   const index = lessonIndex(name);

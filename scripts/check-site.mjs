@@ -117,7 +117,10 @@ for (const file of pages) {
 
   if (!/^<!doctype html>/i.test(html.trimStart())) failures.push(`${name}: missing HTML doctype`);
   if (!/<html\b[^>]*\blang=["'][^"']+["']/i.test(html)) failures.push(`${name}: missing document language`);
-  if (countMatches(html, /<title\b/gi) !== 1) failures.push(`${name}: expected one title`);
+  // A diagram's <title> names the diagram (docs/design.md, Diagrams), so inline SVGs are left out.
+  if (countMatches(html.replace(/<svg\b[\s\S]*?<\/svg>/gi, ""), /<title\b/gi) !== 1) {
+    failures.push(`${name}: expected one title`);
+  }
   // Only indexed pages are held to a display length: a noindex title never
   // reaches a search result, so its width decides nothing.
   const title = displayed(html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "");
