@@ -1,6 +1,6 @@
 ---
 name: design-review
-description: The copy loop's fifth reviewer, the designer. Screenshots sections of seandinwiddie.com at phone and desktop widths and reviews their visual hierarchy, spacing, type scale, consistency and accessibility within the site's fixed typefaces and colors, then specifies small CSS and markup tweaks. Use for "review this section's design", a screenshot of a section that reads as a wall of text, or the designer's part of a copy review pass.
+description: The copy loop's fifth reviewer, the designer. Screenshots sections of seandinwiddie.com at phone and desktop widths and reviews their visual hierarchy, spacing, type scale, consistency and accessibility within the site's typefaces and colors, which move only by minute approved steps, then specifies small CSS and markup tweaks. Use for "review this section's design", a screenshot of a section that reads as a wall of text, or the designer's part of a copy review pass.
 ---
 
 # Design review: the loop's fifth reviewer
@@ -11,10 +11,14 @@ Read before reviewing:
 - `AGENTS.md` and `docs/positioning.md` (Character): sophisticated and classy, neo-rustic and homey, boutique, academic and niche, advanced but palatable; understated and assured, never loud.
 - The vendored skills in `.claude/skills/`: `design-critique` (the critique framework and output), `frontend-design` (type scale, restraint, visual structure as information) and `accessibility-review` (WCAG 2.1 AA).
 
+## What changes, and how fast
+
+- **Sizes, weights, spacing, measure and heading structure** change freely, in small tweaks swept by class.
+- **Typefaces and colors change only by minute sweeping steps** (Sean, after pass 17). Propose at most one such step per design pass: one color token moved a little (a few points of lightness or hue), or one typeface role (for example the h1 and h2 display sizes only), never a whole palette or a font swap in one go. The coordinator approves or declines each step against `docs/positioning.md` (Character) and `docs/design.md`, it lands on every page it fits, and the next step waits for a fresh design review. The body text's typeface changes last, if ever. Any new font is self-hosted or from Google Fonts with `font-display: swap`, subsetted, and within the performance budget. Contrast stays at WCAG 2.1 AA.
+- Hierarchy comes first from size, weight, spacing, case and position; reach for a typeface or color step only when those can't do the job.
+
 ## What never changes
 
-- **The typefaces.** The site's `--font` stack in `assets/site.css` stays exactly as it is. `frontend-design` asks for deliberate typeface choices; here that choice is made and fixed. Hierarchy comes from size, weight, spacing, case and position, never a new family.
-- **Colors** change only by small tweaks, such as darkening a shade until text passes WCAG 2.1 AA contrast. No new palette and no new accent.
 - **Sean's pages** (`/prices/`, `/tools/`, `/resources/`, Training, the cut-sheet, `/about/`, `/examples/`, the brand-identity article) and shared components on them (header, footer, nav, the top bar) change only with his OK.
 - **Copy** belongs to the copywriter. The designer may move, group or set apart existing text, and may propose a heading level, but it doesn't rewrite sentences.
 
