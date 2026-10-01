@@ -2,6 +2,32 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Design passes 1–5: October 1, 2026
+
+Sean added the designer as reviewer 5 after pass 17, with the `design-review` skill, and asked the loop to run until the designer scores the site 9 or higher. He set the rules along the way: Dank Mono only on every one of his personal brand sites, with its cursive italic and ligatures used on purpose; colors move only by minute steps the coordinator approves, with a design review between steps.
+
+| Pass | Score before | Expected after | Approved color step |
+|---|---|---|---|
+| 1 | 5.5 | 7.5 | none |
+| 2 | 6.5 | 7.5 | link violet #5c00ff to #5909e1 inside main on the loop's pages |
+| 3 | 7.0 | 7.6 | Klamath Falls' four colored card rules to Redding's hairline card |
+| 4 | 7.5 | 7.9 | rules on the grey panels in the hubs' own tone |
+| 5 | 7.8 | 8.1 | Klamath Falls' green card to the panel grey and the flat blue button |
+
+### What landed
+
+- **Pass 1:** a type scale in Dank Mono (subheads had sat below their own paragraphs: 20px over 21.4px), a measure of about 65 characters, homepage rhythm, lighter button shadows, Klamath Falls' card cascade, the cursive italic on client quotes and depth labels, and `docs/design.md`, the house style.
+- **Pass 2:** titles take a display step on the loop's pages; phones read at 1rem with a 1rem gutter; hub buttons sit as a flat pair; the services page's choices form an even grid; headings set left; Klamath's centered paragraphs set left.
+- **Pass 3:** depth passages get room and keep their code inside the frame; code, its run and its output sit as one example; hub bullets and numbers share an edge; panels continue the title band; the webmaster note's rule sits evenly.
+- **Pass 4:** one process-step style; Klamath Falls on Redding's white template; Module 5's output printed as page ink on white; the depth passage's violet rule removed; lesson-card descriptions at the small step.
+- **Pass 5:** `/service/`'s title in line with every other title; the towns' services as a list; `/contact/` on the white reading-page template.
+
+Every pass proved Sean's pages and the shared header, nav, featured cards, footer, top bar and privacy button unchanged, by screenshots and computed styles.
+
+### Where it stands
+
+The loop's own pages reach their design ceiling at about 8.1. The designer's estimate of what Sean's held items would add, in order: the repeated stock hero photo (+0.5, to 8.6), the call-to-action gradient and glow (+0.15), the white band under the menu (+0.1), the featured cards' orphan row (+0.1), the floating privacy button (+0.1, to 9.05), and his own pages in the house style (+0.2, to 9.25). The design loop pauses for Sean's direction on them. Copy items it found for the copywriter: Title Case and numbered headings on the offer page and about 135 lesson headings, and Redding's and `/local/`'s doubled call to action.
+
 ## Pass 17: October 1, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |
