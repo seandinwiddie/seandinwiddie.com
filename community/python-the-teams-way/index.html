@@ -173,7 +173,7 @@ ModuleNotFoundError: No module named 'pipeline'</code></pre>
 <figure class="diagram">
 <svg role="img" aria-labelledby="imports-title imports-desc" viewBox="0 0 360 236">
 <title id="imports-title">Where an import starts looking</title>
-<desc id="imports-desc">A folder tree: the repository's root holds pipeline/, which holds data/, which holds build_rows.py. Run with python -m, Python looks first in the root, and a highlighted line shows import pipeline finding pipeline/ there. Run as a file, it looks first in data/, which holds no pipeline/, so the import fails.</desc>
+<desc id="imports-desc">A folder tree: the repository's root holds pipeline/, which holds data/, which holds build_rows.py. Run with python -m from the root, Python looks first in the current directory, the root, and a highlighted line shows import pipeline finding pipeline/ there. Run as a file, it looks first in data/, which holds no pipeline/, so the import fails.</desc>
 <g class="edge"><line x1="56" y1="108" x2="56" y2="156"/><line x1="56" y1="156" x2="68" y2="156"/><line x1="80" y1="168" x2="80" y2="212"/><line x1="80" y1="212" x2="92" y2="212"/></g>
 <g class="path"><line x1="32" y1="48" x2="32" y2="96"/><line x1="32" y1="96" x2="44" y2="96"/></g>
 <rect class="node on" x="20" y="24" width="83" height="24" rx="4"/>
@@ -182,7 +182,7 @@ ModuleNotFoundError: No module named 'pipeline'</code></pre>
 <rect class="node" x="92" y="200" width="125" height="24" rx="4"/>
 <g><text x="61.5" y="36">the root</text><text x="90" y="96">pipeline/</text><text x="97" y="156">data/</text><text x="154.5" y="212">build_rows.py</text><text class="note" x="262" y="28">python -m</text><text class="note" x="262" y="46">looks here first</text><text class="note" x="262" y="96">import pipeline: found</text><text class="note" x="268" y="148">a file run looks here</text><text class="note" x="268" y="166">first: no pipeline/</text></g>
 </svg>
-<figcaption>Python puts one folder first on its import path. With <code>python -m</code> it is the root, so <code>import pipeline</code> finds the package (the violet line). Run as a file, it is the file&rsquo;s own folder, <code>data/</code>, and there is no <code>pipeline/</code> in there.</figcaption>
+<figcaption>Python puts one folder first on its import path. With <code>python -m</code> it is the current directory, here the root, so <code>import pipeline</code> finds the package (the violet line). Run as a file, it is the file&rsquo;s own folder, <code>data/</code>, and there is no <code>pipeline/</code> in there.</figcaption>
 </figure>
 <h2>A locked environment</h2>
 <p>Each project has its own virtual environment, installed from a lock. People edit <code>requirements.in</code>, a short list of what the project uses.</p>
@@ -626,7 +626,8 @@ exit 1</code></pre>
 set -eu
 cd "$(dirname "$0")/.."
 bin/lock --check
-python -m pipeline.config.compose config/train.json &gt; /dev/null &amp;&amp; echo "config composes"
+python -m pipeline.config.compose config/train.json &gt; /dev/null
+echo "config composes"
 python -m pipeline.data.contract data/rows.jsonl data/counts.json
 python -m pytest -q
 echo "verified"</code></pre>
