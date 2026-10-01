@@ -150,6 +150,7 @@ const PARTS = Object.freeze({
   m2: { name: "Module 2: Behavior-Driven Development (BDD)", opener: "module-2-behavior-driven-development-bdd" },
   m3: { name: "Module 3: Functional Reactive Programming (FRP)", opener: "module-3-functional-reactive-programming-frp" },
   m4: { name: "Module 4: The Chain End to End", opener: "the-api-haskell-servant-and-nile" },
+  m5: { name: "Module 5: Python and Model Training", opener: "module-5-python-and-model-training" },
 });
 
 const LESSONS = [
@@ -195,6 +196,12 @@ const LESSONS = [
   ["endpoints-at-the-boundary", "Endpoints at the Boundary", "m4"],
   ["the-view-stays-minimal", "The View Stays Minimal", "m4"],
   ["one-feature-scope-to-launch", "One Feature, Scope to Launch", "m4"],
+  // Module 5: the team's Python, the geometry its model training rests on, then the
+  // path from fine-tune to release. The same principles, in a different stack.
+  ["module-5-python-and-model-training", "Module 5: Python and Model Training", "m5"],
+  ["python-the-teams-way", "Python, the Team\u2019s Way", "m5"],
+  ["geometric-reasoning-in-model-training", "Geometric Reasoning in Model Training", "m5"],
+  ["from-fine-tune-to-release", "From Fine-Tune to Release", "m5"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
@@ -575,17 +582,26 @@ const withModuleLessons = (name, html) => {
 };
 
 // The Course Outline's Module 4 list was kept by hand, so each new lesson had
-// to be typed into it. It renders from LESSONS, like the module's own list; the
-// objectives, topics and activities below it stay as written.
+// to be typed into it. Module 4's and Module 5's lists render from LESSONS, like
+// each module's own list; the objectives, topics and activities below each stay
+// as written. An opener that is a page about its module (its title is the
+// module's name) stays out of the list, since the module's heading links it.
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const OUTLINE_M4_PATTERN = new RegExp(
-  `(<h2><a href="/community/${PARTS.m4.opener}/">${escapeRegExp(PARTS.m4.name)}</a></h2>\\n<ul>\\n)[\\s\\S]*?(\\n<li><em>Objectives:</em></li>)`,
-);
-const withOutlineModule4 = (name, html) => {
+const OUTLINE_MODULES = ["m4", "m5"];
+const outlinePattern = (key) =>
+  new RegExp(
+    `(<h2><a href="/community/${PARTS[key].opener}/">${escapeRegExp(PARTS[key].name)}</a></h2>\\n<ul>\\n)[\\s\\S]*?(\\n<li><em>Objectives:</em></li>)`,
+  );
+const withOutlineModules = (name, html) => {
   if (name !== COURSE_OUTLINE) return html;
-  if (!OUTLINE_M4_PATTERN.test(html)) throw new Error(`${name}: missing Module 4's lesson list`);
-  const items = partOf("m4").map(([slug, title]) => `<li><a href="/community/${slug}/">${title}.</a></li>`);
-  return html.replace(OUTLINE_M4_PATTERN, (_, open, close) => `${open}${items.join("\n")}${close}`);
+  return OUTLINE_MODULES.reduce((page, key) => {
+    const pattern = outlinePattern(key);
+    if (!pattern.test(page)) throw new Error(`${name}: missing ${PARTS[key].name.split(":")[0]}'s lesson list`);
+    const items = partOf(key)
+      .filter(([, title]) => title !== PARTS[key].name)
+      .map(([slug, title]) => `<li><a href="/community/${slug}/">${title}.</a></li>`);
+    return page.replace(pattern, (_, open, close) => `${open}${items.join("\n")}${close}`);
+  }, html);
 };
 
 // The community sitemap listed pages in WordPress publication order, with the
@@ -709,6 +725,7 @@ const HEAD_TITLES = new Map([
   ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals"],
   ["discover-how-frp-enhances-user-interaction-and-responsiveness", "How FRP Improves User Interaction"],
   ["apply-frp-concepts-to-software-modules", "Applying FRP to Software Modules"],
+  ["geometric-reasoning-in-model-training", "Geometric Reasoning in Training"],
 ]);
 const headTitle = (slug, title) => `${HEAD_TITLES.get(slug) ?? title}${SITE_SUFFIX}`;
 const TITLE_PATTERNS = [
@@ -852,6 +869,9 @@ const RETIRED_OFFERS =
   /tenth share|quarter share|Care Contract|Standing Share|Year Share|free (?:call|consultation|conversation|audit)|at no charge|makes good/i;
 const RX_WORDS = /\b(?:observables?|RxJS|RxJava|ReactiveX|multicasting)\b/i;
 const RX_HISTORY = "Observable libraries often borrow the name";
+// Private work stays private (AGENTS.md): no community page names the company
+// behind Sean's private model work or its product.
+const PRIVATE_NAMES = /forboc|servitor/i;
 const mainText = (html) => (html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? "").replace(/<[^>]+>/g, " ");
 
 const withGuards = (name, html) => {
@@ -869,6 +889,9 @@ const withGuards = (name, html) => {
   if ((lessonIndex(name) !== -1 || PAGINATED_ARCHIVES.has(name)) && RX_WORDS.test(main.replaceAll(RX_HISTORY, ""))) {
     throw new Error(`${name}: teaches Rx vocabulary in its text, images or alt text`);
   }
+  if (name.startsWith("community/") && PRIVATE_NAMES.test(html)) {
+    throw new Error(`${name}: names private work (AGENTS.md, "Private work stays private")`);
+  }
   return html;
 };
 
@@ -882,7 +905,7 @@ const routeTransforms = Object.freeze([
   withLessonSchema,
   withLevelPaths,
   withModuleLessons,
-  withOutlineModule4,
+  withOutlineModules,
   withCommunitySitemap,
   withWebmasterNote,
   withMainSitemap,

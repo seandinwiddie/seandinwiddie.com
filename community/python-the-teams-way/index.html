@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Python, the Team’s Way | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="How the team writes Python: modules run with python -m, a locked environment, pure and deterministic functions, frozen data, composed config and named tests.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/python-the-teams-way/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Python, the Team’s Way | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="How the team writes Python: modules run with python -m, a locked environment, pure and deterministic functions, frozen data, composed config and named tests.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/python-the-teams-way/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-01T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-01">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Python, the Team’s Way | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="How the team writes Python: modules run with python -m, a locked environment, pure and deterministic functions, frozen data, composed config and named tests.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/python-the-teams-way/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/python-the-teams-way/#webpage","url":"https://seandinwiddie.com/community/python-the-teams-way/","name":"Python, the Team’s Way | Sean Dinwiddie's Webmastery","description":"How the team writes Python: modules run with python -m, a locked environment, pure and deterministic functions, frozen data, composed config and named tests.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/python-the-teams-way/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/python-the-teams-way/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-01T12:00:00+00:00","dateModified":"2026-10-01"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/python-the-teams-way/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Python, the Team’s Way","item":"https://seandinwiddie.com/community/python-the-teams-way/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/python-the-teams-way/#article","headline":"Python, the Team’s Way","description":"How the team writes Python: modules run with python -m, a locked environment, pure and deterministic functions, frozen data, composed config and named tests.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/python-the-teams-way/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/python-the-teams-way/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-01T12:00:00+00:00","dateModified":"2026-10-01"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/mohammad-rahmani-8qEB0fTe9Vw-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Python, the Team’s Way</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p class="lesson-place">Lesson 2 of 4 in Module 5</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/python-the-teams-way/" rel="bookmark"><time datetime="2026-10-01T12:00:00+00:00">October 1, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>Python lets a program do almost anything from anywhere: change a global, read a file halfway through a calculation, shuffle with whatever seed the process happens to hold. The practices below give up most of that freedom on purpose, so the same inputs give the same outputs on every machine, and a failing test can say exactly which rule broke. They are the practices the Sean Dinwiddie&rsquo;s Webmastery team holds its Python to, and each comes with a small example that runs on the standard library and pytest.</p>
+<h2>One layout, run as modules</h2>
+<p>Code is grouped by what it does, one package per domain, and nothing sits loose at the top of the repository. Configuration and data live beside the package, never inside it:</p>
+<pre class="code-block" tabindex="0"><code>requirements.in      what the project uses, unpinned
+requirements.lock    every package at an exact version, compiled from it
+pytest.ini
+config/train.json    a manifest of small config parts
+config/parts/
+data/
+pipeline/
+  config/compose.py
+  data/build_rows.py
+  data/contract.py
+  evaluation/
+  release/
+tests/
+bin/lock
+bin/verify</code></pre>
+<p>Every entry point runs as a module from the repository&rsquo;s root, so its imports are absolute and resolve the same way from a terminal, a test or a scheduled job. An entry point&rsquo;s <code>main()</code> returns an exit code, and the module hands it to the shell:</p>
+<pre class="code-block" tabindex="0"><code>"""Print training rows as JSON lines, one per row."""
+
+from __future__ import annotations
+
+import json
+import sys
+
+from pipeline.data.contexts import CATALOG
+from pipeline.data.order import rotate
+
+
+def build_rows(count: int) -&gt; tuple[dict[str, str], ...]:
+    return tuple(
+        {"id": f"row-{index:03d}", "place": rotate(CATALOG, index).place}
+        for index in range(count)
+    )
+
+
+def main(argv: list[str] | None = None) -&gt; int:
+    args = sys.argv[1:] if argv is None else argv
+    count = int(args[0]) if args else 4
+    for row in build_rows(count):
+        print(json.dumps(row, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())</code></pre>
+<pre class="code-block" tabindex="0"><code>$ python -m pipeline.data.build_rows
+{"id": "row-000", "place": "the north trail"}
+{"id": "row-001", "place": "the east parking lot"}
+{"id": "row-002", "place": "the library annex"}
+{"id": "row-003", "place": "the north trail"}</code></pre>
+<p>Run as a file, the same code fails, because Python puts the file&rsquo;s own folder first on the import path instead of the root:</p>
+<pre class="code-block" tabindex="0"><code>$ python pipeline/data/build_rows.py 2&gt;&amp;1 | tail -1
+ModuleNotFoundError: No module named 'pipeline'</code></pre>
+<h2>A locked environment</h2>
+<p>Each project has its own virtual environment, and it installs from a lock, never from a list of names. People edit <code>requirements.in</code>, a short list of what the project uses. uv compiles it into <code>requirements.lock</code>, with every package and every dependency pinned, for a fixed Python version and with nothing published after a fixed date, so compiling it again next month gives the same lock:</p>
+<pre class="code-block" tabindex="0"><code>#!/bin/sh
+# Compile requirements.in into requirements.lock. With --check, fail if the lock is stale.
+set -eu
+compile() {
+  uv pip compile requirements.in --quiet --no-header \
+    --python-version 3.11 --exclude-newer 2026-09-01 --output-file "$1"
+}
+case "${1:-}" in
+  --check)
+    fresh=$(mktemp)
+    trap 'rm -f "$fresh"' EXIT
+    compile "$fresh"
+    diff -u --label requirements.lock --label "compiled now" requirements.lock "$fresh" &amp;&amp;
+      echo "requirements.lock is current" ;;
+  *)
+    compile requirements.lock ;;
+esac</code></pre>
+<p>The check compiles a fresh lock beside the real one and fails on any difference, so a package added to <code>requirements.in</code> without a new lock stops the run before anything installs it:</p>
+<pre class="code-block" tabindex="0"><code>$ bin/lock --check
+requirements.lock is current
+$ echo six &gt;&gt; requirements.in
+$ bin/lock --check; echo "exit $?"
+--- requirements.lock
++++ compiled now
+@@ -8,3 +8,5 @@
+     # via pytest
+ pytest==9.1.1
+     # via -r requirements.in
++six==1.17.0
++    # via -r requirements.in
+exit 1</code></pre>
+<p>The environment is made from the lock alone. <code>--no-deps</code> installs exactly what the lock names, and nothing it doesn&rsquo;t:</p>
+<pre class="code-block" tabindex="0"><code>$ python3 -m venv .venv
+$ .venv/bin/python -m pip install --no-deps -r requirements.lock</code></pre>
+<h2>Pure functions, the same answer every time</h2>
+<p>A function that reads only its arguments and returns a new value can be tested with plain data and trusted on any machine. Data generation holds to that strictly. A row&rsquo;s content is chosen by its index, turning through a fixed catalog, never drawn at random. Where an order has to be shuffled, the shuffle gets a generator of its own, seeded from the run&rsquo;s settings, never the global one that any library can disturb:</p>
+<pre class="code-block" tabindex="0"><code>"""Deterministic choices: the same inputs give the same rows on every machine."""
+
+from __future__ import annotations
+
+import random
+from typing import Sequence, TypeVar
+
+T = TypeVar("T")
+
+
+def rotate(items: Sequence[T], index: int) -&gt; T:
+    """The item for row `index`: a fixed rotation, never a random draw."""
+    return items[index % len(items)]
+
+
+def seeded_order(count: int, seed: int, epoch: int) -&gt; tuple[int, ...]:
+    """Row indices in a shuffled order that a seed and an epoch fix."""
+    rng = random.Random(f"order:{seed}:{epoch}")  # its own generator, not the global one
+    indices = list(range(count))
+    rng.shuffle(indices)
+    return tuple(indices)</code></pre>
+<p>Python&rsquo;s built-in <code>hash()</code> is the trap here. For strings it is salted afresh in every process, so anything derived from it changes from run to run, while the seeded order doesn&rsquo;t:</p>
+<pre class="code-block" tabindex="0"><code>$ for run in 1 2 3; do python -c "print(hash('north trail') % 1000)"; done
+928
+563
+205
+$ for run in 1 2 3; do python -c "from pipeline.data.order import seeded_order; print(seeded_order(8, seed=11, epoch=0))"; done
+(0, 2, 6, 3, 7, 1, 4, 5)
+(0, 2, 6, 3, 7, 1, 4, 5)
+(0, 2, 6, 3, 7, 1, 4, 5)</code></pre>
+<p>Output is sorted, JSON is written with sorted keys, and floats are rounded before they are compared, so two runs can be compared line by line. Heavy libraries are imported inside the functions at the edge that need them, so a test of the core never loads a GPU stack. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> sets out what makes a function pure, and <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the line between the pure core and the shell around it.</p>
+<h2>Frozen data</h2>
+<p>Records are frozen dataclasses. A frozen record can&rsquo;t change after it is made, so a value passed into a function is the same value when the function returns, and a change is a new record, made with <code>dataclasses.replace</code>:</p>
+<pre class="code-block" tabindex="0"><code>"""The made-up situations that training rows are written about."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Context:
+    place: str
+    state: str
+    reason: str
+
+
+CATALOG = (
+    Context("the north trail", "closed until Friday", "a washed-out bridge"),
+    Context("the east parking lot", "open from 7 a.m.", "new gate hours"),
+    Context("the library annex", "closed on Mondays", "a change in staffing"),
+)</code></pre>
+<pre class="code-block" tabindex="0"><code>from dataclasses import FrozenInstanceError, replace
+
+from pipeline.data.contexts import CATALOG
+
+trail = CATALOG[0]
+try:
+    trail.state = "open"
+except FrozenInstanceError as error:
+    print("refused:", error)
+
+reopened = replace(trail, state="open")
+print(reopened)
+print(trail)</code></pre>
+<pre class="code-block" tabindex="0"><code>refused: cannot assign to field 'state'
+Context(place='the north trail', state='open', reason='a washed-out bridge')
+Context(place='the north trail', state='closed until Friday', reason='a washed-out bridge')</code></pre>
+<h2>JSON as the one authority for config</h2>
+<p>Every value a run depends on (the model and its pinned revision, the data files, the seed, the training settings) lives in JSON, and nothing repeats it: code reads it, and documents point to it rather than copying its values. A long config is hard to review, so it is composed from small parts that a manifest names, each set at a key or merged at the top:</p>
+<pre class="code-block" tabindex="0"><code>{
+  "parts": [
+    {"file": "parts/base.json", "operation": "set", "target": "model"},
+    {"file": "parts/data.json", "operation": "set", "target": "data"},
+    {"file": "parts/run.json", "operation": "merge"}
+  ]
+}</code></pre>
+<p>The composer refuses a key set twice, a part outside the config&rsquo;s folder and a manifest that includes itself, so composing never quietly overwrites a value or reaches for a file it shouldn&rsquo;t:</p>
+<pre class="code-block" tabindex="0"><code>def place(document: dict[str, Any], entry: dict[str, Any], part: Any) -&gt; dict[str, Any]:
+    match entry["operation"]:
+        case "set":
+            key = entry["target"]
+            if key in document:
+                raise ValueError(f"duplicate target {key!r}")
+            return {**document, key: part}
+        case "merge":
+            overlap = sorted(set(document) &amp; set(part))
+            if overlap:
+                raise ValueError(f"duplicate keys {overlap}")
+            return {**document, **part}
+        case other:
+            raise ValueError(f"unknown operation {other!r}")
+
+
+def compose(manifest: Path, seen: tuple[Path, ...] = ()) -&gt; dict[str, Any]:
+    manifest = manifest.resolve()
+    if manifest in seen:
+        raise ValueError(f"cycle through {manifest.name}")
+    folder = manifest.parent
+    document: dict[str, Any] = {}
+    for entry in load_json(manifest)["parts"]:
+        path = (folder / entry["file"]).resolve()
+        if not path.is_relative_to(folder):
+            raise ValueError(f"part outside the config folder: {entry['file']}")
+        raw = load_json(path)
+        part = compose(path, (*seen, manifest)) if "parts" in raw else raw
+        document = place(document, entry, part)
+    return document</code></pre>
+<pre class="code-block" tabindex="0"><code>$ python -m pipeline.config.compose config/train.json
+{
+  "data": {
+    "train": "data/train.jsonl",
+    "validation": "data/validation.jsonl"
+  },
+  "epochs": 2,
+  "model": {
+    "name": "example/base-model",
+    "revision": "pinned"
+  },
+  "seed": 11
+}</code></pre>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#immutable-configuration">Practical Applications of Functional Programming</a> builds configuration the same way: explicit parts, explicit precedence and a frozen result.</p>
+<h2>Contracts that report every fault</h2>
+<p>Data crosses a boundary only after it is checked against its contract: the exact set of keys, the allowed values and the rules between fields. The checks are independent of each other, so all of them run, and the validator raises once with every fault rather than the first, so the person fixing a data file sees the whole list. Counts and other derived facts are recomputed from the data, never trusted as declared:</p>
+<pre class="code-block" tabindex="0"><code>ROW_KEYS = frozenset({"id", "split", "prompt", "chosen", "rejected"})
+SPLITS = frozenset({"train", "validation", "development", "release"})
+
+
+def check(passed: bool, message: str) -&gt; tuple[str, ...]:
+    return () if passed else (message,)
+
+
+def row_errors(row: Mapping[str, Any]) -&gt; tuple[str, ...]:
+    keys = set(row)
+    return (
+        *check(keys &lt;= ROW_KEYS, f"unexpected keys {sorted(keys - ROW_KEYS)}"),
+        *check(keys &gt;= ROW_KEYS, f"missing keys {sorted(ROW_KEYS - keys)}"),
+        *check(row.get("split") in SPLITS, f"unknown split {row.get('split')!r}"),
+        *check(bool(str(row.get("prompt", "")).strip()), "empty prompt"),
+        *check(row.get("chosen") != row.get("rejected"), "chosen and rejected are the same"),
+    )
+
+
+def count_errors(declared: Mapping[str, int], rows: Iterable[Mapping[str, Any]]) -&gt; tuple[str, ...]:
+    """Recount the rows in each split rather than trusting the declared counts."""
+    found = Counter(row.get("split") for row in rows)
+    return tuple(
+        f"{split}: declared {declared.get(split, 0)}, found {found.get(split, 0)}"
+        for split in sorted(set(declared) | set(found), key=str)
+        if declared.get(split, 0) != found.get(split, 0)
+    )
+
+
+def validate(rows: Iterable[Mapping[str, Any]], declared: Mapping[str, int]) -&gt; None:
+    rows = tuple(rows)
+    errors = (
+        *(f"{row.get('id', '?')}: {error}" for row in rows for error in row_errors(row)),
+        *count_errors(declared, rows),
+    )
+    if errors:
+        raise ValueError("\n".join(errors))</code></pre>
+<pre class="code-block" tabindex="0"><code>from pipeline.data.contract import validate
+
+rows = (
+    {"id": "row-000", "split": "train", "prompt": "Is the north trail open?",
+     "chosen": "It is closed until Friday.", "rejected": "Closed till Friday!"},
+    {"id": "row-001", "split": "trian", "prompt": " ", "note": "draft",
+     "chosen": "Open from 7 a.m.", "rejected": "Open from 7 a.m."},
+)
+try:
+    validate(rows, declared={"train": 2})
+except ValueError as error:
+    print(error)</code></pre>
+<pre class="code-block" tabindex="0"><code>row-001: unexpected keys ['note']
+row-001: unknown split 'trian'
+row-001: empty prompt
+row-001: chosen and rejected are the same
+train: declared 2, found 1
+trian: declared 0, found 1</code></pre>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#accumulate-every-error-with-validation">Practical Applications of Functional Programming</a> accumulates errors the same way in TypeScript.</p>
+<h2>Tests named for the behavior</h2>
+<p>Each test&rsquo;s name states the rule it proves, so a failing run reads as a list of broken rules. A contract is tested by breaking a valid example one way at a time and checking that each break is refused, by name:</p>
+<pre class="code-block" tabindex="0"><code>import pytest
+
+from pipeline.data.contract import validate
+
+VALID = {
+    "id": "row-000",
+    "split": "train",
+    "prompt": "Is the north trail open?",
+    "chosen": "It is closed until Friday.",
+    "rejected": "Closed till Friday!",
+}
+
+BROKEN = (
+    ("unknown-split", {"split": "trian"}, "unknown split 'trian'"),
+    ("empty-prompt", {"prompt": " "}, "empty prompt"),
+    ("same-answers", {"rejected": VALID["chosen"]}, "chosen and rejected are the same"),
+    ("extra-key", {"note": "draft"}, r"unexpected keys \['note'\]"),
+)
+
+
+def test_a_valid_row_passes():
+    validate((VALID,), declared={"train": 1})
+
+
+@pytest.mark.parametrize("change, error", [case[1:] for case in BROKEN], ids=[case[0] for case in BROKEN])
+def test_each_broken_row_is_refused_by_name(change, error):
+    with pytest.raises(ValueError, match=error):
+        validate(({**VALID, **change},), declared={"train": 1})</code></pre>
+<p>A test that has never failed has proved nothing, so a test can break the code on purpose. Here one test swaps the rotation for a broken one and expects the rotation test to fail:</p>
+<pre class="code-block" tabindex="0"><code>import pytest
+
+import pipeline.data.build_rows as build
+from pipeline.data.contexts import CATALOG
+from pipeline.data.order import seeded_order
+
+
+def test_rows_rotate_through_the_catalog():
+    places = [row["place"] for row in build.build_rows(4)]
+    assert places == [context.place for context in (*CATALOG, CATALOG[0])]
+
+
+def test_the_rotation_test_fails_when_the_rotation_breaks(monkeypatch):
+    monkeypatch.setattr(build, "rotate", lambda items, index: items[0])  # broken on purpose
+    with pytest.raises(AssertionError):
+        test_rows_rotate_through_the_catalog()</code></pre>
+<pre class="code-block" tabindex="0"><code>$ python -m pytest -v --no-header tests/test_contract.py tests/test_rows.py
+============================= test session starts ==============================
+collecting ... collected 11 items
+
+tests/test_contract.py::test_a_valid_row_passes PASSED
+tests/test_contract.py::test_each_broken_row_is_refused_by_name[unknown-split] PASSED
+tests/test_contract.py::test_each_broken_row_is_refused_by_name[empty-prompt] PASSED
+tests/test_contract.py::test_each_broken_row_is_refused_by_name[same-answers] PASSED
+tests/test_contract.py::test_each_broken_row_is_refused_by_name[extra-key] PASSED
+tests/test_contract.py::test_a_wrong_declared_count_is_refused PASSED
+tests/test_contract.py::test_every_fault_is_reported_in_one_error PASSED
+tests/test_rows.py::test_rows_rotate_through_the_catalog PASSED
+tests/test_rows.py::test_the_rotation_test_fails_when_the_rotation_breaks PASSED
+tests/test_rows.py::test_the_same_seed_and_epoch_give_the_same_order PASSED
+tests/test_rows.py::test_a_new_epoch_gives_a_new_order_of_the_same_rows PASSED
+
+============================== 11 passed in 0.02s ==============================</code></pre>
+<p>A skipped test is a test that didn&rsquo;t run, and a green run with a skip in it hides that. <code>conftest.py</code> fails any run with a skip:</p>
+<pre class="code-block" tabindex="0"><code>"""A skipped test is a test that did not run, so a run with one fails."""
+
+
+def skipped(config):
+    reporter = config.pluginmanager.get_plugin("terminalreporter")
+    return len(reporter.stats.get("skipped", ())) if reporter else 0
+
+
+def pytest_terminal_summary(terminalreporter, config):
+    if skipped(config):
+        terminalreporter.write_line(f"{skipped(config)} skipped: every test must run")
+
+
+def pytest_sessionfinish(session):
+    if skipped(session.config):
+        session.exitstatus = 1</code></pre>
+<p>With a skipped test added, the run reports it and exits non-zero:</p>
+<pre class="code-block" tabindex="0"><code>$ python -m pytest -q; echo "exit $?"
+....................s..................
+1 skipped: every test must run
+38 passed, 1 skipped in 0.08s
+exit 1</code></pre>
+<h2>One script verifies everything</h2>
+<p>One script runs every check that must hold before any paid compute starts: the lock is current, the config composes, the data meets its contract and every test passes. It reads and never writes. Regenerating data is a separate command, so verifying can never change what it verifies:</p>
+<pre class="code-block" tabindex="0"><code>#!/bin/sh
+# Everything that must hold before any paid compute starts. It reads and never writes.
+set -eu
+cd "$(dirname "$0")/.."
+bin/lock --check
+python -m pipeline.config.compose config/train.json &gt; /dev/null &amp;&amp; echo "config composes"
+python -m pipeline.data.contract data/rows.jsonl data/counts.json
+python -m pytest -q
+echo "verified"</code></pre>
+<pre class="code-block" tabindex="0"><code>$ bin/verify
+requirements.lock is current
+config composes
+6 rows match their contract
+......................................
+38 passed in 0.11s
+verified</code></pre>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Collecting every error is right when the checks are independent, like the fields of one row. When a later check needs an earlier one&rsquo;s result (a file has to parse before its rows can be checked), the first failure stops the run, and the lecture <a href="https://seandinwiddie.github.io/lectures/monads-in-functional-programming/#validation-fail-fast-or-accumulate">Monads in Functional Programming</a> draws that line. Determinism bends at the GPU: its kernels can add floating-point numbers in a different order from one run to the next, so two training runs from the same data and seed can differ in their last digits. Everything around the training step stays deterministic (the data, the order it is read in, the config and the record of what ran), so a difference between two trained models traces to the training step itself and nothing else. And a lock pins packages, not machines: a lock compiled for one platform and one GPU backend is checked on that platform, and a second platform gets a lock of its own.</p></aside>
+<p>The next lesson puts these practices to work on the cube that the team&rsquo;s training data and evaluation share.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/module-5-python-and-model-training/" rel="prev">Previous lesson: Module 5: Python and Model Training</a>
+<a href="/community/geometric-reasoning-in-model-training/" rel="next">Next lesson: Geometric Reasoning in Model Training</a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

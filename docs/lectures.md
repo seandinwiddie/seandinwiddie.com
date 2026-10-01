@@ -53,6 +53,8 @@ Linked in pass 14: The View Stays Minimal → Functional Composition (`#match-di
 
 Every anchor is checked against the lectures repository's headings with its own `slugify`.
 
+Linked in Module 5 (October 1, 2026): the opener → Functional Programming in Other Languages; Python, the Team's Way → What Is a Function? (`#pure-functions`), Functional Programming in Other Languages (`#functional-core-imperative-shell`), Practical Applications of Functional Programming (`#immutable-configuration`, `#accumulate-every-error-with-validation`) and, in its depth passage, Monads in Functional Programming (`#validation-fail-fast-or-accumulate`); Geometric Reasoning in Model Training → Practical Applications of Functional Programming (`#test-laws-and-boundaries`); From Fine-Tune to Release → Practical Applications of Functional Programming (`#represent-expected-failure-as-plain-data`).
+
 
 A starting map for the copy loop; it adds links a few pages at a time, never all at once.
 

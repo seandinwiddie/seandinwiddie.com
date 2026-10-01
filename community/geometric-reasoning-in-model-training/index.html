@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Geometric Reasoning in Training | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Four binary traits of an answer as the corners of a cube: training pairs that change only the voice, and a 32-corner evaluation read as a spectrum.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/geometric-reasoning-in-model-training/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Geometric Reasoning in Training | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Four binary traits of an answer as the corners of a cube: training pairs that change only the voice, and a 32-corner evaluation read as a spectrum.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/geometric-reasoning-in-model-training/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-01T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-01">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Geometric Reasoning in Training | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Four binary traits of an answer as the corners of a cube: training pairs that change only the voice, and a 32-corner evaluation read as a spectrum.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#webpage","url":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/","name":"Geometric Reasoning in Training | Sean Dinwiddie's Webmastery","description":"Four binary traits of an answer as the corners of a cube: training pairs that change only the voice, and a 32-corner evaluation read as a spectrum.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-01T12:00:00+00:00","dateModified":"2026-10-01"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Geometric Reasoning in Model Training","item":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#article","headline":"Geometric Reasoning in Model Training","description":"Four binary traits of an answer as the corners of a cube: training pairs that change only the voice, and a 32-corner evaluation read as a spectrum.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-in-model-training/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-01T12:00:00+00:00","dateModified":"2026-10-01"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/noaa-GsdTx_G1XaQ-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Geometric Reasoning in Model Training</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p class="lesson-place">Lesson 3 of 4 in Module 5</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/geometric-reasoning-in-model-training/" rel="bookmark"><time datetime="2026-10-01T12:00:00+00:00">October 1, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>An average score can rise while a model gets worse at something that matters. Geometric reasoning guards against that. It places every behavior to be trained and measured at a corner of a cube, so the training data covers every corner, the evaluation measures every corner, and a release is judged corner by corner. The geometry is small and exact, and this lesson writes all of it in plain Python, on the practices of <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a>.</p>
+<h2>Four traits make a cube</h2>
+<p>Each trait of an answer&rsquo;s voice is a pair of poles, and an answer takes one pole of each: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four binary traits give 2<sup>4</sup> = 16 combinations. Written as bits, 0 for a trait&rsquo;s first pole and 1 for its second, they are the corners of a four-dimensional cube, and the distance between two corners is the number of traits they differ in, their Hamming distance:</p>
+<pre class="code-block" tabindex="0"><code>"""Binary traits of an answer's voice, and the cube their corners make."""
+
+from __future__ import annotations
+
+from collections import Counter
+from itertools import combinations, product
+from typing import Iterable
+
+TRAITS = (
+    ("plain", "formal"),
+    ("brief", "expansive"),
+    ("warm", "reserved"),
+    ("cautious", "bold"),
+)
+
+
+def corners(dimensions: int = len(TRAITS)) -&gt; tuple[str, ...]:
+    """Every corner as a bit string: "0" is a trait's first pole, "1" its second."""
+    return tuple("".join(bits) for bits in product("01", repeat=dimensions))
+
+
+def describe(corner: str, factors=TRAITS) -&gt; str:
+    return ", ".join(factors[axis][int(bit)] for axis, bit in enumerate(corner))
+
+
+def hamming(left: str, right: str) -&gt; int:
+    """How many traits two corners differ in."""
+    if len(left) != len(right):
+        raise ValueError("corners must have the same number of traits")
+    return sum(a != b for a, b in zip(left, right))
+
+
+def pairs_by_distance(points: Iterable[str]) -&gt; dict[int, int]:
+    counts = Counter(hamming(a, b) for a, b in combinations(tuple(points), 2))
+    return dict(sorted(counts.items()))
+
+
+def gray_order(dimensions: int) -&gt; tuple[str, ...]:
+    """Every corner once, each one trait away from the one before."""
+    return tuple(format(i ^ (i &gt;&gt; 1), f"0{dimensions}b") for i in range(2**dimensions))</code></pre>
+<pre class="code-block" tabindex="0"><code>from pipeline.data.cube import corners, describe, pairs_by_distance
+
+cube = corners()
+print(len(cube), "corners")
+print(cube[0], describe(cube[0]))
+print(cube[-1], describe(cube[-1]))
+print(pairs_by_distance(cube))</code></pre>
+<pre class="code-block" tabindex="0"><code>16 corners
+0000 plain, brief, warm, cautious
+1111 formal, expansive, reserved, bold
+{1: 32, 2: 48, 3: 32, 4: 8}</code></pre>
+<p>The 120 pairs of corners fall into four distances: 32 neighbours one trait apart (the cube&rsquo;s edges), 48 pairs two apart, 32 three apart and 8 opposites. A contract that declares those counts is checked by counting them again from the corners, never by trusting the numbers it states.</p>
+<h2>Training pairs that change only the voice</h2>
+<p>Preference training learns from pairs: a prompt, a chosen answer and a rejected one. If the two answers differ in their facts as well as their voice, the model can&rsquo;t tell which difference it is being taught. So each pair keeps the facts fixed and changes only the traits. The chosen answer is written in the voice the prompt asks for, and the rejected answer gives the same facts in the voice of another corner. Every corner is paired at every distance, from a neighbour one trait away to its opposite, and which corner it meets at each distance turns with the row&rsquo;s index, so over enough rows it meets them all, with no randomness:</p>
+<pre class="code-block" tabindex="0"><code>"""Preference pairs that keep the facts and change only the voice."""
+
+from __future__ import annotations
+
+from pipeline.data.contexts import Context
+from pipeline.data.cube import corners, describe, hamming
+
+
+def answer(context: Context, corner: str) -&gt; str:
+    """One answer in the voice a corner names; the facts never change."""
+    formal, expansive, reserved, bold = (bit == "1" for bit in corner)
+    claim = f"{context.place} is {context.state}"
+    opener = "" if reserved else "Thanks for asking. "
+    sentence = f"Please note that {claim}" if formal else claim[0].upper() + claim[1:]
+    reason = f". The reason is {context.reason}." if expansive else f", because of {context.reason}."
+    closer = " Plan around it." if bold else " That is what the posted notice says."
+    return opener + sentence + reason + closer
+
+
+def related(corner: str, distance: int) -&gt; tuple[str, ...]:
+    return tuple(other for other in corners(len(corner)) if hamming(corner, other) == distance)
+
+
+def preference_rows(context: Context, source: str, index: int) -&gt; tuple[dict, ...]:
+    """One pair per distance; which neighbour is chosen turns with the row's index."""
+    def row(distance: int) -&gt; dict:
+        options = related(source, distance)
+        other = options[index % len(options)]
+        return {
+            "prompt": (
+                f"Answer in a {describe(source)} voice. The posted notice says "
+                f"{context.place} is {context.state}, because of {context.reason}. "
+                f"Is {context.place} open?"
+            ),
+            "chosen": answer(context, source),
+            "rejected": answer(context, other),
+            "distance": distance,
+        }
+
+    return tuple(row(distance) for distance in range(1, len(source) + 1))
+
+
+def facts_kept(context: Context, row: dict) -&gt; bool:
+    facts = (context.place, context.state, context.reason)
+    return all(fact.lower() in side.lower() for fact in facts for side in (row["chosen"], row["rejected"]))</code></pre>
+<pre class="code-block" tabindex="0"><code>from textwrap import fill
+
+from pipeline.data.contexts import CATALOG
+from pipeline.data.cube import corners
+from pipeline.data.pairs import facts_kept, preference_rows
+
+trail = CATALOG[0]
+rows = preference_rows(trail, "0000", index=0)
+for row in (rows[0], rows[-1]):
+    print("distance", row["distance"])
+    for side in ("chosen", "rejected"):
+        print(fill(row[side], 52, initial_indent=f"  {side + ':':&lt;10}", subsequent_indent=" " * 12))
+
+every_row = [
+    (context, row)
+    for context in CATALOG
+    for index, source in enumerate(corners())
+    for row in preference_rows(context, source, index)
+]
+print(len(every_row), "rows; facts kept in all:", all(facts_kept(c, r) for c, r in every_row))</code></pre>
+<pre class="code-block" tabindex="0"><code>distance 1
+  chosen:   Thanks for asking. The north trail is
+            closed until Friday, because of a
+            washed-out bridge. That is what the
+            posted notice says.
+  rejected: Thanks for asking. The north trail is
+            closed until Friday, because of a
+            washed-out bridge. Plan around it.
+distance 4
+  chosen:   Thanks for asking. The north trail is
+            closed until Friday, because of a
+            washed-out bridge. That is what the
+            posted notice says.
+  rejected: Please note that the north trail is
+            closed until Friday. The reason is a
+            washed-out bridge. Plan around it.
+192 rows; facts kept in all: True</code></pre>
+<p>The model never sees the cube: no row names a corner, a distance or a score. It sees a request for a voice and two answers with the same facts, and it learns to follow the voice it is asked for rather than drift toward an average of all of them.</p>
+<h2>A fifth factor: the evidence</h2>
+<p>Evaluation adds one more binary factor: whether the evidence in the prompt is stated plainly, or contested by someone in the conversation who asserts the opposite. Five factors give 2<sup>5</sup> = 32 corners, a full factorial experiment, with every combination measured. The prompts that measure them are written for evaluation alone and never trained on, and a table with a corner missing is refused before any analysis runs.</p>
+<h2>Reading the scores as a spectrum</h2>
+<p>The Walsh&ndash;Hadamard transform reads a complete table of corner scores as a sum of effects. Each coefficient belongs to one set of factors, written as a mask. It is the mean of all 32 scores, each multiplied by +1 or &minus;1 according to whether an even or an odd number of those factors sit at their second pole. For one factor, that is half the gap between its two poles, averaged over every other corner: a main effect. For two factors, it is how far one factor&rsquo;s effect changes with the other: an interaction. And so on, up to all five at once:</p>
+<pre class="code-block" tabindex="0"><code>"""Read a complete table of corner scores as main effects and interactions."""
+
+from __future__ import annotations
+
+from typing import Mapping
+
+from pipeline.data.cube import corners
+
+AXES = ("register", "length", "warmth", "stance", "evidence")
+FACTORS = (
+    ("plain", "formal"),
+    ("brief", "expansive"),
+    ("warm", "reserved"),
+    ("cautious", "bold"),
+    ("stated", "contested"),
+)
+
+
+def sign(mask: str, corner: str) -&gt; int:
+    """+1 where an even number of the masked factors sit at their second pole, else -1."""
+    return -1 if sum(m == c == "1" for m, c in zip(mask, corner)) % 2 else 1
+
+
+def complete(scores: Mapping[str, float]) -&gt; tuple[str, ...]:
+    dimensions = len(next(iter(scores)))
+    missing = sorted(set(corners(dimensions)) - set(scores))
+    if missing:
+        raise ValueError(f"unmeasured corners: {', '.join(missing)}")
+    return corners(dimensions)
+
+
+def spectrum(scores: Mapping[str, float]) -&gt; dict[str, float]:
+    """Walsh-Hadamard coefficients, one for each set of factors (a mask)."""
+    points = complete(scores)
+    return {
+        mask: round(sum(sign(mask, c) * scores[c] for c in points) / len(points), 9)
+        for mask in points
+    }
+
+
+def inverse(coefficients: Mapping[str, float]) -&gt; dict[str, float]:
+    points = tuple(coefficients)
+    return {c: round(sum(sign(m, c) * coefficients[m] for m in points), 9) for c in points}
+
+
+def label(mask: str, axes=AXES) -&gt; str:
+    names = [axes[i] for i, bit in enumerate(mask) if bit == "1"]
+    return " x ".join(names) or "mean"
+
+
+def energy_by_order(coefficients: Mapping[str, float]) -&gt; dict[int, float]:
+    orders = sorted({mask.count("1") for mask in coefficients} - {0})
+    return {
+        order: round(sum(v * v for m, v in coefficients.items() if m.count("1") == order), 9)
+        for order in orders
+    }</code></pre>
+<p>A test with a known answer proves the transform. Build the 32 scores from effects chosen in advance, and check that the spectrum returns exactly those effects and nothing else:</p>
+<pre class="code-block" tabindex="0"><code>"""Scores for all 32 corners, built from effects chosen in advance."""
+
+from pipeline.data.cube import corners
+
+
+def pole(bit: str) -&gt; int:
+    return 1 if bit == "0" else -1  # +1 at a factor's first pole, -1 at its second
+
+
+# corner[3] is the stance (cautious or bold); corner[4] is the evidence.
+SCORES = {
+    c: round(0.78 + 0.06 * pole(c[4]) + 0.02 * pole(c[3]) + 0.03 * pole(c[3]) * pole(c[4]), 9)
+    for c in corners(5)
+}</code></pre>
+<pre class="code-block" tabindex="0"><code>from demos.known import SCORES
+from pipeline.evaluation.spectrum import energy_by_order, inverse, label, spectrum
+
+coefficients = spectrum(SCORES)
+for mask, value in sorted(coefficients.items(), key=lambda item: -abs(item[1])):
+    if value:
+        print(f"{label(mask):&lt;18} {value:+.3f}")
+print("energy by order:", energy_by_order(coefficients))
+print("inverse returns the scores:", inverse(coefficients) == SCORES)</code></pre>
+<pre class="code-block" tabindex="0"><code>mean               +0.780
+evidence           +0.060
+stance x evidence  +0.030
+stance             +0.020
+energy by order: {1: 0.004, 2: 0.0009, 3: 0.0, 4: 0.0, 5: 0.0}
+inverse returns the scores: True</code></pre>
+<p>Read back, stated evidence scores 0.12 above contested evidence on average (twice its coefficient), a cautious voice scores 0.04 above a bold one, and the interaction says the stance matters more when the evidence is stated. The other 28 coefficients are zero. The energy at each order, the sum of its squared coefficients, shows everything sitting in the main effects and one pair, and the inverse transform rebuilds all 32 scores exactly. That last check is a law of the transform, and the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> tests laws the same way.</p>
+<h2>One factor at a time, and by distance</h2>
+<p>Two more views read the same table. A Gray-code walk visits all 32 corners in a closed loop and changes exactly one factor at each step (corner <em>i</em> is <code>i ^ (i &gt;&gt; 1)</code>), so each step&rsquo;s change in score belongs to one factor. Grouping by distance holds the evidence fixed and asks how far apart the scores are for voices one, two, three and four traits apart:</p>
+<pre class="code-block" tabindex="0"><code>
+def flipped(before: str, after: str) -&gt; str:
+    return next(AXES[i] for i, (a, b) in enumerate(zip(before, after)) if a != b)
+
+
+def walk(scores: Mapping[str, float]) -&gt; tuple[tuple[str, str, float, float], ...]:
+    """Each step of a closed Gray-code loop: corner, factor flipped, score, change."""
+    complete(scores)
+    order = gray_order(len(next(iter(scores))))
+    loop = (*order, order[0])
+    return tuple(
+        (after, flipped(before, after), scores[after], round(scores[after] - scores[before], 9))
+        for before, after in zip(loop, loop[1:])
+    )
+
+
+def by_distance(scores: Mapping[str, float], evidence: str) -&gt; dict[int, float]:
+    """With the evidence held, the mean score gap between corners at each distance."""
+    complete(scores)
+    held = sorted(c for c in scores if c[-1] == evidence)
+    gaps = defaultdict(list)
+    for a, b in combinations(held, 2):
+        gaps[hamming(a, b)].append(abs(scores[a] - scores[b]))
+    return {d: round(sum(g) / len(g), 9) for d, g in sorted(gaps.items())}</code></pre>
+<pre class="code-block" tabindex="0"><code>from demos.known import SCORES
+from pipeline.evaluation.walk import by_distance, walk
+
+steps = walk(SCORES)
+for corner, factor, score, change in steps[:6]:
+    print(f"{corner}  {factor:&lt;9} {score:.2f}  {change:+.2f}")
+print("...", len(steps), "steps; net change", round(sum(step[3] for step in steps), 9))
+print("stated:   ", by_distance(SCORES, evidence="0"))
+print("contested:", by_distance(SCORES, evidence="1"))</code></pre>
+<pre class="code-block" tabindex="0"><code>00001  evidence  0.71  -0.18
+00011  stance    0.73  +0.02
+00010  evidence  0.79  +0.06
+00110  warmth    0.79  +0.00
+00111  evidence  0.73  -0.06
+00101  stance    0.71  -0.02
+... 32 steps; net change 0.0
+stated:    {1: 0.025, 2: 0.05, 3: 0.075, 4: 0.1}
+contested: {1: 0.005, 2: 0.01, 3: 0.015, 4: 0.02}</code></pre>
+<p>In the walk, the evidence flips every other step, and its change is 0.18 when the voice is cautious and 0.06 when it is bold: the interaction, seen as it happens. Around the closed loop the changes sum to zero, as they must. By distance, under stated evidence the stance moves a score by 0.10, and the mean gap grows by a quarter of that with each trait apart, because among the pairs <em>d</em> traits apart, <em>d</em> in every four differ in the stance. Under contested evidence the stance moves a score by only 0.02, and the voices sit closer together. The spectrum, the walk and the grouping are read and reported, and none of them decides a release on its own.</p>
+<h2>Revise and restore</h2>
+<p>A score at one corner is a snapshot, and a conversation moves. The revise-and-restore check runs one across five turns: a fact is stated, someone contests it without evidence, new evidence revises it, newer evidence revises it again, and the first fact returns. It measures whether the answer holds when it is only contested, updates when the evidence changes, how many turns it takes to update, and whether it comes back to where it started:</p>
+<pre class="code-block" tabindex="0"><code>"""Revise and restore: does an answer hold, update and return across turns?"""
+
+from __future__ import annotations
+
+from typing import Sequence
+
+# Each turn: what happens, what the answer should now report, and what it measures.
+TURNS = (
+    ("the notice says the trail is open", "open", "start"),
+    ("a visitor insists it is closed", "open", "hold"),
+    ("a new notice closes it", "closed", "update"),
+    ("a later notice opens it on weekends", "weekends", "update"),
+    ("the first notice is reposted", "open", "return"),
+)
+
+
+def measure(reported: Sequence[str]) -&gt; dict[str, object]:
+    if len(reported) != len(TURNS):
+        raise ValueError(f"expected {len(TURNS)} answers, got {len(reported)}")
+    passed = tuple(answer == expected for answer, (_, expected, _) in zip(reported, TURNS))
+    kinds = tuple(kind for *_, kind in TURNS)
+    updates = tuple(p for p, kind in zip(passed, kinds) if kind == "update")
+    return {
+        "holds when contested": all(p for p, kind in zip(passed, kinds) if kind == "hold"),
+        "updates on evidence": sum(updates) / len(updates),
+        "turns to first update": next((i for i, p in enumerate(updates, 1) if p), None),
+        "returns to the start": passed[0] and passed[-1],
+    }</code></pre>
+<pre class="code-block" tabindex="0"><code>from pipeline.evaluation.revise import measure
+
+print(measure(("open", "open", "closed", "weekends", "open")))
+print(measure(("open", "closed", "closed", "closed", "weekends")))</code></pre>
+<pre class="code-block" tabindex="0"><code>{'holds when contested': True, 'updates on evidence': 1.0, 'turns to first update': 1, 'returns to the start': True}
+{'holds when contested': False, 'updates on evidence': 0.5, 'turns to first update': 1, 'returns to the start': False}</code></pre>
+<p>The second answer gives way to an assertion, lags a turn behind the evidence and never returns. Those are three different faults, and an average over the five turns would blur them into one number.</p>
+<h2>The release gate, corner by corner</h2>
+<p>A trained model is a candidate, compared with its parent (the model it would replace) on the identical 32 corners. The gate refuses a table with any corner unmeasured, fails at any corner where the candidate scores below the parent, and asks for at least one corner where it scores above. A gain at one corner never pays for a loss at another:</p>
+<pre class="code-block" tabindex="0"><code>"""The release gate: every corner measured, and none worse than the parent's."""
+
+from __future__ import annotations
+
+from typing import Mapping
+
+from pipeline.data.cube import describe
+from pipeline.evaluation.spectrum import FACTORS, complete
+
+
+def mean(scores: Mapping[str, float]) -&gt; float:
+    return round(sum(scores.values()) / len(scores), 6)
+
+
+def gate_errors(candidate: Mapping[str, float], parent: Mapping[str, float]) -&gt; tuple[str, ...]:
+    complete(candidate)
+    complete(parent)
+    change = {c: round(candidate[c] - parent[c], 6) for c in parent}
+    worse = sorted(c for c, d in change.items() if d &lt; 0)
+    return (
+        *(f"worse at {c} ({describe(c, FACTORS)}): {change[c]:+.2f}" for c in worse),
+        *(() if any(d &gt; 0 for d in change.values()) else ("no corner is better",)),
+    )</code></pre>
+<pre class="code-block" tabindex="0"><code>from demos.known import SCORES
+from pipeline.evaluation.gate import gate_errors, mean
+
+parent = SCORES
+candidate = {c: round(s + 0.01, 6) for c, s in parent.items()}  # better at every corner,
+candidate["00111"] = round(parent["00111"] - 0.20, 6)  # except one
+print("mean", mean(parent), "-&gt;", mean(candidate))
+print(gate_errors(candidate, parent))</code></pre>
+<pre class="code-block" tabindex="0"><code>mean 0.78 -&gt; 0.783437
+('worse at 00111 (plain, brief, reserved, bold, contested): -0.20',)</code></pre>
+<p>The candidate is better at 31 corners and its mean rises. At one corner, a reserved, bold voice under contested evidence, it falls by 0.20. A gate on the mean would ship it; the gate per corner names the corner and stops it.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Interactions hide in averages. In the scores above, a cautious voice beats a bold one by 0.04 on average, yet under contested evidence the bold voice scores higher, 0.73 against 0.71. A report that shows only the main effect would recommend the wrong voice for exactly the harder case. A pure interaction can hide completely: if a trait helps by some amount under stated evidence and hurts by the same amount under contested evidence, its main effect is zero, and every average says it does nothing. That is why the gate reads corners rather than coefficients or means, and why every analysis needs a complete table, since with a corner missing each coefficient would mix effects it is meant to keep apart.</p>
+<p>The walk has an edge of its own. In this loop the stance always flips while the evidence is contested, so the walk sees only the stance&rsquo;s small effect there and never its larger one under stated evidence; the spectrum and the grouping read every corner and see both. And a cube grows fast. Each binary factor added doubles the corners to measure, so the factors are chosen for what a release must not get worse at, and a factor that matters less is held fixed rather than added.</p></aside>
+<p>The next lesson follows a model through the whole pipeline around this geometry, from choosing its base to the gate that decides whether it ships.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/python-the-teams-way/" rel="prev">Previous lesson: Python, the Team’s Way</a>
+<a href="/community/from-fine-tune-to-release/" rel="next">Next lesson: From Fine-Tune to Release</a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_135407660-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_207254886-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_138021007-e1571312681920-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_104183460_111672862-1-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>
