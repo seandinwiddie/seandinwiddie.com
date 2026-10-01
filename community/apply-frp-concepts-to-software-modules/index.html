@@ -118,34 +118,34 @@
 <h2 id="model-the-module"><a class="heading-anchor" href="#model-the-module">Model the module</a></h2>
 <ol>
 <li>
-<strong>Find the Events:</strong> List what happens in the module, such as an item added, an order placed or a slot booked, and what each screen shows because of it. The steps below turn each event into an action and what each screen shows into state and selectors.</li>
+<strong>Find the events:</strong> List what happens in the module, such as an item added, an order placed or a slot booked, and what each screen shows because of it. The steps below turn each event into an action and what each screen shows into state and selectors.</li>
 <li>
-<strong>Choose the State Layer:</strong> In custom apps, the Sean Dinwiddie’s Webmastery team keeps a module’s state in Redux Toolkit: slices define each part of the state and the pure reducers that change it, RTK Query endpoints fetch and cache server data, and the React views stay minimal. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/">Redux Toolkit and Functional Programming</a> covers the foundation.</li>
+<strong>Choose the state layer:</strong> In custom apps, the Sean Dinwiddie’s Webmastery team keeps a module’s state in Redux Toolkit: slices define each part of the state and the pure reducers that change it, RTK Query endpoints fetch and cache server data, and the React views stay minimal. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/">Redux Toolkit and Functional Programming</a> covers the foundation.</li>
 <li>
-<strong>Model Events as Actions:</strong> Name each action for what happened, such as orderPlaced rather than setOrders; the reducer decides the next state.</li>
+<strong>Model events as actions:</strong> Name each action for what happened, such as orderPlaced rather than setOrders; the reducer decides the next state.</li>
 <li>
-<strong>Derive with Selectors:</strong> Compute what a view shows from the state with selectors, composed with createSelector, so each derived value has one definition and recomputes only when its inputs change.</li>
+<strong>Derive with selectors:</strong> Compute what a view shows from the state with selectors, composed with createSelector, so each derived value has one definition and recomputes only when its inputs change.</li>
 <li>
-<strong>Put Effects at the Boundary:</strong> RTK Query fetches and caches server data, a thunk runs a workflow started from one place, and listener middleware debounces, cancels and reacts to later actions; reducers and selectors stay pure.</li>
+<strong>Put effects at the boundary:</strong> RTK Query fetches and caches server data, a thunk runs a workflow started from one place, and listener middleware debounces, cancels and reacts to later actions; reducers and selectors stay pure.</li>
 <li>
-<strong>State Management:</strong> Keep the module’s state in its slice. Each reducer takes the current state and an action and returns the next state, so every change is a named event and no earlier state is overwritten.</li>
+<strong>State management:</strong> Keep the module’s state in its slice. Each reducer takes the current state and an action and returns the next state, so every change is a named event and no earlier state is overwritten.</li>
 </ol>
 <h2 id="make-it-hold-up"><a class="heading-anchor" href="#make-it-hold-up">Make it hold up</a></h2>
 <ol start="7">
 <li>
-<strong>Error Handling:</strong> Give each expected failure a name and a shape the module can read: the API answers a declined card with its reason, the slice leaves the cart alone because it empties only on success, and a pure function turns the request&rsquo;s state into the message the view shows, as <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> follows end to end.</li>
+<strong>Error handling:</strong> Give each expected failure a name and a shape the module can read: the API answers a declined card with its reason, the slice leaves the cart alone because it empties only on success, and a pure function turns the request&rsquo;s state into the message the view shows, as <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> follows end to end.</li>
 <li>
-<strong>Modularize Code:</strong> Organize the module by feature: its slice, selectors, endpoints and view in one folder, with the slice’s actions and selectors as its public interface.</li>
+<strong>Modularize code:</strong> Organize the module by feature: its slice, selectors, endpoints and view in one folder, with the slice’s actions and selectors as its public interface.</li>
 <li>
 <strong>Testing:</strong> Module 2’s scenarios become the slice’s tests: each Given sets the starting state, each When dispatches one action, and each Then checks what a selector returns. Pure reducers and selectors need no browser to test.</li>
 <li>
-<strong>Real-Time Updates:</strong> A change the server pushes, such as an order marked ready, is decoded at the boundary like any response, then enters the state as an action or an update to RTK Query&rsquo;s cached data, so every view that reads it updates with no code of its own.</li>
+<strong>Real-time updates:</strong> A change the server pushes, such as an order marked ready, is decoded at the boundary like any response, then enters the state as an action or an update to RTK Query&rsquo;s cached data, so every view that reads it updates with no code of its own.</li>
 <li>
-<strong>Collaboration and Integration:</strong> Other modules reach this one only through its public interface, its actions and selectors, so the rest of the app never depends on the shape of its state.</li>
+<strong>Collaboration and integration:</strong> Other modules reach this one only through its public interface, its actions and selectors, so the rest of the app never depends on the shape of its state.</li>
 <li>
 <strong>Documentation:</strong> The module&rsquo;s scenarios are its first documentation: they say what it does in the owner&rsquo;s words, and they fail when it stops. A short note beside them covers what they can&rsquo;t, such as why a value is derived rather than stored, for the next webmaster who opens the folder.</li>
 <li>
-<strong>Continuous Improvement:</strong> A module changes the way it was built: a new behavior starts as a scenario, and a slow screen is measured before its code changes. The team keeps researching better ways to do each step, and adopts one once it has proven itself.</li>
+<strong>Continuous improvement:</strong> A module changes the way it was built: a new behavior starts as a scenario, and a slow screen is measured before its code changes. The team keeps researching better ways to do each step, and adopts one once it has proven itself.</li>
 </ol>
 <aside class="notice depth" aria-label="Where it bends">
 <p><strong>Where it bends.</strong> Not every value belongs in a slice. Ask in order, and stop at the first yes:</p>
@@ -162,17 +162,17 @@
 <svg role="img" aria-labelledby="apply-frp-concepts-to-software-modules-owner-title apply-frp-concepts-to-software-modules-owner-desc" viewBox="0 0 360 296">
 <title id="apply-frp-concepts-to-software-modules-owner-title">Where one value lives</title>
 <desc id="apply-frp-concepts-to-software-modules-owner-desc">A ladder of four questions, each with a yes arrow to an owner and a no arrow down to the next. Derived from state? A selector. Survives a refresh, or shared as a link? The router. A server document reused across the app? RTK Query. Shared by unrelated components, with transitions worth recording? A slice. Anything else stays in the component.</desc>
-<g class="edge"><line x1="238" y1="32" x2="272" y2="32"/><line x1="266.8" y1="29" x2="272" y2="32"/><line x1="266.8" y1="35" x2="272" y2="32"/><line x1="238" y1="92" x2="272" y2="92"/><line x1="266.8" y1="89" x2="272" y2="92"/><line x1="266.8" y1="95" x2="272" y2="92"/><line x1="238" y1="152" x2="272" y2="152"/><line x1="266.8" y1="149" x2="272" y2="152"/><line x1="266.8" y1="155" x2="272" y2="152"/><line x1="238" y1="212" x2="272" y2="212"/><line x1="266.8" y1="209" x2="272" y2="212"/><line x1="266.8" y1="215" x2="272" y2="212"/><line x1="123" y1="52" x2="123" y2="72"/><line x1="126" y1="66.8" x2="123" y2="72"/><line x1="120" y1="66.8" x2="123" y2="72"/><line x1="123" y1="112" x2="123" y2="132"/><line x1="126" y1="126.8" x2="123" y2="132"/><line x1="120" y1="126.8" x2="123" y2="132"/><line x1="123" y1="172" x2="123" y2="192"/><line x1="126" y1="186.8" x2="123" y2="192"/><line x1="120" y1="186.8" x2="123" y2="192"/><line x1="123" y1="232" x2="123" y2="252"/><line x1="126" y1="246.8" x2="123" y2="252"/><line x1="120" y1="246.8" x2="123" y2="252"/></g>
-<rect class="node" x="8" y="12" width="230" height="40" rx="4"/>
-<rect class="node" x="272" y="12" width="80" height="40" rx="4"/>
-<rect class="node" x="8" y="72" width="230" height="40" rx="4"/>
-<rect class="node" x="272" y="72" width="80" height="40" rx="4"/>
-<rect class="node" x="8" y="132" width="230" height="40" rx="4"/>
-<rect class="node" x="272" y="132" width="80" height="40" rx="4"/>
-<rect class="node" x="8" y="192" width="230" height="40" rx="4"/>
-<rect class="node on" x="272" y="192" width="80" height="40" rx="4"/>
-<rect class="node" x="8" y="252" width="230" height="32" rx="4"/>
-<g><text x="123" y="32">derived from state?</text><text x="312" y="32">selector</text><text class="note" x="255" y="21">yes</text><text class="note" x="140" y="62">no</text><text x="123" y="84">survives a refresh,</text><text x="123" y="100">or shared as a link?</text><text x="312" y="92">router</text><text class="note" x="255" y="81">yes</text><text class="note" x="140" y="122">no</text><text x="123" y="152">a server document?</text><text x="312" y="152">RTK Query</text><text class="note" x="255" y="141">yes</text><text class="note" x="140" y="182">no</text><text x="123" y="212">shared, with transitions?</text><text x="312" y="212">slice</text><text class="note" x="255" y="201">yes</text><text class="note" x="140" y="242">no</text><text x="123" y="268">the component</text></g>
+<g class="edge"><line x1="237" y1="32" x2="270.75" y2="32"/><line x1="265.6" y1="29" x2="270.75" y2="32"/><line x1="265.6" y1="35" x2="270.75" y2="32"/><line x1="237" y1="92" x2="270.75" y2="92"/><line x1="265.6" y1="89" x2="270.75" y2="92"/><line x1="265.6" y1="95" x2="270.75" y2="92"/><line x1="237" y1="152" x2="270.75" y2="152"/><line x1="265.6" y1="149" x2="270.75" y2="152"/><line x1="265.6" y1="155" x2="270.75" y2="152"/><line x1="237" y1="212" x2="270.75" y2="212"/><line x1="265.6" y1="209" x2="270.75" y2="212"/><line x1="265.6" y1="215" x2="270.75" y2="212"/><line x1="123.25" y1="52" x2="123.25" y2="72"/><line x1="126.25" y1="66.8" x2="123.25" y2="72"/><line x1="120.25" y1="66.8" x2="123.25" y2="72"/><line x1="123.25" y1="112" x2="123.25" y2="132"/><line x1="126.25" y1="126.8" x2="123.25" y2="132"/><line x1="120.25" y1="126.8" x2="123.25" y2="132"/><line x1="123.25" y1="172" x2="123.25" y2="192"/><line x1="126.25" y1="186.8" x2="123.25" y2="192"/><line x1="120.25" y1="186.8" x2="123.25" y2="192"/><line x1="123.25" y1="232" x2="123.25" y2="252"/><line x1="126.25" y1="246.8" x2="123.25" y2="252"/><line x1="120.25" y1="246.8" x2="123.25" y2="252"/></g>
+<rect class="node" x="9.5" y="12" width="227.5" height="40" rx="4"/>
+<rect class="node" x="270.75" y="12" width="79" height="40" rx="4"/>
+<rect class="node" x="9.5" y="72" width="227.5" height="40" rx="4"/>
+<rect class="node" x="270.75" y="72" width="79" height="40" rx="4"/>
+<rect class="node" x="9.5" y="132" width="227.5" height="40" rx="4"/>
+<rect class="node" x="270.75" y="132" width="79" height="40" rx="4"/>
+<rect class="node" x="9.5" y="192" width="227.5" height="40" rx="4"/>
+<rect class="node on" x="270.75" y="192" width="79" height="40" rx="4"/>
+<rect class="node" x="9.5" y="252" width="227.5" height="32" rx="4"/>
+<g><text x="123.25" y="32">derived from state?</text><text x="310.25" y="32">selector</text><text class="note" x="254" y="21">yes</text><text class="note" x="140.25" y="62">no</text><text x="123.25" y="84">survives a refresh,</text><text x="123.25" y="100">or shared as a link?</text><text x="310.25" y="92">router</text><text class="note" x="254" y="81">yes</text><text class="note" x="140.25" y="122">no</text><text x="123.25" y="152">a server document?</text><text x="310.25" y="152">RTK Query</text><text class="note" x="254" y="141">yes</text><text class="note" x="140.25" y="182">no</text><text x="123.25" y="212">shared, with transitions?</text><text x="310.25" y="212">slice</text><text class="note" x="254" y="201">yes</text><text class="note" x="140.25" y="242">no</text><text x="123.25" y="268">the component</text></g>
 </svg>
 <figcaption>Ask in order and stop at the first yes. The slice (outlined in violet) is only the fourth answer, and a value that reaches the bottom stays in the component.</figcaption>
 </figure>

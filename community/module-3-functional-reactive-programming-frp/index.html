@@ -129,13 +129,13 @@
 <h2 id="key-principles"><a class="heading-anchor" href="#key-principles">Key principles</a></h2>
 <ol>
 <li>
-<strong>Events as Actions:</strong> Each event is a plain action object named for what happened, such as <code>orderPlaced</code>, whether a person, a timer or the server caused it; the sequence of dispatched actions is the application’s event stream.</li>
+<strong>Events as actions:</strong> Each event is a plain action object named for what happened, such as <code>orderPlaced</code>, whether a person, a timer or the server caused it; the sequence of dispatched actions is the application’s event stream.</li>
 <li>
 <strong>Subscriptions:</strong> A React view subscribes to the store through <code>useAppSelector</code>, and an RTK Query hook subscribes to a cached request; both end when the view unmounts, so none is managed by hand.</li>
 <li>
 <strong>Selectors:</strong> <code>createSelector</code> composes small pure functions into derived values, the way FRP derives one behavior from another, and recomputes a value only when its inputs change.</li>
 <li>
-<strong>Event Handling:</strong> A reducer handles each event in one place, as a pure step from one state to the next; listener middleware handles what must follow it, such as a later request; and a view&rsquo;s handler only dispatches.</li>
+<strong>Event handling:</strong> A reducer handles each event in one place, as a pure step from one state to the next; listener middleware handles what must follow it, such as a later request; and a view&rsquo;s handler only dispatches.</li>
 </ol>
 <h2 id="frp-in-practice"><a class="heading-anchor" href="#frp-in-practice">FRP in practice</a></h2>
 <p>In custom apps, the Sean Dinwiddie’s Webmastery team builds FRP’s ideas in Redux Toolkit, and <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> traces where they come from: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#the-one-way-dataflow">Redux Standard Patterns and Functional Programming</a> traces that one-way dataflow, from event to reducer to selector to view.</p>
@@ -143,13 +143,13 @@
 <svg role="img" aria-labelledby="module-3-functional-reactive-programming-frp-one-way-title module-3-functional-reactive-programming-frp-one-way-desc" viewBox="0 0 360 184">
 <title id="module-3-functional-reactive-programming-frp-one-way-title">The one-way data flow</title>
 <desc id="module-3-functional-reactive-programming-frp-one-way-desc">Five boxes in a loop of arrows: action, reducer, state, selector, view, and from the view back to action. The reducer folds each action into state, the selector derives what the view shows, and the view dispatches the next action.</desc>
-<g class="path"><line x1="96" y1="28" x2="264" y2="28"/><line x1="258.8" y1="25" x2="264" y2="28"/><line x1="258.8" y1="31" x2="264" y2="28"/><line x1="308" y1="44" x2="308" y2="76"/><line x1="311" y1="70.8" x2="308" y2="76"/><line x1="305" y1="70.8" x2="308" y2="76"/><line x1="308" y1="108" x2="308" y2="140"/><line x1="311" y1="134.8" x2="308" y2="140"/><line x1="305" y1="134.8" x2="308" y2="140"/><line x1="264" y1="156" x2="96" y2="156"/><line x1="101.2" y1="159" x2="96" y2="156"/><line x1="101.2" y1="153" x2="96" y2="156"/><line x1="52" y1="140" x2="52" y2="44"/><line x1="49" y1="49.2" x2="52" y2="44"/><line x1="55" y1="49.2" x2="52" y2="44"/></g>
-<rect class="node" x="8" y="12" width="88" height="32" rx="4"/>
-<rect class="node" x="264" y="12" width="88" height="32" rx="4"/>
-<rect class="node" x="264" y="76" width="88" height="32" rx="4"/>
-<rect class="node" x="264" y="140" width="88" height="32" rx="4"/>
-<rect class="node" x="8" y="140" width="88" height="32" rx="4"/>
-<g><text x="52" y="28">action</text><text x="308" y="28">reducer</text><text x="308" y="92">state</text><text x="308" y="156">selector</text><text x="52" y="156">view</text><text class="note" x="230" y="60">folds it into state</text><text class="note" x="91" y="92">dispatch</text><text class="note" x="180" y="142">derives what it shows</text></g>
+<g class="path"><line x1="97" y1="28" x2="263.25" y2="28"/><line x1="258.1" y1="25" x2="263.25" y2="28"/><line x1="258.1" y1="31" x2="263.25" y2="28"/><line x1="307" y1="44" x2="307" y2="76"/><line x1="310" y1="70.8" x2="307" y2="76"/><line x1="304" y1="70.8" x2="307" y2="76"/><line x1="307" y1="108" x2="307" y2="140"/><line x1="310" y1="134.8" x2="307" y2="140"/><line x1="304" y1="134.8" x2="307" y2="140"/><line x1="263.25" y1="156" x2="97" y2="156"/><line x1="102.2" y1="159" x2="97" y2="156"/><line x1="102.2" y1="153" x2="97" y2="156"/><line x1="53.25" y1="140" x2="53.25" y2="44"/><line x1="50.25" y1="49.2" x2="53.25" y2="44"/><line x1="56.25" y1="49.2" x2="53.25" y2="44"/></g>
+<rect class="node" x="9.5" y="12" width="87.5" height="32" rx="4"/>
+<rect class="node" x="263.25" y="12" width="87.5" height="32" rx="4"/>
+<rect class="node" x="263.25" y="76" width="87.5" height="32" rx="4"/>
+<rect class="node" x="263.25" y="140" width="87.5" height="32" rx="4"/>
+<rect class="node" x="9.5" y="140" width="87.5" height="32" rx="4"/>
+<g><text x="53.25" y="28">action</text><text x="307" y="28">reducer</text><text x="307" y="92">state</text><text x="307" y="156">selector</text><text x="53.25" y="156">view</text><text class="note" x="229.5" y="60">folds it into state</text><text class="note" x="91.75" y="92">dispatch</text><text class="note" x="180" y="142">derives what it shows</text></g>
 </svg>
 <figcaption>The loop every change travels, one way round, along the violet arrows. A view dispatches an action, the reducer folds it into state, a selector derives what the view shows, and the view shows it.</figcaption>
 </figure>

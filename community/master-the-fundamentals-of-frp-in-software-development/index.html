@@ -118,45 +118,45 @@
 <h2 id="the-core-ideas"><a class="heading-anchor" href="#the-core-ideas">The core ideas</a></h2>
 <ol>
 <li>
-<strong>Understand Events and Behaviors:</strong> Start with FRP&rsquo;s two ideas: events, things that happen at a moment, and behaviors, values that change over time. In Redux Toolkit, the events are dispatched actions and the behaviors are selectors over the state.</li>
+<strong>Understand events and behaviors:</strong> Start with FRP&rsquo;s two ideas: events, things that happen at a moment, and behaviors, values that change over time. In Redux Toolkit, the events are dispatched actions and the behaviors are selectors over the state.</li>
 <li>
-<strong>Learn Reducers and Selectors:</strong> A reducer folds each event into the next state, and a selector derives a value from state. Practice both as pure functions with plain inputs and outputs.</li>
+<strong>Learn reducers and selectors:</strong> A reducer folds each event into the next state, and a selector derives a value from state. Practice both as pure functions with plain inputs and outputs.</li>
 <li>
-<strong>Event Handling:</strong> React to each event by dispatching an action named for what happened. Practice on user interactions, data changes and events from outside the app.</li>
+<strong>Event handling:</strong> React to each event by dispatching an action named for what happened. Practice on user interactions, data changes and events from outside the app.</li>
 <li>
 <strong>Immutability:</strong> FRP usually treats data as unchangeable. Get comfortable with immutable data structures: they keep your functions pure and your side effects few.</li>
 <li>
-<strong>Declarative Programming:</strong> Say what a value is rather than how to keep it current: a total derived by a selector, never a running total updated in a handler.</li>
+<strong>Declarative programming:</strong> Say what a value is rather than how to keep it current: a total derived by a selector, never a running total updated in a handler.</li>
 <li>
 <strong>Listeners:</strong> Study listener middleware, which reacts to later actions over time, and learn when to cancel work that has gone stale.</li>
 </ol>
 <h2 id="practice"><a class="heading-anchor" href="#practice">Practice</a></h2>
 <ol start="7">
 <li>
-<strong>Use Cases:</strong> Build small, real features with FRP for practical experience. A cart, a menu that marks what sold out, or a booking calendar makes a good first one.</li>
+<strong>Use cases:</strong> Build small, real features with FRP for practical experience. A cart, a menu that marks what sold out, or a booking calendar makes a good first one.</li>
 <li>
 <strong>Composition:</strong> Build larger functions from small ones with pipe and compose, and larger selectors from smaller ones. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#pipe-and-compose">Functional Composition</a> covers both directions.</li>
 <li>
 <strong>Testing:</strong> Test a reducer through a sequence of actions and a selector through its output. Neither needs a browser.</li>
 <li>
-<strong>Error Handling:</strong> Treat an expected failure, such as a declined card, as data, never as an exception: the client decodes what arrives into an <code>Either</code> in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>, and the API refuses with its reason in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a>.</li>
+<strong>Error handling:</strong> Treat an expected failure, such as a declined card, as data, never as an exception: the client decodes what arrives into an <code>Either</code> in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>, and the API refuses with its reason in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a>.</li>
 <li>
-<strong>Connect the View:</strong> A React view reads shared state through <code>useAppSelector</code> and server data through RTK Query hooks, dispatches events, and keeps only local drafts in its own state.</li>
+<strong>Connect the view:</strong> A React view reads shared state through <code>useAppSelector</code> and server data through RTK Query hooks, dispatches events, and keeps only local drafts in its own state.</li>
 <li>
-<strong>Performance and Optimization:</strong> A selector recomputes only when its inputs change, and a view that selects the narrowest value it needs re-renders only when that value does; measure a slow screen before changing its code.</li>
+<strong>Performance and optimization:</strong> A selector recomputes only when its inputs change, and a view that selects the narrowest value it needs re-renders only when that value does; measure a slow screen before changing its code.</li>
 </ol>
 <h2 id="keep-going"><a class="heading-anchor" href="#keep-going">Keep going</a></h2>
 <ol start="13">
 <li>
-<strong>Read the Sources:</strong> The Redux Toolkit documentation and the Redux Style Guide set the current patterns, and Elliott and Hudak&rsquo;s <em>Functional Reactive Animation</em> (1997) sets out behaviors and events.</li>
+<strong>Read the sources:</strong> The Redux Toolkit documentation and the Redux Style Guide set the current patterns, and Elliott and Hudak&rsquo;s <em>Functional Reactive Animation</em> (1997) sets out behaviors and events.</li>
 <li>
-<strong>Ask Where the Patterns Live:</strong> Bring questions to the team&rsquo;s own <a href="/community/">community</a> and to the <a href="https://redux.js.org/">Redux documentation</a>, whose guides teach the patterns this course builds on; general FRP forums mostly cover stream libraries, which model only events.</li>
+<strong>Ask where the patterns live:</strong> Bring questions to the team&rsquo;s own <a href="/community/">community</a> and to the <a href="https://redux.js.org/">Redux documentation</a>, whose guides teach the patterns this course builds on; general FRP forums mostly cover stream libraries, which model only events.</li>
 <li>
-<strong>Projects and Collaboration:</strong> Build a feature with someone else and read each other&rsquo;s reducers and selectors. A second reader spots a stored value that should have been derived.</li>
+<strong>Projects and collaboration:</strong> Build a feature with someone else and read each other&rsquo;s reducers and selectors. A second reader spots a stored value that should have been derived.</li>
 <li>
-<strong>Advanced Topics:</strong> Go on to advanced topics, such as effects over time with listener middleware, normalized entity collections, and FRP’s origin in continuous-time behaviors.</li>
+<strong>Advanced topics:</strong> Then go deeper, into effects over time with listener middleware, normalized entity collections, and FRP’s origin in continuous-time behaviors.</li>
 <li>
-<strong>Continuous Learning:</strong> The lessons are revised as the team&rsquo;s practice improves; come back to them, and to Sean&rsquo;s lectures, as your practice grows.</li>
+<strong>Continuous learning:</strong> The lessons are revised as the team&rsquo;s practice improves; come back to them, and to Sean&rsquo;s lectures, as your practice grows.</li>
 </ol>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> The steps above come back to three pure pieces and one boundary. An event is a plain value that names what happened; the state is every event so far, folded through a pure function; a behavior is a value derived from that state; and every effect, from a network request to a timer, waits at the edge. Practice the three with no library at all:</p>
 <pre class="code-block" tabindex="0"><code>// Events, a fold and a derived value, with no library.

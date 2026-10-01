@@ -123,27 +123,27 @@
 <p>Either way, the framework has twelve requirements to meet:</p>
 <ol>
 <li>
-<strong>Gherkin as Written:</strong> The framework should run scenarios written in Gherkin, in the owner&rsquo;s words, or name its tests after them, so the owner can read what runs.</li>
+<strong>Gherkin as written:</strong> The framework should run scenarios written in Gherkin, in the owner&rsquo;s words, or name its tests after them, so the owner can read what runs.</li>
 <li>
-<strong>Scenario Organization:</strong> The framework should group scenarios under the Feature they test, in a feature file or a <code>describe</code> block named for it.</li>
+<strong>Scenario organization:</strong> The framework should group scenarios under the Feature they test, in a feature file or a <code>describe</code> block named for it.</li>
 <li>
 <strong>Parameterization:</strong> The framework should run one scenario once for each row of an Examples table, which Gherkin calls a Scenario Outline, so a rule with many cases stays one scenario.</li>
 <li>
-<strong>Scenario Tags and Labels:</strong> The framework should let scenarios carry tags or labels, so they are easy to sort and filter. A tag marks scenarios for a purpose, such as a regression run.</li>
+<strong>Scenario tags and labels:</strong> The framework should let scenarios carry tags or labels, so they are easy to sort and filter. A tag marks scenarios for a purpose, such as a regression run.</li>
 <li>
-<strong>Reporting and Logging:</strong> The framework should report each result under its scenario&rsquo;s name, so a failure reads in the written scope&rsquo;s own words, and keep the log that explains it.</li>
+<strong>Reporting and logging:</strong> The framework should report each result under its scenario&rsquo;s name, so a failure reads in the written scope&rsquo;s own words, and keep the log that explains it.</li>
 <li>
-<strong>Integration with Development Tools:</strong> The framework should run in the continuous integration pipeline on every change, so nothing merges with a failing scenario.</li>
+<strong>Integration with development tools:</strong> The framework should run in the continuous integration pipeline on every change, so nothing merges with a failing scenario.</li>
 <li>
-<strong>Parallel Execution:</strong> The framework should run scenarios in parallel, across several environments or configurations, to save time.</li>
+<strong>Parallel execution:</strong> The framework should run scenarios in parallel, across several environments or configurations, to save time.</li>
 <li>
-<strong>Environment Configuration:</strong> The framework should let a run name its environment, such as development, testing or staging, and never production, where a scenario that places an order places a real one.</li>
+<strong>Environment configuration:</strong> The framework should let a run name its environment, such as development, testing or staging, and never production, where a scenario that places an order places a real one.</li>
 <li>
-<strong>Cross-Browser Testing:</strong> For the few end-to-end journeys, the framework should drive the browsers the site&rsquo;s customers use, on the phones and screens the written scope names; the scenarios below the interface need no browser at all.</li>
+<strong>Cross-browser testing:</strong> For the few end-to-end journeys, the framework should drive the browsers the site&rsquo;s customers use, on the phones and screens the written scope names; the scenarios below the interface need no browser at all.</li>
 <li>
-<strong>Reusable Steps:</strong> A step definition matches its line wherever it appears, so one Given serves every scenario that starts from it, and a Background states the Givens a whole Feature shares, as <a href="/community/writing-bdd-scenarios-for-software-modules/">Writing BDD Scenarios for Software Modules</a> shows.</li>
+<strong>Reusable steps:</strong> A step definition matches its line wherever it appears, so one Given serves every scenario that starts from it, and a Background states the Givens a whole Feature shares, as <a href="/community/writing-bdd-scenarios-for-software-modules/">Writing BDD Scenarios for Software Modules</a> shows.</li>
 <li>
-<strong>Community and Support:</strong> The project should be actively maintained, with documentation that keeps up with its releases, so a question about a step has somewhere to go.</li>
+<strong>Community and support:</strong> The project should be actively maintained, with documentation that keeps up with its releases, so a question about a step has somewhere to go.</li>
 <li>
 <strong>Compatibility:</strong> The framework runs in the codebase&rsquo;s own language and toolchain: cucumber-js or Vitest for TypeScript, Hspec for Haskell.</li>
 </ol>
@@ -153,13 +153,13 @@
 <svg role="img" aria-labelledby="bdd-testing-framework-two-runners-title bdd-testing-framework-two-runners-desc" viewBox="0 0 360 214">
 <title id="bdd-testing-framework-two-runners-title">One scenario, two runners</title>
 <desc id="bdd-testing-framework-two-runners-desc">The scenario Adding a product to the cart branches to two runners: cucumber-js, with step definitions, and Vitest, with one test named for the scenario. Both lead to the same reducer and selectors.</desc>
-<g class="edge"><line x1="180" y1="44" x2="90" y2="84"/><line x1="96" y1="84.6" x2="90" y2="84"/><line x1="93.5" y1="79.1" x2="90" y2="84"/><line x1="180" y1="44" x2="270" y2="84"/><line x1="266.5" y1="79.1" x2="270" y2="84"/><line x1="264" y1="84.6" x2="270" y2="84"/></g>
-<g class="path"><line x1="90" y1="128" x2="120" y2="168"/><line x1="119.3" y1="162" x2="120" y2="168"/><line x1="114.5" y1="165.6" x2="120" y2="168"/><line x1="270" y1="128" x2="240" y2="168"/><line x1="245.5" y1="165.6" x2="240" y2="168"/><line x1="240.7" y1="162" x2="240" y2="168"/></g>
-<rect class="node" x="50" y="12" width="260" height="32" rx="4"/>
-<rect class="node" x="8" y="84" width="164" height="44" rx="4"/>
-<rect class="node" x="188" y="84" width="164" height="44" rx="4"/>
-<rect class="node on" x="50" y="168" width="260" height="32" rx="4"/>
-<g><text x="180" y="28">Adding a product to the cart</text><text x="90" y="99">cucumber-js</text><text class="note" x="90" y="116">step definitions</text><text x="270" y="99">Vitest</text><text class="note" x="270" y="116">a test named for it</text><text x="180" y="184">reducer and selectors</text></g>
+<g class="edge"><line x1="180" y1="44.75" x2="90.75" y2="84.75"/><line x1="96.8" y1="85.3" x2="90.75" y2="84.75"/><line x1="94.2" y1="79.8" x2="90.75" y2="84.75"/><line x1="180" y1="44.75" x2="269.25" y2="84.75"/><line x1="265.8" y1="79.8" x2="269.25" y2="84.75"/><line x1="263.2" y1="85.3" x2="269.25" y2="84.75"/></g>
+<g class="path"><line x1="90.75" y1="128.75" x2="120.5" y2="168.75"/><line x1="119.8" y1="162.7" x2="120.5" y2="168.75"/><line x1="115" y1="166.3" x2="120.5" y2="168.75"/><line x1="269.25" y1="128.75" x2="239.5" y2="168.75"/><line x1="245" y1="166.3" x2="239.5" y2="168.75"/><line x1="240.2" y1="162.7" x2="239.5" y2="168.75"/></g>
+<rect class="node" x="51.25" y="12.75" width="257.5" height="32" rx="4"/>
+<rect class="node" x="9.5" y="84.75" width="162.5" height="44" rx="4"/>
+<rect class="node" x="188" y="84.75" width="162.5" height="44" rx="4"/>
+<rect class="node on" x="51.25" y="168.75" width="257.5" height="32" rx="4"/>
+<g><text x="180" y="28.75">Adding a product to the cart</text><text x="90.75" y="99.75">cucumber-js</text><text class="note" x="90.75" y="116.75">step definitions</text><text x="269.25" y="99.75">Vitest</text><text class="note" x="269.25" y="116.75">a test named for it</text><text x="180" y="184.75">reducer and selectors</text></g>
 </svg>
 <figcaption>Two routes, one destination. cucumber-js matches each line of the scenario to a step definition, Vitest runs one test named for it, and both arrive, along the violet arrows, at the reducer and selectors the app itself uses.</figcaption>
 </figure>

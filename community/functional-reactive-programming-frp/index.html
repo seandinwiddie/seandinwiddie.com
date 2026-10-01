@@ -118,15 +118,15 @@
 <h2 id="what-frp-is"><a class="heading-anchor" href="#what-frp-is">What FRP is</a></h2>
 <p>Functional Reactive Programming describes values that change over time by what they are derived from. You state once how a value follows from the events so far, declaratively, instead of updating it by hand wherever something changes.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="frp-total-title frp-total-desc" viewBox="0 0 360 244">
+<svg role="img" aria-labelledby="frp-total-title frp-total-desc" viewBox="0 0 360 258">
 <title id="frp-total-title">Events, and the value they define</title>
 <desc id="frp-total-desc">Three events as dots on a time line: added $25, added $10, removed $10. Under them a highlighted line steps through the cart total: $0, then $25, $35 and $25 again, changing only at the moment of each event.</desc>
-<g class="edge"><line x1="24" y1="38" x2="336" y2="38"/><line x1="96" y1="70" x2="96" y2="166"/><line x1="186" y1="70" x2="186" y2="134"/><line x1="276" y1="70" x2="276" y2="134"/><line x1="24" y1="216" x2="340" y2="216"/><line x1="334.8" y1="213" x2="340" y2="216"/><line x1="334.8" y1="219" x2="340" y2="216"/></g>
-<g class="path"><line x1="24" y1="206" x2="96" y2="206"/><line x1="96" y1="206" x2="96" y2="166"/><line x1="96" y1="166" x2="186" y2="166"/><line x1="186" y1="166" x2="186" y2="134"/><line x1="186" y1="134" x2="276" y2="134"/><line x1="276" y1="134" x2="276" y2="166"/><line x1="276" y1="166" x2="336" y2="166"/></g>
-<circle class="node" cx="96" cy="38" r="6"/>
-<circle class="node" cx="186" cy="38" r="6"/>
-<circle class="node" cx="276" cy="38" r="6"/>
-<g><text class="note" x="180" y="14">events, at the moment they happen</text><text x="96" y="60">added $25</text><text x="186" y="60">added $10</text><text x="276" y="60">removed $10</text><text x="60" y="194">$0</text><text x="141" y="154">$25</text><text x="231" y="122">$35</text><text x="306" y="154">$25</text><text class="note" x="180" y="232">the cart total, a value at every moment</text></g>
+<g class="edge"><line x1="16.5" y1="44" x2="340.5" y2="44"/><line x1="91.25" y1="76" x2="91.25" y2="172"/><line x1="184.75" y1="76" x2="184.75" y2="140"/><line x1="278" y1="76" x2="278" y2="140"/><line x1="16.5" y1="222" x2="344.5" y2="222"/><line x1="339.3" y1="219" x2="344.5" y2="222"/><line x1="339.3" y1="225" x2="344.5" y2="222"/></g>
+<g class="path"><line x1="16.5" y1="212" x2="91.25" y2="212"/><line x1="91.25" y1="212" x2="91.25" y2="172"/><line x1="91.25" y1="172" x2="184.75" y2="172"/><line x1="184.75" y1="172" x2="184.75" y2="140"/><line x1="184.75" y1="140" x2="278" y2="140"/><line x1="278" y1="140" x2="278" y2="172"/><line x1="278" y1="172" x2="340.5" y2="172"/></g>
+<circle class="node" cx="91.25" cy="44" r="6"/>
+<circle class="node" cx="184.75" cy="44" r="6"/>
+<circle class="node" cx="278" cy="44" r="6"/>
+<g><text class="note" x="178.5" y="20">events, at the moment they happen</text><text x="91.25" y="66">added $25</text><text x="184.75" y="66">added $10</text><text x="278" y="66">removed $10</text><text x="54" y="200">$0</text><text x="138" y="160">$25</text><text x="231.5" y="128">$35</text><text x="309.25" y="160">$25</text><text class="note" x="178.5" y="238">the cart total, a value at every moment</text></g>
 </svg>
 <figcaption>Three events, each at a moment, and the cart total they define. The violet line is the total: it has a value at every moment, and it changes only when an event arrives. It is stated once, by the events so far, rather than updated by hand in each place that touches the cart.</figcaption>
 </figure>
@@ -135,20 +135,20 @@
 <h2 id="key-concepts"><a class="heading-anchor" href="#key-concepts">Key concepts</a></h2>
 <ul>
 <li>
-<strong>Events and Behaviors:</strong> FRP models a program as events, things that happen at a moment, and behaviors, values that change over time: the two ideas Conal Elliott and Paul Hudak set out in <em>Functional Reactive Animation</em> (1997). On the team, the events are dispatched actions and the behaviors are selectors composed from small pure functions, so the flow of data reads declaratively.</li>
+<strong>Events and behaviors:</strong> FRP models a program as events, things that happen at a moment, and behaviors, values that change over time: the two ideas Conal Elliott and Paul Hudak set out in <em>Functional Reactive Animation</em> (1997). On the team, the events are dispatched actions and the behaviors are selectors composed from small pure functions, so the flow of data reads declaratively.</li>
 <li>
-<strong>Functional Programming:</strong> Pure functions and immutable data do the heavy lifting: the same input always gives the same output, and nothing changes behind your back, so the code is predictable, easy to test and less error-prone. The lecture <a href="https://seandinwiddie.github.io/lectures/basic-functional-programming-knowledge/#core-concepts">Basic Functional Programming TypeScript Knowledge</a> covers both.</li>
+<strong>Functional programming:</strong> Pure functions and immutable data do the heavy lifting: the same input always gives the same output, and nothing changes behind your back, so the code is predictable, easy to test and less error-prone. The lecture <a href="https://seandinwiddie.github.io/lectures/basic-functional-programming-knowledge/#core-concepts">Basic Functional Programming TypeScript Knowledge</a> covers both.</li>
 <li>
-<strong>Declarative Style:</strong> A value is defined once, by what it is derived from, as a cart&rsquo;s total is by its lines, rather than updated by hand in every handler that touches it; <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> sets the two side by side.</li>
+<strong>Declarative style:</strong> A value is defined once, by what it is derived from, as a cart&rsquo;s total is by its lines, rather than updated by hand in every handler that touches it; <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> sets the two side by side.</li>
 </ul>
 <h2 id="why-it-matters"><a class="heading-anchor" href="#why-it-matters">Why it matters</a></h2>
 <ul>
 <li>
 <strong>Responsiveness:</strong> A view re-renders only when its selector returns a new value, and a memoized selector returns one only when its inputs change, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
 <li>
-<strong>Predictability:</strong> Pure reducers and selectors return the same output for the same input, so they’re easier to reason about, test and maintain.</li>
+<strong>Predictability:</strong> Pure reducers and selectors return the same output for the same input, so replaying the actions behind a wrong value reproduces it exactly, and that list of actions becomes its test.</li>
 <li>
-<strong>Real-time Data:</strong> Data that arrives while a screen is open, such as a new booking, enters as an action like any other, so the screen updates the same way it does for a click.</li>
+<strong>Real-time data:</strong> Data that arrives while a screen is open, such as a new booking, enters as an action like any other, so the screen updates the same way it does for a click.</li>
 <li>
 <strong>Clear ownership:</strong> Each piece of state has one owner (a component, the router, a slice or RTK Query), which keeps a growing codebase readable.</li>
 </ul>

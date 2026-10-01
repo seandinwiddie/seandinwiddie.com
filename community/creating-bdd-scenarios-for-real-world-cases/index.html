@@ -131,15 +131,15 @@
 <h2 id="8-consider-alternate-paths"><a class="heading-anchor" href="#8-consider-alternate-paths">8. Consider alternate paths</a></h2>
 <p>Real cases branch. Wherever the software can behave differently, that path gets a scenario of its own. A declined card is an expected failure, not an exception; the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> represents such failures as plain data a test can check.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="creating-bdd-scenarios-for-real-world-cases-order-forks-title creating-bdd-scenarios-for-real-world-cases-order-forks-desc" viewBox="0 0 360 188">
+<svg role="img" aria-labelledby="creating-bdd-scenarios-for-real-world-cases-order-forks-title creating-bdd-scenarios-for-real-world-cases-order-forks-desc" viewBox="0 0 360 192">
 <title id="creating-bdd-scenarios-for-real-world-cases-order-forks-title">Placing the order goes one of two ways</title>
 <desc id="creating-bdd-scenarios-for-real-world-cases-order-forks-desc">The step she places the order branches two ways. Card accepted: the order is recorded at $25 and her cart is empty. Card declined: no order is recorded, her cart still holds Widget A, and she is asked for another card.</desc>
-<g class="edge"><line x1="180" y1="44" x2="90" y2="84"/><line x1="96" y1="84.6" x2="90" y2="84"/><line x1="93.5" y1="79.1" x2="90" y2="84"/></g>
-<g class="path"><line x1="180" y1="44" x2="270" y2="84"/><line x1="266.5" y1="79.1" x2="270" y2="84"/><line x1="264" y1="84.6" x2="270" y2="84"/></g>
-<rect class="node" x="70" y="12" width="220" height="32" rx="4"/>
-<rect class="node" x="8" y="84" width="164" height="32" rx="4"/>
-<rect class="node on" x="188" y="84" width="164" height="32" rx="4"/>
-<g><text x="180" y="28">she places the order</text><text x="90" y="100">card accepted</text><text x="270" y="100">card declined</text><text class="note" x="90" y="136">order recorded, $25</text><text class="note" x="90" y="154">cart is empty</text><text class="note" x="270" y="136">no order recorded</text><text class="note" x="270" y="154">cart still holds it</text><text class="note" x="270" y="172">asked for another card</text></g>
+<g class="edge"><line x1="179.75" y1="44.25" x2="90.5" y2="84.25"/><line x1="96.5" y1="84.8" x2="90.5" y2="84.25"/><line x1="94" y1="79.3" x2="90.5" y2="84.25"/></g>
+<g class="path"><line x1="179.75" y1="44.25" x2="268.75" y2="84.25"/><line x1="265.3" y1="79.3" x2="268.75" y2="84.25"/><line x1="262.7" y1="84.8" x2="268.75" y2="84.25"/></g>
+<rect class="node" x="71" y="12.25" width="217.5" height="32" rx="4"/>
+<rect class="node" x="9.5" y="84.25" width="162" height="32" rx="4"/>
+<rect class="node on" x="187.75" y="84.25" width="162" height="32" rx="4"/>
+<g><text x="179.75" y="28.25">she places the order</text><text x="90.5" y="100.25">card accepted</text><text x="268.75" y="100.25">card declined</text><text class="note" x="90.75" y="136.25">order recorded, $25</text><text class="note" x="90.75" y="154.25">cart is empty</text><text class="note" x="268.75" y="136.25">no order recorded</text><text class="note" x="268.75" y="154.25">cart still holds it</text><text class="note" x="268.75" y="172.25">asked for another card</text></g>
 </svg>
 <figcaption>One When, two outcomes, and each gets a scenario of its own. The declined card, along the violet path, is the one a tidy example leaves out; its Thens say what doesn&rsquo;t happen as well as what does.</figcaption>
 </figure>

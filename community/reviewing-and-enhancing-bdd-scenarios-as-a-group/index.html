@@ -147,16 +147,16 @@
 <p>The group&rsquo;s check is to break the code on purpose: stop the slice from emptying the cart, and &ldquo;Placing the order&rdquo; must fail on &ldquo;her cart is empty&rdquo;. A scenario that still passes tests nothing, however clearly it reads.</p>
 <p>Mutation testing runs the same check by machine: it changes the code in small ways and reports each change no test notices.</p></aside>
 <figure class="diagram">
-<svg role="img" aria-labelledby="reviewing-and-enhancing-bdd-scenarios-as-a-group-break-it-title reviewing-and-enhancing-bdd-scenarios-as-a-group-break-it-desc" viewBox="0 0 360 214">
+<svg role="img" aria-labelledby="reviewing-and-enhancing-bdd-scenarios-as-a-group-break-it-title reviewing-and-enhancing-bdd-scenarios-as-a-group-break-it-desc" viewBox="0 0 360 218">
 <title id="reviewing-and-enhancing-bdd-scenarios-as-a-group-break-it-title">Break the code on purpose</title>
 <desc id="reviewing-and-enhancing-bdd-scenarios-as-a-group-break-it-desc">A flow from top to bottom: stop the slice from emptying the cart, then run the scenario Placing the order. It branches: it fails, so it tests the rule; or it still passes, so it tests nothing.</desc>
-<g class="edge"><line x1="180" y1="108" x2="270" y2="148"/><line x1="266.5" y1="143.1" x2="270" y2="148"/><line x1="264" y1="148.6" x2="270" y2="148"/></g>
-<g class="path"><line x1="180" y1="44" x2="180" y2="76"/><line x1="183" y1="70.8" x2="180" y2="76"/><line x1="177" y1="70.8" x2="180" y2="76"/><line x1="180" y1="108" x2="90" y2="148"/><line x1="96" y1="148.6" x2="90" y2="148"/><line x1="93.5" y1="143.1" x2="90" y2="148"/></g>
-<rect class="node" x="80" y="12" width="200" height="32" rx="4"/>
-<rect class="node" x="100" y="76" width="160" height="32" rx="4"/>
-<rect class="node on" x="8" y="148" width="164" height="32" rx="4"/>
-<rect class="node" x="188" y="148" width="164" height="32" rx="4"/>
-<g><text x="180" y="28">stop emptying the cart</text><text x="180" y="92">run the scenario</text><text x="90" y="164">it fails</text><text x="270" y="164">it still passes</text><text class="note" x="90" y="198">it tests the rule</text><text class="note" x="270" y="198">it tests nothing</text></g>
+<g class="edge"><line x1="180.5" y1="108.25" x2="269.5" y2="148.25"/><line x1="266" y1="143.3" x2="269.5" y2="148.25"/><line x1="263.5" y1="148.8" x2="269.5" y2="148.25"/></g>
+<g class="path"><line x1="180.5" y1="44.25" x2="180.5" y2="76.25"/><line x1="183.5" y1="71.05" x2="180.5" y2="76.25"/><line x1="177.5" y1="71.05" x2="180.5" y2="76.25"/><line x1="180.5" y1="108.25" x2="91.25" y2="148.25"/><line x1="97.3" y1="148.8" x2="91.25" y2="148.25"/><line x1="94.7" y1="143.3" x2="91.25" y2="148.25"/></g>
+<rect class="node" x="81.5" y="12.25" width="198" height="32" rx="4"/>
+<rect class="node" x="101.25" y="76.25" width="158.5" height="32" rx="4"/>
+<rect class="node on" x="10.25" y="148.25" width="162" height="32" rx="4"/>
+<rect class="node" x="188.5" y="148.25" width="162" height="32" rx="4"/>
+<g><text x="180.5" y="28.25">stop emptying the cart</text><text x="180.5" y="92.25">run the scenario</text><text x="91.25" y="164.25">it fails</text><text x="269.5" y="164.25">it still passes</text><text class="note" x="91.5" y="198.25">it tests the rule</text><text class="note" x="269.5" y="198.25">it tests nothing</text></g>
 </svg>
 <figcaption>The group&rsquo;s check, drawn. Break the rule the scenario describes and run it again: a scenario worth keeping fails, along the violet path, and one that still passes tests nothing, however clearly it reads.</figcaption>
 </figure>

@@ -118,19 +118,19 @@
 <p>An event stream is a sequence of events, or changes in data, over time. The events can come from anywhere: a user&rsquo;s interaction, a sensor, a network response.</p>
 <p>In Redux Toolkit, the event stream is the sequence of dispatched actions, and the store’s state is that sequence folded through the reducer; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#model-events-and-transitions-with-a-slice">Redux Standard Patterns and Functional Programming</a> models those events in a slice.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="event-streams-and-reactive-programming-fold-title event-streams-and-reactive-programming-fold-desc" viewBox="0 0 360 250">
+<svg role="img" aria-labelledby="event-streams-and-reactive-programming-fold-title event-streams-and-reactive-programming-fold-desc" viewBox="0 0 360 256">
 <title id="event-streams-and-reactive-programming-fold-title">State as a fold of the actions</title>
 <desc id="event-streams-and-reactive-programming-fold-desc">A column of states, from initialState through state 1, state 2 and state 3, joined by arrows. Into each arrow comes an action, through the reducer: an order placed, started, then picked up. A note says the same actions in the same order give the same state.</desc>
-<g class="edge"><line x1="128" y1="56" x2="270" y2="56"/><line x1="264.8" y1="53" x2="270" y2="56"/><line x1="264.8" y1="59" x2="270" y2="56"/><line x1="128" y1="112" x2="270" y2="112"/><line x1="264.8" y1="109" x2="270" y2="112"/><line x1="264.8" y1="115" x2="270" y2="112"/><line x1="128" y1="168" x2="270" y2="168"/><line x1="264.8" y1="165" x2="270" y2="168"/><line x1="264.8" y1="171" x2="270" y2="168"/></g>
-<g class="path"><line x1="276" y1="44" x2="276" y2="68"/><line x1="279" y1="62.8" x2="276" y2="68"/><line x1="273" y1="62.8" x2="276" y2="68"/><line x1="276" y1="100" x2="276" y2="124"/><line x1="279" y1="118.8" x2="276" y2="124"/><line x1="273" y1="118.8" x2="276" y2="124"/><line x1="276" y1="156" x2="276" y2="180"/><line x1="279" y1="174.8" x2="276" y2="180"/><line x1="273" y1="174.8" x2="276" y2="180"/></g>
-<rect class="node" x="200" y="12" width="152" height="32" rx="4"/>
-<rect class="node" x="200" y="68" width="152" height="32" rx="4"/>
-<rect class="node" x="200" y="124" width="152" height="32" rx="4"/>
-<rect class="node" x="200" y="180" width="152" height="32" rx="4"/>
-<rect class="node" x="8" y="40" width="120" height="32" rx="4"/>
-<rect class="node" x="8" y="96" width="120" height="32" rx="4"/>
-<rect class="node" x="8" y="152" width="120" height="32" rx="4"/>
-<g><text x="276" y="28">initialState</text><text x="276" y="84">state 1</text><text x="276" y="140">state 2</text><text x="276" y="196">state 3</text><text x="68" y="56">placed</text><text class="note" x="164" y="46">reducer</text><text x="68" y="112">started</text><text class="note" x="164" y="102">reducer</text><text x="68" y="168">picked up</text><text class="note" x="164" y="158">reducer</text><text class="note" x="180" y="236">same actions, same order: same state</text></g>
+<g class="edge"><line x1="128.5" y1="56.25" x2="269.25" y2="56.25"/><line x1="264.1" y1="53.3" x2="269.25" y2="56.25"/><line x1="264.1" y1="59.3" x2="269.25" y2="56.25"/><line x1="128.5" y1="112.25" x2="269.25" y2="112.25"/><line x1="264.1" y1="109.3" x2="269.25" y2="112.25"/><line x1="264.1" y1="115.3" x2="269.25" y2="112.25"/><line x1="128.5" y1="168.25" x2="269.25" y2="168.25"/><line x1="264.1" y1="165.3" x2="269.25" y2="168.25"/><line x1="264.1" y1="171.3" x2="269.25" y2="168.25"/></g>
+<g class="path"><line x1="275.25" y1="44.25" x2="275.25" y2="68.25"/><line x1="278.25" y1="63.05" x2="275.25" y2="68.25"/><line x1="272.25" y1="63.05" x2="275.25" y2="68.25"/><line x1="275.25" y1="100.25" x2="275.25" y2="124.25"/><line x1="278.25" y1="119.05" x2="275.25" y2="124.25"/><line x1="272.25" y1="119.05" x2="275.25" y2="124.25"/><line x1="275.25" y1="156.25" x2="275.25" y2="180.25"/><line x1="278.25" y1="175.05" x2="275.25" y2="180.25"/><line x1="272.25" y1="175.05" x2="275.25" y2="180.25"/></g>
+<rect class="node" x="199.75" y="12.25" width="151" height="32" rx="4"/>
+<rect class="node" x="199.75" y="68.25" width="151" height="32" rx="4"/>
+<rect class="node" x="199.75" y="124.25" width="151" height="32" rx="4"/>
+<rect class="node" x="199.75" y="180.25" width="151" height="32" rx="4"/>
+<rect class="node" x="9.5" y="40.25" width="119" height="32" rx="4"/>
+<rect class="node" x="9.5" y="96.25" width="119" height="32" rx="4"/>
+<rect class="node" x="9.5" y="152.25" width="119" height="32" rx="4"/>
+<g><text x="275.25" y="28.25">initialState</text><text x="275.25" y="84.25">state 1</text><text x="275.25" y="140.25">state 2</text><text x="275.25" y="196.25">state 3</text><text x="69" y="56.25">placed</text><text class="note" x="164.25" y="46.25">reducer</text><text x="69" y="112.25">started</text><text class="note" x="164.25" y="102.25">reducer</text><text x="69" y="168.25">picked up</text><text class="note" x="164.25" y="158.25">reducer</text><text class="note" x="180" y="236.25">same actions, same order: same state</text></g>
 </svg>
 <figcaption>A kitchen order&rsquo;s actions, folded. Each action meets the reducer, which turns the last state into the next, and the violet line carries the state down. Replay the same actions in the same order and the same state comes out.</figcaption>
 </figure>
@@ -158,15 +158,15 @@
 <strong>Key principles of reactive programming:</strong>
 <ul>
 <li>
-<strong>Declarative Approach:</strong> Each value is defined once, by what it is derived from, rather than updated by hand wherever an event lands; <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> sets a running total against a selector.</li>
+<strong>Declarative approach:</strong> Each value is defined once, by what it is derived from, rather than updated by hand wherever an event lands; <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> sets a running total against a selector.</li>
 <li>
 <strong>Composability:</strong> Reactive programming composes complex behavior from small pure functions: <code>map</code>, <code>filter</code> and <code>reduce</code> over events, and selectors built from smaller selectors.</li>
 <li>
-<strong>Efficiency and Responsiveness:</strong> The work follows the changes. A selector recomputes only when its inputs change, and a view re-renders only when what it reads is different.</li>
+<strong>Efficiency and responsiveness:</strong> The work follows the changes. A selector recomputes only when its inputs change, and a view re-renders only when what it reads is different.</li>
 </ul>
 </li>
 <li>
-<strong>Effects over Time:</strong> Timing belongs at the boundary, never in a reducer: in Redux Toolkit, listener middleware debounces, delays and cancels work in response to later actions.</li>
+<strong>Effects over time:</strong> Timing belongs at the boundary, never in a reducer: in Redux Toolkit, listener middleware debounces, delays and cancels work in response to later actions.</li>
 </ul>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> FRP samples a behavior when an event occurs: it reads the value something has at that moment. Redux Toolkit has no continuous time, so a sample is taken in one of two places:</p>
 <ul>

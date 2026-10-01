@@ -168,13 +168,13 @@ Done when: each scenario passes at every owner that holds part of it,
 <svg role="img" aria-labelledby="owners-title owners-desc" viewBox="0 0 360 269">
 <title id="owners-title">One scenario, four owners</title>
 <desc id="owners-desc">At the top, the scenario Placing the order with a declined card. Highlighted lines run down from it to four owners, each with the part it proves: the API refuses and writes nothing, the endpoint leaves the history as it was, the slice keeps Widget A in the cart, and the view asks for another card.</desc>
-<rect class="node on" x="60" y="13" width="240" height="42" rx="6"/>
-<g class="path"><line x1="16" y1="101" x2="39" y2="101"/><line x1="33.8" y1="98" x2="39" y2="101"/><line x1="33.8" y1="104" x2="39" y2="101"/><line x1="16" y1="149" x2="39" y2="149"/><line x1="33.8" y1="146" x2="39" y2="149"/><line x1="33.8" y1="152" x2="39" y2="149"/><line x1="16" y1="197" x2="39" y2="197"/><line x1="33.8" y1="194" x2="39" y2="197"/><line x1="33.8" y1="200" x2="39" y2="197"/><line x1="16" y1="245" x2="39" y2="245"/><line x1="33.8" y1="242" x2="39" y2="245"/><line x1="33.8" y1="248" x2="39" y2="245"/><line x1="60" y1="34" x2="16" y2="34"/><line x1="16" y1="34" x2="16" y2="245"/></g>
-<rect class="node" x="40" y="89" width="96" height="24" rx="4"/>
-<rect class="node" x="40" y="137" width="96" height="24" rx="4"/>
-<rect class="node" x="40" y="185" width="96" height="24" rx="4"/>
-<rect class="node" x="40" y="233" width="96" height="24" rx="4"/>
-<g><text class="note" x="180" y="25">Placing the order</text><text class="note" x="180" y="43">with a declined card</text><text x="88" y="101">API</text><text class="note" x="262" y="101">refuses, writes nothing</text><text x="88" y="149">endpoint</text><text class="note" x="262" y="149">history as it was</text><text x="88" y="197">slice</text><text class="note" x="262" y="197">cart keeps Widget A</text><text x="88" y="245">view</text><text class="note" x="262" y="245">asks for another card</text></g>
+<rect class="node on" x="60.75" y="13" width="240" height="42" rx="6"/>
+<g class="path"><line x1="16.75" y1="101" x2="39.75" y2="101"/><line x1="34.55" y1="98" x2="39.75" y2="101"/><line x1="34.55" y1="104" x2="39.75" y2="101"/><line x1="16.75" y1="149" x2="39.75" y2="149"/><line x1="34.55" y1="146" x2="39.75" y2="149"/><line x1="34.55" y1="152" x2="39.75" y2="149"/><line x1="16.75" y1="197" x2="39.75" y2="197"/><line x1="34.55" y1="194" x2="39.75" y2="197"/><line x1="34.55" y1="200" x2="39.75" y2="197"/><line x1="16.75" y1="245" x2="39.75" y2="245"/><line x1="34.55" y1="242" x2="39.75" y2="245"/><line x1="34.55" y1="248" x2="39.75" y2="245"/><line x1="60.75" y1="34" x2="16.75" y2="34"/><line x1="16.75" y1="34" x2="16.75" y2="245"/></g>
+<rect class="node" x="40.75" y="89" width="96" height="24" rx="4"/>
+<rect class="node" x="40.75" y="137" width="96" height="24" rx="4"/>
+<rect class="node" x="40.75" y="185" width="96" height="24" rx="4"/>
+<rect class="node" x="40.75" y="233" width="96" height="24" rx="4"/>
+<g><text class="note" x="180.75" y="25">Placing the order</text><text class="note" x="180.75" y="43">with a declined card</text><text x="88.75" y="101">API</text><text class="note" x="262.75" y="101">refuses, writes nothing</text><text x="88.75" y="149">endpoint</text><text class="note" x="262.75" y="149">history as it was</text><text x="88.75" y="197">slice</text><text class="note" x="262.75" y="197">cart keeps Widget A</text><text x="88.75" y="245">view</text><text class="note" x="262.75" y="245">asks for another card</text></g>
 </svg>
 <figcaption>Each owner proves its own part of the one scenario, in its own runner and under the scenario&rsquo;s name. The violet lines run from the scenario to every owner that holds part of it.</figcaption>
 </figure>
@@ -213,16 +213,16 @@ newtype Payments = Payments { charge :: ChargeRequest -&gt; IO Charge }</code></
 <svg role="img" aria-labelledby="charge-title charge-desc" viewBox="0 0 360 318">
 <title id="charge-title">The handler's three steps</title>
 <desc id="charge-desc">The handler's three steps down a highlighted line: decide, in one transaction; charge the card, in no transaction; write the order, in a second transaction; then 201 Created. Exits branch to the right: an invalid order answers 422, a declined card answers 422, and a provider that can't be reached answers 503.</desc>
-<g class="edge"><line x1="200" y1="34" x2="293" y2="34"/><line x1="287.8" y1="31" x2="293" y2="34"/><line x1="287.8" y1="37" x2="293" y2="34"/><line x1="200" y1="114" x2="293" y2="96"/><line x1="287.3" y1="94" x2="293" y2="96"/><line x1="288.5" y1="99.9" x2="293" y2="96"/><line x1="200" y1="134" x2="293" y2="152"/><line x1="288.5" y1="148.1" x2="293" y2="152"/><line x1="287.3" y1="154" x2="293" y2="152"/></g>
-<g class="path"><line x1="104" y1="58" x2="104" y2="100"/><line x1="107" y1="94.8" x2="104" y2="100"/><line x1="101" y1="94.8" x2="104" y2="100"/><line x1="104" y1="148" x2="104" y2="190"/><line x1="107" y1="184.8" x2="104" y2="190"/><line x1="101" y1="184.8" x2="104" y2="190"/><line x1="104" y1="238" x2="104" y2="281"/><line x1="107" y1="275.8" x2="104" y2="281"/><line x1="101" y1="275.8" x2="104" y2="281"/></g>
-<rect class="node" x="8" y="11" width="192" height="46" rx="4"/>
-<rect class="node" x="8" y="101" width="192" height="46" rx="4"/>
-<rect class="node" x="8" y="191" width="192" height="46" rx="4"/>
-<rect class="node on" x="8" y="282" width="192" height="24" rx="4"/>
-<rect class="node" x="295" y="22" width="52" height="24" rx="4"/>
-<rect class="node" x="295" y="84" width="52" height="24" rx="4"/>
-<rect class="node" x="295" y="140" width="52" height="24" rx="4"/>
-<g><text x="104" y="25">decide</text><text class="note" x="104" y="45">in one transaction</text><text x="104" y="115">charge the card</text><text class="note" x="104" y="135">in no transaction</text><text x="104" y="205">write the order</text><text class="note" x="104" y="225">in a second transaction</text><text class="note" x="148" y="169">Charged</text><text x="104" y="294">201 Created</text><text class="note" x="248" y="22">invalid</text><text x="321" y="34">422</text><text class="note" x="248" y="92">Declined</text><text x="321" y="96">422</text><text class="note" x="248" y="158">Unavailable</text><text x="321" y="152">503</text></g>
+<g class="edge"><line x1="203" y1="34" x2="296" y2="34"/><line x1="290.8" y1="31" x2="296" y2="34"/><line x1="290.8" y1="37" x2="296" y2="34"/><line x1="203" y1="114" x2="296" y2="96"/><line x1="290.3" y1="94" x2="296" y2="96"/><line x1="291.5" y1="99.9" x2="296" y2="96"/><line x1="203" y1="134" x2="296" y2="152"/><line x1="291.5" y1="148.1" x2="296" y2="152"/><line x1="290.3" y1="154" x2="296" y2="152"/></g>
+<g class="path"><line x1="107" y1="58" x2="107" y2="100"/><line x1="110" y1="94.8" x2="107" y2="100"/><line x1="104" y1="94.8" x2="107" y2="100"/><line x1="107" y1="148" x2="107" y2="190"/><line x1="110" y1="184.8" x2="107" y2="190"/><line x1="104" y1="184.8" x2="107" y2="190"/><line x1="107" y1="238" x2="107" y2="281"/><line x1="110" y1="275.8" x2="107" y2="281"/><line x1="104" y1="275.8" x2="107" y2="281"/></g>
+<rect class="node" x="11" y="11" width="192" height="46" rx="4"/>
+<rect class="node" x="11" y="101" width="192" height="46" rx="4"/>
+<rect class="node" x="11" y="191" width="192" height="46" rx="4"/>
+<rect class="node on" x="11" y="282" width="192" height="24" rx="4"/>
+<rect class="node" x="298" y="22" width="52" height="24" rx="4"/>
+<rect class="node" x="298" y="84" width="52" height="24" rx="4"/>
+<rect class="node" x="298" y="140" width="52" height="24" rx="4"/>
+<g><text x="107" y="25">decide</text><text class="note" x="107" y="45">in one transaction</text><text x="107" y="115">charge the card</text><text class="note" x="107" y="135">in no transaction</text><text x="107" y="205">write the order</text><text class="note" x="107" y="225">in a second transaction</text><text class="note" x="151" y="169">Charged</text><text x="107" y="294">201 Created</text><text class="note" x="251" y="22">invalid</text><text x="324" y="34">422</text><text class="note" x="251" y="92">Declined</text><text x="324" y="96">422</text><text class="note" x="251" y="158">Unavailable</text><text x="324" y="152">503</text></g>
 </svg>
 <figcaption>The violet line is an order that is valid and charged: written in a second transaction and answered 201 Created. Each refusal leaves with its reason: 422 for an invalid order or a declined card, 503 when the provider can&rsquo;t be reached.</figcaption>
 </figure>

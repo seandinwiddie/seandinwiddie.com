@@ -133,11 +133,11 @@
 <p>In this example:</p>
 <ul>
 <li>
-<strong>User Perspective:</strong> The user is a “customer.”</li>
+<strong>User perspective:</strong> The user is a “customer.”</li>
 <li>
-<strong>User Action:</strong> The user wants to “view order history.”</li>
+<strong>User action:</strong> The user wants to “view order history.”</li>
 <li>
-<strong>Benefit or Value:</strong> The benefit is to “track past purchases and check order status.”</li>
+<strong>Benefit or value:</strong> The benefit is to “track past purchases and check order status.”</li>
 </ul>
 <h2 id="its-acceptance-criteria"><a class="heading-anchor" href="#its-acceptance-criteria">Its acceptance criteria</a></h2>
 <ul>
@@ -149,28 +149,28 @@
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Independence is a goal, not a law. A story that shows order history needs orders to show, yet its scenarios start from &ldquo;Given a customer with two past orders&rdquo;, so it can be built and tested before the story that records orders, and the written scope lists the two in the order they ship.</p>
 <p>When a story is too large, split it by its acceptance criteria, one Rule and its scenarios at a time, never by layer, the database this week and the screen the next: a story split by layer ships nothing anyone can use until the last piece lands.</p></aside>
 <figure class="diagram">
-<svg role="img" aria-labelledby="story-slices-title story-slices-desc" viewBox="0 0 360 182">
+<svg role="img" aria-labelledby="story-slices-title story-slices-desc" viewBox="0 0 360 188">
 <title id="story-slices-title">A story split by layer, and by criterion</title>
 <desc id="story-slices-desc">Two grids of nine cells, rows screen, logic and data, three columns each, numbered by the week each piece ships. Split by layer, week 1 is the whole data row, and after week 1 there is nothing to use. Split by criterion, week 1 is the first column through all three rows, and after week 1 a criterion works.</desc>
-<rect class="node" x="64" y="40" width="40" height="28" rx="4"/>
-<rect class="node" x="108" y="40" width="40" height="28" rx="4"/>
-<rect class="node" x="152" y="40" width="40" height="28" rx="4"/>
-<rect class="node" x="64" y="72" width="40" height="28" rx="4"/>
-<rect class="node" x="108" y="72" width="40" height="28" rx="4"/>
-<rect class="node" x="152" y="72" width="40" height="28" rx="4"/>
-<rect class="node on" x="64" y="104" width="40" height="28" rx="4"/>
-<rect class="node on" x="108" y="104" width="40" height="28" rx="4"/>
-<rect class="node on" x="152" y="104" width="40" height="28" rx="4"/>
-<rect class="node on" x="224" y="40" width="40" height="28" rx="4"/>
-<rect class="node" x="268" y="40" width="40" height="28" rx="4"/>
-<rect class="node" x="312" y="40" width="40" height="28" rx="4"/>
-<rect class="node on" x="224" y="72" width="40" height="28" rx="4"/>
-<rect class="node" x="268" y="72" width="40" height="28" rx="4"/>
-<rect class="node" x="312" y="72" width="40" height="28" rx="4"/>
-<rect class="node on" x="224" y="104" width="40" height="28" rx="4"/>
-<rect class="node" x="268" y="104" width="40" height="28" rx="4"/>
-<rect class="node" x="312" y="104" width="40" height="28" rx="4"/>
-<g><text class="note" x="128" y="20">by layer</text><text x="84" y="54">3</text><text x="128" y="54">3</text><text x="172" y="54">3</text><text x="84" y="86">2</text><text x="128" y="86">2</text><text x="172" y="86">2</text><text x="84" y="118">1</text><text x="128" y="118">1</text><text x="172" y="118">1</text><text class="note" x="288" y="20">by criterion</text><text x="244" y="54">1</text><text x="288" y="54">2</text><text x="332" y="54">3</text><text x="244" y="86">1</text><text x="288" y="86">2</text><text x="332" y="86">3</text><text x="244" y="118">1</text><text x="288" y="118">2</text><text x="332" y="118">3</text><text class="note" x="32" y="54">screen</text><text class="note" x="32" y="86">logic</text><text class="note" x="32" y="118">data</text><text class="note" x="128" y="152">after week 1:</text><text class="note" x="128" y="168">nothing to use</text><text class="note" x="288" y="152">after week 1:</text><text class="note" x="288" y="168">a criterion works</text></g>
+<rect class="node" x="62.5" y="40" width="40" height="28" rx="4"/>
+<rect class="node" x="106.5" y="40" width="40" height="28" rx="4"/>
+<rect class="node" x="150.5" y="40" width="40" height="28" rx="4"/>
+<rect class="node" x="62.5" y="72" width="40" height="28" rx="4"/>
+<rect class="node" x="106.5" y="72" width="40" height="28" rx="4"/>
+<rect class="node" x="150.5" y="72" width="40" height="28" rx="4"/>
+<rect class="node on" x="62.5" y="104" width="40" height="28" rx="4"/>
+<rect class="node on" x="106.5" y="104" width="40" height="28" rx="4"/>
+<rect class="node on" x="150.5" y="104" width="40" height="28" rx="4"/>
+<rect class="node on" x="222.5" y="40" width="40" height="28" rx="4"/>
+<rect class="node" x="266.5" y="40" width="40" height="28" rx="4"/>
+<rect class="node" x="310.5" y="40" width="40" height="28" rx="4"/>
+<rect class="node on" x="222.5" y="72" width="40" height="28" rx="4"/>
+<rect class="node" x="266.5" y="72" width="40" height="28" rx="4"/>
+<rect class="node" x="310.5" y="72" width="40" height="28" rx="4"/>
+<rect class="node on" x="222.5" y="104" width="40" height="28" rx="4"/>
+<rect class="node" x="266.5" y="104" width="40" height="28" rx="4"/>
+<rect class="node" x="310.5" y="104" width="40" height="28" rx="4"/>
+<g><text class="note" x="126.5" y="20">by layer</text><text x="82.5" y="54">3</text><text x="126.5" y="54">3</text><text x="170.5" y="54">3</text><text x="82.5" y="86">2</text><text x="126.5" y="86">2</text><text x="170.5" y="86">2</text><text x="82.5" y="118">1</text><text x="126.5" y="118">1</text><text x="170.5" y="118">1</text><text class="note" x="286.5" y="20">by criterion</text><text x="242.5" y="54">1</text><text x="286.5" y="54">2</text><text x="330.5" y="54">3</text><text x="242.5" y="86">1</text><text x="286.5" y="86">2</text><text x="330.5" y="86">3</text><text x="242.5" y="118">1</text><text x="286.5" y="118">2</text><text x="330.5" y="118">3</text><text class="note" x="30.5" y="54">screen</text><text class="note" x="30.5" y="86">logic</text><text class="note" x="30.5" y="118">data</text><text class="note" x="126.5" y="152">after week 1:</text><text class="note" x="126.5" y="168">nothing to use</text><text class="note" x="286.5" y="152">after week 1:</text><text class="note" x="286.5" y="168">a criterion works</text></g>
 </svg>
 <figcaption>The same story split two ways, each cell numbered by the week it ships. By layer, week 1 builds the data for everything and leaves nothing anyone can use; by criterion, week 1 runs one criterion through every layer, and it works. The violet cells are week 1.</figcaption>
 </figure>

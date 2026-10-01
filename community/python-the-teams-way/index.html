@@ -174,13 +174,13 @@ ModuleNotFoundError: No module named 'pipeline'</code></pre>
 <svg role="img" aria-labelledby="imports-title imports-desc" viewBox="0 0 360 229">
 <title id="imports-title">Where an import starts looking</title>
 <desc id="imports-desc">A folder tree: the repository's root holds pipeline/, which holds data/, which holds build_rows.py. Run with python -m from the root, Python looks first in the current directory, the root, and a highlighted line shows import pipeline finding pipeline/ there. Run as a file, it looks first in data/, which holds no pipeline/, so the import fails.</desc>
-<g class="edge"><line x1="55" y1="100" x2="55" y2="148"/><line x1="55" y1="148" x2="67" y2="148"/><line x1="79" y1="160" x2="79" y2="204"/><line x1="79" y1="204" x2="91" y2="204"/></g>
-<g class="path"><line x1="31" y1="40" x2="31" y2="88"/><line x1="31" y1="88" x2="43" y2="88"/></g>
-<rect class="node on" x="19" y="16" width="83" height="24" rx="4"/>
-<rect class="node on" x="43" y="76" width="92" height="24" rx="4"/>
-<rect class="node" x="67" y="136" width="58" height="24" rx="4"/>
-<rect class="node" x="91" y="192" width="125" height="24" rx="4"/>
-<g><text x="60.5" y="28">the root</text><text x="89" y="88">pipeline/</text><text x="96" y="148">data/</text><text x="153.5" y="204">build_rows.py</text><text class="note" x="261" y="20">python -m</text><text class="note" x="261" y="38">looks here first</text><text class="note" x="261" y="88">import pipeline: found</text><text class="note" x="267" y="140">a file run looks here</text><text class="note" x="267" y="158">first: no pipeline/</text></g>
+<g class="edge"><line x1="53" y1="100" x2="53" y2="148"/><line x1="53" y1="148" x2="65.25" y2="148"/><line x1="77.5" y1="160" x2="77.5" y2="204"/><line x1="77.5" y1="204" x2="89.75" y2="204"/></g>
+<g class="path"><line x1="28.5" y1="40" x2="28.5" y2="88"/><line x1="28.5" y1="88" x2="40.75" y2="88"/></g>
+<rect class="node on" x="16.25" y="16" width="85" height="24" rx="4"/>
+<rect class="node on" x="40.75" y="76" width="94" height="24" rx="4"/>
+<rect class="node" x="65.25" y="136" width="59.5" height="24" rx="4"/>
+<rect class="node" x="89.75" y="192" width="128" height="24" rx="4"/>
+<g><text x="58.75" y="28">the root</text><text x="87.75" y="88">pipeline/</text><text x="95" y="148">data/</text><text x="153.75" y="204">build_rows.py</text><text class="note" x="263.5" y="20">python -m</text><text class="note" x="263.5" y="38">looks here first</text><text class="note" x="263.5" y="88">import pipeline: found</text><text class="note" x="269.75" y="140">a file run looks here</text><text class="note" x="269.75" y="158">first: no pipeline/</text></g>
 </svg>
 <figcaption>Python puts one folder first on its import path. With <code>python -m</code> it is the current directory, here the root, so <code>import pipeline</code> finds the package (the violet line). Run as a file, it is the file&rsquo;s own folder, <code>data/</code>, and there is no <code>pipeline/</code> in there.</figcaption>
 </figure>
@@ -390,17 +390,17 @@ if __name__ == "__main__":
   "seed": 11
 }</code></pre>
 <figure class="diagram">
-<svg role="img" aria-labelledby="compose-title compose-desc" viewBox="0 0 360 268">
+<svg role="img" aria-labelledby="compose-title compose-desc" viewBox="0 0 360 274">
 <title id="compose-title">One config composed from parts</title>
 <desc id="compose-desc">The manifest, config/train.json, names three parts. base.json is set at the key model, data.json at the key data, and run.json is merged at the top, adding epochs and seed. Highlighted lines carry each part down into one composed config that holds model, data, epochs and seed.</desc>
-<rect class="node on" x="10" y="186" width="340" height="72" rx="6"/>
-<g class="edge"><line x1="159.1" y1="34" x2="64" y2="77"/><line x1="70" y1="77.6" x2="64" y2="77"/><line x1="67.5" y1="72.1" x2="64" y2="77"/><line x1="180" y1="34" x2="180" y2="77"/><line x1="183" y1="71.8" x2="180" y2="77"/><line x1="177" y1="71.8" x2="180" y2="77"/><line x1="200.9" y1="34" x2="296" y2="77"/><line x1="292.5" y1="72.1" x2="296" y2="77"/><line x1="290" y1="77.6" x2="296" y2="77"/></g>
-<g class="path"><line x1="64" y1="136" x2="64" y2="199"/><line x1="67" y1="193.8" x2="64" y2="199"/><line x1="61" y1="193.8" x2="64" y2="199"/><line x1="180" y1="136" x2="180" y2="199"/><line x1="183" y1="193.8" x2="180" y2="199"/><line x1="177" y1="193.8" x2="180" y2="199"/><line x1="296" y1="136" x2="296" y2="199"/><line x1="299" y1="193.8" x2="296" y2="199"/><line x1="293" y1="193.8" x2="296" y2="199"/></g>
-<rect class="node" x="130" y="10" width="100" height="24" rx="4"/>
-<rect class="node" x="18" y="78" width="92" height="24" rx="4"/>
-<rect class="node" x="134" y="78" width="92" height="24" rx="4"/>
-<rect class="node" x="254.5" y="78" width="83" height="24" rx="4"/>
-<g><text x="180" y="22">train.json</text><text x="64" y="90">base.json</text><text class="note" x="64" y="124">set at model</text><text x="64" y="222">model</text><text x="180" y="90">data.json</text><text class="note" x="180" y="124">set at data</text><text x="180" y="222">data</text><text x="296" y="90">run.json</text><text class="note" x="296" y="124">merged at top</text><text x="296" y="222">epochs, seed</text><text class="note" x="180" y="246">the composed config</text></g>
+<rect class="node on" x="10" y="188.75" width="340" height="72" rx="6"/>
+<g class="edge"><line x1="159.1" y1="36.75" x2="64" y2="79.75"/><line x1="70" y1="80.35" x2="64" y2="79.75"/><line x1="67.5" y1="74.85" x2="64" y2="79.75"/><line x1="180" y1="36.75" x2="180" y2="79.75"/><line x1="183" y1="74.55" x2="180" y2="79.75"/><line x1="177" y1="74.55" x2="180" y2="79.75"/><line x1="200.9" y1="36.75" x2="296" y2="79.75"/><line x1="292.5" y1="74.85" x2="296" y2="79.75"/><line x1="290" y1="80.35" x2="296" y2="79.75"/></g>
+<g class="path"><line x1="64" y1="138.75" x2="64" y2="201.75"/><line x1="67" y1="196.55" x2="64" y2="201.75"/><line x1="61" y1="196.55" x2="64" y2="201.75"/><line x1="180" y1="138.75" x2="180" y2="201.75"/><line x1="183" y1="196.55" x2="180" y2="201.75"/><line x1="177" y1="196.55" x2="180" y2="201.75"/><line x1="296" y1="138.75" x2="296" y2="201.75"/><line x1="299" y1="196.55" x2="296" y2="201.75"/><line x1="293" y1="196.55" x2="296" y2="201.75"/></g>
+<rect class="node" x="130" y="12.75" width="100" height="24" rx="4"/>
+<rect class="node" x="18" y="80.75" width="92" height="24" rx="4"/>
+<rect class="node" x="134" y="80.75" width="92" height="24" rx="4"/>
+<rect class="node" x="254.5" y="80.75" width="83" height="24" rx="4"/>
+<g><text x="180" y="24.75">train.json</text><text x="64" y="92.75">base.json</text><text class="note" x="64" y="126.75">set at model</text><text x="64" y="224.75">model</text><text x="180" y="92.75">data.json</text><text class="note" x="180" y="126.75">set at data</text><text x="180" y="224.75">data</text><text x="296" y="92.75">run.json</text><text class="note" x="296" y="126.75">merged at top</text><text x="296" y="224.75">epochs, seed</text><text class="note" x="180" y="248.75">the composed config</text></g>
 </svg>
 <figcaption>The manifest names each part and where it goes: two are set at a key, and one is merged at the top. The violet lines carry each part into the one config a run reads.</figcaption>
 </figure>

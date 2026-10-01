@@ -118,15 +118,15 @@
 <h2 id="in-the-interface"><a class="heading-anchor" href="#in-the-interface">In the interface</a></h2>
 <ol>
 <li>
-<strong>Real-Time Updates:</strong> An interaction that changes what the app knows, such as adding to a cart or choosing a date, becomes a dispatched action; a reducer decides what it changes, and every view that reads that state updates from it. The event handling doesn’t disappear: it moves into pure reducers and selectors that a test can run on their own.</li>
+<strong>Real-time updates:</strong> An interaction that changes what the app knows, such as adding to a cart or choosing a date, becomes a dispatched action; a reducer decides what it changes, and every view that reads that state updates from it. The event handling doesn’t disappear: it moves into pure reducers and selectors that a test can run on their own.</li>
 <li>
-<strong>Declarative Event Handling:</strong> A view&rsquo;s handler dispatches what happened and stops there: the reducer decides what it changes, and a selector what the screen shows, so no handler keeps a running total by hand.</li>
+<strong>Declarative event handling:</strong> A view&rsquo;s handler dispatches what happened and stops there: the reducer decides what it changes, and a selector what the screen shows, so no handler keeps a running total by hand.</li>
 <li>
-<strong>State Management:</strong> The store holds the facts, reducers fold events into the next state, and memoized selectors recompute derived values only when their inputs change, so a view stays in step with every action without manual bookkeeping.</li>
+<strong>State management:</strong> The store holds the facts, reducers fold events into the next state, and memoized selectors recompute derived values only when their inputs change, so a view stays in step with every action without manual bookkeeping.</li>
 <li>
-<strong>Complex Event Compositions:</strong> Complex interactions are composed from simple events. Small pure functions and selectors combine, transform and filter what events leave in state, and listener middleware handles timing such as debouncing. Autocomplete gets easier to build: listener middleware debounces the search and RTK Query fetches the suggestions. A drag in progress stays in the component and lands in the store as one action when it drops.</li>
+<strong>Complex event compositions:</strong> Complex interactions are composed from simple events. Small pure functions and selectors combine, transform and filter what events leave in state, and listener middleware handles timing such as debouncing. Autocomplete gets easier to build: listener middleware debounces the search and RTK Query fetches the suggestions. A drag in progress stays in the component and lands in the store as one action when it drops.</li>
 <li>
-<strong>Responsive User Interfaces:</strong> Every view that reads a value shows its new state after the action that changed it, so views reading the same fact show the same value. Screens with many moving parts, such as a kitchen queue or a booking calendar, stay consistent because every change runs through the same reducers.</li>
+<strong>Responsive user interfaces:</strong> Every view that reads a value shows its new state after the action that changed it, so views reading the same fact show the same value. Screens with many moving parts, such as a kitchen queue or a booking calendar, stay consistent because every change runs through the same reducers.</li>
 </ol>
 <p>Autocomplete shows the timing at work:</p>
 <figure class="diagram">
@@ -144,17 +144,17 @@
 <h2 id="behind-the-interface"><a class="heading-anchor" href="#behind-the-interface">Behind the interface</a></h2>
 <ol start="6">
 <li>
-<strong>Error Handling and Recovery:</strong> A refused request arrives as an action carrying the API&rsquo;s reason as data. The slice decides what stays, as a cart that empties only on success, and a pure function chooses the words the customer reads, including whether to try again.</li>
+<strong>Error handling and recovery:</strong> A refused request arrives as an action carrying the API&rsquo;s reason as data. The slice decides what stays, as a cart that empties only on success, and a pure function chooses the words the customer reads, including whether to try again.</li>
 <li>
-<strong>Asynchronous Operations:</strong> Network requests stay at the boundary: RTK Query fetches, caches and refetches server data, and the view shows its loading, error or data state without handling the request itself. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#side-effect-architecture">Modern Redux Architecture Patterns</a> sets out which tool owns which effect.</li>
+<strong>Asynchronous operations:</strong> Network requests stay at the boundary: RTK Query fetches, caches and refetches server data, and the view shows its loading, error or data state without handling the request itself. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#side-effect-architecture">Modern Redux Architecture Patterns</a> sets out which tool owns which effect.</li>
 <li>
-<strong>Modular Code:</strong> Each feature keeps its events, reducer, selectors and endpoints in one folder, so a change to how the cart works stays in the cart&rsquo;s folder.</li>
+<strong>Modular code:</strong> Each feature keeps its events, reducer, selectors and endpoints in one folder, so a change to how the cart works stays in the cart&rsquo;s folder.</li>
 <li>
 <strong>Testability:</strong> An interaction is tested where its logic lives. Its rule is a list of actions and the value a selector returns after them, with no browser; only the wiring, a click that dispatches and the words that appear, needs a rendered view, as in <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a>.</li>
 <li>
-<strong>Live Data:</strong> A value the server changes, such as an order&rsquo;s status in a kitchen queue, reaches the view through the store, the same way a click does. RTK Query refetches it on an interval with <code>pollingInterval</code>, or writes updates the server pushes into its cache from <code>onCacheEntryAdded</code>, and every view that reads it updates with no handler of its own. A pushed update bypasses the check every response goes through in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>, so <code>onCacheEntryAdded</code> runs it through the endpoint&rsquo;s own decoder before writing it.</li>
+<strong>Live data:</strong> A value the server changes, such as an order&rsquo;s status in a kitchen queue, reaches the view through the store, the same way a click does. RTK Query refetches it on an interval with <code>pollingInterval</code>, or writes updates the server pushes into its cache from <code>onCacheEntryAdded</code>, and every view that reads it updates with no handler of its own. A pushed update bypasses the check every response goes through in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>, so <code>onCacheEntryAdded</code> runs it through the endpoint&rsquo;s own decoder before writing it.</li>
 <li>
-<strong>Fewer Nested Callbacks:</strong> <code>async</code> and <code>await</code> already flatten most callback chains. What the state layer adds is a place for each step: RTK Query owns the request, listener middleware owns timing and follow-up effects, and each result reaches a reducer as an action, so a sequence reads as a list of events rather than a chain of callbacks.</li>
+<strong>Fewer nested callbacks:</strong> <code>async</code> and <code>await</code> already flatten most callback chains. What the state layer adds is a place for each step: RTK Query owns the request, listener middleware owns timing and follow-up effects, and each result reaches a reducer as an action, so a sequence reads as a list of events rather than a chain of callbacks.</li>
 </ol>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> None of this makes an interface fast or safe on its own. A store makes it easy to see what changed and why; how quickly the screen answers still comes down to the view and the network.</p>
 <p>A selector that builds a new array on every call re-renders its view for nothing, and a view that reads the whole cart re-renders when any line changes; the lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> keeps each subscription to the smallest value its view shows.</p>

@@ -117,39 +117,39 @@
 <h2 id="people-and-words"><a class="heading-anchor" href="#people-and-words">People and words</a></h2>
 <ol>
 <li>
-<strong>User-Centric Perspective:</strong> Every scenario is told from where a user stands, with an outcome that user would notice. A scenario that can only be told from the database&rsquo;s side, a row inserted or a flag set, means the need behind it hasn&rsquo;t been found yet, and the conversation goes back to the people who use the result.</li>
+<strong>User-centric perspective:</strong> Every scenario is told from where a user stands, with an outcome that user would notice. A scenario that can only be told from the database&rsquo;s side, a row inserted or a flag set, means the need behind it hasn&rsquo;t been found yet, and the conversation goes back to the people who use the result.</li>
 <li>
 <strong>Collaboration:</strong> Behavior is settled between the people who know the business and the people who build the software. On a Sean Dinwiddie&rsquo;s Webmastery job, that is the owner, with the staff who use the result, and the webmaster, reading the scenarios together before work starts; what they settle goes into the written scope.</li>
 <li>
-<strong>Common Language:</strong> Each thing keeps one name, the owner&rsquo;s, from the written scope through the scenario to the action and the test. Where a name has to change, the owner and the webmaster agree on the new one, and it changes everywhere at once, so no reader has to translate.</li>
+<strong>Common language:</strong> Each thing keeps one name, the owner&rsquo;s, from the written scope through the scenario to the action and the test. Where a name has to change, the owner and the webmaster agree on the new one, and it changes everywhere at once, so no reader has to translate.</li>
 </ol>
 <h2 id="behavior-as-scenarios"><a class="heading-anchor" href="#behavior-as-scenarios">Behavior as scenarios</a></h2>
 <ol start="4">
 <li>
-<strong>Behavior Specifications:</strong> Behavior specifications say how the software should behave in specific situations, usually in Given-When-Then form. Each scenario turns one expected behavior into a check a test can run.</li>
+<strong>Behavior specifications:</strong> Behavior specifications say how the software should behave in specific situations, usually in Given-When-Then form. Each scenario turns one expected behavior into a check a test can run.</li>
 <li>
-<strong>Given-When-Then Scenarios:</strong> Each scenario sets the context (Given), names one event (When) and checks the outcome (Then); <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) Syntax in BDD</a> writes them out keyword by keyword.</li>
+<strong>Given-When-Then scenarios:</strong> Each scenario sets the context (Given), names one event (When) and checks the outcome (Then); <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) Syntax in BDD</a> writes them out keyword by keyword.</li>
 </ol>
 <h2 id="checks-that-keep-running"><a class="heading-anchor" href="#checks-that-keep-running">Checks that keep running</a></h2>
 <ol start="6">
 <li>
-<strong>Continuous Feedback:</strong> A scenario is read before work starts and run on every change after it, so the owner hears about a misunderstanding while it is still a sentence, and the webmaster hears about a regression the moment it happens.</li>
+<strong>Continuous feedback:</strong> A scenario is read before work starts and run on every change after it, so the owner hears about a misunderstanding while it is still a sentence, and the webmaster hears about a regression the moment it happens.</li>
 <li>
 <strong>Automation:</strong> A scenario is finished when it runs as a test on every change and fails under its own name when the behavior breaks. The team runs scenarios both ways, as cucumber-js steps or as scenario-named tests in Vitest or Hspec, and <a href="/community/bdd-testing-framework/">BDD Testing Framework</a> runs one scenario each way.</li>
 <li>
-<strong>Integration with Development Practices:</strong> BDD rarely works alone. It pairs with practices such as Test-Driven Development (TDD), which complements it by writing the tests first and letting them drive development. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#test-the-contract">Functional Composition</a> ends the same way at the smallest scale, stating the laws its functions must keep as tests.</li>
+<strong>Integration with development practices:</strong> BDD rarely works alone. It pairs with practices such as Test-Driven Development (TDD), which complements it by writing the tests first and letting them drive development. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#test-the-contract">Functional Composition</a> ends the same way at the smallest scale, stating the laws its functions must keep as tests.</li>
 </ol>
 <p>Put feedback and automation on a timeline and a scenario earns its keep twice:</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="principles-of-behavior-driven-development-bdd-two-moments-title principles-of-behavior-driven-development-bdd-two-moments-desc" viewBox="0 0 360 142">
+<svg role="img" aria-labelledby="principles-of-behavior-driven-development-bdd-two-moments-title principles-of-behavior-driven-development-bdd-two-moments-desc" viewBox="0 0 360 158">
 <title id="principles-of-behavior-driven-development-bdd-two-moments-title">Two moments of feedback</title>
 <desc id="principles-of-behavior-driven-development-bdd-two-moments-desc">A timeline running left to right. Before a mark labelled work starts, the owner reads the scenario, and a misunderstanding is still a sentence. After the mark, the scenario&rsquo;s test runs at each of three changes, and a regression is caught the moment it happens.</desc>
-<g class="edge"><line x1="12" y1="92" x2="348" y2="92"/><line x1="342.8" y1="89" x2="348" y2="92"/><line x1="342.8" y1="95" x2="348" y2="92"/><line x1="163" y1="22" x2="163" y2="100"/><line x1="80" y1="62" x2="80" y2="92"/><line x1="206" y1="62" x2="206" y2="92"/><line x1="266" y1="62" x2="266" y2="92"/><line x1="326" y1="62" x2="326" y2="92"/></g>
-<rect class="node on" x="12" y="30" width="136" height="32" rx="4"/>
-<rect class="node" x="182" y="30" width="48" height="32" rx="4"/>
-<rect class="node" x="242" y="30" width="48" height="32" rx="4"/>
-<rect class="node" x="302" y="30" width="48" height="32" rx="4"/>
-<g><text class="note" x="163" y="12">work starts</text><text x="80" y="46">owner reads</text><text x="206" y="46">test</text><text x="266" y="46">test</text><text x="326" y="46">test</text><text class="note" x="80" y="112">a misunderstanding,</text><text class="note" x="80" y="130">still a sentence</text><text class="note" x="262" y="112">a regression, caught</text><text class="note" x="262" y="130">the moment it happens</text></g>
+<g class="edge"><line x1="11.5" y1="100" x2="347.5" y2="100"/><line x1="342.3" y1="97" x2="347.5" y2="100"/><line x1="342.3" y1="103" x2="347.5" y2="100"/><line x1="162.5" y1="30" x2="162.5" y2="108"/><line x1="79.5" y1="70" x2="79.5" y2="100"/><line x1="205.5" y1="70" x2="205.5" y2="100"/><line x1="265.5" y1="70" x2="265.5" y2="100"/><line x1="325.5" y1="70" x2="325.5" y2="100"/></g>
+<rect class="node on" x="11.5" y="38" width="136" height="32" rx="4"/>
+<rect class="node" x="181.5" y="38" width="48" height="32" rx="4"/>
+<rect class="node" x="241.5" y="38" width="48" height="32" rx="4"/>
+<rect class="node" x="301.5" y="38" width="48" height="32" rx="4"/>
+<g><text class="note" x="162.5" y="20">work starts</text><text x="79.5" y="54">owner reads</text><text x="205.5" y="54">test</text><text x="265.5" y="54">test</text><text x="325.5" y="54">test</text><text class="note" x="79.5" y="120">a misunderstanding,</text><text class="note" x="79.5" y="138">still a sentence</text><text class="note" x="261.5" y="120">a regression, caught</text><text class="note" x="261.5" y="138">the moment it happens</text></g>
 </svg>
 <figcaption>One scenario, two kinds of feedback, with time running left to right. Before work starts, the owner reads it (outlined in violet) and a misunderstanding costs a sentence; after, its test runs on every change and a regression shows the moment it happens.</figcaption>
 </figure>

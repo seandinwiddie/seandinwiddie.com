@@ -117,13 +117,13 @@
 <h2 id="key-concepts-of-bdd"><a class="heading-anchor" href="#key-concepts-of-bdd">Key concepts of BDD</a></h2>
 <ol>
 <li>
-<strong>User-Centric Approach:</strong> BDD begins with the people who use the software and what they need to get done, and describes each behavior from where they stand: a customer placing an order, a cook marking a dish sold out.</li>
+<strong>User-centric approach:</strong> BDD begins with the people who use the software and what they need to get done, and describes each behavior from where they stand: a customer placing an order, a cook marking a dish sold out.</li>
 <li>
 <strong>Collaboration:</strong> The owner, the people who use the result and the webmaster agree on the behavior before it is built, in scenarios all of them can read.</li>
 <li>
-<strong>Common Language:</strong> Behavior is written in a common language, typically plain English, that technical and non-technical people read alike, which makes expectations easier to share and to pin down.</li>
+<strong>Common language:</strong> Behavior is written in a common language, typically plain English, that technical and non-technical people read alike, which makes expectations easier to share and to pin down.</li>
 <li>
-<strong>Behavior Specifications:</strong> Scenarios specify how the software should behave in each situation, in a clear, structured Given-When-Then format:
+<strong>Behavior specifications:</strong> Scenarios specify how the software should behave in each situation, in a clear, structured Given-When-Then format:
 <ul>
 <li>
 <strong>Given:</strong> the starting context, the state of things before.</li>
@@ -134,7 +134,7 @@
 </ul>
 </li>
 <li>
-<strong>Continuous Feedback:</strong> Questions and corrections come back while the work goes on, and a behavior the written scope never named is quoted and approved before it is built.</li>
+<strong>Continuous feedback:</strong> Questions and corrections come back while the work goes on, and a behavior the written scope never named is quoted and approved before it is built.</li>
 <li>
 <strong>Automation:</strong> BDD scenarios serve as the basis for automated tests. Run on every change, they fail the moment the software stops doing what a scenario describes. Pure code makes that automation cheap; the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#benefits-of-pure-functions">What Is a Function?</a> shows why code that returns the same output for the same input is the easiest to test.</li>
 </ol>
@@ -143,12 +143,12 @@
 <svg role="img" aria-labelledby="introduction-to-behavior-driven-development-bdd-one-word-title introduction-to-behavior-driven-development-bdd-one-word-desc" viewBox="0 0 360 218">
 <title id="introduction-to-behavior-driven-development-bdd-one-word-title">One word from the owner to the test</title>
 <desc id="introduction-to-behavior-driven-development-bdd-one-word-desc">Four rows joined by arrows. The owner says the brisket sold out. The scenario says Given "Brisket" sold out. The Redux Toolkit action is itemSoldOut. The test is named for the scenario. The owner&rsquo;s words carry unchanged into the code.</desc>
-<g class="path"><line x1="224" y1="44" x2="224" y2="66"/><line x1="227" y1="60.8" x2="224" y2="66"/><line x1="221" y1="60.8" x2="224" y2="66"/><line x1="224" y1="98" x2="224" y2="120"/><line x1="227" y1="114.8" x2="224" y2="120"/><line x1="221" y1="114.8" x2="224" y2="120"/><line x1="224" y1="152" x2="224" y2="174"/><line x1="227" y1="168.8" x2="224" y2="174"/><line x1="221" y1="168.8" x2="224" y2="174"/></g>
-<rect class="node" x="96" y="12" width="256" height="32" rx="4"/>
-<rect class="node" x="96" y="66" width="256" height="32" rx="4"/>
-<rect class="node" x="96" y="120" width="256" height="32" rx="4"/>
-<rect class="node" x="96" y="174" width="256" height="32" rx="4"/>
-<g><text class="note" x="46" y="28">owner</text><text x="224" y="28">the brisket sold out</text><text class="note" x="46" y="82">scenario</text><text x="224" y="82">Given "Brisket" sold out</text><text class="note" x="46" y="136">action</text><text x="224" y="136">itemSoldOut</text><text class="note" x="46" y="190">test</text><text x="224" y="190">named for the scenario</text></g>
+<g class="path"><line x1="219" y1="44" x2="219" y2="66"/><line x1="222" y1="60.8" x2="219" y2="66"/><line x1="216" y1="60.8" x2="219" y2="66"/><line x1="219" y1="98" x2="219" y2="120"/><line x1="222" y1="114.8" x2="219" y2="120"/><line x1="216" y1="114.8" x2="219" y2="120"/><line x1="219" y1="152" x2="219" y2="174"/><line x1="222" y1="168.8" x2="219" y2="174"/><line x1="216" y1="168.8" x2="219" y2="174"/></g>
+<rect class="node" x="91" y="12" width="256" height="32" rx="4"/>
+<rect class="node" x="91" y="66" width="256" height="32" rx="4"/>
+<rect class="node" x="91" y="120" width="256" height="32" rx="4"/>
+<rect class="node" x="91" y="174" width="256" height="32" rx="4"/>
+<g><text class="note" x="41" y="28">owner</text><text x="219" y="28">the brisket sold out</text><text class="note" x="41" y="82">scenario</text><text x="219" y="82">Given "Brisket" sold out</text><text class="note" x="41" y="136">action</text><text x="219" y="136">itemSoldOut</text><text class="note" x="41" y="190">test</text><text x="219" y="190">named for the scenario</text></g>
 </svg>
 <figcaption>One word, four places. The owner&rsquo;s &ldquo;sold out&rdquo; rides the violet arrows to the scenario, the action and the test without a translation, so each reader can find it in the others.</figcaption>
 </figure>
@@ -159,13 +159,13 @@
 <h2 id="benefits-of-bdd"><a class="heading-anchor" href="#benefits-of-bdd">Benefits of BDD</a></h2>
 <ol>
 <li>
-<strong>User-Centric Development:</strong> BDD ties each piece of the work to a need someone named, so the owner can check the software against it.</li>
+<strong>User-centric development:</strong> BDD ties each piece of the work to a need someone named, so the owner can check the software against it.</li>
 <li>
-<strong>One Reading of the Job:</strong> The owner and the webmaster read the same scenarios, so a misunderstanding shows up as a line someone disagrees with, before anything is built.</li>
+<strong>One reading of the job:</strong> The owner and the webmaster read the same scenarios, so a misunderstanding shows up as a line someone disagrees with, before anything is built.</li>
 <li>
-<strong>Early Issue Detection:</strong> A missing case shows up while its scenario is written, when it costs a question rather than a rebuild.</li>
+<strong>Early issue detection:</strong> A missing case shows up while its scenario is written, when it costs a question rather than a rebuild.</li>
 <li>
-<strong>Living Documentation:</strong> The scenarios describe what the software does today, because a scenario that stops being true fails its test.</li>
+<strong>Living documentation:</strong> The scenarios describe what the software does today, because a scenario that stops being true fails its test.</li>
 </ol>
 <p>BDD suits a team that wants to check its software against what its users need, on every change. The next lesson, Principles of Behavior-Driven Development (BDD), turns these concepts into the rules each scenario is held to.</p>
 

@@ -173,16 +173,16 @@
 <p>A Feature often outgrows one module: the Checkout in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> is proved at the API, the endpoint, the slice and the view, and each of their tests carries the same Feature and scenario names, so a report reads the same at every owner. When a Feature&rsquo;s scenarios stop sharing a Background or a story, it is usually two Features, and the place they part is where the scope can split them.</p></aside>
 <p>Counted out, the booking Feature above makes three runs, and the Background opens each one:</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="writing-bdd-scenarios-for-software-modules-background-title writing-bdd-scenarios-for-software-modules-background-desc" viewBox="0 0 360 210">
+<svg role="img" aria-labelledby="writing-bdd-scenarios-for-software-modules-background-title writing-bdd-scenarios-for-software-modules-background-desc" viewBox="0 0 360 217">
 <title id="writing-bdd-scenarios-for-software-modules-background-title">A Background runs before every scenario and every row</title>
 <desc id="writing-bdd-scenarios-for-software-modules-background-desc">A box labelled Background, holding two Givens, has arrows to three runs: the scenario Booking the last table at seven, confirmed; an Examples row for 6 guests, confirmed; and an Examples row for 7 guests, refused. The two rows belong to one Scenario Outline.</desc>
-<g class="edge"><line x1="130" y1="180" x2="350" y2="180"/></g>
-<g class="path"><line x1="180" y1="44" x2="60" y2="96"/><line x1="66" y1="96.7" x2="60" y2="96"/><line x1="63.6" y1="91.2" x2="60" y2="96"/><line x1="180" y1="44" x2="180" y2="96"/><line x1="183" y1="90.8" x2="180" y2="96"/><line x1="177" y1="90.8" x2="180" y2="96"/><line x1="180" y1="44" x2="300" y2="96"/><line x1="296.4" y1="91.2" x2="300" y2="96"/><line x1="294" y1="96.7" x2="300" y2="96"/></g>
-<rect class="node on" x="100" y="12" width="160" height="32" rx="4"/>
-<rect class="node" x="6" y="96" width="108" height="32" rx="4"/>
-<rect class="node" x="126" y="96" width="108" height="32" rx="4"/>
-<rect class="node" x="246" y="96" width="108" height="32" rx="4"/>
-<g><text x="180" y="28">Background</text><text class="note" x="310" y="28">two Givens</text><text x="60" y="112">last table</text><text class="note" x="60" y="146">Scenario</text><text class="note" x="60" y="164">confirmed</text><text x="180" y="112">6 guests</text><text class="note" x="180" y="146">Examples row</text><text class="note" x="180" y="164">confirmed</text><text x="300" y="112">7 guests</text><text class="note" x="300" y="146">Examples row</text><text class="note" x="300" y="164">refused</text><text class="note" x="240" y="196">one Scenario Outline</text></g>
+<g class="edge"><line x1="131" y1="181.25" x2="346.5" y2="181.25"/></g>
+<g class="path"><line x1="180" y1="45.25" x2="62.5" y2="97.25"/><line x1="68.5" y1="97.9" x2="62.5" y2="97.25"/><line x1="66.1" y1="92.4" x2="62.5" y2="97.25"/><line x1="180" y1="45.25" x2="180" y2="97.25"/><line x1="183" y1="92.05" x2="180" y2="97.25"/><line x1="177" y1="92.05" x2="180" y2="97.25"/><line x1="180" y1="45.25" x2="297.75" y2="97.25"/><line x1="294.2" y1="92.4" x2="297.75" y2="97.25"/><line x1="291.7" y1="97.9" x2="297.75" y2="97.25"/></g>
+<rect class="node on" x="101.75" y="13.25" width="156.5" height="32" rx="4"/>
+<rect class="node" x="9.5" y="97.25" width="106" height="32" rx="4"/>
+<rect class="node" x="127" y="97.25" width="106" height="32" rx="4"/>
+<rect class="node" x="244.75" y="97.25" width="106" height="32" rx="4"/>
+<g><text x="180" y="29.25">Background</text><text class="note" x="307.25" y="29.25">two Givens</text><text x="62.5" y="113.25">last table</text><text class="note" x="62.5" y="147.25">Scenario</text><text class="note" x="62.5" y="165.25">confirmed</text><text x="180" y="113.25">6 guests</text><text class="note" x="180" y="147.25">Examples row</text><text class="note" x="180" y="165.25">confirmed</text><text x="297.75" y="113.25">7 guests</text><text class="note" x="297.5" y="147.25">Examples row</text><text class="note" x="297.5" y="165.25">refused</text><text class="note" x="238.75" y="197.25">one Scenario Outline</text></g>
 </svg>
 <figcaption>The booking Feature&rsquo;s three runs. Gherkin runs the Background (outlined in violet) before the scenario and before each row of the Scenario Outline, so every run starts from the same two Givens.</figcaption>
 </figure>

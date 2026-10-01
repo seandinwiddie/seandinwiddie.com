@@ -118,15 +118,15 @@
 <h2 id="key-concepts"><a class="heading-anchor" href="#key-concepts">Key concepts</a></h2>
 <ol>
 <li>
-<strong>Events and Behaviors:</strong> At the core of FRP are events, things that happen at a moment, and behaviors, values that change over time. An event can be a user interaction, a timer or a network response; in Redux Toolkit, a behavior is a value derived from the events so far.</li>
+<strong>Events and behaviors:</strong> At the core of FRP are events, things that happen at a moment, and behaviors, values that change over time. An event can be a user interaction, a timer or a network response; in Redux Toolkit, a behavior is a value derived from the events so far.</li>
 <li>
-<strong>State as a Fold:</strong> The state at any moment is every event so far, folded through a pure function. In Redux Toolkit that is <code>actions.reduce(reducer, initialState)</code>: the reducer combines the last state with the next action and reads nothing else.</li>
+<strong>State as a fold:</strong> The state at any moment is every event so far, folded through a pure function. In Redux Toolkit that is <code>actions.reduce(reducer, initialState)</code>: the reducer combines the last state with the next action and reads nothing else.</li>
 <li>
-<strong>Declarative Programming:</strong> A declarative program says what a value is, and leaves keeping it current to the events. A click handler that runs <code>total += price</code> says how to update the total, so every path that changes the cart needs a line of its own, and the one a removal forgets leaves the total wrong. A selector says what the total is, the sum of each line&rsquo;s price times its quantity, so every change to the cart is already counted. <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> writes it as <code>selectTotalCents</code>.</li>
+<strong>Declarative programming:</strong> A declarative program says what a value is, and leaves keeping it current to the events. A click handler that runs <code>total += price</code> says how to update the total, so every path that changes the cart needs a line of its own, and the one a removal forgets leaves the total wrong. A selector says what the total is, the sum of each line&rsquo;s price times its quantity, so every change to the cart is already counted. <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> writes it as <code>selectTotalCents</code>.</li>
 <li>
-<strong>Immutable Data:</strong> FRP usually treats data as immutable: a change makes a new version and leaves the old one untouched, which supports referential transparency and keeps side effects down.</li>
+<strong>Immutable data:</strong> FRP usually treats data as immutable: a change makes a new version and leaves the old one untouched, which supports referential transparency and keeps side effects down.</li>
 <li>
-<strong>Event-Driven Programming:</strong> FRP suits event-driven programming, where code reacts to events as they occur. In Redux Toolkit, a reducer decides what each event changes, and selectors combine what the events have left in state.</li>
+<strong>Event-driven programming:</strong> FRP suits event-driven programming, where code reacts to events as they occur. In Redux Toolkit, a reducer decides what each event changes, and selectors combine what the events have left in state.</li>
 </ol>
 <h2 id="how-it-works"><a class="heading-anchor" href="#how-it-works">How it works</a></h2>
 <p>FRP works by modeling what happens as events and what the program knows as values derived from them. Developers declare how each event changes the state and how each value is derived, and compose small pure functions into larger ones, rather than writing callbacks that change things in place.</p>

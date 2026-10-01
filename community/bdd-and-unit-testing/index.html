@@ -122,19 +122,19 @@
 <h2 id="how-bdd-and-unit-testing-work-together"><a class="heading-anchor" href="#how-bdd-and-unit-testing-work-together">How BDD and unit testing work together</a></h2>
 <ol>
 <li>
-<strong>Alignment with User Expectations:</strong> Scenarios describe user interactions and their expected outcomes, so everyone understands the behavior from the user&rsquo;s side, and the software is held to what users expect and the business requires.</li>
+<strong>Alignment with user expectations:</strong> Scenarios describe user interactions and their expected outcomes, so everyone understands the behavior from the user&rsquo;s side, and the software is held to what users expect and the business requires.</li>
 <li>
-<strong>Testable Specifications:</strong> Scenarios are specifications you can run: each is the basis of an automated acceptance test. Scenarios cover the “what” and the “why”; unit tests cover the “how”, one unit of code at a time.</li>
+<strong>Testable specifications:</strong> Scenarios are specifications you can run: each is the basis of an automated acceptance test. Scenarios cover the “what” and the “why”; unit tests cover the “how”, one unit of code at a time.</li>
 <li>
-<strong>Validation of Behavior:</strong> Under the scenarios, unit tests check that the low-level pieces, individual functions and methods, behave as expected.</li>
+<strong>Validation of behavior:</strong> Under the scenarios, unit tests check that the low-level pieces, individual functions and methods, behave as expected.</li>
 <li>
-<strong>Early Issue Detection:</strong> Both catch problems early: scenarios catch behavior a user would notice, and unit tests catch bugs in the code beneath it. A problem caught early takes less time and money to fix.</li>
+<strong>Early issue detection:</strong> Both catch problems early: scenarios catch behavior a user would notice, and unit tests catch bugs in the code beneath it. A problem caught early takes less time and money to fix.</li>
 <li>
-<strong>Test Coverage:</strong> BDD scenarios describe behavior a user can name, and on the Sean Dinwiddie’s Webmastery team most of them run below the interface, against a slice’s reducer and selectors or an RTK Query endpoint. End-to-end tests stay few and cover the critical journeys, while unit tests cover the pure functions underneath. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">Modern Redux Architecture Patterns</a> sets out which test covers which layer.</li>
+<strong>Test coverage:</strong> BDD scenarios describe behavior a user can name, and on the Sean Dinwiddie’s Webmastery team most of them run below the interface, against a slice’s reducer and selectors or an RTK Query endpoint. End-to-end tests stay few and cover the critical journeys, while unit tests cover the pure functions underneath. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">Modern Redux Architecture Patterns</a> sets out which test covers which layer.</li>
 <li>
-<strong>Documentation and Communication:</strong> Scenarios are living documentation that the owner and the webmasters both read; unit tests document how each unit of code is meant to work.</li>
+<strong>Documentation and communication:</strong> Scenarios are living documentation that the owner and the webmasters both read; unit tests document how each unit of code is meant to work.</li>
 <li>
-<strong>Regression Testing:</strong> Both run on every change, so a change that breaks what already worked fails a test before it reaches the owner.</li>
+<strong>Regression testing:</strong> Both run on every change, so a change that breaks what already worked fails a test before it reaches the owner.</li>
 </ol>
 <p>Stacked by layer, the suite has a shape:</p>
 <figure class="diagram">
@@ -153,9 +153,9 @@
 <li>
 <strong>Overlap:</strong> Some scenarios cover ground a unit test covers too. Test each rule once, at the lowest layer that shows it: a scenario covers the behavior a user can name, and a unit test covers the edge cases of the pure function beneath it.</li>
 <li>
-<strong>Integration Testing:</strong> Scenarios and unit tests each work at their own level; integration tests check that the components work together.</li>
+<strong>Integration testing:</strong> Scenarios and unit tests each work at their own level; integration tests check that the components work together.</li>
 <li>
-<strong>Test Maintenance:</strong> Scenarios and unit tests both need upkeep as the software evolves. A test changes in the same commit as the behavior it checks, so the suite never describes software that no longer exists.</li>
+<strong>Test maintenance:</strong> Scenarios and unit tests both need upkeep as the software evolves. A test changes in the same commit as the behavior it checks, so the suite never describes software that no longer exists.</li>
 </ul>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> puts each test where its rule lives. An empty order and an unknown product are rules of <code>validateOrder</code>, a pure function, so they are unit tests that compare its result as plain data, with no database, no server and no screen, and the written scope never names them.</p>
 <p>A declined card is behavior an owner can name, so it is a scenario, run under its own name at each of the four owners that hold part of it, and one journey runs end to end because each owner&rsquo;s test has already proved its part.</p>

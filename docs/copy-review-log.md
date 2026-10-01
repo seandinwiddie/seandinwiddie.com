@@ -15,11 +15,11 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 - **Post design round 1:** the lesson's place and ticks in the banner, one quiet byline, the lede, prose at 1.75 leading, code with ligatures and a Copy button, depth passages with their cursive label in the margin on wide screens (color step: their paper warms to #f7f6f2), previous and next as a framed pair, the module list as a table of contents. Every text in the lesson column meets AAA.
 - **Post design round 2:** diagram lines hold their weight at every width; diagrams sit on the depth passages' warm paper (color step); every lesson h2 links to itself; module openers put their list after the lede; the closing work line is a quiet note under a hairline; the hub's cards lose their shadow and lift.
 - **Copy round 2 (131 edits on 35 pages):** 30 diagrams fixed from the designer's list (captions name the violet path, the tags diagram labels the order list with its real tag, the Module 3 loop re-laid, arrowheads normalized, margins evened); 69 lesson h2s and 6 on the offer page in sentence case, with every section link's id unchanged and the offer's tier names untouched; 26 voice edits where a line still read defensive or flat.
+- **Copy round 3 (154 edits on 40 pages):** measured strictly (each line's stroke counted), 39 of the 47 diagrams sat outside the spec's margins; all 47 now hold 8 to 16 units, top equal to bottom and left to right, with only coordinates and viewBox heights changed and every label checked at 390 and 1366 px. 111 run-in list labels in sentence case ("Client-centered:"), keeping acronyms, Gherkin keywords and the Inner Circle's price line. Five voice edits, among them FRP's predictability now said as what it buys: replaying the actions behind a wrong value reproduces it, and that list becomes its test.
 
 ### Waiting
 
-- 20 diagrams whose margins are still uneven or outside 8 to 16 units.
-- Title Case run-in labels inside lesson lists and the offer page's lists.
+- Title Case "User Stories" mid-sentence on Practical Exercises and the course outline.
 - Post design round 3: the hub as the front door, an "On this page" list on long lessons, caption width, the hub's pagination.
 - For Sean: whether lesson titles move to sentence case too (it changes head titles, cards and structured data).
 

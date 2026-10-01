@@ -208,18 +208,18 @@ const decodingBaseQuery: BaseQueryFn&lt;string | FetchArgs, unknown, FetchBaseQu
   }</code></pre>
 <p>In the finished file, <code>decodingBaseQuery</code> sits between <code>baseQuery</code> and <code>createApi</code>, which takes it in place of <code>baseQuery</code>.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="decode-title decode-desc" viewBox="0 0 360 268">
+<svg role="img" aria-labelledby="decode-title decode-desc" viewBox="0 0 360 276">
 <title id="decode-title">Decoding at the boundary</title>
 <desc id="decode-desc">A response comes back from baseQuery as unknown data and goes to the endpoint's decoder. The decoder returns Right or Left. A highlighted line runs through Right to data that is cached for the view. Left becomes a CUSTOM_ERROR with the raw payload beside it, an error the view can show.</desc>
-<g class="edge"><line x1="200" y1="104" x2="262" y2="149"/><line x1="259.6" y1="143.5" x2="262" y2="149"/><line x1="256" y1="148.4" x2="262" y2="149"/><line x1="270" y1="174" x2="270" y2="213"/><line x1="273" y1="207.8" x2="270" y2="213"/><line x1="267" y1="207.8" x2="270" y2="213"/></g>
-<g class="path"><line x1="180" y1="36" x2="180" y2="79"/><line x1="183" y1="73.8" x2="180" y2="79"/><line x1="177" y1="73.8" x2="180" y2="79"/><line x1="160" y1="104" x2="98" y2="149"/><line x1="104" y1="148.4" x2="98" y2="149"/><line x1="100.4" y1="143.5" x2="98" y2="149"/><line x1="90" y1="174" x2="90" y2="213"/><line x1="93" y1="207.8" x2="90" y2="213"/><line x1="87" y1="207.8" x2="90" y2="213"/></g>
-<rect class="node" x="134" y="12" width="92" height="24" rx="4"/>
-<rect class="node on" x="92" y="80" width="176" height="24" rx="4"/>
-<rect class="node" x="61" y="150" width="58" height="24" rx="4"/>
-<rect class="node" x="245" y="150" width="50" height="24" rx="4"/>
-<rect class="node on" x="36" y="214" width="108" height="24" rx="4"/>
-<rect class="node" x="211.5" y="214" width="117" height="24" rx="4"/>
-<g><text x="180" y="24">baseQuery</text><text class="note" x="232" y="58">unknown</text><text x="180" y="92">decode(result.data)</text><text x="90" y="162">Right</text><text x="270" y="162">Left</text><text x="90" y="226">cached data</text><text x="270" y="226">CUSTOM_ERROR</text><text class="note" x="270" y="256">raw payload kept</text><text class="note" x="90" y="256">for the view</text></g>
+<g class="edge"><line x1="198.25" y1="104.25" x2="278" y2="149.25"/><line x1="275" y1="144.1" x2="278" y2="149.25"/><line x1="272" y1="149.3" x2="278" y2="149.25"/><line x1="286" y1="174.25" x2="286" y2="213.25"/><line x1="289" y1="208.05" x2="286" y2="213.25"/><line x1="283" y1="208.05" x2="286" y2="213.25"/></g>
+<g class="path"><line x1="178.25" y1="36.25" x2="178.25" y2="79.25"/><line x1="181.25" y1="74.05" x2="178.25" y2="79.25"/><line x1="175.25" y1="74.05" x2="178.25" y2="79.25"/><line x1="158.25" y1="104.25" x2="78.5" y2="149.25"/><line x1="84.5" y1="149.3" x2="78.5" y2="149.25"/><line x1="81.5" y1="144.1" x2="78.5" y2="149.25"/><line x1="70.5" y1="174.25" x2="70.5" y2="213.25"/><line x1="73.5" y1="208.05" x2="70.5" y2="213.25"/><line x1="67.5" y1="208.05" x2="70.5" y2="213.25"/></g>
+<rect class="node" x="132.25" y="12.25" width="92" height="24" rx="4"/>
+<rect class="node on" x="90.25" y="80.25" width="176" height="24" rx="4"/>
+<rect class="node" x="41.5" y="150.25" width="58" height="24" rx="4"/>
+<rect class="node" x="261" y="150.25" width="50" height="24" rx="4"/>
+<rect class="node on" x="16.5" y="214.25" width="108" height="24" rx="4"/>
+<rect class="node" x="227.5" y="214.25" width="117" height="24" rx="4"/>
+<g><text x="178.25" y="24.25">baseQuery</text><text class="note" x="240.5" y="58.25">unknown</text><text x="178.25" y="92.25">decode(result.data)</text><text x="70.5" y="162.25">Right</text><text x="286" y="162.25">Left</text><text x="70.5" y="226.25">cached data</text><text x="286" y="226.25">CUSTOM_ERROR</text><text class="note" x="286" y="256.25">raw payload kept</text><text class="note" x="70.5" y="256.25">for the view</text></g>
 </svg>
 <figcaption>Every response is unknown until its endpoint&rsquo;s decoder accepts it. The violet line is a payload that passes and is cached; one that fails becomes a <code>CUSTOM_ERROR</code>, with the raw payload beside it, for the view to show.</figcaption>
 </figure>
@@ -253,15 +253,15 @@ export const { useListOrdersQuery, usePlaceOrderMutation } = ordersApi</code></p
 <svg role="img" aria-labelledby="tags-title tags-desc" viewBox="0 0 360 204">
 <title id="tags-title">What a placed order refetches</title>
 <desc id="tags-desc">Two rows. The highlighted row: the order is accepted, the order list's tag (type Order, id LIST) is invalidated, and listOrders, which provides that tag, refetches. The plain row: the order is refused, the callback returns no tags, and the history stays as it was.</desc>
-<g class="edge"><line x1="109" y1="154" x2="129" y2="154"/><line x1="123.8" y1="151" x2="129" y2="154"/><line x1="123.8" y1="157" x2="129" y2="154"/><line x1="231" y1="154" x2="251" y2="154"/><line x1="245.8" y1="151" x2="251" y2="154"/><line x1="245.8" y1="157" x2="251" y2="154"/></g>
-<g class="path"><line x1="109" y1="66" x2="129" y2="66"/><line x1="123.8" y1="63" x2="129" y2="66"/><line x1="123.8" y1="69" x2="129" y2="66"/><line x1="231" y1="66" x2="251" y2="66"/><line x1="245.8" y1="63" x2="251" y2="66"/><line x1="245.8" y1="69" x2="251" y2="66"/></g>
-<rect class="node" x="8" y="54" width="100" height="24" rx="4"/>
-<rect class="node on" x="130" y="54" width="100" height="24" rx="4"/>
-<rect class="node on" x="252" y="54" width="100" height="24" rx="4"/>
-<rect class="node" x="8" y="142" width="100" height="24" rx="4"/>
-<rect class="node" x="130" y="142" width="100" height="24" rx="4"/>
-<rect class="node" x="252" y="142" width="100" height="24" rx="4"/>
-<g><text class="note" x="180" y="20">after placeOrder answers</text><text x="58" y="66">accepted</text><text class="note" x="58" y="96">the order</text><text x="180" y="66">order list</text><text class="note" x="180" y="96">tag invalidated</text><text x="302" y="66">refetch</text><text class="note" x="302" y="96">listOrders</text><text x="58" y="154">refused</text><text class="note" x="58" y="184">the order</text><text x="180" y="154">no tags</text><text class="note" x="180" y="184">returned</text><text x="302" y="154">unchanged</text><text class="note" x="302" y="184">the history</text></g>
+<g class="edge"><line x1="109.5" y1="154" x2="129.25" y2="154"/><line x1="124.1" y1="151" x2="129.25" y2="154"/><line x1="124.1" y1="157" x2="129.25" y2="154"/><line x1="230.25" y1="154" x2="250" y2="154"/><line x1="244.8" y1="151" x2="250" y2="154"/><line x1="244.8" y1="157" x2="250" y2="154"/></g>
+<g class="path"><line x1="109.5" y1="66" x2="129.25" y2="66"/><line x1="124.1" y1="63" x2="129.25" y2="66"/><line x1="124.1" y1="69" x2="129.25" y2="66"/><line x1="230.25" y1="66" x2="250" y2="66"/><line x1="244.8" y1="63" x2="250" y2="66"/><line x1="244.8" y1="69" x2="250" y2="66"/></g>
+<rect class="node" x="9.75" y="54" width="99" height="24" rx="4"/>
+<rect class="node on" x="130.25" y="54" width="99" height="24" rx="4"/>
+<rect class="node on" x="250.75" y="54" width="99" height="24" rx="4"/>
+<rect class="node" x="9.75" y="142" width="99" height="24" rx="4"/>
+<rect class="node" x="130.25" y="142" width="99" height="24" rx="4"/>
+<rect class="node" x="250.75" y="142" width="99" height="24" rx="4"/>
+<g><text class="note" x="179.75" y="20">after placeOrder answers</text><text x="59.25" y="66">accepted</text><text class="note" x="59.25" y="96">the order</text><text x="179.75" y="66">order list</text><text class="note" x="179.75" y="96">tag invalidated</text><text x="300.25" y="66">refetch</text><text class="note" x="300.25" y="96">listOrders</text><text x="59.25" y="154">refused</text><text class="note" x="59.25" y="184">the order</text><text x="179.75" y="154">no tags</text><text class="note" x="179.75" y="184">returned</text><text x="300.25" y="154">unchanged</text><text class="note" x="300.25" y="184">the history</text></g>
 </svg>
 <figcaption>An accepted order invalidates the order list&rsquo;s tag, <code>{ type: 'Order', id: 'LIST' }</code>, and <code>listOrders</code>, which provides it, refetches for every view that shows it (the violet row). A refused order gets no tags from the callback, so the history stays as it was.</figcaption>
 </figure>
