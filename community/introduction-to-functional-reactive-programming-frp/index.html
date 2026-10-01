@@ -118,7 +118,7 @@
 <p>Key Concepts in FRP:</p>
 <ol>
 <li>
-<strong>Events and Behaviors:</strong> At the core of FRP are events, things that happen at a moment, and behaviors, values that change over time. An event can be a user interaction, a timer or a network response; a behavior is any value derived from the events so far.</li>
+<strong>Events and Behaviors:</strong> At the core of FRP are events, things that happen at a moment, and behaviors, values that change over time. An event can be a user interaction, a timer or a network response; in Redux Toolkit, a behavior is a value derived from the events so far.</li>
 <li>
 <strong>State as a Fold:</strong> The state at any moment is every event so far, folded through a pure function. In Redux Toolkit that is <code>actions.reduce(reducer, initialState)</code>: the reducer combines the last state with the next action and reads nothing else.</li>
 <li>

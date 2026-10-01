@@ -157,7 +157,7 @@
 <p><strong>Additional Keywords in Gherkin:</strong></p>
 <p>In addition to the primary Given-When-Then structure, Gherkin syntax also includes other keywords that can be used to enhance scenarios:</p>
 <ul>
-<li><strong>Feature:</strong> The first keyword in a feature file. It names the feature and holds its description, often the user story, above its scenarios.</li>
+<li><strong>Feature:</strong> The first primary keyword in a feature file. It names the feature and holds its description, often the user story, above its scenarios.</li>
 <li>
 <strong>And:</strong> The “And” keyword can be used to continue a section that has already started. For example, “Given,” “When,” or “Then” can be followed by “And” to add more context, actions, or expected outcomes.</li>
 <li>
@@ -169,7 +169,7 @@
 <li><strong>Examples:</strong> The table beneath a Scenario Outline; its header row names the placeholders, and each row below it runs the outline once.</li>
 <li>
 <strong>Rule:</strong> The “Rule” keyword (Gherkin 6 and later) groups the scenarios that illustrate one business rule. A user story’s acceptance criteria map onto Rules, and each Rule’s scenarios are its examples.</li>
-<li><strong>Tags:</strong> Not a keyword but a label, such as <code>@checkout</code>, written above a Feature, Scenario, Scenario Outline or Examples table, so a runner can select or skip what it marks.</li>
+<li><strong>Tags:</strong> A secondary keyword, <code>@</code>, that marks a label such as <code>@checkout</code>, written above a Feature, Scenario, Scenario Outline or Examples table, so a runner can select or skip what it marks.</li>
 </ul>
 <aside class="notice depth" aria-label="The rule behind the examples">
 <p><strong>The rule behind the examples.</strong> A scenario is one example of a rule. When the same rule holds across several cases, a Scenario Outline states it once and an Examples table lists the cases, so the rule reads in one place and each row runs as its own test. Module 1’s password-reset criteria, written this way:</p>

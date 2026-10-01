@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 <nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
-<ol>
+<ol start="2">
 <li><a href="/community/python-the-teams-way/">Python, the Team’s Way</a></li>
 <li><a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a></li>
 <li><a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a></li>
@@ -132,9 +132,9 @@
 <li><strong>Evidence comes before a release.</strong> A trained model is released only when its evidence shows it is no worse than the model it replaces, wherever it is measured, the way a feature launches only after the review against its written scope.</li>
 </ul>
 <h2>What geometric reasoning means here</h2>
-<p>A model&rsquo;s answers have traits that come in pairs: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four such traits give sixteen combinations, and they sit at the corners of a four-dimensional cube, where two corners are as far apart as the number of traits they differ in. Training and evaluation reason about that cube. Training pairs are built between neighbouring and opposite corners, so the model learns each trait apart from the facts it states. Evaluation measures every corner, adds whether the evidence in the prompt is stated or contested, and reads the results as effects and interactions rather than one average score. A model is released only when no corner is worse than before.</p>
+<p>A model&rsquo;s answers have traits that come in pairs: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four such traits give sixteen combinations, and they sit at the corners of a four-dimensional cube, where two corners are as far apart as the number of traits they differ in. Training and evaluation reason about that cube. Training pairs are built between corners at every distance, from neighbours to opposites, so the model learns each trait apart from the facts it states. Evaluation measures every corner, adds whether the evidence in the prompt is stated or contested, and reads the results as effects and interactions rather than one average score. A model is released only when no corner is worse than before.</p>
 <h2>How the module runs</h2>
-<p><a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> sets out the practices, each with a small example that runs. <a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a> builds the cube, the training pairs and the analysis in plain Python. <a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a> follows one model from the choice of its base to the gate that decides whether it ships. The examples run on the Python standard library and pytest, except one sketch of the training stages, which needs a GPU and says so.</p>
+<p><a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> sets out the practices, each with a small example that runs. <a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a> builds the cube, the training pairs and the analysis in plain Python. <a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a> follows one model from the choice of its base to the gate that decides whether it ships. The examples run on the Python standard library and pytest, except two sketches, marked as such: the training stages, which need a GPU, and the conversion that follows them.</p>
 <p>Module 5 sits beside the course&rsquo;s three subjects as the team&rsquo;s Python and model-training practice. It assumes no machine learning, only the habits the earlier modules teach: name the behavior, keep the core pure and let the evidence decide.</p>
 
 <!-- .entry-content -->

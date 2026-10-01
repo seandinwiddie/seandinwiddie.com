@@ -130,7 +130,7 @@
 <p><strong>Why FRP Matters</strong></p>
 <ol>
 <li>
-<strong>Responsiveness:</strong> A view re-renders only when the value it reads has changed, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
+<strong>Responsiveness:</strong> A view re-renders only when its selector returns a new value, and a memoized selector returns one only when its inputs change, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
 <li>
 <strong>Predictability:</strong> Pure reducers and selectors return the same output for the same input, so they’re easier to reason about, test and maintain.</li>
 <li>

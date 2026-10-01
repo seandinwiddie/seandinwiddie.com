@@ -113,7 +113,7 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>A trained model is released the way a feature launches: against evidence named before the work began. This lesson follows one small language model through the pipeline the Sean Dinwiddie&rsquo;s Webmastery team trains with, from choosing a base model to the gate that decides whether it ships. Each stage answers to something fixed in advance: a comparison, a split, an oracle, a record of its inputs, or the model it would replace. The training stages need a GPU, so they appear as a sketch; everything around them runs here.</p>
+<p>A trained model is released the way a feature launches: against evidence named before the work began. This lesson follows one small language model through the pipeline the Sean Dinwiddie&rsquo;s Webmastery team trains with, from choosing a base model to the gate that decides whether it ships. Each stage answers to something fixed in advance: a comparison, a split, an oracle, a record of its inputs, or the model it would replace. The training stages, which need a GPU, and the conversion that follows them appear as sketches; everything around them runs here.</p>
 <h2>Choosing the base by a fair comparison</h2>
 <p>Fine-tuning starts from a small open-weight model, and choosing one is an experiment like any other. Every candidate answers the same prompts, through the same prompt template and runtime, with the same decoding settings, scored by the same scorer. Results from two different evaluations can&rsquo;t be ranked against each other, so the ranking refuses them. Within one evaluation the rule is fixed before any result is seen and applied in order: the fewest answers that fail their oracle, then the closest agreement with the reference answers, then speed:</p>
 <pre class="code-block" tabindex="0"><code>"""Choose a base model only from results that one evaluation produced."""
@@ -209,7 +209,7 @@ class Oracle:
 
 
 def oracle_errors(oracle: Oracle, answer: str) -&gt; tuple[str, ...]:
-    text = answer.lower()
+    text = answer.lower().replace("\u2019", "'")  # a curly apostrophe counts too
     admits = "don't know" in text or "do not know" in text
     return (
         *(f"missing {p!r}" for p in oracle.required if p.lower() not in text),
@@ -270,6 +270,7 @@ def rows(split):
 
 
 # 1. Supervised fine-tuning: a new LoRA adapter, loss on the answer only.
+#    completion_only_loss needs rows with a "prompt" and a "completion".
 sft = SFTTrainer(
     model=base(),
     args=SFTConfig(output_dir="runs/sft", completion_only_loss=True, **config["sft"]),
@@ -294,8 +295,18 @@ dpo.train()
 dpo.save_model("runs/dpo/adapter")</code></pre>
 <p>In current trl, a model that already carries an adapter is trained against a frozen copy of that adapter, made when training starts. The run doesn&rsquo;t take that on trust. Before the first step it records, as named evidence, that the adapter being trained and its reference start identical, and that the reference has nothing left to train.</p>
 <h2>Evidence that names the inputs</h2>
-<p>Before a trained adapter goes any further, the run shows what it was trained on. Its record names the inputs exactly: the config, the model&rsquo;s pinned revision, the package versions, and each data file by its path, its size in bytes and its count of lines. Each is checked again as a named check, what was expected against what was found, and any failure stops the run with the names of what failed:</p>
-<pre class="code-block" tabindex="0"><code>@dataclass(frozen=True)
+<p>Before a trained adapter goes any further, the run shows what it was trained on. Its record names the inputs exactly: the config, the model&rsquo;s pinned revision, the package versions, and each data file by its path, its size in bytes, its count of lines and a SHA-256 digest of its contents. Each is checked again as a named check, what was expected against what was found, and any failure stops the run with the names of what failed:</p>
+<pre class="code-block" tabindex="0"><code>"""Promotion as named checks: each says what was expected and what was found."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any, Mapping, Sequence
+
+from pipeline.evaluation.gate import gate_errors
+
+
+@dataclass(frozen=True)
 class Check:
     name: str
     expected: Any
@@ -312,6 +323,7 @@ class Check:
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 
 from pipeline.release.promote import Check
@@ -319,7 +331,12 @@ from pipeline.release.promote import Check
 
 def describe(path: Path) -&gt; dict[str, object]:
     data = path.read_bytes()
-    return {"path": path.as_posix(), "bytes": len(data), "lines": data.count(b"\n")}
+    return {
+        "path": path.as_posix(),
+        "bytes": len(data),
+        "lines": data.count(b"\n"),
+        "sha256": hashlib.sha256(data).hexdigest(),
+    }
 
 
 def input_checks(recorded: list[dict[str, object]]) -&gt; tuple[Check, ...]:
@@ -337,16 +354,16 @@ print(recorded)
 require(input_checks(recorded))
 print("inputs match the record")
 
-with Path("data/train.jsonl").open("a") as rows:  # a row added after training
-    rows.write('{"id": "row-003"}\n')
+rows = Path("data/train.jsonl")  # one id rewritten after training: same size, same lines
+rows.write_text(rows.read_text().replace("row-001", "row-009"))
 try:
     require(input_checks(recorded))
 except ValueError as error:
     print(error)</code></pre>
-<pre class="code-block code-output" tabindex="0"><code>[{'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3}]
+<pre class="code-block code-output" tabindex="0"><code>[{'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '1f1ea15caf02b22c8fbda2bb33f632e9ef7d231dc416c281fd870b88d9925ab8'}]
 inputs match the record
-data/train.jsonl unchanged: expected {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3}, found {'path': 'data/train.jsonl', 'bytes': 72, 'lines': 4}</code></pre>
-<p>A failed check says which input changed and how, so the record can&rsquo;t quietly describe a different run from the one that made the model.</p>
+data/train.jsonl unchanged: expected {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '1f1ea15caf02b22c8fbda2bb33f632e9ef7d231dc416c281fd870b88d9925ab8'}, found {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '474f637b110d99640405c7f06a0ea5c593c705bfc7d35a1e6966a2c62e0067c6'}</code></pre>
+<p>A failed check says which input changed and how. Here the size and the line count still match, and only the digest shows that a row was rewritten, so the record can&rsquo;t quietly describe a different run from the one that made the model.</p>
 <h2>Conversion, and checks at runtime</h2>
 <p>The released adapter is merged into the base weights at full precision, converted to GGUF with llama.cpp&rsquo;s converter and quantized with <code>llama-quantize</code>, the file format and runtime the model ships in. The quantization type is a setting like any other, read from the config:</p>
 <pre class="code-block" tabindex="0"><code># A sketch, not run here: merge at full precision, then convert and quantize.

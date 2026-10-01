@@ -13,6 +13,8 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 ## Facts only Sean has
 
+- [ ] Two from the community accuracy review: whether the P.S. note's "helps us write clean, error-free code" becomes "clean, careful code" (no editor makes code error-free), and which editor the team writes in, since the Introduction says Vim and the P.S. note says Sublime Text.
+
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.
 
 - [ ] The open decisions in `docs/packages.md`: names ("the monthly engagement" or "the Month"), retainer terms, ownership, third-party costs, payment schedules and procurement registration.

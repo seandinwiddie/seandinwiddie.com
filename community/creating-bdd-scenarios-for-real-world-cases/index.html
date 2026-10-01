@@ -158,7 +158,7 @@
     Given Ada's account email is "ada@example.com"
     When she places an order
     Then a confirmation email goes to "ada@example.com"</code></pre>
-<p>The first draft of this case bundled four behaviors under one When; split into three scenarios, each When names one event and each failure names one behavior.</p>
+<p>The first draft of this case bundled four behaviors under one When; split into three scenarios, with the chosen card a Given of the second, each When names one event and each failure names one behavior.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The three scenarios above all succeed. A declined card is the failure this case can&rsquo;t leave out, and it is a scenario of its own, with Thens that say what doesn&rsquo;t happen as well as what does:</p>
 <pre class="code-block" tabindex="0"><code>  Scenario: Placing the order with a declined card
     Given Ada's cart holds "Widget A" at $25

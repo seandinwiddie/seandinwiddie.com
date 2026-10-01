@@ -163,13 +163,14 @@
 <h2>9. Collaborative Brainstorming</h2>
 <p>Bring the webmasters on the job, the owner and the staff together to compare what each has heard. Brainstorming finds options; the interviews and observation above say which of them answer a real need.</p>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Every technique above asks one question: what happened the last time this was a problem? A request usually arrives as a solution. A food truck asks for its menu on the site as a PDF; asked when a customer last missed something, the owner says people call to ask what has sold out before they walk over. A PDF would answer the request perfectly and the need not at all, because it never changes during the day. The need becomes the story, and the story&rsquo;s first scenario names what the PDF could never show:</p>
-<pre class="code-block" tabindex="0"><code>As a customer nearby, I want to see what has sold out today,
-so that I don't walk over for something that's gone.
+<pre class="code-block" tabindex="0"><code>Feature: Today's menu
+  As a customer nearby, I want to see what has sold out today,
+  so that I don't walk over for something that's gone.
 
-Scenario: A sold-out item on today's menu
-  Given "Brisket" sold out at 1 p.m.
-  When a customer opens the menu at 2 p.m.
-  Then "Brisket" shows as sold out</code></pre>
+  Scenario: A sold-out item on today's menu
+    Given "Brisket" sold out at 1 p.m.
+    When a customer opens the menu at 2 p.m.
+    Then "Brisket" shows as sold out</code></pre>
 <p>Ask about the past, never the future: &ldquo;Would you order online?&rdquo; invites a polite yes, while &ldquo;How did the last large order reach you?&rdquo; shows whether anyone needs it. The written scope then names the story, and the owner reads the job in their own words before it starts.</p></aside>
 <p>Finding needs doesn&rsquo;t end with the first interview. Each conversation adds to what the team knows about the people the job serves: what it finds before the scope is signed shapes the stories, and what it finds afterwards is a change, written as a new story.</p>
 <p>The next lesson, Capturing User Requirements Effectively, turns what you found into requirements the team can act on.</p>

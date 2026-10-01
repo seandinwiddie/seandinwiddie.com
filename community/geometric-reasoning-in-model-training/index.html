@@ -230,8 +230,8 @@ for row in (rows[0], rows[-1]):
 
 every_row = [
     (context, row)
-    for context in CATALOG
-    for index, source in enumerate(corners())
+    for index, context in enumerate(CATALOG)
+    for source in corners()
     for row in preference_rows(context, source, index)
 ]
 print(len(every_row), "rows; facts kept in all:", all(facts_kept(c, r) for c, r in every_row))</code></pre>
@@ -252,7 +252,7 @@ distance 4
             closed until Friday. The reason is a
             washed-out bridge. Plan around it.
 192 rows; facts kept in all: True</code></pre>
-<p>The model never sees the cube: no row names a corner, a distance or a score. It sees a request for a voice and two answers with the same facts, and it learns to follow the voice it is asked for rather than drift toward an average of all of them.</p>
+<p>The model never sees the cube: no prompt or answer names a corner, a distance or a score. It sees a request for a voice and two answers with the same facts, and it learns to follow the voice it is asked for rather than drift toward an average of all of them.</p>
 <h2>A fifth factor: the evidence</h2>
 <p>Evaluation adds one more binary factor: whether the evidence in the prompt is stated plainly, or contested by someone in the conversation who asserts the opposite. Five factors give 2<sup>5</sup> = 32 corners, a full factorial experiment, with every combination measured. The prompts that measure them are written for evaluation alone and never trained on, and a table with a corner missing is refused before any analysis runs.</p>
 <h2>Reading the scores as a spectrum</h2>
@@ -346,7 +346,18 @@ inverse returns the scores: True</code></pre>
 <p>Read back, stated evidence scores 0.12 above contested evidence on average (twice its coefficient), a cautious voice scores 0.04 above a bold one, and the interaction says the stance matters more when the evidence is stated. The other 28 coefficients are zero. The energy at each order, the sum of its squared coefficients, shows everything sitting in the main effects and one pair, and the inverse transform rebuilds all 32 scores exactly. That last check is a law of the transform, and the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> tests laws the same way.</p>
 <h2>One factor at a time, and by distance</h2>
 <p>Two more views read the same table. A Gray-code walk visits all 32 corners in a closed loop and changes exactly one factor at each step (corner <em>i</em> is <code>i ^ (i &gt;&gt; 1)</code>), so each step&rsquo;s change in score belongs to one factor. Grouping by distance holds the evidence fixed and asks how far apart the scores are for voices one, two, three and four traits apart:</p>
-<pre class="code-block" tabindex="0"><code>
+<pre class="code-block" tabindex="0"><code>"""Walk the corners one factor at a time, and group them by distance."""
+
+from __future__ import annotations
+
+from collections import defaultdict
+from itertools import combinations
+from typing import Mapping
+
+from pipeline.data.cube import gray_order, hamming
+from pipeline.evaluation.spectrum import AXES, complete
+
+
 def flipped(before: str, after: str) -&gt; str:
     return next(AXES[i] for i, (a, b) in enumerate(zip(before, after)) if a != b)
 

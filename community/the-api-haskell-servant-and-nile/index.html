@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 <nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
-<ol>
+<ol start="2">
 <li><a href="/community/from-scenario-to-slice/">From Scenario to Slice</a></li>
 <li><a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a></li>
 <li><a href="/community/the-view-stays-minimal/">The View Stays Minimal</a></li>
@@ -181,7 +181,7 @@ CREATE TABLE order_lines (
 SET LOCAL nile.user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';
 SELECT id, total_cents FROM orders;</code></pre>
 <p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one customer into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
-<p>The tenant in the path is only a claim. With <code>nile.user_id</code> set, Nile raises an error unless that user belongs to the tenant in its built-in <code>users.tenant_users</code> table, and the shell answers 403 Forbidden; an app that keeps its own users checks membership the same way before <code>withTenant</code> runs. <code>SET</code> takes no bind parameters, so both IDs are written into the statement, which is safe only because the Capture and the auth layer have already parsed them as UUIDs.</p>
+<p>The tenant in the path is only a claim. With <code>nile.user_id</code> set, Nile raises an error unless that user belongs to the tenant in its built-in <code>users.tenant_users</code> table, and the shell answers 403 Forbidden; an app that keeps its own users checks membership the same way before <code>withTenant</code> runs. <code>SET</code> takes no bind parameters, so both IDs are written into the statement, which is safe here because the Capture and the auth layer have already parsed them as UUIDs.</p>
 <h2>4. One contract at both ends</h2>
 <p>The same Servant type can describe itself as an OpenAPI document (the servant-openapi3 package), and RTK Query&rsquo;s OpenAPI code generator turns that document into the client&rsquo;s endpoints and hooks. Server and client then share one contract: when a route changes, the regenerated client shows every mismatch as a type error before it reaches a customer. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> sets up the client side, generated into one API root and reviewed like any other source.</p>
 <p>servant-openapi3 knows nothing of servant-auth, so the API adds one small instance that describes <code>Auth</code> as a bearer token, and names each route&rsquo;s operation, which RTK Query&rsquo;s generator uses as the endpoint&rsquo;s name. A small program writes the document to <code>openapi.json</code> on every build.</p>

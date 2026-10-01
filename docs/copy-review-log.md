@@ -2,6 +2,15 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Community accuracy review: October 1, 2026
+
+Sean asked for the community pages to be checked for accuracy "double and triple". Three senior CTO reviewers each took a group (the overview, Module 1 and the off-path pages; Modules 2 and 3; Modules 4 and 5), checked every date, attribution, definition, link and code block, and re-checked each finding before reporting it. An independent verifier then re-derived every finding from scratch before any fix landed.
+
+- **Found:** 28 findings plus one note, none teaching a wrong practice: 2 medium, the rest low. Verified 27, with better fixes for 4; rejected 1 (Nile's own docs do say setting `nile.user_id` raises an error without tenant access).
+- **Ran:** every TypeScript block (tsc clean, tests passing on RTK 2.13 and React 19.3), every Gherkin block (cucumber-js 13 and @cucumber/gherkin), Module 5's Python rebuilt from the pages alone (18 printed outputs match; the harness passes 38/38), and the Haskell read against current Hackage sources. All lecture anchors and every internal link resolve.
+- **Fixed (63 edits on 22 pages, the sync script and the community plan):** WCAG 1.4.10's wording; a Gherkin block missing its Feature line; when a view re-renders; user stories' origin in Extreme Programming; the change rule in User Stories; the offer and Event streams descriptions; FRP's behavior scoped to Redux Toolkit; the Gherkin keyword wording; Real-World Cases' fourth behavior; many reducers per event; the module lists now numbered to match the banners (`<ol start="2">`); the capstone's two end-to-end journeys; Geometric Reasoning's pairs now covering all 240 corner pairs; the release lesson's evidence now carrying a SHA-256 digest of each input, so a rewritten row fails the check; an optional `oracle` key in the row contract; Python, the Team's Way reproducible from the page; and smaller wording fixes.
+- **For Sean:** the P.S. note's "error-free code", and whether the team writes in Vim or Sublime Text.
+
 ## Design passes 1–5: October 1, 2026
 
 Sean added the designer as reviewer 5 after pass 17, with the `design-review` skill, and asked the loop to run until the designer scores the site 9 or higher. He set the rules along the way: Dank Mono only on every one of his personal brand sites, with its cursive italic and ligatures used on purpose; colors move only by minute steps the coordinator approves, with a design review between steps.

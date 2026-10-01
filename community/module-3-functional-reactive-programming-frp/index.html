@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 <nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
-<ol>
+<ol start="2">
 <li><a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to Functional Reactive Programming (FRP)</a></li>
 <li><a href="/community/event-streams-and-reactive-programming/">Event streams and reactive programming</a></li>
 <li><a href="/community/master-the-fundamentals-of-frp-in-software-development/">FRP Fundamentals in Software Development</a></li>
@@ -124,7 +124,7 @@
 </ol>
 </nav>
 
-<p>Functional Reactive Programming (FRP) describes a program with two ideas, events that happen at a moment and behaviors that change over time, and derives everything else from them with pure functions, which keeps a program easy to reason about as it grows. <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a>, the module&rsquo;s first lesson, sets out its key concepts: events and behaviors, state as a fold, declarative code and immutable data. The principles below are how the team builds them:</p>
+<p>Functional Reactive Programming (FRP) describes a program with two ideas, events that happen at a moment and behaviors that change over time, and derives everything else from them with pure functions, which keeps a program easy to reason about as it grows. <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a>, the next lesson, sets out its key concepts: events and behaviors, state as a fold, declarative code and immutable data. The principles below are how the team builds them:</p>
 <p><strong>Key Principles:</strong></p>
 <ol>
 <li>
@@ -149,7 +149,7 @@
 <li>
 <strong>Testability:</strong> Reducers and selectors are pure, so a test is a list of actions and the result expected, with no browser or server.</li>
 <li>
-<strong>Maintainability:</strong> A new event is a new case in one reducer and a new value a new selector, so a change lands in one place, where its test runs.</li>
+<strong>Maintainability:</strong> A new event is a new case in each reducer that responds to it, and a new value a new selector, so each change lands where its test runs.</li>
 </ul>
 <p>FRP comes down to events, a fold and the values derived from it: in Redux Toolkit, actions, a reducer and selectors, with every effect kept at the edge. The lessons in this module take each in turn.</p>
 

@@ -562,10 +562,12 @@ const withLevelPaths = (name, html) => {
   return html.replace(FIRST_PARAGRAPH_PATTERN, (paragraph) => `${paragraph}\n${LEVEL_PATHS}`);
 };
 
-// Each module's opening page lists the module's lessons in order.
+// Each module's opening page lists the module's lessons in order. The opener is the
+// module's lesson 1 (its banner and the community sitemap count it), so its list of the
+// rest starts at 2.
 const moduleLessons = (part) => `<nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
-<ol>
+<ol start="2">
 ${partOf(part).slice(1).map(([slug, title]) => `<li><a href="/community/${slug}/">${title}</a></li>`).join("\n")}
 </ol>
 </nav>`;
