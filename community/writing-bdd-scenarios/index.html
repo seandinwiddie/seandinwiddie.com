@@ -114,9 +114,9 @@
 </div> </header><!-- .entry-header -->
 
 <p>Scenarios are where Behavior-Driven Development (BDD) turns a user story into checks. They are used to define the expected behavior of a software system from the user’s perspective. BDD scenarios follow the Given-When-Then format and serve as a clear and structured way to specify how the software should behave in different situations. Here’s how to write BDD scenarios:</p>
-<p><strong>1. Understand the Feature or User Story:</strong></p>
+<h2>1. Understand the Feature or User Story</h2>
 <p>Start from the user story and its acceptance criteria, as the written scope names them. Each criterion becomes one or more scenarios, so know which behavior a scenario is for before writing its first line.</p>
-<p><strong>2. Use the Given-When-Then Format:</strong></p>
+<h2>2. Use the Given-When-Then Format</h2>
 <p>BDD scenarios are typically structured using the Given-When-Then format, which helps create a clear and concise description of the expected behavior.</p>
 <ul>
 <li>
@@ -126,34 +126,34 @@
 <li>
 <strong>Then:</strong> Describes the expected outcome or behavior resulting from the action defined in the “When” section.</li>
 </ul>
-<p><strong>3. Be Specific and Concrete:</strong></p>
+<h2>3. Be Specific and Concrete</h2>
 <p>Your scenarios should be specific and concrete, leaving no room for ambiguity. Avoid vague or general descriptions. The more precise your scenarios are, the easier they are to understand and implement.</p>
-<p><strong>4. Use Plain Language:</strong></p>
+<h2>4. Use Plain Language</h2>
 <p>BDD scenarios use the owner’s own words for the business, which technical and non-technical team members read the same way. Avoid using technical jargon or complex terminology.</p>
-<p><strong>5. Include Context in the “Given” Section:</strong></p>
+<h2>5. Include Context in the “Given” Section</h2>
 <p>The “Given” section is where you set up the initial conditions or context for the scenario. This section should establish the state of the system or any necessary preconditions for the scenario to make sense. For example:</p>
 <ul>
 <li>Given the user is signed in</li>
 <li>Given the user has a balance of $100 in their account</li>
 </ul>
-<p><strong>6. Describe Actions in the “When” Section:</strong></p>
+<h2>6. Describe Actions in the “When” Section</h2>
 <p>The “When” section is where you describe the action or event you are testing. This is typically the action that a user takes. For example:</p>
 <ul>
 <li>When the user deposits $50</li>
 <li>When the user signs in with the correct password</li>
 </ul>
 <p>On the Sean Dinwiddie’s Webmastery team, each When names one event, the same event a Redux Toolkit slice’s reducer handles, and each Then names what a selector or an endpoint returns, so most scenarios run below the interface.</p>
-<p><strong>7. Define Expected Outcomes in the “Then” Section:</strong></p>
+<h2>7. Define Expected Outcomes in the “Then” Section</h2>
 <p>The “Then” section is where you specify the expected outcomes or results of the action described in the “When” section. This is the behavior you are testing. For example:</p>
 <ul>
 <li>Then the deposit is recorded</li>
 <li>Then the account balance is $150</li>
 </ul>
-<p><strong>8. Keep Scenarios Small and Focused:</strong></p>
+<h2>8. Keep Scenarios Small and Focused</h2>
 <p>BDD scenarios should be focused on testing a single aspect of behavior. Keep your scenarios small and specific, addressing one user interaction at a time. This makes it easier to understand, implement, and maintain scenarios.</p>
-<p><strong>9. Tie Scenarios to Acceptance Criteria:</strong></p>
-<p>Each acceptance criterion from the user story becomes a Rule, and its scenarios are the examples that test it; a scenario passes when its Then holds.</p>
-<p><strong>Example BDD Scenario:</strong></p>
+<h2>9. Write Each Criterion as a Rule</h2>
+<p>The criteria from step 1 go into the Feature as Rules, each holding the scenarios that test it, so a failing scenario names the criterion it breaks.</p>
+<h2>Example BDD Scenario</h2>
 <p>Here’s an example of a BDD scenario for an e-commerce website:</p>
 <pre class="code-block" tabindex="0"><code>Scenario: Adding a product to the cart
 

@@ -135,7 +135,7 @@
 <li>
 <strong>Testing:</strong> Module 2’s scenarios become the slice’s tests: each Given sets the starting state, each When dispatches one action, and each Then checks what a selector returns. Pure reducers and selectors need no browser to test.</li>
 <li>
-<strong>Real-Time Updates:</strong> A change the server pushes, such as an order marked ready, enters the state the same way as any other, as an action or an update to RTK Query&rsquo;s cached data, so every view that reads it updates with no code of its own.</li>
+<strong>Real-Time Updates:</strong> A change the server pushes, such as an order marked ready, is decoded at the boundary like any response, then enters the state the same way as any other, as an action or an update to RTK Query&rsquo;s cached data, so every view that reads it updates with no code of its own.</li>
 <li>
 <strong>Collaboration and Integration:</strong> Other modules reach this one only through its public interface, its actions and selectors, so the rest of the app never depends on the shape of its state.</li>
 <li>

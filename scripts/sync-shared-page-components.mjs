@@ -785,6 +785,9 @@ const HEADING_PAGES = new Set([
   "community/understanding-the-importance-of-user-centric-design/index.html",
   "community/defining-user-stories/index.html",
   "community/identifying-user-needs/index.html",
+  "community/writing-bdd-scenarios/index.html",
+  "community/practical-exercises-in-creating-user-stories/index.html",
+  "community/welcome-to-module-1-understanding-user-stories/index.html",
 ]);
 const SUBHEAD_PATTERN = /^<p><strong>([^<]+?):?<\/strong><\/p>$/gm;
 const ARTICLE_BODY_PATTERN = /(<\/header><!-- \.entry-header -->)([\s\S]*?)(<!-- \.entry-content -->)/;
