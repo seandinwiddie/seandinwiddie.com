@@ -799,6 +799,12 @@ const withTrimmedCategory = (name, html) =>
 // alone. Pages join this list a few at a time.
 const HEADING_PAGES = new Set([
   "community/user-stories/index.html",
+  "community/module-2-behavior-driven-development-bdd/index.html",
+  "community/introduction-to-behavior-driven-development-bdd/index.html",
+  "community/given-when-then-gherkin-syntax-in-bdd/index.html",
+  "community/bdd-and-unit-testing/index.html",
+  "community/module-3-functional-reactive-programming-frp/index.html",
+  "community/event-streams-and-reactive-programming/index.html",
   "community/behavior-driven-development-bdd/index.html",
   "community/functional-reactive-programming-frp/index.html",
   "community/collaborative-sessions-to-review-and-refine-user-stories/index.html",

@@ -113,48 +113,63 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Scenarios are where Behavior-Driven Development (BDD) turns a user story into checks. They are used to define the expected behavior of a software system from the user’s perspective. BDD scenarios follow the Given-When-Then format and serve as a clear and structured way to specify how the software should behave in different situations. Here’s how to write BDD scenarios:</p>
+<p>Scenarios are where Behavior-Driven Development (BDD) turns a user story into checks. Each one pins down, in Given-When-Then form, how the software should behave in one situation, seen from where the user stands. Nine habits make them good.</p>
 <h2>1. Understand the Feature or User Story</h2>
 <p>Start from the user story and its acceptance criteria, as the written scope names them. Each criterion becomes one or more scenarios, so know which behavior a scenario is for before writing its first line.</p>
 <h2>2. Use the Given-When-Then Format</h2>
-<p>BDD scenarios are typically structured using the Given-When-Then format, which helps create a clear and concise description of the expected behavior.</p>
+<p>Every scenario has the same three parts, which keeps it clear and short:</p>
 <ul>
 <li>
-<strong>Given:</strong> Describes the initial context or state of the system before the behavior is tested. It sets up the preconditions for the test.</li>
+<strong>Given:</strong> the context or state of the system before the behavior under test; the test&rsquo;s preconditions.</li>
 <li>
-<strong>When:</strong> Describes an action or event that occurs, typically triggered by the user or some external factor. This is the action you are testing.</li>
+<strong>When:</strong> the action or event under test, usually the user&rsquo;s, sometimes something outside the system.</li>
 <li>
-<strong>Then:</strong> Describes the expected outcome or behavior resulting from the action defined in the “When” section.</li>
+<strong>Then:</strong> the outcome the When should produce.</li>
 </ul>
 <h2>3. Be Specific and Concrete</h2>
-<p>Your scenarios should be specific and concrete, leaving no room for ambiguity. Avoid vague or general descriptions. The more precise your scenarios are, the easier they are to understand and implement.</p>
+<p>Name real values: a product, a price, a balance. &ldquo;The cart total is $25&rdquo; leaves nothing to argue about, and &ldquo;the cart looks right&rdquo; leaves everything. The more precise a scenario, the easier it is to understand and to build.</p>
 <h2>4. Use Plain Language</h2>
-<p>BDD scenarios use the owner’s own words for the business, which technical and non-technical team members read the same way. Avoid using technical jargon or complex terminology.</p>
+<p>Write in the owner’s own words for the business, which technical and non-technical team members read the same way. The jargon stays in the code.</p>
 <h2>5. Include Context in the “Given” Section</h2>
-<p>The “Given” section is where you set up the initial conditions or context for the scenario. This section should establish the state of the system or any necessary preconditions for the scenario to make sense. For example:</p>
+<p>The Given sets the stage: the state of the system, and anything else the scenario needs to make sense. For example:</p>
 <ul>
 <li>Given the user is signed in</li>
 <li>Given the user has a balance of $100 in their account</li>
 </ul>
 <h2>6. Describe Actions in the “When” Section</h2>
-<p>The “When” section is where you describe the action or event you are testing. This is typically the action that a user takes. For example:</p>
+<p>The When is the action or event under test, usually something a user does. For example:</p>
 <ul>
 <li>When the user deposits $50</li>
 <li>When the user signs in with the correct password</li>
 </ul>
 <p>On the Sean Dinwiddie’s Webmastery team, each When names one event, the same event a Redux Toolkit slice’s reducer handles, and each Then names what a selector or an endpoint returns, so most scenarios run below the interface.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="steps-slice-title steps-slice-desc" viewBox="0 0 360 194">
+<title id="steps-slice-title">Each step lands in the slice</title>
+<desc id="steps-slice-desc">Two columns joined by arrows. In the scenario, Given leads to the slice&rsquo;s starting state, When to one action, itemAdded, that its reducer handles, and Then to what a selector returns. A note below says most scenarios run below the interface.</desc>
+<g class="path"><line x1="96" y1="46" x2="144" y2="46"/><line x1="138.8" y1="43" x2="144" y2="46"/><line x1="138.8" y1="49" x2="144" y2="46"/><line x1="96" y1="94" x2="144" y2="94"/><line x1="138.8" y1="91" x2="144" y2="94"/><line x1="138.8" y1="97" x2="144" y2="94"/><line x1="96" y1="142" x2="144" y2="142"/><line x1="138.8" y1="139" x2="144" y2="142"/><line x1="138.8" y1="145" x2="144" y2="142"/></g>
+<rect class="node" x="8" y="30" width="88" height="32" rx="4"/>
+<rect class="node" x="144" y="30" width="208" height="32" rx="4"/>
+<rect class="node" x="8" y="78" width="88" height="32" rx="4"/>
+<rect class="node" x="144" y="78" width="208" height="32" rx="4"/>
+<rect class="node" x="8" y="126" width="88" height="32" rx="4"/>
+<rect class="node" x="144" y="126" width="208" height="32" rx="4"/>
+<g><text class="note" x="52" y="12">scenario</text><text class="note" x="248" y="12">slice</text><text x="52" y="46">Given</text><text x="248" y="46">the starting state</text><text x="52" y="94">When</text><text x="248" y="94">one action: itemAdded</text><text x="52" y="142">Then</text><text x="248" y="142">what a selector returns</text><text class="note" x="180" y="180">most scenarios run below the interface</text></g>
+</svg>
+<figcaption>A cart scenario&rsquo;s steps, landing in a cart slice along the violet arrows. The Given sets the starting state, the When is one action the reducer handles, and the Then checks what a selector (or an endpoint) returns, so no screen is needed.</figcaption>
+</figure>
 <h2>7. Define Expected Outcomes in the “Then” Section</h2>
-<p>The “Then” section is where you specify the expected outcomes or results of the action described in the “When” section. This is the behavior you are testing. For example:</p>
+<p>The Then states what the When should produce: the behavior under test. For example:</p>
 <ul>
 <li>Then the deposit is recorded</li>
 <li>Then the account balance is $150</li>
 </ul>
 <h2>8. Keep Scenarios Small and Focused</h2>
-<p>BDD scenarios should be focused on testing a single aspect of behavior. Keep your scenarios small and specific, addressing one user interaction at a time. This makes it easier to understand, implement, and maintain scenarios.</p>
+<p>One scenario, one behavior: a single user interaction, tested on its own. A small scenario is easy to understand, to build and to keep, and when it fails, you know which behavior broke.</p>
 <h2>9. Write Each Criterion as a Rule</h2>
 <p>The criteria from step 1 go into the Feature as Rules, each holding the scenarios that test it, so a failing scenario names the criterion it breaks.</p>
 <h2>Example BDD Scenario</h2>
-<p>Here’s an example of a BDD scenario for an e-commerce website:</p>
+<p>Here is one for an online shop&rsquo;s cart:</p>
 <pre class="code-block" tabindex="0"><code>Scenario: Adding a product to the cart
 
 Given "Widget A" is in stock at $25
@@ -162,9 +177,10 @@ And the cart is empty
 When the customer adds "Widget A" to the cart
 Then the cart contains "Widget A"
 And the cart total is $25</code></pre>
-<p>This scenario describes the expected behavior when a user adds a product to their shopping cart. Its When is the event a cart slice would name <code>itemAdded</code>; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#event-oriented-slices">Redux Toolkit and RTK Query Best Practices</a> names actions after events the same way. Module 4&rsquo;s <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> follows it into a slice and its test.</p>
-<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> A step says what happened in the business&rsquo;s words, never how the screen did it: &ldquo;When the customer adds &lsquo;Widget A&rsquo; to the cart&rdquo;, not &ldquo;When she clicks Add&rdquo;. The test is whether the step would survive a redesign. Each Then names a value that would be wrong if the behavior broke: &ldquo;the cart total is $25&rdquo; fails when the total is miscounted, while &ldquo;the page shows no error&rdquo; passes when nothing happened at all. A scenario earns its place when breaking the rule it describes makes it fail.</p></aside>
-<p>By following these guidelines, you can write clear, structured, and effective BDD scenarios that accurately describe how the software should behave from the user’s perspective. BDD scenarios serve as the foundation for the tests, which fail when the software stops doing what its users expect.</p>
+<p>It says what should happen when a customer adds a product to the cart. Its When is the event a cart slice would name <code>itemAdded</code>; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#event-oriented-slices">Redux Toolkit and RTK Query Best Practices</a> names actions after events the same way. Module 4&rsquo;s <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> follows it into a slice and its test.</p>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> A step says what happened in the business&rsquo;s words, never how the screen did it: &ldquo;When the customer adds &lsquo;Widget A&rsquo; to the cart&rdquo;, not &ldquo;When she clicks Add&rdquo;. The test is whether the step would survive a redesign.</p>
+<p>Each Then names a value that would be wrong if the behavior broke: &ldquo;the cart total is $25&rdquo; fails when the total is miscounted, while &ldquo;the page shows no error&rdquo; passes when nothing happened at all. A scenario earns its place when breaking the rule it describes makes it fail.</p></aside>
+<p>With these habits, each scenario says, in the user’s terms, exactly how the software should behave, and each becomes a test that fails when the software stops doing what its users expect.</p>
 
 <!-- .entry-content -->
 <footer>

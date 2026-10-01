@@ -114,7 +114,8 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Applying Functional Reactive Programming (FRP) concepts to software modules puts its principles to work in modules that are more responsive, maintainable, and user-centric. Here are steps to apply FRP to software modules:</p>
+<p>Here Functional Reactive Programming (FRP) goes to work, one module at a time, and the modules come out more responsive, easier to maintain and closer to what their users need. Thirteen steps:</p>
+<h2>Model the module</h2>
 <ol>
 <li>
 <strong>Find the Events:</strong> List what happens in the module, such as an item added, an order placed or a slot booked, and what each screen shows because of it. The steps below turn each event into an action and what each screen shows into state and selectors.</li>
@@ -128,6 +129,9 @@
 <strong>Put Effects at the Boundary:</strong> RTK Query fetches and caches server data, a thunk runs a workflow started from one place, and listener middleware debounces, cancels and reacts to later actions; reducers and selectors stay pure.</li>
 <li>
 <strong>State Management:</strong> Keep the module’s state in its slice. Each reducer takes the current state and an action and returns the next state, so every change is a named event and no earlier state is overwritten.</li>
+</ol>
+<h2>Make it hold up</h2>
+<ol start="7">
 <li>
 <strong>Error Handling:</strong> Give each expected failure a name and a shape the module can read: the API answers a declined card with its reason, the slice leaves the cart alone because it empties only on success, and a pure function turns the request&rsquo;s state into the message the view shows, as <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> follows end to end.</li>
 <li>
@@ -144,9 +148,35 @@
 <strong>Continuous Improvement:</strong> A module changes the way it was built: a new behavior starts as a scenario, and a slow screen is measured before its code changes. The team keeps researching better ways to do each step, and adopts one once it has proven itself.</li>
 </ol>
 <aside class="notice depth" aria-label="Where it bends">
-<p><strong>Where it bends.</strong> Not every value belongs in a slice. Ask in order, and stop at the first yes: can it be derived from other state (a selector computes it); should it survive a refresh or be shared as a link (the router owns it); is it a server document reused across the app (RTK Query owns it); is it shared by unrelated components, with transitions worth recording (a slice owns it)? Anything else stays in the component. Two owners for one value drift apart, and a derived value stored in state goes stale. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#a-decision-procedure-for-one-piece-of-state">Modern Redux Architecture Patterns</a> sets out the procedure.</p>
+<p><strong>Where it bends.</strong> Not every value belongs in a slice. Ask in order, and stop at the first yes:</p>
+<ol>
+<li>Can it be derived from other state? A selector computes it.</li>
+<li>Should it survive a refresh or be shared as a link? The router owns it.</li>
+<li>Is it a server document reused across the app? RTK Query owns it.</li>
+<li>Is it shared by unrelated components, with transitions worth recording? A slice owns it.</li>
+</ol>
+<p>Anything else stays in the component. Two owners for one value drift apart, and a derived value stored in state goes stale. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#a-decision-procedure-for-one-piece-of-state">Modern Redux Architecture Patterns</a> sets out the procedure.</p>
 </aside>
-<p>By following these steps, you can apply FRP concepts to your software modules: events named for what happened, a reducer that folds them into state, selectors that derive what each view shows, and effects kept at the edge, where each can be tested on its own.</p>
+<p>The same procedure, as a ladder:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="owner-title owner-desc" viewBox="0 0 360 296">
+<title id="owner-title">Where one value lives</title>
+<desc id="owner-desc">A ladder of four questions, each with a yes arrow to an owner and a no arrow down to the next. Derived from state? A selector. Survives a refresh, or shared as a link? The router. A server document reused across the app? RTK Query. Shared by unrelated components, with transitions worth recording? A slice. Anything else stays in the component.</desc>
+<g class="edge"><line x1="238" y1="32" x2="272" y2="32"/><line x1="266.8" y1="29" x2="272" y2="32"/><line x1="266.8" y1="35" x2="272" y2="32"/><line x1="238" y1="92" x2="272" y2="92"/><line x1="266.8" y1="89" x2="272" y2="92"/><line x1="266.8" y1="95" x2="272" y2="92"/><line x1="238" y1="152" x2="272" y2="152"/><line x1="266.8" y1="149" x2="272" y2="152"/><line x1="266.8" y1="155" x2="272" y2="152"/><line x1="238" y1="212" x2="272" y2="212"/><line x1="266.8" y1="209" x2="272" y2="212"/><line x1="266.8" y1="215" x2="272" y2="212"/><line x1="123" y1="52" x2="123" y2="72"/><line x1="126" y1="66.8" x2="123" y2="72"/><line x1="120" y1="66.8" x2="123" y2="72"/><line x1="123" y1="112" x2="123" y2="132"/><line x1="126" y1="126.8" x2="123" y2="132"/><line x1="120" y1="126.8" x2="123" y2="132"/><line x1="123" y1="172" x2="123" y2="192"/><line x1="126" y1="186.8" x2="123" y2="192"/><line x1="120" y1="186.8" x2="123" y2="192"/><line x1="123" y1="232" x2="123" y2="252"/><line x1="126" y1="246.8" x2="123" y2="252"/><line x1="120" y1="246.8" x2="123" y2="252"/></g>
+<rect class="node" x="8" y="12" width="230" height="40" rx="4"/>
+<rect class="node" x="272" y="12" width="80" height="40" rx="4"/>
+<rect class="node" x="8" y="72" width="230" height="40" rx="4"/>
+<rect class="node" x="272" y="72" width="80" height="40" rx="4"/>
+<rect class="node" x="8" y="132" width="230" height="40" rx="4"/>
+<rect class="node" x="272" y="132" width="80" height="40" rx="4"/>
+<rect class="node" x="8" y="192" width="230" height="40" rx="4"/>
+<rect class="node on" x="272" y="192" width="80" height="40" rx="4"/>
+<rect class="node" x="8" y="252" width="230" height="32" rx="4"/>
+<g><text x="123" y="32">derived from state?</text><text x="312" y="32">selector</text><text class="note" x="255" y="21">yes</text><text class="note" x="140" y="62">no</text><text x="123" y="84">survives a refresh,</text><text x="123" y="100">or shared as a link?</text><text x="312" y="92">router</text><text class="note" x="255" y="81">yes</text><text class="note" x="140" y="122">no</text><text x="123" y="152">a server document?</text><text x="312" y="152">RTK Query</text><text class="note" x="255" y="141">yes</text><text class="note" x="140" y="182">no</text><text x="123" y="212">shared, with transitions?</text><text x="312" y="212">slice</text><text class="note" x="255" y="201">yes</text><text class="note" x="140" y="242">no</text><text x="123" y="268">the component</text></g>
+</svg>
+<figcaption>Ask in order and stop at the first yes. The slice (outlined in violet) is only the fourth answer, and a value that reaches the bottom stays in the component.</figcaption>
+</figure>
+<p>That is FRP applied to a module: events named for what happened, a reducer that folds them into state, selectors that derive what each view shows, and effects kept at the edge, where each can be tested on its own.</p>
 <p>The next lesson, <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a>, carries the chain to the server. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/">Modern Redux Architecture Patterns</a> goes further on the client, with listener middleware reacting to events over time beside slices and RTK Query.</p>
 
 <!-- .entry-content -->

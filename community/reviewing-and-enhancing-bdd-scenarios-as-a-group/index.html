@@ -113,34 +113,55 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Collaborative review and enhancement of Behavior-Driven Development (BDD) scenarios as a group is a critical step to ensure that your scenarios accurately reflect the expected behavior of the software. Group collaboration helps identify potential issues, refine scenarios, and align the development team’s understanding of user expectations. Here’s a step-by-step guide on how to review and enhance BDD scenarios as a group:</p>
+<p>A Behavior-Driven Development (BDD) scenario gets better when other people read it. A group review checks that the scenarios describe what the software should really do, turns up the issues one author reads past, refines the wording, and leaves everyone with one understanding of what users expect. Thirteen steps make a good session.</p>
 <h2>1. Select the Right Participants</h2>
 <p>Choose people who see the job from different sides: the webmasters on it, the owner, and someone who uses the result every day or knows the trade. Each brings a question the others wouldn&rsquo;t think to ask.</p>
 <h2>2. Set Clear Objectives</h2>
-<p>Before the review session, establish clear objectives. What are you trying to achieve with the review? Are you looking for clarity, completeness, accuracy, or alignment with user expectations? Define your goals.</p>
+<p>Decide what the session is for before it starts: clarity, completeness, accuracy, or alignment with what users expect.</p>
 <h2>3. Schedule a Review Session</h2>
 <p>Set a specific date and time for the review session. The owner has to be there, since the owner settles what a scenario should say. Size the session to the scenarios under review, and keep it short enough that everyone reads each one with care.</p>
 <h2>4. Distribute Scenarios in Advance</h2>
-<p>Share the BDD scenarios with participants in advance of the review session. This allows participants to familiarize themselves with the content and come prepared with feedback and suggestions.</p>
+<p>Send the scenarios out ahead of time, so everyone arrives having read them, with feedback and suggestions ready.</p>
 <h2>5. Facilitate the Review</h2>
-<p>Designate a facilitator for the review session. The facilitator’s role is to guide the discussion, ensure that objectives are met, and keep the review on track. They should encourage open and constructive feedback.</p>
+<p>One person facilitates: they guide the discussion, keep it on track toward the session&rsquo;s objectives, and invite open, constructive feedback.</p>
 <h2>6. Read Aloud and Discuss Each Scenario</h2>
-<p>During the session, read each scenario aloud. This can be done by the facilitator or by participants taking turns. After reading a scenario, encourage discussion and feedback. Participants should express their thoughts on clarity, completeness, and alignment with user expectations.</p>
+<p>Read each scenario aloud, the facilitator or everyone in turn, then talk it over: is it clear, is it complete, and is it what users expect?</p>
 <h2>7. Identify Ambiguities and Issues</h2>
-<p>Encourage participants to identify any ambiguities, inconsistencies, or issues in the scenarios. This may include unclear language, missing details, or potential misunderstandings.</p>
+<p>Look for ambiguity, inconsistency and trouble of any kind: unclear language, a missing detail, a line two people read two ways.</p>
 <h2>8. Propose Enhancements</h2>
-<p>Participants should propose enhancements or revisions to the scenarios as needed. These can include adding more context to the Given section, refining the action in the When section, or specifying additional expected outcomes in the Then section.</p>
+<p>Turn each problem into a proposed fix: more context in a Given, a sharper action in a When, another expected outcome in a Then.</p>
 <h2>9. Document Feedback</h2>
-<p>Document all feedback and proposed enhancements. This documentation ensures that the feedback is not lost and can be incorporated into the scenarios after the review session.</p>
+<p>Write every piece of feedback and every proposed fix down, so none of it is lost before the scenarios are revised.</p>
 <h2>10. Prioritize Changes</h2>
-<p>Prioritize the suggested changes based on their impact on scenario quality and alignment with user expectations. Some changes may be critical, while others may be minor improvements.</p>
+<p>Rank the changes by how much they improve the scenarios and their fit with what users expect. Some are critical; some are polish.</p>
 <h2>11. Iterate and Revise</h2>
-<p>After the review session, collaborate with the scenario author(s) to revise the scenarios based on the feedback received. This may involve rewriting, clarifying, or expanding scenarios to address the identified issues and enhancements.</p>
+<p>After the session, work with the scenarios&rsquo; authors to revise them: rewrite, clarify or expand each one the feedback touched.</p>
 <h2>12. Verify Changes</h2>
-<p>After revisions, it’s important to verify that the scenarios accurately reflect the intended behavior of the software. This may involve running automated tests based on the scenarios. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">Modern Redux Architecture Patterns</a> sets out which test covers which layer, so a revised scenario’s test lands at the right one.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> A scenario can read well and test nothing. Three signs give it away in review: a Then that repeats the When (&ldquo;When she places the order, Then the order is placed&rdquo;), a Then that reads back only what the Given set, and a step whose test runs without asserting anything. The group&rsquo;s check is to break the code on purpose: stop the slice from emptying the cart, and &ldquo;Placing the order&rdquo; must fail on &ldquo;her cart is empty&rdquo;. A scenario that still passes tests nothing, however clearly it reads. Mutation testing runs the same check by machine: it changes the code in small ways and reports each change no test notices.</p></aside>
+<p>Check that the revised scenarios still describe the intended behavior, and run the automated tests built on them. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">Modern Redux Architecture Patterns</a> sets out which test covers which layer, so a revised scenario’s test lands at the right one.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> A scenario can read well and test nothing. Three signs give it away in review:</p>
+<ul>
+<li>a Then that repeats the When (&ldquo;When she places the order, Then the order is placed&rdquo;);</li>
+<li>a Then that reads back only what the Given set;</li>
+<li>a step whose test runs without asserting anything.</li>
+</ul>
+<p>The group&rsquo;s check is to break the code on purpose: stop the slice from emptying the cart, and &ldquo;Placing the order&rdquo; must fail on &ldquo;her cart is empty&rdquo;. A scenario that still passes tests nothing, however clearly it reads.</p>
+<p>Mutation testing runs the same check by machine: it changes the code in small ways and reports each change no test notices.</p></aside>
+<figure class="diagram">
+<svg role="img" aria-labelledby="break-it-title break-it-desc" viewBox="0 0 360 214">
+<title id="break-it-title">Break the code on purpose</title>
+<desc id="break-it-desc">A flow from top to bottom: stop the slice from emptying the cart, then run the scenario Placing the order. It branches: it fails, so it tests the rule; or it still passes, so it tests nothing.</desc>
+<g class="edge"><line x1="180" y1="108" x2="270" y2="148"/><line x1="266.5" y1="143.1" x2="270" y2="148"/><line x1="264" y1="148.6" x2="270" y2="148"/></g>
+<g class="path"><line x1="180" y1="44" x2="180" y2="76"/><line x1="183" y1="70.8" x2="180" y2="76"/><line x1="177" y1="70.8" x2="180" y2="76"/><line x1="180" y1="108" x2="90" y2="148"/><line x1="96" y1="148.6" x2="90" y2="148"/><line x1="93.5" y1="143.1" x2="90" y2="148"/></g>
+<rect class="node" x="80" y="12" width="200" height="32" rx="4"/>
+<rect class="node" x="100" y="76" width="160" height="32" rx="4"/>
+<rect class="node on" x="8" y="148" width="164" height="32" rx="4"/>
+<rect class="node" x="188" y="148" width="164" height="32" rx="4"/>
+<g><text x="180" y="28">stop emptying the cart</text><text x="180" y="92">run the scenario</text><text x="90" y="164">it fails</text><text x="270" y="164">it still passes</text><text class="note" x="90" y="198">it tests the rule</text><text class="note" x="270" y="198">it tests nothing</text></g>
+</svg>
+<figcaption>The group&rsquo;s check, drawn. Break the rule the scenario describes and run it again: a scenario worth keeping fails, along the violet path, and one that still passes tests nothing, however clearly it reads.</figcaption>
+</figure>
 <h2>13. Continuous Improvement</h2>
-<p>Consider making scenario review and enhancement a continuous practice throughout the development process. Regularly revisit and refine scenarios as the project evolves and as user expectations change.</p>
+<p>Keep reviewing for the life of the project: revisit and refine the scenarios as it evolves and as what users expect changes.</p>
 <p>A group review catches what one author reads past: a vague step, a missing case, a Then that tests nothing. The next lesson, BDD and Unit Testing, sets out what the scenarios check and what the unit tests beneath them check.</p>
 
 <!-- .entry-content -->

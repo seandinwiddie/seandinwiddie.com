@@ -113,24 +113,24 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Behavior-Driven Development (BDD) is a software development methodology that focuses on creating and delivering software that aligns closely with user expectations and business requirements. It places a strong emphasis on understanding and defining the expected behavior of a software system from the user’s perspective. BDD combines aspects of software development, testing, and collaboration to create a user-centric and value-driven development process.</p>
-<p><strong>Key Concepts of BDD:</strong></p>
+<p>Behavior-Driven Development (BDD) starts where the user stands. It defines the behavior a user expects, in words the business uses, and builds the software to match, so what gets delivered fits user expectations and business requirements alike. Development, testing and collaboration fold into one user-centric process.</p>
+<h2>Key Concepts of BDD</h2>
 <ol>
 <li>
 <strong>User-Centric Approach:</strong> BDD begins with the people who use the software and what they need to get done, and describes each behavior from where they stand: a customer placing an order, a cook marking a dish sold out.</li>
 <li>
 <strong>Collaboration:</strong> The owner, the people who use the result and the webmaster agree on the behavior before it is built, in scenarios all of them can read.</li>
 <li>
-<strong>Common Language:</strong> BDD promotes the use of a common language, typically plain English, to describe the behavior of the software. This language is accessible to both technical and non-technical team members, making it easier to communicate and define expectations.</li>
+<strong>Common Language:</strong> Behavior is written in a common language, typically plain English, that technical and non-technical people read alike, which makes expectations easier to share and to pin down.</li>
 <li>
-<strong>Behavior Specifications:</strong> BDD scenarios are used to specify how the software should behave in different situations. These scenarios follow the Given-When-Then format and provide a clear and structured way to describe expected behavior.
+<strong>Behavior Specifications:</strong> Scenarios specify how the software should behave in each situation, in a clear, structured Given-When-Then format:
 <ul>
 <li>
-<strong>Given:</strong> Describes the initial context or state.</li>
+<strong>Given:</strong> the starting context, the state of things before.</li>
 <li>
-<strong>When:</strong> Describes an action or event that occurs.</li>
+<strong>When:</strong> the action or event that happens.</li>
 <li>
-<strong>Then:</strong> Describes the expected outcome or behavior.</li>
+<strong>Then:</strong> the outcome that should follow.</li>
 </ul>
 </li>
 <li>
@@ -138,8 +138,25 @@
 <li>
 <strong>Automation:</strong> BDD scenarios serve as the basis for automated tests. Run on every change, they fail the moment the software stops doing what a scenario describes. Pure code makes that automation cheap; the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#benefits-of-pure-functions">What Is a Function?</a> shows why code that returns the same output for the same input is the easiest to test.</li>
 </ol>
-<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> The common language is not plain English in general. It is the owner&rsquo;s own words for the business, kept the same from the written scope to the code. Dan North introduced behavior-driven development in 2006 by writing tests as sentences about behavior, and Eric Evans&rsquo; <em>Domain-Driven Design</em> (2003) calls a vocabulary shared this way a ubiquitous language. On the Sean Dinwiddie&rsquo;s Webmastery team the words travel unchanged: a food truck owner says the brisket sold out, so the scenario in <a href="/community/identifying-user-needs/">Identifying User Needs</a> says <code>Given "Brisket" sold out at 1 p.m.</code>, the Redux Toolkit action that records it is <code>itemSoldOut</code>, and the test carries the scenario&rsquo;s name. When a word changes on the way, say the code calls it <code>inventoryZero</code>, every reader has to translate, and a translation is where a misunderstanding hides. Collaboration, feedback and automation all rest on that one habit: the owner can read the scenario, the webmaster can find its words in the code, and each can check the other.</p></aside>
-<p><strong>Benefits of BDD:</strong></p>
+<p>The common language is the concept the others lean on, and the quickest way to see it is to follow one word through a job:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="one-word-title one-word-desc" viewBox="0 0 360 218">
+<title id="one-word-title">One word from the owner to the test</title>
+<desc id="one-word-desc">Four rows joined by arrows. The owner says the brisket sold out. The scenario says Given "Brisket" sold out. The Redux Toolkit action is itemSoldOut. The test is named for the scenario. The owner&rsquo;s words carry unchanged into the code.</desc>
+<g class="path"><line x1="224" y1="44" x2="224" y2="66"/><line x1="227" y1="60.8" x2="224" y2="66"/><line x1="221" y1="60.8" x2="224" y2="66"/><line x1="224" y1="98" x2="224" y2="120"/><line x1="227" y1="114.8" x2="224" y2="120"/><line x1="221" y1="114.8" x2="224" y2="120"/><line x1="224" y1="152" x2="224" y2="174"/><line x1="227" y1="168.8" x2="224" y2="174"/><line x1="221" y1="168.8" x2="224" y2="174"/></g>
+<rect class="node" x="96" y="12" width="256" height="32" rx="4"/>
+<rect class="node" x="96" y="66" width="256" height="32" rx="4"/>
+<rect class="node" x="96" y="120" width="256" height="32" rx="4"/>
+<rect class="node" x="96" y="174" width="256" height="32" rx="4"/>
+<g><text class="note" x="46" y="28">owner</text><text x="224" y="28">the brisket sold out</text><text class="note" x="46" y="82">scenario</text><text x="224" y="82">Given "Brisket" sold out</text><text class="note" x="46" y="136">action</text><text x="224" y="136">itemSoldOut</text><text class="note" x="46" y="190">test</text><text x="224" y="190">named for the scenario</text></g>
+</svg>
+<figcaption>One word, four places. The owner&rsquo;s &ldquo;sold out&rdquo; reaches the scenario, the action and the test without a translation, so each reader can find it in the others.</figcaption>
+</figure>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> The common language is sharper than plain English in general: it is the owner&rsquo;s own words for the business, kept the same from the written scope to the code. Dan North introduced behavior-driven development in 2006 by writing tests as sentences about behavior, and Eric Evans&rsquo; <em>Domain-Driven Design</em> (2003) calls a vocabulary shared this way a ubiquitous language.</p>
+<p>On the Sean Dinwiddie&rsquo;s Webmastery team the words travel unchanged: a food truck owner says the brisket sold out, so the scenario in <a href="/community/identifying-user-needs/">Identifying User Needs</a> says <code>Given "Brisket" sold out at 1 p.m.</code>, the Redux Toolkit action that records it is <code>itemSoldOut</code>, and the test carries the scenario&rsquo;s name.</p>
+<p>When a word changes on the way, say the code calls it <code>inventoryZero</code>, every reader has to translate, and a translation is where a misunderstanding hides.</p>
+<p>Collaboration, feedback and automation all rest on that one habit: the owner can read the scenario, the webmaster can find its words in the code, and each can check the other.</p></aside>
+<h2>Benefits of BDD</h2>
 <ol>
 <li>
 <strong>User-Centric Development:</strong> BDD ties each piece of the work to a need someone named, so the owner can check the software against it.</li>

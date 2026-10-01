@@ -113,33 +113,46 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Behavior-Driven Development (BDD) scenarios define and test software behavior in real-world cases. When creating BDD scenarios for real-world cases, it’s important to follow a structured approach to ensure that the scenarios accurately reflect the expected behavior of the software. Here’s a step-by-step guide:</p>
+<p>Real-world cases are messy, which is half the fun. Behavior-Driven Development (BDD) scenarios for a real case have to catch the rush, the refund and the declined card as well as the tidy path, and a structured approach keeps them accurate. Twelve steps:</p>
 <h2>1. Understand the Real-World Case</h2>
-<p>Before creating BDD scenarios, you need a deep understanding of the real-world case you want to address with your software. This might involve detailed user stories, use cases, or domain knowledge. Consider the specific problem or need that the software should address.</p>
+<p>Know the case cold before writing a scenario: its user stories, its use cases and the domain knowledge behind them. Name the specific problem or need the software is there to address.</p>
 <h2>2. Identify User Roles</h2>
 <p>Determine the various user roles or personas involved in the real-world case. The customer placing an order and the owner filling it meet the same order in different ways, and each gets scenarios of their own.</p>
 <h2>3. Define High-Level Scenarios</h2>
-<p>Start by defining high-level scenarios that represent the key interactions or processes within the real-world case. These high-level scenarios serve as a framework for more detailed scenarios.</p>
+<p>Sketch the case&rsquo;s key interactions or processes as a few high-level scenarios first. They are the frame the detailed scenarios hang on.</p>
 <h2>4. Name the Scenarios</h2>
 <p>For each high-level scenario, list the smaller scenarios it holds by name, one behavior each, before writing any steps. (In Gherkin, a Scenario Outline is something else: one scenario run once for each row of an Examples table.)</p>
 <h2>5. List User Actions (When)</h2>
-<p>Identify the specific actions or interactions that users take within the real-world case. This might involve actions like data input, decision-making, or communication with the software.</p>
+<p>List what users actually do in the case, such as entering data, making a decision or exchanging messages with the software.</p>
 <h2>6. Describe the Initial State (Given)</h2>
-<p>In the Given section of your scenario, describe the initial state or context before the user actions take place. This sets up the preconditions for the scenario. It may involve data setup, system initialization, or user authentication.</p>
+<p>The Given describes the state before the user acts: the scenario&rsquo;s preconditions, such as data already in place, a system started up or a user signed in.</p>
 <h2>7. Define the Expected Outcomes (Then)</h2>
-<p>In the Then section, specify the expected outcomes or results of the user actions. What should happen after the user interacts with the software in the context of the real-world case? This could include what a selector returns, what an endpoint answers, or the data that changed.</p>
+<p>The Then says what should happen once the user acts in this case: what a selector returns, what an endpoint answers, or the data that changed.</p>
 <h2>8. Consider Alternate Paths</h2>
-<p>Real-world cases often involve alternate paths or exceptional scenarios. Think about situations where the software might behave differently, and create scenarios to cover those cases. A declined card is an expected failure, not an exception; the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> represents such failures as plain data a test can check.</p>
+<p>Real cases branch. Wherever the software can behave differently, that path gets a scenario of its own. A declined card is an expected failure, not an exception; the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> represents such failures as plain data a test can check.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="order-forks-title order-forks-desc" viewBox="0 0 360 188">
+<title id="order-forks-title">Placing the order goes one of two ways</title>
+<desc id="order-forks-desc">The step she places the order branches two ways. Card accepted: the order is recorded at $25 and her cart is empty. Card declined: no order is recorded, her cart still holds Widget A, and she is asked for another card.</desc>
+<g class="edge"><line x1="180" y1="44" x2="90" y2="84"/><line x1="96" y1="84.6" x2="90" y2="84"/><line x1="93.5" y1="79.1" x2="90" y2="84"/></g>
+<g class="path"><line x1="180" y1="44" x2="270" y2="84"/><line x1="266.5" y1="79.1" x2="270" y2="84"/><line x1="264" y1="84.6" x2="270" y2="84"/></g>
+<rect class="node" x="70" y="12" width="220" height="32" rx="4"/>
+<rect class="node" x="8" y="84" width="164" height="32" rx="4"/>
+<rect class="node on" x="188" y="84" width="164" height="32" rx="4"/>
+<g><text x="180" y="28">she places the order</text><text x="90" y="100">card accepted</text><text x="270" y="100">card declined</text><text class="note" x="90" y="136">order recorded, $25</text><text class="note" x="90" y="154">cart is empty</text><text class="note" x="270" y="136">no order recorded</text><text class="note" x="270" y="154">cart still holds it</text><text class="note" x="270" y="172">asked for another card</text></g>
+</svg>
+<figcaption>One When, two outcomes, and each gets a scenario of its own. The declined card, along the violet path, is the one a tidy example leaves out; its Thens say what doesn&rsquo;t happen as well as what does.</figcaption>
+</figure>
 <h2>9. Use Natural Language</h2>
-<p>BDD scenarios should be written in natural language that is easy to understand by both technical and non-technical team members. Avoid technical jargon or complex terminology.</p>
+<p>Write in natural language that technical and non-technical team members both read easily. The jargon stays in the code.</p>
 <h2>10. Include Edge Cases</h2>
-<p>Consider edge cases and boundary conditions that could impact the real-world case. Create scenarios that cover these scenarios, including scenarios where unusual or unexpected inputs are involved.</p>
+<p>Probe the edges: boundary conditions, and inputs that are unusual or unexpected. Each gets a scenario.</p>
 <h2>11. Review and Revise</h2>
-<p>After creating your scenarios, review them for clarity, accuracy, and completeness. Make sure that they accurately reflect the real-world case and that the expected behavior aligns with user expectations.</p>
+<p>Read the set again for clarity, accuracy and completeness: does it describe the case as it really happens, with the behavior users expect?</p>
 <h2>12. Read Them with People Who Know the Trade</h2>
 <p>Read the scenarios with the owner, the people who use the result and anyone who knows the trade, before work starts. They know the cases a scenario misses: the rush, the refund, the regular who orders by phone.</p>
 <h2>Example BDD Scenario for a Real-World Case</h2>
-<p>Here’s an example of a BDD scenario for a real-world case involving an e-commerce order:</p>
+<p>Here is a real case, an online order, in three scenarios:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Checkout
 
   Scenario: Choosing where the order ships
@@ -168,7 +181,7 @@
     And her cart still holds "Widget A"
     And she is asked for another card</code></pre>
 <p>A decline is expected, so it is answered as data, never thrown as an exception: the API returns the refusal with its reason, the slice leaves the cart alone because it empties only when the order is accepted, and the view asks for another card.</p></aside>
-<p>By following this structured approach, you can create comprehensive and accurate BDD scenarios for real-world cases. These scenarios provide a clear and testable specification of how the software should behave in complex, real-world situations, in words the owner can check against the business.</p>
+<p>Worked this way, a messy case becomes a clear, testable specification of how the software should behave when real life gets complicated, in words the owner can check against the business.</p>
 
 <!-- .entry-content -->
 <footer>

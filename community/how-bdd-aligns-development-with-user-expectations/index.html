@@ -113,25 +113,41 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Behavior-Driven Development (BDD) is a methodology that places a strong emphasis on aligning the development process with the expectations and needs of the people who use the software. This alignment is achieved through several key practices and principles inherent to BDD:</p>
+<p>Alignment is the point of Behavior-Driven Development (BDD): what gets built should match what the people who use the software expect and need. Seven practices hold it in line, and the owner&rsquo;s reading keeps the practices honest.</p>
 <ol>
 <li>
 <strong>User-Centric Perspective:</strong> Alignment needs something to align with: what users expect the software to do, written in their terms before anything is built. Every later step is checked against it.</li>
 <li>
-<strong>Behavior Specifications:</strong> BDD employs the practice of creating behavior specifications in the form of Given-When-Then scenarios. These scenarios describe the expected behavior of the software from the user’s viewpoint. The Given-When-Then format provides a structured way to express user expectations and how the software should respond to various actions.</li>
+<strong>Behavior Specifications:</strong> Expectations are written down as Given-When-Then scenarios, from the user’s viewpoint: a structured way to say what users expect and how the software should respond to each action.</li>
 <li>
 <strong>Collaboration:</strong> The owner and the people who use the result read the scenarios with the webmaster before work starts, while a scenario that misses the need is still a sentence to fix rather than code to undo.</li>
 <li>
-<strong>Common Language:</strong> BDD promotes the use of a common and accessible language, the owner’s own words for the business, to describe behavior specifications. The owner and the webmasters read the same words, so the scenario the owner approves is the one the test runs.</li>
+<strong>Common Language:</strong> Scenarios are written in a common, accessible language: the owner’s own words for the business. The owner and the webmasters read the same words, so the scenario the owner approves is the one the test runs.</li>
 <li>
 <strong>Continuous Feedback:</strong> Alignment is checked more than once: the owner reads each scenario before work starts, its test runs on every change after, and a scenario that no longer matches what users expect is rewritten rather than kept passing.</li>
 <li>
-<strong>Automated Tests:</strong> Behavior specifications, captured as Given-When-Then scenarios, serve as the foundation for automated tests. These tests validate that the software behaves as expected based on user scenarios. Run on every change, they show that the software still does what its scenarios describe, even as it evolves. In a Redux Toolkit app, those tests run a slice through a scenario’s events; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#model-events-and-transitions-with-a-slice">Redux Standard Patterns and Functional Programming</a> models the events and transitions they check.</li>
+<strong>Automated Tests:</strong> Each scenario becomes an automated test that checks the software behaves as its users expect. Run on every change, the tests show that the software still does what its scenarios describe, even as it evolves. In a Redux Toolkit app, those tests run a slice through a scenario’s events; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#model-events-and-transitions-with-a-slice">Redux Standard Patterns and Functional Programming</a> models the events and transitions they check.</li>
 <li>
-<strong>Documentation:</strong> BDD scenarios serve as living documentation of the software’s behavior. They provide a clear and accessible record of how the software is expected to work, which is valuable for onboarding new team members and for maintaining a shared understanding throughout the project’s lifecycle.</li>
+<strong>Documentation:</strong> The scenarios are living documentation: a clear, readable record of how the software is expected to work, useful when a new team member joins and for keeping one shared understanding for the life of the project.</li>
 </ol>
-<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> A scenario can pass while the need it was written for fails. In <a href="/community/identifying-user-needs/">Identifying User Needs</a>, a food truck asks for its menu on the site as a PDF. &ldquo;Given the menu PDF is uploaded, When a customer opens the menu page, Then the PDF opens&rdquo; passes every day, and every day a customer walks over for brisket that sold out at one. The tests aligned the code with the request, not with the need. The alignment check sits earlier, when the owner reads the stories and scenarios in the written scope and can say whether they describe what goes wrong now; the scenario that matters names what the customer would notice, a sold-out item shown as sold out. BDD keeps the code honest to its scenarios, and the owner&rsquo;s reading keeps the scenarios honest to the need.</p></aside>
-<p>With these practices, and the owner reading the scenarios against the need, BDD keeps the development process aligned with user expectations. It reduces the risk of building software that deviates from what users truly need and desire. Instead, the scenarios give the owner and the team one record of what the software should do, and a test that says when it stops doing it.</p>
+<h2>Where alignment slips</h2>
+<p>Two checks keep three things in line, and only one of them is a test:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="two-checks-title two-checks-desc" viewBox="0 0 360 216">
+<title id="two-checks-title">Two checks, three things in line</title>
+<desc id="two-checks-desc">Three boxes in a column: the need, the scenario, the code. The link from the need to the scenario is the owner&rsquo;s reading, before work starts. The link from the scenario to the code is the tests, on every change.</desc>
+<g class="edge"><line x1="180" y1="124" x2="180" y2="172"/></g>
+<g class="path"><line x1="180" y1="44" x2="180" y2="92"/></g>
+<rect class="node" x="105" y="12" width="150" height="32" rx="4"/>
+<rect class="node" x="105" y="92" width="150" height="32" rx="4"/>
+<rect class="node" x="105" y="172" width="150" height="32" rx="4"/>
+<g><text x="180" y="28">the need</text><text x="180" y="108">the scenario</text><text x="180" y="188">the code</text><text class="note" x="92" y="68">before work starts</text><text class="note" x="268" y="68">the owner&rsquo;s reading</text><text class="note" x="92" y="148">on every change</text><text class="note" x="268" y="148">the tests</text></g>
+</svg>
+<figcaption>Two checks hold three things in line. The tests keep the code honest to the scenario on every change; the owner&rsquo;s reading, the thick violet link, keeps the scenario honest to the need. A suite can pass every day with that link broken.</figcaption>
+</figure>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> A scenario can pass while the need it was written for fails. In <a href="/community/identifying-user-needs/">Identifying User Needs</a>, a food truck asks for its menu on the site as a PDF. &ldquo;Given the menu PDF is uploaded, When a customer opens the menu page, Then the PDF opens&rdquo; passes every day, and every day a customer walks over for brisket that sold out at one. The tests aligned the code with the request, not with the need.</p>
+<p>The alignment check sits earlier, when the owner reads the stories and scenarios in the written scope and can say whether they describe what goes wrong now; the scenario that matters names what the customer would notice, a sold-out item shown as sold out. BDD keeps the code honest to its scenarios, and the owner&rsquo;s reading keeps the scenarios honest to the need.</p></aside>
+<p>With these practices, and the owner reading the scenarios against the need, BDD keeps development aligned with what users expect. The software is less likely to drift from what they need, and the owner and the team share one record of what it should do, with a test that says when it stops doing it.</p>
 <p>The next lesson, Given-When-Then (Gherkin) Syntax in BDD, sets out the format those scenarios are written in.</p>
 
 <!-- .entry-content -->

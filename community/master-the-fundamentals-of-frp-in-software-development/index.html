@@ -114,32 +114,39 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Mastering the fundamentals of Functional Reactive Programming (FRP) in software development requires a solid understanding of its core concepts and principles. Here’s a step-by-step guide to help you become proficient in FRP:</p>
+<p>Functional Reactive Programming (FRP) is built from a few core ideas, and mastering it starts with getting those solid. Here is a path in seventeen steps, from FRP&rsquo;s two ideas to its advanced topics.</p>
+<h2>The core ideas</h2>
 <ol>
 <li>
 <strong>Understand Events and Behaviors:</strong> Start with FRP&rsquo;s two ideas: events, things that happen at a moment, and behaviors, values that change over time. In Redux Toolkit, the events are dispatched actions and the behaviors are selectors over the state.</li>
 <li>
 <strong>Learn Reducers and Selectors:</strong> A reducer folds each event into the next state, and a selector derives a value from state. Practice both as pure functions with plain inputs and outputs.</li>
 <li>
-<strong>Event Handling:</strong> Explore event handling in FRP. Understand how to react to events by dispatching actions named for what happened. Practice creating event-driven code that reacts to user interactions, data changes, or external events.</li>
+<strong>Event Handling:</strong> React to each event by dispatching an action named for what happened. Practice on user interactions, data changes and events from outside the app.</li>
 <li>
-<strong>Immutability:</strong> FRP often promotes immutability, where data is treated as unchangeable. Learn how to work with immutable data structures to maintain the purity of your functions and minimize side effects.</li>
+<strong>Immutability:</strong> FRP usually treats data as unchangeable. Get comfortable with immutable data structures: they keep your functions pure and your side effects few.</li>
 <li>
 <strong>Declarative Programming:</strong> Say what a value is rather than how to keep it current: a total derived by a selector, never a running total updated in a handler.</li>
 <li>
 <strong>Listeners:</strong> Study listener middleware, which reacts to later actions over time, and learn when to cancel work that has gone stale.</li>
+</ol>
+<h2>Practice</h2>
+<ol start="7">
 <li>
-<strong>Use Cases:</strong> Apply FRP to real-world use cases. Build small applications or features using FRP to gain practical experience. A cart, a menu that marks what sold out, or a booking calendar makes a good first one.</li>
+<strong>Use Cases:</strong> Build small, real features with FRP for practical experience. A cart, a menu that marks what sold out, or a booking calendar makes a good first one.</li>
 <li>
 <strong>Composition:</strong> Build larger functions from small ones with pipe and compose, and larger selectors from smaller ones. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#pipe-and-compose">Functional Composition</a> covers both directions.</li>
 <li>
-<strong>Testing:</strong> Learn how to test code written with FRP principles. Test a reducer through a sequence of actions and a selector through its output; neither needs a browser.</li>
+<strong>Testing:</strong> Test a reducer through a sequence of actions and a selector through its output. Neither needs a browser.</li>
 <li>
 <strong>Error Handling:</strong> Treat an expected failure, such as a declined card, as data, never as an exception: the client decodes what arrives into an <code>Either</code> in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>, and the API refuses with its reason in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a>.</li>
 <li>
 <strong>Connect the View:</strong> A React view reads shared state through <code>useAppSelector</code> and server data through RTK Query hooks, dispatches events, and keeps only local drafts in its own state.</li>
 <li>
 <strong>Performance and Optimization:</strong> A selector recomputes only when its inputs change, and a view that selects the narrowest value it needs re-renders only when that value does; measure a slow screen before changing its code.</li>
+</ol>
+<h2>Keep going</h2>
+<ol start="13">
 <li>
 <strong>Read the Sources:</strong> The Redux Toolkit documentation and the Redux Style Guide set the current patterns, and Elliott and Hudak&rsquo;s <em>Functional Reactive Animation</em> (1997) sets out behaviors and events.</li>
 <li>
@@ -170,8 +177,30 @@ const events: ItemAdded[] = [
 ]
 
 totalCents(events.reduce(next, [])) // 6200</code></pre>
-<p>Redux Toolkit then adds what the fold leaves out: Immer for the update syntax, <code>createSelector</code> to remember derived values, the store to tell each view when to read again, and RTK Query and listener middleware for the effects. Learned in that order, each reads as a convenience rather than magic, and a reducer that misbehaves can be run by hand on a list of events. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> starts from the same place.</p></aside>
-<p>Remember that mastering FRP is an ongoing process, and practice is key to becoming proficient. The more you work with FRP in practical scenarios, the more naturally you will derive what each screen shows from the events that happened.</p>
+<p>Redux Toolkit then adds what the fold leaves out:</p>
+<ul>
+<li>Immer, for the update syntax;</li>
+<li><code>createSelector</code>, to remember derived values;</li>
+<li>the store, to tell each view when to read again;</li>
+<li>RTK Query and listener middleware, for the effects.</li>
+</ul>
+<p>Learned in that order, each reads as a convenience rather than magic, and a reducer that misbehaves can be run by hand on a list of events. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> starts from the same place.</p></aside>
+<p>Every step above lands somewhere in one picture:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="pure-core-title pure-core-desc" viewBox="0 0 360 200">
+<title id="pure-core-title">Three pure pieces inside one boundary</title>
+<desc id="pure-core-desc">A frame labelled the edge, where requests, timers and every other effect wait, surrounds an inner frame labelled pure core. Inside the core, three boxes joined by arrows: event, what happened; state, a fold; value, derived.</desc>
+<g class="path"><line x1="116" y1="102" x2="142" y2="102"/><line x1="136.8" y1="99" x2="142" y2="102"/><line x1="136.8" y1="105" x2="142" y2="102"/><line x1="218" y1="102" x2="244" y2="102"/><line x1="238.8" y1="99" x2="244" y2="102"/><line x1="238.8" y1="105" x2="244" y2="102"/></g>
+<rect class="node" x="10" y="6" width="340" height="188" rx="4"/>
+<rect class="node on" x="28" y="44" width="304" height="128" rx="4"/>
+<rect class="node" x="40" y="86" width="76" height="32" rx="4"/>
+<rect class="node" x="142" y="86" width="76" height="32" rx="4"/>
+<rect class="node" x="244" y="86" width="76" height="32" rx="4"/>
+<g><text class="note" x="180" y="25">the edge: requests, timers, every effect</text><text class="note" x="180" y="62">pure core</text><text x="78" y="102">event</text><text x="180" y="102">state</text><text x="282" y="102">value</text><text class="note" x="78" y="138">what happened</text><text class="note" x="180" y="138">a fold</text><text class="note" x="282" y="138">derived</text></g>
+</svg>
+<figcaption>Three pure pieces and one boundary. An event names what happened, the state folds every event so far, and a value is derived from the state, all inside the pure core (the violet frame). Every effect waits outside it, at the edge.</figcaption>
+</figure>
+<p>Mastering FRP is ongoing, and practice is the key. The more you build with it, the more naturally you derive what each screen shows from the events that happened.</p>
 
 <!-- .entry-content -->
 <footer>

@@ -113,7 +113,8 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Behavior-Driven Development (BDD) is founded on several key principles that guide its approach to software development. These principles help ensure that the focus remains on the behavior of the software from the user’s perspective. Below are the fundamental principles of BDD:</p>
+<p>Behavior-Driven Development (BDD) runs on eight principles, and every one keeps the work facing the same way: toward the behavior of the software as its users see it. Each comes with the habit that shows it in practice.</p>
+<h2>People and words</h2>
 <ol>
 <li>
 <strong>User-Centric Perspective:</strong> Every scenario is told from where a user stands, with an outcome that user would notice. A scenario that can only be told from the database&rsquo;s side, a row inserted or a flag set, means the need behind it hasn&rsquo;t been found yet, and the conversation goes back to the people who use the result.</li>
@@ -121,17 +122,37 @@
 <strong>Collaboration:</strong> Behavior is settled between the people who know the business and the people who build the software. On a Sean Dinwiddie&rsquo;s Webmastery job, that is the owner, with the staff who use the result, and the webmaster, reading the scenarios together before work starts; what they settle goes into the written scope.</li>
 <li>
 <strong>Common Language:</strong> Each thing keeps one name, the owner&rsquo;s, from the written scope through the scenario to the action and the test. Where a name has to change, the owner and the webmaster agree on the new one, and it changes everywhere at once, so no reader has to translate.</li>
+</ol>
+<h2>Behavior as scenarios</h2>
+<ol start="4">
 <li>
-<strong>Behavior Specifications:</strong> BDD relies on behavior specifications, which describe how the software should behave in specific situations or scenarios. These specifications are often written in a Given-When-Then format. Each scenario turns one expected behavior into a check a test can run.</li>
+<strong>Behavior Specifications:</strong> Behavior specifications say how the software should behave in specific situations, usually in Given-When-Then form. Each scenario turns one expected behavior into a check a test can run.</li>
 <li>
 <strong>Given-When-Then Scenarios:</strong> Each scenario sets the context (Given), names one event (When) and checks the outcome (Then); <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) Syntax in BDD</a> writes them out keyword by keyword.</li>
+</ol>
+<h2>Checks that keep running</h2>
+<ol start="6">
 <li>
 <strong>Continuous Feedback:</strong> A scenario is read before work starts and run on every change after it, so the owner hears about a misunderstanding while it is still a sentence, and the webmaster hears about a regression the moment it happens.</li>
 <li>
 <strong>Automation:</strong> A scenario is finished when it runs as a test on every change and fails under its own name when the behavior breaks. The team runs scenarios both ways, as cucumber-js steps or as scenario-named tests in Vitest or Hspec, and <a href="/community/bdd-testing-framework/">BDD Testing Framework</a> runs one scenario each way.</li>
 <li>
-<strong>Integration with Development Practices:</strong> BDD is not a standalone practice but is often integrated with other development practices, such as Test-Driven Development (TDD). TDD complements BDD by focusing on writing tests to drive development. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#test-the-contract">Functional Composition</a> ends the same way at the smallest scale, stating the laws its functions must keep as tests.</li>
+<strong>Integration with Development Practices:</strong> BDD rarely works alone. It pairs with practices such as Test-Driven Development (TDD), which complements it by writing the tests first and letting them drive development. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#test-the-contract">Functional Composition</a> ends the same way at the smallest scale, stating the laws its functions must keep as tests.</li>
 </ol>
+<p>Put feedback and automation on a timeline and a scenario earns its keep twice:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="two-moments-title two-moments-desc" viewBox="0 0 360 142">
+<title id="two-moments-title">Two moments of feedback</title>
+<desc id="two-moments-desc">A timeline running left to right. Before a mark labelled work starts, the owner reads the scenario, and a misunderstanding is still a sentence. After the mark, the scenario&rsquo;s test runs at each of three changes, and a regression is caught the moment it happens.</desc>
+<g class="edge"><line x1="12" y1="92" x2="348" y2="92"/><line x1="342.8" y1="89" x2="348" y2="92"/><line x1="342.8" y1="95" x2="348" y2="92"/><line x1="163" y1="22" x2="163" y2="100"/><line x1="80" y1="62" x2="80" y2="92"/><line x1="206" y1="62" x2="206" y2="92"/><line x1="266" y1="62" x2="266" y2="92"/><line x1="326" y1="62" x2="326" y2="92"/></g>
+<rect class="node on" x="12" y="30" width="136" height="32" rx="4"/>
+<rect class="node" x="182" y="30" width="48" height="32" rx="4"/>
+<rect class="node" x="242" y="30" width="48" height="32" rx="4"/>
+<rect class="node" x="302" y="30" width="48" height="32" rx="4"/>
+<g><text class="note" x="163" y="12">work starts</text><text x="80" y="46">owner reads</text><text x="206" y="46">test</text><text x="266" y="46">test</text><text x="326" y="46">test</text><text class="note" x="80" y="112">a misunderstanding,</text><text class="note" x="80" y="130">still a sentence</text><text class="note" x="262" y="112">a regression, caught</text><text class="note" x="262" y="130">the moment it happens</text></g>
+</svg>
+<figcaption>One scenario, two kinds of feedback, with time running left to right. Before work starts, the owner reads it (outlined in violet) and a misunderstanding costs a sentence; after, its test runs on every change and a regression shows the moment it happens.</figcaption>
+</figure>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Each principle shows up as something a reader can check in one scenario. Take the checkout from <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a>:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Checkout
 
@@ -141,7 +162,15 @@
     When she places the order
     Then the order is recorded at $25
     And her cart is empty</code></pre>
-<p>Ada is a person with an outcome she would notice, never a row in a table: the user&rsquo;s perspective. The owner reads it in the written scope before work starts and can say where it&rsquo;s wrong: collaboration, in a common language. Its words carry into the code as names, <code>placeOrder</code> and a cart that empties, so the owner&rsquo;s word and the test&rsquo;s word stay the same. It runs on every change as a test named for it, and a failure names the behavior that broke: automation and continuous feedback. Underneath it, unit tests pin the pure functions it rests on, such as the cart&rsquo;s total: behavior-driven on the outside, test-driven within. A principle that shows up in no scenario is only a slogan, and <a href="/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/">Reviewing and Enhancing BDD Scenarios as a Group</a> looks for exactly that.</p></aside>
+<p>Read it once for each principle:</p>
+<ul>
+<li><strong>The user&rsquo;s perspective:</strong> Ada is a person with an outcome she would notice, never a row in a table.</li>
+<li><strong>Collaboration, in a common language:</strong> the owner reads it in the written scope before work starts and can say where it&rsquo;s wrong.</li>
+<li><strong>One name for each thing:</strong> its words carry into the code as names, <code>placeOrder</code> and a cart that empties, so the owner&rsquo;s word and the test&rsquo;s word stay the same.</li>
+<li><strong>Automation and continuous feedback:</strong> it runs on every change as a test named for it, and a failure names the behavior that broke.</li>
+<li><strong>Integration with TDD:</strong> underneath it, unit tests pin the pure functions it rests on, such as the cart&rsquo;s total: behavior-driven on the outside, test-driven within.</li>
+</ul>
+<p>A principle that shows up in no scenario is only a slogan, and <a href="/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/">Reviewing and Enhancing BDD Scenarios as a Group</a> looks for exactly that.</p></aside>
 <p>Held together, these principles keep each scenario aligned with a person&rsquo;s need, readable by the owner and run as a test on every change.</p>
 <p>The next lesson, How BDD Aligns Development with User Expectations, shows where that alignment holds, and where a scenario can pass while the need still fails.</p>
 
