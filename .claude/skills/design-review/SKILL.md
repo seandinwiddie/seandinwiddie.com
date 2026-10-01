@@ -19,7 +19,7 @@ Read before reviewing:
 
 ## What never changes
 
-- **The typeface: Dank Mono, and only Dank Mono.** All of Sean's personal brand sites use it alone (`assets/dank-mono.css`, the `--font` stack), so no font swap and no second typeface, ever. Its faces are regular and italic, so contrast comes from size, case, spacing and italic, plus the browser's synthesized bold where the site already uses it.
+- **The typeface: Dank Mono, and only Dank Mono.** All of Sean's personal brand sites use it alone (`assets/dank-mono.css`, the `--font` stack), so no font swap and no second typeface, ever. Its faces are regular and italic. The italic is a true cursive, with a handwritten, script-like look, and Dank Mono's ligatures (`=>`, `!==`, `->`, `<=` and the like drawn as single glyphs) are part of its character (Sean, after pass 17). Use both deliberately: the cursive italic for a few things that should feel personal or set apart (a hero line, a signature line, a pull quote, a depth passage's label), never for running paragraphs, and ligatures left on (`font-variant-ligatures: common-ligatures contextual`) wherever code or arrows appear. Contrast otherwise comes from size, case, spacing and position, plus the browser's synthesized bold where the site already uses it.
 - **Sean's pages** (`/prices/`, `/tools/`, `/resources/`, Training, the cut-sheet, `/about/`, `/examples/`, the brand-identity article) and shared components on them (header, footer, nav, the top bar) change only with his OK.
 - **Copy** belongs to the copywriter. The designer may move, group or set apart existing text, and may propose a heading level, but it doesn't rewrite sentences.
 
