@@ -2,7 +2,7 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
-## Lesson posts: copy rounds 1–2 and post design rounds 1–2: October 1, 2026
+## Lesson posts: copy rounds 1–3 and post design rounds 1–3: October 1, 2026
 
 After design pass 5 Sean asked for the community pages to read easier and carry more diagrams, in the voice of experts having a blast with the craft, and for several rounds with the designer to bring the lesson template to an AAA polish. Each round is a copy round and a design round, with a review between.
 
@@ -10,6 +10,7 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 |---|---|---|
 | Post design round 1 | 6.5 | 8 |
 | Post design round 2 | 8 | 9.2 |
+| Post design round 3 | 9.2 | 9.5 |
 
 - **Copy round 1:** every lesson in short paragraphs (the longest anywhere is now about 450 characters, from 2,066), with confident ledes, subheads, lists and long depth passages split; 47 diagrams, at least one per lesson, drawn to `docs/design.md`'s spec and traced against each page's code. Code and printed outputs are unchanged except a filename comment on 23 Python blocks (the harness still passes 38/38). A second CTO pass over the rewrite found no factual errors and fixed `bin/verify`, the imports caption and the BDD link's direction.
 - **Post design round 1:** the lesson's place and ticks in the banner, one quiet byline, the lede, prose at 1.75 leading, code with ligatures and a Copy button, depth passages with their cursive label in the margin on wide screens (color step: their paper warms to #f7f6f2), previous and next as a framed pair, the module list as a table of contents. Every text in the lesson column meets AAA.
@@ -17,10 +18,12 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 - **Copy round 2 (131 edits on 35 pages):** 30 diagrams fixed from the designer's list (captions name the violet path, the tags diagram labels the order list with its real tag, the Module 3 loop re-laid, arrowheads normalized, margins evened); 69 lesson h2s and 6 on the offer page in sentence case, with every section link's id unchanged and the offer's tier names untouched; 26 voice edits where a line still read defensive or flat.
 - **Copy round 3 (154 edits on 40 pages):** measured strictly (each line's stroke counted), 39 of the 47 diagrams sat outside the spec's margins; all 47 now hold 8 to 16 units, top equal to bottom and left to right, with only coordinates and viewBox heights changed and every label checked at 390 and 1366 px. 111 run-in list labels in sentence case ("Client-centered:"), keeping acronyms, Gherkin keywords and the Inner Circle's price line. Five voice edits, among them FRP's predictability now said as what it buys: replaying the actions behind a wrong value reproduces it, and that list becomes its test.
 
+- **Post design round 3:** the hub reads as the course's front door: its first page maps the course (the overview and five modules, each with its lesson count, linked to its first lesson), each archive page starts where a part of the course starts (the overview and Module 1, Module 2, Modules 3 and 4, Module 5 and the pages off the path) under the part's name, and each card names its place ("Start here", "Lesson 4"); the pagination reads left to right. Lessons with four or more sections open with a quiet "On this page" list (24 lessons, 181 links), in two columns on a desktop when it runs long. Diagram captions hold a 66-character measure. Every text in the community column stays AAA (2,039 pairs), and site.css grows 57 bytes, the dead rules it found freeing most of what it adds.
+
 ### Waiting
 
+- The hub's pagination naming where it leads ("Next page: Module 2"), for the copywriter; the "On this page" label in the margin on a wide screen, as the depth label hangs; a shorter first page on the hub.
 - Title Case "User Stories" mid-sentence on Practical Exercises and the course outline.
-- Post design round 3: the hub as the front door, an "On this page" list on long lessons, caption width, the hub's pagination.
 - For Sean: whether lesson titles move to sentence case too (it changes head titles, cards and structured data).
 
 ## Design passes 6–8: October 1, 2026

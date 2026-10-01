@@ -132,6 +132,18 @@
 </svg>
 <figcaption>Each stage answers to something fixed before it runs, named on the right. The model moves down the violet line, and the promotion gate, against the model it would replace, decides whether it ships.</figcaption>
 </figure>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#choosing-the-base-by-a-fair-comparison">Choosing the base by a fair comparison</a></li>
+<li><a href="#deterministic-data-in-disjoint-splits">Deterministic data in disjoint splits</a></li>
+<li><a href="#oracles-as-the-hard-boundary">Oracles as the hard boundary</a></li>
+<li><a href="#supervised-then-preference-training">Supervised, then preference training</a></li>
+<li><a href="#evidence-that-names-the-inputs">Evidence that names the inputs</a></li>
+<li><a href="#conversion-and-checks-at-runtime">Conversion, and checks at runtime</a></li>
+<li><a href="#the-promotion-gate">The promotion gate</a></li>
+</ul>
+</nav>
 <h2 id="choosing-the-base-by-a-fair-comparison"><a class="heading-anchor" href="#choosing-the-base-by-a-fair-comparison">Choosing the base by a fair comparison</a></h2>
 <p>Fine-tuning starts from a small open-weight model, and choosing one is an experiment like any other. Every candidate answers the same prompts, through the same prompt template and runtime, with the same decoding settings, scored by the same scorer. Results from two different evaluations can&rsquo;t be ranked against each other, so the ranking refuses them.</p>
 <p>Within one evaluation, the rule is fixed before any result is seen and applied in order:</p>

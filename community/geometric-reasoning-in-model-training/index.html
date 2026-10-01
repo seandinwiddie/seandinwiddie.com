@@ -115,6 +115,18 @@
 </div> </header><!-- .entry-header -->
 <p>An average score can rise while a model gets worse at something that matters. Geometric reasoning guards against that. It places every behavior to be trained and measured at a corner of a cube, so the training data covers every corner, the evaluation measures every corner, and a release is judged corner by corner.</p>
 <p>The geometry is small, exact and a joy to work through, and this lesson writes all of it in plain Python, on the practices of <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a>.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#four-traits-make-a-cube">Four traits make a cube</a></li>
+<li><a href="#training-pairs-that-change-only-the-voice">Training pairs that change only the voice</a></li>
+<li><a href="#a-fifth-factor-the-evidence">A fifth factor: the evidence</a></li>
+<li><a href="#reading-the-scores-as-a-spectrum">Reading the scores as a spectrum</a></li>
+<li><a href="#one-factor-at-a-time-and-by-distance">One factor at a time, and by distance</a></li>
+<li><a href="#revise-and-restore">Revise and restore</a></li>
+<li><a href="#the-release-gate-corner-by-corner">The release gate, corner by corner</a></li>
+</ul>
+</nav>
 <h2 id="four-traits-make-a-cube"><a class="heading-anchor" href="#four-traits-make-a-cube">Four traits make a cube</a></h2>
 <p>Each trait of an answer&rsquo;s voice is a pair of poles, and an answer takes one pole of each: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four binary traits give 2<sup>4</sup> = 16 combinations.</p>
 <p>Written as bits, 0 for a trait&rsquo;s first pole and 1 for its second, they are the corners of a four-dimensional cube, and the distance between two corners is the number of traits they differ in, their Hamming distance:</p>

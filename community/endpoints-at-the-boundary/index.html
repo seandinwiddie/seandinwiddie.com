@@ -115,6 +115,16 @@
 </div> </header><!-- .entry-header -->
 <p>An endpoint is where the client meets the API. On the Sean Dinwiddie&rsquo;s Webmastery team, endpoints are generated from the API&rsquo;s own contract into one API root, reviewed like any other code, decoded before a view sees what they return, and tagged so the right views refetch.</p>
 <p>This lesson carries the orders from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> into the client, beside the cart from <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a>.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#1-one-api-root-per-base-url">1. One API root per base URL</a></li>
+<li><a href="#2-generate-the-endpoints-then-review-them">2. Generate the endpoints, then review them</a></li>
+<li><a href="#3-decode-at-the-boundary">3. Decode at the boundary</a></li>
+<li><a href="#4-tags-say-what-to-refetch">4. Tags say what to refetch</a></li>
+<li><a href="#5-the-scenario-at-the-endpoint">5. The scenario at the endpoint</a></li>
+</ul>
+</nav>
 <h2 id="1-one-api-root-per-base-url"><a class="heading-anchor" href="#1-one-api-root-per-base-url">1. One API root per base URL</a></h2>
 <p>Every endpoint that talks to the same server joins one API root: one cache, one middleware, and tags that reach across features, so an order placed at checkout refreshes the order history on another screen. A second backend, such as a CMS that serves the shop&rsquo;s pages or a search service, gets a root of its own.</p>
 <p>The root starts with no endpoints, declares its tag types, and sends the signed-in user&rsquo;s token on every request as the bearer token the API&rsquo;s <code>Auth</code> combinator reads:</p>

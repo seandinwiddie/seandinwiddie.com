@@ -646,17 +646,22 @@ const withCommunitySitemap = (name, html) => {
 // The archives list the course in teaching order (docs/copy-review.md, Focus).
 // They carried WordPress order, newest first, and each card's excerpt was a hand
 // copy of a lesson's opening, so fixing an opener left three stale copies behind.
-// Cards render from LESSONS, then the pages off the path, twelve to a page. Each
+// Cards render from LESSONS, then the pages off the path, each page starting where a
+// part of the course starts, never mid-module (docs/design.md, Lesson posts). Each
 // card keeps its image, its title follows LESSONS, and its excerpt is its page's
 // meta description. A new lesson needs one card, added by hand to any archive
 // page, before the sync can place it. Sean's cut-sheet page itself is untouched.
 const ARCHIVE_BASES = ["/community/", "/community/author/seandinwiddie/", "/community/category/development/"];
-const CARDS_PER_PAGE = 12;
 const CARD_ORDER = [
   ...LESSONS.map(([slug, title]) => [`/community/${slug}/`, title]),
   ...ALSO_IN_THE_COMMUNITY.filter(([href]) => href !== "/community/"),
 ];
-const ARCHIVE_PAGE_COUNT = Math.ceil(CARD_ORDER.length / CARDS_PER_PAGE);
+// The parts each archive page opens with: the overview (with Module 1), Module 2,
+// Module 3 (with Module 4) and Module 5 (with the pages off the path).
+const ARCHIVE_PAGE_STARTS = ["course", "m2", "m3", "m5"].map((key) =>
+  CARD_ORDER.findIndex(([href]) => href === `/community/${PARTS[key].opener}/`),
+);
+const ARCHIVE_PAGE_COUNT = ARCHIVE_PAGE_STARTS.length;
 const archiveFile = (base, page) => `${pageHref(base, page).slice(1)}index.html`;
 const PAGINATED_ARCHIVES = new Map(
   ARCHIVE_BASES.flatMap((base) =>
@@ -675,13 +680,35 @@ const HARVESTED_CARDS = new Map(
   ),
 );
 
+// The archives read as a curriculum (docs/design.md, Lesson posts): each part of the
+// course on a page takes its name as a heading over its cards, as on the community
+// sitemap, and each card names its place in its part, the Introduction "Start here".
+const cardLesson = (href) => LESSONS.find(([slug]) => href === `/community/${slug}/`);
+const cardPart = (card) => {
+  const lesson = cardLesson(cardHref(card));
+  return lesson ? PARTS[lesson[2]].name : "Also in the community";
+};
+const cardPlace = (href) => {
+  const lesson = cardLesson(href);
+  if (!lesson) return "";
+  const place = lesson[0] === "introduction" ? "Start here" : `Lesson ${partOf(lesson[2]).indexOf(lesson) + 1}`;
+  return `<p class="post-card__place">${place}</p>\n`;
+};
+const withPartHeadings = (cards) =>
+  cards.flatMap((card, index) =>
+    index > 0 && cardPart(cards[index - 1]) === cardPart(card) ? [card] : [`<h2>${cardPart(card)}</h2>`, card],
+  );
+
 const archiveCard = ([href, title]) => {
   const card = HARVESTED_CARDS.get(href);
   if (!card) throw new Error(`archives: no card for ${href}; add one to an archive page by hand`);
   const description = read(fileForPathname(href)).match(/<meta name="description" content="([^"]*)"/)?.[1];
   if (!description) throw new Error(`${href}: no meta description for its card`);
   return card
-    .replace(/(<h2 class="post-card__title">)[\s\S]*?(<\/h2>)/, (_, open, close) => `${open}${title}${close}`)
+    .replace(
+      /(<div class="post-card__primary">\n)(?:<p class="post-card__place">[^<]*<\/p>\n)?<h[23] class="post-card__title">[\s\S]*?<\/h[23]>/,
+      (_, open) => `${open}${cardPlace(href)}<h3 class="post-card__title">${title}</h3>`,
+    )
     .replace(/(<div class="post-card__secondary">\n<p>)[\s\S]*?(<\/p>)/, (_, open, close) => `${open}${description}${close}`);
 };
 
@@ -689,8 +716,31 @@ const withArchiveCards = (name, html) => {
   const config = PAGINATED_ARCHIVES.get(name);
   if (!config) return html;
   if (!ARCHIVE_CARDS_PATTERN.test(html)) throw new Error(`${name}: missing the archive cards`);
-  const cards = CARD_ORDER.slice((config[1] - 1) * CARDS_PER_PAGE, config[1] * CARDS_PER_PAGE).map(archiveCard);
-  return html.replace(ARCHIVE_CARDS_PATTERN, () => `<div class="archive-cards">\n${cards.join("\n")}\n</div>`);
+  const cards = CARD_ORDER.slice(ARCHIVE_PAGE_STARTS[config[1] - 1], ARCHIVE_PAGE_STARTS[config[1]]).map(archiveCard);
+  return html.replace(ARCHIVE_CARDS_PATTERN, () => `<div class="archive-cards">\n${withPartHeadings(cards).join("\n")}\n</div>`);
+};
+
+// The hub is the course's front door (docs/design.md, Lesson posts): the first page of
+// each archive maps the course, its parts in order, each with its place and count by its
+// name and linked to its first lesson, the Introduction first. It is set as a module's
+// lesson list (module-lessons), its place and name as the lesson links' label and title.
+const COURSE_MAP_PATTERN = /<nav class="course-map module-lessons"[\s\S]*?<\/nav>\n/;
+const courseMap = () => `<nav class="course-map module-lessons" aria-label="The course">
+<ol>
+${Object.entries(PARTS)
+  .map(([key, { name, opener }]) => {
+    const [place, title] = key === "course" ? ["Start here", name] : name.split(": ");
+    return `<li><a href="/community/${opener}/"><span class="page-nav__label">${place} · ${partOf(key).length} lessons</span> <span class="page-nav__title">${title}</span></a></li>`;
+  })
+  .join("\n")}
+</ol>
+</nav>
+`;
+const withCourseMap = (name, html) => {
+  const without = html.replace(COURSE_MAP_PATTERN, "");
+  if (PAGINATED_ARCHIVES.get(name)?.[1] !== 1) return without;
+  if (!without.includes('\n<div class="archive-cards">')) throw new Error(`${name}: missing the archive cards`);
+  return without.replace('\n<div class="archive-cards">', () => `\n${courseMap()}<div class="archive-cards">`);
 };
 
 // The note to webmasters on the owner pages was one sentence kept by hand on 15
@@ -868,6 +918,27 @@ const withHeadingAnchors = (name, html) => {
   });
 };
 
+// A long lesson's contents (docs/design.md, Lesson posts): on a lesson of four sections
+// or more, a short list after its opening, just before its first section, links each h2
+// by the id the anchors above give it. A module's opener has none: its list of lessons
+// follows its lede.
+const PAGE_CONTENTS_PATTERN = /<nav class="page-contents"[\s\S]*?<\/nav>\n/;
+const SECTION_PATTERN = /<h2 id="([^"]+)"><a class="heading-anchor" href="#\1">([\s\S]*?)<\/a><\/h2>/g;
+const withPageContents = (name, html) => {
+  const without = html.replace(PAGE_CONTENTS_PATTERN, "");
+  if (lessonIndex(name) === -1 || MODULE_LESSONS_PATTERN.test(without)) return without;
+  const sections = [...(without.match(ARTICLE_BODY_PATTERN)?.[2] ?? "").matchAll(SECTION_PATTERN)];
+  if (sections.length < 4) return without;
+  const contents = `<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+${sections.map(([, id, title]) => `<li><a href="#${id}">${title}</a></li>`).join("\n")}
+</ul>
+</nav>
+`;
+  return without.replace(sections[0][0], (first) => `${contents}${first}`);
+};
+
 // Depth passages open with their title ("The rule behind the examples", "Where it
 // bends"), which the Introduction names; as a labelled aside each is named where
 // it sits.
@@ -949,6 +1020,7 @@ const routeTransforms = Object.freeze([
   withArchiveContext,
   withArchiveCards,
   withArchivePagination,
+  withCourseMap,
   withCargoPostRepairs,
   withCommentsNotice,
   withLessonNav,
@@ -966,6 +1038,7 @@ const routeTransforms = Object.freeze([
   withTrimmedCategory,
   withLessonHeadings,
   withHeadingAnchors,
+  withPageContents,
   withDepthPassages,
   withByline,
   withUpdatedByline,

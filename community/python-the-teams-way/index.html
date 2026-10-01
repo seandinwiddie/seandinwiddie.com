@@ -115,6 +115,19 @@
 </div> </header><!-- .entry-header -->
 <p>Python lets a program do almost anything from anywhere: change a global, read a file halfway through a calculation, shuffle with whatever seed the process happens to hold. The Sean Dinwiddie&rsquo;s Webmastery team gives most of that freedom up, gladly, for something better: the same inputs give the same outputs on every machine, and a failing test can say exactly which rule broke.</p>
 <p>Eight habits get it there. Each comes with a small example that runs on the standard library and pytest.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#one-layout-run-as-modules">One layout, run as modules</a></li>
+<li><a href="#a-locked-environment">A locked environment</a></li>
+<li><a href="#pure-functions-the-same-answer-every-time">Pure functions, the same answer every time</a></li>
+<li><a href="#frozen-data">Frozen data</a></li>
+<li><a href="#json-as-the-one-authority-for-config">JSON as the one authority for config</a></li>
+<li><a href="#contracts-that-report-every-fault">Contracts that report every fault</a></li>
+<li><a href="#tests-named-for-the-behavior">Tests named for the behavior</a></li>
+<li><a href="#one-script-verifies-everything">One script verifies everything</a></li>
+</ul>
+</nav>
 <h2 id="one-layout-run-as-modules"><a class="heading-anchor" href="#one-layout-run-as-modules">One layout, run as modules</a></h2>
 <p>Code is grouped by what it does, one package per domain, and nothing sits loose at the top of the repository. Configuration and data live beside the package, never inside it:</p>
 <pre class="code-block" tabindex="0"><code>requirements.in      what the project uses, unpinned

@@ -114,6 +114,15 @@
 </div> </header><!-- .entry-header -->
 
 <p>Event streams and reactive programming are two core ideas of Functional Reactive Programming (FRP): what happens, in order, and how a program answers it without updating values by hand. Take them one at a time, then see how they fit together.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#1-event-streams">1. Event streams</a></li>
+<li><a href="#2-reactive-programming">2. Reactive programming</a></li>
+<li><a href="#3-integration-in-frp">3. Integration in FRP</a></li>
+<li><a href="#4-example-use-cases">4. Example use cases</a></li>
+</ul>
+</nav>
 <h2 id="1-event-streams"><a class="heading-anchor" href="#1-event-streams">1. Event streams</a></h2>
 <p>An event stream is a sequence of events, or changes in data, over time. The events can come from anywhere: a user&rsquo;s interaction, a sensor, a network response.</p>
 <p>In Redux Toolkit, the event stream is the sequence of dispatched actions, and the store’s state is that sequence folded through the reducer; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#model-events-and-transitions-with-a-slice">Redux Standard Patterns and Functional Programming</a> models those events in a slice.</p>

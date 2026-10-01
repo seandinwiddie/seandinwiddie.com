@@ -1005,22 +1005,21 @@ body.service-route { background: #fafafa; }
   text-decoration: none;
 }
 .content-page .pagination {
+  justify-content: flex-start; /* earlier pages left, later right (round 3) */
   padding: 1.25rem 0 0;
   list-style: none;
 }
-/* A lesson's next lesson sits on the right edge, on one row or two (docs/design.md). */
-.family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .page-nav a[rel="next"] { margin-left: auto; }
-@media (min-width: 30.0625rem) {
-  .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .page-nav a[rel="next"] { text-align: right; }
-}
+.pagination [rel="next"] { margin-left: auto; }
+/* A lesson's next lesson sits on the right (docs/design.md, Lesson posts). */
+@media (min-width: 30.0625rem) { .page-nav[aria-label="Lessons"] a[rel="next"] { text-align: right; } }
 .pagination li { margin: 0; }
+/* The lessons stand a group's room under the text above them (docs/design.md). */
 .archive-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.6rem;
+  margin-top: 2rem;
 }
-/* The lessons stand a group's room under the text above them (docs/design.md). */
-.family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .archive-cards { margin-top: 2rem; }
 .post-card {
   height: 100%;
   overflow: hidden;
@@ -1043,10 +1042,11 @@ body.service-route { background: #fafafa; }
 .post-card__media img { width: 100%; height: 100%; border-radius: 0; object-fit: cover; }
 .post-card__primary { padding: 1.1rem 1.2rem 0; }
 .post-card__title { margin: 0 !important; font-size: 1.25rem !important; }
+/* A part's name heads its cards; a card names its place (post design round 3). */
+.archive-cards > h2 { grid-column: 1 / -1; margin: 1.65rem 0 -0.35rem; }
+.post-card__primary p { margin: 0 0 0.3rem; color: var(--muted); font-size: 0.875rem; }
 .post-card__secondary { padding: 0.8rem 1.2rem 1.25rem; }
-.post-card__secondary p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
-/* A lesson card's description takes the small step (docs/design.md). */
-.family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .post-card__secondary p { font-size: 0.9em; }
+.post-card__secondary p { margin: 0; color: var(--muted); font-size: 0.9em; line-height: 1.65; } /* the small step */
 .sitemap-list > ul { columns: 2; column-gap: 2rem; }
 .sitemap-list > ul > li { break-inside: avoid; }
 .sitemap-list ul ul { columns: 1; }
@@ -1560,11 +1560,9 @@ main:focus { outline: none; }
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .notice pre { margin-inline: 0; }
 }
 
-/* Lesson posts (docs/design.md): post design round 1. Classes that only the sync and
-   site.js put on the lessons stand alone; the rest hang from the reading pages' hook,
-   so Sean's cut-sheet keeps its own settings. */
-/* The banner: the lesson's place, one tick per lesson in its module, then the course's
-   preface, quiet, closed by a hairline. */
+/* Lesson posts (docs/design.md). Classes only the sync and site.js put on a lesson stand
+   alone; the rest hang from the reading pages' hook, so Sean's cut-sheet keeps its own. */
+/* The banner: the lesson's place, a tick per lesson in its module, the preface, a hairline. */
 .notice[aria-label="About these lessons"] {
   margin: 0 0 1.75rem;
   padding: 0 0 1.5rem;
@@ -1592,8 +1590,7 @@ main:focus { outline: none; }
   -webkit-mask: repeating-linear-gradient(90deg, #000 0 0.95rem, transparent 0 1.25rem);
   mask: repeating-linear-gradient(90deg, #000 0 0.95rem, transparent 0 1.25rem);
 }
-/* The byline on one quiet line; the first paragraph is the lede; prose a little closer
-   in its lines and wider between sections. */
+/* One quiet byline; the first paragraph is the lede; prose closer in, sections wider. */
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > header {
   display: flex;
   flex-wrap: wrap;
@@ -1602,7 +1599,7 @@ main:focus { outline: none; }
   margin: 0 0 2rem;
 }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > header .page-meta { margin: 0; }
-.family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > header .page-meta:has(.byline-avatar) { order: -1; }
+.page-meta:has(.byline-avatar) { order: -1; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .page-meta a:not(:hover) { color: inherit; text-decoration: none; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > header + p { margin-bottom: 1.75rem; font-size: 1.2em; line-height: 1.65; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) { line-height: 1.75; }
@@ -1615,8 +1612,8 @@ main:focus { outline: none; }
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-/* Code in its own size and leading, a shadow at an edge with more code past it, and a
-   band on top for the Copy button (site.js), set before the script runs. */
+/* Code at its own size, a shadow at an edge more code runs past, a band for the Copy
+   button (site.js), set before the script runs. */
 pre.code-block {
   padding: 1.25rem 1.5rem;
   font-family: var(--font);
@@ -1651,7 +1648,7 @@ pre.code-block code { font-size: inherit; }
   user-select: none;
 }
 .code-copy:hover { background: #343d52; }
-/* A depth passage's cursive label hangs in the margin on a wide screen, a master's note. */
+/* On a wide screen a depth passage's cursive label hangs in the margin. */
 @media (min-width: 75rem) {
   .notice.depth { position: relative; }
   .notice.depth > p:first-child > strong:first-child {
@@ -1664,8 +1661,7 @@ pre.code-block code { font-size: inherit; }
     text-align: right;
   }
 }
-/* A depth passage's paper is a few points warmer than a notice's: note paper for the
-   master's note (post design round 1's color step). */
+/* A depth passage's note paper, a few points warmer than a notice's (round 1's color step). */
 .notice.depth { background: #f7f6f2; }
 
 /* The previous and next lessons, a pair; a module's lessons, its table of contents. */
@@ -1678,7 +1674,6 @@ pre.code-block code { font-size: inherit; }
 }
 .page-nav[aria-label="Lessons"] a { padding: 0.9rem 1.1rem 1rem; border-radius: 0.45rem; line-height: 1.5; }
 .page-nav[aria-label="Lessons"] a:hover { border-color: currentColor; }
-.family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .page-nav a[rel="next"] { margin-left: 0; }
 .page-nav[aria-label="Lessons"] a[rel="next"]:only-child { grid-column: -2; }
 .page-nav__label { display: block; margin-bottom: 0.3rem; color: var(--muted); font-size: 0.875em; }
 .page-nav__title { display: block; font-weight: 700; }
@@ -1687,6 +1682,10 @@ pre.code-block code { font-size: inherit; }
 .module-lessons li:first-child { border-top: 1px solid var(--line); }
 .module-lessons li::marker { font-variant-numeric: tabular-nums; }
 .module-lessons a:not(:hover) { text-decoration: none; }
+/* The hub's first page maps the course, set as a module's list (post design round 3). */
+.course-map ol { padding: 0; list-style: none; }
+.course-map a { display: grid; }
+@media (min-width: 52.0625rem) { .course-map a { grid-template-columns: 24ch 1fr; align-items: baseline; } }
 /* A diagram (docs/design.md, Diagrams): a 360-unit grid drawn no wider than 30rem in a
    hairline frame across the column, its caption under it; its parts take the page's
    ink, muted grey and violet by class. */
@@ -1698,9 +1697,9 @@ figure.diagram { margin: 2.25rem 0; }
   padding: 1.25rem max(1.25rem, (100% - 30rem) / 2);
   border: 1px solid var(--line);
   border-radius: 0.45rem;
-  background: #f7f6f2; /* the plate: a depth passage's note paper (post design round 2) */
+  background: #f7f6f2; /* the plate: a depth passage's note paper (round 2) */
 }
-.diagram figcaption { margin-top: 0.75rem; font-size: 0.875em; line-height: 1.6; text-align: left; }
+.diagram figcaption { max-width: 66ch; margin-top: 0.75rem; font-size: 0.875em; line-height: 1.6; text-align: left; }
 .diagram figcaption code { color: #171717; } /* AAA on its chip (round 2) */
 .diagram text { fill: var(--ink); font-size: 14px; text-anchor: middle; dominant-baseline: central; }
 .diagram .note { fill: var(--muted); font-size: 13px; }
@@ -1708,10 +1707,10 @@ figure.diagram { margin: 2.25rem 0; }
 .diagram .path { stroke: var(--primary); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .diagram .node { fill: var(--paper); stroke: var(--muted); }
 .diagram .node.on { stroke: var(--primary); stroke-width: 2.5; }
-/* Lines keep their pixel weight at every width (post design round 2). */
+/* Lines keep their pixel weight at any width (round 2). */
 .diagram :is(line, rect, circle, ellipse, path, polyline, polygon) { vector-effect: non-scaling-stroke; }
-/* A phone: the lede a smaller step; code and diagrams to the screen's edges (code at
-   46 characters a line, where it showed 36), except inside a depth passage. */
+/* A phone: the lede a step smaller; code (46 characters a line, from 36) and diagrams
+   to the screen's edges, except in a depth passage. */
 @media (max-width: 30rem) {
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > header + p { font-size: 1.125em; }
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > h2, .module-lessons { margin-top: 2.75rem; }
@@ -1728,8 +1727,8 @@ figure.diagram { margin: 2.25rem 0; }
   .code-frame { margin-inline: -8.75rem; }
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) :is(.code-frame > pre, .notice .code-frame) { margin-inline: 0; }
 }
-/* Post design round 2 (docs/design.md, Lesson posts): a lesson's h2 links to itself (the
-   sync renders it), a "#" in the margin on hover, focus or target, clear of the menu. */
+/* A lesson's h2 links to itself (docs/design.md, Lesson posts): a "#" in the margin on
+   hover, focus or target, clear of the menu. */
 h2:has(> .heading-anchor) { position: relative; scroll-margin-top: 7.5rem; }
 .heading-anchor, .heading-anchor:hover { color: inherit; text-decoration: none; }
 .heading-anchor::before {
@@ -1742,11 +1741,19 @@ h2:has(> .heading-anchor) { position: relative; scroll-margin-top: 7.5rem; }
   color: var(--muted);
   font-size: 0.75em;
   font-weight: 400;
-  line-height: 1.8; /* the heading's 1.35 at 0.75 of its size: beside its first line */
+  line-height: 1.8; /* 1.35 at 0.75 of the size: beside the first line */
   opacity: 0;
 }
 .heading-anchor:is(:hover, :focus-visible)::before, :target > .heading-anchor::before { opacity: 1; }
-/* A lesson closes on a quiet line under a hairline, as the note to webmasters is set. */
+/* A long lesson's contents, before its first section: small and quiet (post design round 3). */
+.page-contents { margin: 0 0 2rem; color: var(--muted); font-size: 0.875em; line-height: 1.6; }
+.page-contents p { margin: 0 0 0.25rem; color: var(--ink); }
+.page-contents ul { margin: 0; padding: 0; list-style: none; }
+.page-contents li { margin: 0; break-inside: avoid; }
+.page-contents a { display: block; padding: 0.15rem 0 0.15rem 3ch; text-indent: -3ch; }
+.page-contents a:not(:hover) { color: inherit; text-decoration: none; }
+@media (min-width: 52.0625rem) { .page-contents ul:has(> :nth-child(8)) { columns: 2; column-gap: 2rem; } }
+/* A lesson closes on a quiet line under a hairline, set as the note to webmasters. */
 .family-community aside:is([aria-label="Working with the team"], [aria-label="Questions"]) {
   margin-top: 2.5rem;
   padding: 1.5rem 0 0;
