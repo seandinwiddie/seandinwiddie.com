@@ -187,9 +187,9 @@ totalCents(events.reduce(next, [])) // 6200</code></pre>
 <p>Learned in that order, each reads as a convenience rather than magic, and a reducer that misbehaves can be run by hand on a list of events. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> starts from the same place.</p></aside>
 <p>Every step above lands somewhere in one picture:</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="pure-core-title pure-core-desc" viewBox="0 0 360 200">
-<title id="pure-core-title">Three pure pieces inside one boundary</title>
-<desc id="pure-core-desc">A frame labelled the edge, where requests, timers and every other effect wait, surrounds an inner frame labelled pure core. Inside the core, three boxes joined by arrows: event, what happened; state, a fold; value, derived.</desc>
+<svg role="img" aria-labelledby="master-the-fundamentals-of-frp-in-software-development-pure-core-title master-the-fundamentals-of-frp-in-software-development-pure-core-desc" viewBox="0 0 360 200">
+<title id="master-the-fundamentals-of-frp-in-software-development-pure-core-title">Three pure pieces inside one boundary</title>
+<desc id="master-the-fundamentals-of-frp-in-software-development-pure-core-desc">A frame labelled the edge, where requests, timers and every other effect wait, surrounds an inner frame labelled pure core. Inside the core, three boxes joined by arrows: event, what happened; state, a fold; value, derived.</desc>
 <g class="path"><line x1="116" y1="102" x2="142" y2="102"/><line x1="136.8" y1="99" x2="142" y2="102"/><line x1="136.8" y1="105" x2="142" y2="102"/><line x1="218" y1="102" x2="244" y2="102"/><line x1="238.8" y1="99" x2="244" y2="102"/><line x1="238.8" y1="105" x2="244" y2="102"/></g>
 <rect class="node" x="10" y="6" width="340" height="188" rx="4"/>
 <rect class="node on" x="28" y="44" width="304" height="128" rx="4"/>

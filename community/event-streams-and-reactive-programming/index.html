@@ -118,9 +118,9 @@
 <p>An event stream is a sequence of events, or changes in data, over time. The events can come from anywhere: a user&rsquo;s interaction, a sensor, a network response.</p>
 <p>In Redux Toolkit, the event stream is the sequence of dispatched actions, and the store’s state is that sequence folded through the reducer; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#model-events-and-transitions-with-a-slice">Redux Standard Patterns and Functional Programming</a> models those events in a slice.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="fold-title fold-desc" viewBox="0 0 360 250">
-<title id="fold-title">State as a fold of the actions</title>
-<desc id="fold-desc">A column of states, from initialState through state 1, state 2 and state 3, joined by arrows. Into each arrow comes an action, through the reducer: an order placed, started, then picked up. A note says the same actions in the same order give the same state.</desc>
+<svg role="img" aria-labelledby="event-streams-and-reactive-programming-fold-title event-streams-and-reactive-programming-fold-desc" viewBox="0 0 360 250">
+<title id="event-streams-and-reactive-programming-fold-title">State as a fold of the actions</title>
+<desc id="event-streams-and-reactive-programming-fold-desc">A column of states, from initialState through state 1, state 2 and state 3, joined by arrows. Into each arrow comes an action, through the reducer: an order placed, started, then picked up. A note says the same actions in the same order give the same state.</desc>
 <g class="edge"><line x1="128" y1="56" x2="270" y2="56"/><line x1="264.8" y1="53" x2="270" y2="56"/><line x1="264.8" y1="59" x2="270" y2="56"/><line x1="128" y1="112" x2="270" y2="112"/><line x1="264.8" y1="109" x2="270" y2="112"/><line x1="264.8" y1="115" x2="270" y2="112"/><line x1="128" y1="168" x2="270" y2="168"/><line x1="264.8" y1="165" x2="270" y2="168"/><line x1="264.8" y1="171" x2="270" y2="168"/></g>
 <g class="path"><line x1="276" y1="44" x2="276" y2="68"/><line x1="279" y1="62.8" x2="276" y2="68"/><line x1="273" y1="62.8" x2="276" y2="68"/><line x1="276" y1="100" x2="276" y2="124"/><line x1="279" y1="118.8" x2="276" y2="124"/><line x1="273" y1="118.8" x2="276" y2="124"/><line x1="276" y1="156" x2="276" y2="180"/><line x1="279" y1="174.8" x2="276" y2="180"/><line x1="273" y1="174.8" x2="276" y2="180"/></g>
 <rect class="node" x="200" y="12" width="152" height="32" rx="4"/>
