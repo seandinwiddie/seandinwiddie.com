@@ -2,6 +2,99 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 16: October 1, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 8 | 9.5 | |
+| Webmaster | 8.5 | 9.5 | 9.5 |
+| Copywriter | 8.5 | 9.5 | 9.5 |
+| Senior CTO | 8.5 | 9.5 | 9.5 |
+
+These scores read the site after pass 15. Every reviewer puts the focus pages at 9.5, and the webmaster, the copywriter and the CTO put the community at 9.5. The whole site stays at 8 to 8.5 because of what Sean holds: `/about/`, `/prices/` and the Secure Payment link, all reached from the menu.
+
+### The objections that matter most
+
+- **Owner:** nothing stops them reaching out. What slowed them:
+  - Klamath Falls' only phone and email sat under the paid consultation;
+  - `/contact/`'s terms and the homepage's public-office paragraph were walls of text;
+  - two price lines didn't say "one-time";
+  - `/marketing/`'s description read as if ads could be bought alone;
+  - the hubs ended on the webmaster note;
+  - public offices were named late on the homepage.
+- **Webmaster:**
+  - the webmaster's duty to fix their own defects is never stated;
+  - a provider's own 5xx wasn't ruled out of `Unavailable`;
+  - the booking example used two forms of one step;
+  - the Introduction's second half;
+  - "Stakeholder" headings.
+- **CTO:**
+  - the same points;
+  - Defining User Stories contradicted Writing Clear on dependencies;
+  - Discover's item 10 repeated two others;
+  - the `/design/` H1 is Sean's wording, like `/marketing/` and `/development/`;
+  - "Fallibility" is Sean's own label.
+
+### Sean's directions this pass
+
+None new. Pass 16 worked within the standing ones:
+- **Held off the site:** the webmaster's duty to fix their own defects. A public page that owners read would advertise fixes and invite scope creep, so it goes into counsel's written subcontract, like the five-day pay term. The copywriter also declined a neutral line about what the job covers after delivery, for the same reason.
+- **Sean's wording, left as he wrote it:**
+  - the `/design/` H1;
+  - "Fallibility", with the meals and wardrobe lines.
+
+### Tweaks applied
+
+- **Focus pages:**
+  - `/contact/` lists the three ways to buy, each with its own figure and payment line, and the year names what it adds;
+  - the homepage names public offices in its "Serving…" line, and its public-office paragraph is split, with the review sentence leading with the review and its price;
+  - Klamath Falls puts the phone and email under "Three things to say", with the consultation after it;
+  - Redding's owner and public-office paragraphs are apart;
+  - On-site SEO and CRO say "a one-time flat fee";
+  - `/marketing/`'s description says ads run within the monthly engagement;
+  - the four hubs end with the inquiry line, the phone and the email above the webmaster note, set apart;
+  - `/service/`'s description is plain;
+  - the ads page's description says "a local business".
+- **Accessibility:**
+  - seven service pages' process steps are real ordered lists, with the look kept;
+  - the Course Outline's modules are h2s;
+  - h2 subheads on Defining User Stories and Identifying User Needs.
+- **Lessons:**
+  - the four Prioritize items each say one thing;
+  - "stakeholder", "end users" and "crucial" are gone;
+  - Introduction to BDD's benefits are four outcomes;
+  - Defining agrees with Writing Clear;
+  - Discover's Live Data (`pollingInterval`, `onCacheEntryAdded`);
+  - the booking example's steps match one cucumber-js step definition (checked in cucumber-js 13);
+  - the capstone names `ConnectionFailure` and `ConnectionTimeout` as the only `Unavailable`, and a provider's 5xx is retried like a timeout;
+  - Identifying User Needs and Capturing come from the owner's shop.
+- **The sync:** "Joining the team"'s Updated byline renders from its `dateModified`.
+
+### Waiting
+
+- **Pass 17:**
+  - h2 subheads on Writing BDD Scenarios and Practical Exercises;
+  - the remaining "ensure" and "essential" in Module 1–2;
+  - a few items in Identifying, Capturing and Collaborative;
+  - "small operations" on `/automation/`.
+- **Sean's:**
+  - the Secure Payment link;
+  - `/about/`, `/prices/` and `/examples/`;
+  - the `/design/`, `/marketing/` and `/development/` H1s;
+  - "Fallibility";
+  - how work reaches a webmaster, the share count and declining a job;
+  - whether peer review is paid;
+  - the offer page's firm name;
+  - the nav landmark on his pages;
+  - memberships for administrators or webmasters;
+  - the KLounge, "since 2010" and Medford;
+  - the testimonial names;
+  - Training's $600;
+  - the HHS 504 dates.
+- **Counsel:**
+  - the five-day pay term;
+  - the webmaster's defects duty.
+
 ## Pass 15: October 1, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |

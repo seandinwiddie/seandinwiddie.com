@@ -114,18 +114,18 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>In the world of software development, understanding and capturing user requirements effectively is a fundamental skill. User requirements form the basis for creating software that aligns with the needs and expectations of your users. This lesson sets out the techniques for it, and where each one fits.</p>
+<p>A requirement is a need written down so that someone can check it: the owner before the scope is signed, and a test once the work is built. This lesson sets out the techniques for capturing requirements, and where each one fits.</p>
 <h2>1. Effective Communication</h2>
 <p>The cornerstone of capturing user requirements is effective communication. To understand what your users truly need, you must engage in open and clear communication. This involves active listening, asking about what has happened rather than what might, and keeping the conversation going for the length of the job.</p>
 <h2>2. The Owner, the Users and the Webmasters</h2>
 <p>On a Sean Dinwiddie’s Webmastery job, requirements come from the owner who signs the written scope, the people who use the result, such as the counter staff, and the webmasters on the job. Each sees what the others miss, so each is asked.</p>
 <h2>3. Empathy and User-Centric Thinking</h2>
-<p>Empathy is a powerful tool in capturing user requirements. Put yourself in the user’s shoes and try to experience their needs and pain points. By adopting a user-centric mindset, you can better grasp what will truly benefit the user.</p>
+<p>Write each requirement from the side of the person it serves, in their words rather than the software&rsquo;s. &ldquo;A customer can see what has sold out today&rdquo; is a requirement; &ldquo;add a stock field to the menu&rdquo; is already a design, and it may not be the one that serves them.</p>
 <h2>4. Elicitation Techniques</h2>
 <p>There are various techniques for eliciting user requirements. These can include:</p>
 <ul>
 <li>
-<strong>Interviews:</strong> One-on-one or group interviews with users or stakeholders to gather information.</li>
+<strong>Interviews:</strong> One-on-one or group conversations with the owner, the people who use the result and the staff who serve them.</li>
 <li>
 <strong>Surveys:</strong> Distributing surveys to collect user feedback and preferences.</li>
 <li>
@@ -134,11 +134,11 @@
 <strong>Use Cases:</strong> Creating detailed use cases to understand how the software will be used.</li>
 </ul>
 <h2>5. Documenting Requirements</h2>
-<p>Once you’ve gathered user requirements, it’s crucial to document them systematically. On the Sean Dinwiddie’s Webmastery team, the method is User Stories, named in the written scope. A User Story typically follows the template: “As a [user], I want [an action] so that [benefit/value].” This structure helps in maintaining clarity and ensures that the user’s perspective is at the forefront.</p>
+<p>Requirements are written down where everyone on the job reads them. On the Sean Dinwiddie’s Webmastery team, the method is User Stories, named in the written scope. A User Story typically follows the template: “As a [user], I want [an action] so that [benefit/value].” Its first words name the person it serves, so each story starts from the user&rsquo;s side.</p>
 <h2>6. Prioritization</h2>
 <p>Not all requirements are of equal importance. Prioritization sorts what was gathered into required and optional work, and the written scope lists the two apart, so the owner sees what each adds, and what it costs, before choosing.</p>
 <h2>7. Validation and Feedback</h2>
-<p>After capturing user requirements, it’s essential to validate them. This can be done through user acceptance testing, where users try out the software and provide feedback. Feedback is valuable for refining and improving requirements.</p>
+<p>Read each requirement back to the people it came from before the scope is signed, and correct it in their words. After the build, the owner checks the work against its acceptance criteria. A trial run with the people who use it, such as the counter staff on a quiet afternoon, shows whether each requirement was the right one, and one that wasn&rsquo;t becomes a new story, scoped as a change.</p>
 <h2>8. Iteration</h2>
 <p>Capturing user requirements is not a one-time event. It’s an ongoing process that involves continuous iteration. As user needs evolve, so should your understanding of their requirements. Be prepared to adapt and refine your requirements as the project progresses. When a requirement changes, the code follows it; the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#refactoring-guidelines">Functional Programming Maintenance Strategy</a> keeps that change small, one pure function at a time.</p>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Every technique above ends in the same place: a line in the written scope that someone can check. Most requirements are one person&rsquo;s want, and they become stories. Some belong to no one person: the menu reads on a 320-pixel-wide phone without zooming sideways, and every control works from a keyboard. Those are constraints, written once in the scope and met by every story, and each is worded so it can fail: &ldquo;meets WCAG 2.1 AA on the templates the scope names&rdquo; can fail a review, and &ldquo;accessible&rdquo; can&rsquo;t. Priority becomes a line too. The scope sorts each requirement into required or optional for this job, so a list on which everything is high priority never reaches it, and an optional line the owner later wants is quoted and approved as a change, the way <a href="/community/collaborative-sessions-to-review-and-refine-user-stories/">Collaborative Sessions to Review and Refine User Stories</a> handles any addition.</p></aside>

@@ -117,7 +117,7 @@
 <p>Applying Functional Reactive Programming (FRP) concepts to software modules puts its principles to work in modules that are more responsive, maintainable, and user-centric. Here are steps to apply FRP to software modules:</p>
 <ol>
 <li>
-<strong>Identify Reactive Components:</strong> Identify the components of your software module that can benefit from FRP. These may include user interfaces, event-driven functionality, real-time data updates, and asynchronous operations.</li>
+<strong>Find the Events:</strong> List what happens in the module, such as an item added, an order placed or a slot booked, and what each screen shows because of it. The steps below turn each event into an action and what each screen shows into state and selectors.</li>
 <li>
 <strong>Choose the State Layer:</strong> In custom apps, the Sean Dinwiddie’s Webmastery team keeps a module’s state in Redux Toolkit: slices define each part of the state and the pure reducers that change it, RTK Query endpoints fetch and cache server data, and the React views stay minimal. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/">Redux Toolkit and Functional Programming</a> covers the foundation.</li>
 <li>
