@@ -2,6 +2,139 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 14: October 1, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 8 | 9 | |
+| Webmaster | 8.5 | 9 | 9 |
+| Copywriter | 8.5 | 9 | 9 |
+| Senior CTO | 8.5 | 9 | 9 |
+
+These scores read the site after pass 13. The CTO expects 9, 9.5 and 9. The copywriter expects 8.5, 9.5 and 9.5. It holds the whole site at 8.5 until Sean decides what is his: the Secure Payment link, `/about/`, `/examples/` and the facts below.
+
+### The objections that matter most
+
+- **Owner:**
+  - the annual engagement never said it can be ended for convenience;
+  - the inquiry line asked owners to price their own job;
+  - the top bar's "💳 Secure Payment" goes to a personal PayPal.me;
+  - "delivery and support" promised more than the terms;
+  - the $2,000 menu page named no deliverables;
+  - "we'll tell you that instead" and "Let's talk about your website" read as free opinions;
+  - the brand-identity article;
+  - the homepage's repeats;
+  - Redding's first two steps;
+  - imported words ("holiday", "the till").
+- **Webmaster:**
+  - how work reaches a webmaster and who sets the share count;
+  - whether peer review is paid;
+  - when the 70% is paid;
+  - the Introduction promising topics no lesson teaches;
+  - Module 3's closings bringing back "asynchronous data streams";
+  - BDD and Unit Testing contradicting itself;
+  - duplicated openers;
+  - BDD Testing Framework's wish list;
+  - the offer page's keyword list;
+  - the capstone promising a 503 its `Charge` type couldn't produce, with no column for the charge id.
+- **CTO:**
+  - the same points;
+  - `orderNotice`'s chained ternaries;
+  - "production" as a place to run scenarios;
+  - Introduction to BDD's split list;
+  - the View lesson's shared photo.
+
+  The author and category archives were already noindex, and are now guarded.
+
+### Sean's directions this pass
+
+None new. Pass 14 worked within the standing ones:
+- **The fee follows the work** (senior CTO, `docs/terms.md`). While Sean covers for a webmaster who is away, that month's 70% goes to whoever delivers the work.
+- **The five-day pay term** stays off the site until counsel answers.
+- **The inquiry line keeps "serious".** The CTO's draft dropped it, and the coordinator kept it: "Sean answers every serious inquiry, one that says those three things".
+- **The brand-identity article is held.** It is Sean's piece for Adobe, so the copywriter's two light tweaks to it were held.
+- **Held for Sean:**
+  - how work reaches a webmaster, who sets the share count, and whether a webmaster can decline a job;
+  - whether peer review is paid;
+  - the Secure Payment link.
+
+### Tweaks applied
+
+- **The capstone:**
+  - `Charge` gains `Unavailable`, answered 503 with the reason `payments-unavailable`;
+  - `orders` gets a `charge_id` column;
+  - card fields come from the provider's own script, and Endpoints at the Boundary's second backend is a CMS or a search service.
+- **The View Stays Minimal:**
+  - `orderNotice` chooses by key: a table over every request status and a `Map` of the API's reasons;
+  - a unit test covers every branch (type-checked; 17 tests run against RTK 2.13 and React 19.3);
+  - the lesson has its own photo.
+- **Depth passages:**
+  - BDD and Unit Testing;
+  - Writing Clear and Concise User Stories (INVEST);
+  - Introduction to BDD (the owner's words, scope to code);
+  - User-Centric Design (the payer and the user, and WCAG).
+- **The sync:**
+  - h2 subheads on Capturing and Translating;
+  - a guard that keeps repeated archive pages noindex.
+- **The Course Outline's Module 4** matches its five lessons.
+- **The Module 2 and 3 openers** keep a map instead of duplicates.
+- **The Introduction:**
+  - cut to what the course teaches;
+  - "never just about the money";
+  - one list instead of three.
+- **The Module 1–3 bodies**, a few items per lesson:
+  - overclaims against their own depth passages;
+  - closings that repeat the next opener;
+  - the owner, the counter staff and the written scope in place of product managers;
+  - Module 3's stream framing in the events, fold and selectors vocabulary;
+  - BDD Testing Framework never runs against production.
+- **Focus pages:**
+  - the annual engagement can be ended for convenience (`/contact/`, the homepage, Klamath Falls, Redding);
+  - support after handover under the monthly engagement;
+  - the inquiry line asks which example the job comes closest to;
+  - the menu page's deliverables, with print artwork kept apart;
+  - the paid consultation on `/development/apps/` and Klamath Falls ("Meeting Sean");
+  - real h3s on the hubs;
+  - Redding and `/local/` in plain words, each town card saying how owners meet Sean;
+  - "vacation", "the register" and "around";
+  - the public-office paragraph moved to the end of "Why work with us";
+  - continuity on the homepage;
+  - "the same for a kiosk and a county office" on `/contact/`.
+- **Recruiting:**
+  - the fee is never lowered to win a job;
+  - additions are quoted and paid, so none is unpaid work;
+  - the fee follows the work.
+- **The offer page:**
+  - the stack follows the project;
+  - its register.
+
+  The firm name and the tier lines stay.
+
+### Waiting
+
+- **Pass 15:**
+  - h2 subheads on Writing Clear and on User-Centric Design;
+  - depth passages in Introduction to FRP, Writing BDD Scenarios for Software Modules and Welcome to Module 1;
+  - the Module 1–3 bodies;
+  - the rest of the Introduction's shorthand;
+  - five shared card photos;
+  - optionally, an API scenario for the provider-down path;
+  - the homepage's two service lists (the cards are a shared block).
+- **Sean's:**
+  - the Secure Payment link;
+  - how work reaches a webmaster, the share count and declining a job;
+  - whether peer review is paid;
+  - the offer page's firm name;
+  - the nav landmark on his pages;
+  - memberships for administrators or webmasters;
+  - the KLounge;
+  - "since 2010";
+  - Medford;
+  - the testimonial names;
+  - `/about/` and `/examples/`;
+  - Training's $600;
+  - the prices page's floor.
+
 ## Pass 13: October 1, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |
