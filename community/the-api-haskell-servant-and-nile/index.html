@@ -133,7 +133,13 @@
     :&lt;|&gt; ReqBody '[JSON] NewOrder :&gt; PostCreated '[JSON] Order )</code></pre>
 <p>The type reads like the scenario it serves: for a signed-in user and one customer, list the orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
 <h2>2. Handlers stay thin</h2>
-<p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction: it reads what a decision needs, such as today&rsquo;s prices, lets the pure code decide, and writes the result. The client&rsquo;s total is for display; the API prices the order from its own catalog. The decisions, such as whether an order is valid and what it totals, live in plain functions with no database in sight, the same boundary Redux Toolkit keeps between reducers and RTK Query. The names below are the lesson&rsquo;s own:</p>
+<p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction:</p>
+<ol>
+<li>it reads what a decision needs, such as today&rsquo;s prices;</li>
+<li>it lets the pure code decide;</li>
+<li>it writes the result.</li>
+</ol>
+<p>The client&rsquo;s total is for display; the API prices the order from its own catalog. The decisions, such as whether an order is valid and what it totals, live in plain functions with no database in sight, the same boundary Redux Toolkit keeps between reducers and RTK Query. The names below are the lesson&rsquo;s own:</p>
 <pre class="code-block" tabindex="0"><code>server :: Pool Connection -&gt; Server OrdersAPI
 server pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
   where
@@ -155,7 +161,27 @@ withTenant pool user tenantId work = do
     Left err | notAMember err -&gt; throwError err403
              | otherwise      -&gt; liftIO (throwIO err)
     Right a -&gt; pure a</code></pre>
-<p>servant-auth doesn&rsquo;t refuse a request itself: it hands the server an <code>AuthResult</code>, and the last clause answers every route with 401 when the sign-in isn&rsquo;t valid, while <code>withTenant</code> answers 403 when Nile refuses the user. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
+<p>servant-auth doesn&rsquo;t refuse a request itself: it hands the server an <code>AuthResult</code>, and the last clause answers every route with 401 when the sign-in isn&rsquo;t valid, while <code>withTenant</code> answers 403 when Nile refuses the user.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="request-title request-desc" viewBox="0 0 360 314">
+<title id="request-title">One POST through the API</title>
+<desc id="request-desc">A request to place an order runs down a highlighted line: Auth checks the sign-in, withTenant names the tenant and the user, selectPrices reads today's prices, validateOrder decides, insertOrder writes, and the API answers 201 Created. The steps from withTenant to insertOrder run in one transaction. Three exits branch to the right: a sign-in that isn't valid answers 401, a user who isn't a member of the tenant answers 403, and an invalid order answers 422.</desc>
+<g class="edge"><line x1="192" y1="34" x2="293" y2="34"/><line x1="288.1" y1="30.6" x2="293" y2="34"/><line x1="288.1" y1="37.4" x2="293" y2="34"/><line x1="192" y1="104" x2="293" y2="104"/><line x1="288.1" y1="100.6" x2="293" y2="104"/><line x1="288.1" y1="107.4" x2="293" y2="104"/><line x1="192" y1="200" x2="293" y2="200"/><line x1="288.1" y1="196.6" x2="293" y2="200"/><line x1="288.1" y1="203.4" x2="293" y2="200"/></g>
+<g class="path"><line x1="104" y1="46" x2="104" y2="91"/><line x1="107.4" y1="86.1" x2="104" y2="91"/><line x1="100.6" y1="86.1" x2="104" y2="91"/><line x1="104" y1="116" x2="104" y2="139"/><line x1="107.4" y1="134.1" x2="104" y2="139"/><line x1="100.6" y1="134.1" x2="104" y2="139"/><line x1="104" y1="164" x2="104" y2="187"/><line x1="107.4" y1="182.1" x2="104" y2="187"/><line x1="100.6" y1="182.1" x2="104" y2="187"/><line x1="104" y1="212" x2="104" y2="235"/><line x1="107.4" y1="230.1" x2="104" y2="235"/><line x1="100.6" y1="230.1" x2="104" y2="235"/><line x1="104" y1="260" x2="104" y2="287"/><line x1="107.4" y1="282.1" x2="104" y2="287"/><line x1="100.6" y1="282.1" x2="104" y2="287"/></g>
+<rect class="node" x="16" y="22" width="176" height="24" rx="4"/>
+<rect class="node" x="16" y="92" width="176" height="24" rx="4"/>
+<rect class="node" x="16" y="140" width="176" height="24" rx="4"/>
+<rect class="node" x="16" y="188" width="176" height="24" rx="4"/>
+<rect class="node" x="16" y="236" width="176" height="24" rx="4"/>
+<rect class="node on" x="16" y="288" width="176" height="24" rx="4"/>
+<rect class="node" x="295" y="22" width="52" height="24" rx="4"/>
+<rect class="node" x="295" y="92" width="52" height="24" rx="4"/>
+<rect class="node" x="295" y="188" width="52" height="24" rx="4"/>
+<g><text x="104" y="34">Auth: signed in?</text><text x="104" y="104">withTenant</text><text x="104" y="152">selectPrices</text><text x="104" y="200">validateOrder</text><text x="104" y="248">insertOrder</text><text x="104" y="300">201 Created</text><text class="note" x="246" y="21">not valid</text><text x="321" y="34">401</text><text class="note" x="246" y="91">not a member</text><text x="321" y="104">403</text><text class="note" x="246" y="187">invalid</text><text x="321" y="200">422</text></g>
+</svg>
+<figcaption>The violet line is an order that is placed: a valid sign-in, a member of the tenant, an order that passes the pure check and is written, all from <code>withTenant</code> to <code>insertOrder</code> in one transaction, then 201 Created. Each refusal leaves at its own step, with its own status.</figcaption>
+</figure>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
 <h2>3. Each customer&rsquo;s data stays apart in Nile</h2>
 <p>Nile is Postgres built for apps that serve many organizations, each a tenant. A table that holds a tenant&rsquo;s rows carries a <code>tenant_id</code> and includes it in its primary key, and the tenants themselves live in Nile&rsquo;s built-in <code>tenants</code> table:</p>
 <pre class="code-block" tabindex="0"><code>CREATE TABLE orders (
@@ -181,9 +207,27 @@ CREATE TABLE order_lines (
 SET LOCAL nile.user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';
 SELECT id, total_cents FROM orders;</code></pre>
 <p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one customer into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
-<p>The tenant in the path is only a claim. With <code>nile.user_id</code> set, Nile raises an error unless that user belongs to the tenant in its built-in <code>users.tenant_users</code> table, and the shell answers 403 Forbidden; an app that keeps its own users checks membership the same way before <code>withTenant</code> runs. <code>SET</code> takes no bind parameters, so both IDs are written into the statement, which is safe here because the Capture and the auth layer have already parsed them as UUIDs.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="tenants-title tenants-desc" viewBox="0 0 360 246">
+<title id="tenants-title">What a tenant's connection sees</title>
+<desc id="tenants-desc">Two tables. In orders, a tenant table, four rows belong to two shops; with the tenant set to the shop, the connection sees only the shop's two rows, outlined and highlighted, and the other shop's rows are hidden. In products, a shared table, both rows stay readable and are highlighted too.</desc>
+<rect class="node" x="8" y="34" width="198" height="202" rx="6"/>
+<rect class="node" x="218" y="34" width="134" height="202" rx="6"/>
+<rect class="node on" x="22" y="77" width="170" height="26" rx="4"/>
+<rect class="node" x="22" y="117" width="170" height="26" rx="4"/>
+<rect class="node on" x="22" y="157" width="170" height="26" rx="4"/>
+<rect class="node" x="22" y="197" width="170" height="26" rx="4"/>
+<rect class="node on" x="231" y="77" width="108" height="26" rx="4"/>
+<rect class="node on" x="231" y="117" width="108" height="26" rx="4"/>
+<g><text class="note" x="180" y="16">nile.tenant_id = the shop</text><text class="note" x="107" y="54">orders: tenant table</text><text class="note" x="285" y="54">products: shared</text><text x="107" y="90">shop · order 1</text><text class="note" x="107" y="130">other shop: hidden</text><text x="107" y="170">shop · order 2</text><text class="note" x="107" y="210">other shop: hidden</text><text x="285" y="90">Widget A</text><text x="285" y="130">Widget B</text></g>
+</svg>
+<figcaption>With <code>nile.tenant_id</code> set to the shop, a tenant table such as <code>orders</code> shows the connection only the shop&rsquo;s rows, outlined in violet. A shared table, such as the product catalog, stays readable.</figcaption>
+</figure>
+<p>The tenant in the path is only a claim. With <code>nile.user_id</code> set, Nile raises an error unless that user belongs to the tenant in its built-in <code>users.tenant_users</code> table, and the shell answers 403 Forbidden; an app that keeps its own users checks membership the same way before <code>withTenant</code> runs.</p>
+<p><code>SET</code> takes no bind parameters, so both IDs are written into the statement, which is safe here because the Capture and the auth layer have already parsed them as UUIDs.</p>
 <h2>4. One contract at both ends</h2>
-<p>The same Servant type can describe itself as an OpenAPI document (the servant-openapi3 package), and RTK Query&rsquo;s OpenAPI code generator turns that document into the client&rsquo;s endpoints and hooks. Server and client then share one contract: when a route changes, the regenerated client shows every mismatch as a type error before it reaches a customer. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> sets up the client side, generated into one API root and reviewed like any other source.</p>
+<p>The same Servant type can describe itself as an OpenAPI document (the servant-openapi3 package), and RTK Query&rsquo;s OpenAPI code generator turns that document into the client&rsquo;s endpoints and hooks. Server and client then share one contract: when a route changes, the regenerated client shows every mismatch as a type error before it reaches a customer.</p>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> sets up the client side, generated into one API root and reviewed like any other source.</p>
 <p>servant-openapi3 knows nothing of servant-auth, so the API adds one small instance that describes <code>Auth</code> as a bearer token, and names each route&rsquo;s operation, which RTK Query&rsquo;s generator uses as the endpoint&rsquo;s name. A small program writes the document to <code>openapi.json</code> on every build.</p>
 <pre class="code-block" tabindex="0"><code>{-# OPTIONS_GHC -Wno-orphans #-}
 
@@ -207,7 +251,8 @@ ordersOpenApi =
 <p>With one path, a traversal over every path is enough; a larger API picks each route out with servant-openapi3&rsquo;s <code>subOperations</code>.</p>
 <p>The contract is only as honest as the JSON behind it: in the Hspec suite, servant-openapi3&rsquo;s <code>validateEveryToJSON</code> checks values of every JSON type in the API against the published schema, generating them from each type&rsquo;s <code>Arbitrary</code> instance, so <code>Order</code> and <code>NewOrder</code> need one.</p>
 <h2>5. The scenarios test the API</h2>
-<p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no HTTP server, against Nile running locally in Docker so the tenant checks run too. Every route sits behind <code>Auth</code>, so each test signs a token with the test&rsquo;s own key and sends it as a bearer token: Ada, a member of the shop&rsquo;s tenant, gets 201 Created, and Grace, a user from another shop, gets 403 Forbidden.</p>
+<p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no HTTP server, against Nile running locally in Docker so the tenant checks run too.</p>
+<p>Every route sits behind <code>Auth</code>, so each test signs a token with the test&rsquo;s own key and sends it as a bearer token: Ada, a member of the shop&rsquo;s tenant, gets 201 Created, and Grace, a user from another shop, gets 403 Forbidden.</p>
 <pre class="code-block" tabindex="0"><code>app :: JWTSettings -&gt; Pool Connection -&gt; Application
 app jwt pool =
   serveWithContext (Proxy :: Proxy OrdersAPI) (defaultCookieSettings :. jwt :. EmptyContext) (server pool)
@@ -227,7 +272,9 @@ spec = do
         token &lt;- liftIO (signIn grace)
         request methodPost (ordersPath shop) (asUser token) widgetAOrder `shouldRespondWith` 403</code></pre>
 <p>Each test carries its scenario&rsquo;s name, such as <code>it "Scenario: Placing the order"</code>, so a failing test names the behavior that broke. The pure core, such as <code>validateOrder</code>, is tested on its own, with no database at all. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations cannot.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet. And a route that only reshapes data another service already owns usually belongs to that service, not to a new API. Each order line records the name and price it sold at, because prices change after the sale, and Nile&rsquo;s own edges point the same way: a tenant table can&rsquo;t carry a foreign key into a shared table other than Nile&rsquo;s built-in <code>tenants</code>, and one transaction can&rsquo;t write to both.</p></aside>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet.</p>
+<p>And a route that only reshapes data another service already owns usually belongs to that service, not to a new API.</p>
+<p>Each order line records the name and price it sold at, because prices change after the sale, and Nile&rsquo;s own edges point the same way: a tenant table can&rsquo;t carry a foreign key into a shared table other than Nile&rsquo;s built-in <code>tenants</code>, and one transaction can&rsquo;t write to both.</p></aside>
 <p>The API closes the chain the course began with: a feature scoped as a user story, its scenarios in Gherkin, the slice and endpoint that pass them, and the typed API and tenant-safe data behind them. The next lesson follows one of those scenarios back into the client, as a Redux Toolkit slice.</p>
 
 <!-- .entry-content -->

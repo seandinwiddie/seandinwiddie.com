@@ -113,7 +113,8 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>Python lets a program do almost anything from anywhere: change a global, read a file halfway through a calculation, shuffle with whatever seed the process happens to hold. The practices below give up most of that freedom on purpose, so the same inputs give the same outputs on every machine, and a failing test can say exactly which rule broke. They are the practices the Sean Dinwiddie&rsquo;s Webmastery team holds its Python to, and each comes with a small example that runs on the standard library and pytest.</p>
+<p>Python lets a program do almost anything from anywhere: change a global, read a file halfway through a calculation, shuffle with whatever seed the process happens to hold. The Sean Dinwiddie&rsquo;s Webmastery team gives most of that freedom up, gladly, for something better: the same inputs give the same outputs on every machine, and a failing test can say exactly which rule broke.</p>
+<p>Eight habits get it there. Each comes with a small example that runs on the standard library and pytest.</p>
 <h2>One layout, run as modules</h2>
 <p>Code is grouped by what it does, one package per domain, and nothing sits loose at the top of the repository. Configuration and data live beside the package, never inside it:</p>
 <pre class="code-block" tabindex="0"><code>requirements.in      what the project uses, unpinned
@@ -132,7 +133,8 @@ tests/
 bin/lock
 bin/verify</code></pre>
 <p>Every entry point runs as a module from the repository&rsquo;s root, so its imports are absolute and resolve the same way from a terminal, a test or a scheduled job. An entry point&rsquo;s <code>main()</code> returns an exit code, and the module hands it to the shell:</p>
-<pre class="code-block" tabindex="0"><code>"""Print training rows as JSON lines, one per row."""
+<pre class="code-block" tabindex="0"><code># pipeline/data/build_rows.py
+"""Print training rows as JSON lines, one per row."""
 
 from __future__ import annotations
 
@@ -165,11 +167,26 @@ if __name__ == "__main__":
 {"id": "row-001", "place": "the east parking lot"}
 {"id": "row-002", "place": "the library annex"}
 {"id": "row-003", "place": "the north trail"}</code></pre>
-<p>Run as a file, the same code fails, because Python puts the file&rsquo;s own folder first on the import path instead of the root:</p>
+<p>Run it as a file instead, and the same code falls over. Python puts the file&rsquo;s own folder first on the import path, not the root:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ python pipeline/data/build_rows.py 2&gt;&amp;1 | tail -1
 ModuleNotFoundError: No module named 'pipeline'</code></pre>
+<figure class="diagram">
+<svg role="img" aria-labelledby="imports-title imports-desc" viewBox="0 0 360 236">
+<title id="imports-title">Where an import starts looking</title>
+<desc id="imports-desc">A folder tree: the repository's root holds pipeline/, which holds data/, which holds build_rows.py. Run with python -m, Python looks first in the root, and a highlighted line shows import pipeline finding pipeline/ there. Run as a file, it looks first in data/, which holds no pipeline/, so the import fails.</desc>
+<g class="edge"><line x1="56" y1="108" x2="56" y2="156"/><line x1="56" y1="156" x2="68" y2="156"/><line x1="80" y1="168" x2="80" y2="212"/><line x1="80" y1="212" x2="92" y2="212"/></g>
+<g class="path"><line x1="32" y1="48" x2="32" y2="96"/><line x1="32" y1="96" x2="44" y2="96"/></g>
+<rect class="node on" x="20" y="24" width="83" height="24" rx="4"/>
+<rect class="node on" x="44" y="84" width="92" height="24" rx="4"/>
+<rect class="node" x="68" y="144" width="58" height="24" rx="4"/>
+<rect class="node" x="92" y="200" width="125" height="24" rx="4"/>
+<g><text x="61.5" y="36">the root</text><text x="90" y="96">pipeline/</text><text x="97" y="156">data/</text><text x="154.5" y="212">build_rows.py</text><text class="note" x="262" y="28">python -m</text><text class="note" x="262" y="46">looks here first</text><text class="note" x="262" y="96">import pipeline: found</text><text class="note" x="268" y="148">a file run looks here</text><text class="note" x="268" y="166">first: no pipeline/</text></g>
+</svg>
+<figcaption>Python puts one folder first on its import path. With <code>python -m</code> it is the root, so <code>import pipeline</code> finds the package (the violet line). Run as a file, it is the file&rsquo;s own folder, <code>data/</code>, and there is no <code>pipeline/</code> in there.</figcaption>
+</figure>
 <h2>A locked environment</h2>
-<p>Each project has its own virtual environment, and it installs from a lock, never from a list of names. People edit <code>requirements.in</code>, a short list of what the project uses. uv compiles it into <code>requirements.lock</code>, with every package and every dependency pinned, for a fixed Python version and with nothing published after a fixed date, so compiling it again next month gives the same lock:</p>
+<p>Each project has its own virtual environment, installed from a lock. People edit <code>requirements.in</code>, a short list of what the project uses.</p>
+<p>uv compiles it into <code>requirements.lock</code>: every package and every dependency pinned, for a fixed Python version, with nothing published after a fixed date. Compile it again next month and you get the same lock:</p>
 <pre class="code-block" tabindex="0"><code>#!/bin/sh
 # Compile requirements.in into requirements.lock. With --check, fail if the lock is stale.
 set -eu
@@ -187,7 +204,7 @@ case "${1:-}" in
   *)
     compile requirements.lock ;;
 esac</code></pre>
-<p>The check compiles a fresh lock beside the real one and fails on any difference, so a package added to <code>requirements.in</code> without a new lock stops the run before anything installs it:</p>
+<p>With <code>--check</code>, it compiles a fresh lock beside the real one and fails on any difference. Add a package to <code>requirements.in</code> without a new lock, and the run stops before anything installs it:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ bin/lock --check
 requirements.lock is current
 $ echo six &gt;&gt; requirements.in
@@ -205,8 +222,10 @@ exit 1</code></pre>
 <pre class="code-block code-output" tabindex="0"><code>$ python3 -m venv .venv
 $ .venv/bin/python -m pip install --no-deps -r requirements.lock</code></pre>
 <h2>Pure functions, the same answer every time</h2>
-<p>A function that reads only its arguments and returns a new value can be tested with plain data and trusted on any machine. Data generation holds to that strictly. A row&rsquo;s content is chosen by its index, turning through a fixed catalog, never drawn at random. Where an order has to be shuffled, the shuffle gets a generator of its own, seeded from the run&rsquo;s settings, never the global one that any library can disturb:</p>
-<pre class="code-block" tabindex="0"><code>"""Deterministic choices: the same inputs give the same rows on every machine."""
+<p>A function that reads only its arguments and returns a new value can be tested with plain data and trusted on any machine. Data generation holds to that strictly.</p>
+<p>A row&rsquo;s content is chosen by its index, turning through a fixed catalog like a dial; nothing is drawn at random. Where an order has to be shuffled, the shuffle gets a generator of its own, seeded from the run&rsquo;s settings. The global one belongs to every library in the process, and any of them can disturb it:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/data/order.py
+"""Deterministic choices: the same inputs give the same rows on every machine."""
 
 from __future__ import annotations
 
@@ -227,7 +246,8 @@ def seeded_order(count: int, seed: int, epoch: int) -&gt; tuple[int, ...]:
     indices = list(range(count))
     rng.shuffle(indices)
     return tuple(indices)</code></pre>
-<p>Python&rsquo;s built-in <code>hash()</code> is the trap here. For strings it is salted afresh in every process, so anything derived from it changes from run to run, while the seeded order doesn&rsquo;t:</p>
+<h3>The <code>hash()</code> trap</h3>
+<p>For strings, Python&rsquo;s built-in <code>hash()</code> is salted afresh in every process, so anything derived from it changes from run to run. The seeded order doesn&rsquo;t budge:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ for run in 1 2 3; do python -c "print(hash('north trail') % 1000)"; done
 928
 563
@@ -236,10 +256,19 @@ $ for run in 1 2 3; do python -c "from pipeline.data.order import seeded_order; 
 (0, 2, 6, 3, 7, 1, 4, 5)
 (0, 2, 6, 3, 7, 1, 4, 5)
 (0, 2, 6, 3, 7, 1, 4, 5)</code></pre>
-<p>Output is sorted, JSON is written with sorted keys, and floats are rounded before they are compared, so two runs can be compared line by line. Heavy libraries are imported inside the functions at the edge that need them, so a test of the core never loads a GPU stack. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> sets out what makes a function pure, and <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the line between the pure core and the shell around it.</p>
+<h3>A little housekeeping</h3>
+<p>Three small rules let two runs be compared line by line:</p>
+<ul>
+<li>output is sorted;</li>
+<li>JSON is written with sorted keys;</li>
+<li>floats are rounded before they are compared.</li>
+</ul>
+<p>Heavy libraries are imported inside the functions at the edge that need them, so a test of the core never loads a GPU stack.</p>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> sets out what makes a function pure, and <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the line between the pure core and the shell around it.</p>
 <h2>Frozen data</h2>
-<p>Records are frozen dataclasses. A frozen record can&rsquo;t change after it is made, so a value passed into a function is the same value when the function returns, and a change is a new record, made with <code>dataclasses.replace</code>:</p>
-<pre class="code-block" tabindex="0"><code>"""The made-up situations that training rows are written about."""
+<p>Records are frozen dataclasses. A frozen record can&rsquo;t change after it is made, so a value passed into a function is the same value when the function returns. A change is a new record, made with <code>dataclasses.replace</code>:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/data/contexts.py
+"""The made-up situations that training rows are written about."""
 
 from __future__ import annotations
 
@@ -274,8 +303,10 @@ print(trail)</code></pre>
 <pre class="code-block code-output" tabindex="0"><code>refused: cannot assign to field 'state'
 Context(place='the north trail', state='open', reason='a washed-out bridge')
 Context(place='the north trail', state='closed until Friday', reason='a washed-out bridge')</code></pre>
+<p>The trail in the catalog is still closed until Friday; the reopened one is a new record beside it.</p>
 <h2>JSON as the one authority for config</h2>
-<p>Every value a run depends on (the model and its pinned revision, the data files, the seed, the training settings) lives in JSON, and nothing repeats it: code reads it, and documents point to it rather than copying its values. A long config is hard to review, so it is composed from small parts that a manifest names, each set at a key or merged at the top:</p>
+<p>Every value a run depends on lives in JSON: the model and its pinned revision, the data files, the seed, the training settings. Nothing repeats it. Code reads it, and documents point to it rather than copying its values.</p>
+<p>A long config is hard to review, so it is composed from small parts that a manifest names, each set at a key or merged at the top:</p>
 <pre class="code-block" tabindex="0"><code>{
   "parts": [
     {"file": "parts/base.json", "operation": "set", "target": "model"},
@@ -283,8 +314,15 @@ Context(place='the north trail', state='closed until Friday', reason='a washed-o
     {"file": "parts/run.json", "operation": "merge"}
   ]
 }</code></pre>
-<p>The composer refuses a key set twice, a part outside the config&rsquo;s folder and a manifest that includes itself, so composing never quietly overwrites a value or reaches for a file it shouldn&rsquo;t:</p>
-<pre class="code-block" tabindex="0"><code>"""Compose one JSON config from small part files that a manifest names."""
+<p>The composer is strict. It refuses:</p>
+<ul>
+<li>a key set twice;</li>
+<li>a part outside the config&rsquo;s folder;</li>
+<li>a manifest that includes itself.</li>
+</ul>
+<p>So composing never quietly overwrites a value or reaches for a file it shouldn&rsquo;t:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/config/compose.py
+"""Compose one JSON config from small part files that a manifest names."""
 
 from __future__ import annotations
 
@@ -351,10 +389,33 @@ if __name__ == "__main__":
   },
   "seed": 11
 }</code></pre>
+<figure class="diagram">
+<svg role="img" aria-labelledby="compose-title compose-desc" viewBox="0 0 360 268">
+<title id="compose-title">One config composed from parts</title>
+<desc id="compose-desc">The manifest, config/train.json, names three parts. base.json is set at the key model, data.json at the key data, and run.json is merged at the top, adding epochs and seed. Highlighted lines carry each part down into one composed config that holds model, data, epochs and seed.</desc>
+<rect class="node on" x="10" y="186" width="340" height="72" rx="6"/>
+<g class="edge"><line x1="159.1" y1="34" x2="64" y2="77"/><line x1="69.9" y1="78.1" x2="64" y2="77"/><line x1="67.1" y1="71.8" x2="64" y2="77"/><line x1="180" y1="34" x2="180" y2="77"/><line x1="183.4" y1="72.1" x2="180" y2="77"/><line x1="176.6" y1="72.1" x2="180" y2="77"/><line x1="200.9" y1="34" x2="296" y2="77"/><line x1="292.9" y1="71.8" x2="296" y2="77"/><line x1="290.1" y1="78.1" x2="296" y2="77"/></g>
+<g class="path"><line x1="64" y1="136" x2="64" y2="199"/><line x1="67.4" y1="194.1" x2="64" y2="199"/><line x1="60.6" y1="194.1" x2="64" y2="199"/><line x1="180" y1="136" x2="180" y2="199"/><line x1="183.4" y1="194.1" x2="180" y2="199"/><line x1="176.6" y1="194.1" x2="180" y2="199"/><line x1="296" y1="136" x2="296" y2="199"/><line x1="299.4" y1="194.1" x2="296" y2="199"/><line x1="292.6" y1="194.1" x2="296" y2="199"/></g>
+<rect class="node" x="130" y="10" width="100" height="24" rx="4"/>
+<rect class="node" x="18" y="78" width="92" height="24" rx="4"/>
+<rect class="node" x="134" y="78" width="92" height="24" rx="4"/>
+<rect class="node" x="254.5" y="78" width="83" height="24" rx="4"/>
+<g><text x="180" y="22">train.json</text><text x="64" y="90">base.json</text><text class="note" x="64" y="124">set at model</text><text x="64" y="222">model</text><text x="180" y="90">data.json</text><text class="note" x="180" y="124">set at data</text><text x="180" y="222">data</text><text x="296" y="90">run.json</text><text class="note" x="296" y="124">merged at top</text><text x="296" y="222">epochs, seed</text><text class="note" x="180" y="246">the composed config</text></g>
+</svg>
+<figcaption>The manifest names each part and where it goes: two are set at a key, and one is merged at the top. The violet lines carry each part into the one config a run reads.</figcaption>
+</figure>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#immutable-configuration">Practical Applications of Functional Programming</a> builds configuration from explicit parts too, with an explicit precedence and a frozen result; the composer here is stricter and refuses any key set twice.</p>
 <h2>Contracts that report every fault</h2>
-<p>Data crosses a boundary only after it is checked against its contract: the keys a row must carry and the one it may (the oracle that <a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a> adds), the allowed values and the rules between fields. The checks are independent of each other, so all of them run, and the validator raises once with every fault rather than the first, so the person fixing a data file sees the whole list. Counts and other derived facts are recomputed from the data, never trusted as declared:</p>
-<pre class="code-block" tabindex="0"><code>"""Check training rows against their contract and report every fault at once."""
+<p>Data crosses a boundary only after it is checked against its contract:</p>
+<ul>
+<li>the keys a row must carry, and the one it may (the oracle that <a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a> adds);</li>
+<li>the allowed values;</li>
+<li>the rules between fields.</li>
+</ul>
+<p>The checks are independent of each other, so all of them run, and the validator raises once with every fault, not just the first. Whoever fixes the data file gets the whole list in one go.</p>
+<p>Counts and other derived facts are recomputed from the data, never trusted as declared:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/data/contract.py
+"""Check training rows against their contract and report every fault at once."""
 
 from __future__ import annotations
 
@@ -434,8 +495,10 @@ train: declared 2, found 1
 trian: declared 0, found 1</code></pre>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#accumulate-every-error-with-validation">Practical Applications of Functional Programming</a> accumulates errors the same way in TypeScript.</p>
 <h2>Tests named for the behavior</h2>
-<p>Each test&rsquo;s name states the rule it proves, so a failing run reads as a list of broken rules. A contract is tested by breaking a valid example one way at a time and checking that each break is refused, by name, and that several breaks at once come back in one error:</p>
-<pre class="code-block" tabindex="0"><code>import pytest
+<p>Each test&rsquo;s name states the rule it proves, so a failing run reads as a list of broken rules.</p>
+<p>A contract is tested by breaking a valid row one way at a time and checking that each break is refused, by name. Several breaks at once have to come back in one error:</p>
+<pre class="code-block" tabindex="0"><code># tests/test_contract.py
+import pytest
 
 from pipeline.data.contract import validate
 
@@ -474,8 +537,10 @@ def test_every_fault_is_reported_in_one_error():
     with pytest.raises(ValueError) as raised:
         validate(({**VALID, "split": "trian", "prompt": ""},), declared={"train": 1})
     assert len(str(raised.value).splitlines()) == 4</code></pre>
-<p>A test that has never failed has proved nothing, so a test can break the code on purpose. Here one test swaps the rotation for a broken one and expects the rotation test to fail, and the last two hold the shuffled order to its seed and its epoch:</p>
-<pre class="code-block" tabindex="0"><code>import pytest
+<h3>A test that has to fail</h3>
+<p>A test that has never failed has proved nothing, so a test can break the code on purpose. Here one test swaps in a broken rotation and expects the rotation test to fail. The last two hold the shuffled order to its seed and its epoch:</p>
+<pre class="code-block" tabindex="0"><code># tests/test_rows.py
+import pytest
 
 import pipeline.data.build_rows as build
 from pipeline.data.contexts import CATALOG
@@ -500,6 +565,7 @@ def test_the_same_seed_and_epoch_give_the_same_order():
 def test_a_new_epoch_gives_a_new_order_of_the_same_rows():
     first, second = seeded_order(8, seed=11, epoch=0), seeded_order(8, seed=11, epoch=1)
     assert first != second and sorted(first) == sorted(second)</code></pre>
+<h3>The run itself</h3>
 <p>Every run reads its settings from <code>pytest.ini</code> at the root: where the tests are, no cache left behind, and the classic output without a progress percentage:</p>
 <pre class="code-block" tabindex="0"><code>[pytest]
 testpaths = tests
@@ -522,8 +588,9 @@ tests/test_rows.py::test_the_same_seed_and_epoch_give_the_same_order PASSED
 tests/test_rows.py::test_a_new_epoch_gives_a_new_order_of_the_same_rows PASSED
 
 ============================== 11 passed in 0.02s ==============================</code></pre>
-<p>A skipped test is a test that didn&rsquo;t run, and a green run with a skip in it hides that. <code>conftest.py</code> fails any run with a skip:</p>
-<pre class="code-block" tabindex="0"><code>"""A skipped test is a test that did not run, so a run with one fails."""
+<p>A skipped test is a test that didn&rsquo;t run, and a green run with a skip in it hides that. So <code>conftest.py</code> fails any run with a skip:</p>
+<pre class="code-block" tabindex="0"><code># tests/conftest.py
+"""A skipped test is a test that did not run, so a run with one fails."""
 
 
 def skipped(config):
@@ -546,7 +613,14 @@ def pytest_sessionfinish(session):
 38 passed, 1 skipped in 0.08s
 exit 1</code></pre>
 <h2>One script verifies everything</h2>
-<p>One script runs every check that must hold before any paid compute starts: the lock is current, the config composes, the data meets its contract and every test passes. It reads and never writes. Regenerating data is a separate command, so verifying can never change what it verifies:</p>
+<p>One script runs every check that must hold before any paid compute starts:</p>
+<ul>
+<li>the lock is current;</li>
+<li>the config composes;</li>
+<li>the data meets its contract;</li>
+<li>every test passes.</li>
+</ul>
+<p>It reads and never writes. Regenerating data is a separate command, so verifying can never change what it verifies:</p>
 <pre class="code-block" tabindex="0"><code>#!/bin/sh
 # Everything that must hold before any paid compute starts. It reads and never writes.
 set -eu
@@ -563,8 +637,11 @@ config composes
 ......................................
 38 passed in 0.11s
 verified</code></pre>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Collecting every error is right when the checks are independent, like the fields of one row. When a later check needs an earlier one&rsquo;s result (a file has to parse before its rows can be checked), the first failure stops the run, and the lecture <a href="https://seandinwiddie.github.io/lectures/monads-in-functional-programming/#validation-fail-fast-or-accumulate">Monads in Functional Programming</a> draws that line. Determinism bends at the GPU: its kernels can add floating-point numbers in a different order from one run to the next, so two training runs from the same data and seed can differ in their last digits. Everything around the training step stays deterministic (the data, the order it is read in, the config and the record of what ran), so a difference between two trained models traces to the training step itself and nothing else. And a lock pins packages, not machines: a lock compiled for one platform and one GPU backend is checked on that platform, and a second platform gets a lock of its own.</p></aside>
-<p>The next lesson puts these practices to work on the cube that the team&rsquo;s training data and evaluation share.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Collecting every error is right when the checks are independent, like the fields of one row. When a later check needs an earlier one&rsquo;s result (a file has to parse before its rows can be checked), the first failure stops the run, and the lecture <a href="https://seandinwiddie.github.io/lectures/monads-in-functional-programming/#validation-fail-fast-or-accumulate">Monads in Functional Programming</a> draws that line.</p>
+<p>Determinism bends at the GPU: its kernels can add floating-point numbers in a different order from one run to the next, so two training runs from the same data and seed can differ in their last digits.</p>
+<p>Everything around the training step stays deterministic (the data, the order it is read in, the config and the record of what ran), so a difference between two trained models traces to the training step itself and nothing else.</p>
+<p>And a lock pins packages, not machines: a lock compiled for one platform and one GPU backend is checked on that platform, and a second platform gets a lock of its own.</p></aside>
+<p>Next, these habits go to work on the cube that the team&rsquo;s training data and evaluation share.</p>
 
 <!-- .entry-content -->
 <footer>

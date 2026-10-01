@@ -113,24 +113,24 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>User Stories are a fundamental part of the software development process, serving as a bridge between user needs and actionable development tasks. This lesson shows how to turn the diverse and often complex needs of users into clear, concise User Stories that guide the work.</p>
-<h2>1. Identify User Needs</h2>
-<p>To create meaningful User Stories, the first step is to identify and understand the various needs of your users. These needs can range from high-level goals to specific pain points and desired features. User research, surveys, interviews, and direct interactions with users uncover these needs.</p>
-<h2>2. Choose the Needs This Job Meets</h2>
+<p>A need arrives messy: half a complaint, half a wish, often wrapped in somebody&rsquo;s idea of the fix. A user story is one clear sentence the work can be built and tested against. This lesson is the translation between the two, in eight steps.</p>
+<h2>1. Identify the needs</h2>
+<p>Start with the needs themselves, anywhere from a high-level goal to one specific pain point. Interviews, surveys, observation and plain conversation with users turn them up.</p>
+<h2>2. Choose the needs this job meets</h2>
 <p>Not every need becomes a story in this job. The owner chooses which needs this job meets, by what the business needs first, and the rest are written down for a later job, so nothing is lost and nothing is built unasked.</p>
-<h2>3. Create a User-Centric Mindset</h2>
+<h2>3. Say what changes for them</h2>
 <p>Before writing a story, say what changes for the person with the need once it is met, such as a customer who no longer calls to ask what has sold out. That change becomes the story&rsquo;s &ldquo;so that&rdquo;.</p>
-<h2>4. Use the User Story Template</h2>
+<h2>4. Use the template</h2>
 <p>User Stories typically follow a template that makes them concise and actionable. The template is: “As a [user], I want [an action] so that [benefit/value].” Each part answers one question: who it is for, what they do and why it matters to them.</p>
-<h2>5. Include Acceptance Criteria</h2>
-<p>To provide clarity and a shared understanding of what each User Story entails, it’s important to include acceptance criteria. Acceptance criteria define the conditions that must be met for the User Story to be considered complete. They serve as a guideline for development and testing.</p>
-<h2>6. Keep User Stories Small and Manageable</h2>
+<h2>5. Add acceptance criteria</h2>
+<p>Acceptance criteria are the conditions under which the story is done. Without them, &ldquo;done&rdquo; is whatever the last person to read the story thinks it is; with them, building and testing aim at the same mark.</p>
+<h2>6. Keep it small</h2>
 <p>User Stories should be small enough to name as one line in the written scope and finish within one iteration. Small User Stories are easier to estimate, develop, and test.</p>
-<h2>7. Collaborate with the Owner and the Users</h2>
+<h2>7. Work it out with the owner and the users</h2>
 <p>User Story creation is a collaborative process involving the owner who signs the written scope, the webmasters on the job and the people who will use the result. The owner reads the stories before the scope is signed, and the webmasters say what each one would take, so everyone works from one reading.</p>
-<h2>8. Refine and Iterate</h2>
-<p>User Stories are not set in stone. They can and should be refined and iterated upon as the project progresses and as more is learned about user needs.</p>
-<h2>Example User Story</h2>
+<h2>8. Refine as you learn</h2>
+<p>Stories aren&rsquo;t carved in stone: refine them as the project teaches you more about the need.</p>
+<h2>Example user story</h2>
 <p>“As a registered user, I want to reset my password so that I can regain access to my account.”</p>
 <ul>
 <li>
@@ -140,7 +140,7 @@
 <li>
 <strong>Benefit/Value:</strong> Regain access to my account</li>
 </ul>
-<h2>Example Acceptance Criteria</h2>
+<h2>Example acceptance criteria</h2>
 <ul>
 <li>Asking for a reset sends a reset link to the email on the account.</li>
 <li>The reset form shows the same message whether or not the email belongs to an account.</li>
@@ -148,8 +148,24 @@
 <li>After the reset, the new password signs in and the old one no longer does.</li>
 </ul>
 <p>In the code, a criterion like the 24-hour expiry becomes a pure function of the link’s age, with the clock read at the edge; the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows that boundary.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Two of the criteria above come from no one who asked. The reset form shows the same message whether or not the email belongs to an account, because a different message would tell a stranger which emails have accounts; and the link works once and expires, because a reset link left in an inbox is a key left under the mat. No customer asks for either, yet both protect the customer in the story, so they belong to that story as acceptance criteria rather than standing as stories of their own. Some needs translate into no story at all. When a setting the owner already pays for, a written procedure or a short training session meets the need, that is the honest translation, and the scope doesn&rsquo;t grow a feature to meet it. A need earns a story when software has to change for it to be met.</p></aside>
-<p>Translating user needs into User Stories is a skill that requires empathy, effective communication, and a deep understanding of both the user’s perspective and the development process. Practiced, it gives every story a need someone stated, in words they can check.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Two of the criteria above come from no one who asked. The reset form shows the same message whether or not the email belongs to an account, because a different message would tell a stranger which emails have accounts; and the link works once and expires, because a reset link left in an inbox is a key left under the mat.</p>
+<p>No customer asks for either, yet both protect the customer in the story, so they belong to that story as acceptance criteria rather than standing as stories of their own.</p>
+<p>Some needs translate into no story at all. When a setting the owner already pays for, a written procedure or a short training session meets the need, that is the honest translation, and the scope doesn&rsquo;t grow a feature to meet it. A need earns a story when software has to change for it to be met.</p></aside>
+<figure class="diagram">
+<svg role="img" aria-labelledby="need-or-story-title need-or-story-desc" viewBox="0 0 360 212">
+<title id="need-or-story-title">When a need earns a story</title>
+<desc id="need-or-story-desc">A need leads to a question: does software have to change? No leads to no new feature, but a setting, a procedure or training. Yes, along a highlighted arrow, leads to a story and its criteria, highlighted.</desc>
+<g class="edge"><line x1="180" y1="42" x2="180" y2="64"/><line x1="182.9" y1="58.7" x2="180" y2="64"/><line x1="177.1" y1="58.7" x2="180" y2="64"/><line x1="130" y1="98" x2="92" y2="136"/><line x1="97.8" y1="134.3" x2="92" y2="136"/><line x1="93.7" y1="130.2" x2="92" y2="136"/></g>
+<g class="path"><line x1="230" y1="98" x2="268" y2="136"/><line x1="266" y1="129.3" x2="268" y2="136"/><line x1="261.3" y1="134" x2="268" y2="136"/></g>
+<rect class="node" x="110" y="10" width="140" height="32" rx="4"/>
+<rect class="node" x="40" y="64" width="280" height="34" rx="4"/>
+<rect class="node" x="6" y="136" width="172" height="64" rx="4"/>
+<rect class="node on" x="182" y="136" width="172" height="64" rx="4"/>
+<g><text x="180" y="26">a need</text><text x="180" y="81">does software have to change?</text><text class="note" x="96" y="112">no</text><text class="note" x="266" y="112">yes</text><text x="92" y="152">no new feature</text><text class="note" x="92" y="171">a setting, a procedure</text><text class="note" x="92" y="187">or training</text><text x="268" y="160">a story</text><text class="note" x="268" y="179">and its criteria</text></g>
+</svg>
+<figcaption>Not every need becomes a story. When a setting the owner already pays for, a written procedure or a short training session meets it, that is the translation. The violet branch is the need that earns a story: software has to change for it to be met.</figcaption>
+</figure>
+<p>Translation takes empathy, plain talk and a working knowledge of how software gets built. Practiced, it gives every story a need someone stated, in words they can check.</p>
 <p>The next lesson, Writing Clear and Concise User Stories, checks a draft story against INVEST.</p>
 
 <!-- .entry-content -->

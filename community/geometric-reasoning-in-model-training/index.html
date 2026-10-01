@@ -113,10 +113,13 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>An average score can rise while a model gets worse at something that matters. Geometric reasoning guards against that. It places every behavior to be trained and measured at a corner of a cube, so the training data covers every corner, the evaluation measures every corner, and a release is judged corner by corner. The geometry is small and exact, and this lesson writes all of it in plain Python, on the practices of <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a>.</p>
+<p>An average score can rise while a model gets worse at something that matters. Geometric reasoning guards against that. It places every behavior to be trained and measured at a corner of a cube, so the training data covers every corner, the evaluation measures every corner, and a release is judged corner by corner.</p>
+<p>The geometry is small, exact and a joy to work through, and this lesson writes all of it in plain Python, on the practices of <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a>.</p>
 <h2>Four traits make a cube</h2>
-<p>Each trait of an answer&rsquo;s voice is a pair of poles, and an answer takes one pole of each: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four binary traits give 2<sup>4</sup> = 16 combinations. Written as bits, 0 for a trait&rsquo;s first pole and 1 for its second, they are the corners of a four-dimensional cube, and the distance between two corners is the number of traits they differ in, their Hamming distance:</p>
-<pre class="code-block" tabindex="0"><code>"""Binary traits of an answer's voice, and the cube their corners make."""
+<p>Each trait of an answer&rsquo;s voice is a pair of poles, and an answer takes one pole of each: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four binary traits give 2<sup>4</sup> = 16 combinations.</p>
+<p>Written as bits, 0 for a trait&rsquo;s first pole and 1 for its second, they are the corners of a four-dimensional cube, and the distance between two corners is the number of traits they differ in, their Hamming distance:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/data/cube.py
+"""Binary traits of an answer's voice, and the cube their corners make."""
 
 from __future__ import annotations
 
@@ -168,9 +171,38 @@ print(pairs_by_distance(cube))</code></pre>
 1111 formal, expansive, reserved, bold
 {1: 32, 2: 48, 3: 32, 4: 8}</code></pre>
 <p>The 120 pairs of corners fall into four distances: 32 neighbours one trait apart (the cube&rsquo;s edges), 48 pairs two apart, 32 three apart and 8 opposites. A contract that declares those counts is checked by counting them again from the corners, never by trusting the numbers it states.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="cube-title cube-desc" viewBox="0 0 360 352">
+<title id="cube-title">The four-trait cube</title>
+<desc id="cube-desc">Sixteen corners, from 0000 (plain, brief, warm, cautious) at the top to 1111 (formal, expansive, reserved, bold) at the bottom, in rows of 1, 4, 6, 4 and 1 by how many traits sit at their second pole. Thirty-two lines join the corners one trait apart. A highlighted path runs 0000, 0001, 0011, 0111, 1111: four steps, one trait each, between opposite corners.</desc>
+<g class="edge"><line x1="180" y1="63" x2="288" y2="105"/><line x1="180" y1="63" x2="216" y2="105"/><line x1="180" y1="63" x2="144" y2="105"/><line x1="72" y1="127" x2="208" y2="169"/><line x1="72" y1="127" x2="96" y2="169"/><line x1="144" y1="127" x2="264" y2="169"/><line x1="144" y1="127" x2="152" y2="169"/><line x1="144" y1="127" x2="40" y2="169"/><line x1="216" y1="127" x2="320" y2="169"/><line x1="216" y1="127" x2="152" y2="169"/><line x1="216" y1="127" x2="96" y2="169"/><line x1="288" y1="127" x2="320" y2="169"/><line x1="288" y1="127" x2="264" y2="169"/><line x1="288" y1="127" x2="208" y2="169"/><line x1="40" y1="191" x2="144" y2="233"/><line x1="96" y1="191" x2="216" y2="233"/><line x1="96" y1="191" x2="72" y2="233"/><line x1="152" y1="191" x2="288" y2="233"/><line x1="152" y1="191" x2="72" y2="233"/><line x1="208" y1="191" x2="216" y2="233"/><line x1="208" y1="191" x2="144" y2="233"/><line x1="264" y1="191" x2="288" y2="233"/><line x1="264" y1="191" x2="144" y2="233"/><line x1="320" y1="191" x2="288" y2="233"/><line x1="320" y1="191" x2="216" y2="233"/><line x1="144" y1="255" x2="180" y2="297"/><line x1="216" y1="255" x2="180" y2="297"/><line x1="288" y1="255" x2="180" y2="297"/></g>
+<g class="path"><line x1="180" y1="63" x2="72" y2="105"/><line x1="72" y1="127" x2="40" y2="169"/><line x1="40" y1="191" x2="72" y2="233"/><line x1="72" y1="255" x2="180" y2="297"/></g>
+<rect class="node on" x="157" y="41" width="46" height="22" rx="4"/>
+<rect class="node on" x="49" y="105" width="46" height="22" rx="4"/>
+<rect class="node" x="121" y="105" width="46" height="22" rx="4"/>
+<rect class="node" x="193" y="105" width="46" height="22" rx="4"/>
+<rect class="node" x="265" y="105" width="46" height="22" rx="4"/>
+<rect class="node on" x="17" y="169" width="46" height="22" rx="4"/>
+<rect class="node" x="73" y="169" width="46" height="22" rx="4"/>
+<rect class="node" x="129" y="169" width="46" height="22" rx="4"/>
+<rect class="node" x="185" y="169" width="46" height="22" rx="4"/>
+<rect class="node" x="241" y="169" width="46" height="22" rx="4"/>
+<rect class="node" x="297" y="169" width="46" height="22" rx="4"/>
+<rect class="node on" x="49" y="233" width="46" height="22" rx="4"/>
+<rect class="node" x="121" y="233" width="46" height="22" rx="4"/>
+<rect class="node" x="193" y="233" width="46" height="22" rx="4"/>
+<rect class="node" x="265" y="233" width="46" height="22" rx="4"/>
+<rect class="node on" x="157" y="297" width="46" height="22" rx="4"/>
+<g><text class="note" x="180" y="18">plain · brief · warm · cautious</text><text x="180" y="52">0000</text><text x="72" y="116">0001</text><text x="144" y="116">0010</text><text x="216" y="116">0100</text><text x="288" y="116">1000</text><text x="40" y="180">0011</text><text x="96" y="180">0101</text><text x="152" y="180">0110</text><text x="208" y="180">1001</text><text x="264" y="180">1010</text><text x="320" y="180">1100</text><text x="72" y="244">0111</text><text x="144" y="244">1011</text><text x="216" y="244">1101</text><text x="288" y="244">1110</text><text x="180" y="308">1111</text><text class="note" x="180" y="344">formal · expansive · reserved · bold</text></g>
+</svg>
+<figcaption>The cube, drawn by how many traits sit at their second pole. A line joins two corners one trait apart, and the violet path walks from 0000 to its opposite, 1111, one trait at a time: four steps, the largest distance on the cube.</figcaption>
+</figure>
 <h2>Training pairs that change only the voice</h2>
-<p>Preference training learns from pairs: a prompt, a chosen answer and a rejected one. If the two answers differ in their facts as well as their voice, the model can&rsquo;t tell which difference it is being taught. So each pair keeps the facts fixed and changes only the traits. The chosen answer is written in the voice the prompt asks for, and the rejected answer gives the same facts in the voice of another corner. Every corner is paired at every distance, from a neighbour one trait away to its opposite, and which corner it meets at each distance turns with the row&rsquo;s index, so over enough rows it meets them all, with no randomness:</p>
-<pre class="code-block" tabindex="0"><code>"""Preference pairs that keep the facts and change only the voice."""
+<p>Preference training learns from pairs: a prompt, a chosen answer and a rejected one. If the two answers differ in their facts as well as their voice, the model can&rsquo;t tell which difference it is being taught.</p>
+<p>So each pair keeps the facts fixed and changes only the traits. The chosen answer is written in the voice the prompt asks for, and the rejected answer gives the same facts in the voice of another corner.</p>
+<p>Every corner is paired at every distance, from a neighbour one trait away to its opposite. Which corner it meets at each distance turns with the row&rsquo;s index, so over enough rows it meets them all, with no randomness:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/data/pairs.py
+"""Preference pairs that keep the facts and change only the voice."""
 
 from __future__ import annotations
 
@@ -254,10 +286,13 @@ distance 4
 192 rows; facts kept in all: True</code></pre>
 <p>The model never sees the cube: no prompt or answer names a corner, a distance or a score. It sees a request for a voice and two answers with the same facts, and it learns to follow the voice it is asked for rather than drift toward an average of all of them.</p>
 <h2>A fifth factor: the evidence</h2>
-<p>Evaluation adds one more binary factor: whether the evidence in the prompt is stated plainly, or contested by someone in the conversation who asserts the opposite. Five factors give 2<sup>5</sup> = 32 corners, a full factorial experiment, with every combination measured. The prompts that measure them are written for evaluation alone and never trained on, and a table with a corner missing is refused before any analysis runs.</p>
+<p>Evaluation adds one more binary factor: whether the evidence in the prompt is stated plainly, or contested by someone in the conversation who asserts the opposite. Five factors give 2<sup>5</sup> = 32 corners, a full factorial experiment, with every combination measured.</p>
+<p>The prompts that measure them are written for evaluation alone and never trained on, and a table with a corner missing is refused before any analysis runs.</p>
 <h2>Reading the scores as a spectrum</h2>
-<p>The Walsh&ndash;Hadamard transform reads a complete table of corner scores as a sum of effects. Each coefficient belongs to one set of factors, written as a mask. It is the mean of all 32 scores, each multiplied by +1 or &minus;1 according to whether an even or an odd number of those factors sit at their second pole. For one factor, that is half the gap between its two poles, averaged over every other corner: a main effect. For two factors, it is how far one factor&rsquo;s effect changes with the other: an interaction. And so on, up to all five at once:</p>
-<pre class="code-block" tabindex="0"><code>"""Read a complete table of corner scores as main effects and interactions."""
+<p>The Walsh&ndash;Hadamard transform reads a complete table of corner scores as a sum of effects. Each coefficient belongs to one set of factors, written as a mask. It is the mean of all 32 scores, each multiplied by +1 or &minus;1 according to whether an even or an odd number of those factors sit at their second pole.</p>
+<p>For one factor, that is half the gap between its two poles, averaged over every other corner: a main effect. For two factors, it is how far one factor&rsquo;s effect changes with the other: an interaction. And so on, up to all five at once:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/spectrum.py
+"""Read a complete table of corner scores as main effects and interactions."""
 
 from __future__ import annotations
 
@@ -314,7 +349,8 @@ def energy_by_order(coefficients: Mapping[str, float]) -&gt; dict[int, float]:
         for order in orders
     }</code></pre>
 <p>A test with a known answer proves the transform. Build the 32 scores from effects chosen in advance, and check that the spectrum returns exactly those effects and nothing else:</p>
-<pre class="code-block" tabindex="0"><code>"""Scores for all 32 corners, built from effects chosen in advance."""
+<pre class="code-block" tabindex="0"><code># demos/known.py
+"""Scores for all 32 corners, built from effects chosen in advance."""
 
 from pipeline.data.cube import corners
 
@@ -343,10 +379,22 @@ stance x evidence  +0.030
 stance             +0.020
 energy by order: {1: 0.004, 2: 0.0009, 3: 0.0, 4: 0.0, 5: 0.0}
 inverse returns the scores: True</code></pre>
-<p>Read back, stated evidence scores 0.12 above contested evidence on average (twice its coefficient), a cautious voice scores 0.04 above a bold one, and the interaction says the stance matters more when the evidence is stated. The other 28 coefficients are zero. The energy at each order, the sum of its squared coefficients, shows everything sitting in the main effects and one pair, and the inverse transform rebuilds all 32 scores exactly. That last check is a law of the transform, and the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> tests laws the same way.</p>
+<p>Read back, the spectrum finds exactly what went in:</p>
+<ul>
+<li>stated evidence scores 0.12 above contested evidence on average (twice its coefficient);</li>
+<li>a cautious voice scores 0.04 above a bold one;</li>
+<li>the interaction says the stance matters more when the evidence is stated;</li>
+<li>the other 28 coefficients are zero.</li>
+</ul>
+<p>The energy at each order, the sum of its squared coefficients, shows everything sitting in the main effects and one pair. And the inverse transform rebuilds all 32 scores exactly. That last check is a law of the transform, and the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> tests laws the same way.</p>
 <h2>One factor at a time, and by distance</h2>
-<p>Two more views read the same table. A Gray-code walk visits all 32 corners in a closed loop and changes exactly one factor at each step (corner <em>i</em> is <code>i ^ (i &gt;&gt; 1)</code>), so each step&rsquo;s change in score belongs to one factor. Grouping by distance holds the evidence fixed and asks how far apart the scores are for voices one, two, three and four traits apart:</p>
-<pre class="code-block" tabindex="0"><code>"""Walk the corners one factor at a time, and group them by distance."""
+<p>Two more views read the same table:</p>
+<ul>
+<li>A Gray-code walk visits all 32 corners in a closed loop and changes exactly one factor at each step (corner <em>i</em> is <code>i ^ (i &gt;&gt; 1)</code>), so each step&rsquo;s change in score belongs to one factor.</li>
+<li>Grouping by distance holds the evidence fixed and asks how far apart the scores are for voices one, two, three and four traits apart.</li>
+</ul>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/walk.py
+"""Walk the corners one factor at a time, and group them by distance."""
 
 from __future__ import annotations
 
@@ -399,10 +447,35 @@ print("contested:", by_distance(SCORES, evidence="1"))</code></pre>
 ... 32 steps; net change 0.0
 stated:    {1: 0.025, 2: 0.05, 3: 0.075, 4: 0.1}
 contested: {1: 0.005, 2: 0.01, 3: 0.015, 4: 0.02}</code></pre>
-<p>In the walk, the evidence flips every other step, and its change is 0.18 when the voice is cautious and 0.06 when it is bold: the interaction, seen as it happens. Around the closed loop the changes sum to zero, as they must. By distance, under stated evidence the stance moves a score by 0.10, and the mean gap grows by a quarter of that with each trait apart, because among the pairs <em>d</em> traits apart, <em>d</em> in every four differ in the stance. Under contested evidence the stance moves a score by only 0.02, and the voices sit closer together. The spectrum, the walk and the grouping are read and reported, and none of them decides a release on its own.</p>
+<p>In the walk, the evidence flips every other step, and its change is 0.18 when the voice is cautious and 0.06 when it is bold: the interaction, caught in the act. Around the closed loop the changes sum to zero, as they must.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="walk-title walk-desc" viewBox="0 0 360 290">
+<title id="walk-title">The first steps of the Gray-code walk</title>
+<desc id="walk-desc">Seven corners in a column, from 00000 down: 00001, 00011, 00010, 00110, 00111, 00101. In each step after the first, exactly one bit differs from the corner above it, and that bit is boxed and highlighted: evidence, stance, evidence, warmth, evidence, stance. Beside each corner are the factor flipped, the score and the change: 0.89 at the start, then -0.18, +0.02, +0.06, +0.00, -0.06, -0.02.</desc>
+<rect class="node on" x="99" y="68" width="14" height="24" rx="3"/>
+<rect class="node on" x="85" y="102" width="14" height="24" rx="3"/>
+<rect class="node on" x="99" y="136" width="14" height="24" rx="3"/>
+<rect class="node on" x="71" y="170" width="14" height="24" rx="3"/>
+<rect class="node on" x="99" y="204" width="14" height="24" rx="3"/>
+<rect class="node on" x="85" y="238" width="14" height="24" rx="3"/>
+<g><text class="note" x="78" y="16">corner</text><text class="note" x="196" y="16">flipped</text><text class="note" x="268" y="16">score</text><text class="note" x="322" y="16">change</text><text x="50" y="46">0</text><text x="64" y="46">0</text><text x="78" y="46">0</text><text x="92" y="46">0</text><text x="106" y="46">0</text><text class="note" x="196" y="46">start</text><text x="268" y="46">0.89</text><text x="50" y="80">0</text><text x="64" y="80">0</text><text x="78" y="80">0</text><text x="92" y="80">0</text><text x="106" y="80">1</text><text x="196" y="80">evidence</text><text x="268" y="80">0.71</text><text x="322" y="80">-0.18</text><text x="50" y="114">0</text><text x="64" y="114">0</text><text x="78" y="114">0</text><text x="92" y="114">1</text><text x="106" y="114">1</text><text x="196" y="114">stance</text><text x="268" y="114">0.73</text><text x="322" y="114">+0.02</text><text x="50" y="148">0</text><text x="64" y="148">0</text><text x="78" y="148">0</text><text x="92" y="148">1</text><text x="106" y="148">0</text><text x="196" y="148">evidence</text><text x="268" y="148">0.79</text><text x="322" y="148">+0.06</text><text x="50" y="182">0</text><text x="64" y="182">0</text><text x="78" y="182">1</text><text x="92" y="182">1</text><text x="106" y="182">0</text><text x="196" y="182">warmth</text><text x="268" y="182">0.79</text><text x="322" y="182">+0.00</text><text x="50" y="216">0</text><text x="64" y="216">0</text><text x="78" y="216">1</text><text x="92" y="216">1</text><text x="106" y="216">1</text><text x="196" y="216">evidence</text><text x="268" y="216">0.73</text><text x="322" y="216">-0.06</text><text x="50" y="250">0</text><text x="64" y="250">0</text><text x="78" y="250">1</text><text x="92" y="250">0</text><text x="106" y="250">1</text><text x="196" y="250">stance</text><text x="268" y="250">0.71</text><text x="322" y="250">-0.02</text><text class="note" x="180" y="280">… 32 steps in all, back to 00000</text></g>
+</svg>
+<figcaption>Each step of the walk flips exactly one factor, boxed in violet, so each change in score belongs to that factor alone. The evidence flips every other step, and its change is 0.18 under a cautious voice and 0.06 under a bold one.</figcaption>
+</figure>
+<p>By distance, under stated evidence the stance moves a score by 0.10, and the mean gap grows by a quarter of that with each trait apart, because among the pairs <em>d</em> traits apart, <em>d</em> in every four differ in the stance. Under contested evidence the stance moves a score by only 0.02, and the voices sit closer together.</p>
+<p>The spectrum, the walk and the grouping are read and reported, and none of them decides a release on its own.</p>
 <h2>Revise and restore</h2>
-<p>A score at one corner is a snapshot, and a conversation moves. The revise-and-restore check runs one across five turns: a fact is stated, someone contests it without evidence, new evidence revises it, newer evidence revises it again, and the first fact returns. It measures whether the answer holds when it is only contested, updates when the evidence changes, how many turns it takes to update, and whether it comes back to where it started:</p>
-<pre class="code-block" tabindex="0"><code>"""Revise and restore: does an answer hold, update and return across turns?"""
+<p>A score at one corner is a snapshot, and a conversation moves. The revise-and-restore check runs one across five turns:</p>
+<ol>
+<li>a fact is stated;</li>
+<li>someone contests it without evidence;</li>
+<li>new evidence revises it;</li>
+<li>newer evidence revises it again;</li>
+<li>the first fact returns.</li>
+</ol>
+<p>It measures whether the answer holds when it is only contested, updates when the evidence changes, how many turns it takes to update, and whether it comes back to where it started:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/revise.py
+"""Revise and restore: does an answer hold, update and return across turns?"""
 
 from __future__ import annotations
 
@@ -437,9 +510,36 @@ print(measure(("open", "closed", "closed", "closed", "weekends")))</code></pre>
 <pre class="code-block code-output" tabindex="0"><code>{'holds when contested': True, 'updates on evidence': 1.0, 'turns to first update': 1, 'returns to the start': True}
 {'holds when contested': False, 'updates on evidence': 0.5, 'turns to first update': 1, 'returns to the start': False}</code></pre>
 <p>The second answer gives way to an assertion, lags a turn behind the evidence and never returns. Those are three different faults, and an average over the five turns would blur them into one number.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="revise-title revise-desc" viewBox="0 0 360 214">
+<title id="revise-title">Two answers across five turns</title>
+<desc id="revise-desc">A chart of five turns, start, hold, update, update and return, against three answers: open, closed and weekends. A highlighted line, what the answer should report, reads open, open, closed, weekends, open. A plain line, the second answer, reads open, closed, closed, closed, weekends: it gives way at the hold, lags at the second update and never returns.</desc>
+<g class="edge"><line x1="112" y1="176" x2="112" y2="186"/><line x1="166" y1="176" x2="166" y2="186"/><line x1="220" y1="176" x2="220" y2="186"/><line x1="274" y1="176" x2="274" y2="186"/><line x1="328" y1="176" x2="328" y2="186"/><line x1="112" y1="46" x2="166" y2="100"/><line x1="166" y1="100" x2="220" y2="100"/><line x1="220" y1="100" x2="274" y2="100"/><line x1="274" y1="100" x2="328" y2="154"/><line x1="80" y1="176" x2="344" y2="176"/></g>
+<g class="path"><line x1="112" y1="46" x2="166" y2="46"/><line x1="166" y1="46" x2="220" y2="100"/><line x1="220" y1="100" x2="274" y2="154"/><line x1="274" y1="154" x2="328" y2="46"/></g>
+<rect class="node" x="108" y="42" width="8" height="8" rx="2"/>
+<rect class="node" x="162" y="96" width="8" height="8" rx="2"/>
+<rect class="node" x="216" y="96" width="8" height="8" rx="2"/>
+<rect class="node" x="270" y="96" width="8" height="8" rx="2"/>
+<rect class="node" x="324" y="150" width="8" height="8" rx="2"/>
+<rect class="node on" x="107" y="41" width="10" height="10" rx="2"/>
+<rect class="node on" x="161" y="41" width="10" height="10" rx="2"/>
+<rect class="node on" x="215" y="95" width="10" height="10" rx="2"/>
+<rect class="node on" x="269" y="149" width="10" height="10" rx="2"/>
+<rect class="node on" x="323" y="41" width="10" height="10" rx="2"/>
+<g><text class="note" x="44" y="46">open</text><text class="note" x="44" y="100">closed</text><text class="note" x="44" y="154">weekends</text><text class="note" x="112" y="200">start</text><text class="note" x="166" y="200">hold</text><text class="note" x="220" y="200">update</text><text class="note" x="274" y="200">update</text><text class="note" x="328" y="200">return</text></g>
+</svg>
+<figcaption>The violet line is what the answer should report: it holds when the visitor contests the fact, follows each new notice and comes back to open. The grey line is the second answer above, which gives way at the hold, lags a turn behind and never returns.</figcaption>
+</figure>
 <h2>The release gate, corner by corner</h2>
-<p>A trained model is a candidate, compared with its parent (the model it would replace) on the identical 32 corners. The gate refuses a table with any corner unmeasured, fails at any corner where the candidate scores below the parent, and asks for at least one corner where it scores above. A gain at one corner never pays for a loss at another:</p>
-<pre class="code-block" tabindex="0"><code>"""The release gate: every corner measured, and none worse than the parent's."""
+<p>A trained model is a candidate, compared with its parent (the model it would replace) on the identical 32 corners. The gate holds it to three rules:</p>
+<ul>
+<li>a table with any corner unmeasured is refused;</li>
+<li>any corner where the candidate scores below the parent fails it;</li>
+<li>at least one corner has to score above the parent.</li>
+</ul>
+<p>A gain at one corner never pays for a loss at another:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/gate.py
+"""The release gate: every corner measured, and none worse than the parent's."""
 
 from __future__ import annotations
 
@@ -473,8 +573,11 @@ print(gate_errors(candidate, parent))</code></pre>
 <pre class="code-block code-output" tabindex="0"><code>mean 0.78 -&gt; 0.783437
 ('worse at 00111 (plain, brief, reserved, bold, contested): -0.20',)</code></pre>
 <p>The candidate is better at 31 corners and its mean rises. At one corner, a reserved, bold voice under contested evidence, it falls by 0.20. A gate on the mean would ship it; the gate per corner names the corner and stops it.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Interactions hide in averages. In the scores above, a cautious voice beats a bold one by 0.04 on average, yet under contested evidence the bold voice scores higher, 0.73 against 0.71. A report that shows only the main effect would recommend the wrong voice for exactly the harder case. A pure interaction can hide completely: if a trait helps by some amount under stated evidence and hurts by the same amount under contested evidence, its main effect is zero, and every average says it does nothing. That is why the gate reads corners rather than coefficients or means, and why every analysis needs a complete table, since with a corner missing each coefficient would mix effects it is meant to keep apart.</p>
-<p>The walk has an edge of its own. In this loop the stance always flips while the evidence is contested, so the walk sees only the stance&rsquo;s small effect there and never its larger one under stated evidence; the spectrum and the grouping read every corner and see both. And a cube grows fast. Each binary factor added doubles the corners to measure, so the factors are chosen for what a release must not get worse at, and a factor that matters less is held fixed rather than added.</p></aside>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Interactions hide in averages. In the scores above, a cautious voice beats a bold one by 0.04 on average, yet under contested evidence the bold voice scores higher, 0.73 against 0.71. A report that shows only the main effect would recommend the wrong voice for exactly the harder case.</p>
+<p>A pure interaction can hide completely: if a trait helps by some amount under stated evidence and hurts by the same amount under contested evidence, its main effect is zero, and every average says it does nothing.</p>
+<p>That is why the gate reads corners rather than coefficients or means, and why every analysis needs a complete table, since with a corner missing each coefficient would mix effects it is meant to keep apart.</p>
+<p>The walk has an edge of its own. In this loop the stance always flips while the evidence is contested, so the walk sees only the stance&rsquo;s small effect there and never its larger one under stated evidence; the spectrum and the grouping read every corner and see both.</p>
+<p>And a cube grows fast. Each binary factor added doubles the corners to measure, so the factors are chosen for what a release must not get worse at, and a factor that matters less is held fixed rather than added.</p></aside>
 <p>The next lesson follows a model through the whole pipeline around this geometry, from choosing its base to the gate that decides whether it ships.</p>
 
 <!-- .entry-content -->

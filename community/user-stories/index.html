@@ -116,35 +116,47 @@
 
 <p>Every feature the Sean Dinwiddie’s Webmastery team builds begins as a user story: who it serves, what they need to do, and why, in words the owner reads before work starts.</p>
 <p>A user story keeps the needs, wants and expectations of the people you serve in front of everyone who builds for them, so the solution fits your clients, your team and the job.</p>
-<p><strong>What Are User Stories?</strong></p>
-<p>User Stories are a simple and effective way to express the functionalities or features of a software application from the perspective of the person who uses it. They come from Extreme Programming and spread with agile methods, which emphasize collaboration, customer feedback, and small, incremental changes.</p>
-<p>A User Story typically follows this format:</p>
+<h2>What a user story is</h2>
+<p>A user story describes one feature from the side of the person who uses it, in a sentence anyone on the job can read. Stories come from Extreme Programming and spread with agile methods, which prize collaboration, customer feedback and small, incremental changes.</p>
+<p>The classic shape:</p>
 <p>“As a [type of user], I want [an action] so that [benefit/value].”</p>
 <p>For example:</p>
 <p>“As a customer, I want to see where my order is, so that I know when it will arrive.”</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="story-parts-title story-parts-desc" viewBox="0 0 360 190">
+<title id="story-parts-title">A user story's three parts</title>
+<desc id="story-parts-desc">The example story split into its three parts: who, As a customer; what, I want to see where my order is; why, so that I know when it will arrive. Under it: one sentence the owner reads first.</desc>
+<g class="edge"><line x1="50" y1="34" x2="58" y2="34"/><line x1="50" y1="84" x2="58" y2="84"/><line x1="50" y1="134" x2="58" y2="134"/></g>
+<rect class="node" x="58" y="14" width="296" height="40" rx="4"/>
+<rect class="node" x="58" y="64" width="296" height="40" rx="4"/>
+<rect class="node" x="58" y="114" width="296" height="40" rx="4"/>
+<g><text x="30" y="34">who</text><text x="206" y="34">As a customer,</text><text x="30" y="84">what</text><text x="206" y="84">I want to see where my order is,</text><text x="30" y="134">why</text><text x="206" y="134">so that I know when it will arrive.</text><text class="note" x="180" y="176">one sentence the owner reads first</text></g>
+</svg>
+<figcaption>The example story, taken apart: who it serves, what they want to do and why, in one sentence the owner reads before work starts.</figcaption>
+</figure>
 <p>Later in the course, what happens in a story becomes an event in the code, named for what happened, such as <code>orderShipped</code>; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#setter-style-actions-instead-of-event-style-actions">Redux Toolkit and Functional Programming</a> shows why an event beats a setter.</p>
-<p><strong>Why User Stories Matter</strong></p>
-<ol>
+<h2>Why they matter</h2>
+<ul>
 <li>
 <strong>Client-Centered:</strong> User Stories keep the focus on the people who use the software: every feature in the written scope answers a need one of them has.</li>
 <li>
-<strong>Collaboration:</strong> They promote collaboration and communication within your team. When everyone understands the user’s perspective, it’s easier to work together effectively.</li>
+<strong>Collaboration:</strong> Everyone on the job reads the work from the user’s side, so the owner and the webmasters are always talking about the same thing.</li>
 <li>
-<strong>Prioritization:</strong> User Stories help you prioritize what features to develop first. You can address the most critical needs of your users before moving on to less important ones.</li>
+<strong>Prioritization:</strong> Stories line up. The most critical need goes first, and the rest wait their turn.</li>
 <li>
-<strong>Flexibility:</strong> They allow for flexibility in the development process. You can add, change, or remove User Stories as the project progresses and as you gather more user feedback; a story added after the written scope is signed is quoted and approved as a change before it starts.</li>
-</ol>
-<p><strong>How We Can Help</strong></p>
+<strong>Flexibility:</strong> Stories bend as you learn: add one, change one or drop one as feedback comes in. A story that arrives after the written scope is signed gets its own quote, approved before it starts.</li>
+</ul>
+<h2>In the team’s work</h2>
 <p>Sean Dinwiddie’s Webmastery writes the scope of every feature as user stories, so the owner reads the job in plain terms before it starts.</p>
-<p>Our User Stories are designed to help you:</p>
+<p>Written that way, stories help you:</p>
 <ul>
 <li>Understand your client’s perspective thoroughly.</li>
 <li>Prioritize features based on user needs.</li>
 <li>Collaborate effectively with your development team.</li>
 <li>Adapt to changing requirements as your project evolves.</li>
 </ul>
-<p>User Stories are not just about writing, but about understanding and adapting to the evolving needs of your business. The lessons that follow show how, from the first conversation with a user to the story the owner reads in the written scope.</p>
-<p><strong>Next Steps</strong></p>
+<p>The writing is the easy part; the understanding behind it is the craft. The lessons that follow show how, from the first conversation with a user to the story the owner reads in the written scope.</p>
+<h2>Next steps</h2>
 <p>The next lesson, Behavior-Driven Development (BDD), turns a story’s acceptance criteria into scenarios the software is tested against.</p>
 
 <!-- .entry-content -->

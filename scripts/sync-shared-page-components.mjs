@@ -798,6 +798,9 @@ const withTrimmedCategory = (name, html) =>
 // plain bold phrase becomes an h2; a bold lead-in with text after it is left
 // alone. Pages join this list a few at a time.
 const HEADING_PAGES = new Set([
+  "community/user-stories/index.html",
+  "community/behavior-driven-development-bdd/index.html",
+  "community/functional-reactive-programming-frp/index.html",
   "community/collaborative-sessions-to-review-and-refine-user-stories/index.html",
   "community/creating-bdd-scenarios-for-real-world-cases/index.html",
   "community/reviewing-and-enhancing-bdd-scenarios-as-a-group/index.html",

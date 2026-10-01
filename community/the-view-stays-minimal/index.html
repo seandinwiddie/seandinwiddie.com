@@ -113,11 +113,20 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>A view shows what the state already holds and forwards what the customer does. On the Sean Dinwiddie&rsquo;s Webmastery team, a view decides nothing a scenario tests: selectors shape what it reads, the endpoint&rsquo;s hook carries the request, and the view&rsquo;s own test reads the screen the way the customer does. This lesson builds the checkout that places the order, from the cart in <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> and the endpoint in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>.</p>
+<p>A view shows what the state already holds and forwards what the customer does. On the Sean Dinwiddie&rsquo;s Webmastery team, a view decides nothing a scenario tests: selectors shape what it reads, the endpoint&rsquo;s hook carries the request, and the view&rsquo;s own test reads the screen the way the customer does.</p>
+<p>This lesson builds the checkout that places the order, from the cart in <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> and the endpoint in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>.</p>
 <h2>1. What a view may decide</h2>
-<p>Every rule in the checkout already has an owner. The cart&rsquo;s lines and total belong to the slice and its selectors; the order, and whether the API accepted it, belong to RTK Query; what is on the screen for a moment, such as a note being typed or a panel left open, belongs to the component&rsquo;s own <code>useState</code>. What is left for the view is small: read, show, and forward an event. A view that sums a line, formats a price or empties the cart after a click holds a rule no scenario can reach without a browser. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#select-close-to-the-render">Redux Standard Patterns and Functional Programming</a> shows a view that subscribes to the smallest values it renders and dispatches one event.</p>
+<p>Every rule in the checkout already has an owner:</p>
+<ul>
+<li>the cart&rsquo;s lines and total belong to the slice and its selectors;</li>
+<li>the order, and whether the API accepted it, belong to RTK Query;</li>
+<li>what is on the screen for a moment, such as a note being typed or a panel left open, belongs to the component&rsquo;s own <code>useState</code>.</li>
+</ul>
+<p>What is left for the view is small: read, show, and forward an event. A view that sums a line, formats a price or empties the cart after a click holds a rule no scenario can reach without a browser.</p>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#select-close-to-the-render">Redux Standard Patterns and Functional Programming</a> shows a view that subscribes to the smallest values it renders and dispatches one event.</p>
 <h2>2. A view model is a selector</h2>
-<p>The checkout shows each line the way the customer reads it: a name, a quantity and a price in dollars, then the total. That shape is a view model, and like the total it is derived, never stored. One selector builds it from the slice&rsquo;s own selectors, and a second builds what the checkout sends, product and quantity only, because the API prices the order itself:</p>
+<p>The checkout shows each line the way the customer reads it: a name, a quantity and a price in dollars, then the total. That shape is a view model, and like the total it is derived, never stored.</p>
+<p>One selector builds it from the slice&rsquo;s own selectors, and a second builds what the checkout sends, product and quantity only, because the API prices the order itself:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/checkoutSelectors.ts
 import { createSelector } from '@reduxjs/toolkit'
 import { selectLines, selectTotalCents } from '../cart/cartSlice'
@@ -141,7 +150,8 @@ export const selectCheckout = createSelector([selectLines, selectTotalCents], (l
 export const selectNewOrder = createSelector([selectLines], (lines) =&gt; ({
   lines: lines.map(({ productId, quantity }) =&gt; ({ productId, quantity })),
 }))</code></pre>
-<p><code>createSelector</code> returns the same object until the lines change, so the view re-renders only when there is something new to show. React Redux checks this in development: a selector that returns a new object for the same state logs a warning. Both selectors are tested like the slice&rsquo;s, with plain state and no view. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#selector-layers">Modern Redux Architecture Patterns</a> makes simple selectors a feature&rsquo;s public read API, and memoizes where reference stability matters.</p>
+<p><code>createSelector</code> returns the same object until the lines change, so the view re-renders only when there is something new to show. React Redux checks this in development: a selector that returns a new object for the same state logs a warning.</p>
+<p>Both selectors are tested like the slice&rsquo;s, with plain state and no view. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#selector-layers">Modern Redux Architecture Patterns</a> makes simple selectors a feature&rsquo;s public read API, and memoizes where reference stability matters.</p>
 <h2>3. The view reads, shows and forwards</h2>
 <p>The store&rsquo;s hooks are typed once, so no view imports the store:</p>
 <pre class="code-block" tabindex="0"><code>// app/hooks.ts
@@ -184,7 +194,8 @@ export function PlaceOrder({ tenantId }: { tenantId: string }) {
     &lt;/section&gt;
   )
 }</code></pre>
-<p>The click calls <code>placeOrder</code> and nothing more. The view doesn&rsquo;t await the answer or empty the cart: the slice empties it on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>, and the hook&rsquo;s state says whether the request is under way, done or refused. The button stays disabled while the request runs, so an order can&rsquo;t go twice. The status line is on the page from the start, so a screen reader announces the change when its text arrives. What it says comes from a pure function of the request, tested with no view at all:</p>
+<p>The click calls <code>placeOrder</code> and nothing more. The view doesn&rsquo;t await the answer or empty the cart: the slice empties it on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>, and the hook&rsquo;s state says whether the request is under way, done or refused.</p>
+<p>The button stays disabled while the request runs, so an order can&rsquo;t go twice. The status line is on the page from the start, so a screen reader announces the change when its text arrives. What it says comes from a pure function of the request, tested with no view at all:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/orderNotice.ts
 import type { QueryStatus } from '@reduxjs/toolkit/query'
 
@@ -214,8 +225,32 @@ const NOTICES: Record&lt;QueryStatus, (error: unknown) =&gt; string&gt; = {
 }
 
 export const orderNotice = ({ status, error }: OrderRequest): string =&gt; NOTICES[status](error)</code></pre>
-<p>The function chooses by key rather than through a chain of conditions, as the lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#match-dispatch-or-broadcast">Functional Composition</a> advises: the request&rsquo;s <code>status</code> picks one entry from a table that has to name all four states, so a state left out fails to compile, and a refusal&rsquo;s reason picks its words from a <code>Map</code>, which, unlike an object literal, holds no inherited keys such as <code>constructor</code>. A reason the map doesn&rsquo;t hold gets the notice that is always true.</p>
-<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; a payment provider that is down comes back as a 503 with a reason of its own, and the customer is asked to try again. Any other failure says the order wasn&rsquo;t confirmed and the cart is as it was, because both are true: when the connection drops, the client can&rsquo;t know whether the API recorded the order. The words follow the API&rsquo;s reason, never the status alone, because a 503 page from a proxy in front of the API says nothing about the order. The function is tested on its own, branch by branch, including the failures no scenario names:</p>
+<p>The function chooses by key rather than through a chain of conditions, as the lecture <a href="https://seandinwiddie.github.io/lectures/functional-composition/#match-dispatch-or-broadcast">Functional Composition</a> advises. Two lookups do all the work:</p>
+<ul>
+<li>the request&rsquo;s <code>status</code> picks one entry from a table that has to name all four states, so a state left out fails to compile;</li>
+<li>a refusal&rsquo;s reason picks its words from a <code>Map</code>, which, unlike an object literal, holds no inherited keys such as <code>constructor</code>.</li>
+</ul>
+<p>A reason the map doesn&rsquo;t hold gets the notice that is always true.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="notice-title notice-desc" viewBox="0 0 360 316">
+<title id="notice-title">What orderNotice says</title>
+<desc id="notice-desc">The request's status picks one of four entries: uninitialized and pending say nothing, fulfilled says Order placed, and rejected looks up the API's reason. A highlighted line runs from rejected to card-declined, which asks for another card; payments-unavailable asks the customer to try again, and any other reason says the order wasn't confirmed.</desc>
+<g class="edge"><line x1="140" y1="42" x2="244" y2="42"/><line x1="140" y1="80" x2="244" y2="80"/><line x1="140" y1="118" x2="244" y2="118"/><line x1="26" y1="244" x2="54" y2="244"/><line x1="238" y1="244" x2="250" y2="244"/><line x1="26" y1="288" x2="54" y2="288"/><line x1="238" y1="288" x2="250" y2="288"/><line x1="26" y1="200" x2="26" y2="288"/></g>
+<g class="path"><line x1="26" y1="200" x2="54" y2="200"/><line x1="238" y1="200" x2="250" y2="200"/><line x1="26" y1="168" x2="26" y2="200"/></g>
+<rect class="node" x="12" y="30" width="128" height="24" rx="4"/>
+<rect class="node" x="12" y="68" width="128" height="24" rx="4"/>
+<rect class="node" x="12" y="106" width="128" height="24" rx="4"/>
+<rect class="node on" x="12" y="144" width="128" height="24" rx="4"/>
+<rect class="node on" x="54" y="188" width="184" height="24" rx="4"/>
+<rect class="node" x="54" y="232" width="184" height="24" rx="4"/>
+<rect class="node" x="54" y="276" width="184" height="24" rx="4"/>
+<g><text class="note" x="76" y="14">status</text><text class="note" x="296" y="14">the notice</text><text x="76" y="42">uninitialized</text><text class="note" x="296" y="42">nothing</text><text x="76" y="80">pending</text><text class="note" x="296" y="80">nothing</text><text x="76" y="118">fulfilled</text><text class="note" x="296" y="118">Order placed.</text><text x="76" y="156">rejected</text><text class="note" x="232" y="156">by the API's reason</text><text x="146" y="200">card-declined</text><text class="note" x="302" y="200">another card</text><text x="146" y="244">payments-unavailable</text><text class="note" x="302" y="244">try again</text><text x="146" y="288">any other</text><text class="note" x="302" y="288">not confirmed</text></g>
+</svg>
+<figcaption>The request&rsquo;s <code>status</code> picks one entry from the table, and a refusal&rsquo;s reason picks its words from the map. The violet line is the declined card; any reason the map doesn&rsquo;t hold gets the notice that is always true.</figcaption>
+</figure>
+<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; a payment provider that is down comes back as a 503 with a reason of its own, and the customer is asked to try again.</p>
+<p>Any other failure says the order wasn&rsquo;t confirmed and the cart is as it was, because both are true: when the connection drops, the client can&rsquo;t know whether the API recorded the order. The words follow the API&rsquo;s reason, never the status alone, because a 503 page from a proxy in front of the API says nothing about the order.</p>
+<p>The function is tested on its own, branch by branch, including the failures no scenario names:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/orderNotice.test.ts
 import { QueryStatus } from '@reduxjs/toolkit/query'
 import { describe, expect, it } from 'vitest'
@@ -288,9 +323,11 @@ export function OrderHistory({ tenantId }: { tenantId: string }) {
     &lt;/ul&gt;
   )
 }</code></pre>
-<p>RTK Query compares what <code>selectFromResult</code> returns field by field. A fallback written as <code>data ?? []</code> is a new array each time the callback runs, so it reads as a change and costs a render for nothing; <code>NO_ORDERS</code>, declared once outside the component, keeps one reference. <code>isLoading</code> is true only for the first load, so after an order is placed the list stays on the screen while its tag refetches it. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> warns against the copied array for the same reason.</p>
+<p>RTK Query compares what <code>selectFromResult</code> returns field by field. A fallback written as <code>data ?? []</code> is a new array each time the callback runs, so it reads as a change and costs a render for nothing; <code>NO_ORDERS</code>, declared once outside the component, keeps one reference.</p>
+<p><code>isLoading</code> is true only for the first load, so after an order is placed the list stays on the screen while its tag refetches it. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> warns against the copied array for the same reason.</p>
 <h2>5. The test reads the screen</h2>
-<p>The view&rsquo;s test renders it in a real store, with the cart slice, the API root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>, as the endpoint&rsquo;s test does. It finds what the customer finds, by role and by visible text, clicks through Testing Library&rsquo;s user-event, and never mocks a hook or reads the component&rsquo;s state. Its two tests carry the names Module 2 gave the scenarios:</p>
+<p>The view&rsquo;s test renders it in a real store, with the cart slice, the API root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>, as the endpoint&rsquo;s test does.</p>
+<p>It finds what the customer finds, by role and by visible text, clicks through Testing Library&rsquo;s user-event, and never mocks a hook or reads the component&rsquo;s state. Its two tests carry the names Module 2 gave the scenarios:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/PlaceOrder.test.tsx
 import { configureStore } from '@reduxjs/toolkit'
 import { cleanup, render, screen } from '@testing-library/react'
@@ -354,8 +391,10 @@ describe('Feature: Checkout', () =&gt; {
     expect(screen.getByRole('listitem')).toHaveTextContent('Widget A')
   })
 })</code></pre>
-<p>Vitest runs the file in jsdom (<code>environment: 'jsdom'</code> in its config), with jest-dom&rsquo;s matchers loaded once in the setup file (<code>import '@testing-library/jest-dom/vitest'</code>). Without Vitest&rsquo;s globals, Testing Library can&rsquo;t clean up between tests on its own, so the file calls <code>cleanup</code> itself; otherwise the second test finds two checkouts on the page. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> tests components the same way, through what they show rather than how they work.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not all state leaves the view. A note to the kitchen being typed, or whether the order summary is open, is the component&rsquo;s own: it stays in <code>useState</code> until the customer submits, and only then becomes an event or a mutation&rsquo;s argument. A view model that takes an argument, such as one row of the checkout by its product, needs no selector per row: the <code>createSelector</code> that Redux Toolkit 2 ships, from Reselect 5, keeps a result for each argument it sees, where older guides built one selector per component:</p>
+<p>Vitest runs the file in jsdom (<code>environment: 'jsdom'</code> in its config), with jest-dom&rsquo;s matchers loaded once in the setup file (<code>import '@testing-library/jest-dom/vitest'</code>).</p>
+<p>Without Vitest&rsquo;s globals, Testing Library can&rsquo;t clean up between tests on its own, so the file calls <code>cleanup</code> itself; otherwise the second test finds two checkouts on the page. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> tests components the same way, through what they show rather than how they work.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not all state leaves the view. A note to the kitchen being typed, or whether the order summary is open, is the component&rsquo;s own: it stays in <code>useState</code> until the customer submits, and only then becomes an event or a mutation&rsquo;s argument.</p>
+<p>A view model that takes an argument, such as one row of the checkout by its product, needs no selector per row: the <code>createSelector</code> that Redux Toolkit 2 ships, from Reselect 5, keeps a result for each argument it sees, where older guides built one selector per component:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/checkoutSelectors.ts, continued
 import type { RootState } from '../../app/store'
 
@@ -366,7 +405,8 @@ export const selectCheckoutLine = createSelector(
 
 // in each row of the checkout, one selector for every row
 const line = useAppSelector((state) =&gt; selectCheckoutLine(state, productId))</code></pre>
-<p>Results kept for a value that never repeats, such as a timestamp, pile up; current Reselect gives the memoizer a <code>maxSize</code> for that, and warns in development when a cache keeps growing. And when a view model starts to carry a rule, such as a minimum order before <code>canPlace</code> turns true, the rule has outgrown it: it gets a scenario of its own, and the slice or the API decides it, where the scenario can test it.</p></aside>
+<p>Results kept for a value that never repeats, such as a timestamp, pile up; current Reselect gives the memoizer a <code>maxSize</code> for that, and warns in development when a cache keeps growing.</p>
+<p>And when a view model starts to carry a rule, such as a minimum order before <code>canPlace</code> turns true, the rule has outgrown it: it gets a scenario of its own, and the slice or the API decides it, where the scenario can test it.</p></aside>
 <p>One scenario now runs through the whole chain, and each owner proves its own part under the same name: the API records the order in the Hspec test, the endpoint refetches the history, the slice empties the cart, and the view shows the customer the order placed and the cart empty. The view holds none of those rules, which is why it stays small enough to read on one screen.</p>
 
 <!-- .entry-content -->

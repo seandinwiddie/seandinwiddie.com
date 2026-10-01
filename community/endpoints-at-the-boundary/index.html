@@ -113,9 +113,11 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>An endpoint is where the client meets the API. On the Sean Dinwiddie&rsquo;s Webmastery team, endpoints are generated from the API&rsquo;s own contract into one API root, reviewed like any other code, decoded before a view sees what they return, and tagged so the right views refetch. This lesson carries the orders from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> into the client, beside the cart from <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a>.</p>
+<p>An endpoint is where the client meets the API. On the Sean Dinwiddie&rsquo;s Webmastery team, endpoints are generated from the API&rsquo;s own contract into one API root, reviewed like any other code, decoded before a view sees what they return, and tagged so the right views refetch.</p>
+<p>This lesson carries the orders from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> into the client, beside the cart from <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a>.</p>
 <h2>1. One API root per base URL</h2>
-<p>Every endpoint that talks to the same server joins one API root: one cache, one middleware, and tags that reach across features, so an order placed at checkout refreshes the order history on another screen. A second backend, such as a CMS that serves the shop&rsquo;s pages or a search service, gets a root of its own. The root starts with no endpoints, declares its tag types, and sends the signed-in user&rsquo;s token on every request as the bearer token the API&rsquo;s <code>Auth</code> combinator reads:</p>
+<p>Every endpoint that talks to the same server joins one API root: one cache, one middleware, and tags that reach across features, so an order placed at checkout refreshes the order history on another screen. A second backend, such as a CMS that serves the shop&rsquo;s pages or a search service, gets a root of its own.</p>
+<p>The root starts with no endpoints, declares its tag types, and sends the signed-in user&rsquo;s token on every request as the bearer token the API&rsquo;s <code>Auth</code> combinator reads:</p>
 <pre class="code-block" tabindex="0"><code>// app/api.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { RootState } from './store'
@@ -152,7 +154,13 @@ const config = {
 } satisfies ConfigFile
 
 export default config</code></pre>
-<p>A config written in TypeScript, as this one is, needs <code>esbuild-runner</code> or <code>ts-node</code> installed beside the generator. Each endpoint is named for its route&rsquo;s operationId, which the API sets as it builds the document; without one, the generator would build a name from the method and the path. <code>filterEndpoints</code> keeps only the routes this feature owns. When the generator guesses wrong, such as a search sent as a POST, which it would make a mutation, an entry in <code>endpointOverrides</code> corrects it. The generated file is read in review like any other source and never edited by hand: the config changes, the generator runs again, and the diff is reviewed. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> lists what that review checks.</p>
+<p>A config written in TypeScript, as this one is, needs <code>esbuild-runner</code> or <code>ts-node</code> installed beside the generator. Three things shape what it generates:</p>
+<ul>
+<li>Each endpoint is named for its route&rsquo;s operationId, which the API sets as it builds the document; without one, the generator would build a name from the method and the path.</li>
+<li><code>filterEndpoints</code> keeps only the routes this feature owns.</li>
+<li>When the generator guesses wrong, such as a search sent as a POST, which it would make a mutation, an entry in <code>endpointOverrides</code> corrects it.</li>
+</ul>
+<p>The generated file is read in review like any other source and never edited by hand: the config changes, the generator runs again, and the diff is reviewed. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> lists what that review checks.</p>
 <h2>3. Decode at the boundary</h2>
 <p>The generated types say what the API promised; they don&rsquo;t check what arrives. A server deployed ahead of its client, or a proxy&rsquo;s error page, can answer with something else. So every response is <code>unknown</code> until a decoder accepts it, written as a pure function that returns the lectures&rsquo; small <code>Either</code>:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/decodeOrders.ts
@@ -198,7 +206,25 @@ const decodingBaseQuery: BaseQueryFn&lt;string | FetchArgs, unknown, FetchBaseQu
       ? { data: decoded.value, meta: result.meta }
       : { error: { status: 'CUSTOM_ERROR', error: decoded.error, data: result.data }, meta: result.meta }
   }</code></pre>
-<p>In the finished file, <code>decodingBaseQuery</code> sits between <code>baseQuery</code> and <code>createApi</code>, which takes it in place of <code>baseQuery</code>. An endpoint that names no decoder passes through unchecked, so the review checks that every endpoint names one; the cart in the depth passage below leaves its decoder out only to keep the patch in view. RTK Query can also run the same check itself, as an endpoint&rsquo;s <code>responseSchema</code>, for validators written to the Standard Schema interface. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#react-and-rtk-query">Practical Applications of Functional Programming</a> holds to the same rule: an endpoint checks the response before any component receives it.</p>
+<p>In the finished file, <code>decodingBaseQuery</code> sits between <code>baseQuery</code> and <code>createApi</code>, which takes it in place of <code>baseQuery</code>.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="decode-title decode-desc" viewBox="0 0 360 268">
+<title id="decode-title">Decoding at the boundary</title>
+<desc id="decode-desc">A response comes back from baseQuery as unknown data and goes to the endpoint's decoder. The decoder returns Right or Left. A highlighted line runs through Right to data that is cached for the view. Left becomes a CUSTOM_ERROR with the raw payload beside it, an error the view can show.</desc>
+<g class="edge"><line x1="200" y1="104" x2="262" y2="149"/><line x1="260" y1="143.3" x2="262" y2="149"/><line x1="256" y1="148.9" x2="262" y2="149"/><line x1="270" y1="174" x2="270" y2="213"/><line x1="273.4" y1="208.1" x2="270" y2="213"/><line x1="266.6" y1="208.1" x2="270" y2="213"/></g>
+<g class="path"><line x1="180" y1="36" x2="180" y2="79"/><line x1="183.4" y1="74.1" x2="180" y2="79"/><line x1="176.6" y1="74.1" x2="180" y2="79"/><line x1="160" y1="104" x2="98" y2="149"/><line x1="104" y1="148.9" x2="98" y2="149"/><line x1="100" y1="143.3" x2="98" y2="149"/><line x1="90" y1="174" x2="90" y2="213"/><line x1="93.4" y1="208.1" x2="90" y2="213"/><line x1="86.6" y1="208.1" x2="90" y2="213"/></g>
+<rect class="node" x="134" y="12" width="92" height="24" rx="4"/>
+<rect class="node on" x="92" y="80" width="176" height="24" rx="4"/>
+<rect class="node" x="61" y="150" width="58" height="24" rx="4"/>
+<rect class="node" x="245" y="150" width="50" height="24" rx="4"/>
+<rect class="node on" x="36" y="214" width="108" height="24" rx="4"/>
+<rect class="node" x="211.5" y="214" width="117" height="24" rx="4"/>
+<g><text x="180" y="24">baseQuery</text><text class="note" x="232" y="58">unknown</text><text x="180" y="92">decode(result.data)</text><text x="90" y="162">Right</text><text x="270" y="162">Left</text><text x="90" y="226">cached data</text><text x="270" y="226">CUSTOM_ERROR</text><text class="note" x="270" y="256">raw payload kept</text><text class="note" x="90" y="256">for the view</text></g>
+</svg>
+<figcaption>Every response is unknown until its endpoint&rsquo;s decoder accepts it. The violet line is a payload that passes and is cached; one that fails becomes a <code>CUSTOM_ERROR</code>, with the raw payload beside it, for the view to show.</figcaption>
+</figure>
+<p>An endpoint that names no decoder passes through unchecked, so the review checks that every endpoint names one; the cart in the depth passage below leaves its decoder out only to keep the patch in view.</p>
+<p>RTK Query can also run the same check itself, as an endpoint&rsquo;s <code>responseSchema</code>, for validators written to the Standard Schema interface. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#react-and-rtk-query">Practical Applications of Functional Programming</a> holds to the same rule: an endpoint checks the response before any component receives it.</p>
 <h2>4. Tags say what to refetch</h2>
 <p>A query provides tags for what it holds, and a mutation invalidates the tags its change makes stale. The generated endpoints take their decoders and tags in one reviewed file beside the generated one:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/ordersApi.ts
@@ -222,9 +248,27 @@ export const ordersApi = generatedOrdersApi.enhanceEndpoints({
 })
 
 export const { useListOrdersQuery, usePlaceOrderMutation } = ordersApi</code></pre>
-<p>When the API accepts an order, the list is stale, and every view showing it refetches. When the API refuses, the callback returns no tags: RTK Query invalidates on a handled error too, and a refused order changes nothing. A list with no view subscribed is dropped instead, and fetched fresh when a view next asks for it. The tags are written here, where they are reviewed, because tags generated from the document are only as fine as the document&rsquo;s own grouping. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#understand-invalidation">Redux Toolkit and RTK Query Best Practices</a> walks through invalidation.</p>
+<p>When the API accepts an order, the list is stale, and every view showing it refetches. When the API refuses, the callback returns no tags: RTK Query invalidates on a handled error too, and a refused order changes nothing. A list with no view subscribed is dropped instead, and fetched fresh when a view next asks for it.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="tags-title tags-desc" viewBox="0 0 360 210">
+<title id="tags-title">What a placed order refetches</title>
+<desc id="tags-desc">Two rows. The highlighted row: the order is accepted, the tag Order LIST is invalidated, and listOrders, which provides that tag, refetches. The plain row: the order is refused, the callback returns no tags, and the history stays as it was.</desc>
+<g class="edge"><line x1="109" y1="150" x2="129" y2="150"/><line x1="124.1" y1="146.6" x2="129" y2="150"/><line x1="124.1" y1="153.4" x2="129" y2="150"/><line x1="231" y1="150" x2="251" y2="150"/><line x1="246.1" y1="146.6" x2="251" y2="150"/><line x1="246.1" y1="153.4" x2="251" y2="150"/></g>
+<g class="path"><line x1="109" y1="62" x2="129" y2="62"/><line x1="124.1" y1="58.6" x2="129" y2="62"/><line x1="124.1" y1="65.4" x2="129" y2="62"/><line x1="231" y1="62" x2="251" y2="62"/><line x1="246.1" y1="58.6" x2="251" y2="62"/><line x1="246.1" y1="65.4" x2="251" y2="62"/></g>
+<rect class="node" x="8" y="50" width="100" height="24" rx="4"/>
+<rect class="node on" x="130" y="50" width="100" height="24" rx="4"/>
+<rect class="node on" x="252" y="50" width="100" height="24" rx="4"/>
+<rect class="node" x="8" y="138" width="100" height="24" rx="4"/>
+<rect class="node" x="130" y="138" width="100" height="24" rx="4"/>
+<rect class="node" x="252" y="138" width="100" height="24" rx="4"/>
+<g><text class="note" x="180" y="16">after placeOrder answers</text><text x="58" y="62">accepted</text><text class="note" x="58" y="92">the order</text><text x="180" y="62">Order: LIST</text><text class="note" x="180" y="92">invalidated</text><text x="302" y="62">refetch</text><text class="note" x="302" y="92">listOrders</text><text x="58" y="150">refused</text><text class="note" x="58" y="180">the order</text><text x="180" y="150">no tags</text><text class="note" x="180" y="180">returned</text><text x="302" y="150">unchanged</text><text class="note" x="302" y="180">the history</text></g>
+</svg>
+<figcaption>An accepted order invalidates <code>Order: LIST</code>, and <code>listOrders</code>, which provides it, refetches for every view that shows it (the violet row). A refused order gets no tags from the callback, so the history stays as it was.</figcaption>
+</figure>
+<p>The tags are written here, where they are reviewed, because tags generated from the document are only as fine as the document&rsquo;s own grouping. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#understand-invalidation">Redux Toolkit and RTK Query Best Practices</a> walks through invalidation.</p>
 <h2>5. The scenario at the endpoint</h2>
-<p>An endpoint is tested against a controlled boundary: a real store with the root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>. The view builds the new order from the slice&rsquo;s lines, product and quantity only; the price the customer saw is for display, and the API prices the order in its own transaction. The test carries the same scenario name as the API&rsquo;s and the slice&rsquo;s:</p>
+<p>An endpoint is tested against a controlled boundary: a real store with the root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>.</p>
+<p>The view builds the new order from the slice&rsquo;s lines, product and quantity only; the price the customer saw is for display, and the API prices the order in its own transaction. The test carries the same scenario name as the API&rsquo;s and the slice&rsquo;s:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/ordersApi.test.ts
 import { configureStore } from '@reduxjs/toolkit'
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -291,7 +335,8 @@ describe('Feature: Checkout', () =&gt; {
   })
 })</code></pre>
 <p>The same file checks the failure paths: a response that isn&rsquo;t an order ends as a <code>CUSTOM_ERROR</code> with the raw payload beside it, and a refused order leaves the history as it was. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what each layer&rsquo;s tests cover, tag invalidation and optimistic rollback included.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Tags wait for the API, and most of the time that is right. When a change should show at once, the mutation patches the cache itself and undoes the patch if the API refuses. <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> ends with the cart moving to the server when it must follow the customer from phone to laptop, and adding to that cart is the classic case. The read endpoint is injected first, so the mutation can patch its cache with full types:</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Tags wait for the API, and most of the time that is right. When a change should show at once, the mutation patches the cache itself and undoes the patch if the API refuses.</p>
+<p><a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> ends with the cart moving to the server when it must follow the customer from phone to laptop, and adding to that cart is the classic case. The read endpoint is injected first, so the mutation can patch its cache with full types:</p>
 <pre class="code-block" tabindex="0"><code>// features/cart/cartApi.ts
 import { api } from '../../app/api'
 import type { CartLine } from './cartSlice'
@@ -332,8 +377,10 @@ export const cartApi = cartReadApi.injectEndpoints({
     }),
   }),
 })</code></pre>
-<p>The patch, its undo and the server&rsquo;s cart that replaces it live in the mutation&rsquo;s own lifecycle, never in a view. The request carries the product alone: the name and price in the patch are for display until the server&rsquo;s cart, priced by the API, takes their place. Optimism suits a change the API almost always accepts and the customer can watch undone. Placing the order is never optimistic: a declined card must never look like a placed order, which is why the slice empties the cart only on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#patching-the-cache-from-a-component">Redux Toolkit and RTK Query Best Practices</a> sets the patch in the wrong place beside the right one.</p></aside>
-<p>The endpoint sits between the slice and the API, and each owner proves its own part of one scenario under the same name: the Hspec test that the API records the order, and this test that the history shows it and that the slice, hearing the order accepted, empties the cart. The view that places the order stays minimal, and <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a> builds it: it reads the cart through selectors, calls <code>usePlaceOrderMutation</code> with each line&rsquo;s product and quantity, and shows what the endpoint returns.</p>
+<p>The patch, its undo and the server&rsquo;s cart that replaces it live in the mutation&rsquo;s own lifecycle, never in a view. The request carries the product alone: the name and price in the patch are for display until the server&rsquo;s cart, priced by the API, takes their place.</p>
+<p>Optimism suits a change the API almost always accepts and the customer can watch undone. Placing the order is never optimistic: a declined card must never look like a placed order, which is why the slice empties the cart only on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#patching-the-cache-from-a-component">Redux Toolkit and RTK Query Best Practices</a> sets the patch in the wrong place beside the right one.</p></aside>
+<p>The endpoint sits between the slice and the API, and each owner proves its own part of one scenario under the same name: the Hspec test that the API records the order, and this test that the history shows it and that the slice, hearing the order accepted, empties the cart.</p>
+<p>The view that places the order stays minimal, and <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a> builds it: it reads the cart through selectors, calls <code>usePlaceOrderMutation</code> with each line&rsquo;s product and quantity, and shows what the endpoint returns.</p>
 
 <!-- .entry-content -->
 <footer>

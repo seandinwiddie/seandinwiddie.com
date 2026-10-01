@@ -121,9 +121,11 @@
 <li><a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a></li>
 </ol>
 </nav>
-<p>The first four modules build an app: a user story, the scenarios that test it, the state behind its screens and the typed API behind them. This module carries the same principles into different work. The Sean Dinwiddie&rsquo;s Webmastery team also trains and evaluates small language models, and that work is written in Python. Module 5 teaches the Python practice the team holds to, the geometry its training and evaluation are built on, and the path a trained model takes before it is released.</p>
+<p>The first four modules build an app: a user story, the scenarios that test it, the state behind its screens and the typed API behind them. This module carries the same principles somewhere new. The Sean Dinwiddie&rsquo;s Webmastery team also trains and evaluates small language models, and that work is written in Python.</p>
+<p>Module 5 teaches the Python practice the team holds to, the geometry its training and evaluation are built on, and the path a trained model takes before it is released.</p>
 <h2>Why Python</h2>
-<p>The stack follows the project. The team builds its apps in Haskell, TypeScript and Rust, and the work of training a model lives in Python: the libraries that load a model, fine-tune it, measure it and convert it for a runtime are written for Python first, and the research behind them is published with Python beside it. Choosing another language for that work would mean rebuilding what those libraries already do well, so the training work is written in Python, and the team&rsquo;s principles come with it. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/">Functional Programming in Other Languages</a> makes the same case for carrying one discipline from language to language.</p>
+<p>The stack follows the project. The team builds its apps in Haskell, TypeScript and Rust, and the work of training a model lives in Python. The libraries that load a model, fine-tune it, measure it and convert it for a runtime are written for Python first, and the research behind them is published with Python beside it.</p>
+<p>So the training work is written in Python, and the team&rsquo;s principles come along for the ride. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/">Functional Programming in Other Languages</a> makes the same case for carrying one discipline from language to language.</p>
 <h2>The same principles</h2>
 <ul>
 <li><strong>Behavior is named before it is built.</strong> A user story names what a feature does for someone before any code is written. Here, the behavior a model must show is named first: the corners of an experiment, and the oracle each answer must pass, are fixed before any data is generated or any training runs.</li>
@@ -131,10 +133,33 @@
 <li><strong>Tests carry names.</strong> Each test names the rule it proves, the way a scenario names a behavior, so a failing run reads as a list of broken rules, and a run with a skipped test fails.</li>
 <li><strong>Evidence comes before a release.</strong> A trained model is released only when its evidence shows it is no worse than the model it replaces, wherever it is measured, the way a feature launches only after the review against its written scope.</li>
 </ul>
+<figure class="diagram">
+<svg role="img" aria-labelledby="core-title core-desc" viewBox="0 0 360 262">
+<title id="core-title">The pure core and its shell</title>
+<desc id="core-desc">A frame, the shell, holds reading files, loading a model and running a GPU. Inside it a highlighted box, the pure core, holds generating data, scoring answers and comparing two models. From the tests, below the frame, a highlighted arrow runs straight into the core.</desc>
+<rect class="node" x="8" y="8" width="344" height="206" rx="6"/>
+<rect class="node on" x="56" y="72" width="248" height="122" rx="6"/>
+<g class="path"><line x1="180" y1="236" x2="180" y2="197"/><line x1="176.6" y1="201.9" x2="180" y2="197"/><line x1="183.4" y1="201.9" x2="180" y2="197"/></g>
+<g><text class="note" x="180" y="28">the shell: effects</text><text class="note" x="180" y="52">read files · load a model · run a GPU</text><text class="note" x="180" y="92">the pure core</text><text x="180" y="120">generate data</text><text x="180" y="144">score answers</text><text x="180" y="168">compare two models</text><text class="note" x="180" y="250">the tests</text></g>
+</svg>
+<figcaption>The logic lives in the pure core, and the effects wrap it in a thin shell. The violet arrow is the tests: they call the core directly, with no file, model or GPU in the way.</figcaption>
+</figure>
 <h2>What geometric reasoning means here</h2>
-<p>A model&rsquo;s answers have traits that come in pairs: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four such traits give sixteen combinations, and they sit at the corners of a four-dimensional cube, where two corners are as far apart as the number of traits they differ in. Training and evaluation reason about that cube. Training pairs are built between corners at every distance, from neighbours to opposites, so the model learns each trait apart from the facts it states. Evaluation measures every corner, adds whether the evidence in the prompt is stated or contested, and reads the results as effects and interactions rather than one average score. A model is released only when no corner is worse than before.</p>
+<p>A model&rsquo;s answers have traits that come in pairs: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four such traits give sixteen combinations, and they sit at the corners of a four-dimensional cube, where two corners are as far apart as the number of traits they differ in.</p>
+<p>Training and evaluation both reason about that cube:</p>
+<ul>
+<li>Training pairs are built between corners at every distance, from neighbours to opposites, so the model learns each trait apart from the facts it states.</li>
+<li>Evaluation measures every corner, adds whether the evidence in the prompt is stated or contested, and reads the results as effects and interactions rather than one average score.</li>
+<li>A model is released only when no corner is worse than before.</li>
+</ul>
 <h2>How the module runs</h2>
-<p><a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> sets out the practices, each with a small example that runs. <a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a> builds the cube, the training pairs and the analysis in plain Python. <a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a> follows one model from the choice of its base to the gate that decides whether it ships. The examples run on the Python standard library and pytest, except two sketches, marked as such: the training stages, which need a GPU, and the conversion that follows them.</p>
+<p>Three lessons, each building on the one before:</p>
+<ul>
+<li><a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> sets out the practices, each with a small example that runs.</li>
+<li><a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a> builds the cube, the training pairs and the analysis in plain Python.</li>
+<li><a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a> follows one model from the choice of its base to the gate that decides whether it ships.</li>
+</ul>
+<p>The examples run on the Python standard library and pytest, except two sketches, marked as such: the training stages, which need a GPU, and the conversion that follows them.</p>
 <p>Module 5 sits beside the course&rsquo;s three subjects as the team&rsquo;s Python and model-training practice. It assumes no machine learning, only the habits the earlier modules teach: name the behavior, keep the core pure and let the evidence decide.</p>
 
 <!-- .entry-content -->

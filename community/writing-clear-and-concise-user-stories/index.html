@@ -114,32 +114,32 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>User Stories serve as the bridge between user needs and the development process. They need to be clear enough that the owner and every webmaster on the job read each one the same way. This lesson shows how to write User Stories that are easy to grasp and that guide the work.</p>
-<h2>1. Start with “As a [user], I want [an action] so that [benefit/value].”</h2>
-<p>This is the classic User Story template and provides a structured way to express the user’s perspective and the value they expect. Filling in all three parts is the first check on a story: a part left blank shows what the story doesn&rsquo;t know yet.</p>
-<h2>2. Use Specific User Roles</h2>
-<p>Be specific about the user roles involved. This might include “As a customer,” “As an admin,” or “As a first-time visitor.” Specific roles make it clear who the story is about.</p>
-<h2>3. Keep It Action-Oriented</h2>
-<p>The “I want” or “I need” part of the User Story should be action-oriented. This indicates what the user intends to accomplish or what action they expect to perform in the software.</p>
-<h2>4. Be Concise</h2>
-<p>User Stories should be concise and to the point. Avoid unnecessary details or technical jargon. Instead, focus on the user’s needs and the value they expect. The same care with names pays off in code; the lecture <a href="https://seandinwiddie.github.io/lectures/basic-functional-programming-knowledge/#3-use-descriptive-names">Basic Functional Programming TypeScript Knowledge</a> makes the case for descriptive function names.</p>
-<h2>5. Include Acceptance Criteria</h2>
-<p>To provide clarity and a shared understanding of the story’s scope, include acceptance criteria. Acceptance criteria are specific conditions that must be met for the User Story to be considered complete. They help guide development and testing.</p>
-<h2>6. Avoid Technical Details</h2>
-<p>User Stories are not the place for technical details or implementation specifics. The focus should be on the user’s needs, not the development process.</p>
-<h2>7. Use the INVEST Criteria</h2>
+<p>Here is the test of a clear story: the owner and every webmaster on the job read it and picture the same thing. This lesson is how to write one that passes.</p>
+<h2>Start with the template</h2>
+<p>“As a [user], I want [an action] so that [benefit/value].” The classic template holds the user’s side and the value they expect in one sentence. Filling in all three parts is the first check on a story: a part left blank shows what the story doesn&rsquo;t know yet.</p>
+<h2>Name a specific role</h2>
+<p>“As a user” could be anyone, which means it is no one. “As a customer,” “As an admin” or “As a first-time visitor” says who the story is about.</p>
+<h2>Keep it action-oriented</h2>
+<p>The “I want” or “I need” names something the user does, a verb you could watch someone do: call, book, reorder.</p>
+<h2>Be concise</h2>
+<p>One sentence, no jargon, nothing the user wouldn’t say themselves: the need and the value, and nothing else. The same care with names pays off in code; the lecture <a href="https://seandinwiddie.github.io/lectures/basic-functional-programming-knowledge/#3-use-descriptive-names">Basic Functional Programming TypeScript Knowledge</a> makes the case for descriptive function names.</p>
+<h2>Include acceptance criteria</h2>
+<p>Acceptance criteria are the specific conditions that make the story done. They turn “I think it works” into a check anyone can run, and they guide the building and the testing.</p>
+<h2>Leave out the technical details</h2>
+<p>“Keep the number in a config file” is a note for the build, not a story. The story stays on the user’s need.</p>
+<h2>Run the INVEST check</h2>
 <p>Bill Wake’s INVEST criteria (2003) test the quality of a user story. INVEST stands for Independent, Negotiable, Valuable, Estimable, Small, and Testable.</p>
 <ul>
-<li>Independent: Each User Story should be self-contained and not dependent on other stories.</li>
-<li>Negotiable: The story names the need, not the solution, so the owner and the webmaster settle the details in conversation.</li>
-<li>Valuable: Each story should deliver value to the user.</li>
-<li>Estimable: It is clear enough to size, so the written scope can price the job in shares.</li>
-<li>Small: Stories should be small enough to name as one line in the written scope and finish within one iteration.</li>
-<li>Testable: Each criterion can fail, and becomes a Given, When, Then scenario.</li>
+<li><strong>Independent:</strong> it stands on its own, with no other story built first.</li>
+<li><strong>Negotiable:</strong> it names the need, not the solution, so the owner and the webmaster settle the details in conversation.</li>
+<li><strong>Valuable:</strong> it delivers something the user wants.</li>
+<li><strong>Estimable:</strong> it is clear enough to size, so the written scope can price the job in shares.</li>
+<li><strong>Small:</strong> it fits on one line in the written scope and finishes within one iteration.</li>
+<li><strong>Testable:</strong> each criterion can fail, and becomes a Given, When, Then scenario.</li>
 </ul>
-<h2>8. Leave Priority to the Scope</h2>
+<h2>Leave priority to the scope</h2>
 <p>A story&rsquo;s words carry no priority: &ldquo;urgent&rdquo; or &ldquo;must&rdquo; in the story tells a webmaster nothing about what to build first. The written scope carries it, listing each story as required or optional, in the order the owner chose.</p>
-<h2>Example User Story</h2>
+<h2>Before and after</h2>
 <p>Before: “As a user, I want the site to be easier to use.” Nobody can build or test that. After:</p>
 <p>“As a customer on my phone, I want to call the shop with one tap from any page, so that I can ask about an order without hunting for the number.”</p>
 <ul>
@@ -150,13 +150,49 @@
 <li>
 <strong>Benefit/Value:</strong> Ask about an order without hunting for the number</li>
 </ul>
-<h2>Example Acceptance Criteria</h2>
+<h2>Its acceptance criteria</h2>
 <ul>
 <li>Every page shows the shop&rsquo;s number as a link that starts a call.</li>
 <li>The link&rsquo;s text is the number itself, so a screen reader announces it.</li>
 <li>On a screen 320 pixels wide, the number shows without scrolling sideways.</li>
 </ul>
-<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> INVEST is a check to run on a draft, a letter at a time, and the tap-to-call story above passes it. It is independent: no other story has to be built first. It is negotiable: it names the need, a call in one tap, and leaves the form, a link in the header or a bar along the bottom of the screen, to the written scope. It is valuable to someone the owner can name, a customer with a question about an order. It is estimable, because a webmaster can say what it touches, the template every page shares, so the scope can price it. It is small: one line in the scope. And it is testable, because each criterion can fail: a page without the link, a link whose text is an icon a screen reader can&rsquo;t announce, a number that runs off a narrow screen. The before version fails the last three letters: no one can size it, it has no end, and nothing in it can fail a test. Independence is the letter real scopes bend most. In <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a>, seeing past orders seems to wait on placing one, but its criterion starts from &ldquo;Given a customer with two past orders&rdquo;, as <a href="/community/defining-user-stories/">Defining User Stories</a> writes it, so the history can be built and tested first. A dependency between two stories usually becomes a Given, not a reason to merge them.</p></aside>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> INVEST is a check to run on a draft, a letter at a time, and the tap-to-call story above passes it:</p>
+<ul>
+<li>It is independent: no other story has to be built first.</li>
+<li>It is negotiable: it names the need, a call in one tap, and leaves the form, a link in the header or a bar along the bottom of the screen, to the written scope.</li>
+<li>It is valuable to someone the owner can name, a customer with a question about an order.</li>
+<li>It is estimable, because a webmaster can say what it touches, the template every page shares, so the scope can price it.</li>
+<li>It is small: one line in the scope.</li>
+<li>It is testable, because each criterion can fail: a page without the link, a link whose text is an icon a screen reader can&rsquo;t announce, a number that runs off a narrow screen.</li>
+</ul>
+<p>The before version fails the last three letters: no one can size it, it has no end, and nothing in it can fail a test.</p>
+<p>Independence is the letter real scopes bend most. In <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a>, seeing past orders seems to wait on placing one, but its criterion starts from &ldquo;Given a customer with two past orders&rdquo;, as <a href="/community/defining-user-stories/">Defining User Stories</a> writes it, so the history can be built and tested first. A dependency between two stories usually becomes a Given, not a reason to merge them.</p></aside>
+<figure class="diagram">
+<svg role="img" aria-labelledby="invest-check-title invest-check-desc" viewBox="0 0 360 226">
+<title id="invest-check-title">INVEST, run on two stories</title>
+<desc id="invest-check-desc">A checklist of six letters, I N V E S T: Independent, Negotiable, Valuable, Estimable, Small, Testable. The before story passes the first three and fails Estimable, Small and Testable, highlighted. The tap-to-call story passes all six.</desc>
+<rect class="node" x="10" y="28" width="28" height="24" rx="4"/>
+<rect class="node" x="182" y="28" width="72" height="24" rx="4"/>
+<rect class="node" x="274" y="28" width="72" height="24" rx="4"/>
+<rect class="node" x="10" y="60" width="28" height="24" rx="4"/>
+<rect class="node" x="182" y="60" width="72" height="24" rx="4"/>
+<rect class="node" x="274" y="60" width="72" height="24" rx="4"/>
+<rect class="node" x="10" y="92" width="28" height="24" rx="4"/>
+<rect class="node" x="182" y="92" width="72" height="24" rx="4"/>
+<rect class="node" x="274" y="92" width="72" height="24" rx="4"/>
+<rect class="node" x="10" y="124" width="28" height="24" rx="4"/>
+<rect class="node on" x="182" y="124" width="72" height="24" rx="4"/>
+<rect class="node" x="274" y="124" width="72" height="24" rx="4"/>
+<rect class="node" x="10" y="156" width="28" height="24" rx="4"/>
+<rect class="node on" x="182" y="156" width="72" height="24" rx="4"/>
+<rect class="node" x="274" y="156" width="72" height="24" rx="4"/>
+<rect class="node" x="10" y="188" width="28" height="24" rx="4"/>
+<rect class="node on" x="182" y="188" width="72" height="24" rx="4"/>
+<rect class="node" x="274" y="188" width="72" height="24" rx="4"/>
+<g><text class="note" x="218" y="14">before</text><text class="note" x="310" y="14">tap-to-call</text><text x="24" y="40">I</text><text x="104" y="40">Independent</text><text x="218" y="40">passes</text><text x="310" y="40">passes</text><text x="24" y="72">N</text><text x="104" y="72">Negotiable</text><text x="218" y="72">passes</text><text x="310" y="72">passes</text><text x="24" y="104">V</text><text x="104" y="104">Valuable</text><text x="218" y="104">passes</text><text x="310" y="104">passes</text><text x="24" y="136">E</text><text x="104" y="136">Estimable</text><text x="218" y="136">fails</text><text x="310" y="136">passes</text><text x="24" y="168">S</text><text x="104" y="168">Small</text><text x="218" y="168">fails</text><text x="310" y="168">passes</text><text x="24" y="200">T</text><text x="104" y="200">Testable</text><text x="218" y="200">fails</text><text x="310" y="200">passes</text></g>
+</svg>
+<figcaption>INVEST as a checklist, a letter at a time. The before story fails the last three letters, in violet: no one can size it, it has no end, and nothing in it can fail a test. The tap-to-call story passes all six.</figcaption>
+</figure>
 <p>A clear story pays twice: the owner can read it in the written scope and say whether it is right, and a webmaster can build and test it without guessing.</p>
 <p>The next lesson, Practical Exercises in Creating User Stories, puts the template and INVEST to work.</p>
 

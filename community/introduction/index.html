@@ -137,34 +137,54 @@
 <p>The lessons show how to build and refine the systems an office runs on, so what customers need matches what the business offers.</p>
 <p>Each lesson starts from a real problem and ends in something a reader can check.</p>
 <p>Technical documentation, kept current and shared with the people who use it, lets an office simplify its processes, make fewer errors and teach each new person what the last one knew.</p>
-<p>Whether an administrator oversees a busy office, a complex project or intricate systems, clear, concise and current technical direction keeps the work steady.</p>
+<p>A busy office, a tangled project or a system nobody fully remembers: clear, current direction keeps the work steady.</p>
 <h2>What the course covers</h2>
 <p>The course rests on three subjects:</p>
 <ul>
 <li>
 <strong>User Stories:</strong> The needs, wants and expectations of the people you serve, written so the solution can be checked against them.</li>
 <li>
-<strong>BDD (Behavior-Driven Development):</strong> Focus on the expected behavior of your systems and processes. Each one is written as a scenario the owner can read and a test can run.</li>
+<strong>BDD (Behavior-Driven Development):</strong> The behavior your systems and processes should show, each piece written as a scenario the owner can read and a test can run.</li>
 <li>
 <strong>Functional Reactive Programming:</strong> Events, state and derived values written as pure functions, taught through the Redux Toolkit state layer the team builds with. The lecture <a href="https://seandinwiddie.github.io/lectures/the-simplest-fp-ts-hello-world/">The Simplest FP TypeScript Hello World</a> is the first step on the code side: one pure function, then two composed.</li>
 </ul>
+<p>Put together, the three subjects are one feature seen three ways, and Module 4 walks a single feature through all of them:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="course-forms-title course-forms-desc" viewBox="0 0 360 310">
+<title id="course-forms-title">One feature in the course's three forms</title>
+<desc id="course-forms-desc">Three boxes in a column: a user story (who, what, why); a scenario (Given, When, Then), which the story's criteria become; and the state (events, reducers, selectors), which the scenario's events drive. A highlighted line labelled Module 4 joins all three and runs down to a fourth box: a typed API, and back to the screen.</desc>
+<g class="edge"><line x1="132" y1="66" x2="132" y2="100"/><line x1="134.9" y1="94.7" x2="132" y2="100"/><line x1="129.1" y1="94.7" x2="132" y2="100"/><line x1="132" y1="146" x2="132" y2="180"/><line x1="134.9" y1="174.7" x2="132" y2="180"/><line x1="129.1" y1="174.7" x2="132" y2="180"/></g>
+<g class="path"><line x1="248" y1="43" x2="306" y2="43"/><line x1="248" y1="123" x2="306" y2="123"/><line x1="248" y1="203" x2="306" y2="203"/><line x1="306" y1="43" x2="306" y2="203"/><line x1="306" y1="203" x2="306" y2="262"/><line x1="309.4" y1="255.9" x2="306" y2="262"/><line x1="302.6" y1="255.9" x2="306" y2="262"/></g>
+<rect class="node" x="16" y="20" width="232" height="46" rx="4"/>
+<rect class="node" x="16" y="100" width="232" height="46" rx="4"/>
+<rect class="node" x="16" y="180" width="232" height="46" rx="4"/>
+<rect class="node" x="16" y="262" width="328" height="34" rx="4"/>
+<g><text x="132" y="36">a user story</text><text class="note" x="132" y="53">who · what · why</text><text x="132" y="116">a scenario</text><text class="note" x="132" y="133">Given · When · Then</text><text x="132" y="196">the state</text><text class="note" x="132" y="213">events · reducers · selectors</text><text class="note" x="210" y="83">its criteria become</text><text class="note" x="203" y="163">its events drive</text><text class="note" x="306" y="24">Module 4</text><text x="180" y="279">a typed API, and back to the screen</text></g>
+</svg>
+<figcaption>One feature in the course&rsquo;s three forms: the story says who it serves and why, its criteria become scenarios, and their events drive the state. The violet line is Module 4, which carries one feature through all three to a typed API and back to the screen.</figcaption>
+</figure>
 <p>Beside the three subjects, <a href="/community/module-5-python-and-model-training/">Module 5: Python and Model Training</a> teaches the team&rsquo;s Python practice and how it trains and evaluates small language models, on the same principles.</p>
-<h2>The Power of Documentation for Administrators</h2>
-<p><strong>Process Efficiency:</strong> A current manual of the organization’s processes and procedures keeps the work consistent, reduces errors and saves time.</p>
-<p><strong>Onboarding and Training:</strong> Consistent technical documentation lets a new team member learn the work at their own pace and find answers without waiting on anyone.</p>
-<p><strong>Problem Solving:</strong> When challenges emerge, your team can turn to well-documented solutions. Nobody reinvents the wheel or loses hours to trial and error.</p>
-<p><strong>Knowledge Transfer:</strong> Administrators come and go, but the institutional knowledge you’ve amassed should persist. Documentation kept current holds that knowledge, so it stays when people move on.</p>
-<h2>Our Approach</h2>
-<p>The approach has three parts:</p>
-<p><strong>Understanding Your Needs:</strong> Every job starts with the people who use the result, and their needs go into the written scope as user stories.</p>
-<p><strong>Documentation Creation:</strong> Each lesson ends in something written down that the next person can use: a story, a scenario, a test or a note.</p>
-<p><strong>Regular Updates:</strong> Technical documentation is a living resource, revised whenever a standard process or system changes, the way the lessons themselves are revised.</p>
+<h2>The power of documentation for administrators</h2>
+<p>Documentation pays an office back four ways:</p>
+<ul>
+<li><strong>Process efficiency:</strong> a current manual of the organization’s processes and procedures keeps the work consistent, reduces errors and saves time.</li>
+<li><strong>Onboarding and training:</strong> a new team member learns the work at their own pace and finds answers without waiting on anyone.</li>
+<li><strong>Problem solving:</strong> when a problem comes back, its solution is already written down. Nobody reinvents the wheel or loses hours to trial and error.</li>
+<li><strong>Knowledge transfer:</strong> administrators come and go, but what they knew stays, because documentation kept current holds it.</li>
+</ul>
+<h2>The approach</h2>
+<p>Three habits run through it:</p>
+<ul>
+<li><strong>Start from the people:</strong> every job starts with the people who use the result, and their needs go into the written scope as user stories.</li>
+<li><strong>Write it down:</strong> each lesson ends in something the next person can use: a story, a scenario, a test or a note.</li>
+<li><strong>Keep it current:</strong> technical documentation is a living resource, revised whenever a standard process or system changes, the way the lessons themselves are revised.</li>
+</ul>
 <h2>Training</h2>
 <p>The training refines the systems a local business runs on, one lesson at a time.</p>
-<p>Do your systems feel overly complex, burdened by unnecessary layers of complication?</p>
-<p>Are you grappling with an excess of unnecessary processing?</p>
-<p>The lessons answer both the same way: every layer and every step has to earn its place.</p>
-<p>We’ve built this community to support administrators facing development challenges, and to show them how to craft niche software applications through practice and guidance.</p>
+<p>Do your systems feel heavier than the work they do, with layers nobody can explain?</p>
+<p>Do steps run only because they always have?</p>
+<p>The lessons answer both the same way: every layer and every step earns its place, or it goes.</p>
+<p>The community supports administrators facing development challenges, and shows them how to craft niche software through practice and guidance.</p>
 <p>Every lesson is written to be put to work in your own business.</p>
 <p>The community is a steady reference for the work that most often stalls an office:</p>
 <ul>
@@ -179,13 +199,14 @@
 <h2>Vision and mission</h2>
 <h3>Our Vision: To resolve your business challenges.</h3>
 <h3>Our Mission: Strengthening the service industry of Jefferson State.</h3>
-<hr/>
+<h2>Why it matters</h2>
 <p><strong>Question</strong>: What keeps you up at night?</p>
 <p><strong>Insight</strong>: The health and maturity of your business and partner relationships.</p>
 <p><strong>Question</strong>: Is there an alternative that provides a solution to your situation?</p>
 <p><strong>Insight</strong>: The Sean Dinwiddie’s Webmastery team builds the software and the search presence a business runs on, at published fees and to one standard, so there is no sifting through offers of uncertain quality.</p>
 <p><strong>Our niche</strong>: Software built for the way one office works, so its administrators spend less time on the system, and a search presence that brings it the customers already looking nearby.</p>
-<p><strong>The Results</strong>: Every problem we solve for our clients takes us one step closer to fulfilling our mission. It is never just about the money. Every member in our community knows that their work is meaningful: each site handed over is one more business its owner can run. The craft and the people it serves keep the team at it, and the mission moves forward one handover at a time.</p>
+<p><strong>The results</strong>: every problem solved for a client moves the mission one step on. Every member of the community knows their work means something: each site handed over is one more business its owner can run.</p>
+<p>The craft and the people it serves keep the team at it, and the mission moves forward one handover at a time.</p>
 <p>If our vision resonates with you…</p>
 <p>Then begin with the next lesson, User Stories.</p>
 <p><strong>I’ll leave you with some food for thought</strong>.</p>

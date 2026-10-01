@@ -114,15 +114,15 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>A requirement is a need written down so that someone can check it: the owner before the scope is signed, and a test once the work is built. This lesson sets out the techniques for capturing requirements, and where each one fits.</p>
-<h2>1. Effective Communication</h2>
-<p>The cornerstone of capturing user requirements is effective communication. To understand what your users truly need, you must engage in open and clear communication. This involves active listening, asking about what has happened rather than what might, and keeping the conversation going for the length of the job.</p>
-<h2>2. The Owner, the Users and the Webmasters</h2>
+<p>A requirement is a need written down so that someone can check it: the owner before the scope is signed, and a test once the work is built. Here are the techniques for capturing them, and where each one fits.</p>
+<h2>Communication</h2>
+<p>Everything else rests on this. Listen more than you talk, ask about what has happened rather than what might, and keep the conversation going for the length of the job.</p>
+<h2>The owner, the users and the webmasters</h2>
 <p>On a Sean Dinwiddie’s Webmastery job, requirements come from the owner who signs the written scope, the people who use the result, such as the counter staff, and the webmasters on the job. Each sees what the others miss, so each is asked.</p>
-<h2>3. Empathy and User-Centric Thinking</h2>
+<h2>Empathy and user-centric thinking</h2>
 <p>Write each requirement from the side of the person it serves, in their words rather than the software&rsquo;s. &ldquo;A customer can see what has sold out today&rdquo; is a requirement; &ldquo;add a stock field to the menu&rdquo; is already a design, and it may not be the one that serves them.</p>
-<h2>4. Elicitation Techniques</h2>
-<p>There are various techniques for eliciting user requirements. These can include:</p>
+<h2>Elicitation techniques</h2>
+<p>Four of them, each with its place:</p>
 <ul>
 <li>
 <strong>Interviews:</strong> One-on-one or group conversations with the owner, the people who use the result and the staff who serve them.</li>
@@ -133,15 +133,33 @@
 <li>
 <strong>Walk-throughs:</strong> Following one real case from start to finish with the person who handled it, such as last Friday&rsquo;s catering order, to find each step the software has to take on.</li>
 </ul>
-<h2>5. Documenting Requirements</h2>
-<p>Requirements are written down where everyone on the job reads them. On the Sean Dinwiddie’s Webmastery team, the method is User Stories, named in the written scope. A User Story typically follows the template: “As a [user], I want [an action] so that [benefit/value].” Its first words name the person it serves, so each story starts from the user&rsquo;s side.</p>
-<h2>6. Prioritization</h2>
+<h2>Writing requirements down</h2>
+<p>Requirements are written down where everyone on the job reads them. On the Sean Dinwiddie’s Webmastery team, that means user stories, named in the written scope, in the familiar template: “As a [user], I want [an action] so that [benefit/value].” Its first words name the person it serves, so each story starts from the user&rsquo;s side.</p>
+<h2>Prioritization</h2>
 <p>Not all requirements are of equal importance. Prioritization sorts what was gathered into required and optional work, and the written scope lists the two apart, so the owner sees what each adds, and what it costs, before choosing.</p>
-<h2>7. Validation and Feedback</h2>
-<p>Read each requirement back to the people it came from before the scope is signed, and correct it in their words. After the build, the owner checks the work against its acceptance criteria. A trial run with the people who use it, such as the counter staff on a quiet afternoon, shows whether each requirement was the right one, and one that wasn&rsquo;t becomes a new story, scoped as a change.</p>
-<h2>8. Iteration</h2>
+<h2>Validation and feedback</h2>
+<p>Read each requirement back to the people it came from before the scope is signed, and correct it in their words.</p>
+<p>After the build, the owner checks the work against its acceptance criteria. A trial run with the people who use it, such as the counter staff on a quiet afternoon, shows whether each requirement was the right one, and one that wasn&rsquo;t becomes a new story, scoped as a change.</p>
+<h2>Iteration</h2>
 <p>Requirements change as the business does: a new service, a second location, a new rule from the county. Each change is captured the same way, in the words of the person it serves and read back to them, and becomes a story of its own, scoped before it is built. When a requirement changes, the code follows it; the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#refactoring-guidelines">Functional Programming Maintenance Strategy</a> keeps that change small, one pure function at a time.</p>
-<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Every technique above ends in the same place: a line in the written scope that someone can check. Most requirements are one person&rsquo;s want, and they become stories. Some belong to no one person: the menu reads on a 320-pixel-wide phone without scrolling sideways, and every control works from a keyboard. Those are constraints, written once in the scope and met by every story, and each is worded so it can fail: &ldquo;meets WCAG 2.1 AA on the templates the scope names&rdquo; can fail a review, and &ldquo;accessible&rdquo; can&rsquo;t. Priority becomes a line too. The scope sorts each requirement into required or optional for this job, so a list on which everything is high priority never reaches it, and an optional line the owner later wants is quoted and approved as a change, the way <a href="/community/collaborative-sessions-to-review-and-refine-user-stories/">Collaborative Sessions to Review and Refine User Stories</a> handles any addition.</p></aside>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Every technique above ends in the same place: a line in the written scope that someone can check. Most requirements are one person&rsquo;s want, and they become stories.</p>
+<p>Some belong to no one person: the menu reads on a 320-pixel-wide phone without scrolling sideways, and every control works from a keyboard. Those are constraints, written once in the scope and met by every story, and each is worded so it can fail: &ldquo;meets WCAG 2.1 AA on the templates the scope names&rdquo; can fail a review, and &ldquo;accessible&rdquo; can&rsquo;t.</p>
+<p>Priority becomes a line too. The scope sorts each requirement into required or optional for this job, so a list on which everything is high priority never reaches it, and an optional line the owner later wants is quoted and approved as a change, the way <a href="/community/collaborative-sessions-to-review-and-refine-user-stories/">Collaborative Sessions to Review and Refine User Stories</a> handles any addition.</p></aside>
+<figure class="diagram">
+<svg role="img" aria-labelledby="requirement-lines-title requirement-lines-desc" viewBox="0 0 360 266">
+<title id="requirement-lines-title">Every requirement ends as a line in the scope</title>
+<desc id="requirement-lines-desc">A requirement, in the words of the person it serves, becomes either a story, one person's want, or a constraint, met by every story. Both lead into the written scope, highlighted, which lists its lines as required or optional. Under it: every line worded so it can fail.</desc>
+<g class="edge"><line x1="140" y1="44" x2="96" y2="78"/><line x1="101.9" y1="77.1" x2="96" y2="78"/><line x1="98.4" y1="72.5" x2="96" y2="78"/><line x1="220" y1="44" x2="264" y2="78"/><line x1="261.6" y1="72.5" x2="264" y2="78"/><line x1="258.1" y1="77.1" x2="264" y2="78"/><line x1="92" y1="126" x2="128" y2="160"/><line x1="126.1" y1="154.3" x2="128" y2="160"/><line x1="122.2" y1="158.5" x2="128" y2="160"/><line x1="268" y1="126" x2="232" y2="160"/><line x1="237.8" y1="158.5" x2="232" y2="160"/><line x1="233.9" y1="154.3" x2="232" y2="160"/></g>
+<rect class="node" x="40" y="10" width="280" height="34" rx="4"/>
+<rect class="node" x="8" y="78" width="168" height="48" rx="4"/>
+<rect class="node" x="184" y="78" width="168" height="48" rx="4"/>
+<rect class="node on" x="20" y="160" width="320" height="76" rx="4"/>
+<rect class="node" x="40" y="192" width="132" height="32" rx="4"/>
+<rect class="node" x="188" y="192" width="132" height="32" rx="4"/>
+<g><text x="180" y="27">a requirement, in their words</text><text x="92" y="95">a story</text><text class="note" x="92" y="113">one person’s want</text><text x="268" y="95">a constraint</text><text class="note" x="268" y="113">met by every story</text><text x="180" y="177">the written scope</text><text x="106" y="208">required</text><text x="254" y="208">optional</text><text class="note" x="180" y="254">every line worded so it can fail</text></g>
+</svg>
+<figcaption>Where a requirement ends up: a story when it is one person&rsquo;s want, a constraint when every story has to meet it, and either way a line in the written scope, sorted into required and optional and worded so it can fail.</figcaption>
+</figure>
 <p>Requirements captured this way, in the user&rsquo;s words and checked with them, are what the rest of the job is built on. User stories, defined earlier in this module, carry these requirements into the written scope.</p>
 <p>The next lesson, Translating User Needs into User Stories, writes them as stories with acceptance criteria.</p>
 

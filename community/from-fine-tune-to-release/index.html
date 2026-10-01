@@ -113,10 +113,35 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>A trained model is released the way a feature launches: against evidence named before the work began. This lesson follows one small language model through the pipeline the Sean Dinwiddie&rsquo;s Webmastery team trains with, from choosing a base model to the gate that decides whether it ships. Each stage answers to something fixed in advance: a comparison, a split, an oracle, a record of its inputs, or the model it would replace. The training stages, which need a GPU, and the conversion that follows them appear as sketches; everything around them runs here.</p>
+<p>A trained model is released the way a feature launches: against evidence named before the work began. This lesson follows one small language model through the pipeline the Sean Dinwiddie&rsquo;s Webmastery team trains with, from choosing a base model to the gate that decides whether it ships.</p>
+<p>Each stage answers to something fixed in advance: a comparison, a split, an oracle, a record of its inputs, or the model it would replace. The training stages, which need a GPU, and the conversion that follows them appear as sketches; everything around them runs here.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="release-title release-desc" viewBox="0 0 360 392">
+<title id="release-title">From base to release</title>
+<desc id="release-desc">Seven stages down a highlighted line: choose a base, generate the data, SFT then DPO, check the inputs against their record, merge and convert, evaluate as served, and the promotion gate, then release. Beside each stage is what it answers to, fixed in advance: one fair comparison, disjoint splits, a frozen reference, a SHA-256 digest per file, the quantization type, every oracle, and the parent, the model it would replace.</desc>
+<g class="path"><line x1="104" y1="56" x2="104" y2="77"/><line x1="107.4" y1="72.1" x2="104" y2="77"/><line x1="100.6" y1="72.1" x2="104" y2="77"/><line x1="104" y1="102" x2="104" y2="123"/><line x1="107.4" y1="118.1" x2="104" y2="123"/><line x1="100.6" y1="118.1" x2="104" y2="123"/><line x1="104" y1="148" x2="104" y2="169"/><line x1="107.4" y1="164.1" x2="104" y2="169"/><line x1="100.6" y1="164.1" x2="104" y2="169"/><line x1="104" y1="194" x2="104" y2="215"/><line x1="107.4" y1="210.1" x2="104" y2="215"/><line x1="100.6" y1="210.1" x2="104" y2="215"/><line x1="104" y1="240" x2="104" y2="261"/><line x1="107.4" y1="256.1" x2="104" y2="261"/><line x1="100.6" y1="256.1" x2="104" y2="261"/><line x1="104" y1="286" x2="104" y2="307"/><line x1="107.4" y1="302.1" x2="104" y2="307"/><line x1="100.6" y1="302.1" x2="104" y2="307"/><line x1="104" y1="332" x2="104" y2="353"/><line x1="107.4" y1="348.1" x2="104" y2="353"/><line x1="100.6" y1="348.1" x2="104" y2="353"/></g>
+<rect class="node" x="18" y="32" width="172" height="24" rx="4"/>
+<rect class="node" x="18" y="78" width="172" height="24" rx="4"/>
+<rect class="node" x="18" y="124" width="172" height="24" rx="4"/>
+<rect class="node" x="18" y="170" width="172" height="24" rx="4"/>
+<rect class="node" x="18" y="216" width="172" height="24" rx="4"/>
+<rect class="node" x="18" y="262" width="172" height="24" rx="4"/>
+<rect class="node on" x="18" y="308" width="172" height="24" rx="4"/>
+<rect class="node on" x="18" y="354" width="172" height="24" rx="4"/>
+<g><text class="note" x="104" y="14">stage</text><text class="note" x="276" y="14">fixed in advance</text><text x="104" y="44">choose a base</text><text class="note" x="276" y="44">one fair comparison</text><text x="104" y="90">generate the data</text><text class="note" x="276" y="90">disjoint splits</text><text x="104" y="136">SFT, then DPO</text><text class="note" x="276" y="136">a frozen reference</text><text x="104" y="182">check the inputs</text><text class="note" x="276" y="182">a SHA-256 per file</text><text x="104" y="228">merge and convert</text><text class="note" x="276" y="228">quantization type</text><text x="104" y="274">evaluate as served</text><text class="note" x="276" y="274">every oracle</text><text x="104" y="320">promotion gate</text><text class="note" x="276" y="320">the parent</text><text x="104" y="366">release</text></g>
+</svg>
+<figcaption>Each stage answers to something fixed before it runs, named on the right. The model moves down the violet line, and the promotion gate, against the model it would replace, decides whether it ships.</figcaption>
+</figure>
 <h2>Choosing the base by a fair comparison</h2>
-<p>Fine-tuning starts from a small open-weight model, and choosing one is an experiment like any other. Every candidate answers the same prompts, through the same prompt template and runtime, with the same decoding settings, scored by the same scorer. Results from two different evaluations can&rsquo;t be ranked against each other, so the ranking refuses them. Within one evaluation the rule is fixed before any result is seen and applied in order: the fewest answers that fail their oracle, then the closest agreement with the reference answers, then speed:</p>
-<pre class="code-block" tabindex="0"><code>"""Choose a base model only from results that one evaluation produced."""
+<p>Fine-tuning starts from a small open-weight model, and choosing one is an experiment like any other. Every candidate answers the same prompts, through the same prompt template and runtime, with the same decoding settings, scored by the same scorer. Results from two different evaluations can&rsquo;t be ranked against each other, so the ranking refuses them.</p>
+<p>Within one evaluation, the rule is fixed before any result is seen and applied in order:</p>
+<ol>
+<li>the fewest answers that fail their oracle;</li>
+<li>then the closest agreement with the reference answers;</li>
+<li>then speed.</li>
+</ol>
+<pre class="code-block" tabindex="0"><code># pipeline/release/select.py
+"""Choose a base model only from results that one evaluation produced."""
 
 from __future__ import annotations
 
@@ -156,8 +181,10 @@ except ValueError as error:
 results from different evaluations: ['eval-1', 'eval-2']</code></pre>
 <p>Fixing the rule in advance keeps a favourite from winning on whichever measure flatters it. A base chosen for training is still only a starting point: what ships is decided at the end, by comparing the trained model with its parent.</p>
 <h2>Deterministic data in disjoint splits</h2>
-<p>Training data is generated, never written by hand: catalogs in JSON, combined with made-up situations and varied by index, as <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> shows. Every row about one situation lands in the same split (training, validation, development or release), so a situation seen in training never comes back, reworded, in a split that measures the model. Generated files are never edited by hand; a change to the data is a change to the generator.</p>
-<pre class="code-block" tabindex="0"><code>"""Disjoint splits, assigned by situation, and the one rule that guards release."""
+<p>Training data is generated, never written by hand: catalogs in JSON, combined with made-up situations and varied by index, as <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> shows.</p>
+<p>Every row about one situation lands in the same split (training, validation, development or release), so a situation seen in training never comes back, reworded, in a split that measures the model. Generated files are never edited by hand; a change to the data is a change to the generator.</p>
+<pre class="code-block" tabindex="0"><code># pipeline/release/splits.py
+"""Disjoint splits, assigned by situation, and the one rule that guards release."""
 
 from __future__ import annotations
 
@@ -191,8 +218,16 @@ except ValueError as error:
 held-out rows offered to training: row-041</code></pre>
 <p>The release split is held back for the release decision and nothing else. It never guides training, tuning or the choice of a checkpoint. Once its evidence has informed a decision, it is retired for a fresh set the model has never been measured on, so it can&rsquo;t slowly become one more thing the model was fitted to.</p>
 <h2>Oracles as the hard boundary</h2>
-<p>Overlap with a reference answer measures wording, and an oracle measures meaning. Each row carries one: the facts the answer must state, what it must never say, whether the facts are missing (so the honest answer is that it doesn&rsquo;t know), and a length it must stay within. An answer that fails its oracle fails, whatever its other scores say:</p>
-<pre class="code-block" tabindex="0"><code>"""A semantic oracle: what an answer must say, must not say, and must admit."""
+<p>Overlap with a reference answer measures wording, and an oracle measures meaning. Each row carries one, and it names:</p>
+<ul>
+<li>the facts the answer must state;</li>
+<li>what it must never say;</li>
+<li>whether the facts are missing, so the honest answer is that it doesn&rsquo;t know;</li>
+<li>a length it must stay within.</li>
+</ul>
+<p>An answer that fails its oracle fails, whatever its other scores say:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/release/oracle.py
+"""A semantic oracle: what an answer must say, must not say, and must admit."""
 
 from __future__ import annotations
 
@@ -242,7 +277,12 @@ negative: ("missing 'closed'", "missing 'Friday'", "missing 'washed-out bridge'"
 unknown:  ('does not admit it does not know',)</code></pre>
 <p>The row above is a voice pair from <a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a>, so both of its answers pass the oracle: they differ only in voice. A hard negative is the other kind of pair, an answer built to be wrong, and it has to fail its oracle on meaning (here, it says the trail is open), not merely share fewer words with the reference.</p>
 <h2>Supervised, then preference training</h2>
-<p>Training runs in two stages on one LoRA adapter, a small set of added weights trained over a base model that stays fixed, held in 4-bit form so a model of a few billion parameters trains on one GPU. Supervised fine-tuning (SFT) teaches the answers, with the loss counted on the answer and not on the prompt. Direct preference optimization (DPO) then trains the same adapter on the pairs, making the chosen answer more likely than the rejected one relative to a frozen reference, the adapter as SFT left it, so the model learns the preference without drifting from what SFT taught. The libraries are transformers, peft and trl, and every setting comes from the composed JSON config:</p>
+<p>Training runs in two stages on one LoRA adapter: a small set of added weights trained over a base model that stays fixed, held in 4-bit form so a model of a few billion parameters trains on one GPU.</p>
+<ol>
+<li>Supervised fine-tuning (SFT) teaches the answers, with the loss counted on the answer and not on the prompt.</li>
+<li>Direct preference optimization (DPO) then trains the same adapter on the pairs. It makes the chosen answer more likely than the rejected one relative to a frozen reference, the adapter as SFT left it, so the model learns the preference without drifting from what SFT taught.</li>
+</ol>
+<p>The libraries are transformers, peft and trl, and every setting comes from the composed JSON config:</p>
 <pre class="code-block" tabindex="0"><code># A sketch of the two training stages, not run here: it needs a GPU and the
 # model's weights. Every value comes from the composed JSON config, whose parts
 # here also set "load", "adapter", "sft" and "dpo", and a "pairs" data file.
@@ -295,8 +335,16 @@ dpo.train()
 dpo.save_model("runs/dpo/adapter")</code></pre>
 <p>In current trl, a model that already carries an adapter is trained against a frozen copy of that adapter, made when training starts. The run doesn&rsquo;t take that on trust. Before the first step it records, as named evidence, that the adapter being trained and its reference start identical, and that the reference has nothing left to train.</p>
 <h2>Evidence that names the inputs</h2>
-<p>Before a trained adapter goes any further, the run shows what it was trained on. Its record names the inputs exactly: the config, the model&rsquo;s pinned revision, the package versions, and each data file by its path, its size in bytes, its count of lines and a SHA-256 digest of its contents. Each is checked again as a named check, what was expected against what was found, and any failure stops the run with the names of what failed:</p>
-<pre class="code-block" tabindex="0"><code>"""Promotion as named checks: each says what was expected and what was found."""
+<p>Before a trained adapter goes any further, the run shows what it was trained on. Its record names the inputs exactly:</p>
+<ul>
+<li>the config;</li>
+<li>the model&rsquo;s pinned revision;</li>
+<li>the package versions;</li>
+<li>each data file, by its path, its size in bytes, its count of lines and a SHA-256 digest of its contents.</li>
+</ul>
+<p>Each is checked again as a named check, what was expected against what was found, and any failure stops the run with the names of what failed:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/release/promote.py
+"""Promotion as named checks: each says what was expected and what was found."""
 
 from __future__ import annotations
 
@@ -315,11 +363,13 @@ class Check:
     @property
     def passed(self) -&gt; bool:
         return self.expected == self.actual</code></pre>
-<pre class="code-block" tabindex="0"><code>def require(checks: Sequence[Check]) -&gt; None:
+<pre class="code-block" tabindex="0"><code># pipeline/release/promote.py, continued
+def require(checks: Sequence[Check]) -&gt; None:
     failed = [c for c in checks if not c.passed]
     if failed:
         raise ValueError("; ".join(f"{c.name}: expected {c.expected!r}, found {c.actual!r}" for c in failed))</code></pre>
-<pre class="code-block" tabindex="0"><code>"""Evidence that names the exact inputs a run used, checked again before release."""
+<pre class="code-block" tabindex="0"><code># pipeline/release/inputs.py
+"""Evidence that names the exact inputs a run used, checked again before release."""
 
 from __future__ import annotations
 
@@ -363,7 +413,7 @@ except ValueError as error:
 <pre class="code-block code-output" tabindex="0"><code>[{'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '1f1ea15caf02b22c8fbda2bb33f632e9ef7d231dc416c281fd870b88d9925ab8'}]
 inputs match the record
 data/train.jsonl unchanged: expected {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '1f1ea15caf02b22c8fbda2bb33f632e9ef7d231dc416c281fd870b88d9925ab8'}, found {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '474f637b110d99640405c7f06a0ea5c593c705bfc7d35a1e6966a2c62e0067c6'}</code></pre>
-<p>A failed check says which input changed and how. Here the size and the line count still match, and only the digest shows that a row was rewritten, so the record can&rsquo;t quietly describe a different run from the one that made the model.</p>
+<p>A failed check says which input changed and how. Here the size and the line count still match; only the digest catches the rewritten row. So the record can&rsquo;t quietly describe a different run from the one that made the model.</p>
 <h2>Conversion, and checks at runtime</h2>
 <p>The released adapter is merged into the base weights at full precision, converted to GGUF with llama.cpp&rsquo;s converter and quantized with <code>llama-quantize</code>, the file format and runtime the model ships in. The quantization type is a setting like any other, read from the config:</p>
 <pre class="code-block" tabindex="0"><code># A sketch, not run here: merge at full precision, then convert and quantize.
@@ -374,10 +424,26 @@ tokenizer.save_pretrained("runs/merged")
 
 $ python llama.cpp/convert_hf_to_gguf.py runs/merged --outfile runs/model-f16.gguf --outtype f16
 $ llama.cpp/build/bin/llama-quantize runs/model-f16.gguf runs/model.gguf &lt;type&gt;</code></pre>
-<p>Quantizing changes the weights, so it can change answers. The evaluation that decides the release runs on the converted file, through the runtime that will serve it, never only on the weights that came out of training. The runtime gets checks of its own: the model loads and answers; output held to a grammar parses as the JSON it promises; generation stops where it should; a request that runs past its deadline ends cleanly; and requests made at the same time each get their own answer.</p>
+<p>Quantizing changes the weights, so it can change answers. The evaluation that decides the release runs on the converted file, through the runtime that will serve it, never only on the weights that came out of training.</p>
+<p>The runtime gets checks of its own:</p>
+<ul>
+<li>the model loads and answers;</li>
+<li>output held to a grammar parses as the JSON it promises;</li>
+<li>generation stops where it should;</li>
+<li>a request that runs past its deadline ends cleanly;</li>
+<li>requests made at the same time each get their own answer.</li>
+</ul>
 <h2>The promotion gate</h2>
-<p>Promotion compares the candidate with its parent under the same evaluation, and every condition is a named check: the same evaluation as the parent, no empty answers, no answer that repeats its instructions, and the corner gate from the last lesson, with every corner measured, none worse and at least one better. Any failure blocks promotion and says why:</p>
-<pre class="code-block" tabindex="0"><code>def promotion_checks(candidate: Mapping[str, Any], parent: Mapping[str, Any]) -&gt; tuple[Check, ...]:
+<p>Promotion compares the candidate with its parent under the same evaluation, and every condition is a named check:</p>
+<ul>
+<li>the same evaluation as the parent;</li>
+<li>no empty answers;</li>
+<li>no answer that repeats its instructions;</li>
+<li>the corner gate from the last lesson, with every corner measured, none worse and at least one better.</li>
+</ul>
+<p>Any failure blocks promotion and says why:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/release/promote.py, continued
+def promotion_checks(candidate: Mapping[str, Any], parent: Mapping[str, Any]) -&gt; tuple[Check, ...]:
     return (
         Check("same evaluation as the parent", parent["evaluation"], candidate["evaluation"]),
         Check("empty answers", 0, sum(not a.strip() for a in candidate["answers"])),
@@ -385,7 +451,8 @@ $ llama.cpp/build/bin/llama-quantize runs/model-f16.gguf runs/model.gguf &lt;typ
               sum(candidate["instructions"] in a for a in candidate["answers"])),
         Check("corner gate", (), gate_errors(candidate["corners"], parent["corners"])),
     )</code></pre>
-<pre class="code-block" tabindex="0"><code>import pytest
+<pre class="code-block" tabindex="0"><code># tests/test_promote.py
+import pytest
 
 from pipeline.data.cube import corners
 from pipeline.release.promote import promotion_checks, require
@@ -438,7 +505,9 @@ tests/test_promote.py::test_a_different_evaluation_blocks_promotion PASSED
 
 ============================== 5 passed in 0.01s ===============================</code></pre>
 <p>Each check is plain data, a name with what was expected and what was found, and the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> treats expected failure the same way: as a value to report, never an exception to swallow.</p>
-<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Every stage answers to evidence fixed before it ran: the comparison that chooses a base, the split a row belongs to, the oracle an answer must pass, the inputs a run recorded and the parent a candidate must not fall below. It is the course&rsquo;s written scope again, which names a feature&rsquo;s scenarios before any code is written and reviews the result against them before launch. The rule bends where training itself is noisy. Two runs from the same data and seed can still differ, so a candidate is judged by its measured evidence, never by the run that produced it, and a candidate that fails the gate goes back to its data or its training, never to a looser gate.</p></aside>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Every stage answers to evidence fixed before it ran: the comparison that chooses a base, the split a row belongs to, the oracle an answer must pass, the inputs a run recorded and the parent a candidate must not fall below.</p>
+<p>It is the course&rsquo;s written scope again, which names a feature&rsquo;s scenarios before any code is written and reviews the result against them before launch.</p>
+<p>The rule bends where training itself is noisy. Two runs from the same data and seed can still differ, so a candidate is judged by its measured evidence, never by the run that produced it, and a candidate that fails the gate goes back to its data or its training, never to a looser gate.</p></aside>
 <p>That is Module 5 in one model: Python written as pure functions over plain data, a cube that names every behavior to train and measure, and a release decided corner by corner against the model it would replace. Webmasters at any stage of the craft work under the Sean Dinwiddie&rsquo;s Webmastery name, and <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 
 <!-- .entry-content -->
