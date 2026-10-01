@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 
 <p>Functional reactive programming treats an application as events over time and the values derived from them; on the Sean Dinwiddie’s Webmastery team, those ideas become Redux Toolkit’s actions, reducers and selectors.</p>
-<h2>What FRP is</h2>
+<h2 id="what-frp-is"><a class="heading-anchor" href="#what-frp-is">What FRP is</a></h2>
 <p>Functional Reactive Programming describes values that change over time by what they are derived from. You state once how a value follows from the events so far, declaratively, instead of updating it by hand wherever something changes.</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="frp-total-title frp-total-desc" viewBox="0 0 360 244">
@@ -132,7 +132,7 @@
 </figure>
 <p>In Redux Toolkit, the store tells each view after every action, and the view reads its values again through selectors.</p>
 <p>FRP suits user interfaces and any software whose screens follow from things that happen: a cart, a booking calendar, a kitchen queue.</p>
-<h2>Key concepts</h2>
+<h2 id="key-concepts"><a class="heading-anchor" href="#key-concepts">Key concepts</a></h2>
 <ul>
 <li>
 <strong>Events and Behaviors:</strong> FRP models a program as events, things that happen at a moment, and behaviors, values that change over time: the two ideas Conal Elliott and Paul Hudak set out in <em>Functional Reactive Animation</em> (1997). On the team, the events are dispatched actions and the behaviors are selectors composed from small pure functions, so the flow of data reads declaratively.</li>
@@ -141,7 +141,7 @@
 <li>
 <strong>Declarative Style:</strong> A value is defined once, by what it is derived from, as a cart&rsquo;s total is by its lines, rather than updated by hand in every handler that touches it; <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> sets the two side by side.</li>
 </ul>
-<h2>Why it matters</h2>
+<h2 id="why-it-matters"><a class="heading-anchor" href="#why-it-matters">Why it matters</a></h2>
 <ul>
 <li>
 <strong>Responsiveness:</strong> A view re-renders only when its selector returns a new value, and a memoized selector returns one only when its inputs change, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
@@ -152,7 +152,7 @@
 <li>
 <strong>Clear ownership:</strong> Each piece of state has one owner (a component, the router, a slice or RTK Query), which keeps a growing codebase readable.</li>
 </ul>
-<h2>In the team&rsquo;s work</h2>
+<h2 id="in-the-teams-work"><a class="heading-anchor" href="#in-the-teams-work">In the team&rsquo;s work</a></h2>
 <p>Sean Dinwiddie’s Webmastery builds the state layer of custom apps on these ideas, in Redux Toolkit. Applied that way, FRP helps you:</p>
 <ul>
 <li>Build screens that update the moment an order, a booking or a click changes what the app knows.</li>
@@ -161,7 +161,7 @@
 <li>Give each piece of state one owner, so the software stays readable as it grows.</li>
 </ul>
 <p>Module 3 teaches these ideas one at a time, in the Redux Toolkit code the team writes on its own jobs.</p>
-<h2>Next steps</h2>
+<h2 id="next-steps"><a class="heading-anchor" href="#next-steps">Next steps</a></h2>
 <p>The Curriculum comes next, and the Course Outline after it maps every module and its lessons.</p>
 
 <!-- .entry-content -->

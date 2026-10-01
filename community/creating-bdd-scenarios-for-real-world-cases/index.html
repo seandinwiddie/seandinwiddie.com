@@ -114,21 +114,21 @@
 </div> </header><!-- .entry-header -->
 
 <p>Real-world cases are messy, which is half the fun. Behavior-Driven Development (BDD) scenarios for a real case have to catch the rush, the refund and the declined card as well as the tidy path, and a structured approach keeps them accurate. Twelve steps:</p>
-<h2>1. Understand the Real-World Case</h2>
+<h2 id="1-understand-the-real-world-case"><a class="heading-anchor" href="#1-understand-the-real-world-case">1. Understand the Real-World Case</a></h2>
 <p>Know the case cold before writing a scenario: its user stories, its use cases and the domain knowledge behind them. Name the specific problem or need the software is there to address.</p>
-<h2>2. Identify User Roles</h2>
+<h2 id="2-identify-user-roles"><a class="heading-anchor" href="#2-identify-user-roles">2. Identify User Roles</a></h2>
 <p>Determine the various user roles or personas involved in the real-world case. The customer placing an order and the owner filling it meet the same order in different ways, and each gets scenarios of their own.</p>
-<h2>3. Define High-Level Scenarios</h2>
+<h2 id="3-define-high-level-scenarios"><a class="heading-anchor" href="#3-define-high-level-scenarios">3. Define High-Level Scenarios</a></h2>
 <p>Sketch the case&rsquo;s key interactions or processes as a few high-level scenarios first. They are the frame the detailed scenarios hang on.</p>
-<h2>4. Name the Scenarios</h2>
+<h2 id="4-name-the-scenarios"><a class="heading-anchor" href="#4-name-the-scenarios">4. Name the Scenarios</a></h2>
 <p>For each high-level scenario, list the smaller scenarios it holds by name, one behavior each, before writing any steps. (In Gherkin, a Scenario Outline is something else: one scenario run once for each row of an Examples table.)</p>
-<h2>5. List User Actions (When)</h2>
+<h2 id="5-list-user-actions-when"><a class="heading-anchor" href="#5-list-user-actions-when">5. List User Actions (When)</a></h2>
 <p>List what users actually do in the case, such as entering data, making a decision or exchanging messages with the software.</p>
-<h2>6. Describe the Initial State (Given)</h2>
+<h2 id="6-describe-the-initial-state-given"><a class="heading-anchor" href="#6-describe-the-initial-state-given">6. Describe the Initial State (Given)</a></h2>
 <p>The Given describes the state before the user acts: the scenario&rsquo;s preconditions, such as data already in place, a system started up or a user signed in.</p>
-<h2>7. Define the Expected Outcomes (Then)</h2>
+<h2 id="7-define-the-expected-outcomes-then"><a class="heading-anchor" href="#7-define-the-expected-outcomes-then">7. Define the Expected Outcomes (Then)</a></h2>
 <p>The Then says what should happen once the user acts in this case: what a selector returns, what an endpoint answers, or the data that changed.</p>
-<h2>8. Consider Alternate Paths</h2>
+<h2 id="8-consider-alternate-paths"><a class="heading-anchor" href="#8-consider-alternate-paths">8. Consider Alternate Paths</a></h2>
 <p>Real cases branch. Wherever the software can behave differently, that path gets a scenario of its own. A declined card is an expected failure, not an exception; the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> represents such failures as plain data a test can check.</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="creating-bdd-scenarios-for-real-world-cases-order-forks-title creating-bdd-scenarios-for-real-world-cases-order-forks-desc" viewBox="0 0 360 188">
@@ -143,15 +143,15 @@
 </svg>
 <figcaption>One When, two outcomes, and each gets a scenario of its own. The declined card, along the violet path, is the one a tidy example leaves out; its Thens say what doesn&rsquo;t happen as well as what does.</figcaption>
 </figure>
-<h2>9. Use Natural Language</h2>
+<h2 id="9-use-natural-language"><a class="heading-anchor" href="#9-use-natural-language">9. Use Natural Language</a></h2>
 <p>Write in natural language that technical and non-technical team members both read easily. The jargon stays in the code.</p>
-<h2>10. Include Edge Cases</h2>
+<h2 id="10-include-edge-cases"><a class="heading-anchor" href="#10-include-edge-cases">10. Include Edge Cases</a></h2>
 <p>Probe the edges: boundary conditions, and inputs that are unusual or unexpected. Each gets a scenario.</p>
-<h2>11. Review and Revise</h2>
+<h2 id="11-review-and-revise"><a class="heading-anchor" href="#11-review-and-revise">11. Review and Revise</a></h2>
 <p>Read the set again for clarity, accuracy and completeness: does it describe the case as it really happens, with the behavior users expect?</p>
-<h2>12. Read Them with People Who Know the Trade</h2>
+<h2 id="12-read-them-with-people-who-know-the-trade"><a class="heading-anchor" href="#12-read-them-with-people-who-know-the-trade">12. Read Them with People Who Know the Trade</a></h2>
 <p>Read the scenarios with the owner, the people who use the result and anyone who knows the trade, before work starts. They know the cases a scenario misses: the rush, the refund, the regular who orders by phone.</p>
-<h2>Example BDD Scenario for a Real-World Case</h2>
+<h2 id="example-bdd-scenario-for-a-real-world-case"><a class="heading-anchor" href="#example-bdd-scenario-for-a-real-world-case">Example BDD Scenario for a Real-World Case</a></h2>
 <p>Here is a real case, an online order, in three scenarios:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Checkout
 

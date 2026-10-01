@@ -113,6 +113,8 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
+
+<p>Functional Reactive Programming (FRP) describes a program with just two ideas: events, which happen at a moment, and behaviors, which change over time. Everything else is derived from them with pure functions, and that keeps a program easy to reason about as it grows.</p>
 <nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
 <ol start="2">
@@ -123,10 +125,8 @@
 <li><a href="/community/apply-frp-concepts-to-software-modules/">Apply FRP concepts to software modules</a></li>
 </ol>
 </nav>
-
-<p>Functional Reactive Programming (FRP) describes a program with just two ideas: events, which happen at a moment, and behaviors, which change over time. Everything else is derived from them with pure functions, and that keeps a program easy to reason about as it grows.</p>
 <p><a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a>, the next lesson, sets out its key concepts: events and behaviors, state as a fold, declarative code and immutable data. The principles below are how the team builds them.</p>
-<h2>Key Principles</h2>
+<h2 id="key-principles"><a class="heading-anchor" href="#key-principles">Key Principles</a></h2>
 <ol>
 <li>
 <strong>Events as Actions:</strong> Each event is a plain action object named for what happened, such as <code>orderPlaced</code>, whether a person, a timer or the server caused it; the sequence of dispatched actions is the application’s event stream.</li>
@@ -137,7 +137,7 @@
 <li>
 <strong>Event Handling:</strong> A reducer handles each event in one place, as a pure step from one state to the next; listener middleware handles what must follow it, such as a later request; and a view&rsquo;s handler only dispatches.</li>
 </ol>
-<h2>FRP in Practice</h2>
+<h2 id="frp-in-practice"><a class="heading-anchor" href="#frp-in-practice">FRP in Practice</a></h2>
 <p>In custom apps, the Sean Dinwiddie’s Webmastery team builds FRP’s ideas in Redux Toolkit, and <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> traces where they come from: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#the-one-way-dataflow">Redux Standard Patterns and Functional Programming</a> traces that one-way dataflow, from event to reducer to selector to view.</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="module-3-functional-reactive-programming-frp-one-way-title module-3-functional-reactive-programming-frp-one-way-desc" viewBox="0 0 360 160">
@@ -153,7 +153,7 @@
 </svg>
 <figcaption>The loop every change travels, one way round. A view dispatches an action, the reducer folds it into state, a selector derives what the view shows, and the view shows it.</figcaption>
 </figure>
-<h2>Benefits of FRP</h2>
+<h2 id="benefits-of-frp"><a class="heading-anchor" href="#benefits-of-frp">Benefits of FRP</a></h2>
 <ul>
 <li>
 <strong>Reactive:</strong> A view reads values derived from state and shows the new ones when they change, so no code has to remember to refresh it.</li>

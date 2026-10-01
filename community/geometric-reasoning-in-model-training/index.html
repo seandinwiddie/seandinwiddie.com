@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 <p>An average score can rise while a model gets worse at something that matters. Geometric reasoning guards against that. It places every behavior to be trained and measured at a corner of a cube, so the training data covers every corner, the evaluation measures every corner, and a release is judged corner by corner.</p>
 <p>The geometry is small, exact and a joy to work through, and this lesson writes all of it in plain Python, on the practices of <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a>.</p>
-<h2>Four traits make a cube</h2>
+<h2 id="four-traits-make-a-cube"><a class="heading-anchor" href="#four-traits-make-a-cube">Four traits make a cube</a></h2>
 <p>Each trait of an answer&rsquo;s voice is a pair of poles, and an answer takes one pole of each: plain or formal, brief or expansive, warm or reserved, cautious or bold. Four binary traits give 2<sup>4</sup> = 16 combinations.</p>
 <p>Written as bits, 0 for a trait&rsquo;s first pole and 1 for its second, they are the corners of a four-dimensional cube, and the distance between two corners is the number of traits they differ in, their Hamming distance:</p>
 <pre class="code-block" tabindex="0"><code># pipeline/data/cube.py
@@ -197,7 +197,7 @@ print(pairs_by_distance(cube))</code></pre>
 </svg>
 <figcaption>The cube, drawn by how many traits sit at their second pole. A line joins two corners one trait apart, and the violet path walks from 0000 to its opposite, 1111, one trait at a time: four steps, the largest distance on the cube.</figcaption>
 </figure>
-<h2>Training pairs that change only the voice</h2>
+<h2 id="training-pairs-that-change-only-the-voice"><a class="heading-anchor" href="#training-pairs-that-change-only-the-voice">Training pairs that change only the voice</a></h2>
 <p>Preference training learns from pairs: a prompt, a chosen answer and a rejected one. If the two answers differ in their facts as well as their voice, the model can&rsquo;t tell which difference it is being taught.</p>
 <p>So each pair keeps the facts fixed and changes only the traits. The chosen answer is written in the voice the prompt asks for, and the rejected answer gives the same facts in the voice of another corner.</p>
 <p>Every corner is paired at every distance, from a neighbour one trait away to its opposite. Which corner it meets at each distance turns with the row&rsquo;s index, so over enough rows it meets them all, with no randomness:</p>
@@ -285,10 +285,10 @@ distance 4
             washed-out bridge. Plan around it.
 192 rows; facts kept in all: True</code></pre>
 <p>The model never sees the cube: no prompt or answer names a corner, a distance or a score. It sees a request for a voice and two answers with the same facts, and it learns to follow the voice it is asked for rather than drift toward an average of all of them.</p>
-<h2>A fifth factor: the evidence</h2>
+<h2 id="a-fifth-factor-the-evidence"><a class="heading-anchor" href="#a-fifth-factor-the-evidence">A fifth factor: the evidence</a></h2>
 <p>Evaluation adds one more binary factor: whether the evidence in the prompt is stated plainly, or contested by someone in the conversation who asserts the opposite. Five factors give 2<sup>5</sup> = 32 corners, a full factorial experiment, with every combination measured.</p>
 <p>The prompts that measure them are written for evaluation alone and never trained on, and a table with a corner missing is refused before any analysis runs.</p>
-<h2>Reading the scores as a spectrum</h2>
+<h2 id="reading-the-scores-as-a-spectrum"><a class="heading-anchor" href="#reading-the-scores-as-a-spectrum">Reading the scores as a spectrum</a></h2>
 <p>The Walsh&ndash;Hadamard transform reads a complete table of corner scores as a sum of effects. Each coefficient belongs to one set of factors, written as a mask. It is the mean of all 32 scores, each multiplied by +1 or &minus;1 according to whether an even or an odd number of those factors sit at their second pole.</p>
 <p>For one factor, that is half the gap between its two poles, averaged over every other corner: a main effect. For two factors, it is how far one factor&rsquo;s effect changes with the other: an interaction. And so on, up to all five at once:</p>
 <pre class="code-block" tabindex="0"><code># pipeline/evaluation/spectrum.py
@@ -387,7 +387,7 @@ inverse returns the scores: True</code></pre>
 <li>the other 28 coefficients are zero.</li>
 </ul>
 <p>The energy at each order, the sum of its squared coefficients, shows everything sitting in the main effects and one pair. And the inverse transform rebuilds all 32 scores exactly. That last check is a law of the transform, and the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> tests laws the same way.</p>
-<h2>One factor at a time, and by distance</h2>
+<h2 id="one-factor-at-a-time-and-by-distance"><a class="heading-anchor" href="#one-factor-at-a-time-and-by-distance">One factor at a time, and by distance</a></h2>
 <p>Two more views read the same table:</p>
 <ul>
 <li>A Gray-code walk visits all 32 corners in a closed loop and changes exactly one factor at each step (corner <em>i</em> is <code>i ^ (i &gt;&gt; 1)</code>), so each step&rsquo;s change in score belongs to one factor.</li>
@@ -464,7 +464,7 @@ contested: {1: 0.005, 2: 0.01, 3: 0.015, 4: 0.02}</code></pre>
 </figure>
 <p>By distance, under stated evidence the stance moves a score by 0.10, and the mean gap grows by a quarter of that with each trait apart, because among the pairs <em>d</em> traits apart, <em>d</em> in every four differ in the stance. Under contested evidence the stance moves a score by only 0.02, and the voices sit closer together.</p>
 <p>The spectrum, the walk and the grouping are read and reported, and none of them decides a release on its own.</p>
-<h2>Revise and restore</h2>
+<h2 id="revise-and-restore"><a class="heading-anchor" href="#revise-and-restore">Revise and restore</a></h2>
 <p>A score at one corner is a snapshot, and a conversation moves. The revise-and-restore check runs one across five turns:</p>
 <ol>
 <li>a fact is stated;</li>
@@ -530,7 +530,7 @@ print(measure(("open", "closed", "closed", "closed", "weekends")))</code></pre>
 </svg>
 <figcaption>The violet line is what the answer should report: it holds when the visitor contests the fact, follows each new notice and comes back to open. The grey line is the second answer above, which gives way at the hold, lags a turn behind and never returns.</figcaption>
 </figure>
-<h2>The release gate, corner by corner</h2>
+<h2 id="the-release-gate-corner-by-corner"><a class="heading-anchor" href="#the-release-gate-corner-by-corner">The release gate, corner by corner</a></h2>
 <p>A trained model is a candidate, compared with its parent (the model it would replace) on the identical 32 corners. The gate holds it to three rules:</p>
 <ul>
 <li>a table with any corner unmeasured is refused;</li>

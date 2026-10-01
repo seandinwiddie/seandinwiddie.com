@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 <p>A view shows what the state already holds and forwards what the customer does. On the Sean Dinwiddie&rsquo;s Webmastery team, a view decides nothing a scenario tests: selectors shape what it reads, the endpoint&rsquo;s hook carries the request, and the view&rsquo;s own test reads the screen the way the customer does.</p>
 <p>This lesson builds the checkout that places the order, from the cart in <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> and the endpoint in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>.</p>
-<h2>1. What a view may decide</h2>
+<h2 id="1-what-a-view-may-decide"><a class="heading-anchor" href="#1-what-a-view-may-decide">1. What a view may decide</a></h2>
 <p>Every rule in the checkout already has an owner:</p>
 <ul>
 <li>the cart&rsquo;s lines and total belong to the slice and its selectors;</li>
@@ -124,7 +124,7 @@
 </ul>
 <p>What is left for the view is small: read, show, and forward an event. A view that sums a line, formats a price or empties the cart after a click holds a rule no scenario can reach without a browser.</p>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#select-close-to-the-render">Redux Standard Patterns and Functional Programming</a> shows a view that subscribes to the smallest values it renders and dispatches one event.</p>
-<h2>2. A view model is a selector</h2>
+<h2 id="2-a-view-model-is-a-selector"><a class="heading-anchor" href="#2-a-view-model-is-a-selector">2. A view model is a selector</a></h2>
 <p>The checkout shows each line the way the customer reads it: a name, a quantity and a price in dollars, then the total. That shape is a view model, and like the total it is derived, never stored.</p>
 <p>One selector builds it from the slice&rsquo;s own selectors, and a second builds what the checkout sends, product and quantity only, because the API prices the order itself:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/checkoutSelectors.ts
@@ -152,7 +152,7 @@ export const selectNewOrder = createSelector([selectLines], (lines) =&gt; ({
 }))</code></pre>
 <p><code>createSelector</code> returns the same object until the lines change, so the view re-renders only when there is something new to show. React Redux checks this in development: a selector that returns a new object for the same state logs a warning.</p>
 <p>Both selectors are tested like the slice&rsquo;s, with plain state and no view. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#selector-layers">Modern Redux Architecture Patterns</a> makes simple selectors a feature&rsquo;s public read API, and memoizes where reference stability matters.</p>
-<h2>3. The view reads, shows and forwards</h2>
+<h2 id="3-the-view-reads-shows-and-forwards"><a class="heading-anchor" href="#3-the-view-reads-shows-and-forwards">3. The view reads, shows and forwards</a></h2>
 <p>The store&rsquo;s hooks are typed once, so no view imports the store:</p>
 <pre class="code-block" tabindex="0"><code>// app/hooks.ts
 import { useDispatch, useSelector } from 'react-redux'
@@ -293,7 +293,7 @@ describe('orderNotice', () =&gt; {
   })
 })</code></pre>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#use-query-and-mutation-hooks">Redux Toolkit and RTK Query Best Practices</a> reads a mutation&rsquo;s state the same way, and the review checklist in <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#code-review-checklist">Functional Programming Maintenance Strategy</a> keeps ternaries to leaf values, like the one in <code>reasonOf</code>.</p>
-<h2>4. Read only what the view shows</h2>
+<h2 id="4-read-only-what-the-view-shows"><a class="heading-anchor" href="#4-read-only-what-the-view-shows">4. Read only what the view shows</a></h2>
 <p>The order history reads the list the endpoint caches. <code>selectFromResult</code> narrows the hook to the fields the view shows, so the view re-renders when they change and not for the rest of the request&rsquo;s state:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/OrderHistory.tsx
 import type { Order } from './ordersApi.generated'
@@ -325,7 +325,7 @@ export function OrderHistory({ tenantId }: { tenantId: string }) {
 }</code></pre>
 <p>RTK Query compares what <code>selectFromResult</code> returns field by field. A fallback written as <code>data ?? []</code> is a new array each time the callback runs, so it reads as a change and costs a render for nothing; <code>NO_ORDERS</code>, declared once outside the component, keeps one reference.</p>
 <p><code>isLoading</code> is true only for the first load, so after an order is placed the list stays on the screen while its tag refetches it. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> warns against the copied array for the same reason.</p>
-<h2>5. The test reads the screen</h2>
+<h2 id="5-the-test-reads-the-screen"><a class="heading-anchor" href="#5-the-test-reads-the-screen">5. The test reads the screen</a></h2>
 <p>The view&rsquo;s test renders it in a real store, with the cart slice, the API root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>, as the endpoint&rsquo;s test does.</p>
 <p>It finds what the customer finds, by role and by visible text, clicks through Testing Library&rsquo;s user-event, and never mocks a hook or reads the component&rsquo;s state. Its two tests carry the names Module 2 gave the scenarios:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/PlaceOrder.test.tsx

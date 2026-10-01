@@ -114,29 +114,29 @@
 </div> </header><!-- .entry-header -->
 
 <p>A module is where Behavior-Driven Development (BDD) scenarios get specific. Scoped to one module, they specify and test what that module does, so the software stays true to user expectations and business requirements, and a failure points to one place. Eleven steps take you from the module to its scenarios.</p>
-<h2>1. Identify the Software Module</h2>
+<h2 id="1-identify-the-software-module"><a class="heading-anchor" href="#1-identify-the-software-module">1. Identify the Software Module</a></h2>
 <p>Pick the module or feature the scenarios are for: part of a larger app, or a component that stands alone. In a Redux Toolkit app, a module is a feature folder; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#organize-by-feature">Redux Toolkit and Functional Programming</a> shows the layout.</p>
-<h2>2. Understand User Expectations</h2>
+<h2 id="2-understand-user-expectations"><a class="heading-anchor" href="#2-understand-user-expectations">2. Understand User Expectations</a></h2>
 <p>Know what users expect from the module before writing a line. On a Sean Dinwiddie&rsquo;s Webmastery job, that is the module&rsquo;s user stories in the written scope, and a conversation with the owner wherever a story leaves a question open.</p>
-<h2>3. Define the High-Level Behavior</h2>
+<h2 id="3-define-the-high-level-behavior"><a class="heading-anchor" href="#3-define-the-high-level-behavior">3. Define the High-Level Behavior</a></h2>
 <p>Say what the module is for and how it serves the rest of the system. That high-level view guides every detailed scenario after it.</p>
-<h2>4. Group the Scenarios Under a Feature</h2>
+<h2 id="4-group-the-scenarios-under-a-feature"><a class="heading-anchor" href="#4-group-the-scenarios-under-a-feature">4. Group the Scenarios Under a Feature</a></h2>
 <p>A Feature block names the module and holds its scenarios, with the user story beneath the title. (In Gherkin, a Scenario Outline is something else: one scenario run once for each row of an Examples table.)</p>
-<h2>5. List User Actions (When)</h2>
+<h2 id="5-list-user-actions-when"><a class="heading-anchor" href="#5-list-user-actions-when">5. List User Actions (When)</a></h2>
 <p>Identify the user actions or interactions with the software module that you want to test. Name each as the event it is, such as placing an order or cancelling a booking, rather than the clicks that trigger it.</p>
-<h2>6. Describe the Initial State (Given)</h2>
+<h2 id="6-describe-the-initial-state-given"><a class="heading-anchor" href="#6-describe-the-initial-state-given">6. Describe the Initial State (Given)</a></h2>
 <p>The Given describes the state before the user acts: the scenario&rsquo;s preconditions, such as data already in place, a system started up or a user signed in.</p>
-<h2>7. Define the Expected Outcomes (Then)</h2>
+<h2 id="7-define-the-expected-outcomes-then"><a class="heading-anchor" href="#7-define-the-expected-outcomes-then">7. Define the Expected Outcomes (Then)</a></h2>
 <p>The Then says what should happen once the user acts: what a selector returns, what an endpoint answers, or the data that changed.</p>
-<h2>8. Add Additional Details (And or But)</h2>
+<h2 id="8-add-additional-details-and-or-but"><a class="heading-anchor" href="#8-add-additional-details-and-or-but">8. Add Additional Details (And or But)</a></h2>
 <p>“And” and “But” add steps or conditions to any section, which helps spell out a complex interaction or cover an alternative path.</p>
-<h2>9. Consider Edge Cases</h2>
+<h2 id="9-consider-edge-cases"><a class="heading-anchor" href="#9-consider-edge-cases">9. Consider Edge Cases</a></h2>
 <p>Hunt for the edge cases: the situations where the module behaves differently, or only when specific conditions are met, such as the last table at seven or a party too large for one table.</p>
-<h2>10. Review and Refine</h2>
+<h2 id="10-review-and-refine"><a class="heading-anchor" href="#10-review-and-refine">10. Review and Refine</a></h2>
 <p>Read the scenarios against the story they came from: every acceptance criterion has at least one scenario, and every scenario traces back to a criterion. A scenario with no criterion behind it is either a criterion the scope is missing or a scenario to cut.</p>
-<h2>11. Use a Scenario Outline for Variations</h2>
+<h2 id="11-use-a-scenario-outline-for-variations"><a class="heading-anchor" href="#11-use-a-scenario-outline-for-variations">11. Use a Scenario Outline for Variations</a></h2>
 <p>When one behavior holds across several inputs, write it once as a Scenario Outline and list the inputs in an Examples table, one row per case.</p>
-<h2>Example BDD Scenario for a Software Module</h2>
+<h2 id="example-bdd-scenario-for-a-software-module"><a class="heading-anchor" href="#example-bdd-scenario-for-a-software-module">Example BDD Scenario for a Software Module</a></h2>
 <p>Here is one for a booking module:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Booking a table
   As a diner, I want to book a table so that I have a seat when I arrive.

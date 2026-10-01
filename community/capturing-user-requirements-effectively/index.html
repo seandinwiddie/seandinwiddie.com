@@ -115,13 +115,13 @@
 </div> </header><!-- .entry-header -->
 
 <p>A requirement is a need written down so that someone can check it: the owner before the scope is signed, and a test once the work is built. Here are the techniques for capturing them, and where each one fits.</p>
-<h2>Communication</h2>
+<h2 id="communication"><a class="heading-anchor" href="#communication">Communication</a></h2>
 <p>Everything else rests on this. Listen more than you talk, ask about what has happened rather than what might, and keep the conversation going for the length of the job.</p>
-<h2>The owner, the users and the webmasters</h2>
+<h2 id="the-owner-the-users-and-the-webmasters"><a class="heading-anchor" href="#the-owner-the-users-and-the-webmasters">The owner, the users and the webmasters</a></h2>
 <p>On a Sean Dinwiddie’s Webmastery job, requirements come from the owner who signs the written scope, the people who use the result, such as the counter staff, and the webmasters on the job. Each sees what the others miss, so each is asked.</p>
-<h2>Empathy and user-centric thinking</h2>
+<h2 id="empathy-and-user-centric-thinking"><a class="heading-anchor" href="#empathy-and-user-centric-thinking">Empathy and user-centric thinking</a></h2>
 <p>Write each requirement from the side of the person it serves, in their words rather than the software&rsquo;s. &ldquo;A customer can see what has sold out today&rdquo; is a requirement; &ldquo;add a stock field to the menu&rdquo; is already a design, and it may not be the one that serves them.</p>
-<h2>Elicitation techniques</h2>
+<h2 id="elicitation-techniques"><a class="heading-anchor" href="#elicitation-techniques">Elicitation techniques</a></h2>
 <p>Four of them, each with its place:</p>
 <ul>
 <li>
@@ -133,14 +133,14 @@
 <li>
 <strong>Walk-throughs:</strong> Following one real case from start to finish with the person who handled it, such as last Friday&rsquo;s catering order, to find each step the software has to take on.</li>
 </ul>
-<h2>Writing requirements down</h2>
+<h2 id="writing-requirements-down"><a class="heading-anchor" href="#writing-requirements-down">Writing requirements down</a></h2>
 <p>Requirements are written down where everyone on the job reads them. On the Sean Dinwiddie’s Webmastery team, that means user stories, named in the written scope, in the familiar template: “As a [user], I want [an action] so that [benefit/value].” Its first words name the person it serves, so each story starts from the user&rsquo;s side.</p>
-<h2>Prioritization</h2>
+<h2 id="prioritization"><a class="heading-anchor" href="#prioritization">Prioritization</a></h2>
 <p>Not all requirements are of equal importance. Prioritization sorts what was gathered into required and optional work, and the written scope lists the two apart, so the owner sees what each adds, and what it costs, before choosing.</p>
-<h2>Validation and feedback</h2>
+<h2 id="validation-and-feedback"><a class="heading-anchor" href="#validation-and-feedback">Validation and feedback</a></h2>
 <p>Read each requirement back to the people it came from before the scope is signed, and correct it in their words.</p>
 <p>After the build, the owner checks the work against its acceptance criteria. A trial run with the people who use it, such as the counter staff on a quiet afternoon, shows whether each requirement was the right one, and one that wasn&rsquo;t becomes a new story, scoped as a change.</p>
-<h2>Iteration</h2>
+<h2 id="iteration"><a class="heading-anchor" href="#iteration">Iteration</a></h2>
 <p>Requirements change as the business does: a new service, a second location, a new rule from the county. Each change is captured the same way, in the words of the person it serves and read back to them, and becomes a story of its own, scoped before it is built. When a requirement changes, the code follows it; the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#refactoring-guidelines">Functional Programming Maintenance Strategy</a> keeps that change small, one pure function at a time.</p>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> Every technique above ends in the same place: a line in the written scope that someone can check. Most requirements are one person&rsquo;s want, and they become stories.</p>
 <p>Some belong to no one person: the menu reads on a 320-pixel-wide phone without scrolling sideways, and every control works from a keyboard. Those are constraints, written once in the scope and met by every story, and each is worded so it can fail: &ldquo;meets WCAG 2.1 AA on the templates the scope names&rdquo; can fail a review, and &ldquo;accessible&rdquo; can&rsquo;t.</p>

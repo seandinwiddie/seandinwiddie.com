@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 
 <p>Functional Reactive Programming (FRP) gives an interface a declarative way to manage events and the state they leave behind. That changes how the interface answers the people using it, and how easily it stays responsive. Eleven ways it shows:</p>
-<h2>In the interface</h2>
+<h2 id="in-the-interface"><a class="heading-anchor" href="#in-the-interface">In the interface</a></h2>
 <ol>
 <li>
 <strong>Real-Time Updates:</strong> An interaction that changes what the app knows, such as adding to a cart or choosing a date, becomes a dispatched action; a reducer decides what it changes, and every view that reads that state updates from it. The event handling doesn’t disappear: it moves into pure reducers and selectors that a test can run on their own.</li>
@@ -141,7 +141,7 @@
 </svg>
 <figcaption>Typing &ldquo;bris&rdquo; into a search box. Each keystroke is an action; listener middleware waits for a pause in them, and only then does RTK Query send the search, once (in violet). No reducer ever sees a timer.</figcaption>
 </figure>
-<h2>Behind the interface</h2>
+<h2 id="behind-the-interface"><a class="heading-anchor" href="#behind-the-interface">Behind the interface</a></h2>
 <ol start="6">
 <li>
 <strong>Error Handling and Recovery:</strong> A refused request arrives as an action carrying the API&rsquo;s reason as data. The slice decides what stays, as a cart that empties only on success, and a pure function chooses the words the customer reads, including whether to try again.</li>

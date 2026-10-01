@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 
 <p>Here Functional Reactive Programming (FRP) goes to work, one module at a time, and the modules come out more responsive, easier to maintain and closer to what their users need. Thirteen steps:</p>
-<h2>Model the module</h2>
+<h2 id="model-the-module"><a class="heading-anchor" href="#model-the-module">Model the module</a></h2>
 <ol>
 <li>
 <strong>Find the Events:</strong> List what happens in the module, such as an item added, an order placed or a slot booked, and what each screen shows because of it. The steps below turn each event into an action and what each screen shows into state and selectors.</li>
@@ -130,7 +130,7 @@
 <li>
 <strong>State Management:</strong> Keep the module’s state in its slice. Each reducer takes the current state and an action and returns the next state, so every change is a named event and no earlier state is overwritten.</li>
 </ol>
-<h2>Make it hold up</h2>
+<h2 id="make-it-hold-up"><a class="heading-anchor" href="#make-it-hold-up">Make it hold up</a></h2>
 <ol start="7">
 <li>
 <strong>Error Handling:</strong> Give each expected failure a name and a shape the module can read: the API answers a declined card with its reason, the slice leaves the cart alone because it empties only on success, and a pure function turns the request&rsquo;s state into the message the view shows, as <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> follows end to end.</li>

@@ -114,14 +114,14 @@
 </div> </header><!-- .entry-header -->
 
 <p>Gherkin is Cucumber’s plain-language format for Given-When-Then scenarios, the way Behavior-Driven Development (BDD) writes down how software should behave; Given, When and Then are three of its keywords. It is built for people to read: the people who asked for a feature can read its scenarios, and each scenario becomes an automated test. One text, two readers, no translation.</p>
-<h2>The Gherkin structure</h2>
+<h2 id="the-gherkin-structure"><a class="heading-anchor" href="#the-gherkin-structure">The Gherkin structure</a></h2>
 <p>A scenario has three sections, and each has one job:</p>
 <ol>
 <li><strong>Given</strong> sets the scene: the context or state of the system before the behavior under test, the preconditions the scenario needs to make sense.</li>
 <li><strong>When</strong> is the action or event under test, usually triggered by the user or something outside the system: the one behavior you want to observe.</li>
 <li><strong>Then</strong> is the outcome that should follow from the When: the results, changes or behavior the test checks for.</li>
 </ol>
-<h2>An example in Gherkin</h2>
+<h2 id="an-example-in-gherkin"><a class="heading-anchor" href="#an-example-in-gherkin">An example in Gherkin</a></h2>
 <p>Here is one, for signing in:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Signing in
   A registered customer signs in to see their orders.
@@ -150,7 +150,7 @@
 </svg>
 <figcaption>The signing-in scenario as a before and an after with one event between them. Given sets the state, When is the one event under test (outlined in violet), and Then is the state that should follow.</figcaption>
 </figure>
-<h2>More keywords</h2>
+<h2 id="more-keywords"><a class="heading-anchor" href="#more-keywords">More keywords</a></h2>
 <p>Beyond Given, When and Then, Gherkin keeps a small vocabulary for shaping scenarios:</p>
 <ul>
 <li><strong>Feature:</strong> The first primary keyword in a feature file. It names the feature and holds its description, often the user story, above its scenarios.</li>

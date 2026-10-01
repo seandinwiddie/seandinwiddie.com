@@ -940,7 +940,8 @@ body.service-route { background: #fafafa; }
 /* A depth passage stands 2rem apart from the text on both sides (docs/design.md); it
    sat flush on the paragraph after it. */
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) .notice.depth { margin: 2rem 0; }
-.module-lessons { margin: 0 0 2rem; }
+.module-lessons { margin: 3.25rem 0 2rem; }
+.module-lessons h2 { margin-top: 0; }
 .module-lessons ol, .sitemap-list ol { padding-left: 1.4rem; }
 .button,
 .site-form input[type="submit"],
@@ -1026,13 +1027,16 @@ body.service-route { background: #fafafa; }
   border: 1px solid var(--line);
   border-radius: 0.45rem;
   background: #fff;
-  box-shadow: 0 0.2rem 0.55rem rgb(31 36 48 / 10%);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
-.post-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0.55rem 1.2rem rgb(31 36 48 / 14%);
+/* A hairline, no lift or shadow; focus rings the whole card (post design round 2). */
+.post-card:hover { border-color: var(--muted); }
+.post-card:has(> .post-card__link:focus-visible) {
+  outline: 3px solid #ffb454;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgb(31 36 48 / 85%);
 }
+.post-card__link:focus-visible { outline: none !important; box-shadow: none; }
 .post-card__link { display: block; height: 100%; color: inherit; text-decoration: none; }
 .post-card__link:hover { color: inherit; }
 .post-card__media { aspect-ratio: 16 / 9; overflow: hidden; background: var(--soft); }
@@ -1689,18 +1693,24 @@ figure.diagram { margin: 2.25rem 0; }
   padding: 1.25rem max(1.25rem, (100% - 30rem) / 2);
   border: 1px solid var(--line);
   border-radius: 0.45rem;
+  background: #f7f6f2; /* the plate: a depth passage's note paper (post design round 2) */
 }
 .diagram figcaption { margin-top: 0.75rem; font-size: 0.875em; line-height: 1.6; text-align: left; }
+.diagram figcaption code { color: #171717; } /* AAA on its chip (round 2) */
 .diagram text { fill: var(--ink); font-size: 14px; text-anchor: middle; dominant-baseline: central; }
 .diagram .note { fill: var(--muted); font-size: 13px; }
-.diagram .edge { stroke: var(--muted); }
-.diagram .path { stroke: var(--primary); stroke-width: 3; stroke-linecap: round; }
+.diagram .edge { stroke: var(--muted); stroke-linecap: round; stroke-linejoin: round; }
+.diagram .path { stroke: var(--primary); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .diagram .node { fill: var(--paper); stroke: var(--muted); }
-.diagram .node.on { stroke: var(--primary); stroke-width: 2; }
+.diagram .node.on { stroke: var(--primary); stroke-width: 2.5; }
+/* Lines keep their pixel weight at every width (post design round 2). */
+.diagram :is(line, rect, circle, ellipse, path, polyline, polygon) { vector-effect: non-scaling-stroke; }
 /* A phone: the lede a smaller step; code and diagrams to the screen's edges (code at
    46 characters a line, where it showed 36), except inside a depth passage. */
 @media (max-width: 30rem) {
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > header + p { font-size: 1.125em; }
+  .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > h2, .module-lessons { margin-top: 2.75rem; }
+  .heading-anchor::before { padding-right: 0.25em; }
   pre.code-block, .code-frame { margin-inline: -1rem; }
   pre.code-block { max-width: none; padding-inline: 1rem; border-radius: 0; }
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) pre.code-output { padding-inline: 1rem; border-inline-width: 0; }
@@ -1712,4 +1722,32 @@ figure.diagram { margin: 2.25rem 0; }
 @media (min-width: 64rem) {
   .code-frame { margin-inline: -8.75rem; }
   .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) :is(.code-frame > pre, .notice .code-frame) { margin-inline: 0; }
+}
+/* Post design round 2 (docs/design.md, Lesson posts): a lesson's h2 links to itself (the
+   sync renders it), a "#" in the margin on hover, focus or target, clear of the menu. */
+h2:has(> .heading-anchor) { position: relative; scroll-margin-top: 7.5rem; }
+.heading-anchor, .heading-anchor:hover { color: inherit; text-decoration: none; }
+.heading-anchor::before {
+  content: "#";
+  content: "#" / "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  padding-right: 0.5em;
+  color: var(--muted);
+  font-size: 0.75em;
+  font-weight: 400;
+  line-height: 1.8; /* the heading's 1.35 at 0.75 of its size: beside its first line */
+  opacity: 0;
+}
+.heading-anchor:is(:hover, :focus-visible)::before, :target > .heading-anchor::before { opacity: 1; }
+/* A lesson closes on a quiet line under a hairline, as the note to webmasters is set. */
+.family-community aside:is([aria-label="Working with the team"], [aria-label="Questions"]) {
+  margin-top: 2.5rem;
+  padding: 1.5rem 0 0;
+  border-width: 1px 0 0;
+  border-radius: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.9em;
 }

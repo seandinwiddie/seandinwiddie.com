@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 <p>Python lets a program do almost anything from anywhere: change a global, read a file halfway through a calculation, shuffle with whatever seed the process happens to hold. The Sean Dinwiddie&rsquo;s Webmastery team gives most of that freedom up, gladly, for something better: the same inputs give the same outputs on every machine, and a failing test can say exactly which rule broke.</p>
 <p>Eight habits get it there. Each comes with a small example that runs on the standard library and pytest.</p>
-<h2>One layout, run as modules</h2>
+<h2 id="one-layout-run-as-modules"><a class="heading-anchor" href="#one-layout-run-as-modules">One layout, run as modules</a></h2>
 <p>Code is grouped by what it does, one package per domain, and nothing sits loose at the top of the repository. Configuration and data live beside the package, never inside it:</p>
 <pre class="code-block" tabindex="0"><code>requirements.in      what the project uses, unpinned
 requirements.lock    every package at an exact version, compiled from it
@@ -184,7 +184,7 @@ ModuleNotFoundError: No module named 'pipeline'</code></pre>
 </svg>
 <figcaption>Python puts one folder first on its import path. With <code>python -m</code> it is the current directory, here the root, so <code>import pipeline</code> finds the package (the violet line). Run as a file, it is the file&rsquo;s own folder, <code>data/</code>, and there is no <code>pipeline/</code> in there.</figcaption>
 </figure>
-<h2>A locked environment</h2>
+<h2 id="a-locked-environment"><a class="heading-anchor" href="#a-locked-environment">A locked environment</a></h2>
 <p>Each project has its own virtual environment, installed from a lock. People edit <code>requirements.in</code>, a short list of what the project uses.</p>
 <p>uv compiles it into <code>requirements.lock</code>: every package and every dependency pinned, for a fixed Python version, with nothing published after a fixed date. Compile it again next month and you get the same lock:</p>
 <pre class="code-block" tabindex="0"><code>#!/bin/sh
@@ -221,7 +221,7 @@ exit 1</code></pre>
 <p>The environment is made from the lock alone. <code>--no-deps</code> installs exactly what the lock names, and nothing it doesn&rsquo;t:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ python3 -m venv .venv
 $ .venv/bin/python -m pip install --no-deps -r requirements.lock</code></pre>
-<h2>Pure functions, the same answer every time</h2>
+<h2 id="pure-functions-the-same-answer-every-time"><a class="heading-anchor" href="#pure-functions-the-same-answer-every-time">Pure functions, the same answer every time</a></h2>
 <p>A function that reads only its arguments and returns a new value can be tested with plain data and trusted on any machine. Data generation holds to that strictly.</p>
 <p>A row&rsquo;s content is chosen by its index, turning through a fixed catalog like a dial; nothing is drawn at random. Where an order has to be shuffled, the shuffle gets a generator of its own, seeded from the run&rsquo;s settings. The global one belongs to every library in the process, and any of them can disturb it:</p>
 <pre class="code-block" tabindex="0"><code># pipeline/data/order.py
@@ -265,7 +265,7 @@ $ for run in 1 2 3; do python -c "from pipeline.data.order import seeded_order; 
 </ul>
 <p>Heavy libraries are imported inside the functions at the edge that need them, so a test of the core never loads a GPU stack.</p>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> sets out what makes a function pure, and <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the line between the pure core and the shell around it.</p>
-<h2>Frozen data</h2>
+<h2 id="frozen-data"><a class="heading-anchor" href="#frozen-data">Frozen data</a></h2>
 <p>Records are frozen dataclasses. A frozen record can&rsquo;t change after it is made, so a value passed into a function is the same value when the function returns. A change is a new record, made with <code>dataclasses.replace</code>:</p>
 <pre class="code-block" tabindex="0"><code># pipeline/data/contexts.py
 """The made-up situations that training rows are written about."""
@@ -304,7 +304,7 @@ print(trail)</code></pre>
 Context(place='the north trail', state='open', reason='a washed-out bridge')
 Context(place='the north trail', state='closed until Friday', reason='a washed-out bridge')</code></pre>
 <p>The trail in the catalog is still closed until Friday; the reopened one is a new record beside it.</p>
-<h2>JSON as the one authority for config</h2>
+<h2 id="json-as-the-one-authority-for-config"><a class="heading-anchor" href="#json-as-the-one-authority-for-config">JSON as the one authority for config</a></h2>
 <p>Every value a run depends on lives in JSON: the model and its pinned revision, the data files, the seed, the training settings. Nothing repeats it. Code reads it, and documents point to it rather than copying its values.</p>
 <p>A long config is hard to review, so it is composed from small parts that a manifest names, each set at a key or merged at the top:</p>
 <pre class="code-block" tabindex="0"><code>{
@@ -405,7 +405,7 @@ if __name__ == "__main__":
 <figcaption>The manifest names each part and where it goes: two are set at a key, and one is merged at the top. The violet lines carry each part into the one config a run reads.</figcaption>
 </figure>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#immutable-configuration">Practical Applications of Functional Programming</a> builds configuration from explicit parts too, with an explicit precedence and a frozen result; the composer here is stricter and refuses any key set twice.</p>
-<h2>Contracts that report every fault</h2>
+<h2 id="contracts-that-report-every-fault"><a class="heading-anchor" href="#contracts-that-report-every-fault">Contracts that report every fault</a></h2>
 <p>Data crosses a boundary only after it is checked against its contract:</p>
 <ul>
 <li>the keys a row must carry, and the one it may (the oracle that <a href="/community/from-fine-tune-to-release/">From Fine-Tune to Release</a> adds);</li>
@@ -494,7 +494,7 @@ row-001: chosen and rejected are the same
 train: declared 2, found 1
 trian: declared 0, found 1</code></pre>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#accumulate-every-error-with-validation">Practical Applications of Functional Programming</a> accumulates errors the same way in TypeScript.</p>
-<h2>Tests named for the behavior</h2>
+<h2 id="tests-named-for-the-behavior"><a class="heading-anchor" href="#tests-named-for-the-behavior">Tests named for the behavior</a></h2>
 <p>Each test&rsquo;s name states the rule it proves, so a failing run reads as a list of broken rules.</p>
 <p>A contract is tested by breaking a valid row one way at a time and checking that each break is refused, by name. Several breaks at once have to come back in one error:</p>
 <pre class="code-block" tabindex="0"><code># tests/test_contract.py
@@ -612,7 +612,7 @@ def pytest_sessionfinish(session):
 1 skipped: every test must run
 38 passed, 1 skipped in 0.08s
 exit 1</code></pre>
-<h2>One script verifies everything</h2>
+<h2 id="one-script-verifies-everything"><a class="heading-anchor" href="#one-script-verifies-everything">One script verifies everything</a></h2>
 <p>One script runs every check that must hold before any paid compute starts:</p>
 <ul>
 <li>the lock is current;</li>

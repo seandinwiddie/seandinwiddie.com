@@ -113,6 +113,8 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
+
+<p>The last link in the team&rsquo;s chain is the API behind the app. Module 2&rsquo;s scenarios already say what each endpoint answers. On the Sean Dinwiddie&rsquo;s Webmastery team, a Haskell Servant type states it, thin handlers carry it out, and Nile, Postgres built for apps that serve many customers, keeps each customer&rsquo;s data apart.</p>
 <nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
 <ol start="2">
@@ -122,9 +124,7 @@
 <li><a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a></li>
 </ol>
 </nav>
-
-<p>The last link in the team&rsquo;s chain is the API behind the app. Module 2&rsquo;s scenarios already say what each endpoint answers. On the Sean Dinwiddie&rsquo;s Webmastery team, a Haskell Servant type states it, thin handlers carry it out, and Nile, Postgres built for apps that serve many customers, keeps each customer&rsquo;s data apart.</p>
-<h2>1. The API is a type</h2>
+<h2 id="1-the-api-is-a-type"><a class="heading-anchor" href="#1-the-api-is-a-type">1. The API is a type</a></h2>
 <p>In Servant, the API is written as a Haskell type before any handler exists. Each route names its path, what it takes and what it returns, and the compiler holds every handler to it:</p>
 <pre class="code-block" tabindex="0"><code>type OrdersAPI =
   Auth '[JWT] UserId :&gt;
@@ -132,7 +132,7 @@
     (    Get '[JSON] [Order]
     :&lt;|&gt; ReqBody '[JSON] NewOrder :&gt; PostCreated '[JSON] Order )</code></pre>
 <p>The type reads like the scenario it serves: for a signed-in user and one customer, list the orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
-<h2>2. Handlers stay thin</h2>
+<h2 id="2-handlers-stay-thin"><a class="heading-anchor" href="#2-handlers-stay-thin">2. Handlers stay thin</a></h2>
 <p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction:</p>
 <ol>
 <li>it reads what a decision needs, such as today&rsquo;s prices;</li>
@@ -182,7 +182,7 @@ withTenant pool user tenantId work = do
 <figcaption>The violet line is an order that is placed: a valid sign-in, a member of the tenant, an order that passes the pure check and is written, all from <code>withTenant</code> to <code>insertOrder</code> in one transaction, then 201 Created. Each refusal leaves at its own step, with its own status.</figcaption>
 </figure>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
-<h2>3. Each customer&rsquo;s data stays apart in Nile</h2>
+<h2 id="3-each-customers-data-stays-apart-in-nile"><a class="heading-anchor" href="#3-each-customers-data-stays-apart-in-nile">3. Each customer&rsquo;s data stays apart in Nile</a></h2>
 <p>Nile is Postgres built for apps that serve many organizations, each a tenant. A table that holds a tenant&rsquo;s rows carries a <code>tenant_id</code> and includes it in its primary key, and the tenants themselves live in Nile&rsquo;s built-in <code>tenants</code> table:</p>
 <pre class="code-block" tabindex="0"><code>CREATE TABLE orders (
   tenant_id uuid REFERENCES tenants (id),
@@ -225,7 +225,7 @@ SELECT id, total_cents FROM orders;</code></pre>
 </figure>
 <p>The tenant in the path is only a claim. With <code>nile.user_id</code> set, Nile raises an error unless that user belongs to the tenant in its built-in <code>users.tenant_users</code> table, and the shell answers 403 Forbidden; an app that keeps its own users checks membership the same way before <code>withTenant</code> runs.</p>
 <p><code>SET</code> takes no bind parameters, so both IDs are written into the statement, which is safe here because the Capture and the auth layer have already parsed them as UUIDs.</p>
-<h2>4. One contract at both ends</h2>
+<h2 id="4-one-contract-at-both-ends"><a class="heading-anchor" href="#4-one-contract-at-both-ends">4. One contract at both ends</a></h2>
 <p>The same Servant type can describe itself as an OpenAPI document (the servant-openapi3 package), and RTK Query&rsquo;s OpenAPI code generator turns that document into the client&rsquo;s endpoints and hooks. Server and client then share one contract: when a route changes, the regenerated client shows every mismatch as a type error before it reaches a customer.</p>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> sets up the client side, generated into one API root and reviewed like any other source.</p>
 <p>servant-openapi3 knows nothing of servant-auth, so the API adds one small instance that describes <code>Auth</code> as a bearer token, and names each route&rsquo;s operation, which RTK Query&rsquo;s generator uses as the endpoint&rsquo;s name. A small program writes the document to <code>openapi.json</code> on every build.</p>
@@ -250,7 +250,7 @@ ordersOpenApi =
     &amp; paths . traverse . post . _Just . operationId ?~ "placeOrder"</code></pre>
 <p>With one path, a traversal over every path is enough; a larger API picks each route out with servant-openapi3&rsquo;s <code>subOperations</code>.</p>
 <p>The contract is only as honest as the JSON behind it: in the Hspec suite, servant-openapi3&rsquo;s <code>validateEveryToJSON</code> checks values of every JSON type in the API against the published schema, generating them from each type&rsquo;s <code>Arbitrary</code> instance, so <code>Order</code> and <code>NewOrder</code> need one.</p>
-<h2>5. The scenarios test the API</h2>
+<h2 id="5-the-scenarios-test-the-api"><a class="heading-anchor" href="#5-the-scenarios-test-the-api">5. The scenarios test the API</a></h2>
 <p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no HTTP server, against Nile running locally in Docker so the tenant checks run too.</p>
 <p>Every route sits behind <code>Auth</code>, so each test signs a token with the test&rsquo;s own key and sends it as a bearer token: Ada, a member of the shop&rsquo;s tenant, gets 201 Created, and Grace, a user from another shop, gets 403 Forbidden.</p>
 <pre class="code-block" tabindex="0"><code>app :: JWTSettings -&gt; Pool Connection -&gt; Application

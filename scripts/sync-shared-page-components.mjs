@@ -579,12 +579,15 @@ ${partOf(part).slice(1).map(([slug, title]) => `<li><a href="/community/${slug}/
 const MODULE_LESSONS_PATTERN = /\n<nav class="module-lessons"[\s\S]*?<\/nav>/;
 const ENTRY_HEADER_END = "</header><!-- .entry-header -->";
 
+// The list follows the opener's first paragraph, its lede (docs/design.md, Lesson
+// posts), as the Introduction's level paths do; it sat between the byline and the lede.
 const withModuleLessons = (name, html) => {
   const part = Object.keys(PARTS).find((key) => key !== "course" && name === `community/${PARTS[key].opener}/index.html`);
-  if (!part || partOf(part).length < 2) return html.replace(MODULE_LESSONS_PATTERN, "");
-  if (MODULE_LESSONS_PATTERN.test(html)) return html.replace(MODULE_LESSONS_PATTERN, () => `\n${moduleLessons(part)}`);
-  if (html.split(ENTRY_HEADER_END).length !== 2) throw new Error(`${name}: expected one entry header`);
-  return html.replace(ENTRY_HEADER_END, () => `${ENTRY_HEADER_END}\n${moduleLessons(part)}`);
+  const without = html.replace(MODULE_LESSONS_PATTERN, "");
+  if (!part || partOf(part).length < 2) return without;
+  if (without.split(ENTRY_HEADER_END).length !== 2) throw new Error(`${name}: expected one entry header`);
+  if (!FIRST_PARAGRAPH_PATTERN.test(without)) throw new Error(`${name}: no first paragraph for the module's lessons`);
+  return without.replace(FIRST_PARAGRAPH_PATTERN, (paragraph) => `${paragraph}\n${moduleLessons(part)}`);
 };
 
 // The Course Outline's Module 4 list was kept by hand, so each new lesson had
@@ -833,6 +836,38 @@ const withLessonHeadings = (name, html) => {
   });
 };
 
+// A lesson's sections link to themselves (docs/design.md, Lesson posts): each h2 in a
+// lesson's body takes an id from its words and becomes the link to itself, so a long
+// lesson can be linked to by section. The id follows the heading's text, so renaming a
+// heading moves its link, and an id already on the page is never reused. A heading that
+// is already a link (the Course Outline's modules) or carries an id of its own (a
+// module's lesson list) keeps its markup.
+const ANCHORED_HEADING_PATTERN = /<h2 id="[^"]*"><a class="heading-anchor" href="#[^"]*">([\s\S]*?)<\/a><\/h2>/g;
+const PLAIN_HEADING_PATTERN = /<h2>((?:(?!<\/?h2\b|<a\b)[\s\S])+?)<\/h2>/g;
+const headingSlug = (inner) =>
+  inner
+    .replace(/<[^>]+>/g, "")
+    .replace(/&[a-z]+;|&#x?[0-9a-f]+;/gi, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "section";
+const withHeadingAnchors = (name, html) => {
+  if (lessonIndex(name) === -1) return html;
+  if (!ARTICLE_BODY_PATTERN.test(html)) throw new Error(`${name}: no article body for heading anchors`);
+  const plain = html.replace(ANCHORED_HEADING_PATTERN, (_, inner) => `<h2>${inner}</h2>`);
+  const taken = new Set([...plain.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
+  return plain.replace(ARTICLE_BODY_PATTERN, (_, open, body, close) => {
+    const anchored = body.replace(PLAIN_HEADING_PATTERN, (_heading, inner) => {
+      const base = headingSlug(inner);
+      let id = base;
+      for (let n = 2; taken.has(id); n += 1) id = `${base}-${n}`;
+      taken.add(id);
+      return `<h2 id="${id}"><a class="heading-anchor" href="#${id}">${inner}</a></h2>`;
+    });
+    return `${open}${anchored}${close}`;
+  });
+};
+
 // Depth passages open with their title ("The rule behind the examples", "Where it
 // bends"), which the Introduction names; as a labelled aside each is named where
 // it sits.
@@ -930,6 +965,7 @@ const routeTransforms = Object.freeze([
   withFocusableCode,
   withTrimmedCategory,
   withLessonHeadings,
+  withHeadingAnchors,
   withDepthPassages,
   withByline,
   withUpdatedByline,

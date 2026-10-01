@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 
 <p>Functional Reactive Programming (FRP) describes a program with two ideas, events that happen at a moment and behaviors that change over time, and derives everything the program shows from them with pure functions.</p>
-<h2>Key concepts</h2>
+<h2 id="key-concepts"><a class="heading-anchor" href="#key-concepts">Key concepts</a></h2>
 <ol>
 <li>
 <strong>Events and Behaviors:</strong> At the core of FRP are events, things that happen at a moment, and behaviors, values that change over time. An event can be a user interaction, a timer or a network response; in Redux Toolkit, a behavior is a value derived from the events so far.</li>
@@ -128,10 +128,10 @@
 <li>
 <strong>Event-Driven Programming:</strong> FRP suits event-driven programming, where code reacts to events as they occur. In Redux Toolkit, a reducer decides what each event changes, and selectors combine what the events have left in state.</li>
 </ol>
-<h2>How it works</h2>
+<h2 id="how-it-works"><a class="heading-anchor" href="#how-it-works">How it works</a></h2>
 <p>FRP works by modeling what happens as events and what the program knows as values derived from them. Developers declare how each event changes the state and how each value is derived, and compose small pure functions into larger ones, rather than writing callbacks that change things in place.</p>
 <p>FRP is used in a wide range of applications, from games and simulations to the interfaces this course builds: a cart, a menu that marks what sold out, a kitchen queue. It fits wherever what the software shows follows from things that happen, as a cart&rsquo;s total follows from what was added and removed.</p>
-<h2>Where FRP comes from</h2>
+<h2 id="where-frp-comes-from"><a class="heading-anchor" href="#where-frp-comes-from">Where FRP comes from</a></h2>
 <p>FRP starts with Conal Elliott and Paul Hudak’s <em>Functional Reactive Animation</em> (1997), built on two ideas: behaviors, values that change over time, and events, things that happen at a moment. Observable libraries often borrow the name but model only streams of events.</p>
 <p>In custom apps, the Sean Dinwiddie’s Webmastery team builds the same ideas in Redux Toolkit: actions are the events, reducers fold them into state, and selectors derive the values a view shows. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows the boundary that keeps those reducers pure: a pure core decides, and a thin shell acts.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> In Elliott and Hudak&rsquo;s FRP, a behavior is a function of continuous time: a ball&rsquo;s position has a value at every instant, not only at the instants something happened, and a program can ask for it whenever it likes. Redux Toolkit has no continuous time. The state changes only when an action is dispatched, so a selector is a behavior sampled at each dispatch, and between two actions its value can&rsquo;t change.</p>

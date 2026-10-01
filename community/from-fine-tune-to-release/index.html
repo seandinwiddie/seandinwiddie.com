@@ -132,7 +132,7 @@
 </svg>
 <figcaption>Each stage answers to something fixed before it runs, named on the right. The model moves down the violet line, and the promotion gate, against the model it would replace, decides whether it ships.</figcaption>
 </figure>
-<h2>Choosing the base by a fair comparison</h2>
+<h2 id="choosing-the-base-by-a-fair-comparison"><a class="heading-anchor" href="#choosing-the-base-by-a-fair-comparison">Choosing the base by a fair comparison</a></h2>
 <p>Fine-tuning starts from a small open-weight model, and choosing one is an experiment like any other. Every candidate answers the same prompts, through the same prompt template and runtime, with the same decoding settings, scored by the same scorer. Results from two different evaluations can&rsquo;t be ranked against each other, so the ranking refuses them.</p>
 <p>Within one evaluation, the rule is fixed before any result is seen and applied in order:</p>
 <ol>
@@ -180,7 +180,7 @@ except ValueError as error:
 <pre class="code-block code-output" tabindex="0"><code>('candidate-c', 'candidate-b', 'candidate-a')
 results from different evaluations: ['eval-1', 'eval-2']</code></pre>
 <p>Fixing the rule in advance keeps a favourite from winning on whichever measure flatters it. A base chosen for training is still only a starting point: what ships is decided at the end, by comparing the trained model with its parent.</p>
-<h2>Deterministic data in disjoint splits</h2>
+<h2 id="deterministic-data-in-disjoint-splits"><a class="heading-anchor" href="#deterministic-data-in-disjoint-splits">Deterministic data in disjoint splits</a></h2>
 <p>Training data is generated, never written by hand: catalogs in JSON, combined with made-up situations and varied by index, as <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> shows.</p>
 <p>Every row about one situation lands in the same split (training, validation, development or release), so a situation seen in training never comes back, reworded, in a split that measures the model. Generated files are never edited by hand; a change to the data is a change to the generator.</p>
 <pre class="code-block" tabindex="0"><code># pipeline/release/splits.py
@@ -217,7 +217,7 @@ except ValueError as error:
 <pre class="code-block code-output" tabindex="0"><code>['train', 'train', 'train', 'validation', 'train', 'train', 'development', 'release']
 held-out rows offered to training: row-041</code></pre>
 <p>The release split is held back for the release decision and nothing else. It never guides training, tuning or the choice of a checkpoint. Once its evidence has informed a decision, it is retired for a fresh set the model has never been measured on, so it can&rsquo;t slowly become one more thing the model was fitted to.</p>
-<h2>Oracles as the hard boundary</h2>
+<h2 id="oracles-as-the-hard-boundary"><a class="heading-anchor" href="#oracles-as-the-hard-boundary">Oracles as the hard boundary</a></h2>
 <p>Overlap with a reference answer measures wording, and an oracle measures meaning. Each row carries one, and it names:</p>
 <ul>
 <li>the facts the answer must state;</li>
@@ -276,7 +276,7 @@ rejected: ()
 negative: ("missing 'closed'", "missing 'Friday'", "missing 'washed-out bridge'", "says 'is open'")
 unknown:  ('does not admit it does not know',)</code></pre>
 <p>The row above is a voice pair from <a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a>, so both of its answers pass the oracle: they differ only in voice. A hard negative is the other kind of pair, an answer built to be wrong, and it has to fail its oracle on meaning (here, it says the trail is open), not merely share fewer words with the reference.</p>
-<h2>Supervised, then preference training</h2>
+<h2 id="supervised-then-preference-training"><a class="heading-anchor" href="#supervised-then-preference-training">Supervised, then preference training</a></h2>
 <p>Training runs in two stages on one LoRA adapter: a small set of added weights trained over a base model that stays fixed, held in 4-bit form so a model of a few billion parameters trains on one GPU.</p>
 <ol>
 <li>Supervised fine-tuning (SFT) teaches the answers, with the loss counted on the answer and not on the prompt.</li>
@@ -334,7 +334,7 @@ dpo = DPOTrainer(
 dpo.train()
 dpo.save_model("runs/dpo/adapter")</code></pre>
 <p>In current trl, a model that already carries an adapter is trained against a frozen copy of that adapter, made when training starts. The run doesn&rsquo;t take that on trust. Before the first step it records, as named evidence, that the adapter being trained and its reference start identical, and that the reference has nothing left to train.</p>
-<h2>Evidence that names the inputs</h2>
+<h2 id="evidence-that-names-the-inputs"><a class="heading-anchor" href="#evidence-that-names-the-inputs">Evidence that names the inputs</a></h2>
 <p>Before a trained adapter goes any further, the run shows what it was trained on. Its record names the inputs exactly:</p>
 <ul>
 <li>the config;</li>
@@ -414,7 +414,7 @@ except ValueError as error:
 inputs match the record
 data/train.jsonl unchanged: expected {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '1f1ea15caf02b22c8fbda2bb33f632e9ef7d231dc416c281fd870b88d9925ab8'}, found {'path': 'data/train.jsonl', 'bytes': 54, 'lines': 3, 'sha256': '474f637b110d99640405c7f06a0ea5c593c705bfc7d35a1e6966a2c62e0067c6'}</code></pre>
 <p>A failed check says which input changed and how. Here the size and the line count still match; only the digest catches the rewritten row. So the record can&rsquo;t quietly describe a different run from the one that made the model.</p>
-<h2>Conversion, and checks at runtime</h2>
+<h2 id="conversion-and-checks-at-runtime"><a class="heading-anchor" href="#conversion-and-checks-at-runtime">Conversion, and checks at runtime</a></h2>
 <p>The released adapter is merged into the base weights at full precision, converted to GGUF with llama.cpp&rsquo;s converter and quantized with <code>llama-quantize</code>, the file format and runtime the model ships in. The quantization type is a setting like any other, read from the config:</p>
 <pre class="code-block" tabindex="0"><code># A sketch, not run here: merge at full precision, then convert and quantize.
 # full_precision_base() loads the same pinned base without the 4-bit form.
@@ -433,7 +433,7 @@ $ llama.cpp/build/bin/llama-quantize runs/model-f16.gguf runs/model.gguf &lt;typ
 <li>a request that runs past its deadline ends cleanly;</li>
 <li>requests made at the same time each get their own answer.</li>
 </ul>
-<h2>The promotion gate</h2>
+<h2 id="the-promotion-gate"><a class="heading-anchor" href="#the-promotion-gate">The promotion gate</a></h2>
 <p>Promotion compares the candidate with its parent under the same evaluation, and every condition is a named check:</p>
 <ul>
 <li>the same evaluation as the parent;</li>
