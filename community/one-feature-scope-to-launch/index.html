@@ -127,6 +127,7 @@ Story 1. As a customer, I want to place my order with the card I chose,
   so that the shop has my order and I am charged once.
     Scenario: Placing the order
     Scenario: Placing the order with a declined card
+    Scenario: Placing the order while payments are down
 Story 2. As a customer, I want to see my past orders,
   so that I can tell what I ordered and when.
     Scenario: Listing my orders
@@ -158,6 +159,14 @@ Done when: each scenario passes at every owner that holds part of it,
 <li><strong>She is asked for another card:</strong> the view, which shows what the request&rsquo;s state says.</li>
 </ul>
 <p>&ldquo;Her card will be declined&rdquo; belongs to none of them. It is the payment provider&rsquo;s answer, so each test sets it at its own boundary: a stand-in for the provider in the API&rsquo;s test, and a stand-in for the API behind <code>fetch</code> in the client&rsquo;s. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#decide-who-owns-the-state">Redux Toolkit and RTK Query Best Practices</a> sets out which owner holds which kind of state.</p>
+<p>The scope&rsquo;s third scenario under Story 1 is the same refusal with a different answer from the provider. It has the same owners, and only its last Then changes, because a provider that never saw the request has declined nothing:</p>
+<pre class="code-block" tabindex="0"><code>  Scenario: Placing the order while payments are down
+    Given Ada's cart holds "Widget A" at $25
+    And the payment provider can't be reached
+    When she places the order
+    Then no order is recorded
+    And her cart still holds "Widget A"
+    And she is asked to try again</code></pre>
 <h2>3. The API refuses with a reason</h2>
 <p>The card never reaches the API. The customer chose it in the payment provider&rsquo;s own form, which the provider&rsquo;s script draws inside the checkout and which sends the number to the provider, never to the shop, and the provider keeps the card on file for her. The API only asks the provider to charge the card she chose. That request is an effect, so it lives in the shell, behind a record of functions: the running app is given the real provider, and a test is given a stand-in. The names below are the lesson&rsquo;s own:</p>
 <pre class="code-block" tabindex="0"><code>newtype ChargeId = ChargeId Text
@@ -168,11 +177,11 @@ data ChargeRequest = ChargeRequest
   , amountCents    :: Int
   }
 
--- Unavailable: the provider couldn't be reached, so nothing was charged.
+-- Unavailable: the connection never opened, so the provider never saw the request.
 data Charge = Charged ChargeId | Declined | Unavailable
 
 newtype Payments = Payments { charge :: ChargeRequest -&gt; IO Charge }</code></pre>
-<p>The handler from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> now works in three steps. It reads today&rsquo;s prices and lets the pure core decide, in one transaction; it charges the card outside any transaction; and only when the charge succeeds does it write the order, in a second. A transaction held open across a call to another company&rsquo;s server holds its locks for as long as that server takes, and no rollback can take back a charge. A decline is an answer, not an exception, so it leaves the handler the way an invalid order does: as a refusal with its reason. A provider that can&rsquo;t be reached is an answer too, and a different one: nothing was charged and a later try can succeed, so it leaves as a 503 rather than a 422.</p>
+<p>The handler from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> now works in three steps. It reads today&rsquo;s prices and lets the pure core decide, in one transaction; it charges the card outside any transaction; and only when the charge succeeds does it write the order, in a second, through an <code>insertOrder</code> that now also takes the order&rsquo;s id and the charge&rsquo;s id. A transaction held open across a call to another company&rsquo;s server holds its locks for as long as that server takes, and no rollback can take back a charge. A decline is an answer, not an exception, so it leaves the handler the way an invalid order does: as a refusal with its reason. A provider that can&rsquo;t be reached is an answer too, and a different one: the request never reached it, so nothing was charged and a later try can succeed, and it leaves as a 503 rather than a 422.</p>
 <pre class="code-block" tabindex="0"><code>server :: Payments -&gt; Pool Connection -&gt; Server OrdersAPI
 server payments pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
   where
@@ -205,16 +214,19 @@ reasonOf (UnknownProduct _) = "unknown-product"
 reasonOf CardDeclined = "card-declined"
 reasonOf PaymentsUnavailable = "payments-unavailable"
 
--- 503 when a later try can succeed; 422 for every other refusal.
+-- 503 when a later try can succeed; 422 for every other refusal. Every case is
+-- named, so a new Problem without a status is flagged by -Wincomplete-patterns.
 statusOf :: Problem -&gt; ServerError
+statusOf EmptyOrder = err422
+statusOf (UnknownProduct _) = err422
+statusOf CardDeclined = err422
 statusOf PaymentsUnavailable = err503
-statusOf _ = err422
 
 -- The status, with the reason as JSON and a header that says so.
 refuse :: Problem -&gt; Handler a
 refuse problem =
   throwError (statusOf problem) { errBody = encode problem, errHeaders = [(hContentType, "application/json")] }</code></pre>
-<p>Servant&rsquo;s <code>err422</code> and <code>err503</code> carry no headers of their own, so <code>refuse</code> names the content type; without it, the client could still parse the body, but the test below would fail. The order keeps the id of the charge that paid for it, in one column the API lesson&rsquo;s <code>orders</code> table gains: <code>ALTER TABLE orders ADD COLUMN charge_id text</code>. The test gives the app a stand-in for the provider that declines every card, and checks the two things the API owns: the refusal, as JSON with its reason, and no order recorded. The order history is read before the attempt and must read the same after it:</p>
+<p>Servant&rsquo;s <code>err422</code> and <code>err503</code> carry no headers of their own, so <code>refuse</code> names the content type; without it, the client could still parse the body, but the tests below would fail. <code>statusOf</code> names every <code>Problem</code> rather than ending in a wildcard, so a refusal added later without a status is flagged by <code>-Wincomplete-patterns</code>, part of <code>-Wall</code>: the compiler&rsquo;s version of the status table in <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a>. The order keeps the id of the charge that paid for it, in one column the API lesson&rsquo;s <code>orders</code> table gains: <code>ALTER TABLE orders ADD COLUMN charge_id text</code>. The tests give the app a stand-in for the provider that declines every card and one that can&rsquo;t be reached, and check the two things the API owns in each: the refusal, as JSON with its reason and its status, and no order recorded. The order history is read before the attempt and must read the same after it:</p>
 <pre class="code-block" tabindex="0"><code>{-# LANGUAGE QuasiQuotes #-}
 import Test.Hspec.Wai.JSON (json)            -- from hspec-wai-json
 import Test.Hspec.Wai.Matcher (bodyEquals)
@@ -224,9 +236,10 @@ app jwt payments pool =
   serveWithContext (Proxy :: Proxy OrdersAPI) (defaultCookieSettings :. jwt :. EmptyContext) (server payments pool)
 
 -- Stand-ins for the payment provider: each test chooses its answer.
-approving, declining :: Payments
+approving, declining, unavailable :: Payments
 approving = Payments (\_ -&gt; pure (Charged (ChargeId "test-charge")))
 declining = Payments (\_ -&gt; pure Declined)
+unavailable = Payments (\_ -&gt; pure Unavailable)
 
 spec :: Spec
 spec = do
@@ -248,10 +261,19 @@ spec = do
         request methodPost (ordersPath shop) (asUser token) widgetAOrder
           `shouldRespondWith` [json|{"reason": "card-declined"}|] {matchStatus = 422}
         -- Then no order is recorded
+        ordersFor token `shouldRespondWith` 200 {matchBody = bodyEquals history}
+    with (pure (app jwt unavailable pool)) $
+      it "Scenario: Placing the order while payments are down" $ do
+        token &lt;- liftIO (signIn ada)
+        history &lt;- simpleBody &lt;$&gt; ordersFor token
+        -- When she places the order, and the provider can't be reached
+        request methodPost (ordersPath shop) (asUser token) widgetAOrder
+          `shouldRespondWith` [json|{"reason": "payments-unavailable"}|] {matchStatus = 503}
+        -- Then no order is recorded
         ordersFor token `shouldRespondWith` 200 {matchBody = bodyEquals history}</code></pre>
 <p>The pure core is tested on its own, with no database and no provider: <code>validateOrder</code> returns an empty order or an unknown product as a value the test compares, the way the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> represents expected failure as plain data. The provider, like the database, stays in the shell, the line the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws between a functional core and an imperative shell.</p>
 <h2>4. The endpoint and the slice change nothing</h2>
-<p>In the client, the same refusal arrives as data. RTK Query dispatches <code>placeOrder</code>&rsquo;s rejected action with the status and the API&rsquo;s reason, <code>{ status: 422, data: { reason: 'card-declined' } }</code>, and two owners have to do nothing with it. One test proves both, beside the placed-order test from Endpoints at the Boundary, in a real store with a stand-in for the API behind <code>fetch</code>:</p>
+<p>In the client, the same refusal arrives as data. RTK Query dispatches <code>placeOrder</code>&rsquo;s rejected action with the status and the API&rsquo;s reason, <code>{ status: 422, data: { reason: 'card-declined' } }</code>, and two owners have to do nothing with it. A provider that is down arrives the same way, as 503 with a reason of its own, and they do nothing with it either. One test proves both, run once for each refusal, beside the placed-order test from Endpoints at the Boundary, in a real store with a stand-in for the API behind <code>fetch</code>:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/ordersApi.test.ts, continued, inside describe('Feature: Checkout')
 const earlier = {
   id: 'order-0',
@@ -259,12 +281,14 @@ const earlier = {
   totalCents: 2400,
 }
 
-it('Scenario: Placing the order with a declined card', async () =&gt; {
-  // And her card will be declined: the API refuses as it does, 422 with a reason
+// Story 1's two refusals: the same Thens here, so one test runs once for each
+it.each([
+  ['Scenario: Placing the order with a declined card', 422, 'card-declined'],
+  ['Scenario: Placing the order while payments are down', 503, 'payments-unavailable'],
+])('%s', async (_scenario, status, reason) =&gt; {
+  // And her card will be declined, or payments are down: the API refuses with a status and a reason
   const server = vi.fn(async (request: Request) =&gt;
-    request.method === 'POST'
-      ? Response.json({ reason: 'card-declined' }, { status: 422 })
-      : Response.json([earlier]),
+    request.method === 'POST' ? Response.json({ reason }, { status }) : Response.json([earlier]),
   )
   vi.stubGlobal('fetch', server)
   const store = makeStore()
@@ -280,7 +304,7 @@ it('Scenario: Placing the order with a declined card', async () =&gt; {
     }),
   )
   // Then no order is recorded: the refusal arrives as data, and the history is neither changed nor refetched
-  expect(placing.error).toEqual({ status: 422, data: { reason: 'card-declined' } })
+  expect(placing.error).toEqual({ status, data: { reason } })
   expect(ordersApi.endpoints.listOrders.select({ tenantId })(store.getState()).data).toEqual([earlier])
   expect(server.mock.calls.map(([request]) =&gt; request.method)).toEqual(['GET', 'POST'])
   // And her cart still holds "Widget A"
@@ -301,13 +325,26 @@ it('Scenario: Placing the order with a declined card', async () =&gt; {
   expect(await screen.findByText(/choose another card/)).toBeInTheDocument()
   expect(screen.getByRole('listitem')).toHaveTextContent('Widget A')
 })</code></pre>
-<p>Three tests now carry the scenario&rsquo;s name and cover its four owners: the API&rsquo;s in Hspec; the endpoint&rsquo;s and the slice&rsquo;s together, since they share a store; and the view&rsquo;s. A failure in any of them names the same behavior, so the owner can read a test report in the scope&rsquo;s own words. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations can&rsquo;t.</p>
+<p>Beside it in the same file, a twin for payments down sets the API&rsquo;s answer to 503 and looks for other words, because its last Then is the one that changes:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/PlaceOrder.test.tsx, continued
+it('Scenario: Placing the order while payments are down', async () =&gt; {
+  const user = userEvent.setup()
+  // And the payment provider can't be reached
+  renderCheckout(() =&gt; Response.json({ reason: 'payments-unavailable' }, { status: 503 }))
+  // When she places the order
+  await user.click(screen.getByRole('button', { name: 'Place order' }))
+  // Then her cart still holds "Widget A", and she is asked to try again
+  expect(await screen.findByText(/try again/)).toBeInTheDocument()
+  expect(screen.getByRole('listitem')).toHaveTextContent('Widget A')
+})</code></pre>
+<p>Each refusal now has three tests that carry its scenario&rsquo;s name and cover its four owners: the API&rsquo;s in Hspec; the endpoint&rsquo;s and the slice&rsquo;s together, since they share a store; and the view&rsquo;s. A failure in any of them names the same behavior, so the owner can read a test report in the scope&rsquo;s own words. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations can&rsquo;t.</p>
 <h2>6. The review against the scope</h2>
 <p>Before anything goes live, the results are reviewed against the written scope, line by line, and every launch gets Sean&rsquo;s review. The review checks results, never how the work was done; on a custom app, its passing scenarios are part of the result. For the checkout it reads:</p>
 <pre class="code-block" tabindex="0"><code>Review against the scope: Checkout
 
 [x] Story 1   Placing the order: passes at the API, the endpoint, the slice and the view
 [x] Story 1   Placing the order with a declined card: passes at all four
+[x] Story 1   Placing the order while payments are down: passes at all four
 [x] Story 2   Listing my orders: passes at the API and the endpoint
 [x] Story 3   Placing an order in someone else's shop: the API answers 403
 [x] Stack     as named; the client's endpoints regenerated from the API's
@@ -316,7 +353,7 @@ it('Scenario: Placing the order with a declined card', async () =&gt; {
               with the payment provider's test cards
 [x] Scope     nothing outside it: no refunds, no email, no cart on the server</code></pre>
 <p>A line that fails sends the work back; it moves to a later scope only if the owner approves the change. Anything the review finds that the scope never named, however small, is written up as its own story and quoted before it starts. The job then ends the way every job does: a check that it works, and a plain note the owner keeps, saying what was built, which scenarios prove it and how to run it. Before asking for the review, the webmaster makes their own pass over the code, and the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#code-review-checklist">Functional Programming Maintenance Strategy</a> keeps a checklist for it. The single end-to-end journey is deliberate: the lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">Modern Redux Architecture Patterns</a> keeps end-to-end tests to a small number of critical journeys, because each owner&rsquo;s own test has already proved its part.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The charge and the write can&rsquo;t share a transaction, so their order is a decision, and the shell above makes it one way: charge, then write. If the write fails after the charge, the customer has paid for an order that doesn&rsquo;t exist. The usual answer is two calls to the provider: authorize the card for the total, write the order, then capture the payment, voiding the authorization if the write fails, so no money moves until the order exists. The key in <code>ChargeRequest</code> covers a retry between the API and the provider, not a retry by the customer. If her connection drops after the API has charged and written the order, the client never hears so, and its notice has to say the order wasn&rsquo;t confirmed, not that it wasn&rsquo;t placed. To make her retry safe, the checkout carries a key of its own, made once when it opens and sent with every attempt; the API uses it as the order&rsquo;s id, so a second attempt finds the first order and its charge instead of making new ones. That changes <code>NewOrder</code>, and with it the contract at both ends, which is why it is a line in the scope before it is a line of code. And a provider that is down has declined nothing, which is why <code>Charge</code> has an <code>Unavailable</code> case: the API answers 503 with a reason of its own, the cart stays, and <code>orderNotice</code> asks the customer to try again rather than for another card.</p></aside>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The charge and the write can&rsquo;t share a transaction, so their order is a decision, and the shell above makes it one way: charge, then write. If the write fails after the charge, the customer has paid for an order that doesn&rsquo;t exist. The usual answer is two calls to the provider: authorize the card for the total, write the order, then capture the payment, voiding the authorization if the write fails, so no money moves until the order exists. The key in <code>ChargeRequest</code> covers a retry between the API and the provider, not a retry by the customer. If her connection drops after the API has charged and written the order, the client never hears so, and its notice has to say the order wasn&rsquo;t confirmed, not that it wasn&rsquo;t placed. To make her retry safe, the checkout carries a key of its own, made once when it opens and sent with every attempt; the API uses it as the order&rsquo;s id, so a second attempt finds the first order and its charge instead of making new ones. That changes <code>NewOrder</code>, and with it the contract at both ends, which is why it is a line in the scope before it is a line of code. And <code>Unavailable</code> is narrower than it looks. It means the connection never opened, so the provider never saw the request, and the notice can tell her that her card wasn&rsquo;t charged. A timeout after the request went out is no answer at all, since the provider may have charged the card, so the real <code>charge</code> sends the same request again with the same key, which a provider that honors the key answers with its first result rather than a second charge. If it still hears nothing, it throws, the server answers 500, and the customer reads that the order wasn&rsquo;t confirmed, never that she wasn&rsquo;t charged.</p></aside>
 <p>That is the course&rsquo;s chain in one feature: a story in the written scope, its scenarios in Gherkin, a typed API that refuses with a reason, an endpoint and a slice that change nothing they shouldn&rsquo;t, a view that says what happened, and a review against the scope before anything goes live. The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>. Webmasters at any stage of the craft build this way under the Sean Dinwiddie&rsquo;s Webmastery name, and <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 
 <!-- .entry-content -->

@@ -127,8 +127,6 @@
 <li>
 <strong>Put Effects at the Boundary:</strong> RTK Query fetches and caches server data, a thunk runs a workflow started from one place, and listener middleware debounces, cancels and reacts to later actions; reducers and selectors stay pure.</li>
 <li>
-<strong>Declarative Event Handling:</strong> Write code that handles events and user interactions in a declarative way. Instead of writing complex event handlers with callbacks, use the FRP approach to define what should happen when events occur. This results in cleaner and more maintainable code.</li>
-<li>
 <strong>State Management:</strong> Keep the module’s state in its slice. Each reducer takes the current state and an action and returns the next state, so every change is a named event and no earlier state is overwritten.</li>
 <li>
 <strong>Error Handling:</strong> Give each expected failure a name and a shape the module can read: the API answers a declined card with its reason, the slice leaves the cart alone because it empties only on success, and a pure function turns the request&rsquo;s state into the message the view shows, as <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> follows end to end.</li>

@@ -125,7 +125,7 @@
 <li>
 <strong>Immutability:</strong> FRP often promotes immutability, where data is treated as unchangeable. Learn how to work with immutable data structures to maintain the purity of your functions and minimize side effects.</li>
 <li>
-<strong>Declarative Programming:</strong> Embrace declarative programming, which emphasizes specifying what should happen rather than how it should happen. Write code that clearly expresses the desired behavior and leaves the how to reducers and selectors.</li>
+<strong>Declarative Programming:</strong> Say what a value is rather than how to keep it current: a total derived by a selector, never a running total updated in a handler.</li>
 <li>
 <strong>Listeners:</strong> Study listener middleware, which reacts to later actions over time, and learn when to cancel work that has gone stale.</li>
 <li>
@@ -171,7 +171,7 @@ const events: ItemAdded[] = [
 
 totalCents(events.reduce(next, [])) // 6200</code></pre>
 <p>Redux Toolkit then adds what the fold leaves out: Immer for the update syntax, <code>createSelector</code> to remember derived values, the store to tell each view when to read again, and RTK Query and listener middleware for the effects. Learned in that order, each reads as a convenience rather than magic, and a reducer that misbehaves can be run by hand on a list of events. The lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#pure-functions">What Is a Function?</a> starts from the same place.</p></aside>
-<p>Remember that mastering FRP is an ongoing process, and practice is key to becoming proficient. The more you work with FRP in practical scenarios, the more confident and skilled you will become in putting its principles to work in responsive, efficient software.</p>
+<p>Remember that mastering FRP is an ongoing process, and practice is key to becoming proficient. The more you work with FRP in practical scenarios, the more naturally you will derive what each screen shows from the events that happened.</p>
 
 <!-- .entry-content -->
 <footer>

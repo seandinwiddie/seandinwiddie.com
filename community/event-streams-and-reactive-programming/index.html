@@ -139,7 +139,7 @@
 <strong>Key Principles of Reactive Programming:</strong>
 <ul>
 <li>
-<strong>Declarative Approach:</strong> Reactive programming encourages a declarative approach to event handling, where developers specify what should happen in response to events, rather than how it should happen.</li>
+<strong>Declarative Approach:</strong> Each value is defined once, by what it is derived from, rather than updated by hand wherever an event lands; <a href="/community/introduction-to-functional-reactive-programming-frp/">Introduction to FRP</a> sets a running total against a selector.</li>
 <li>
 <strong>Composability:</strong> Reactive programming composes complex behavior from small pure functions: <code>map</code>, <code>filter</code> and <code>reduce</code> over events, and selectors built from smaller selectors.</li>
 <li>
@@ -159,7 +159,7 @@
 },</code></pre>
 <p>The kitchen&rsquo;s wait times are then part of the events themselves, and replaying the same actions gives the same state tomorrow as today. A reducer or selector that reads <code>Date.now()</code> breaks the fold. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#listener-middleware">Modern Redux Architecture Patterns</a> sets out what listeners are for.</p></aside>
 <p><strong>3. Integration in FRP:</strong></p>
-<p>In the context of FRP, event streams and reactive programming are integral to the handling of asynchronous events and data changes. Each event is an action, each reducer a pure step from one state to the next, and each derived value a selector. So every change on screen traces back to an action, and a test can replay it.</p>
+<p>In FRP, event streams and reactive programming work as one. Each event is an action, each reducer a pure step from one state to the next, and each derived value a selector. So every change on screen traces back to an action, and a test can replay it.</p>
 <p><strong>4. Example Use Cases:</strong></p>
 <ul>
 <li>Real-time updates in web applications: Event streams can capture user interactions, such as clicks or keystrokes, and immediately update the user interface in response.</li>
@@ -167,7 +167,7 @@
 <li>A food truck&rsquo;s menu: each item marked sold out is an event, and the menu customers see is derived from them.</li>
 <li>Table bookings: each booking made, changed or cancelled is an event, and the evening&rsquo;s open tables are derived from them.</li>
 </ul>
-<p>Event streams and reactive programming are fundamental to the success of FRP, enabling developers to build responsive, event-driven applications while maintaining a clear and declarative code structure.</p>
+<p>Event streams and reactive programming are FRP&rsquo;s two halves: the actions, in the order they happened, and the state and values derived from them.</p>
 
 <!-- .entry-content -->
 <footer>

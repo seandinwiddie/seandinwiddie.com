@@ -119,7 +119,7 @@
 <li>
 <strong>Real-Time Updates:</strong> An interaction that changes what the app knows, such as adding to a cart or choosing a date, becomes a dispatched action; a reducer decides what it changes, and every view that reads that state updates from it. The event handling doesn’t disappear: it moves into pure reducers and selectors that a test can run on their own.</li>
 <li>
-<strong>Declarative Event Handling:</strong> FRP promotes a declarative approach to event handling. Instead of specifying how an event should be handled, developers define what should happen when an event occurs. This results in more concise and understandable code, making it easier to manage user interactions.</li>
+<strong>Declarative Event Handling:</strong> A view&rsquo;s handler dispatches what happened and stops there: the reducer decides what it changes, and a selector what the screen shows, so no handler keeps a running total by hand.</li>
 <li>
 <strong>State Management:</strong> The store holds the facts, reducers fold events into the next state, and memoized selectors recompute derived values only when their inputs change, so a view stays in step with every action without manual bookkeeping.</li>
 <li>
@@ -131,7 +131,7 @@
 <li>
 <strong>Asynchronous Operations:</strong> Network requests stay at the boundary: RTK Query fetches, caches and refetches server data, and the view shows its loading, error or data state without handling the request itself. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#side-effect-architecture">Modern Redux Architecture Patterns</a> sets out which tool owns which effect.</li>
 <li>
-<strong>Modular Code:</strong> FRP promotes modular code that is easier to understand and maintain. Each event and its handling logic can be encapsulated in a clear and isolated manner, contributing to code maintainability and scalability.</li>
+<strong>Modular Code:</strong> Each feature keeps its events, reducer, selectors and endpoints in one folder, so a change to how the cart works stays in the cart&rsquo;s folder.</li>
 <li>
 <strong>Testability:</strong> FRP code is highly testable. With its declarative nature and clear separation of concerns, it becomes easier to write unit tests for individual components and interactions, ensuring that user interactions behave as expected.</li>
 <li>

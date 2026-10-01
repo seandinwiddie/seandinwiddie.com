@@ -145,11 +145,11 @@
 <li>
 <strong>Composability:</strong> FRP emphasizes the composability of operations, making it easier to create complex functionality from simple and reusable parts.</li>
 <li>
-<strong>Readability:</strong> Declarative code in FRP is often more readable and easier to understand, making it beneficial for collaboration and maintenance.</li>
+<strong>Readability:</strong> Each value is defined once, so a reader finds the cart&rsquo;s total in one selector rather than in every handler that touches the cart.</li>
 <li>
 <strong>Testability:</strong> Reducers and selectors are pure, so a test is a list of actions and the result expected, with no browser or server.</li>
 <li>
-<strong>Maintainability:</strong> FRP can lead to more maintainable codebases, as the declarative approach reduces the likelihood of bugs and makes it easier to update and extend software.</li>
+<strong>Maintainability:</strong> A new event is a new case in one reducer and a new value a new selector, so a change lands in one place, where its test runs.</li>
 </ul>
 <p>FRP comes down to events, a fold and the values derived from it: in Redux Toolkit, actions, a reducer and selectors, with every effect kept at the edge. The lessons in this module take each in turn.</p>
 

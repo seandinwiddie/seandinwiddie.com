@@ -512,10 +512,7 @@ body.marketing-route { background: #fafafa; }
 .local-accent-card--green { border-left-color: #28a745; }
 .local-accent-card--red { border-left-color: #dc3545; }
 .local-accent-card--yellow { border-left-color: #ffc107; }
-.local-accent-card h3,
-.local-support-card h3,
-.local-contact-card h3,
-.local-ready h3 {
+.local-accent-card h3 {
   margin: 0 0 1rem;
   color: #000;
   font-size: 1.25rem;
@@ -568,7 +565,14 @@ body.marketing-route { background: #fafafa; }
   background: #1e7e34;
   text-align: center;
 }
-.local-contact-card h3 { color: #fff; font-size: 1.5rem; }
+/* Klamath Falls' cards after its services carry their own h2s, at the card size. */
+.content-page .local-support-card h2,
+.content-page .local-ready h2,
+.content-page .local-contact-card h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+}
+.content-page .local-contact-card h2 { color: #fff; }
 .local-contact-card__button {
   display: inline-block;
   margin: 1.5rem 0 0.5rem;

@@ -147,6 +147,28 @@
     Then her booking is confirmed
     And no tables are left at 7:00 pm on Friday</code></pre>
 <p>The Feature names the module and carries its user story; the Given sets the starting state, the When names one event, and each Then names a result the team can check below the interface.</p>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> A Feature names one thing the owner can name, such as booking a table or checking out, and every scenario under it tests that one thing, so a failure points to one place. When every scenario in a Feature starts from the same facts, a Background states them once, and Gherkin runs it before each scenario, and before each row of a Scenario Outline:</p>
+<pre class="code-block" tabindex="0"><code>Feature: Booking a table
+  As a diner, I want to book a table so that I have a seat when I arrive.
+
+  Background:
+    Given the restaurant seats parties of up to six at one table
+    And one table left at 7:00 pm on Friday
+
+  Scenario: Booking the last table at seven
+    When Ada books it for two
+    Then her booking is confirmed
+    And no tables are left at 7:00 pm on Friday
+
+  Scenario Outline: Booking for a party of a given size
+    When Ada books it for &lt;guests&gt;
+    Then her booking is &lt;answer&gt;
+
+    Examples:
+      | guests | answer    |
+      | 6      | confirmed |
+      | 7      | refused   |</code></pre>
+<p>A Background holds only Givens, and only those every scenario needs. A fact one scenario needs stays in that scenario, where its reader sees it; a Background that grows past a few lines turns each scenario into a puzzle whose start is somewhere else. In Vitest, the Background is a <code>beforeEach</code> inside the <code>describe</code> block named for the Feature; in Hspec, a <code>before_</code> around its <code>describe</code>. A Feature often outgrows one module: the Checkout in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> is proved at the API, the endpoint, the slice and the view, and each of their tests carries the same Feature and scenario names, so a report reads the same at every owner. When a Feature&rsquo;s scenarios stop sharing a Background or a story, it is usually two Features, and the place they part is where the scope can split them.</p></aside>
 <p>By following these steps, you can create effective BDD scenarios for your software modules. These scenarios provide a clear and testable specification of the module’s behavior, ensuring that it aligns with user expectations and business requirements.</p>
 
 <!-- .entry-content -->
