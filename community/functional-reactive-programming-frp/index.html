@@ -116,7 +116,7 @@
 
 <p>Functional reactive programming treats an application as events over time and the values derived from them; on the Sean Dinwiddie’s Webmastery team, those ideas become Redux Toolkit’s actions, reducers and selectors.</p>
 <p><strong>What Is Functional Reactive Programming (FRP)?</strong></p>
-<p>Functional Reactive Programming is a paradigm for dealing with sequences of events and asynchronous data. It allows you to express the dynamic behavior of a value in a declarative way. In FRP, you model your system as a network of functions and data flows, where changes in data automatically propagate through the system.</p>
+<p>Functional Reactive Programming describes values that change over time by what they are derived from. You state once how a value follows from the events so far, declaratively, instead of updating it by hand wherever something changes. In Redux Toolkit, the store tells each view after every action, and the view reads its values again through selectors.</p>
 <p>FRP is particularly well-suited for building user interfaces, interactive systems, and any application where real-time data needs to be managed efficiently.</p>
 <p><strong>Key Concepts of FRP</strong></p>
 <ol>
@@ -130,7 +130,7 @@
 <p><strong>Why FRP Matters</strong></p>
 <ol>
 <li>
-<strong>Responsiveness:</strong> FRP enables your applications to be highly responsive to user input and real-time data. It allows you to handle complex interactions with ease.</li>
+<strong>Responsiveness:</strong> A view re-renders only when the value it reads has changed, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
 <li>
 <strong>Predictability:</strong> Pure reducers and selectors return the same output for the same input, so they’re easier to reason about, test and maintain.</li>
 <li>

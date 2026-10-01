@@ -2,6 +2,124 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Pass 13: October 1, 2026
+
+| Reviewer | Whole site | Focus pages | Community as training |
+|---|---|---|---|
+| Local owner | 8 | 9 | |
+| Webmaster | 8.5 | 8.5 | 8.5 |
+| Copywriter | 8.5 | 9 | 8.5 |
+| Senior CTO | 8.5 | 9 | 8.5 |
+
+These scores read the site after pass 12. The CTO expects the community at 9 once the capstone lands. The copywriter expects 9, 9.5 and 9 after this pass.
+
+### The objections that matter most
+
+- **Owner:**
+  - who reviews a launch: the owner pages say Sean, and "Joining the team" said a peer;
+  - the homepage's public-office paragraph left out what the half share delivers and the invoice terms;
+  - the hub pages priced a website at one share only;
+  - "its own share" of what;
+  - the towns in between had no channel on `/contact/`;
+  - the homepage's repeated Design line, and Redding's consultant wording.
+- **Webmaster:**
+  - the same review conflict, plus "any peer's" and who reviews a senior;
+  - the offer page's second business name, its line on contractor packages and competitor reporting, its pseudo-headings and its register;
+  - Module 3 opening with the Rx-style definition its own lessons correct, and the Elliott and Hudak paragraph on two pages;
+  - hype openers on the overview pages;
+  - the declined card stopping at the client;
+  - Module 3's empty error-handling bullets;
+  - two pairs of duplicated lessons.
+- **CTO:**
+  - the same points;
+  - Servant's `err422` sends no content type, so a JSON matcher fails;
+  - the View lesson's fallback claimed the order wasn't placed when a dropped connection can't tell;
+  - "Joining the team" said the memberships are for administrators;
+  - "Together, we'll transition…" broke the present tense.
+
+### Sean's directions this pass
+
+None new. Pass 13 worked within the standing ones:
+- Sean asked that payment terms be settled without adding to his work. Under that, the senior CTO set when a webmaster is paid (`docs/terms.md`): within five business days of the client's payment clearing, and from the office's own payment for a public office, with a note for counsel.
+- **Held, as facts only Sean has:**
+  - the offer page's firm name;
+  - the membership tiers' lines, which positioning leaves as they are.
+- The FRP Fundamentals bullet on where to ask points to the team's own community and the Redux documentation, not an outside chat server.
+- On the offer page, "three ways in" became "three tiers", because membership is earned through the work and never bought.
+
+### Tweaks applied
+
+- **Module 4's capstone, "One Feature, Scope to Launch":**
+  - the written scope names the stories, scenarios, stack and what it leaves out;
+  - the declined card runs through all four owners:
+    - the API charges the card through a `Payments` record in the shell, outside any transaction, with the order's id as the idempotency key;
+    - a decline answers 422 with its reason as JSON;
+    - three scenario-named tests cover the four owners;
+  - the review against the scope closes the job;
+  - its depth passage covers authorize and capture, the customer's retry key and a provider that is down;
+  - its last line speaks to webmasters.
+- **Module 4's other lessons:**
+  - the API lesson's 422 names its content type;
+  - the View lesson's fallback says the order wasn't confirmed.
+- **The sync:**
+  - the Course Outline's Module 4 list renders from `LESSONS`;
+  - the archives hold twelve cards a page;
+  - h2 subheads on Reviewing as a Group and Writing BDD Scenarios for Software Modules.
+- **Depth passages:**
+  - Capturing User Requirements;
+  - Translating User Needs;
+  - Discover (expected failure as data);
+  - Master the Fundamentals (events, a fold and a derived value with no library);
+  - How BDD Aligns (a scenario that passes while the need fails).
+- **Module 3:**
+  - its opener and Introduction to FRP open with events and behaviors;
+  - the origin paragraph stays on Introduction to FRP only;
+  - the error-handling bullets point to Module 4 and the capstone;
+  - the FRP overview and Discover lose their overclaims ("automatically propagate", "without the need for complex event handling", "callback hell", "respond promptly").
+- **Duplicates:** Writing Clear and Concise User Stories has its own tap-to-call example.
+- **Focus pages:**
+  - "Joining the team": the rung sets the peer review, then Sean reviews every launch against the written scope;
+  - the two-share site on `/development/` and `/design/`;
+  - the half share's deliverables and invoice terms on the homepage;
+  - "a one-time job, priced in shares";
+  - the towns in between on `/contact/`;
+  - the homepage's Design line and `/design/`'s panel intro reworded so they no longer repeat;
+  - Redding in Klamath Falls' plain register, reviewing against the written scope.
+- **Recruiting:**
+  - `/contact/` says what the agency's 30% pays for, inside the published fee and never added to the owner's bill;
+  - "Joining the team" says the memberships are separate offers that joining never depends on.
+- **Register:**
+  - the overview openers;
+  - the Introduction (nine lines);
+  - the Course Outline in the present tense;
+  - Module 1's openers;
+  - the offer page's register, its h2 and h3 headings, a real list, and the contractor line replaced by the flat 70/30.
+
+### Waiting
+
+- **Pass 14:**
+  - h2 subheads on Capturing User Requirements and Translating User Needs;
+  - depth passages in BDD and Unit Testing, Writing Clear and Concise User Stories, Introduction to BDD and Understanding the Importance of User-Centric Design;
+  - `orderNotice` as a dispatch, with a test for each branch;
+  - the Outline's Module 4 objectives;
+  - the shared card photo;
+  - the hubs' "Our process" pseudo-headings;
+  - the rest of the Introduction, offer page, Discover, How BDD Aligns, Apply FRP and BDD and Unit Testing register;
+  - Redding's first two steps and "right-sized";
+  - where the public-office paragraph sits on the homepage.
+- **Sean's:**
+  - the offer page's firm name;
+  - the nav landmark on his pages;
+  - how jobs reach webmasters and who sets the share count;
+  - memberships for administrators or webmasters;
+  - the KLounge;
+  - "since 2010";
+  - Medford;
+  - the testimonial names;
+  - `/about/`;
+  - Training's $600;
+  - the prices page's floor.
+
 ## Pass 12: October 1, 2026
 
 | Reviewer | Whole site | Focus pages | Community as training |
