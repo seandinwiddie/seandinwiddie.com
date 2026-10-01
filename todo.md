@@ -5,7 +5,7 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 ## Copy review
 
 - [ ] Make the loop runnable: a project skill that runs `docs/copy-review.md` with `docs/reading-list.md`, in place of the installed dream-loop skill's image-and-3D process.
-- [ ] Keep running the copy review, pass by pass, until all five reviewers score 9 or higher. Each pass is in `docs/copy-review-log.md`. Paused after pass 17 for Sean's direction (`docs/copy-review.md`: scores stopped improving): every reviewer holds the focus pages and the community at 9.5, and the whole site waits on Sean's `/prices/`, `/about/` and Secure Payment link. After design pass 5 Sean approved subtle, stepwise restyling of the shared call-to-action button, the white band, the featured cards and the privacy button site-wide, and hero photographs from existing images on the loop's pages; the homepage's hero stays as it is, and /contact/'s waits for his word (after design pass 7). After pass 17 Sean added the designer as reviewer 5, starting with sections whose subheads read no larger than their paragraphs. Module 5 on Python and geometric reasoning model training is built (`docs/community-plan.md`).
+- [ ] Keep running the copy review, pass by pass, until all five reviewers score 9 or higher. Each pass is in `docs/copy-review-log.md`. Paused after pass 17 for Sean's direction (`docs/copy-review.md`: scores stopped improving): every reviewer holds the focus pages and the community at 9.5, and the whole site waits on Sean's `/prices/`, `/about/` and Secure Payment link. After design pass 5 Sean approved subtle, stepwise restyling of the shared call-to-action button, the white band, the featured cards and the privacy button site-wide, and hero photographs from existing images on the loop's pages; the homepage's hero stays as it is (after design pass 7), and which photograph heads each loop page or shows on a featured card is the designer's judgment, by how well it works with its page (after design pass 9). After pass 17 Sean added the designer as reviewer 5, starting with sections whose subheads read no larger than their paragraphs. Module 5 on Python and geometric reasoning model training is built (`docs/community-plan.md`).
 
 ## Pricing floors (Sean, pass 8)
 
@@ -13,8 +13,6 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 ## Facts only Sean has
 
-- [ ] Whether the seven hero photographs design passes 6 and 7 changed stay (/local/, Klamath Falls, Redding, Automation, Website development, On-site SEO, Off-site SEO and ads), or any go back to the stock photograph. The designer's main reason the site sits below 9 is photography (design pass 9): the stock images with words baked in ("RESPONSIVE WEB DESIGN", "Search", "CONVERSION RATE OPTIMIZATION") that head the Design and Marketing hubs and CRO and repeat in the featured cards. Whether those may change too, from images already in the repo, is Sean's call; the homepage's hero stays either way.
-- [ ] Whether lesson titles move to sentence case, as their subheads did in copy round 2. It changes each lesson's head title, its card on the hub and its structured data.
 - [ ] Two from the community accuracy review: whether the P.S. note's "helps us write clean, error-free code" becomes "clean, careful code" (no editor makes code error-free), and which editor the team writes in, since the Introduction says Vim and the P.S. note says Sublime Text.
 
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.
@@ -92,6 +90,7 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 
 ## Navigation and design
 
+- [ ] **Photographs (Sean left them to the designer's judgment after design pass 9):** judge every loop page's hero and every featured card's image by how well it works with what its page says, from images already in the repo: the seven heroes passes 6 and 7 changed, the stock images with words baked in that head the Design and Marketing hubs and CRO and repeat in the featured cards, a page whose hero is also one of its cards, and /contact/'s. The homepage's hero stays; Sean's pages keep theirs.
 - [ ] Simplify the menu and keep the core items at the top level.
 - [ ] Design, held for Sean (design passes 1 to 5, `docs/design.md`): the same stock photograph heads the homepage, contact, the community and others, so a reader meets one hero many times (the service areas take their own since design pass 6, and Automation, Website development, On-site SEO and Off-site SEO since design pass 7); the "Privacy choices" button (its focus ring drawn inside it since design pass 8) sits in the viewport's corner on screens 85rem wide and wider and closes the page below that, as on a phone (design passes 6 and 7); and the shared page stage leaves 4rem of white between the menu and the photograph on a desktop (6.25rem until design pass 6, 5rem until design pass 7), scaling with the screen down to a phone's 2rem since design pass 8. Beyond those, his pages keep their own settings (a 1.06rem body at 58.5rem, about 100 characters a line), the shared page title without the display step the loop's pages carry since pass 2, and the call-to-action button, its label at 1rem since design pass 9 (0.9rem in design pass 8), in the pills' flat blue since design pass 8 (#0073e6, #0066cc on hover; its gradient moved halfway in design pass 6, and its glow and lift went in design pass 7). With his OK, the reading-page measure and the title's display step reach his pages. The featured-services cards under every page are his too (keyboard focus rings the whole card since design pass 9): five stand three over two on a desktop, the two centered, under light grey titles in the house weight at 2rem since design pass 6, and two by two on a tablet, the fifth centered, since design pass 7, on a shadow half as deep with no lift on hover since design pass 8, their hairline darkening on hover since design pass 9; they change by approved steps.
 - [ ] Check spacing and sizes across the site, and add a contrast check to `npm run build` covering the text and background pairs in `assets/site.css`, including hover and focus states.
@@ -114,6 +113,8 @@ Sean's pages (`/prices/`, `/tools/`, `/resources/` and Training) are as he inten
 - [ ] Delete the leftover `claude/friendly-rubin-wdvzmw` branch on GitHub. Agents here have no permission to delete branches.
 
 ## Community pages as training
+
+- [ ] **Lesson titles in sentence case (the loop's call after design pass 9, AGENTS.md):** each lesson's h1, its card, lesson lists, previous and next links, the course map and its structured data's headline; the head `<title>` keeps Title Case, as every page's does, and no URL changes.
 
 The senior CTO's order for the community pages, a few small tweaks each pass (pass 6 review, `scratchpad` report summarized here):
 
