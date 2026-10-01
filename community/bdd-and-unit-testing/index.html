@@ -113,13 +113,13 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Behavior-Driven Development (BDD) and unit testing check software from two ends. A scenario asks whether the software does what a user needs; a unit test asks whether one piece of code gives the right answer. Each has its own job, and together they make for high-quality software. Here is what each does, and how they divide the work.</p>
-<h2 id="behavior-driven-development-bdd"><a class="heading-anchor" href="#behavior-driven-development-bdd">Behavior-Driven Development (BDD)</a></h2>
+<p>Behavior-Driven Development (BDD) and unit testing check software from two ends. A scenario asks whether the software does what a user needs; a unit test asks whether one piece of code gives the right answer. Each has its own job, and together they cover the software from what a user notices down to a single function. Here is what each does, and how they divide the work.</p>
+<h2 id="behavior-driven-development-bdd"><a class="heading-anchor" href="#behavior-driven-development-bdd">Behavior-driven development (BDD)</a></h2>
 <p>BDD defines and verifies the software’s behavior from the user’s perspective, so the software meets what users expect and what the business requires. Its scenarios, usually in Given-When-Then form, describe how the software should behave in each situation, naming behavior a user would notice in the owner&rsquo;s own words.</p>
 <p>Most of them run below the interface, as Test Coverage explains below.</p>
-<h2 id="unit-testing"><a class="heading-anchor" href="#unit-testing">Unit Testing</a></h2>
+<h2 id="unit-testing"><a class="heading-anchor" href="#unit-testing">Unit testing</a></h2>
 <p>A unit test checks one unit of code, such as a function, a method or a class: given these inputs, is this the right output? Developers write them to catch bugs early, keep the code maintainable and make sure each unit does what it is meant to.</p>
-<h2 id="how-bdd-and-unit-testing-work-together"><a class="heading-anchor" href="#how-bdd-and-unit-testing-work-together">How BDD and Unit Testing Work Together</a></h2>
+<h2 id="how-bdd-and-unit-testing-work-together"><a class="heading-anchor" href="#how-bdd-and-unit-testing-work-together">How BDD and unit testing work together</a></h2>
 <ol>
 <li>
 <strong>Alignment with User Expectations:</strong> Scenarios describe user interactions and their expected outcomes, so everyone understands the behavior from the user&rsquo;s side, and the software is held to what users expect and the business requires.</li>
@@ -148,14 +148,14 @@
 </svg>
 <figcaption>The suite the course builds, by layer. Unit tests pin every case of the pure functions at the base, scenarios run at each owner that holds part of a behavior, and a few end-to-end journeys cross the top. Each rule is tested once, at the lowest layer that shows it.</figcaption>
 </figure>
-<h2 id="challenges-and-considerations"><a class="heading-anchor" href="#challenges-and-considerations">Challenges and Considerations</a></h2>
+<h2 id="challenges-and-considerations"><a class="heading-anchor" href="#challenges-and-considerations">Challenges and considerations</a></h2>
 <ul>
 <li>
 <strong>Overlap:</strong> Some scenarios cover ground a unit test covers too. Test each rule once, at the lowest layer that shows it: a scenario covers the behavior a user can name, and a unit test covers the edge cases of the pure function beneath it.</li>
 <li>
 <strong>Integration Testing:</strong> Scenarios and unit tests each work at their own level; integration tests check that the components work together.</li>
 <li>
-<strong>Test Maintenance:</strong> Both BDD scenarios and unit tests require maintenance as the software evolves. A test changes in the same commit as the behavior it checks, so the suite never describes software that no longer exists.</li>
+<strong>Test Maintenance:</strong> Scenarios and unit tests both need upkeep as the software evolves. A test changes in the same commit as the behavior it checks, so the suite never describes software that no longer exists.</li>
 </ul>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> puts each test where its rule lives. An empty order and an unknown product are rules of <code>validateOrder</code>, a pure function, so they are unit tests that compare its result as plain data, with no database, no server and no screen, and the written scope never names them.</p>
 <p>A declined card is behavior an owner can name, so it is a scenario, run under its own name at each of the four owners that hold part of it, and one journey runs end to end because each owner&rsquo;s test has already proved its part.</p>

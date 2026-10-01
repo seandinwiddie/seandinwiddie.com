@@ -232,19 +232,19 @@ export const orderNotice = ({ status, error }: OrderRequest): string =&gt; NOTIC
 </ul>
 <p>A reason the map doesn&rsquo;t hold gets the notice that is always true.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="notice-title notice-desc" viewBox="0 0 360 316">
+<svg role="img" aria-labelledby="notice-title notice-desc" viewBox="0 0 360 319">
 <title id="notice-title">What orderNotice says</title>
 <desc id="notice-desc">The request's status picks one of four entries: uninitialized and pending say nothing, fulfilled says Order placed, and rejected looks up the API's reason. A highlighted line runs from rejected to card-declined, which asks for another card; payments-unavailable asks the customer to try again, and any other reason says the order wasn't confirmed.</desc>
-<g class="edge"><line x1="140" y1="42" x2="244" y2="42"/><line x1="140" y1="80" x2="244" y2="80"/><line x1="140" y1="118" x2="244" y2="118"/><line x1="26" y1="244" x2="54" y2="244"/><line x1="238" y1="244" x2="250" y2="244"/><line x1="26" y1="288" x2="54" y2="288"/><line x1="238" y1="288" x2="250" y2="288"/><line x1="26" y1="200" x2="26" y2="288"/></g>
-<g class="path"><line x1="26" y1="200" x2="54" y2="200"/><line x1="238" y1="200" x2="250" y2="200"/><line x1="26" y1="168" x2="26" y2="200"/></g>
-<rect class="node" x="12" y="30" width="128" height="24" rx="4"/>
-<rect class="node" x="12" y="68" width="128" height="24" rx="4"/>
-<rect class="node" x="12" y="106" width="128" height="24" rx="4"/>
-<rect class="node on" x="12" y="144" width="128" height="24" rx="4"/>
-<rect class="node on" x="54" y="188" width="184" height="24" rx="4"/>
-<rect class="node" x="54" y="232" width="184" height="24" rx="4"/>
-<rect class="node" x="54" y="276" width="184" height="24" rx="4"/>
-<g><text class="note" x="76" y="14">status</text><text class="note" x="296" y="14">the notice</text><text x="76" y="42">uninitialized</text><text class="note" x="296" y="42">nothing</text><text x="76" y="80">pending</text><text class="note" x="296" y="80">nothing</text><text x="76" y="118">fulfilled</text><text class="note" x="296" y="118">Order placed.</text><text x="76" y="156">rejected</text><text class="note" x="232" y="156">by the API's reason</text><text x="146" y="200">card-declined</text><text class="note" x="302" y="200">another card</text><text x="146" y="244">payments-unavailable</text><text class="note" x="302" y="244">try again</text><text x="146" y="288">any other</text><text class="note" x="302" y="288">not confirmed</text></g>
+<g class="edge"><line x1="142" y1="48" x2="246" y2="48"/><line x1="142" y1="86" x2="246" y2="86"/><line x1="142" y1="124" x2="246" y2="124"/><line x1="142" y1="162" x2="246" y2="162"/><line x1="28" y1="250" x2="56" y2="250"/><line x1="226" y1="250" x2="246" y2="250"/><line x1="28" y1="294" x2="56" y2="294"/><line x1="226" y1="294" x2="246" y2="294"/><line x1="28" y1="206" x2="28" y2="294"/></g>
+<g class="path"><line x1="28" y1="206" x2="56" y2="206"/><line x1="226" y1="206" x2="246" y2="206"/><line x1="28" y1="174" x2="28" y2="206"/></g>
+<rect class="node" x="14" y="36" width="128" height="24" rx="4"/>
+<rect class="node" x="14" y="74" width="128" height="24" rx="4"/>
+<rect class="node" x="14" y="112" width="128" height="24" rx="4"/>
+<rect class="node on" x="14" y="150" width="128" height="24" rx="4"/>
+<rect class="node on" x="56" y="194" width="170" height="24" rx="4"/>
+<rect class="node" x="56" y="238" width="170" height="24" rx="4"/>
+<rect class="node" x="56" y="282" width="170" height="24" rx="4"/>
+<g><text class="note" x="78" y="20">status</text><text class="note" x="289.8" y="20">the notice</text><text x="78" y="48">uninitialized</text><text class="note" x="279" y="48">nothing</text><text x="78" y="86">pending</text><text class="note" x="279" y="86">nothing</text><text x="78" y="124">fulfilled</text><text class="note" x="300.5" y="124">Order placed.</text><text x="78" y="162">rejected</text><text class="note" x="296.9" y="153">by the API's</text><text class="note" x="275.4" y="171">reason</text><text x="141" y="206">card-declined</text><text class="note" x="296.9" y="206">another card</text><text x="141" y="250">payments-unavailable</text><text class="note" x="286.2" y="250">try again</text><text x="141" y="294">any other</text><text class="note" x="300.5" y="294">not confirmed</text></g>
 </svg>
 <figcaption>The request&rsquo;s <code>status</code> picks one entry from the table, and a refusal&rsquo;s reason picks its words from the map. The violet line is the declined card; any reason the map doesn&rsquo;t hold gets the notice that is always true.</figcaption>
 </figure>

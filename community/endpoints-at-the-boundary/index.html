@@ -211,8 +211,8 @@ const decodingBaseQuery: BaseQueryFn&lt;string | FetchArgs, unknown, FetchBaseQu
 <svg role="img" aria-labelledby="decode-title decode-desc" viewBox="0 0 360 268">
 <title id="decode-title">Decoding at the boundary</title>
 <desc id="decode-desc">A response comes back from baseQuery as unknown data and goes to the endpoint's decoder. The decoder returns Right or Left. A highlighted line runs through Right to data that is cached for the view. Left becomes a CUSTOM_ERROR with the raw payload beside it, an error the view can show.</desc>
-<g class="edge"><line x1="200" y1="104" x2="262" y2="149"/><line x1="260" y1="143.3" x2="262" y2="149"/><line x1="256" y1="148.9" x2="262" y2="149"/><line x1="270" y1="174" x2="270" y2="213"/><line x1="273.4" y1="208.1" x2="270" y2="213"/><line x1="266.6" y1="208.1" x2="270" y2="213"/></g>
-<g class="path"><line x1="180" y1="36" x2="180" y2="79"/><line x1="183.4" y1="74.1" x2="180" y2="79"/><line x1="176.6" y1="74.1" x2="180" y2="79"/><line x1="160" y1="104" x2="98" y2="149"/><line x1="104" y1="148.9" x2="98" y2="149"/><line x1="100" y1="143.3" x2="98" y2="149"/><line x1="90" y1="174" x2="90" y2="213"/><line x1="93.4" y1="208.1" x2="90" y2="213"/><line x1="86.6" y1="208.1" x2="90" y2="213"/></g>
+<g class="edge"><line x1="200" y1="104" x2="262" y2="149"/><line x1="259.6" y1="143.5" x2="262" y2="149"/><line x1="256" y1="148.4" x2="262" y2="149"/><line x1="270" y1="174" x2="270" y2="213"/><line x1="273" y1="207.8" x2="270" y2="213"/><line x1="267" y1="207.8" x2="270" y2="213"/></g>
+<g class="path"><line x1="180" y1="36" x2="180" y2="79"/><line x1="183" y1="73.8" x2="180" y2="79"/><line x1="177" y1="73.8" x2="180" y2="79"/><line x1="160" y1="104" x2="98" y2="149"/><line x1="104" y1="148.4" x2="98" y2="149"/><line x1="100.4" y1="143.5" x2="98" y2="149"/><line x1="90" y1="174" x2="90" y2="213"/><line x1="93" y1="207.8" x2="90" y2="213"/><line x1="87" y1="207.8" x2="90" y2="213"/></g>
 <rect class="node" x="134" y="12" width="92" height="24" rx="4"/>
 <rect class="node on" x="92" y="80" width="176" height="24" rx="4"/>
 <rect class="node" x="61" y="150" width="58" height="24" rx="4"/>
@@ -250,20 +250,20 @@ export const ordersApi = generatedOrdersApi.enhanceEndpoints({
 export const { useListOrdersQuery, usePlaceOrderMutation } = ordersApi</code></pre>
 <p>When the API accepts an order, the list is stale, and every view showing it refetches. When the API refuses, the callback returns no tags: RTK Query invalidates on a handled error too, and a refused order changes nothing. A list with no view subscribed is dropped instead, and fetched fresh when a view next asks for it.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="tags-title tags-desc" viewBox="0 0 360 210">
+<svg role="img" aria-labelledby="tags-title tags-desc" viewBox="0 0 360 204">
 <title id="tags-title">What a placed order refetches</title>
-<desc id="tags-desc">Two rows. The highlighted row: the order is accepted, the tag Order LIST is invalidated, and listOrders, which provides that tag, refetches. The plain row: the order is refused, the callback returns no tags, and the history stays as it was.</desc>
-<g class="edge"><line x1="109" y1="150" x2="129" y2="150"/><line x1="124.1" y1="146.6" x2="129" y2="150"/><line x1="124.1" y1="153.4" x2="129" y2="150"/><line x1="231" y1="150" x2="251" y2="150"/><line x1="246.1" y1="146.6" x2="251" y2="150"/><line x1="246.1" y1="153.4" x2="251" y2="150"/></g>
-<g class="path"><line x1="109" y1="62" x2="129" y2="62"/><line x1="124.1" y1="58.6" x2="129" y2="62"/><line x1="124.1" y1="65.4" x2="129" y2="62"/><line x1="231" y1="62" x2="251" y2="62"/><line x1="246.1" y1="58.6" x2="251" y2="62"/><line x1="246.1" y1="65.4" x2="251" y2="62"/></g>
-<rect class="node" x="8" y="50" width="100" height="24" rx="4"/>
-<rect class="node on" x="130" y="50" width="100" height="24" rx="4"/>
-<rect class="node on" x="252" y="50" width="100" height="24" rx="4"/>
-<rect class="node" x="8" y="138" width="100" height="24" rx="4"/>
-<rect class="node" x="130" y="138" width="100" height="24" rx="4"/>
-<rect class="node" x="252" y="138" width="100" height="24" rx="4"/>
-<g><text class="note" x="180" y="16">after placeOrder answers</text><text x="58" y="62">accepted</text><text class="note" x="58" y="92">the order</text><text x="180" y="62">Order: LIST</text><text class="note" x="180" y="92">invalidated</text><text x="302" y="62">refetch</text><text class="note" x="302" y="92">listOrders</text><text x="58" y="150">refused</text><text class="note" x="58" y="180">the order</text><text x="180" y="150">no tags</text><text class="note" x="180" y="180">returned</text><text x="302" y="150">unchanged</text><text class="note" x="302" y="180">the history</text></g>
+<desc id="tags-desc">Two rows. The highlighted row: the order is accepted, the order list's tag (type Order, id LIST) is invalidated, and listOrders, which provides that tag, refetches. The plain row: the order is refused, the callback returns no tags, and the history stays as it was.</desc>
+<g class="edge"><line x1="109" y1="154" x2="129" y2="154"/><line x1="123.8" y1="151" x2="129" y2="154"/><line x1="123.8" y1="157" x2="129" y2="154"/><line x1="231" y1="154" x2="251" y2="154"/><line x1="245.8" y1="151" x2="251" y2="154"/><line x1="245.8" y1="157" x2="251" y2="154"/></g>
+<g class="path"><line x1="109" y1="66" x2="129" y2="66"/><line x1="123.8" y1="63" x2="129" y2="66"/><line x1="123.8" y1="69" x2="129" y2="66"/><line x1="231" y1="66" x2="251" y2="66"/><line x1="245.8" y1="63" x2="251" y2="66"/><line x1="245.8" y1="69" x2="251" y2="66"/></g>
+<rect class="node" x="8" y="54" width="100" height="24" rx="4"/>
+<rect class="node on" x="130" y="54" width="100" height="24" rx="4"/>
+<rect class="node on" x="252" y="54" width="100" height="24" rx="4"/>
+<rect class="node" x="8" y="142" width="100" height="24" rx="4"/>
+<rect class="node" x="130" y="142" width="100" height="24" rx="4"/>
+<rect class="node" x="252" y="142" width="100" height="24" rx="4"/>
+<g><text class="note" x="180" y="20">after placeOrder answers</text><text x="58" y="66">accepted</text><text class="note" x="58" y="96">the order</text><text x="180" y="66">order list</text><text class="note" x="180" y="96">tag invalidated</text><text x="302" y="66">refetch</text><text class="note" x="302" y="96">listOrders</text><text x="58" y="154">refused</text><text class="note" x="58" y="184">the order</text><text x="180" y="154">no tags</text><text class="note" x="180" y="184">returned</text><text x="302" y="154">unchanged</text><text class="note" x="302" y="184">the history</text></g>
 </svg>
-<figcaption>An accepted order invalidates <code>Order: LIST</code>, and <code>listOrders</code>, which provides it, refetches for every view that shows it (the violet row). A refused order gets no tags from the callback, so the history stays as it was.</figcaption>
+<figcaption>An accepted order invalidates the order list&rsquo;s tag, <code>{ type: 'Order', id: 'LIST' }</code>, and <code>listOrders</code>, which provides it, refetches for every view that shows it (the violet row). A refused order gets no tags from the callback, so the history stays as it was.</figcaption>
 </figure>
 <p>The tags are written here, where they are reviewed, because tags generated from the document are only as fine as the document&rsquo;s own grouping. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#understand-invalidation">Redux Toolkit and RTK Query Best Practices</a> walks through invalidation.</p>
 <h2 id="5-the-scenario-at-the-endpoint"><a class="heading-anchor" href="#5-the-scenario-at-the-endpoint">5. The scenario at the endpoint</a></h2>

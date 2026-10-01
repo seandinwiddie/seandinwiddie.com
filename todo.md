@@ -13,6 +13,8 @@ Open work on the site. Finished work leaves this file. Every item follows `AGENT
 
 ## Facts only Sean has
 
+- [ ] Whether the seven hero photographs design passes 6 and 7 changed stay (/local/, Klamath Falls, Redding, Automation, Website development, On-site SEO, Off-site SEO and ads), or any go back to the stock photograph.
+- [ ] Whether lesson titles move to sentence case, as their subheads did in copy round 2. It changes each lesson's head title, its card on the hub and its structured data.
 - [ ] Two from the community accuracy review: whether the P.S. note's "helps us write clean, error-free code" becomes "clean, careful code" (no editor makes code error-free), and which editor the team writes in, since the Introduction says Vim and the P.S. note says Sublime Text.
 
 The reading-list audit answers how the copy reads; these facts come from Sean. Tweaks that need them wait for them.

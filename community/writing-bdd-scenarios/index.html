@@ -114,9 +114,9 @@
 </div> </header><!-- .entry-header -->
 
 <p>Scenarios are where Behavior-Driven Development (BDD) turns a user story into checks. Each one pins down, in Given-When-Then form, how the software should behave in one situation, seen from where the user stands. Nine habits make them good.</p>
-<h2 id="1-understand-the-feature-or-user-story"><a class="heading-anchor" href="#1-understand-the-feature-or-user-story">1. Understand the Feature or User Story</a></h2>
+<h2 id="1-understand-the-feature-or-user-story"><a class="heading-anchor" href="#1-understand-the-feature-or-user-story">1. Understand the feature or user story</a></h2>
 <p>Start from the user story and its acceptance criteria, as the written scope names them. Each criterion becomes one or more scenarios, so know which behavior a scenario is for before writing its first line.</p>
-<h2 id="2-use-the-given-when-then-format"><a class="heading-anchor" href="#2-use-the-given-when-then-format">2. Use the Given-When-Then Format</a></h2>
+<h2 id="2-use-the-given-when-then-format"><a class="heading-anchor" href="#2-use-the-given-when-then-format">2. Use the Given-When-Then format</a></h2>
 <p>Every scenario has the same three parts, which keeps it clear and short:</p>
 <ul>
 <li>
@@ -126,17 +126,17 @@
 <li>
 <strong>Then:</strong> the outcome the When should produce.</li>
 </ul>
-<h2 id="3-be-specific-and-concrete"><a class="heading-anchor" href="#3-be-specific-and-concrete">3. Be Specific and Concrete</a></h2>
+<h2 id="3-be-specific-and-concrete"><a class="heading-anchor" href="#3-be-specific-and-concrete">3. Be specific and concrete</a></h2>
 <p>Name real values: a product, a price, a balance. &ldquo;The cart total is $25&rdquo; leaves nothing to argue about, and &ldquo;the cart looks right&rdquo; leaves everything. The more precise a scenario, the easier it is to understand and to build.</p>
-<h2 id="4-use-plain-language"><a class="heading-anchor" href="#4-use-plain-language">4. Use Plain Language</a></h2>
+<h2 id="4-use-plain-language"><a class="heading-anchor" href="#4-use-plain-language">4. Use plain language</a></h2>
 <p>Write in the owner’s own words for the business, which technical and non-technical team members read the same way. The jargon stays in the code.</p>
-<h2 id="5-include-context-in-the-given-section"><a class="heading-anchor" href="#5-include-context-in-the-given-section">5. Include Context in the “Given” Section</a></h2>
+<h2 id="5-include-context-in-the-given-section"><a class="heading-anchor" href="#5-include-context-in-the-given-section">5. Include context in the “Given” section</a></h2>
 <p>The Given sets the stage: the state of the system, and anything else the scenario needs to make sense. For example:</p>
 <ul>
 <li>Given the user is signed in</li>
 <li>Given the user has a balance of $100 in their account</li>
 </ul>
-<h2 id="6-describe-actions-in-the-when-section"><a class="heading-anchor" href="#6-describe-actions-in-the-when-section">6. Describe Actions in the “When” Section</a></h2>
+<h2 id="6-describe-actions-in-the-when-section"><a class="heading-anchor" href="#6-describe-actions-in-the-when-section">6. Describe actions in the “When” section</a></h2>
 <p>The When is the action or event under test, usually something a user does. For example:</p>
 <ul>
 <li>When the user deposits $50</li>
@@ -158,17 +158,17 @@
 </svg>
 <figcaption>A cart scenario&rsquo;s steps, landing in a cart slice along the violet arrows. The Given sets the starting state, the When is one action the reducer handles, and the Then checks what a selector (or an endpoint) returns, so no screen is needed.</figcaption>
 </figure>
-<h2 id="7-define-expected-outcomes-in-the-then-section"><a class="heading-anchor" href="#7-define-expected-outcomes-in-the-then-section">7. Define Expected Outcomes in the “Then” Section</a></h2>
+<h2 id="7-define-expected-outcomes-in-the-then-section"><a class="heading-anchor" href="#7-define-expected-outcomes-in-the-then-section">7. Define expected outcomes in the “Then” section</a></h2>
 <p>The Then states what the When should produce: the behavior under test. For example:</p>
 <ul>
 <li>Then the deposit is recorded</li>
 <li>Then the account balance is $150</li>
 </ul>
-<h2 id="8-keep-scenarios-small-and-focused"><a class="heading-anchor" href="#8-keep-scenarios-small-and-focused">8. Keep Scenarios Small and Focused</a></h2>
+<h2 id="8-keep-scenarios-small-and-focused"><a class="heading-anchor" href="#8-keep-scenarios-small-and-focused">8. Keep scenarios small and focused</a></h2>
 <p>One scenario, one behavior: a single user interaction, tested on its own. A small scenario is easy to understand, to build and to keep, and when it fails, you know which behavior broke.</p>
-<h2 id="9-write-each-criterion-as-a-rule"><a class="heading-anchor" href="#9-write-each-criterion-as-a-rule">9. Write Each Criterion as a Rule</a></h2>
+<h2 id="9-write-each-criterion-as-a-rule"><a class="heading-anchor" href="#9-write-each-criterion-as-a-rule">9. Write each criterion as a Rule</a></h2>
 <p>The criteria from step 1 go into the Feature as Rules, each holding the scenarios that test it, so a failing scenario names the criterion it breaks.</p>
-<h2 id="example-bdd-scenario"><a class="heading-anchor" href="#example-bdd-scenario">Example BDD Scenario</a></h2>
+<h2 id="example-bdd-scenario"><a class="heading-anchor" href="#example-bdd-scenario">Example BDD scenario</a></h2>
 <p>Here is one for an online shop&rsquo;s cart:</p>
 <pre class="code-block" tabindex="0"><code>Scenario: Adding a product to the cart
 

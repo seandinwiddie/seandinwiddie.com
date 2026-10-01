@@ -163,21 +163,21 @@ withTenant pool user tenantId work = do
     Right a -&gt; pure a</code></pre>
 <p>servant-auth doesn&rsquo;t refuse a request itself: it hands the server an <code>AuthResult</code>, and the last clause answers every route with 401 when the sign-in isn&rsquo;t valid, while <code>withTenant</code> answers 403 when Nile refuses the user.</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="request-title request-desc" viewBox="0 0 360 314">
+<svg role="img" aria-labelledby="request-title request-desc" viewBox="0 0 360 324">
 <title id="request-title">One POST through the API</title>
 <desc id="request-desc">A request to place an order runs down a highlighted line: Auth checks the sign-in, withTenant names the tenant and the user, selectPrices reads today's prices, validateOrder decides, insertOrder writes, and the API answers 201 Created. The steps from withTenant to insertOrder run in one transaction. Three exits branch to the right: a sign-in that isn't valid answers 401, a user who isn't a member of the tenant answers 403, and an invalid order answers 422.</desc>
-<g class="edge"><line x1="192" y1="34" x2="293" y2="34"/><line x1="288.1" y1="30.6" x2="293" y2="34"/><line x1="288.1" y1="37.4" x2="293" y2="34"/><line x1="192" y1="104" x2="293" y2="104"/><line x1="288.1" y1="100.6" x2="293" y2="104"/><line x1="288.1" y1="107.4" x2="293" y2="104"/><line x1="192" y1="200" x2="293" y2="200"/><line x1="288.1" y1="196.6" x2="293" y2="200"/><line x1="288.1" y1="203.4" x2="293" y2="200"/></g>
-<g class="path"><line x1="104" y1="46" x2="104" y2="91"/><line x1="107.4" y1="86.1" x2="104" y2="91"/><line x1="100.6" y1="86.1" x2="104" y2="91"/><line x1="104" y1="116" x2="104" y2="139"/><line x1="107.4" y1="134.1" x2="104" y2="139"/><line x1="100.6" y1="134.1" x2="104" y2="139"/><line x1="104" y1="164" x2="104" y2="187"/><line x1="107.4" y1="182.1" x2="104" y2="187"/><line x1="100.6" y1="182.1" x2="104" y2="187"/><line x1="104" y1="212" x2="104" y2="235"/><line x1="107.4" y1="230.1" x2="104" y2="235"/><line x1="100.6" y1="230.1" x2="104" y2="235"/><line x1="104" y1="260" x2="104" y2="287"/><line x1="107.4" y1="282.1" x2="104" y2="287"/><line x1="100.6" y1="282.1" x2="104" y2="287"/></g>
-<rect class="node" x="16" y="22" width="176" height="24" rx="4"/>
-<rect class="node" x="16" y="92" width="176" height="24" rx="4"/>
-<rect class="node" x="16" y="140" width="176" height="24" rx="4"/>
-<rect class="node" x="16" y="188" width="176" height="24" rx="4"/>
-<rect class="node" x="16" y="236" width="176" height="24" rx="4"/>
-<rect class="node on" x="16" y="288" width="176" height="24" rx="4"/>
-<rect class="node" x="295" y="22" width="52" height="24" rx="4"/>
-<rect class="node" x="295" y="92" width="52" height="24" rx="4"/>
-<rect class="node" x="295" y="188" width="52" height="24" rx="4"/>
-<g><text x="104" y="34">Auth: signed in?</text><text x="104" y="104">withTenant</text><text x="104" y="152">selectPrices</text><text x="104" y="200">validateOrder</text><text x="104" y="248">insertOrder</text><text x="104" y="300">201 Created</text><text class="note" x="246" y="21">not valid</text><text x="321" y="34">401</text><text class="note" x="246" y="91">not a member</text><text x="321" y="104">403</text><text class="note" x="246" y="187">invalid</text><text x="321" y="200">422</text></g>
+<g class="edge"><line x1="191" y1="33" x2="292" y2="33"/><line x1="286.8" y1="30" x2="292" y2="33"/><line x1="286.8" y1="36" x2="292" y2="33"/><line x1="191" y1="103" x2="292" y2="103"/><line x1="286.8" y1="100" x2="292" y2="103"/><line x1="286.8" y1="106" x2="292" y2="103"/><line x1="191" y1="199" x2="292" y2="199"/><line x1="286.8" y1="196" x2="292" y2="199"/><line x1="286.8" y1="202" x2="292" y2="199"/></g>
+<g class="path"><line x1="103" y1="45" x2="103" y2="90"/><line x1="106" y1="84.8" x2="103" y2="90"/><line x1="100" y1="84.8" x2="103" y2="90"/><line x1="103" y1="115" x2="103" y2="138"/><line x1="106" y1="132.8" x2="103" y2="138"/><line x1="100" y1="132.8" x2="103" y2="138"/><line x1="103" y1="163" x2="103" y2="186"/><line x1="106" y1="180.8" x2="103" y2="186"/><line x1="100" y1="180.8" x2="103" y2="186"/><line x1="103" y1="211" x2="103" y2="234"/><line x1="106" y1="228.8" x2="103" y2="234"/><line x1="100" y1="228.8" x2="103" y2="234"/><line x1="103" y1="259" x2="103" y2="286"/><line x1="106" y1="280.8" x2="103" y2="286"/><line x1="100" y1="280.8" x2="103" y2="286"/></g>
+<rect class="node" x="15" y="21" width="176" height="24" rx="4"/>
+<rect class="node" x="15" y="91" width="176" height="24" rx="4"/>
+<rect class="node" x="15" y="139" width="176" height="24" rx="4"/>
+<rect class="node" x="15" y="187" width="176" height="24" rx="4"/>
+<rect class="node" x="15" y="235" width="176" height="24" rx="4"/>
+<rect class="node on" x="15" y="287" width="176" height="24" rx="4"/>
+<rect class="node" x="294" y="21" width="52" height="24" rx="4"/>
+<rect class="node" x="294" y="91" width="52" height="24" rx="4"/>
+<rect class="node" x="294" y="187" width="52" height="24" rx="4"/>
+<g><text x="103" y="33">Auth: signed in?</text><text x="103" y="103">withTenant</text><text x="103" y="151">selectPrices</text><text x="103" y="199">validateOrder</text><text x="103" y="247">insertOrder</text><text x="103" y="299">201 Created</text><text class="note" x="245" y="20">not valid</text><text x="320" y="33">401</text><text class="note" x="245" y="90">not a member</text><text x="320" y="103">403</text><text class="note" x="245" y="186">invalid</text><text x="320" y="199">422</text></g>
 </svg>
 <figcaption>The violet line is an order that is placed: a valid sign-in, a member of the tenant, an order that passes the pure check and is written, all from <code>withTenant</code> to <code>insertOrder</code> in one transaction, then 201 Created. Each refusal leaves at its own step, with its own status.</figcaption>
 </figure>

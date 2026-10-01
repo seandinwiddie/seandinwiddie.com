@@ -2,6 +2,40 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Lesson posts: copy rounds 1–2 and post design rounds 1–2: October 1, 2026
+
+After design pass 5 Sean asked for the community pages to read easier and carry more diagrams, in the voice of experts having a blast with the craft, and for several rounds with the designer to bring the lesson template to an AAA polish. Each round is a copy round and a design round, with a review between.
+
+| Round | Lesson posts before | After |
+|---|---|---|
+| Post design round 1 | 6.5 | 8 |
+| Post design round 2 | 8 | 9.2 |
+
+- **Copy round 1:** every lesson in short paragraphs (the longest anywhere is now about 450 characters, from 2,066), with confident ledes, subheads, lists and long depth passages split; 47 diagrams, at least one per lesson, drawn to `docs/design.md`'s spec and traced against each page's code. Code and printed outputs are unchanged except a filename comment on 23 Python blocks (the harness still passes 38/38). A second CTO pass over the rewrite found no factual errors and fixed `bin/verify`, the imports caption and the BDD link's direction.
+- **Post design round 1:** the lesson's place and ticks in the banner, one quiet byline, the lede, prose at 1.75 leading, code with ligatures and a Copy button, depth passages with their cursive label in the margin on wide screens (color step: their paper warms to #f7f6f2), previous and next as a framed pair, the module list as a table of contents. Every text in the lesson column meets AAA.
+- **Post design round 2:** diagram lines hold their weight at every width; diagrams sit on the depth passages' warm paper (color step); every lesson h2 links to itself; module openers put their list after the lede; the closing work line is a quiet note under a hairline; the hub's cards lose their shadow and lift.
+- **Copy round 2 (131 edits on 35 pages):** 30 diagrams fixed from the designer's list (captions name the violet path, the tags diagram labels the order list with its real tag, the Module 3 loop re-laid, arrowheads normalized, margins evened); 69 lesson h2s and 6 on the offer page in sentence case, with every section link's id unchanged and the offer's tier names untouched; 26 voice edits where a line still read defensive or flat.
+
+### Waiting
+
+- 20 diagrams whose margins are still uneven or outside 8 to 16 units.
+- Title Case run-in labels inside lesson lists and the offer page's lists.
+- Post design round 3: the hub as the front door, an "On this page" list on long lessons, caption width, the hub's pagination.
+- For Sean: whether lesson titles move to sentence case too (it changes head titles, cards and structured data).
+
+## Design passes 6–7: October 1, 2026
+
+The first two subtle steps on the four shared pieces Sean opened after design pass 5, site-wide, his pages included only in those pieces.
+
+| Pass | Score before | After |
+|---|---|---|
+| 6 | 8.1 | 8.4 |
+| 7 | 8.4 | 8.5 |
+
+- **Pass 6:** the call-to-action gradient halfway to the flat blue, its glow halved (4.54:1); the band under the menu 6.25rem to 5rem; the featured cards three over two with titles at 2rem; "Privacy choices" a tab in the corner; /local/, Klamath Falls and Redding take warm photographs already in the repo.
+- **Pass 7:** the button's glow and lift go, every blue button hovers to #0066cc; the band to 4rem; the featured cards two by two on a tablet; "Privacy choices" a bar at the page's foot below 85rem; Automation, Website development, On-site SEO and Off-site SEO and ads take photographs from the repo.
+- **Sean, after pass 7:** the homepage's hero photograph stays as it is, and `/contact/`'s waits for his word. Whether the seven heroes passes 6 and 7 changed stay waits on him too.
+
 ## Community accuracy review: October 1, 2026
 
 Sean asked for the community pages to be checked for accuracy "double and triple". Three senior CTO reviewers each took a group (the overview, Module 1 and the off-path pages; Modules 2 and 3; Modules 4 and 5), checked every date, attribution, definition, link and code block, and re-checked each finding before reporting it. An independent verifier then re-derived every finding from scratch before any fix landed.

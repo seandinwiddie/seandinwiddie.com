@@ -130,14 +130,14 @@
 </ol>
 <p>Autocomplete shows the timing at work:</p>
 <figure class="diagram">
-<svg role="img" aria-labelledby="discover-how-frp-enhances-user-interaction-and-responsiveness-debounce-title discover-how-frp-enhances-user-interaction-and-responsiveness-debounce-desc" viewBox="0 0 360 176">
+<svg role="img" aria-labelledby="discover-how-frp-enhances-user-interaction-and-responsiveness-debounce-title discover-how-frp-enhances-user-interaction-and-responsiveness-debounce-desc" viewBox="0 0 360 150">
 <title id="discover-how-frp-enhances-user-interaction-and-responsiveness-debounce-title">Autocomplete, debounced at the edge</title>
 <desc id="discover-how-frp-enhances-user-interaction-and-responsiveness-debounce-desc">A timeline: four keystrokes, b, r, i and s, close together, each an action; then a pause; then one search. Below, listener middleware waits for the pause, then RTK Query fetches the search once.</desc>
-<g class="edge"><line x1="12" y1="70" x2="348" y2="70"/><line x1="342.8" y1="67" x2="348" y2="70"/><line x1="342.8" y1="73" x2="348" y2="70"/><line x1="40" y1="60" x2="40" y2="80"/><line x1="66" y1="60" x2="66" y2="80"/><line x1="92" y1="60" x2="92" y2="80"/><line x1="118" y1="60" x2="118" y2="80"/></g>
-<g class="path"><line x1="296" y1="50" x2="296" y2="90"/><line x1="212" y1="138" x2="240" y2="138"/><line x1="234.8" y1="135" x2="240" y2="138"/><line x1="234.8" y1="141" x2="240" y2="138"/></g>
-<rect class="node" x="12" y="116" width="200" height="44" rx="4"/>
-<rect class="node on" x="240" y="116" width="112" height="44" rx="4"/>
-<g><text x="40" y="44">b</text><text x="66" y="44">r</text><text x="92" y="44">i</text><text x="118" y="44">s</text><text class="note" x="207" y="56">a pause</text><text class="note" x="79" y="96">four actions</text><text class="note" x="296" y="100">one search</text><text x="112" y="131">listener middleware</text><text class="note" x="112" y="148">waits for a pause</text><text x="296" y="131">RTK Query</text><text class="note" x="296" y="148">fetches it</text></g>
+<g class="edge"><line x1="9.5" y1="46.5" x2="345.5" y2="46.5"/><line x1="340.3" y1="43.5" x2="345.5" y2="46.5"/><line x1="340.3" y1="49.5" x2="345.5" y2="46.5"/><line x1="37.5" y1="36.5" x2="37.5" y2="56.5"/><line x1="63.5" y1="36.5" x2="63.5" y2="56.5"/><line x1="89.5" y1="36.5" x2="89.5" y2="56.5"/><line x1="115.5" y1="36.5" x2="115.5" y2="56.5"/></g>
+<g class="path"><line x1="293.5" y1="26.5" x2="293.5" y2="66.5"/><line x1="209.5" y1="114.5" x2="237.5" y2="114.5"/><line x1="232.3" y1="111.5" x2="237.5" y2="114.5"/><line x1="232.3" y1="117.5" x2="237.5" y2="114.5"/></g>
+<rect class="node" x="9.5" y="92.5" width="200" height="44" rx="4"/>
+<rect class="node on" x="237.5" y="92.5" width="112" height="44" rx="4"/>
+<g><text x="37.5" y="20.5">b</text><text x="63.5" y="20.5">r</text><text x="89.5" y="20.5">i</text><text x="115.5" y="20.5">s</text><text class="note" x="204.5" y="32.5">a pause</text><text class="note" x="76.5" y="72.5">four actions</text><text class="note" x="293.5" y="76.5">one search</text><text x="109.5" y="107.5">listener middleware</text><text class="note" x="109.5" y="124.5">waits for a pause</text><text x="293.5" y="107.5">RTK Query</text><text class="note" x="293.5" y="124.5">fetches it</text></g>
 </svg>
 <figcaption>Typing &ldquo;bris&rdquo; into a search box. Each keystroke is an action; listener middleware waits for a pause in them, and only then does RTK Query send the search, once (in violet). No reducer ever sees a timer.</figcaption>
 </figure>
