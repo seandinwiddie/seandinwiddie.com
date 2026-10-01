@@ -16,15 +16,16 @@ Two kinds of page share one scale at two body sizes. The panels (the homepage, t
 
 | Role | Panels, desktop | Reading pages, desktop | Weight | Leading |
 |---|---|---|---|---|
-| h1, the page's title | clamp(2rem, 3vw, 2.65rem) | the same | 700 | 1.45 |
-| A hub's panel title (its h2) | 2.8125rem | not used | 700 | 1.1 |
+| h1, the page's title | clamp(2.25rem, 3.5vw, 3rem) | the same | 700 | 1.25 (1.3 on a phone) |
+| A hub's panel title (its h2) | 2.25rem, centered over its one-line lead | not used | 700 | 1.1 |
 | h2, a section | 2.25rem (1.68em of the homepage body) | clamp(1.55rem, 2.5vw, 2rem) | 700 | 1.1 to 1.35 |
 | h3, a part of a section | 1.6rem (1.2em) | clamp(1.25rem, 2vw, 1.55rem) | 700 | 1.3 |
 | Body | 1.333rem | 1.125rem | 400 | 1.6 to 1.8 |
 | Small: notes, attributions, captions, related links | 0.9em | 0.9em | 400 | 1.6 |
 
 - **A heading is never set at its paragraph's size or lighter.** An h3 is at least 1.2 times its body and bold; an h2 at least 1.5 times. A subhead at body size turns a section into a wall of monospace text.
-- **On a phone** the homepage and the reading pages set the body at 1rem and the hubs and service pages keep their 1.333rem, and every step keeps its rank: an h2 at least 1.5 times the body, an h3 at least 1.2 times.
+- **The title out-ranks every heading below it:** 48px over a 32 to 36px section on a desktop, 35px over 25 to 27px on a phone. Sean's pages keep the shared title (clamp(2rem, 3vw, 2.65rem) at 1.45) until he says otherwise.
+- **On a phone** (30rem and below) every page sets its body at 1rem, about 41 characters a line, and every step keeps its rank: an h2 at 1.68 times the body, an h3 at 1.2 times. The panels keep their 1.333rem down to 30rem, so a tablet reads about 66 characters in their 48rem column.
 - **Run-in lead-ins,** a bold phrase that opens a paragraph, stay inline at body size. A phrase on a line of its own is a heading and takes its step.
 - **Case.** Sentence case for every heading. No all-caps labels; the menu's capitals belong to the shared header.
 
@@ -40,18 +41,18 @@ Dank Mono's italic is a true cursive, a handwritten, script-like hand, and its l
 Body text runs at about 66 characters a line or fewer. Dank Mono gives every character the same width, about 0.55 of its size, so the column follows from the body size:
 
 - the panels: 48rem at 1.333rem, about 65 characters;
-- the reading pages: 41rem at 1.125rem, about 66;
+- the reading pages: 41rem at 1.125rem, about 66, and the services page's prices and inquiry text, on the same column as its six choices;
 - a note at 0.9em shares its page's column and runs a little over 70, which a short note carries.
 
 A lesson's code and a set of cards (the community's lessons, the service areas) run wider on a wide screen, at 58.5rem centered under the text, and the code scrolls sideways. A phone sets 35 to 45 characters and needs no rule.
 
-Centered text is for a title, a short lead or a call to action. A paragraph past a few lines is set left.
+Centered text is for a title, a short lead or a call to action: the page title, a hub's panel title and its one-line lead, the closing call to action on the homepage and Klamath Falls. A section heading sits on the edge of the text it heads, and a paragraph past a few lines is set left.
 
 ## Rhythm
 
 - A heading sits closer to what it introduces than to what came before it: at least twice the space above it as below.
 - The homepage's sections sit about 4rem apart, from each heading to the text above. On the longer pages an h2 takes 2.8rem above and 1rem below, and an h3 about 2.2rem above and under 1rem below.
-- Paragraphs sit 1.2 to 1.7rem apart, and list items keep the paragraph's leading.
+- Paragraphs sit 1.2 to 1.7rem apart. List items keep the paragraph's leading and part by 0.35rem, so a wrapped item stays one item.
 - Room is the luxury. When a section feels crowded, add space before adding a rule, a box or a color.
 
 ## How sections are set apart
@@ -62,6 +63,10 @@ In order of preference:
 2. **A hairline rule** (1px, `--line`) where the reader changes: the note to webmasters, the related links that close a service page.
 3. **A tinted panel** (#e9ecef on the page, white within the homepage's grey) for a page's body, or for promises read together.
 4. **A card** only for parallel choices that each lead somewhere (the services, the service areas), and **a rule down the left** only for a quotation.
+
+## Choices and buttons
+
+A set of choices that each lead to a page, a hub's two services or the services page's six, is a row of flat pills in the plain blue (#0073e6, #0066cc on hover), 1.125rem and regular (1rem on a phone), with no shadow and no lift, on the column of the text around it. A hub's pair keeps its natural widths on the text's edge and stacks to the column's width on a phone; the services page's six take one width, three across, two on a phone. The shared call to action (`.hero__cta`, `.button`) keeps its gradient and glow until its step under Direction is approved.
 
 Structure carries information: numbers only where the order matters (process steps are an ordered list), a rule only where the reader changes, a card only for a choice.
 
@@ -85,9 +90,9 @@ Each page has one thing the eye goes to first: the photograph and the title at t
 
 Each design pass takes at most one small step, and the steps lead here:
 
-- **The title's display step, in Dank Mono.** The page title takes a little more size and tighter leading, so it out-ranks everything below it. Its shared style sits on Sean's pages too, so it moves with his OK.
-- **Quieter color.** The link violet settles a few points deeper and less electric, and the call-to-action button's gradient and glow settle into its plain blue: one approved step per pass, reaching Sean's pages only with his OK.
-- **One rhythm for the service areas.** Klamath Falls and Redding are set alike.
+- **The title's display step, in Dank Mono.** The page title takes a little more size and tighter leading, so it out-ranks everything below it. The loop's pages carry it (design pass 2); its shared style reaches Sean's pages with his OK.
+- **Quieter color.** The link violet settles a few points deeper and less electric (its first step, #5c00ff to #5909e1, sits inside the loop's pages' main text since design pass 2), and the call-to-action button's gradient and glow settle into its plain blue: one approved step per pass, reaching Sean's pages only with his OK.
+- **One rhythm for the service areas.** Klamath Falls and Redding are set alike. Klamath Falls' headings, lead and cards sit on the text's edge, as Redding's do (design pass 2); its four colored card rules and its green call-to-action card are color decisions, held for approval.
 
 ## Checking a page
 
