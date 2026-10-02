@@ -2,6 +2,10 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## The Development hub's photograph from Unsplash: October 2, 2026
+
+Sean found the glass tower behind the church spires didn't work for the Development hub and asked for a photograph from Unsplash. Of about a hundred free photographs searched (developer workspaces, small teams, brick studios), most were open-plan offices or screens of legible code. The one chosen shows someone at work on a laptop against an old brick wall, a carafe on the wooden table: quiet, focused and neo-rustic, for "From idea to production, built to last". Photo by Jonathan Kemper, free under the Unsplash License; mirrored so the hero's line falls on the brick rather than the face, cropped at 24% so the head stays whole at a desktop's width, saved at 1600px and 270 KB. No legible words, and no featured card or other page uses it.
+
 ## Training restored to Sean's version: October 2, 2026
 
 Copy passes 1 to 4 had rewritten Training's opening into lines about handover training on an owner's site, so the page no longer read as the course it is. At Sean's word, Training and its pages (Landing pages, Page setup, FRP) are back to his own wording, the hidden line from his first version under the title included. Two lines follow his later directions instead: the hero button reads "Call or email", since the site offers no free consultation, and one line links the community, as he asked at pass 8. The loop never edits these pages; their content is as Sean intends.
