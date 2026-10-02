@@ -475,9 +475,6 @@ body.marketing-route { background: #fafafa; }
   text-align: center;
 }
 .live-actions .button:hover { background: #0066cc; }
-.design-route .service-cards,
-.development-route .service-cards,
-.marketing-route .service-cards { padding-top: 5.75rem; }
 
 /* Live page geometry for long-form service and location detail content */
 .detail-content { padding: 0; }
@@ -500,10 +497,11 @@ body.marketing-route { background: #fafafa; }
   border: 1px solid #ededed;
   border-radius: 0.3125rem;
 }
-/* A hub's or a service page's panel continues the title band above it, as contact's
-   and Klamath Falls' do: no hairline, notch or seam (its grey since design pass 9). */
+/* A hub's or a service page's panel continues the title band: no hairline, notch or
+   seam; it closes 4rem under its last line, as the homepage's (docs/design.md). */
 .live-panel,
 .service-detail-route:not(.brand-article-route) .detail-live-panel {
+  padding-bottom: 4rem;
   background: var(--soft);
   border-top: 0;
   border-top-left-radius: 0;
@@ -517,12 +515,10 @@ body.marketing-route { background: #fafafa; }
   font-size: 2.25rem;
   line-height: 1.1;
 }
-/* Every service page holds the 48rem measure (docs/design.md), and its related
-   links line up with its text. The brand-identity article is Sean's and keeps its
-   own settings. */
+/* Every service page holds the 48rem measure, its related links on its text's edge;
+   Sean's brand-identity article keeps its own (docs/design.md). */
 .service-detail-route:not(.brand-article-route) .detail-live-panel__body,
 .service-detail-route:not(.brand-article-route) .related-services { max-width: 48rem; margin-inline: auto; }
-.service-detail-route .service-cards { padding-top: 5.75rem; }
 .brand-article-route .detail-live-panel__body h2 {
   font-size: 2.025rem;
   text-align: left;
@@ -736,7 +732,10 @@ body.service-route { background: #fafafa; }
   text-align: center;
 }
 .service-menu__links .button:hover { background: #0066cc; }
+/* One gap over the featured cards on every page, the homepage's, from a panel's edge
+   or the text's last line (docs/design.md, design pass 10). */
 .service-cards { padding: 5rem 0 3.75rem; }
+main:has(+ .service-cards) > .page-content:last-child { padding-bottom: 0; }
 .service-cards .wrap { width: min(calc(100% - 2rem), 68.75rem); }
 .service-cards .card__body h2 {
   margin: 0 0 0.6rem;
@@ -1360,9 +1359,7 @@ main:focus { outline: none; }
     gap: 1rem;
     padding: 2rem 0;
   }
-  .service-menu {
-    padding: 3rem 1rem;
-  }
+  .service-menu { padding: 3rem 1rem 4rem; }
   .service-hero {
     padding: 3rem 1.5rem 5rem;
     background-position: center;
@@ -1386,7 +1383,7 @@ main:focus { outline: none; }
   }
   .live-panel {
     width: min(calc(100% - 1rem), var(--page-width));
-    padding: 2.5rem 1rem 1rem;
+    padding: 2.5rem 1rem 4rem;
   }
   /* The choices stack in one column (a hub's pair) or two (the six services). */
   .live-actions { flex-direction: column; }
@@ -1395,7 +1392,8 @@ main:focus { outline: none; }
 }
 
 /* On a tablet the five featured services stand two by two, the fifth centered, their
-   titles scaling to 1.5rem to fit (docs/design.md, design pass 7); a phone stacks them. */
+   titles scaling to 1.5rem to fit (docs/design.md, design pass 7); a phone stacks them,
+   their photographs at 16:10 (design pass 10). */
 @media (min-width: 30.0625rem) and (max-width: 52rem) {
   .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .cards > .card { grid-column: span 2; }
@@ -1443,6 +1441,7 @@ main:focus { outline: none; }
   .content-card,
   .notice,
   .site-form { padding: 1rem; }
+  .card__media { aspect-ratio: 16 / 10; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1492,9 +1491,8 @@ main:focus { outline: none; }
 }
 .service-menu__links + .service-menu__note { margin-top: 3rem; }
 
-/* The note to webmasters: a quieter voice than the owner's copy, and on the
-   homepage set apart below the owner's phone and email, not centred inside
-   that call to action. The visible "For webmasters:" is its only label. */
+/* The note to webmasters: a quieter voice than the owner's, set apart under the call
+   to action; "For webmasters:" is its only label. It ends on its last line. */
 .webmaster-note { color: var(--muted); font-size: 0.9em; }
 /* On the homepage's grey the rule over the note takes the hubs' tone (docs/design.md):
    --line sat at 1.04:1 there. */
@@ -1504,7 +1502,7 @@ main:focus { outline: none; }
   padding-top: 1.5rem;
   border-top: 1px solid rgb(80 84 91 / 30%);
 }
-.home-why .webmaster-note p { margin-bottom: 0; }
+.webmaster-note > p:last-child { margin-bottom: 0; }
 .live-panel .webmaster-note {
   margin-top: 2.5rem;
   padding-top: 1.5rem;

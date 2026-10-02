@@ -33,9 +33,9 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 - The "On this page" label in the margin on a wide screen, as the depth label hangs; a shorter first page on the hub.
 - Five more lessons of eight to eleven steps, grouped under stages a lesson at a time (todo.md).
 
-## Design passes 6–9: October 1, 2026
+## Design passes 6–10: October 1–2, 2026
 
-The first four subtle steps on the four shared pieces Sean opened after design pass 5, site-wide, his pages included only in those pieces.
+The first five subtle steps on the four shared pieces Sean opened after design pass 5, site-wide, his pages included only in those pieces.
 
 | Pass | Score before | After |
 |---|---|---|
@@ -43,11 +43,14 @@ The first four subtle steps on the four shared pieces Sean opened after design p
 | 7 | 8.4 | 8.5 |
 | 8 | 8.6 | 9.0 expected |
 | 9 | 8.6, scored fresh | 8.85 |
+| 10 | 8.8, scored fresh | 9.0 |
 
 - **Pass 6:** the call-to-action gradient halfway to the flat blue, its glow halved (4.54:1); the band under the menu 6.25rem to 5rem; the featured cards three over two with titles at 2rem; "Privacy choices" a tab in the corner; /local/, Klamath Falls and Redding take warm photographs already in the repo.
 - **Pass 7:** the button's glow and lift go, every blue button hovers to #0066cc; the band to 4rem; the featured cards two by two on a tablet; "Privacy choices" a bar at the page's foot below 85rem; Automation, Website development, On-site SEO and Off-site SEO and ads take photographs from the repo.
 - **Pass 8:** the pass's color step: the call to action drops its gradient for the pills' flat #0073e6 (white 4.57:1), so every blue button on the site is one blue at rest and one on hover; its label 0.83rem to 0.9rem, no longer smaller than the phone's body text; the band under the menu scales from 2rem to 4rem with the screen, where it jumped at 52rem; the featured cards' shadow halved and their hover lift gone; "Privacy choices" rings its keyboard focus inside its edges, where the viewport cut the ring off, and underlines on hover. No hero changed. Held to pass 9: the privacy bar on the bottom bar's light ground, so the page ends on one band. The designer's next steps: the call to action's label to 1rem, and the cards' hover darkening a hairline, as the community hub's cards do.
 - **Pass 9:** scored fresh, not from pass 8's estimate, the site stood at 8.6. The call to action's label to 1rem, matching a phone's body and the pills; the featured cards' hover darkens their hairline, as the community's cards do, and keyboard focus rings the whole card, where the card's edge had cut the link's ring to a strip; the hubs' one-line leads balance, so no word sits alone; /local/'s two cards lose the deepest shadow left on the loop. The pass's color step: the loop's panel grey #e9ecef to the title band's #e9edf1, which ends a faint seam across 11 pages. The privacy bar's light ground is set aside: no minute step reaches it, since between the dark and the light ground neither ink holds AA, so it would take one deliberate change. What holds the site below 9, in the designer's order: the photographs (the glowing-orb stock image, and images with words baked into them heading the Design and Marketing hubs and CRO, repeated in the featured cards), the hero line wrapping onto its own bar at 1366, the featured cards stacking about 2,800px on a phone, and the uneven gap above them.
+- **Pass 10:** one gap above the featured cards on every page, the homepage's 5rem on a desktop and 3rem on a tablet or phone, where it ran from 80 to 220px (87 of 93 pages now match; the rest owe it to their own content); on a phone the cards' photographs crop to 16:10, not square, so every subject shows whole and the stack is a quarter shorter; every grey panel on the loop's pages closes 4rem under its last line, as the homepage's does. No color step. Scored fresh at 8.8 before, 9.0 expected after: at the line, not clearly above it. What remains, in the designer's order: the photographs (since Sean left them to the designer's judgment, a photography pass is judging every one), the cards square on a tablet and desktop, the cards' type on a phone, and the hero line's wrap at 1366.
+- **Sean, after pass 9:** the photographs on the loop's pages and the featured cards are the designer's judgment, by how well each works with its page; lesson titles are the loop's call.
 - **Sean, after pass 7:** the homepage's hero photograph stays as it is, and `/contact/`'s waits for his word. Whether the seven heroes passes 6 and 7 changed stay waits on him too.
 
 ## Community accuracy review: October 1, 2026
