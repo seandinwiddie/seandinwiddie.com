@@ -97,7 +97,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 11; --lessons: 11">Lesson 11 of 11 in Module 2</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -113,7 +113,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>A Behavior-Driven Development (BDD) testing framework earns its place when it runs the scenarios reliably, stays easy to maintain and reports each failure in the scenario&rsquo;s own words.</p>
+<p>A behavior-driven development (BDD) testing framework earns its place when it runs the scenarios reliably, stays easy to maintain and reports each failure in the scenario&rsquo;s own words.</p>
 <p>In custom apps, the Sean Dinwiddie’s Webmastery team writes its scenarios in Gherkin and runs them in two ways, and keeps exploring both:</p>
 <ul>
 <li>as executable steps with cucumber-js, Cucumber’s official runner;</li>
@@ -141,14 +141,14 @@
 <li>
 <strong>Cross-browser testing:</strong> For the few end-to-end journeys, the framework should drive the browsers the site&rsquo;s customers use, on the phones and screens the written scope names; the scenarios below the interface need no browser at all.</li>
 <li>
-<strong>Reusable steps:</strong> A step definition matches its line wherever it appears, so one Given serves every scenario that starts from it, and a Background states the Givens a whole Feature shares, as <a href="/community/writing-bdd-scenarios-for-software-modules/">Writing BDD Scenarios for Software Modules</a> shows.</li>
+<strong>Reusable steps:</strong> A step definition matches its line wherever it appears, so one Given serves every scenario that starts from it, and a Background states the Givens a whole Feature shares, as <a href="/community/writing-bdd-scenarios-for-software-modules/">Writing BDD scenarios for software modules</a> shows.</li>
 <li>
 <strong>Community and support:</strong> The project should be actively maintained, with documentation that keeps up with its releases, so a question about a step has somewhere to go.</li>
 <li>
 <strong>Compatibility:</strong> The framework runs in the codebase&rsquo;s own language and toolchain: cucumber-js or Vitest for TypeScript, Hspec for Haskell.</li>
 </ol>
 <h2 id="one-scenario-run-both-ways"><a class="heading-anchor" href="#one-scenario-run-both-ways">One scenario, run both ways</a></h2>
-<p>Take the cart scenario that Module 4&rsquo;s <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> builds into a slice, and run it both ways. The two routes meet at the same code:</p>
+<p>Take the cart scenario that Module 4&rsquo;s <a href="/community/from-scenario-to-slice/">From scenario to slice</a> builds into a slice, and run it both ways. The two routes meet at the same code:</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="bdd-testing-framework-two-runners-title bdd-testing-framework-two-runners-desc" viewBox="0 0 360 214">
 <title id="bdd-testing-framework-two-runners-title">One scenario, two runners</title>
@@ -213,7 +213,7 @@ Then('the cart total is ${int}', function (this: CartWorld, dollars: number) {
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Most of the list above matters at only one layer. Scenarios that run below the interface, against a reducer, a selector or an endpoint, need no browser and no environment to configure, so cross-browser testing, environment configuration and parallel execution belong to the few end-to-end journeys.</p>
 <p>The runner follows the reader: cucumber-js when people outside the code read and run the feature files, and scenario-named tests in Vitest or Hspec when the team alone reads them and wants one runner, one report and one debugger.</p></aside>
 <p>A framework that meets these requirements runs every scenario on every change and reports each failure in the words the owner read. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what to test at each layer, from reducers and selectors to endpoints and components.</p>
-<p>Module 3 comes next: Functional Reactive Programming (FRP), taught through the Redux Toolkit state layer these scenarios test.</p>
+<p>Module 3 comes next: functional reactive programming (FRP), taught through the Redux Toolkit state layer these scenarios test.</p>
 
 <!-- .entry-content -->
 <footer>

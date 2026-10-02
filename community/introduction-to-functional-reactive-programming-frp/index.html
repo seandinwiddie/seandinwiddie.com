@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 2; --lessons: 6">Lesson 2 of 6 in Module 3</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Functional Reactive Programming (FRP) describes a program with two ideas, events that happen at a moment and behaviors that change over time, and derives everything the program shows from them with pure functions.</p>
+<p>Functional reactive programming (FRP) describes a program with two ideas, events that happen at a moment and behaviors that change over time, and derives everything the program shows from them with pure functions.</p>
 <h2 id="key-concepts"><a class="heading-anchor" href="#key-concepts">Key concepts</a></h2>
 <ol>
 <li>
@@ -122,7 +122,7 @@
 <li>
 <strong>State as a fold:</strong> The state at any moment is every event so far, folded through a pure function. In Redux Toolkit that is <code>actions.reduce(reducer, initialState)</code>: the reducer combines the last state with the next action and reads nothing else.</li>
 <li>
-<strong>Declarative programming:</strong> A declarative program says what a value is, and leaves keeping it current to the events. A click handler that runs <code>total += price</code> says how to update the total, so every path that changes the cart needs a line of its own, and the one a removal forgets leaves the total wrong. A selector says what the total is, the sum of each line&rsquo;s price times its quantity, so every change to the cart is already counted. <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> writes it as <code>selectTotalCents</code>.</li>
+<strong>Declarative programming:</strong> A declarative program says what a value is, and leaves keeping it current to the events. A click handler that runs <code>total += price</code> says how to update the total, so every path that changes the cart needs a line of its own, and the one a removal forgets leaves the total wrong. A selector says what the total is, the sum of each line&rsquo;s price times its quantity, so every change to the cart is already counted. <a href="/community/from-scenario-to-slice/">From scenario to slice</a> writes it as <code>selectTotalCents</code>.</li>
 <li>
 <strong>Immutable data:</strong> FRP usually treats data as immutable: a change makes a new version and leaves the old one untouched, which supports referential transparency and keeps side effects down.</li>
 <li>

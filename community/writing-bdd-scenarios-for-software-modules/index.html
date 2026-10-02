@@ -97,7 +97,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 7; --lessons: 11">Lesson 7 of 11 in Module 2</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -113,7 +113,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>A module is where Behavior-Driven Development (BDD) scenarios get specific. Scoped to one module, they specify and test what that module does, so the software stays true to user expectations and business requirements, and a failure points to one place. Eleven steps take you from the module to its scenarios.</p>
+<p>A module is where behavior-driven development (BDD) scenarios get specific. Scoped to one module, they specify and test what that module does, so the software stays true to user expectations and business requirements, and a failure points to one place. Eleven steps take you from the module to its scenarios.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
 <ul>
@@ -187,7 +187,7 @@
       | 7      | refused   |</code></pre>
 <p>A Background holds only Givens, and only those every scenario needs. A fact one scenario needs stays in that scenario, where its reader sees it; a Background that grows past a few lines turns each scenario into a puzzle whose start is somewhere else.</p>
 <p>In Vitest, the Background is a <code>beforeEach</code> inside the <code>describe</code> block named for the Feature; in Hspec, a <code>before_</code> around its <code>describe</code>.</p>
-<p>A Feature often outgrows one module: the Checkout in <a href="/community/one-feature-scope-to-launch/">One Feature, Scope to Launch</a> is proved at the API, the endpoint, the slice and the view, and each of their tests carries the same Feature and scenario names, so a report reads the same at every owner. When a Feature&rsquo;s scenarios stop sharing a Background or a story, it is usually two Features, and the place they part is where the scope can split them.</p></aside>
+<p>A Feature often outgrows one module: the Checkout in <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> is proved at the API, the endpoint, the slice and the view, and each of their tests carries the same Feature and scenario names, so a report reads the same at every owner. When a Feature&rsquo;s scenarios stop sharing a Background or a story, it is usually two Features, and the place they part is where the scope can split them.</p></aside>
 <p>Counted out, the booking Feature above makes three runs, and the Background opens each one:</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="writing-bdd-scenarios-for-software-modules-background-title writing-bdd-scenarios-for-software-modules-background-desc" viewBox="0 0 360 217">

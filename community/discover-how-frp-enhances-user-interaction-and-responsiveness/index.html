@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 5; --lessons: 6">Lesson 5 of 6 in Module 3</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Functional Reactive Programming (FRP) gives an interface a declarative way to manage events and the state they leave behind. That changes how the interface answers the people using it, and how easily it stays responsive. Eleven ways it shows:</p>
+<p>Functional reactive programming (FRP) gives an interface a declarative way to manage events and the state they leave behind. That changes how the interface answers the people using it, and how easily it stays responsive. Eleven ways it shows:</p>
 <h2 id="in-the-interface"><a class="heading-anchor" href="#in-the-interface">In the interface</a></h2>
 <ol>
 <li>
@@ -150,16 +150,16 @@
 <li>
 <strong>Modular code:</strong> Each feature keeps its events, reducer, selectors and endpoints in one folder, so a change to how the cart works stays in the cart&rsquo;s folder.</li>
 <li>
-<strong>Testability:</strong> An interaction is tested where its logic lives. Its rule is a list of actions and the value a selector returns after them, with no browser; only the wiring, a click that dispatches and the words that appear, needs a rendered view, as in <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a>.</li>
+<strong>Testability:</strong> An interaction is tested where its logic lives. Its rule is a list of actions and the value a selector returns after them, with no browser; only the wiring, a click that dispatches and the words that appear, needs a rendered view, as in <a href="/community/the-view-stays-minimal/">The view stays minimal</a>.</li>
 <li>
-<strong>Live data:</strong> A value the server changes, such as an order&rsquo;s status in a kitchen queue, reaches the view through the store, the same way a click does. RTK Query refetches it on an interval with <code>pollingInterval</code>, or writes updates the server pushes into its cache from <code>onCacheEntryAdded</code>, and every view that reads it updates with no handler of its own. A pushed update bypasses the check every response goes through in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>, so <code>onCacheEntryAdded</code> runs it through the endpoint&rsquo;s own decoder before writing it.</li>
+<strong>Live data:</strong> A value the server changes, such as an order&rsquo;s status in a kitchen queue, reaches the view through the store, the same way a click does. RTK Query refetches it on an interval with <code>pollingInterval</code>, or writes updates the server pushes into its cache from <code>onCacheEntryAdded</code>, and every view that reads it updates with no handler of its own. A pushed update bypasses the check every response goes through in <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>, so <code>onCacheEntryAdded</code> runs it through the endpoint&rsquo;s own decoder before writing it.</li>
 <li>
 <strong>Fewer nested callbacks:</strong> <code>async</code> and <code>await</code> already flatten most callback chains. What the state layer adds is a place for each step: RTK Query owns the request, listener middleware owns timing and follow-up effects, and each result reaches a reducer as an action, so a sequence reads as a list of events rather than a chain of callbacks.</li>
 </ol>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> None of this makes an interface fast or safe on its own. A store makes it easy to see what changed and why; how quickly the screen answers still comes down to the view and the network.</p>
 <p>A selector that builds a new array on every call re-renders its view for nothing, and a view that reads the whole cart re-renders when any line changes; the lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> keeps each subscription to the smallest value its view shows.</p>
-<p>Instant feedback is a choice made per action: adding to a cart can show at once and be undone if the API refuses, as <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a> shows, while placing an order waits for the API.</p>
-<p>A failure is an event like any other, never an exception for a view to catch. When the API refuses an order, RTK Query dispatches the request&rsquo;s rejected action with the API&rsquo;s reason as plain data. The slice, which empties the cart only on <code>matchFulfilled</code>, leaves it alone, and a pure function turns the request&rsquo;s state into the words the customer reads, as <code>orderNotice</code> does in <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a>.</p>
+<p>Instant feedback is a choice made per action: adding to a cart can show at once and be undone if the API refuses, as <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a> shows, while placing an order waits for the API.</p>
+<p>A failure is an event like any other, never an exception for a view to catch. When the API refuses an order, RTK Query dispatches the request&rsquo;s rejected action with the API&rsquo;s reason as plain data. The slice, which empties the cart only on <code>matchFulfilled</code>, leaves it alone, and a pure function turns the request&rsquo;s state into the words the customer reads, as <code>orderNotice</code> does in <a href="/community/the-view-stays-minimal/">The view stays minimal</a>.</p>
 <p>A response that isn&rsquo;t what the API promised fails its decoder and arrives the same way, as a <code>CUSTOM_ERROR</code> the view can show.</p></aside>
 <p>So FRP gives every user interaction, and every request it starts, a name, a place and a test. Declared once and composed from small pure functions over events and state, complex event-driven behavior gets simpler, and every response to user input traces back to the event behind it.</p>
 

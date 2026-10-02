@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 1; --lessons: 5">Lesson 1 of 5 in Module 4</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -201,7 +201,7 @@ CREATE TABLE order_lines (
   PRIMARY KEY (tenant_id, order_id, product_id),
   FOREIGN KEY (tenant_id, order_id) REFERENCES orders (tenant_id, id)
 );</code></pre>
-<p>On the wire, a <code>NewOrder</code> carries only each line&rsquo;s product and quantity, and the <code>Order</code> the API returns adds each line&rsquo;s name and price and the total, in cents: the shapes <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a> decodes.</p>
+<p>On the wire, a <code>NewOrder</code> carries only each line&rsquo;s product and quantity, and the <code>Order</code> the API returns adds each line&rsquo;s name and price and the total, in cents: the shapes <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a> decodes.</p>
 <p>Inside <code>withTenant</code>, the handler opens a transaction and names the tenant and the user before its queries:</p>
 <pre class="code-block" tabindex="0"><code>SET LOCAL nile.tenant_id = '018ade1a-7830-7981-b23f-f3a7f7b8f09f';
 SET LOCAL nile.user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';

@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 4; --lessons: 4">Lesson 4 of 4 in Module 5</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -193,7 +193,7 @@ except ValueError as error:
 results from different evaluations: ['eval-1', 'eval-2']</code></pre>
 <p>Fixing the rule in advance keeps a favourite from winning on whichever measure flatters it. A base chosen for training is still only a starting point: what ships is decided at the end, by comparing the trained model with its parent.</p>
 <h2 id="deterministic-data-in-disjoint-splits"><a class="heading-anchor" href="#deterministic-data-in-disjoint-splits">Deterministic data in disjoint splits</a></h2>
-<p>Training data is generated, never written by hand: catalogs in JSON, combined with made-up situations and varied by index, as <a href="/community/python-the-teams-way/">Python, the Team&rsquo;s Way</a> shows.</p>
+<p>Training data is generated, never written by hand: catalogs in JSON, combined with made-up situations and varied by index, as <a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a> shows.</p>
 <p>Every row about one situation lands in the same split (training, validation, development or release), so a situation seen in training never comes back, reworded, in a split that measures the model. Generated files are never edited by hand; a change to the data is a change to the generator.</p>
 <pre class="code-block" tabindex="0"><code># pipeline/release/splits.py
 """Disjoint splits, assigned by situation, and the one rule that guards release."""
@@ -287,7 +287,7 @@ print("unknown: ", oracle_errors(Oracle(unknown=True), "The annex opens at nine.
 rejected: ()
 negative: ("missing 'closed'", "missing 'Friday'", "missing 'washed-out bridge'", "says 'is open'")
 unknown:  ('does not admit it does not know',)</code></pre>
-<p>The row above is a voice pair from <a href="/community/geometric-reasoning-in-model-training/">Geometric Reasoning in Model Training</a>, so both of its answers pass the oracle: they differ only in voice. A hard negative is the other kind of pair, an answer built to be wrong, and it has to fail its oracle on meaning (here, it says the trail is open), not merely share fewer words with the reference.</p>
+<p>The row above is a voice pair from <a href="/community/geometric-reasoning-in-model-training/">Geometric reasoning in model training</a>, so both of its answers pass the oracle: they differ only in voice. A hard negative is the other kind of pair, an answer built to be wrong, and it has to fail its oracle on meaning (here, it says the trail is open), not merely share fewer words with the reference.</p>
 <h2 id="supervised-then-preference-training"><a class="heading-anchor" href="#supervised-then-preference-training">Supervised, then preference training</a></h2>
 <p>Training runs in two stages on one LoRA adapter: a small set of added weights trained over a base model that stays fixed, held in 4-bit form so a model of a few billion parameters trains on one GPU.</p>
 <ol>

@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 4; --lessons: 5">Lesson 4 of 5 in Module 4</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 <p>A view shows what the state already holds and forwards what the customer does. On the Sean Dinwiddie&rsquo;s Webmastery team, a view decides nothing a scenario tests: selectors shape what it reads, the endpoint&rsquo;s hook carries the request, and the view&rsquo;s own test reads the screen the way the customer does.</p>
-<p>This lesson builds the checkout that places the order, from the cart in <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> and the endpoint in <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a>.</p>
+<p>This lesson builds the checkout that places the order, from the cart in <a href="/community/from-scenario-to-slice/">From scenario to slice</a> and the endpoint in <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
 <ul>
@@ -258,7 +258,7 @@ export const orderNotice = ({ status, error }: OrderRequest): string =&gt; NOTIC
 </svg>
 <figcaption>The request&rsquo;s <code>status</code> picks one entry from the table, and a refusal&rsquo;s reason picks its words from the map. The violet line is the declined card; any reason the map doesn&rsquo;t hold gets the notice that is always true.</figcaption>
 </figure>
-<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD Scenarios for Real-World Cases</a> asks, and the customer is asked for another card; a payment provider that is down comes back as a 503 with a reason of its own, and the customer is asked to try again.</p>
+<p>A declined card comes back as data, a refusal with its reason, as <a href="/community/creating-bdd-scenarios-for-real-world-cases/">Creating BDD scenarios for real-world cases</a> asks, and the customer is asked for another card; a payment provider that is down comes back as a 503 with a reason of its own, and the customer is asked to try again.</p>
 <p>Any other failure says the order wasn&rsquo;t confirmed and the cart is as it was, because both are true: when the connection drops, the client can&rsquo;t know whether the API recorded the order. The words follow the API&rsquo;s reason, never the status alone, because a 503 page from a proxy in front of the API says nothing about the order.</p>
 <p>The function is tested on its own, branch by branch, including the failures no scenario names:</p>
 <pre class="code-block" tabindex="0"><code>// features/checkout/orderNotice.test.ts

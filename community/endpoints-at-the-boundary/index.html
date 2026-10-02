@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 3; --lessons: 5">Lesson 3 of 5 in Module 4</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 <p>An endpoint is where the client meets the API. On the Sean Dinwiddie&rsquo;s Webmastery team, endpoints are generated from the API&rsquo;s own contract into one API root, reviewed like any other code, decoded before a view sees what they return, and tagged so the right views refetch.</p>
-<p>This lesson carries the orders from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> into the client, beside the cart from <a href="/community/from-scenario-to-slice/">From Scenario to Slice</a>.</p>
+<p>This lesson carries the orders from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> into the client, beside the cart from <a href="/community/from-scenario-to-slice/">From scenario to slice</a>.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
 <ul>
@@ -346,7 +346,7 @@ describe('Feature: Checkout', () =&gt; {
 })</code></pre>
 <p>The same file checks the failure paths: a response that isn&rsquo;t an order ends as a <code>CUSTOM_ERROR</code> with the raw payload beside it, and a refused order leaves the history as it was. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what each layer&rsquo;s tests cover, tag invalidation and optimistic rollback included.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Tags wait for the API, and most of the time that is right. When a change should show at once, the mutation patches the cache itself and undoes the patch if the API refuses.</p>
-<p><a href="/community/from-scenario-to-slice/">From Scenario to Slice</a> ends with the cart moving to the server when it must follow the customer from phone to laptop, and adding to that cart is the classic case. The read endpoint is injected first, so the mutation can patch its cache with full types:</p>
+<p><a href="/community/from-scenario-to-slice/">From scenario to slice</a> ends with the cart moving to the server when it must follow the customer from phone to laptop, and adding to that cart is the classic case. The read endpoint is injected first, so the mutation can patch its cache with full types:</p>
 <pre class="code-block" tabindex="0"><code>// features/cart/cartApi.ts
 import { api } from '../../app/api'
 import type { CartLine } from './cartSlice'
@@ -390,7 +390,7 @@ export const cartApi = cartReadApi.injectEndpoints({
 <p>The patch, its undo and the server&rsquo;s cart that replaces it live in the mutation&rsquo;s own lifecycle, never in a view. The request carries the product alone: the name and price in the patch are for display until the server&rsquo;s cart, priced by the API, takes their place.</p>
 <p>Optimism suits a change the API almost always accepts and the customer can watch undone. Placing the order is never optimistic: a declined card must never look like a placed order, which is why the slice empties the cart only on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#patching-the-cache-from-a-component">Redux Toolkit and RTK Query Best Practices</a> sets the patch in the wrong place beside the right one.</p></aside>
 <p>The endpoint sits between the slice and the API, and each owner proves its own part of one scenario under the same name: the Hspec test that the API records the order, and this test that the history shows it and that the slice, hearing the order accepted, empties the cart.</p>
-<p>The view that places the order stays minimal, and <a href="/community/the-view-stays-minimal/">The View Stays Minimal</a> builds it: it reads the cart through selectors, calls <code>usePlaceOrderMutation</code> with each line&rsquo;s product and quantity, and shows what the endpoint returns.</p>
+<p>The view that places the order stays minimal, and <a href="/community/the-view-stays-minimal/">The view stays minimal</a> builds it: it reads the cart through selectors, calls <code>usePlaceOrderMutation</code> with each line&rsquo;s product and quantity, and shows what the endpoint returns.</p>
 
 <!-- .entry-content -->
 <footer>

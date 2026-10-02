@@ -2,7 +2,7 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
-## Lesson posts: copy rounds 1–5 and post design rounds 1–3: October 1, 2026
+## Lesson posts: copy rounds 1–6 and post design rounds 1–3: October 1–2, 2026
 
 After design pass 5 Sean asked for the community pages to read easier and carry more diagrams, in the voice of experts having a blast with the craft, and for several rounds with the designer to bring the lesson template to an AAA polish. Each round is a copy round and a design round, with a review between.
 
@@ -24,9 +24,12 @@ After design pass 5 Sean asked for the community pages to read easier and carry 
 
 - **Copy round 5 (87 edits on 54 pages and the sync):** Sean left lesson titles to the loop, so they read in sentence case as every heading on the loop's pages does: 35 lesson titles, the five module names, and the hub's, offer page's, sitemap's and archives' h1s ("Writing BDD scenarios", "Module 2: Behavior-driven development (BDD)"), with names and acronyms kept. Each lesson's h1 now renders from `LESSONS`, so it can't drift from its card, list entry, previous and next links or structured data, and the Course Outline's module heads render from `PARTS`. Head `<title>`s, social titles and URLs are unchanged.
 
+- **Copy round 6 (92 edits on 55 pages and the sync):** titles quoted in running text follow the titles: 46 linked citations take the sentence-case title as `LESSONS` holds it, 18 closing lines name the next lesson in sentence case or reword lightly ("The next lesson, on identifying user needs, finds…"), and the banner on every community page links "the course outline", which "maps every module". 23 subject names used as terms read in lowercase ("the point of behavior-driven development (BDD)"), and the Introduction's "Our vision:" and "Our mission:" heads follow. Of 141 Title Case leftovers, one remains, a comment inside a code block.
+
 ### Waiting
 
-- Lesson titles quoted in running text, still in Title Case (todo.md).
+- On Endpoints at the boundary, "The view that places the order stays minimal, and The view stays minimal builds it" reads oddly with the title in sentence case; a light rewording.
+- The offer page's "Beta Access for Early Signups": a tier name, or the lowercase "beta access for early signups" its own Community item and `docs/positioning.md` write.
 - The "On this page" label in the margin on a wide screen, as the depth label hangs; a shorter first page on the hub.
 - Five more lessons of eight to eleven steps, grouped under stages a lesson at a time (todo.md).
 

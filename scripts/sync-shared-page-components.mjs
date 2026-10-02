@@ -79,6 +79,10 @@ const HOME_CARDS_PATTERN = /    <section class="section home-cards">[\s\S]*?\n  
 // Introduction, so the community had two front doors. The Introduction is where
 // every level starts (docs/copy-review.md, Focus), and the outline is the
 // course's map. On a lesson, the banner also names its place in the course.
+//
+// The outline's link reads "course outline", as running text names it: its title,
+// "Course outline", reads as a stray capital mid-sentence, and "the course outline
+// maps the course" said course twice. What it maps is every module and its lessons.
 const INTRODUCTION = "community/introduction/index.html";
 const COURSE_OUTLINE = "community/user-story_bdd_frp-workflow/index.html";
 
@@ -90,7 +94,7 @@ const archiveContext = (name) => {
   const map =
     name === COURSE_OUTLINE
       ? "this outline maps the course"
-      : 'the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course';
+      : 'the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module';
   const index = lessonIndex(name);
   // The lesson's place leads the banner (docs/design.md, Lesson posts), over the
   // course's preface.

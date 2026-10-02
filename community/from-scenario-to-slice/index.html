@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 2; --lessons: 5">Lesson 2 of 5 in Module 4</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">Course Outline</a> maps the course.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -126,7 +126,7 @@
 </ul>
 </nav>
 <h2 id="1-read-the-scenario-for-its-parts"><a class="heading-anchor" href="#1-read-the-scenario-for-its-parts">1. Read the scenario for its parts</a></h2>
-<p>The scenario from <a href="/community/writing-bdd-scenarios/">Writing BDD Scenarios</a>, under a Feature line:</p>
+<p>The scenario from <a href="/community/writing-bdd-scenarios/">Writing BDD scenarios</a>, under a Feature line:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Cart
 
   Scenario: Adding a product to the cart
@@ -216,7 +216,7 @@ describe('Feature: Cart', () =&gt; {
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#test-transitions-and-derivations">Redux Toolkit and Functional Programming</a> tests a slice the same way, through its events and what its selectors return.</p>
 <h2 id="6-one-scenario-two-owners"><a class="heading-anchor" href="#6-one-scenario-two-owners">6. One scenario, two owners</a></h2>
 <p>Module 2&rsquo;s <a href="/community/creating-bdd-scenarios-for-real-world-cases/">&ldquo;Placing the order&rdquo;</a> ends with two Thens: the order is recorded at $25, and her cart is empty. The first belongs to the API, and the Hspec test in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> proves it.</p>
-<p>The second belongs to the slice, and the cart empties when the API accepts the order, not when the button is pressed. The slice listens for the fulfilled action of <code>placeOrder</code>, the endpoint the client generates from the API&rsquo;s contract (the API names that operation when it builds its OpenAPI document, and <a href="/community/endpoints-at-the-boundary/">Endpoints at the Boundary</a> generates the endpoint from it):</p>
+<p>The second belongs to the slice, and the cart empties when the API accepts the order, not when the button is pressed. The slice listens for the fulfilled action of <code>placeOrder</code>, the endpoint the client generates from the API&rsquo;s contract (the API names that operation when it builds its OpenAPI document, and <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a> generates the endpoint from it):</p>
 <pre class="code-block" tabindex="0"><code>// in createSlice({ ... }), beside reducers
 extraReducers: (builder) =&gt; {
   builder.addMatcher(ordersApi.endpoints.placeOrder.matchFulfilled, (state) =&gt; {
