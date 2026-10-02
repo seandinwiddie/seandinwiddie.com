@@ -2,6 +2,10 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Training restored to Sean's version: October 2, 2026
+
+Copy passes 1 to 4 had rewritten Training's opening into lines about handover training on an owner's site, so the page no longer read as the course it is. At Sean's word, Training and its pages (Landing pages, Page setup, FRP) are back to his own wording, the hidden line from his first version under the title included. Two lines follow his later directions instead: the hero button reads "Call or email", since the site offers no free consultation, and one line links the community, as he asked at pass 8. The loop never edits these pages; their content is as Sean intends.
+
 ## Lesson posts: copy rounds 1–6 and post design rounds 1–3: October 1–2, 2026
 
 After design pass 5 Sean asked for the community pages to read easier and carry more diagrams, in the voice of experts having a blast with the craft, and for several rounds with the designer to bring the lesson template to an AAA polish. Each round is a copy round and a design round, with a review between.
