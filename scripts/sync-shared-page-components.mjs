@@ -12,15 +12,15 @@ import { ROOT, fileForPathname, isNoindex, publicPageFiles, read, relativePath }
 // because each copy was "correct" on its own terms. They are one list now, and
 // the three renderers differ only in heading level and indentation.
 const SERVICE_CARDS = [
-  ["/marketing/", "Marketing", "AdobeStock_135407660-scaled.jpeg",
+  ["/marketing/", "Marketing", "community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg",
     "Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves."],
-  ["/design/", "Design", "AdobeStock_207254886-scaled.jpeg",
+  ["/design/", "Design", "community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg",
     "A look that is yours, on pages built for one job each. Readable in one hand on a phone."],
   ["/development/", "Development", "AdobeStock_180105378-scaled.jpeg",
     "The site, and the software behind it when a site is not enough. Yours to run afterwards."],
-  ["/automation/", "Automation", "AdobeStock_138021007-e1571312681920-scaled.jpeg",
+  ["/automation/", "Automation", "community/noaa-4VLA46-_hbM-unsplash-scaled.jpg",
     "Stop paying someone to retype the same order into a second system."],
-  ["/local/", "Local", "AdobeStock_104183460_111672862-1-scaled.jpeg",
+  ["/local/", "Local", "community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg",
     "Web help in Klamath Falls, Redding, and the towns in between."],
 ];
 
