@@ -359,11 +359,10 @@ img { max-width: 100%; height: auto; }
   border: 1px solid var(--line);
   border-radius: 0.3rem;
   background: #fff;
-  box-shadow: 0 0.1rem 0.275rem rgb(31 36 48 / 12%);
   transition: border-color 0.2s ease;
 }
-/* The featured cards settle by approved steps (docs/design.md): a shadow half as deep,
-   no lift (pass 8); hover darkens the hairline (pass 9). */
+/* The featured cards settle by approved steps (docs/design.md): no lift (pass 8), no
+   shadow (pass 12); hover darkens the hairline (pass 9). */
 .card:hover { border-color: var(--muted); }
 .card a.card__link { display: block; color: inherit; text-decoration: none; }
 /* Focus rings the whole card, as the community's (docs/design.md, design pass 9). */
@@ -383,12 +382,12 @@ img { max-width: 100%; height: auto; }
   background-size: cover;
 }
 .card__body { padding: 0.95rem 1rem 1.2rem; }
-/* A card's title takes the house weight, as every heading does, at one 2rem
-   (docs/design.md). */
+/* A card's title takes the house weight, a step under the page's h2 at every width
+   (docs/design.md, design pass 12). */
 .card__body h3 {
   margin: 0 0 0.6rem;
   color: #454545;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
   font-weight: 700;
   line-height: 1.3;
 }
@@ -741,7 +740,7 @@ main:has(+ .service-cards) > .page-content:last-child { padding-bottom: 0; }
 .service-cards .card__body h2 {
   margin: 0 0 0.6rem;
   color: #454545;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
   font-weight: 700;
   line-height: 1.3;
 }
@@ -1388,14 +1387,12 @@ main:focus { outline: none; }
   .service-menu__links .button { padding: 0.85rem 0.75rem; font-size: 1rem; }
 }
 
-/* On a tablet the five featured services stand two by two, the fifth centered, their
-   titles scaling to 1.5rem to fit (docs/design.md, design pass 7); a phone stacks them. */
+/* On a tablet the five featured services stand two by two, the fifth centered
+   (docs/design.md, design pass 7); a phone stacks them. */
 @media (min-width: 30.0625rem) and (max-width: 52rem) {
   .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .cards > .card { grid-column: span 2; }
   .cards > .card:nth-child(odd):last-child { grid-column: 2 / span 2; }
-  .card__body h3,
-  .service-cards .card__body h2 { font-size: clamp(1.5rem, 5vw, 2rem); }
 }
 
 @media (max-width: 30rem) {
@@ -1415,7 +1412,8 @@ main:focus { outline: none; }
   /* On a phone every page reads at 1rem, about 41 characters a line, its h2 at 1.68
      times that on the panels (docs/design.md). */
   .live-panel,
-  .service-detail-route:not(.brand-article-route) .detail-live-panel { padding-inline: 1rem; }
+  .service-detail-route:not(.brand-article-route) .detail-live-panel { padding-inline: 1rem; border-radius: 0; }
+  .service-stage, .service-menu { border-radius: 0; }
   .live-panel,
   .service-detail-route:not(.brand-article-route) .detail-live-panel__body {
     font-size: 1rem;
@@ -1433,9 +1431,7 @@ main:focus { outline: none; }
   .local-overview-route .local-location-card { padding: 1.25rem; }
   .hero-banner__eyebrow { left: 0.75rem; }
   .page-lead { padding-inline: 0.5rem; }
-  /* The featured cards rank under the page: titles 1.5rem, text 1rem (pass 11). */
-  .card__body h3,
-  .service-cards .card__body h2 { font-size: 1.5rem; }
+  /* The featured cards' text takes the page's 1rem (pass 11). */
   .card__body p { font-size: 1rem; }
   .content-card,
   .notice,
@@ -1602,6 +1598,7 @@ main:focus { outline: none; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > p { margin-bottom: 1.4rem; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) > article > h2 { margin-top: 3.25rem; }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) li::marker { color: var(--muted); }
+.contact-route .content-page li::marker { color: var(--muted); }
 .family-community .content-page:has(.archive-context[aria-label="About these lessons"], aside[aria-label="Questions"]) :not(pre) > code {
   padding: 0.1em 0.25em;
   font-size: 0.9em;
