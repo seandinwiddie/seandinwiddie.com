@@ -148,7 +148,7 @@
 <div class="slide__body">
 <ul class="slide__lead">
 <li>A typo slips in between two screens, and the customer finds it first.</li>
-<li>The paperwork, done at night after closing.</li>
+<li>The paperwork gets done at night, after closing.</li>
 <li>One person keeps it all in their head, and when they&rsquo;re away, it stops.</li>
 </ul>
 <p class="slide__lead">You know better than anyone what it costs you.</p>
@@ -166,7 +166,7 @@
 </div>
 <p class="slide__deeper">Sources: <a href="https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/">the order</a> and <a href="https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/">its fact sheet</a></p>
 </div>
-<div class="slide__notes"><p>A quick word on the name, and then on to the good part. The order is called &ldquo;Inaugurating the Era of Super Intelligence.&rdquo; It applies to the departments and agencies of the executive branch, the part of government the President leads. It leaves laws, regulations and earlier documents just as they are. In the order, SI means whatever the law already means by AI, and the legal write-ups we&rsquo;ve read agree it changes no law. So when a federal letter or web page says SI, you can read it as AI. For the curious, the law&rsquo;s definition is in title 15 of the U.S. Code, section 9401, paragraph 3. When researchers say superintelligence, they usually mean a hypothetical system that would far outdo people at nearly everything, and that&rsquo;s a different idea. The name makes no claim about what these systems can do. From here on, we&rsquo;ll simply say SI.</p></div>
+<div class="slide__notes"><p>A quick word on the name, and then on to the good part. The order is called &ldquo;Inaugurating the Era of Super Intelligence.&rdquo; It applies to the departments and agencies of the executive branch, the part of government the President leads. It leaves laws, regulations and earlier documents just as they are. In the order, SI means whatever the law already means by AI, and the legal write-ups we&rsquo;ve read agree it changes no law. And the 60 days on the slide? That&rsquo;s the order&rsquo;s next step: proposed wording for a federal definition goes to the President within that time. So when a federal letter or web page says SI, you can read it as AI. For the curious, the law&rsquo;s definition is in title 15 of the U.S. Code, section 9401, paragraph 3. When researchers say superintelligence, they usually mean a hypothetical system that would far outdo people at nearly everything, and that&rsquo;s a different idea. The name makes no claim about what these systems can do. From here on, we&rsquo;ll simply say SI.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -175,7 +175,7 @@
 <div class="slide__split">
 <div>
 <p>An agent is ordinary software: a model in a loop with tools. The model is the SI part, the part that reads and writes.</p>
-<p>It reads the job, asks for a tool, reads the result and goes round again, until it answers or a limit stops it.</p>
+<p>It reads the task, asks for a tool, reads the result and goes round again, until it answers or a limit stops it.</p>
 <p>It always stops in one of four ways, each with a name, so the program knows why it stopped.</p>
 </div>
 <figure class="diagram">
@@ -196,14 +196,14 @@
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>That&rsquo;s the whole trick. A tool is just a small, plain program the model can ask for, like one that looks up the menu. The box marked &ldquo;code decides&rdquo; is plain code too: it reads the model&rsquo;s reply, checks the limits, and either goes on to the tools or takes one of the ways out. The arrow marked &ldquo;tool calls&rdquo; carries the model&rsquo;s requests for tools, once the code has checked them. A model reads and writes in little chunks of text called tokens, and each job gets a budget of them, so it can&rsquo;t quietly run up the bill. All told, there are four ways out. It answered. It ran out of turns: a turn is one trip round the loop, and we allow only so many. It ran out of tokens. Or the model stopped short, say by declining the job. We test the loop with a scripted model, a stand-in that gives back the replies we wrote for it, so our tests never use a real model at all.</p></div>
+<div class="slide__notes"><p>That&rsquo;s the whole trick. The model is the part that learned from a great deal of written text, so it can read a message and write a reply. A tool is just a small, plain program the model can ask for, like one that looks up the menu. The box marked &ldquo;code decides&rdquo; is plain code too: it reads the model&rsquo;s reply, checks the limits, and either goes on to the tools or takes one of the ways out. The arrow marked &ldquo;tool calls&rdquo; carries the model&rsquo;s requests for tools, once the code has checked them. A model reads and writes in little chunks of text called tokens, and each task gets a budget of them, so it can&rsquo;t quietly run up the bill. All told, there are four ways out. It answered. It ran out of turns: a turn is one trip round the loop, and we allow only so many. It ran out of tokens. Or the model stopped short, say by declining the task. We test the loop with a scripted model, a stand-in that gives back the replies we wrote for it, so our tests never use a real model at all.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="the-model-asks-the-program-decides"><a class="heading-anchor" href="#the-model-asks-the-program-decides">The model asks; the program decides</a></h2>
 <div class="slide__body">
 <p class="slide__lead">The model never runs anything. It asks for a tool by name, and plain code checks the request and decides whether to run it.</p>
-<p class="slide__lead">Say a customer emails our made-up bakery for croissants, and it doesn&rsquo;t bake them. The menu tool answers with what it does have, so the model offers something that&rsquo;s really on the menu.</p>
+<p class="slide__lead">Say a customer emails our made-up bakery for croissants, but the bakery doesn&rsquo;t make them. The menu tool answers with what it does have, so the model offers something that&rsquo;s really on the menu.</p>
 </div>
 </div>
 <div class="slide__notes"><p>Every rule lives on the program&rsquo;s side, in plain code, out of the model&rsquo;s hands. When a tool can&rsquo;t do what it was asked, nothing crashes: the &ldquo;no&rdquo; comes back as an answer the model reads on its next turn. So it can tell the customer plainly that there are no croissants, rather than make some up. And here&rsquo;s one of those promises we asked you to listen for: the menu tool says up front what it takes in and what it hands back, and a plain &ldquo;no&rdquo; is one of the answers it can give. That&rsquo;s its contract.</p></div>
@@ -238,7 +238,7 @@
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>Let&rsquo;s step next door to a made-up salon, and its skill for drafting replies to booking emails. On the picture, a slash after a name just means it&rsquo;s a folder, and the dashes stand in for spaces, the way computer folks often write names. The header is just the top of the card: its name and its description. The model reads only what the job needs, a layer at a time, and engineers have a grand name for that: progressive disclosure. It&rsquo;s why you can keep many skills on the shelf without crowding the model&rsquo;s desk, and why the description matters most. Together with the name, it&rsquo;s all the model reads before it picks a skill. A script here isn&rsquo;t what you&rsquo;d say on the phone. It&rsquo;s a little program that does one exact job, the same way every time. When a script runs, the model sees what the script printed, never the script itself. Only that printout joins the text on the model&rsquo;s desk, which engineers call its context. The assets folder is where the skill keeps its own files, here the salon&rsquo;s data. That&rsquo;s assets in the filing-cabinet sense, not the accountant&rsquo;s. And the format itself is an open standard, so anyone can read it and use it.</p></div>
+<div class="slide__notes"><p>Let&rsquo;s step next door to a made-up salon, and its skill for drafting replies to booking emails. On the picture, a slash after a name just means it&rsquo;s a folder, and the dashes stand in for spaces, the way computer folks often write names. The header is just the top of the card: its name and its description. &ldquo;At the start&rdquo; means when the agent starts up: the model reads the top of every card, and nothing more. The model reads only what the job needs, a layer at a time, and engineers have a grand name for that: progressive disclosure. It&rsquo;s why you can keep many skills on the shelf without crowding the model&rsquo;s desk, and why the description matters most. Together with the name, it&rsquo;s all the model reads before it picks a skill. A script here isn&rsquo;t what you&rsquo;d say on the phone. It&rsquo;s a little program that does one exact job, the same way every time. When a script runs, the model sees what the script printed, never the script itself. Only that printout joins the text on the model&rsquo;s desk, which engineers call its context. The assets folder is where the skill keeps its own files, here the salon&rsquo;s data. That&rsquo;s assets in the filing-cabinet sense, not the accountant&rsquo;s. And the format itself is an open standard, so anyone can read it and use it.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -286,14 +286,14 @@ still holds the placeholder {first name}</code></pre>
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>Let&rsquo;s follow the violet path from the top. The email comes in from outside, and once inside, it&rsquo;s read as data. Think of a note slipped under the door: we read every word of it, but a note can&rsquo;t give us commands. The model reads it and asks for tools, and the gate sorts every one of those requests three ways. First it asks: is this tool on the task&rsquo;s list? If not, the request is refused. If it is, a tool that only reads, or leaves a note for the person, runs straight away. One that would change something, like putting an order in the register, waits for a person&rsquo;s yes. That&rsquo;s what we mean by &ldquo;leaves the building&rdquo;: any change that counts, whether it goes out the door, like an email, or into your own books, like the register. The gate itself is a short list and a few small rules, and they give the same answer to the same question every time. Engineers call that plain data and pure functions. The gate looks at only two things, the task and the tool&rsquo;s name, so nothing written in an email can change its answer. The security world has a name for the trouble this guards against. A nonprofit called OWASP, said &ldquo;oh-wasp,&rdquo; keeps lists of software security risks. It calls this one excessive agency: an agent given more reach or freedom than its job needs.</p></div>
+<div class="slide__notes"><p>Let&rsquo;s follow the violet path from the top. The email comes in from outside, and once inside, it&rsquo;s read as data. Think of a letter slipped under the door: we read every word of it, but a letter can&rsquo;t give us commands. The model reads it and asks for tools, and the gate sorts every one of those requests three ways. First it asks: is this tool on the task&rsquo;s list? If not, the request is refused. If it is, a tool that only reads, or leaves a note for the person, runs straight away. One that would change something, like putting an order in the register, waits for a person&rsquo;s yes. That&rsquo;s what we mean by &ldquo;leaves the building&rdquo;: any change that counts, whether it goes out the door, like an email, or into your own books, like the register. The gate itself is a short list and a few small rules, and they give the same answer to the same question every time. Engineers call that plain data and pure functions. The gate looks at only two things, the task and the tool&rsquo;s name, so nothing written in an email can change its answer. The security world has a name for the trouble this guards against. A nonprofit called OWASP, said &ldquo;oh-wasp,&rdquo; keeps lists of software security risks. It calls this one excessive agency: an agent given more reach or freedom than its job needs.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="each-task-gets-only-its-tools"><a class="heading-anchor" href="#each-task-gets-only-its-tools">Each task gets only its tools</a></h2>
 <div class="slide__body">
 <p class="slide__lead">The bakery&rsquo;s order agent reads the email, looks up the menu and drafts the order. It has no tool that sends email at all.</p>
-<p class="slide__lead">Its tools can&rsquo;t touch the register, the calendar or the order sheet. Only a person&rsquo;s yes gets anything into them. We give it more reach only on purpose: add a tool, and a test fails and names it.</p>
+<p class="slide__lead">Its tools can&rsquo;t touch the register, the calendar or the order sheet. Only a person&rsquo;s yes gets anything into them. We give it more reach only on purpose: add a tool, and a test fails and names the new one.</p>
 </div>
 </div>
 <div class="slide__notes"><p>On the last slide, sending an email waits for a person&rsquo;s yes. With this agent we go a step further: sending isn&rsquo;t on its list at all, so if it ever asks, the gate refuses. Each part gets only the keys its job needs, the way a new hire gets a key to the back door but not the combination to the safe. Security folks call that least privilege, and here it is at the size of a bakery. A failing test sounds like bad news, but here it&rsquo;s a friendly tap on the shoulder. Add a tool to the agent&rsquo;s list, and a test fails and names it, so someone has to look and say yes on purpose.</p></div>
@@ -307,10 +307,10 @@ still holds the placeholder {first name}</code></pre>
 held        draft the order
 refused     enter the sale
 refused     send an email</code></pre>
-<p>When someone slips words meant to steer the model into an email, or into anything else it reads, that&rsquo;s called prompt injection. OWASP, a security nonprofit, ranks it first on its 2026 list of risks to apps built on large language models, the kind of model in this talk.</p>
+<p>When an email, or anything else the model reads, carries words meant to steer the model, that&rsquo;s called prompt injection. OWASP, a security nonprofit, ranks it first on its 2026 list of risks to apps built on large language models, the kind of model in this talk.</p>
 </div>
 </div>
-<div class="slide__notes"><p>The log on the slide is the program&rsquo;s diary: one line for each thing the model asked to do. In our test we imagine the worst case: we script the model to do everything the email says. The two extra things the email asked for are refused, and logged for the owner to see. The draft that waits is just the order the customer asked for, priced from the menu. &ldquo;Held&rdquo; means that drafted order waits at the gate for a person&rsquo;s yes. It waits because it&rsquo;s headed for the register: say yes, and in it goes; say no, and out it goes, at no cost. The text a model is given to work from is called its prompt, so prompt injection is slipping instructions into that text. No defense makes a model impossible to fool, and we won&rsquo;t pretend otherwise. What this design does is limit what a fooled one can do.</p></div>
+<div class="slide__notes"><p>The log on the slide is the program&rsquo;s diary: one line for each thing the model asked to do. In our test we imagine the worst case: we script the model to do everything the email says. The two extra things the email asked for are refused, and logged for the owner to see. And the email&rsquo;s claim that the owner already approved it? The gate never reads the email, so the claim can&rsquo;t talk its way past. The draft that waits is just the order the customer asked for, priced from the menu. &ldquo;Held&rdquo; means that drafted order waits at the gate for a person&rsquo;s yes. It waits because it&rsquo;s headed for the register: say yes, and in it goes; say no, and out it goes, at no cost. The text a model is given to work from is called its prompt, so prompt injection is slipping instructions into that text. No defense makes a model impossible to fool, and we won&rsquo;t pretend otherwise. What this design does is limit what a fooled one can do.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -323,7 +323,7 @@ refused     send an email</code></pre>
 <p class="slide__lead">Each real email joins the evals as one more example, along with what the person at the counter did. That way they keep up with the orders and questions that really come in.</p>
 </div>
 </div>
-<div class="slide__notes"><p>A scripted model checks the plumbing, the pipes between the parts. It can&rsquo;t tell us whether a real model drafts the right order. For that, like any cook, we have to taste the soup. That&rsquo;s what the evals do: they judge the automation on real days, not on a demo.</p></div>
+<div class="slide__notes"><p>A scripted model checks the plumbing, the pipes between the parts. It can&rsquo;t tell us whether a real model drafts the right order. For that, like any cook, we have to taste the soup. That&rsquo;s what the evals do: they judge the automation on real days, not on a demo. Each email comes with what the person at the counter did with it: the order they approved, the one they typed by hand instead, or the question they had to ask. That&rsquo;s our answer key, and we grade the model&rsquo;s drafts against it.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
