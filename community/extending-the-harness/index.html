@@ -161,7 +161,7 @@
 <li><strong>An MCP server</strong> loads tool names at the start and schemas when used: tools and data from another system.</li>
 <li><strong>A plugin</strong> is the packaging: what it bundles loads as its own kind does, for the same setup in a second repository.</li>
 </ul>
-<p>Claude Code reads <code>AGENTS.md</code> when a repository has no <code>CLAUDE.md</code>, and a <code>CLAUDE.md</code> can import it with <code>@AGENTS.md</code>, so one file serves every coding agent. The guide adds output styles and a few more points; these six cover the moves here.</p>
+<p>Claude Code (2.1.277 or later) reads <code>AGENTS.md</code> when no <code>CLAUDE.md</code> or <code>CLAUDE.local.md</code> sits in the working directory or above it, so a private <code>CLAUDE.local.md</code> stops it reading <code>AGENTS.md</code>. A <code>CLAUDE.md</code> can import it with <code>@AGENTS.md</code>, so one file serves every coding agent. The guide adds output styles and a few more points; these six cover the moves here.</p>
 <p>The guide is plain about the sorting: an instruction in <code>CLAUDE.md</code> or a skill is a request, not a guarantee, while a hook that blocks is enforcement. A rule that must hold every time becomes a hook, or a check in CI.</p>
 <p>To try it, sort these five before reading on. The agent got the same convention wrong twice. Every page edit must pass the page check. A playbook is pasted into chat for the third time. A side task floods the conversation with logs. The price list lives in a system the agent can&rsquo;t see.</p>
 <p>In order: the instructions file, a hook, a skill, a subagent and an MCP server. Each matches a trigger in the guide&rsquo;s own table for building a setup over time.</p>
@@ -294,7 +294,7 @@ try {
 <p>In an interactive session, Claude Code runs no hook from a settings file until the folder&rsquo;s workspace trust dialog is accepted, so a freshly cloned repository can&rsquo;t run its hooks unasked. A <code>-p</code> or SDK run treats the folder as trusted, so there the committed hooks run.</p>
 <p>The cheapest checks sit closest to the edit. Here the quick page check runs after every page edit and the full check before the agent may stop. The same two tiers suit git hooks, quick before a commit and full before a push, and CI runs the full check again on every push, where nothing on a laptop can switch it off.</p>
 <h2 id="fresh-contexts-for-review"><a class="heading-anchor" href="#fresh-contexts-for-review">Fresh contexts for review</a></h2>
-<p>A subagent runs its own loop in its own context window, with its own system prompt and its own tools, and hands back only a summary. That makes it a natural reviewer: it starts clean, so it can&rsquo;t lean on the reasoning that produced the change. Project subagents are Markdown files in <code>.claude/agents/</code>, and Claude Code decides when to delegate from each one&rsquo;s <code>description</code>. See the <a href="https://code.claude.com/docs/en/sub-agents">subagents guide</a>.</p>
+<p>A subagent runs its own loop in its own context window, with its own system prompt and its own tools, and hands back only a summary. That makes it a natural reviewer: it starts clean, so it can&rsquo;t lean on the reasoning that produced the change. Project subagents are Markdown files in <code>.claude/agents/</code>, and Claude Code decides when to delegate from each one&rsquo;s <code>description</code>. The bakery&rsquo;s reviewer is <code>.claude/agents/menu-reviewer.md</code>. See the <a href="https://code.claude.com/docs/en/sub-agents">subagents guide</a>.</p>
 <pre class="code-block" tabindex="0"><code>---
 name: menu-reviewer
 description: Reviews a change to the bakery's menu pages against the written scope and the price list. Use after any edit under pages/menu/, before the change is committed.
@@ -628,7 +628,8 @@ src/extending-the-harness/questions/screens.ts(7,14): error TS2741: Property 'st
 <p>The server still names the questions it asks. The contract check in <a href="/community/server-and-client-in-tandem/#one-contract-checked-from-both-sides">One contract, checked from both sides</a> catches a server that stops sending a question the client reads. A question the server adds before the client lists it arrives as a name off the list, and gets no screen.</p>
 <h2 id="every-extension-carries-a-scenario"><a class="heading-anchor" href="#every-extension-carries-a-scenario">Every extension carries a scenario</a></h2>
 <p>An extension without a scenario is a claim. The rules extension&rsquo;s scenarios live in <code>rules.feature</code>, written in Gherkin as <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) syntax in BDD</a> teaches, and run as Vitest tests named after them, through the real store, endpoint and decoder:</p>
-<pre class="code-block" tabindex="0"><code>Feature: The salon's booking rules live on the server
+<pre class="code-block" tabindex="0"><code># src/extending-the-harness/rules/rules.feature
+Feature: The salon's booking rules live on the server
   Every client sends a booking to one route, and gets back accepted,
   or refused with every rule the booking breaks.
 

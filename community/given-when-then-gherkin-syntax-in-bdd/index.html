@@ -166,7 +166,7 @@
 <li><strong>Examples:</strong> the table beneath a Scenario Outline; its header row names the placeholders, and each row below it runs the outline once.</li>
 <li>
 <strong>Rule:</strong> (Gherkin 6 and later) groups the scenarios that illustrate one business rule. A user story’s acceptance criteria map onto Rules, and each Rule’s scenarios are its examples.</li>
-<li><strong>Tags:</strong> a secondary keyword, <code>@</code>, that marks a label such as <code>@checkout</code>, written above a Feature, Scenario, Scenario Outline or Examples table, so a runner can select or skip what it marks.</li>
+<li><strong>Tags:</strong> a secondary keyword, <code>@</code>, that marks a label such as <code>@checkout</code>, written above a Feature, Rule, Scenario, Scenario Outline or Examples table, so a runner can select or skip what it marks.</li>
 </ul>
 <aside class="notice depth" aria-label="The rule behind the examples">
 <p><strong>The rule behind the examples.</strong> A scenario is one example of a rule. When the same rule holds across several cases, a Scenario Outline states it once and an Examples table lists the cases, so the rule reads in one place and each row runs as its own test. One of Module 1’s password-reset criteria, from <a href="/community/translating-user-needs-into-user-stories/">Translating user needs into user stories</a>, written this way:</p>
@@ -187,7 +187,7 @@
         | 25 hours | was never used | refused  |</code></pre>
 <p>A failing row is reported by its own line, with its values filled into the step that failed. Picture a fourth row: a link 25 hours old that was used once. It is refused, and rightly, but the row can&rsquo;t say which half of the rule refused it: it would still pass with either half broken. That is why each row above changes one thing from the first. The steps name the domain, never the page, so the same table runs against a slice, an endpoint or the browser. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> takes the rule one step further, with property tests that check it across generated inputs.</p>
 </aside>
-<p>That is Gherkin: a small, standard vocabulary for how software should behave from the user’s perspective, clear enough for the owner to read and unambiguous enough for a test to run. The next lesson, Writing BDD scenarios, puts the vocabulary to work on a cart scenario, the one Module 4 later builds into a slice.</p>
+<p>That is Gherkin: a small, standard vocabulary for how software should behave from the user’s perspective, clear enough for the owner to read and unambiguous enough for a test to run. The next lesson, <a href="/community/writing-bdd-scenarios/">Writing BDD scenarios</a>, puts the vocabulary to work on a cart scenario, the one Module 4 later builds into a slice.</p>
 
 <!-- .entry-content -->
 <footer>

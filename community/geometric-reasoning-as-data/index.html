@@ -162,7 +162,8 @@
 }</code></pre>
 <p>A point takes one level of each factor, written as a digit: 0 for the first level, 1 for the second. So <code>011</code> is brief, casual and bold. Three two-level factors give 2&sup3; = 8 points, a two-level full factorial in the terms of the <a href="https://www.itl.nist.gov/div898/handbook/pri/section3/pri3331.htm">NIST/SEMATECH e-Handbook</a>. The distance between two points is how many factors they differ in, their Hamming distance, after R. W. Hamming&rsquo;s 1950 paper on error-correcting codes.</p>
 <p>Nothing derived is stored. The file holds the factors and the table, and the points, distances and counts come from the factors every time, so they can&rsquo;t drift from them; the lecture Redux Toolkit and RTK Query Best Practices gives state the same rule (<a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#derive-views-with-selectors">Derive views with selectors</a>). The shared reader, <code>src/shared/design.ts</code>, parses the file into readonly types once, at the edge, and derives the rest:</p>
-<pre class="code-block" tabindex="0"><code>/** Every point of a d-factor design, in order: 000, 001, 010, ... */
+<pre class="code-block" tabindex="0"><code>// src/shared/design.ts, the three functions this lesson uses
+/** Every point of a d-factor design, in order: 000, 001, 010, ... */
 export const points = (d: number): readonly string[] =&gt;
   Array.from({ length: 2 ** d }, (_, i) =&gt; i.toString(2).padStart(d, "0"));
 
@@ -408,7 +409,8 @@ export const validateFamily = (d: number, declared: Declared, family: readonly M
 };</code></pre>
 <p>The validator returns every fault as data, the way the lecture Practical Applications of Functional Programming collects every failure instead of stopping at the first (<a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#accumulate-every-error-with-validation">Accumulate every error with validation</a>). A family with a missing point and a changed answer needs both repairs, and a report that names only one sends the generator round twice.</p>
 <p>The contract starts as a feature, written in Gherkin the way <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) syntax in BDD</a> teaches:</p>
-<pre class="code-block" tabindex="0"><code>Feature: A matched family holds the facts and moves the voice
+<pre class="code-block" tabindex="0"><code># src/geometric-reasoning-as-data/family.feature
+Feature: A matched family holds the facts and moves the voice
   The coffee cart's dairy-free latte sheet, answered at every point of its three traits.
   The facts and the answer are invariant. The tone is expressive.
 

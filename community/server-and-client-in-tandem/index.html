@@ -642,7 +642,8 @@ export const decodeResult = (raw: unknown): Decoded =&gt; {
 <p>That is stricter than MCP asks of a general client. This client talks only to its own route, which always sends <code>resultType</code> and a state with every question, so it refuses a reply missing either. A general MCP client reads a missing <code>resultType</code> as complete, as the specification requires for servers on earlier revisions, and takes a question that carries no state.</p>
 <p>RFC 9413, <a href="https://www.rfc-editor.org/rfc/rfc9413.html">Maintaining Robust Protocols</a>, makes the case for that strictness: a fatal error for a condition the specification doesn&rsquo;t cover gets the fault attention, where tolerating it conceals the problem.</p>
 <p>The malformed shapes run as a <a href="https://cucumber.io/docs/gherkin/reference/">Scenario Outline</a> in <code>decode.feature</code>, once per row of its examples, each row a whole reply through the real decoder:</p>
-<pre class="code-block" tabindex="0"><code>Feature: Every reply decodes strictly, or not at all
+<pre class="code-block" tabindex="0"><code># src/server-and-client-in-tandem/decode.feature
+Feature: Every reply decodes strictly, or not at all
 
   Each row's JSON is a whole reply from the server, run through the real decoder.
 

@@ -725,6 +725,14 @@ const withCommunitySitemap = (name, html) => {
 // card keeps its image, its title follows LESSONS, and its excerpt is its page's
 // meta description. A new lesson needs one card, added by hand to any archive
 // page, before the sync can place it. Sean's cut-sheet page itself is untouched.
+// Its meta description (an agent's, not Sean's) claims what the page doesn't say, so
+// its card takes its excerpt from here, in the page's own terms (community loop round 6).
+const CARD_EXCERPTS = new Map([
+  [
+    "/community/from-marketing-to-development/",
+    "The team's cut-sheet: the path from cold leads to delivered work, and what the team produces in-house.",
+  ],
+]);
 const ARCHIVE_BASES = ["/community/", "/community/author/seandinwiddie/", "/community/category/development/"];
 const CARD_ORDER = [
   ...LESSONS.map(([slug, title]) => [`/community/${slug}/`, title]),
@@ -786,7 +794,8 @@ const withPartHeadings = (cards) =>
 const archiveCard = ([href, title]) => {
   const card = HARVESTED_CARDS.get(href);
   if (!card) throw new Error(`archives: no card for ${href}; add one to an archive page by hand`);
-  const description = read(fileForPathname(href)).match(/<meta name="description" content="([^"]*)"/)?.[1];
+  const description =
+    CARD_EXCERPTS.get(href) ?? read(fileForPathname(href)).match(/<meta name="description" content="([^"]*)"/)?.[1];
   if (!description) throw new Error(`${href}: no meta description for its card`);
   return card
     .replace(

@@ -183,7 +183,7 @@
 <h2 id="8-keep-scenarios-small-and-focused"><a class="heading-anchor" href="#8-keep-scenarios-small-and-focused">8. Keep scenarios small and focused</a></h2>
 <p>One scenario, one behavior: a single user interaction, tested on its own. A small scenario is easy to understand, to build and to keep, and when it fails, you know which behavior broke.</p>
 <h2 id="9-write-each-criterion-as-a-rule"><a class="heading-anchor" href="#9-write-each-criterion-as-a-rule">9. Write each criterion as a Rule</a></h2>
-<p>When a Feature holds more than one of the criteria from step 1, they go into it as Rules, each holding the scenarios that test it, so every scenario sits under the criterion it tests and a failure leads straight to it; a Feature with one criterion, like the cart below, needs none.</p>
+<p>When a Feature holds more than one of the criteria from step 1, Rules can group them, each holding the scenarios that test it, so every scenario sits under the criterion it tests and a failure leads straight to it; a Feature with one criterion, like the cart below, needs none.</p>
 <h2 id="example-bdd-scenario"><a class="heading-anchor" href="#example-bdd-scenario">Example BDD scenario</a></h2>
 <p>Here is one for an online shop&rsquo;s cart:</p>
 <pre class="code-block" tabindex="0"><code>Feature: Cart
@@ -197,7 +197,7 @@
 <p>It says what should happen when a customer adds a product to the cart. Its When is the event a cart slice would name <code>itemAdded</code>; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#event-oriented-slices">Redux Toolkit and RTK Query Best Practices</a> names actions after events the same way. Module 4&rsquo;s <a href="/community/from-scenario-to-slice/">From scenario to slice</a> follows it into a slice and its test.</p>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> A step says what happened in the business&rsquo;s words, never how the screen did it: &ldquo;When the customer adds &lsquo;Widget A&rsquo; to the cart&rdquo;, not &ldquo;When she clicks Add&rdquo;. The test is whether the step would survive a redesign.</p>
 <p>Each Then names a value that would be wrong if the behavior broke: &ldquo;the cart total is $25&rdquo; fails when the total is miscounted, while &ldquo;the page shows no error&rdquo; passes when nothing happened at all. A scenario earns its place when breaking the rule it describes makes it fail.</p></aside>
-<p>With these habits, each scenario says, in the user’s terms, exactly how the software should behave, and each becomes a test that fails when the software stops doing what its users expect.</p>
+<p>With these habits, each scenario says, in the user’s terms, exactly how the software should behave, and each becomes a test that fails when the software stops doing what its users expect. <a href="/community/writing-bdd-scenarios-for-software-modules/">Writing BDD scenarios for software modules</a>, next, scopes them to one module, in eleven steps, so a failure points to one place.</p>
 
 <!-- .entry-content -->
 <footer>

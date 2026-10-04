@@ -507,7 +507,7 @@ describe('Feature: Drafting the reply to a booking inquiry', () =&gt; {
    Start at  01:19:33
    Duration  253ms (transform 66%, import 23%, tests 7%, worker 4%)</code></pre>
 <h2 id="evals-before-and-after-every-change"><a class="heading-anchor" href="#evals-before-and-after-every-change">Evals before and after every change</a></h2>
-<p>A test checks the code; an eval checks what the model does with it. The guide&rsquo;s eval is plain data: the skills to load, a query, the files to hand over and the behavior to expect. The salon&rsquo;s file follows that shape and adds one field, the scenario each eval checks:</p>
+<p>A test checks the code; an eval checks what the model does with it. The guide&rsquo;s eval is plain data: the skills to load, a query, the files to hand over and the behavior to expect. The salon&rsquo;s file, <code>evals/evals.json</code> beside the skill&rsquo;s folder, lists its cases under <code>"behavior"</code> in that shape, with one field added, the scenario each eval checks:</p>
 <pre class="code-block" tabindex="0"><code>{
   "scenario": "A day with open times",
   "skills": ["drafting-booking-replies"],
@@ -519,7 +519,7 @@ describe('Feature: Drafting the reply to a booking inquiry', () =&gt; {
     "Ends with check-draft.ts printing ok"
   ]
 },</code></pre>
-<p>The description gets evals of its own, requests that should load the skill and requests that shouldn&rsquo;t, since a description that loads on everything is as broken as one that loads on nothing:</p>
+<p>The description gets evals of its own, requests that should load the skill and requests that shouldn&rsquo;t, since a description that loads on everything is as broken as one that loads on nothing. They go under <code>"triggers"</code> in the same file:</p>
 <pre class="code-block" tabindex="0"><code>"triggers": [
   { "query": "Can you answer Sam's email about a cut on Saturday?", "should_load": true },
   { "query": "A customer wants to know what's open for a color next Tuesday.", "should_load": true },

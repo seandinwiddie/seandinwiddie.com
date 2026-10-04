@@ -221,7 +221,7 @@ Feature: Emailed orders, drafted for one check
 <p>The gate decides what each call the model makes may do. A call that reads, or leaves a note for the person, runs at once. A call off the task&rsquo;s list is refused. A call that would change something is held, since nothing in the loop&rsquo;s reach can make the change, and the only way on is a person&rsquo;s approval, which arrives by a path the model never touches.</p>
 <h2 id="the-gate-is-data-and-pure-functions"><a class="heading-anchor" href="#the-gate-is-data-and-pure-functions">The gate is data and pure functions</a></h2>
 <p>OWASP calls the failure this design guards against <a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM03_ExcessiveAgency.md">excessive agency</a> (LLM03:2026): an agent with more functionality, permissions or autonomy than its job needs, so that a wrong or manipulated output does real damage. Three of its mitigations shape this lesson: offer only the tools a job needs, have a person approve high-impact actions, and enforce authorization in code rather than asking the model whether an action is allowed.</p>
-<p>The first two live in this file. The third is <code>approve</code> and the add-only systems in <code>shop.ts</code>, further down: the only way into the register, the calendar and the order sheet.</p>
+<p>The first two live in this file. The third is <code>approve</code> and the add-only systems in <code>shop.ts</code>: the only way into the register, the calendar and the order sheet.</p>
 <pre class="code-block" tabindex="0"><code>// orders/gate.ts
 // Which tools each task may use, and which calls wait for a person. Data and pure functions.
 import type { ToolCall } from '../agent/model.ts'
@@ -840,15 +840,15 @@ describe('Feature: Emailed orders, drafted for one check', () =&gt; {
   it('has a test for every scenario in order-entry.feature', () =&gt; expect(tested).toEqual(written))
 })</code></pre>
 <pre class="code-block code-output" tabindex="0"><code>$ npx vitest run orders --reporter=verbose | grep -E '✓|Tests'
- ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: A complete order is drafted for one check 26ms
+ ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: A complete order is drafted for one check 18ms
  ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: An email with no pickup day becomes a question 1ms
  ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: Plain code checks a draft before a person sees it 1ms
- ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: Nothing is entered until a person approves it 3ms
+ ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: Nothing is entered until a person approves it 2ms
  ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: Each task gets only the tools on its list 1ms
- ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: A tool nobody has sorted never runs 1ms
+ ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: A tool nobody has sorted never runs 0ms
  ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: The email reaches the model only as data 1ms
  ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: An instruction inside an email changes nothing 2ms
- ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: An eval case passes when the draft matches what the person approved 3ms
+ ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: An eval case passes when the draft matches what the person approved 2ms
  ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; Scenario: An eval case fails when the model guesses what the person asked about 1ms
  ✓ orders/order-entry.test.ts &gt; Feature: Emailed orders, drafted for one check &gt; has a test for every scenario in order-entry.feature 0ms
       Tests  11 passed (11)</code></pre>
@@ -874,7 +874,7 @@ AssertionError: expected [ 'opening_hours', 'menu_item', …(4) ] to deeply equa
 <p>A scripted model tests the plumbing. It can&rsquo;t say whether a real model drafts the right order from a real email. The <a href="/automation/">automation</a> page promises an automation tested against real days rather than a demo, and the evals are where that promise is kept.</p>
 <p>The approvals make the eval set. Every day the person at the counter approves drafts and answers questions, and each email is a case, the email as it arrived and what the person did with it: the order they approved, the one they entered by hand in its place, or the question they had to ask. Anthropic&rsquo;s guide to <a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">building evaluations</a> asks for evals that mirror the real mix of tasks, edge cases included, graded automatically where possible.</p>
 <pre class="code-block" tabindex="0"><code>// orders/evals.ts
-// Evals on real days: each case is an email the bakery got and what the person at the counter did with it.
+// Evals on real days: each case is an email and what the person at the counter did with it.
 import { isDeepStrictEqual } from 'node:util'
 import type { Bakery } from '../agent/bakery.ts'
 import type { Model } from '../agent/model.ts'
@@ -904,13 +904,14 @@ export const grade = (want: EvalCase['approved'], got: Review): readonly string[
 }
 
 // The same shell as the counter's, case by case, each with a fresh model.
-export const runEvals = (bakery: Bakery, cases: readonly EvalCase[], model: (tools: readonly ToolSpec[]) =&gt; Model) =&gt;
-  Promise.all(
-    cases.map(async ({ email, approved }) =&gt; {
-      const inbox = { read: (id: string) =&gt; (id === email.id ? email : undefined) }
-      return { email: email.id, faults: grade(approved, await draftFromEmail({ bakery, inbox }, model, email.id)) }
-    }),
-  )</code></pre>
+export const runEvals = async (bakery: Bakery, cases: readonly EvalCase[], model: (tools: readonly ToolSpec[]) =&gt; Model) =&gt; {
+  const results = []
+  for (const { email, approved } of cases) {
+    const inbox = { read: (id: string) =&gt; (id === email.id ? email : undefined) }
+    results.push({ email: email.id, faults: grade(approved, await draftFromEmail({ bakery, inbox }, model, email.id)) })
+  }
+  return results
+}</code></pre>
 <p><code>grade</code> is code, not a second model: a draft matches what the person approved or it doesn&rsquo;t, and a request off the task&rsquo;s list counts against the case. The two eval scenarios run it with a scripted model, so the grader is tested before it grades anything real.</p>
 <p>With Claude in the seat, the same shell runs at the counter and in the evals, through the adapter from <a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a>:</p>
 <pre class="code-block" tabindex="0"><code>// orders/live.ts

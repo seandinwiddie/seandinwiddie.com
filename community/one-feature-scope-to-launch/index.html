@@ -215,6 +215,7 @@ data ChargeRequest = ChargeRequest
 data Charge = Charged ChargeId | Declined | Unavailable
 
 newtype Payments = Payments { charge :: ChargeRequest -&gt; IO Charge }</code></pre>
+<p>Here the provider keeps the card she chose as her default; a provider whose form hands back a token for the card instead needs that token carried in <code>NewOrder</code> and <code>ChargeRequest</code>, a change to the contract at both ends, as the retry key below is.</p>
 <h3>Decide, charge, then write</h3>
 <p>The handler from <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> now works in three steps:</p>
 <ol>
@@ -262,7 +263,7 @@ server payments pool (Authenticated user) tenantId = listOrders :&lt;|&gt; place
 server _ _ _ _ = throwAll err401
 
 -- Every refusal the API expects, as data.
-data Problem = EmptyOrder | UnknownProduct Text | CardDeclined | PaymentsUnavailable
+data Problem = EmptyOrder | UnknownProduct Text | BadLine Text | CardDeclined | PaymentsUnavailable
 
 instance ToJSON Problem where
   toJSON problem = object ["reason" .= reasonOf problem]
@@ -270,6 +271,7 @@ instance ToJSON Problem where
 reasonOf :: Problem -&gt; Text
 reasonOf EmptyOrder = "empty-order"
 reasonOf (UnknownProduct _) = "unknown-product"
+reasonOf (BadLine _) = "bad-line"
 reasonOf CardDeclined = "card-declined"
 reasonOf PaymentsUnavailable = "payments-unavailable"
 
@@ -278,6 +280,7 @@ reasonOf PaymentsUnavailable = "payments-unavailable"
 statusFor :: Problem -&gt; ServerError
 statusFor EmptyOrder = err422
 statusFor (UnknownProduct _) = err422
+statusFor (BadLine _) = err422
 statusFor CardDeclined = err422
 statusFor PaymentsUnavailable = err503
 
@@ -334,7 +337,7 @@ spec = do
           `shouldRespondWith` [json|{"reason": "payments-unavailable"}|] {matchStatus = 503}
         -- Then no order is recorded
         ordersFor token `shouldRespondWith` 200 {matchBody = bodyEquals history}</code></pre>
-<p>The pure core is tested on its own, with no database and no provider: <code>validateOrder</code> returns an empty order or an unknown product as a value the test compares, the way the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> represents expected failure as plain data.</p>
+<p>The pure core is tested on its own, with no database and no provider: <code>validateOrder</code> returns an empty order, an unknown product or a bad line (a quantity under 1, or a product listed twice) as a value the test compares, the way the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> represents expected failure as plain data.</p>
 <p>The provider, like the database, stays in the shell, the line the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws between a functional core and an imperative shell.</p>
 <h2 id="4-the-endpoint-and-the-slice-change-nothing"><a class="heading-anchor" href="#4-the-endpoint-and-the-slice-change-nothing">4. The endpoint and the slice change nothing</a></h2>
 <p>In the client, the same refusal arrives as data. RTK Query dispatches <code>placeOrder</code>&rsquo;s rejected action with the status and the API&rsquo;s reason, <code>{ status: 422, data: { reason: 'card-declined' } }</code>, and two layers have to do nothing with it. A provider that is down arrives the same way, as 503 with a reason of its own, and they do nothing with it either.</p>
@@ -411,7 +414,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 </ul>
 <p>A failure in any of them names the same behavior, so the owner can read a test report in the scope&rsquo;s own words. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations can&rsquo;t.</p>
 <h2 id="6-the-review-against-the-scope"><a class="heading-anchor" href="#6-the-review-against-the-scope">6. The review against the scope</a></h2>
-<p>Before anything goes live, the results are reviewed against the written scope, line by line: first by a peer on the team (a junior&rsquo;s launch by a senior, as <a href="/community/staff/">Joining the team</a> sets out), then by Sean, who reviews every launch. The review checks results, never how the work was done; on a custom app, its passing scenarios are part of the result. For the checkout it reads:</p>
+<p>Before anything goes live, the results are reviewed against the written scope, line by line: first, where the webmaster&rsquo;s rung sets one, by a peer on the team (a junior&rsquo;s launch by a senior, as <a href="/community/staff/">Joining the team</a> sets out), then by Sean, who reviews every launch. The review checks results, never how the work was done; on a custom app, its passing scenarios are part of the result. For the checkout it reads:</p>
 <pre class="code-block" tabindex="0"><code>Review against the scope: Checkout
 
 [x] Story 1   Placing the order: passes at the API, the endpoint, the slice and the view
@@ -428,7 +431,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
               no cart on the server</code></pre>
 <p>A line that fails sends the work back; it moves to a later scope only if the owner approves the change. Anything the review finds that the scope never named, however small, is written up as its own story and quoted before it starts.</p>
 <p>The job then ends the way every job does: a check that it works, and a plain note the owner keeps, saying what was built, which scenarios prove it and how to run it.</p>
-<p>Before asking for the review, the webmaster makes their own pass over the code, and the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#code-review-checklist">Functional Programming Maintenance Strategy</a> keeps a checklist for it. What the review finds doesn&rsquo;t stop with one job or one webmaster: it becomes the team&rsquo;s.</p>
+<p>Before asking for the review, the webmaster makes their own pass over the code, and the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#code-review-checklist">Functional Programming Maintenance Strategy</a> keeps a checklist for it. What the review finds reaches the rest of the team through the lessons, revised as the practice improves.</p>
 <p>Two end-to-end journeys, one placed and one declined, are enough: the lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">Modern Redux Architecture Patterns</a> keeps end-to-end tests to a small number of critical journeys, because each layer&rsquo;s own test has already proved its part.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The charge and the write can&rsquo;t share a transaction, so their order is a decision, and the shell above makes it one way: charge, then write. If the write fails after the charge, the customer has paid for an order that doesn&rsquo;t exist.</p>
 <p>The usual answer is two calls to the provider: authorize the card for the total, write the order, then capture the payment, voiding the authorization if the write fails, so no money moves until the order exists.</p>

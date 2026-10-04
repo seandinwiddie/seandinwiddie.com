@@ -163,7 +163,7 @@
 <li>
 <strong>Overlap:</strong> Some scenarios cover ground a unit test covers too. Test each rule once, at the lowest layer that shows it: a scenario covers the behavior a user can name, and a unit test covers the edge cases of the pure function beneath it.</li>
 <li>
-<strong>Integration testing:</strong> Scenarios and unit tests each work at their own level; integration tests check that the components work together.</li>
+<strong>Integration testing:</strong> On the team, the scenarios at the endpoint and the view are integration tests already: each runs in a real store, with a stand-in only at the network, so separate integration tests stay few.</li>
 <li>
 <strong>Test maintenance:</strong> Scenarios and unit tests both need upkeep as the software evolves. A test changes in the same commit as the behavior it checks, so the suite never describes software that no longer exists.</li>
 </ul>
@@ -176,7 +176,7 @@
 <li>Break the words for a dropped connection, which no scenario names, and only the unit test sees it.</li>
 </ul>
 <p>So the overlap stays thin: the scenario checks the one case an owner would name and matches only the words that carry the behavior, and the unit test pins every case word for word. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> tests every branch of a pure function the same way.</p></aside>
-<p>So a scenario tests behavior a user can name, at the lowest layer that shows it: on the Sean Dinwiddie’s Webmastery team, usually a slice, a selector or an endpoint rather than the screen. A unit test pins the cases of the pure function beneath it. Together they keep the software doing what its users need, and each failure points to its cause.</p>
+<p>So a scenario tests behavior a user can name, at the lowest layer that shows it: on the Sean Dinwiddie’s Webmastery team, usually a slice, a selector or an endpoint rather than the screen. A unit test pins the cases of the pure function beneath it. Together they keep the software doing what its users need, and each failure points to its cause. <a href="/community/bdd-testing-framework/">BDD testing framework</a>, next, runs one cart scenario both ways, in cucumber-js and in Vitest, against the same reducer.</p>
 
 <!-- .entry-content -->
 <footer>

@@ -418,6 +418,7 @@ const line = useAppSelector((state) =&gt; selectCheckoutLine(state, productId))<
 <p>Results kept for a value that never repeats, such as a timestamp, pile up; current Reselect (5.3) gives <code>weakMapMemoize</code> a <code>maxSize</code> for that, set in both <code>memoizeOptions</code> and <code>argsMemoizeOptions</code>, and warns in development when a cache keeps growing.</p>
 <p>And when a view model starts to carry a rule, such as a minimum order before <code>canPlace</code> turns true, the rule has outgrown it: it gets a scenario of its own, and the slice or the API decides it, where the scenario can test it.</p></aside>
 <p>One scenario now runs through the whole chain, and each layer proves its own part under the same name: the API records the order in the Hspec test, the endpoint refetches the history, the slice empties the cart, and the view shows the customer the order placed and the cart empty. The view holds none of those rules, which is why it stays small enough to read on one screen.</p>
+<p><a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a>, next, runs the scenario that tests the chain hardest, a declined card, from the written scope to the review before launch.</p>
 
 <!-- .entry-content -->
 <footer>
