@@ -2,6 +2,17 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Meetup talks after the loops: October 4, 2026
+
+The voice loop reached 9 on both talks in its ninth round (the automation talk had held 9 since round 5; the protocol talk's student, owner, engineer and voice scores all reached 9), and the CTO and webmaster/SWE loop then ran rounds 9 to 12. Two points it left on the protocol talk are settled here.
+
+- **The subagent:** the tool diagram's label and description, and the slide's note, said every subagent starts fresh. They now say a subagent works in a context of its own, and one set up ahead of time for its job starts fresh, matching Extending the harness (a fork inherits the whole conversation).
+- **The length:** the protocol talk's notes run about 3,400 words, so the lede, its three descriptions and the Module 6 opener say twenty-five minutes; the automation talk stays at twenty.
+
+### Waiting
+
+- Sean's read of both talks and their photographs, and each talk's card photograph on its archive page (`todo.md`, Meetup talks).
+
 ## Community loop round 12: CTO and webmaster/SWE reviews: October 4, 2026
 
 The same two reviewers read the course, the hub and archives, Joining the team, the offer page and contact a twelfth time: the senior CTO for accuracy, in six groups, and the webmaster/SWE for the sign-up hook, once on the front door and once across a spread of lessons as a senior software engineer weighing whether to join. Five fixers applied their findings by part of the course, re-running every example they touched (Module 2's review found nothing to fix); no finding needed the sync, and the integrator brought the shared docs up to date.
