@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <title>The API: Haskell Servant and Nile | Sean Dinwiddie&#x27;s Webmastery</title>
-  <meta name="description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer&#x27;s data kept apart in Nile&#x27;s Postgres.">
+  <meta name="description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each shop&#x27;s data kept apart in Nile&#x27;s Postgres.">
   <link rel="canonical" href="https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="The API: Haskell Servant and Nile | Sean Dinwiddie&#x27;s Webmastery">
-  <meta property="og:description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer&#x27;s data kept apart in Nile&#x27;s Postgres.">
+  <meta property="og:description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each shop&#x27;s data kept apart in Nile&#x27;s Postgres.">
   <meta property="og:url" content="https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/">
   <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
   <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
@@ -21,7 +21,7 @@
   <meta property="article:modified_time" content="2026-10-04">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The API: Haskell Servant and Nile | Sean Dinwiddie&#x27;s Webmastery">
-  <meta name="twitter:description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer&#x27;s data kept apart in Nile&#x27;s Postgres.">
+  <meta name="twitter:description" content="The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each shop&#x27;s data kept apart in Nile&#x27;s Postgres.">
   <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
   <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
   <meta property="og:locale" content="en_US">
@@ -32,7 +32,7 @@
   <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
   <link rel="stylesheet" href="/assets/fontawesome.css">
   <link rel="stylesheet" href="/assets/site.css">
-  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#webpage","url":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/","name":"The API: Haskell Servant and Nile | Sean Dinwiddie's Webmastery","description":"The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer's data kept apart in Nile's Postgres.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-10-04"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"The API: Haskell Servant and Nile","item":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#article","headline":"The API: Haskell Servant and Nile","description":"The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each customer's data kept apart in Nile's Postgres.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-10-04"}]}</script>
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#webpage","url":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/","name":"The API: Haskell Servant and Nile | Sean Dinwiddie's Webmastery","description":"The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each shop's data kept apart in Nile's Postgres.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-10-04"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"The API: Haskell Servant and Nile","item":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#article","headline":"The API: Haskell Servant and Nile","description":"The API behind a custom app: a Haskell Servant type that states every route, thin handlers, and each shop's data kept apart in Nile's Postgres.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-09-30T12:00:00+00:00","dateModified":"2026-10-04"}]}</script>
 </head>
 <body class="site-page family-community">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/the-api-haskell-servant-and-nile/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
+<a href="/community/the-api-haskell-servant-and-nile/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>The last link in the team&rsquo;s chain is the API behind the app. Module 2&rsquo;s scenarios already say what each endpoint answers. On the Sean Dinwiddie&rsquo;s Webmastery team, a Haskell Servant type states it, thin handlers carry it out, and Nile, Postgres built for apps that serve many customers, keeps each customer&rsquo;s data apart.</p>
+<p>The last link in the team&rsquo;s chain is the API behind the app. Module 2&rsquo;s scenarios already say what each endpoint answers. On the Sean Dinwiddie&rsquo;s Webmastery team, a Haskell Servant type states it, thin handlers carry it out, and Nile, Postgres built for apps that serve many organizations, keeps each shop&rsquo;s data apart.</p>
 <nav class="module-lessons" aria-labelledby="module-lessons">
 <h2 id="module-lessons">Lessons in this module</h2>
 <ol start="2">
@@ -131,7 +131,7 @@
   "tenants" :&gt; Capture "tenantId" TenantId :&gt; "orders" :&gt;
     (    Get '[JSON] [Order]
     :&lt;|&gt; ReqBody '[JSON] NewOrder :&gt; PostCreated '[JSON] Order )</code></pre>
-<p>The type reads like the scenario it serves: for a signed-in user and one customer, list the orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
+<p>The type reads like the scenario it serves: for a signed-in user and one shop, list their orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
 <h2 id="2-handlers-stay-thin"><a class="heading-anchor" href="#2-handlers-stay-thin">2. Handlers stay thin</a></h2>
 <p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction:</p>
 <ol>
@@ -143,11 +143,11 @@
 <pre class="code-block" tabindex="0"><code>server :: Pool Connection -&gt; Server OrdersAPI
 server pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
   where
-    listOrders = withTenant pool user tenantId selectOrders
+    listOrders = withTenant pool user tenantId (selectOrders user)
     placeOrder new = do
       decided &lt;- withTenant pool user tenantId $ \conn -&gt; do
         prices &lt;- selectPrices conn new
-        traverse (insertOrder conn) (validateOrder prices new)
+        traverse (insertOrder conn user) (validateOrder prices new)
       either (\problem -&gt; throwError err422 { errBody = encode problem, errHeaders = [(hContentType, "application/json")] }) pure decided
 server _ _ _ = throwAll err401
 
@@ -182,13 +182,15 @@ withTenant pool user tenantId work = do
 <figcaption>The violet line is an order that is placed: a valid sign-in, a member of the tenant, an order that passes the pure check and is written, all from <code>withTenant</code> to <code>insertOrder</code> in one transaction, then 201 Created. Each refusal leaves at its own step, with its own status.</figcaption>
 </figure>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws the same line as a functional core and an imperative shell, and <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> shows why the core stays pure.</p>
-<h2 id="3-each-customers-data-stays-apart-in-nile"><a class="heading-anchor" href="#3-each-customers-data-stays-apart-in-nile">3. Each customer&rsquo;s data stays apart in Nile</a></h2>
+<h2 id="3-each-shops-data-stays-apart-in-nile"><a class="heading-anchor" href="#3-each-shops-data-stays-apart-in-nile">3. Each shop&rsquo;s data stays apart in Nile</a></h2>
 <p>Nile is Postgres built for apps that serve many organizations, each a tenant. A table that holds a tenant&rsquo;s rows carries a <code>tenant_id</code> and includes it in its primary key, and the tenants themselves live in Nile&rsquo;s built-in <code>tenants</code> table:</p>
 <pre class="code-block" tabindex="0"><code>CREATE TABLE orders (
   tenant_id uuid REFERENCES tenants (id),
   id uuid DEFAULT gen_random_uuid(),
+  user_id uuid NOT NULL,
   total_cents integer NOT NULL,
-  PRIMARY KEY (tenant_id, id)
+  PRIMARY KEY (tenant_id, id),
+  FOREIGN KEY (tenant_id, user_id) REFERENCES users.tenant_users (tenant_id, user_id)
 );
 
 CREATE TABLE order_lines (
@@ -205,8 +207,8 @@ CREATE TABLE order_lines (
 <p>Inside <code>withTenant</code>, the handler opens a transaction and names the tenant and the user before its queries:</p>
 <pre class="code-block" tabindex="0"><code>SET LOCAL nile.tenant_id = '018ade1a-7830-7981-b23f-f3a7f7b8f09f';
 SET LOCAL nile.user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';
-SELECT id, total_cents FROM orders;</code></pre>
-<p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one customer into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
+SELECT id, total_cents FROM orders WHERE user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';</code></pre>
+<p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. Nile keeps one shop&rsquo;s orders from another&rsquo;s; inside a shop, each order records the customer who placed it, and <code>selectOrders</code> reads only the signed-in customer&rsquo;s. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one shop into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="tenants-title tenants-desc" viewBox="0 0 360 252">
 <title id="tenants-title">What a tenant's connection sees</title>
@@ -277,7 +279,7 @@ spec = do
         token &lt;- liftIO (signIn grace)
         request methodPost (ordersPath shop) (asUser token) widgetAOrder `shouldRespondWith` 403</code></pre>
 <p>Each test carries its scenario&rsquo;s name, such as <code>it "Scenario: Placing the order"</code>, so a failing test names the behavior that broke. The pure core, such as <code>validateOrder</code>, is tested on its own, with no database at all. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations cannot.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app with one owner and no customers of its own needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs this stack. A brochure site on WordPress has no API of its own to write. An app for one business needs no tenants, and plain Postgres serves it; Nile earns its place when the app serves many organizations whose data must never meet.</p>
 <p>And a route that only reshapes data another service already owns usually belongs to that service, not to a new API.</p>
 <p>Each order line records the name and price it sold at, because prices change after the sale, and Nile&rsquo;s own edges point the same way: a tenant table can&rsquo;t carry a foreign key into a shared table other than Nile&rsquo;s built-in <code>tenants</code>, and one transaction can&rsquo;t write to both.</p></aside>
 <p>The API closes the chain the course began with: a feature scoped as a user story, its scenarios in Gherkin, the slice and endpoint that pass them, and the typed API and tenant-safe data behind them. The next lesson follows one of those scenarios back into the client, as a Redux Toolkit slice.</p>
@@ -291,7 +293,7 @@ spec = do
 <a href="/community/from-scenario-to-slice/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">From scenario to slice</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

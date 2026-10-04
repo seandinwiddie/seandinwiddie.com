@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/python-the-teams-way/" rel="bookmark"><time datetime="2026-10-01T12:00:00+00:00">October 1, 2026</time></a>·
+<a href="/community/python-the-teams-way/" rel="bookmark">Updated <time datetime="2026-10-03">October 3, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -710,14 +710,14 @@ def test_the_training_rows_the_config_names_meet_their_contract():
     config = read_config(ROOT / "config/train.json")
     rows = [json.loads(line) for line in (ROOT / config.train).read_text().splitlines() if line]
     validate(rows, json.loads((ROOT / "data/counts.json").read_text()))</code></pre>
-<p><code>uv run --locked</code> runs a command in the project&rsquo;s environment. It stops if the lock no longer matches <code>pyproject.toml</code>, brings the environment in line with the lock, and only then runs the command. So one command checks, before any training run:</p>
+<p><code>uv run --locked --exact</code> runs a command in the project&rsquo;s environment. It stops if the lock no longer matches <code>pyproject.toml</code>, brings the environment exactly in line with the lock, removing anything the lock doesn&rsquo;t name, and only then runs the command. So one command checks, before any training run:</p>
 <ul>
 <li>the lock is current;</li>
 <li>the config reads;</li>
 <li>the training rows the config names meet their contract;</li>
 <li>every test passes.</li>
 </ul>
-<pre class="code-block code-output" tabindex="0"><code>$ uv run --locked python -m pytest -q
+<pre class="code-block code-output" tabindex="0"><code>$ uv run --locked --exact python -m pytest -q
 .................
 17 passed in 0.02s</code></pre>
 <p>It never writes the lock, the config or the data. Regenerating data is a separate command, so checking can never change what it checks.</p>
@@ -736,7 +736,7 @@ def test_the_training_rows_the_config_names_meet_their_contract():
 <a href="/community/measuring-reasoning-on-the-geometry/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Measuring reasoning on the geometry</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

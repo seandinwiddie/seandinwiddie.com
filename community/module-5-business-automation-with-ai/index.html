@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/module-5-business-automation-with-ai/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+<a href="/community/module-5-business-automation-with-ai/" rel="bookmark">Updated <time datetime="2026-10-03">October 3, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -130,7 +130,7 @@
 <figure class="diagram">
 <svg role="img" aria-labelledby="module-5-business-automation-with-ai-chain-title module-5-business-automation-with-ai-chain-desc" viewBox="0 0 360 417">
 <title id="module-5-business-automation-with-ai-chain-title">The chain, with the agent in the middle</title>
-<desc id="module-5-business-automation-with-ai-chain-desc">Five boxes in a column, joined top to bottom by highlighted arrows: the user story, which names the job; the scenarios, which say what done right means; the agent, highlighted; the tests and evals, which prove it; and the handover, where the owner runs it. Inside the agent, a box for the skill points to the model, and arrows run both ways between the model and its tools. Two notes beneath them say a skill loads when a task matches and a person approves what leaves.</desc>
+<desc id="module-5-business-automation-with-ai-chain-desc">Five boxes in a column, joined top to bottom by highlighted arrows: the user story, which names the job; the scenarios, which say what done right means; the agent, highlighted; the tests and evals, which prove it; and the handover, where the owner runs it. Inside the agent, a box for the skill points to the model, and arrows run both ways between the model and its tools. Two notes beneath them say a skill loads when a task matches and a person approves each change.</desc>
 <g class="path"><line x1="180" y1="56.5" x2="180" y2="80.5"/><line x1="177" y1="75.3" x2="180" y2="80.5"/><line x1="183" y1="75.3" x2="180" y2="80.5"/><line x1="180" y1="124.5" x2="180" y2="148.5"/><line x1="177" y1="143.3" x2="180" y2="148.5"/><line x1="183" y1="143.3" x2="180" y2="148.5"/><line x1="180" y1="268.5" x2="180" y2="292.5"/><line x1="177" y1="287.3" x2="180" y2="292.5"/><line x1="183" y1="287.3" x2="180" y2="292.5"/><line x1="180" y1="336.5" x2="180" y2="360.5"/><line x1="177" y1="355.3" x2="180" y2="360.5"/><line x1="183" y1="355.3" x2="180" y2="360.5"/></g>
 <rect class="node" x="64.5" y="12.5" width="231" height="44" rx="4"/>
 <rect class="node" x="64.5" y="80.5" width="231" height="44" rx="4"/>
@@ -141,9 +141,9 @@
 <rect class="node" x="254.5" y="180.5" width="80" height="32" rx="4"/>
 <rect class="node" x="64.5" y="292.5" width="231" height="44" rx="4"/>
 <rect class="node" x="64.5" y="360.5" width="231" height="44" rx="4"/>
-<g><text x="180" y="26.5">the user story</text><text class="note" x="180" y="43.5">names the job</text><text x="180" y="94.5">the scenarios</text><text class="note" x="180" y="111.5">say what done right means</text><text x="180" y="164.5">the agent</text><text x="65.5" y="196.5">skill</text><text x="180" y="196.5">model</text><text x="294.5" y="196.5">tools</text><text class="note" x="180" y="232.5">a skill loads when a task matches</text><text class="note" x="180" y="252.5">a person approves what leaves</text><text x="180" y="306.5">the tests and evals</text><text class="note" x="180" y="323.5">prove it</text><text x="180" y="374.5">the handover</text><text class="note" x="180" y="391.5">the owner runs it</text></g>
+<g><text x="180" y="26.5">the user story</text><text class="note" x="180" y="43.5">names the job</text><text x="180" y="94.5">the scenarios</text><text class="note" x="180" y="111.5">say what done right means</text><text x="180" y="164.5">the agent</text><text x="65.5" y="196.5">skill</text><text x="180" y="196.5">model</text><text x="294.5" y="196.5">tools</text><text class="note" x="180" y="232.5">a skill loads when a task matches</text><text class="note" x="180" y="252.5">a person approves each change</text><text x="180" y="306.5">the tests and evals</text><text class="note" x="180" y="323.5">prove it</text><text x="180" y="374.5">the handover</text><text class="note" x="180" y="391.5">the owner runs it</text></g>
 </svg>
-<figcaption>The course&rsquo;s chain, top to bottom along the violet arrows, with the agent where the code was, outlined in violet. Inside it the model asks for tools and reads their results, a skill can bring the know-how for the task at hand, and a person approves anything outward.</figcaption>
+<figcaption>The course&rsquo;s chain, top to bottom along the violet arrows, with the agent where the code was, outlined in violet. Inside it the model asks for tools and reads their results, a skill can bring the know-how for the task at hand, and a person approves every change.</figcaption>
 </figure>
 <p>Take the first job on the automation page, the same thing typed twice, with the order arriving by email rather than by phone, so an agent can read it. The module&rsquo;s last lesson builds it, calling the page&rsquo;s spreadsheet the order sheet, and along the chain it reads like this:</p>
 <ul>
@@ -162,7 +162,7 @@
 </ul>
 <p>Anthropic calls a skill&rsquo;s staged loading <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">progressive disclosure</a>, and <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">published the format</a> as an open standard in December 2025. Its <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices">guide to writing skills</a> asks for the evaluations before the instructions, the order BDD asks for: say what done right means, then build.</p>
 <h2 id="a-person-approves-what-leaves-the-building"><a class="heading-anchor" href="#a-person-approves-what-leaves-the-building">A person approves what leaves the building</a></h2>
-<p>Inside the building, the agent reads and drafts. At the door stands a person: anything outward, such as sending an email, taking a payment, deleting a record or booking a slot, waits for someone to approve it. A draft costs nothing to throw away, and a sent email can&rsquo;t be unsent.</p>
+<p>Inside the building, the agent reads and drafts. At the door stands a person: anything that changes something or goes out, such as sending an email, taking a payment, deleting a record or booking a slot, waits for someone to approve it. A draft costs nothing to throw away, and a sent email can&rsquo;t be unsent.</p>
 <p>Three more rules keep the door honest. Each task gets only the tools it needs, so the order-entry agent has no tool that sends email at all. Text from outside is data, never instructions, and the program holds that line, not the model: an email that tells the agent to ignore its rules changes nothing the program lets it do. And every action leaves a log line, so the owner can read what the agent did.</p>
 <p>OWASP ranks prompt injection first among the risks to apps built on large language models (<a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM01_PromptInjection.md">LLM01:2026</a>). It names a web page, a document and an email among the ways in, and its controls include least privilege for each operation and a person&rsquo;s confirmation before any privileged, irreversible or externally visible action. <a href="/community/automating-a-business-process/">The module&rsquo;s last lesson</a> tests each rule.</p>
 <p>It is the course&rsquo;s rule about effects, at the scale of a business: the model proposes, plain code and a person decide what happens, and the effects wait at the edge, the habit the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> teaches for a single function.</p>
@@ -186,7 +186,7 @@
 <a href="/community/kfalls-ai-meetup-business-automation-with-si/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Meetup talk: Business automation with SI (agentic skills)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/one-feature-scope-to-launch/" rel="bookmark"><time datetime="2026-10-01T12:00:00+00:00">October 1, 2026</time></a>·
+<a href="/community/one-feature-scope-to-launch/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -146,10 +146,11 @@ Story 2. As a customer, I want to see my past orders,
 Story 3. As a shop owner, I want my shop's orders kept apart from every
   other shop's, so that no one outside it can place or read them.
     Scenario: Placing an order in someone else's shop
+    Scenario: Reading the orders of someone else's shop
 
-Not in this scope: choosing where the order ships; refunds;
-  the confirmation email; a cart that follows the customer from
-  phone to laptop
+Not in this scope: choosing where the order ships (each order
+  goes to the customer's saved address); refunds; the confirmation
+  email; a cart that follows the customer from phone to laptop
 
 Done when: each scenario passes at every layer that holds part of it,
   and the review against this scope finds nothing missing</code></pre>
@@ -243,7 +244,7 @@ newtype Payments = Payments { charge :: ChargeRequest -&gt; IO Charge }</code></
 <pre class="code-block" tabindex="0"><code>server :: Payments -&gt; Pool Connection -&gt; Server OrdersAPI
 server payments pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
   where
-    listOrders = withTenant pool user tenantId selectOrders
+    listOrders = withTenant pool user tenantId (selectOrders user)
     placeOrder new = do
       -- Decide: today's prices, then the pure check.
       decided &lt;- withTenant pool user tenantId $ \conn -&gt; do
@@ -257,7 +258,7 @@ server payments pool (Authenticated user) tenantId = listOrders :&lt;|&gt; place
       case charged of
         Declined -&gt; refuse CardDeclined
         Unavailable -&gt; refuse PaymentsUnavailable
-        Charged chargeId -&gt; withTenant pool user tenantId $ \conn -&gt; insertOrder conn orderId chargeId order
+        Charged chargeId -&gt; withTenant pool user tenantId $ \conn -&gt; insertOrder conn user orderId chargeId order
 server _ _ _ _ = throwAll err401
 
 -- Every refusal the API expects, as data.
@@ -417,7 +418,8 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 [x] Story 1   Placing the order with a declined card: passes at all four
 [x] Story 1   Placing the order while payments are down: passes at all four
 [x] Story 2   Listing my orders: passes at the API and the endpoint
-[x] Story 3   Placing an order in someone else's shop: the API answers 403
+[x] Story 3   Placing an order in, or reading the orders of, someone else's
+              shop: the API answers 403
 [x] Stack     as named; the client's endpoints regenerated from the API's
               current openapi.json, and the diff read
 [x] Journey   one order placed end to end on a phone and one declined,
@@ -436,7 +438,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 <p>A timeout after the request went out is no answer at all, since the provider may have charged the card, and a 5xx from the provider isn&rsquo;t <code>Unavailable</code> either, since the request reached it.</p>
 <p>Either way the real <code>charge</code> sends the same request again with the same key, which a provider that honors the key answers with its first result rather than a second charge; once an attempt has gone out, a retry that can&rsquo;t connect is no answer either. If it still has no answer it can trust, it throws, the server answers 500, and the customer reads that the order wasn&rsquo;t confirmed, never that she wasn&rsquo;t charged.</p></aside>
 <p>That is the course&rsquo;s chain in one feature: a story in the written scope, its scenarios in Gherkin, a typed API that refuses with a reason, an endpoint and a slice that change nothing they shouldn&rsquo;t, a view that says what happened, and a review against the scope before anything goes live.</p>
-<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>. <a href="/community/module-5-business-automation-with-ai/">Module 5</a>, next, puts an agent to work along the same chain, with a person approving what leaves the building. Webmasters at any stage of the craft build this way under the Sean Dinwiddie&rsquo;s Webmastery name, and every launch gets a review like the one above.</p>
+<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>. <a href="/community/module-5-business-automation-with-ai/">Module 5</a>, next, puts an agent to work along the same chain, with a person approving what leaves the building. Under the Sean Dinwiddie&rsquo;s Webmastery name, every launch gets the review in section 6, Sean&rsquo;s review last.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -447,7 +449,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 <a href="/community/module-5-business-automation-with-ai/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 5: Business automation with AI (agentic skills)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

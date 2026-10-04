@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/endpoints-at-the-boundary/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
+<a href="/community/endpoints-at-the-boundary/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -389,7 +389,7 @@ export const cartApi = cartReadApi.injectEndpoints({
 })</code></pre>
 <p>The patch, its undo and the server&rsquo;s cart that replaces it live in the mutation&rsquo;s own lifecycle, never in a view. The request carries the product alone: the name and price in the patch are for display until the server&rsquo;s cart, priced by the API, takes their place.</p>
 <p>Optimism suits a change the API almost always accepts and the customer can watch undone. Placing the order is never optimistic: a declined card must never look like a placed order, which is why the slice empties the cart only on <code>placeOrder</code>&rsquo;s <code>matchFulfilled</code>. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#patching-the-cache-from-a-component">Redux Toolkit and RTK Query Best Practices</a> sets the patch in the wrong place beside the right one.</p></aside>
-<p>The endpoint sits between the slice and the API, and each owner proves its own part of one scenario under the same name: the Hspec test that the API records the order, and this test that the history shows it and that the slice, hearing the order accepted, empties the cart.</p>
+<p>The endpoint sits between the slice and the API, and each layer proves its own part of one scenario under the same name: the Hspec test that the API records the order, and this test that the history shows it and that the slice, hearing the order accepted, empties the cart.</p>
 <p>The next lesson, <a href="/community/the-view-stays-minimal/">The view stays minimal</a>, builds the view that places the order: it reads the cart through selectors, calls <code>usePlaceOrderMutation</code> with each line&rsquo;s product and quantity, and shows what the endpoint returns.</p>
 
 <!-- .entry-content -->
@@ -401,7 +401,7 @@ export const cartApi = cartReadApi.injectEndpoints({
 <a href="/community/the-view-stays-minimal/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The view stays minimal</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

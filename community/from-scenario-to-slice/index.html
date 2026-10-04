@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/from-scenario-to-slice/" rel="bookmark"><time datetime="2026-09-30T12:00:00+00:00">September 30, 2026</time></a>·
+<a href="/community/from-scenario-to-slice/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -122,7 +122,7 @@
 <li><a href="#3-the-when-is-one-event">3. The When is one event</a></li>
 <li><a href="#4-each-then-reads-a-selector">4. Each Then reads a selector</a></li>
 <li><a href="#5-the-scenario-becomes-the-test">5. The scenario becomes the test</a></li>
-<li><a href="#6-one-scenario-two-owners">6. One scenario, two owners</a></li>
+<li><a href="#6-one-scenario-two-layers">6. One scenario, two layers</a></li>
 </ul>
 </nav>
 <h2 id="1-read-the-scenario-for-its-parts"><a class="heading-anchor" href="#1-read-the-scenario-for-its-parts">1. Read the scenario for its parts</a></h2>
@@ -214,7 +214,7 @@ describe('Feature: Cart', () =&gt; {
 })</code></pre>
 <p>A failing test names the behavior that broke. Run as executable steps with cucumber-js instead, each line of the scenario gets a step definition, and the step definitions call the same reducer and selectors; either way, the words the owner read are the words that fail.</p>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#test-transitions-and-derivations">Redux Toolkit and Functional Programming</a> tests a slice the same way, through its events and what its selectors return.</p>
-<h2 id="6-one-scenario-two-owners"><a class="heading-anchor" href="#6-one-scenario-two-owners">6. One scenario, two owners</a></h2>
+<h2 id="6-one-scenario-two-layers"><a class="heading-anchor" href="#6-one-scenario-two-layers">6. One scenario, two layers</a></h2>
 <p>Module 2&rsquo;s <a href="/community/creating-bdd-scenarios-for-real-world-cases/">&ldquo;Placing the order&rdquo;</a> ends with two Thens: the order is recorded at $25, and her cart is empty. The first belongs to the API, and the Hspec test in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> proves it.</p>
 <p>The second belongs to the slice, and the cart empties when the API accepts the order, not when the button is pressed. The slice listens for the fulfilled action of <code>placeOrder</code>, the endpoint the client generates from the API&rsquo;s contract (the API names that operation when it builds its OpenAPI document, and <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a> generates the endpoint from it):</p>
 <pre class="code-block" tabindex="0"><code>// in createSlice({ ... }), beside reducers
@@ -225,7 +225,7 @@ extraReducers: (builder) =&gt; {
 },</code></pre>
 <p>Both tests carry the scenario&rsquo;s name, so a failure on either side names the same behavior.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every noun in a Given belongs to the slice. &ldquo;Widget A is in stock at $25&rdquo; is the server&rsquo;s fact: RTK Query owns the catalog, and the slice sees the product only as the event&rsquo;s payload, which is why the test builds it as a plain fixture.</p>
-<p>A cart that must follow the customer from phone to laptop belongs to the server too; then the slice gives way to an endpoint and its cache, and the same scenario runs against the endpoint instead. The scenario stays, and only its owner moves. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#decide-who-owns-the-state">Redux Toolkit and RTK Query Best Practices</a> sets out which owner holds which kind of state.</p></aside>
+<p>A cart that must follow the customer from phone to laptop belongs to the server too; then the slice gives way to an endpoint and its cache, and the same scenario runs against the endpoint instead. The scenario stays, and only the layer that holds it moves. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#decide-who-owns-the-state">Redux Toolkit and RTK Query Best Practices</a> sets out which layer holds which kind of state.</p></aside>
 <p>The view that shows the cart stays minimal: it reads <code>selectLines</code> and <code>selectTotalCents</code> and dispatches <code>itemAdded</code>, and every decision it depends on lives in the slice, where the scenario tests it. First the order has to reach the API: <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>, next, generates <code>placeOrder</code> from the API&rsquo;s contract, the endpoint this slice listens for.</p>
 
 <!-- .entry-content -->
@@ -237,7 +237,7 @@ extraReducers: (builder) =&gt; {
 <a href="/community/endpoints-at-the-boundary/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Endpoints at the boundary</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

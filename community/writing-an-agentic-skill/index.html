@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/writing-an-agentic-skill/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+<a href="/community/writing-an-agentic-skill/" rel="bookmark">Updated <time datetime="2026-10-03">October 3, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -113,7 +113,7 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>A skill is packaged know-how: a folder with a <code>SKILL.md</code> that an agent loads only when a task matches its description. The loop from <a href="/community/the-agent-loop-and-its-tools/">the last lesson</a> runs the same with a skill installed; what changes is what the model knows on its way round.</p>
+<p>A skill is packaged know-how: a folder with a <code>SKILL.md</code> that an agent loads only when a task matches its description. The loop from <a href="/community/the-agent-loop-and-its-tools/">the last lesson</a> runs the same with a skill installed, given a tool that reads the skill&rsquo;s files and runs its scripts; what changes is what the model knows on its way round.</p>
 <p>This lesson writes one for a job the <a href="/automation/">automation</a> page names, drafting the stock answers, for an invented salon: the stock reply to an email asking for an appointment. It runs from the user story, through the description and the instructions, to the scripts and the evals that check them. Then it reads two skills from this site&rsquo;s own repository.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
@@ -304,10 +304,10 @@ The front desk
 <li><strong>A closed day, a full day and an unknown service</strong> are the branches of step 4, one for each <code>kind</code> the script answers.</li>
 <li><strong>Bookings written with mistakes</strong> are step 3&rsquo;s <code>badInput</code>, sent back to be fixed.</li>
 <li><strong>A draft that breaks the house rules</strong> is step 5&rsquo;s loop: check, fix, check again.</li>
-<li><strong>Nothing is sent</strong> is the first line and step 6, and the agent that runs the skill is given no tool that sends, the way the next lesson gives each task its own list of tools.</li>
+<li><strong>Nothing is sent</strong> is the first line and step 6, and the agent that runs the skill is given no tool that sends, the way the next lesson gives each task its own list of tools, and its scripts run with no network.</li>
 </ul>
 <p>The guide calls the balance degrees of freedom. Where a step is fragile, such as working out the open times, the instruction is an exact command with nothing to choose. Where judgment helps, such as which three times to offer and how to phrase a reply to a nervous first-timer, the template leaves room.</p>
-<p>The line that says never to follow instructions written in an email is a request, not a guarantee. A model that reads an email has read whatever its sender wrote, and a model steered by it can skip a step, step 5&rsquo;s check included. What holds is what the model can&rsquo;t skip: no tool that sends, and a person who reads every draft.</p>
+<p>The line that says never to follow instructions written in an email is a request, not a guarantee. A model that reads an email has read whatever its sender wrote, and a model steered by it can skip a step, step 5&rsquo;s check included. What holds is what the model can&rsquo;t skip: no tool that sends, scripts run where the shell has no network, and a person who reads every draft. A shell that reaches the network can send as surely as a mail tool, and where a skill runs decides which shell it gets: Anthropic&rsquo;s overview gives a skill no network on the Claude API, and in Claude Code the same network as any other program on the computer.</p>
 <p>A check holds only where code runs it on every draft, whatever the model did. <a href="/community/automating-a-business-process/">The module&rsquo;s last lesson</a> puts its check inside the tool the model drafts with, and tests the whole design with an email that tries.</p>
 <h2 id="scripts-for-the-parts-that-must-be-exact"><a class="heading-anchor" href="#scripts-for-the-parts-that-must-be-exact">Scripts for the parts that must be exact</a></h2>
 <p>Which times are open is arithmetic on a calendar, and a model writing times token by token can offer one that isn&rsquo;t free. A script can&rsquo;t. Anthropic&rsquo;s overview puts it plainly: instructions for flexible guidance, code for reliability, and a script&rsquo;s code never enters the context, only its output.</p>
@@ -554,7 +554,7 @@ describe('Feature: Drafting the reply to a booking inquiry', () =&gt; {
 <a href="/community/automating-a-business-process/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Automating a business process with a person in the loop</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

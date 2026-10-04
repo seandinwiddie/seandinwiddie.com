@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/functional-reactive-programming-frp/" rel="bookmark"><time datetime="2023-10-27T13:39:16+00:00">October 27, 2023</time></a>·
+<a href="/community/functional-reactive-programming-frp/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -154,13 +154,13 @@
 <h2 id="why-it-matters"><a class="heading-anchor" href="#why-it-matters">Why it matters</a></h2>
 <ul>
 <li>
-<strong>Responsiveness:</strong> After an action, a view re-renders only when its selector returns a new value, and a memoized selector returns one only when its inputs change, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
+<strong>Responsiveness:</strong> After an action, a view re-renders only when its selector returns a new value, and a memoized selector returns one only when its inputs change, so a busy screen re-renders no more than its changes need; how fast it answers still comes down to the view and the network.</li>
 <li>
 <strong>Predictability:</strong> Pure reducers and selectors return the same output for the same input, so replaying the actions behind a wrong value reproduces it exactly, and that list of actions becomes its test.</li>
 <li>
 <strong>Real-time data:</strong> Data that arrives while a screen is open, such as a new booking, enters as an action like any other, so the screen updates the same way it does for a click.</li>
 <li>
-<strong>Clear ownership:</strong> Each piece of state has one owner (a component, the router, a slice or RTK Query), which keeps a growing codebase readable.</li>
+<strong>One home for each piece of state:</strong> It lives in one place (a component, the router, a slice or RTK Query), which keeps a growing codebase readable.</li>
 </ul>
 <h2 id="in-the-teams-work"><a class="heading-anchor" href="#in-the-teams-work">In the team&rsquo;s work</a></h2>
 <p>Sean Dinwiddie’s Webmastery builds the state layer of custom apps on these ideas, in Redux Toolkit. Applied that way, FRP helps you:</p>
@@ -168,7 +168,7 @@
 <li>Build screens that update the moment an order, a booking or a click changes what the app knows.</li>
 <li>Write reducers and selectors a test can run with no browser or server.</li>
 <li>Keep each request, timer and follow-up effect at the boundary, where it can be traced and tested.</li>
-<li>Give each piece of state one owner, so the software stays readable as it grows.</li>
+<li>Keep each piece of state in one place, so the software stays readable as it grows.</li>
 </ul>
 <p>Module 3 teaches these ideas one at a time, in the Redux Toolkit code the team writes on its own jobs.</p>
 <h2 id="next-steps"><a class="heading-anchor" href="#next-steps">Next steps</a></h2>
@@ -183,7 +183,7 @@
 <a href="/community/curriculum/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Curriculum</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

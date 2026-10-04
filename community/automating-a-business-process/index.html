@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/automating-a-business-process/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+<a href="/community/automating-a-business-process/" rel="bookmark">Updated <time datetime="2026-10-03">October 3, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -872,7 +872,7 @@ AssertionError: expected [ 'opening_hours', 'menu_item', …(4) ] to deeply equa
 <p>The change may still be right: confirming an order by email is a fair job for an agent, behind approval. It goes in as its own decision, with its scenario rewritten to say so.</p>
 <h2 id="evals-on-real-days"><a class="heading-anchor" href="#evals-on-real-days">Evals on real days</a></h2>
 <p>A scripted model tests the plumbing. It can&rsquo;t say whether a real model drafts the right order from a real email. The <a href="/automation/">automation</a> page promises an automation tested against real days rather than a demo, and the evals are where that promise is kept.</p>
-<p>The approvals make the eval set. Every day the person at the counter approves drafts and answers questions, and each email is a case: the email as it arrived, and what the person did with it, the order they approved or the question they had to ask. Anthropic&rsquo;s guide to <a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">building evaluations</a> asks for evals that mirror the real mix of tasks, edge cases included, graded automatically where possible.</p>
+<p>The approvals make the eval set. Every day the person at the counter approves drafts and answers questions, and each email is a case, the email as it arrived and what the person did with it: the order they approved, the one they entered by hand in its place, or the question they had to ask. Anthropic&rsquo;s guide to <a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">building evaluations</a> asks for evals that mirror the real mix of tasks, edge cases included, graded automatically where possible.</p>
 <pre class="code-block" tabindex="0"><code>// orders/evals.ts
 // Evals on real days: each case is an email the bakery got and what the person at the counter did with it.
 import { isDeepStrictEqual } from 'node:util'
@@ -941,7 +941,7 @@ export const evalWithClaude = (client: Anthropic, bakery: Bakery, cases: readonl
 </ul>
 <p>At handover the agent runs in the owner&rsquo;s own accounts. Keeping it watched and current is part of the monthly engagement, as the automation page says, and the evals are how a change is checked before it reaches the counter.</p>
 <h2 id="a-door-on-this-sites-own-loop"><a class="heading-anchor" href="#a-door-on-this-sites-own-loop">A door on this site&rsquo;s own loop</a></h2>
-<p>This site&rsquo;s own review loop has a door too, in a different place from the bakery&rsquo;s. Each pass, five reviewers read the whole site, each in a fresh context, and the edits land as small tweaks rather than large rewrites. The loop doesn&rsquo;t wait to be asked: each pass is applied, built, pushed and logged, and the next one starts. A small tweak that passes the build is quick to read in its diff, and one revert takes it back; a sent email can&rsquo;t be unsent.</p>
+<p>This site&rsquo;s own review loop has a door too, in a different place from the bakery&rsquo;s. Each pass, five reviewer agents read the whole site, each in a fresh context, and the edits land as small tweaks rather than large rewrites. The loop doesn&rsquo;t wait to be asked: each pass is applied, built, pushed and logged, and the next one starts. A small tweak that passes the build is quick to read in its diff, and one revert takes it back; a sent email can&rsquo;t be unsent.</p>
 <p>The door is Sean&rsquo;s. A tweak that needs a fact only he has waits for him while the rest of the pass goes ahead. The <a href="https://github.com/seandinwiddie/seandinwiddie.com/tree/master/.claude/skills/llm-council">llm-council</a> skill weighs his pending decisions with five advisors, an anonymous peer review and a chairman&rsquo;s verdict, and the verdict is a recommendation: nothing it recommends lands in the docs or on the site until Sean approves it.</p>
 <p>So the agents draft and review, the loop&rsquo;s small tweaks go live pass by pass, and what changes Sean&rsquo;s own work, or what a council recommends, waits for his yes. Client work under the name keeps its door in the same hands: every launch is reviewed against its written scope before it goes live, Sean&rsquo;s review last, as <a href="/community/staff/">Joining the team</a> sets out.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> A person who approves everything unread is no gate. Approval works when a draft is quick to check: the email beside the draft, the total worked out by code, and anything unusual raised as a question rather than buried in the draft. When approving starts to feel like clicking through, the drafts are too hard to check or the questions too few, and that is something to fix, not a reason to take the door off.</p>
@@ -958,7 +958,7 @@ export const evalWithClaude = (client: Anthropic, bakery: Bakery, cases: readonl
 <a href="/community/module-6-ai-protocol-ecosystem/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 6: AI protocol ecosystem</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

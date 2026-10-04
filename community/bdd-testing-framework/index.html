@@ -18,6 +18,7 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
   <meta property="article:published_time" content="2023-10-28T18:55:26+00:00">
+  <meta property="article:modified_time" content="2026-10-04">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BDD Testing Framework | Sean Dinwiddie&#x27;s Webmastery">
   <meta name="twitter:description" content="What a BDD testing framework has to provide, and one cart scenario run both ways: as cucumber-js steps and as a scenario-named Vitest test.">
@@ -104,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/bdd-testing-framework/" rel="bookmark"><time datetime="2023-10-28T18:55:26+00:00">October 28, 2023</time></a>·
+<a href="/community/bdd-testing-framework/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -119,6 +120,7 @@
 <li>as executable steps with cucumber-js, Cucumber’s official JavaScript implementation;</li>
 <li>as tests named after the scenarios in the codebase’s own runner, such as Vitest for TypeScript and Hspec for Haskell.</li>
 </ul>
+<p>Twelve requirements come first; then one cart scenario runs both ways, and both meet the app&rsquo;s own reducer.</p>
 <h2 id="what-a-framework-has-to-do"><a class="heading-anchor" href="#what-a-framework-has-to-do">What a framework has to do</a></h2>
 <p>Either way, the framework has twelve requirements to meet, though three of them matter chiefly for the few end-to-end journeys, as the end of this lesson shows:</p>
 <ol>
@@ -199,19 +201,21 @@ Then('the cart contains {string}', function (this: CartWorld, name: string) {
 Then('the cart total is ${int}', function (this: CartWorld, dollars: number) {
   assert.equal(selectTotalCents({ cart: this.cart }), dollars * 100)
 })</code></pre>
-<p>cucumber-js looks for feature files, and the step definitions beside them, in <code>features/</code> at the project&rsquo;s root; the app&rsquo;s own feature folders, such as <code>features/cart/</code> below, sit under <code>src/</code>.</p>
+<p>cucumber-js looks for feature files, and the step definitions beside them, in <code>features/</code> at the project&rsquo;s root; the app&rsquo;s own feature folders, such as <code>features/cart/</code> below, sit under <code>src/</code>. On its own it loads only JavaScript step files, so a TypeScript one like this loads once a transpiler such as tsx is registered in the cucumber-js configuration: <code>{ requireModule: ['tsx/cjs'], require: ['features/step_definitions/**/*.ts'] }</code>.</p>
 <p>Run the second way, the scenario is one test in the codebase&rsquo;s own runner, named for it, with its steps as comments:</p>
-<pre class="code-block" tabindex="0"><code>// features/cart/cart.test.ts, from From Scenario to Slice
+<pre class="code-block" tabindex="0"><code>// features/cart/cart.test.ts, from From scenario to slice
 const widgetA = { productId: 'widget-a', name: 'Widget A', priceCents: 2500 }
 
-it('Scenario: Adding a product to the cart', () =&gt; {
-  // Given "Widget A" is in stock at $25, and the cart is empty
-  const before = cartSlice.getInitialState()
-  // When the customer adds "Widget A" to the cart
-  const after = cartSlice.reducer(before, itemAdded(widgetA))
-  // Then the cart contains "Widget A", and the cart total is $25
-  expect(selectLines({ cart: after }).map((line) =&gt; line.name)).toEqual(['Widget A'])
-  expect(selectTotalCents({ cart: after })).toBe(2500)
+describe('Feature: Cart', () =&gt; {
+  it('Scenario: Adding a product to the cart', () =&gt; {
+    // Given "Widget A" is in stock at $25, and the cart is empty
+    const before = cartSlice.getInitialState()
+    // When the customer adds "Widget A" to the cart
+    const after = cartSlice.reducer(before, itemAdded(widgetA))
+    // Then the cart contains "Widget A", and the cart total is $25
+    expect(selectLines({ cart: after }).map((line) =&gt; line.name)).toEqual(['Widget A'])
+    expect(selectTotalCents({ cart: after })).toBe(2500)
+  })
 })</code></pre>
 <p>Both run the same reducer and selectors, and both fail in the scenario&rsquo;s own words.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Three items on the list above belong chiefly to one layer. Scenarios that run below the interface, against a reducer, a selector or an endpoint, need no browser and no environment to configure, so cross-browser testing and environment configuration belong to the few end-to-end journeys, and parallel execution matters most there, since Vitest already runs test files in parallel.</p>
@@ -228,7 +232,7 @@ it('Scenario: Adding a product to the cart', () =&gt; {
 <a href="/community/module-3-functional-reactive-programming-frp/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 3: Functional reactive programming (FRP)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

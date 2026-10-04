@@ -18,6 +18,7 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
   <meta property="article:published_time" content="2023-10-28T18:37:32+00:00">
+  <meta property="article:modified_time" content="2026-10-04">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Gherkin: Given-When-Then Syntax | Sean Dinwiddie&#x27;s Webmastery">
   <meta name="twitter:description" content="The Given-When-Then structure of Gherkin, and how to write scenarios in it that a non-developer can read and correct.">
@@ -104,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/given-when-then-gherkin-syntax-in-bdd/" rel="bookmark"><time datetime="2023-10-28T18:37:32+00:00">October 28, 2023</time></a>·
+<a href="/community/given-when-then-gherkin-syntax-in-bdd/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -184,7 +185,7 @@
         | 1 hour   | was never used | accepted |
         | 1 hour   | was used once  | refused  |
         | 25 hours | was never used | refused  |</code></pre>
-<p>A failing row is reported by its own line, with its values filled into the step that failed. The steps name the domain, never the page, so the same table runs against a slice, an endpoint or the browser. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> takes the rule one step further, with property tests that check it across generated inputs.</p>
+<p>A failing row is reported by its own line, with its values filled into the step that failed. Picture a fourth row: a link 25 hours old that was used once. It is refused, and rightly, but the row can&rsquo;t say which half of the rule refused it: it would still pass with either half broken. That is why each row above changes one thing from the first. The steps name the domain, never the page, so the same table runs against a slice, an endpoint or the browser. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> takes the rule one step further, with property tests that check it across generated inputs.</p>
 </aside>
 <p>That is Gherkin: a small, standard vocabulary for how software should behave from the user’s perspective, clear enough for the owner to read and unambiguous enough for a test to run. The next lesson, Writing BDD scenarios, puts the vocabulary to work on a cart scenario, the one Module 4 later builds into a slice.</p>
 
@@ -197,7 +198,7 @@
 <a href="/community/writing-bdd-scenarios/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing BDD scenarios</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

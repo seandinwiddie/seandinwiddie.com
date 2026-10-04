@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/apply-frp-concepts-to-software-modules/" rel="bookmark"><time datetime="2023-10-28T19:24:53+00:00">October 28, 2023</time></a>·
+<a href="/community/apply-frp-concepts-to-software-modules/" rel="bookmark">Updated <time datetime="2026-10-04">October 4, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -155,13 +155,13 @@
 <li>Is it a server document reused across the app? RTK Query owns it.</li>
 <li>Is it shared by unrelated components, with transitions worth recording? A slice owns it.</li>
 </ol>
-<p>Anything else stays in the component. Two owners for one value drift apart, and a derived value stored in state goes stale. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#a-decision-procedure-for-one-piece-of-state">Modern Redux Architecture Patterns</a> sets out the procedure.</p>
+<p>Anything else stays in the component. Two homes for one value drift apart, and a derived value stored in state goes stale. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#a-decision-procedure-for-one-piece-of-state">Modern Redux Architecture Patterns</a> sets out the procedure.</p>
 </aside>
 <p>The same procedure, as a ladder:</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="apply-frp-concepts-to-software-modules-owner-title apply-frp-concepts-to-software-modules-owner-desc" viewBox="0 0 360 296">
 <title id="apply-frp-concepts-to-software-modules-owner-title">Where one value lives</title>
-<desc id="apply-frp-concepts-to-software-modules-owner-desc">A ladder of four questions, each with a yes arrow to an owner and a no arrow down to the next. Derived from state? A selector. Survives a refresh, or shared as a link? The router. A server document reused across the app? RTK Query. Shared by unrelated components, with transitions worth recording? A slice. Anything else stays in the component.</desc>
+<desc id="apply-frp-concepts-to-software-modules-owner-desc">A ladder of four questions, each with a yes arrow to where the value lives and a no arrow down to the next. Derived from state? A selector. Survives a refresh, or shared as a link? The router. A server document reused across the app? RTK Query. Shared by unrelated components, with transitions worth recording? A slice. Anything else stays in the component.</desc>
 <g class="edge"><line x1="237" y1="32" x2="270.75" y2="32"/><line x1="265.6" y1="29" x2="270.75" y2="32"/><line x1="265.6" y1="35" x2="270.75" y2="32"/><line x1="237" y1="92" x2="270.75" y2="92"/><line x1="265.6" y1="89" x2="270.75" y2="92"/><line x1="265.6" y1="95" x2="270.75" y2="92"/><line x1="237" y1="152" x2="270.75" y2="152"/><line x1="265.6" y1="149" x2="270.75" y2="152"/><line x1="265.6" y1="155" x2="270.75" y2="152"/><line x1="237" y1="212" x2="270.75" y2="212"/><line x1="265.6" y1="209" x2="270.75" y2="212"/><line x1="265.6" y1="215" x2="270.75" y2="212"/><line x1="123.25" y1="52" x2="123.25" y2="72"/><line x1="126.25" y1="66.8" x2="123.25" y2="72"/><line x1="120.25" y1="66.8" x2="123.25" y2="72"/><line x1="123.25" y1="112" x2="123.25" y2="132"/><line x1="126.25" y1="126.8" x2="123.25" y2="132"/><line x1="120.25" y1="126.8" x2="123.25" y2="132"/><line x1="123.25" y1="172" x2="123.25" y2="192"/><line x1="126.25" y1="186.8" x2="123.25" y2="192"/><line x1="120.25" y1="186.8" x2="123.25" y2="192"/><line x1="123.25" y1="232" x2="123.25" y2="252"/><line x1="126.25" y1="246.8" x2="123.25" y2="252"/><line x1="120.25" y1="246.8" x2="123.25" y2="252"/></g>
 <rect class="node" x="9.5" y="12" width="227.5" height="40" rx="4"/>
 <rect class="node" x="270.75" y="12" width="79" height="40" rx="4"/>
@@ -177,7 +177,7 @@
 <figcaption>Ask in order and stop at the first yes. The slice (outlined in violet) is only the fourth answer, and a value that reaches the bottom stays in the component.</figcaption>
 </figure>
 <p>That is FRP applied to a module: events named for what happened, a reducer that folds them into state, selectors that derive what each view shows, and effects kept at the edge, where each can be tested on its own.</p>
-<p>Module 4 comes next: <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> carries the chain to the server.</p>
+<p>Module 4 comes next: <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> carries the chain to the server, where the API is a Haskell type and the client&rsquo;s endpoints are generated from it.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -188,7 +188,7 @@
 <a href="/community/the-api-haskell-servant-and-nile/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The API: Haskell Servant and Nile</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>

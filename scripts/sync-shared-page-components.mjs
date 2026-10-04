@@ -139,10 +139,13 @@ const WORK_NOTICE = workNotice(WORK_LINE);
 // them the way in (community loop, round 1), not only the owners' door, and what
 // joining gives, in the recruiting note's words (docs/positioning.md, Webmasters),
 // in the third person, since owners read the lessons too, and with no ladder or
-// split (community loop, round 2). The last lesson's own links already end on
-// Joining the team (lessonNav), so its line keeps to the work.
+// split (community loop, round 2). It speaks to webmasters at any stage of the
+// craft, never only those who already build this way, and says the review before
+// launch is how what one job teaches becomes the team's (community loop, round 3).
+// The last lesson's own links already end on Joining the team (lessonNav), so its
+// line keeps to the work.
 const LESSON_NOTICE = workNotice(
-  `${WORK_LINE} For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.`,
+  `${WORK_LINE} For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.`,
 );
 
 const commentsNotice = (name) => {
@@ -1060,25 +1063,36 @@ const withByline = (name, html) =>
 // "Joining the team" shows when its terms last changed, and the offer when it last
 // changed, since it says membership prices can change (community loop round 2). The visible
 // date renders from the page's dateModified, so the byline and the structured data
-// can't disagree, and a change to the terms needs one date edited, not two.
+// can't disagree, and a change to the terms needs one date edited, not two. Every
+// lesson does the same, since the course says its lessons are revised as the
+// practice improves and a first-published date three years old said otherwise
+// (community loop round 3). The article:modified_time tag renders from the same
+// date, so the byline, the tag and the structured data agree.
 const UPDATED_PAGES = new Set([
   "community/staff/index.html",
   "community/our-community-unveiling-our-offer-and-prices/index.html",
 ]);
-const UPDATED_PATTERN = /(rel="bookmark">Updated )<time datetime="[^"]*">[^<]*<\/time>/;
+const UPDATED_PATTERN = /(rel="bookmark">)(?:Updated )?<time datetime="[^"]*">[^<]*<\/time>/;
+const MODIFIED_TIME_PATTERN = /\n\s*<meta property="article:modified_time" content="[^"]*">/;
+const PUBLISHED_TIME_PATTERN = /(\n(\s*)<meta property="article:published_time" content="[^"]*">)/;
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const withUpdatedByline = (name, html) => {
-  if (!UPDATED_PAGES.has(name)) return html;
+  if (!UPDATED_PAGES.has(name) && lessonIndex(name) === -1) return html;
   const dates = [...html.matchAll(/"dateModified":"(\d{4})-(\d{2})-(\d{2})/g)].map((match) => match.slice(1));
   if (!dates.length || new Set(dates.map((date) => date.join("-"))).size !== 1) {
     throw new Error(`${name}: needs one dateModified for its Updated byline`);
   }
   if (!UPDATED_PATTERN.test(html)) throw new Error(`${name}: missing its Updated byline`);
+  if (!PUBLISHED_TIME_PATTERN.test(html)) throw new Error(`${name}: missing its article:published_time`);
+  const date = dates[0].join("-");
   const [year, month, day] = dates[0];
-  return html.replace(
-    UPDATED_PATTERN,
-    (_, open) => `${open}<time datetime="${year}-${month}-${day}">${MONTHS[Number(month) - 1]} ${Number(day)}, ${year}</time>`,
-  );
+  return html
+    .replace(
+      UPDATED_PATTERN,
+      (_, open) => `${open}Updated <time datetime="${date}">${MONTHS[Number(month) - 1]} ${Number(day)}, ${year}</time>`,
+    )
+    .replace(MODIFIED_TIME_PATTERN, "")
+    .replace(PUBLISHED_TIME_PATTERN, (_, tag, indent) => `${tag}\n${indent}<meta property="article:modified_time" content="${date}">`);
 };
 
 // Guards, not transforms: a focus page that names a retired offer or free work,

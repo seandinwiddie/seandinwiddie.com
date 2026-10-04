@@ -105,7 +105,7 @@
 <!-- .post-thumbnail -->
 <header>
 <div class="page-meta">
-<a href="/community/the-agent-loop-and-its-tools/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+<a href="/community/the-agent-loop-and-its-tools/" rel="bookmark">Updated <time datetime="2026-10-03">October 3, 2026</time></a>·
 
 <a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
 
@@ -177,6 +177,7 @@ export interface Model {
   readonly reply: (turn: ModelTurn) =&gt; Promise&lt;ModelReply&gt;
 }</code></pre>
 <p>Three kinds of reply and no more, so the compiler can tell when a <code>switch</code> over them misses one. The interface is a seam: a scripted model fills it in the tests, and Claude fills it in production, through one small adapter at the end of this lesson.</p>
+<p>The imports name their <code>.ts</code> files, so Node.js 22.18 or later on the 22 line, or 24.3 or later, runs them directly, and <code>tsc</code> checks them with the strict settings <code>tsc --init</code> writes, plus <code>allowImportingTsExtensions</code> and <code>noEmit</code>.</p>
 <h2 id="tools-are-typed-functions-with-contracts"><a class="heading-anchor" href="#tools-are-typed-functions-with-contracts">Tools are typed functions with contracts</a></h2>
 <p>A tool has three parts. The spec is what the model reads: a name, a description and a JSON Schema for the input. The decoder turns whatever arrived into a typed value or a typed failure, the way <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes a response before the app trusts it. Then comes the run itself, which only ever sees a value that decoded.</p>
 <pre class="code-block" tabindex="0"><code>// agent/tool.ts
@@ -423,7 +424,8 @@ Two dozen sourdough rolls are $36 and need two days' notice, so please order by 
 <p>Read <code>c2</code>. The model asked for croissants, the menu has none, and what came back is an error that lists what the menu does have. A real model reads that on its next turn and can say so plainly, as the scripted answer does, instead of inventing a croissant.</p>
 <h2 id="tests-with-a-scripted-model"><a class="heading-anchor" href="#tests-with-a-scripted-model">Tests with a scripted model</a></h2>
 <p>The behavior comes first, as scenarios, in the Gherkin of <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) syntax in BDD</a>. Each one is a sentence an owner can read and a rule the loop has to keep:</p>
-<pre class="code-block" tabindex="0"><code>Feature: Pickup questions at the bakery
+<pre class="code-block" tabindex="0"><code># agent/pickup.feature
+Feature: Pickup questions at the bakery
 
   The agent drafts an answer from the bakery's own hours and menu.
   Its tools only read, and the draft goes nowhere until a person sends it.
@@ -665,7 +667,7 @@ describe('Feature: Pickup questions at the bakery', () =&gt; {
 $ npx vitest run 2&gt;&amp;1 | grep -E 'FAIL|AssertionError'
  FAIL  agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: The loop stops at its turn limit
 AssertionError: expected [ { kind: 'task', …(1) }, …(3) ] to have a length of 3 but got 4</code></pre>
-<p>A scripted model tests the loop, never the model&rsquo;s judgment: its answers were written before the run. Whether a real model asks for the right tools and drafts a good answer is a question for evals on real days, and <a href="/community/automating-a-business-process/">Automating a business process with a person in the loop</a> runs them.</p>
+<p>A scripted model tests the loop, never the model&rsquo;s judgment: its answers were written before the run. Whether a real model asks for the right tools and drafts a good answer is a question for evals on real days, and <a href="/community/automating-a-business-process/">Automating a business process with a person in the loop</a> builds them for its own task.</p>
 <h2 id="the-claude-adapter"><a class="heading-anchor" href="#the-claude-adapter">The Claude adapter</a></h2>
 <p>One file speaks Claude&rsquo;s API. It turns each <code>ToolSpec</code> into a tool definition, keeps the conversation, and maps each response to a <code>ModelReply</code>:</p>
 <pre class="code-block" tabindex="0"><code>// agent/claude.ts
@@ -806,7 +808,7 @@ export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: s
 <a href="/community/writing-an-agentic-skill/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing an agentic skill</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
 </aside>
 <!-- #comments -->
       </div>
