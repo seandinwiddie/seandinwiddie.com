@@ -172,7 +172,7 @@ export default config</code></pre>
 </ul>
 <p>The generated file is read in review like any other source and never edited by hand: the config changes, the generator runs again, and the diff is reviewed. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> lists what that review checks.</p>
 <h2 id="3-decode-at-the-boundary"><a class="heading-anchor" href="#3-decode-at-the-boundary">3. Decode at the boundary</a></h2>
-<p>The generated types say what the API promised; they don&rsquo;t check what arrives. A server deployed ahead of its client, or a proxy&rsquo;s error page, can answer with something else. So every response is <code>unknown</code> until a decoder accepts it, written as a pure function that returns the lectures&rsquo; small <code>Either</code>:</p>
+<p>The generated types say what the API promised; they don&rsquo;t check what arrives. A server deployed ahead of its client, or a gateway that answers 200 with JSON of its own, can answer with something else (a page that isn&rsquo;t JSON at all never gets that far: <code>fetchBaseQuery</code> reports it as a <code>PARSING_ERROR</code>). So every response is <code>unknown</code> until a decoder accepts it, written as a pure function that returns the lectures&rsquo; small <code>Either</code>:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/decodeOrders.ts
 import { left, right, type Either } from '../../shared/either'
 import type { Order } from './ordersApi.generated'
@@ -333,7 +333,7 @@ describe('Feature: Checkout', () =&gt; {
         newOrder: { lines: [{ productId: 'widget-a', quantity: 1 }] },
       }),
     )
-    // Then the order is recorded at $25, her history shows it, and her cart is empty
+    // Then her history shows the order, and her cart is empty
     await vi.waitFor(() =&gt;
       expect(ordersApi.endpoints.listOrders.select({ tenantId })(store.getState()).data).toEqual([placed]),
     )
@@ -344,7 +344,7 @@ describe('Feature: Checkout', () =&gt; {
     history.unsubscribe()
   })
 })</code></pre>
-<p>The same file checks the failure paths: a response that isn&rsquo;t an order ends as a <code>CUSTOM_ERROR</code> with the raw payload beside it, and a refused order leaves the history as it was. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what each layer&rsquo;s tests cover, tag invalidation and optimistic rollback included.</p>
+<p>The same file checks the failure paths: a JSON response that isn&rsquo;t an order ends as a <code>CUSTOM_ERROR</code> with the raw payload beside it, and a refused order leaves the history as it was. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what each layer&rsquo;s tests cover, tag invalidation and optimistic rollback included.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Tags wait for the API, and most of the time that is right. When a change should show at once, the mutation patches the cache itself and undoes the patch if the API refuses.</p>
 <p><a href="/community/from-scenario-to-slice/">From scenario to slice</a> ends with the cart moving to the server when it must follow the customer from phone to laptop, and adding to that cart is the classic case. The read endpoint is injected first, so the mutation can patch its cache with full types:</p>
 <pre class="code-block" tabindex="0"><code>// features/cart/cartApi.ts
@@ -401,7 +401,7 @@ export const cartApi = cartReadApi.injectEndpoints({
 <a href="/community/the-view-stays-minimal/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The view stays minimal</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -127,11 +127,24 @@ const QUESTIONS_NOTICE = `<aside aria-label="Questions" class="notice">
 <p>Questions about this page? <a href="/contact/">Call or email</a> Sean Dinwiddie&rsquo;s Webmastery.</p>
 </aside>`;
 
-const WORK_NOTICE = `<aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+const WORK_LINE = `For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.`;
+const workNotice = (line) => `<aside aria-label="Working with the team" class="notice">
+<p>${line}</p>
 </aside>`;
+const WORK_NOTICE = workNotice(WORK_LINE);
+// A lesson is where a webmaster weighs the craft, so its closing line also shows
+// them the way in (community loop, round 1), not only the owners' door. The last
+// lesson's own links already end on Joining the team (lessonNav), so its line
+// keeps to the work.
+const LESSON_NOTICE = workNotice(
+  `${WORK_LINE} For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.`,
+);
 
-const commentsNotice = (name) => (NOT_LESSONS.has(name) ? QUESTIONS_NOTICE : WORK_NOTICE);
+const commentsNotice = (name) => {
+  if (NOT_LESSONS.has(name)) return QUESTIONS_NOTICE;
+  const index = lessonIndex(name);
+  return index === -1 || index === LESSONS.length - 1 ? WORK_NOTICE : LESSON_NOTICE;
+};
 
 const COMMENTS_NOTICE_PATTERN =
   /<aside aria-label="(?:Comments|Questions|Working with the team)" class="notice">[\s\S]*?<\/aside>/;
@@ -194,7 +207,7 @@ const LESSONS = [
   ["reviewing-and-enhancing-bdd-scenarios-as-a-group", "Reviewing and enhancing BDD scenarios as a group", "m2", "Reviewing and Enhancing BDD Scenarios as a Group"],
   ["bdd-and-unit-testing", "BDD and unit testing", "m2", "BDD and Unit Testing"],
   ["bdd-testing-framework", "BDD testing framework", "m2", "BDD Testing Framework"],
-  // Module 3: the introduction first; Apply FRP ends the course.
+  // Module 3: the introduction first; Apply FRP hands the chain to Module 4's API.
   ["module-3-functional-reactive-programming-frp", "Module 3: Functional reactive programming (FRP)", "m3", "Module 3: Functional Reactive Programming (FRP)"],
   ["introduction-to-functional-reactive-programming-frp", "Introduction to functional reactive programming (FRP)", "m3", "Introduction to Functional Reactive Programming (FRP)"],
   ["event-streams-and-reactive-programming", "Event streams and reactive programming", "m3"],
@@ -268,6 +281,9 @@ const PAGE_NAV_PATTERN = /<(div|nav) class="page-nav"[^>]*>[\s\S]*?<\/\1>/;
 const lessonLink = ([slug, title], rel, label) =>
   `<a href="/community/${slug}/" rel="${rel}"><span class="page-nav__label">${label}:</span> <span class="page-nav__title">${title}</span></a>`;
 
+const AFTER_THE_COURSE =
+  '<a href="/community/staff/"><span class="page-nav__label">After the course:</span> <span class="page-nav__title">Joining the team</span></a>';
+
 const lessonNav = (name) => {
   const index = lessonIndex(name);
   if (index === -1) {
@@ -275,9 +291,14 @@ const lessonNav = (name) => {
       ? '<nav class="page-nav" aria-label="Community">\n<a href="/community/">Back to the community</a>\n</nav>'
       : null;
   }
+  // The course's last lesson ends on the way onward, not a dead end (community
+  // loop, round 1): a framed link to the team's terms, with no rel="next", since
+  // it is not a lesson.
   const links = [
     index > 0 && lessonLink(LESSONS[index - 1], "prev", "Previous lesson"),
-    index < LESSONS.length - 1 && lessonLink(LESSONS[index + 1], "next", "Next lesson"),
+    index < LESSONS.length - 1
+      ? lessonLink(LESSONS[index + 1], "next", "Next lesson")
+      : AFTER_THE_COURSE,
   ].filter(Boolean);
   return `<nav class="page-nav" aria-label="Lessons">\n${links.join("\n")}\n</nav>`;
 };
@@ -656,7 +677,7 @@ const SITEMAP_LIST_PATTERN = /<div class="sitemap-list"[^>]*>[\s\S]*?\n<\/div>/;
 const ALSO_IN_THE_COMMUNITY = [
   ["/community/", "Community home"],
   ["/community/staff/", "Joining the team"],
-  ["/community/our-community-unveiling-our-offer-and-prices/", "Our community: Unveiling our offer and prices"],
+  ["/community/our-community-unveiling-our-offer-and-prices/", "Our community: Offer and prices"],
   ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/", "P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! \u270c\ud83c\udffb"],
   ["/community/from-marketing-to-development/", "From marketing to development"],
 ];
@@ -953,9 +974,12 @@ const withLessonHeadings = (name, html) => {
 // module's lesson list) keeps its markup.
 const ANCHORED_HEADING_PATTERN = /<h2 id="[^"]*"><a class="heading-anchor" href="#[^"]*">([\s\S]*?)<\/a><\/h2>/g;
 const PLAIN_HEADING_PATTERN = /<h2>((?:(?!<\/?h2\b|<a\b)[\s\S])+?)<\/h2>/g;
+// An apostrophe drops out whether it is typed or an entity, so "the team's" and
+// "the team&rsquo;s" give one id, "teams".
 const headingSlug = (inner) =>
   inner
     .replace(/<[^>]+>/g, "")
+    .replace(/[\u2019']/g, "")
     .replace(/&[a-z]+;|&#x?[0-9a-f]+;/gi, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")

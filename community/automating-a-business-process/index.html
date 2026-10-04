@@ -220,7 +220,7 @@ Feature: Emailed orders, drafted for one check
 </figure>
 <p>The gate decides what each call the model makes may do. A call that reads, or leaves a note for the person, runs at once. A call off the task&rsquo;s list is refused. A call that would change something is held, since nothing in the loop&rsquo;s reach can make the change, and the only way on is a person&rsquo;s approval, which arrives by a path the model never touches.</p>
 <h2 id="the-gate-is-data-and-pure-functions"><a class="heading-anchor" href="#the-gate-is-data-and-pure-functions">The gate is data and pure functions</a></h2>
-<p>OWASP calls the failure this design guards against <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency/">excessive agency</a> (LLM06:2025): an agent with more functionality, permissions or autonomy than its job needs, so that a wrong or manipulated output does real damage. Three of its mitigations shape this lesson: offer only the tools a job needs, have a person approve high-impact actions, and put authorization downstream rather than asking the model whether an action is allowed.</p>
+<p>OWASP calls the failure this design guards against <a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM03_ExcessiveAgency.md">excessive agency</a> (LLM03:2026): an agent with more functionality, permissions or autonomy than its job needs, so that a wrong or manipulated output does real damage. Three of its mitigations shape this lesson: offer only the tools a job needs, have a person approve high-impact actions, and enforce authorization in code rather than asking the model whether an action is allowed.</p>
 <p>The first two live in this file. The third is <code>approve</code> and the add-only systems in <code>shop.ts</code>, further down: the only way into the register, the calendar and the order sheet.</p>
 <pre class="code-block" tabindex="0"><code>// orders/gate.ts
 // Which tools each task may use, and which calls wait for a person. Data and pure functions.
@@ -372,7 +372,7 @@ export const shopTools = (bakery: Bakery, inbox: Inbox): readonly (Tool | Propos
 <p>Three choices carry the weight:</p>
 <ul>
 <li><strong>A change is only proposed.</strong> <code>draft_order</code> and <code>send_reply</code> are proposals, a spec and a decoder with nothing to run, so the most the gate can do with one is hold it. The change itself happens after approval, in code the loop can&rsquo;t reach.</li>
-<li><strong>A reply goes only to the sender.</strong> <code>send_reply</code> takes an email&rsquo;s id, not an address, so no text anywhere can point it at a stranger. OWASP asks for the same: an extension does only what its job needs.</li>
+<li><strong>A reply goes only to the sender.</strong> <code>send_reply</code> takes an email&rsquo;s id, not an address, so no text anywhere can point it at a stranger. OWASP asks for the same: a tool does only what its job needs.</li>
 <li><strong>The email arrives as data.</strong> <code>read_order</code> returns the email as JSON, marked as inbound email, and its description says what the body is and where it came from. That is the advice in Anthropic&rsquo;s <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks#indirect-prompt-injection">Mitigate jailbreaks and prompt injections</a>: put outside content in tool results, say what it is, and JSON-encode it, so it can&rsquo;t break out into instructions.</li>
 </ul>
 <h2 id="plain-code-checks-what-it-can"><a class="heading-anchor" href="#plain-code-checks-what-it-can">Plain code checks what it can</a></h2>
@@ -626,9 +626,9 @@ entered  calendar: pickup 2026-10-10 09:00
 entered  sheet: e1 | Sam | 24 sourdough rolls | 2026-10-10 09:00 | $36.00</code></pre>
 <p>Read the log from the top. The email was read, the order was held for approval, and both things the postscript asked for were refused, each with the input it carried, for the owner to see. The model then claims it did everything, and the log above says otherwise.</p>
 <p>The draft that waits is the order Sam asked for, priced from the menu at $36, so the person approves it and the three systems get their entries. The postscript changed nothing but the log.</p>
-<p>No defense makes a model immune. OWASP&rsquo;s entry on <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">prompt injection</a> (LLM01:2025) says it&rsquo;s unclear whether fool-proof prevention exists, and counts least privilege, human approval for high-risk actions and keeping outside content apart among the ways to limit the damage. This design leans on all three: a fooled model can waste turns or spoil a draft, and a draft is what the person reads.</p>
+<p>No defense makes a model immune. OWASP&rsquo;s entry on <a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM01_PromptInjection.md">prompt injection</a> (LLM01:2026) says no single control is sufficient and asks for defense in depth. Among its controls are least privilege per operation, a person&rsquo;s confirmation before any privileged, irreversible or externally visible action, and a separate, labeled channel for outside content. This design leans on all three: a fooled model can waste turns or spoil a draft, and a draft is what the person reads.</p>
 <h2 id="tests-named-after-the-scenarios"><a class="heading-anchor" href="#tests-named-after-the-scenarios">Tests named after the scenarios</a></h2>
-<p>The tests run the shell exactly as the counter does, with a scripted model in the model&rsquo;s seat and three systems that keep a list of what went in; the label printer&rsquo;s scenario runs the loop on <code>toolsFor</code> alone. The injection test treats the model as OWASP&rsquo;s adversarial testing advice does, as an untrusted user: whatever it asks for, the test checks that the boundary holds.</p>
+<p>The tests run the shell exactly as the counter does, with a scripted model in the model&rsquo;s seat and three systems that keep a list of what went in; the label printer&rsquo;s scenario runs the loop on <code>toolsFor</code> alone. The injection test starts after the injection has worked, where OWASP&rsquo;s controls that bound the damage take over: the model obeys every word, and the test checks that the boundary holds.</p>
 <pre class="code-block" tabindex="0"><code>// orders/order-entry.test.ts
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
@@ -943,11 +943,11 @@ export const evalWithClaude = (client: Anthropic, bakery: Bakery, cases: readonl
 <h2 id="a-door-on-this-sites-own-loop"><a class="heading-anchor" href="#a-door-on-this-sites-own-loop">A door on this site&rsquo;s own loop</a></h2>
 <p>This site&rsquo;s own review loop has a door too, in a different place from the bakery&rsquo;s. Each pass, five reviewers read the whole site, each in a fresh context, and the edits land as small tweaks rather than large rewrites. The loop doesn&rsquo;t wait to be asked: each pass is applied, built, pushed and logged, and the next one starts. Colors move one small step at a time, each approved by the coordinator before it lands.</p>
 <p>The door is Sean&rsquo;s. A tweak that needs a fact only he has waits for him while the rest of the pass goes ahead. The <a href="https://github.com/seandinwiddie/seandinwiddie.com/tree/master/.claude/skills/llm-council">llm-council</a> skill weighs his pending decisions with five advisors, an anonymous peer review and a chairman&rsquo;s verdict, and the verdict is a recommendation: nothing it recommends lands in the docs or on the site until Sean approves it.</p>
-<p>So the agents draft and review, the loop&rsquo;s small tweaks go live pass by pass, and what changes Sean&rsquo;s own work, or what a council recommends, waits for his yes.</p>
+<p>So the agents draft and review, the loop&rsquo;s small tweaks go live pass by pass, and what changes Sean&rsquo;s own work, or what a council recommends, waits for his yes. Client work under the name keeps its door in the same hands: every launch is reviewed against its written scope before it goes live, Sean&rsquo;s review last, as <a href="/community/staff/">Joining the team</a> sets out.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> A person who approves everything unread is no gate. Approval works when a draft is quick to check: the email beside the draft, the total worked out by code, and anything unusual raised as a question rather than buried in the draft. When approving starts to feel like clicking through, the drafts are too hard to check or the questions too few, and that is something to fix, not a reason to take the door off.</p>
 <p>The three entries aren&rsquo;t one transaction. If the calendar fails after the register took the sale, the log shows which entries went in, and the person finishes the rest by hand.</p>
 <p>And the gate decides only what may happen, never whether a draft is right. A model that misreads a quantity drafts a wrong order that passes every rule plain code can check. That is what the person and the evals are for.</p></aside>
-<p>That completes Module 5: a loop, a skill and a process with a person at the door. <a href="/community/module-6-ai-protocol-ecosystem/">Module 6</a> opens up the protocols and harnesses around them.</p>
+<p>That completes Module 5: a loop, a skill and a process with a person at the door. <a href="/community/module-6-ai-protocol-ecosystem/">Module 6</a> opens up every join around them, starting with an MCP tool server built by hand for an invented coffee cart, so any agent that speaks MCP can call its tools without an adapter.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -958,7 +958,7 @@ export const evalWithClaude = (client: Anthropic, bakery: Bakery, cases: readonl
 <a href="/community/module-6-ai-protocol-ecosystem/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 6: AI protocol ecosystem</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -131,12 +131,12 @@
 <svg role="img" aria-labelledby="frp-total-title frp-total-desc" viewBox="0 0 360 258">
 <title id="frp-total-title">Events, and the value they define</title>
 <desc id="frp-total-desc">Three events as dots on a time line: added $25, added $10, removed $10. Under them a highlighted line steps through the cart total: $0, then $25, $35 and $25 again, changing only at the moment of each event.</desc>
-<g class="edge"><line x1="16.5" y1="44" x2="340.5" y2="44"/><line x1="91.25" y1="76" x2="91.25" y2="172"/><line x1="184.75" y1="76" x2="184.75" y2="140"/><line x1="278" y1="76" x2="278" y2="140"/><line x1="16.5" y1="222" x2="344.5" y2="222"/><line x1="339.3" y1="219" x2="344.5" y2="222"/><line x1="339.3" y1="225" x2="344.5" y2="222"/></g>
-<g class="path"><line x1="16.5" y1="212" x2="91.25" y2="212"/><line x1="91.25" y1="212" x2="91.25" y2="172"/><line x1="91.25" y1="172" x2="184.75" y2="172"/><line x1="184.75" y1="172" x2="184.75" y2="140"/><line x1="184.75" y1="140" x2="278" y2="140"/><line x1="278" y1="140" x2="278" y2="172"/><line x1="278" y1="172" x2="340.5" y2="172"/></g>
+<g class="edge"><line x1="16.5" y1="44" x2="340.5" y2="44"/><line x1="91.25" y1="76" x2="91.25" y2="172"/><line x1="184.75" y1="76" x2="184.75" y2="156"/><line x1="278" y1="76" x2="278" y2="156"/><line x1="16.5" y1="222" x2="344.5" y2="222"/><line x1="339.3" y1="219" x2="344.5" y2="222"/><line x1="339.3" y1="225" x2="344.5" y2="222"/></g>
+<g class="path"><line x1="16.5" y1="212" x2="91.25" y2="212"/><line x1="91.25" y1="212" x2="91.25" y2="172"/><line x1="91.25" y1="172" x2="184.75" y2="172"/><line x1="184.75" y1="172" x2="184.75" y2="156"/><line x1="184.75" y1="156" x2="278" y2="156"/><line x1="278" y1="156" x2="278" y2="172"/><line x1="278" y1="172" x2="340.5" y2="172"/></g>
 <circle class="node" cx="91.25" cy="44" r="6"/>
 <circle class="node" cx="184.75" cy="44" r="6"/>
 <circle class="node" cx="278" cy="44" r="6"/>
-<g><text class="note" x="178.5" y="20">events, at the moment they happen</text><text x="91.25" y="66">added $25</text><text x="184.75" y="66">added $10</text><text x="278" y="66">removed $10</text><text x="54" y="200">$0</text><text x="138" y="160">$25</text><text x="231.5" y="128">$35</text><text x="309.25" y="160">$25</text><text class="note" x="178.5" y="238">the cart total, a value at every moment</text></g>
+<g><text class="note" x="178.5" y="20">events, at the moment they happen</text><text x="91.25" y="66">added $25</text><text x="184.75" y="66">added $10</text><text x="278" y="66">removed $10</text><text x="54" y="200">$0</text><text x="138" y="160">$25</text><text x="231.5" y="144">$35</text><text x="309.25" y="160">$25</text><text class="note" x="178.5" y="238">the cart total, a value at every moment</text></g>
 </svg>
 <figcaption>Three events, each at a moment, and the cart total they define. The violet line is the total: it has a value at every moment, and it changes only when an event arrives. It is stated once, by the events so far, rather than updated by hand in each place that touches the cart.</figcaption>
 </figure>
@@ -154,7 +154,7 @@
 <h2 id="why-it-matters"><a class="heading-anchor" href="#why-it-matters">Why it matters</a></h2>
 <ul>
 <li>
-<strong>Responsiveness:</strong> A view re-renders only when its selector returns a new value, and a memoized selector returns one only when its inputs change, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
+<strong>Responsiveness:</strong> After an action, a view re-renders only when its selector returns a new value, and a memoized selector returns one only when its inputs change, so a busy screen does no more work than its changes need; how fast it answers still comes down to the view and the network.</li>
 <li>
 <strong>Predictability:</strong> Pure reducers and selectors return the same output for the same input, so replaying the actions behind a wrong value reproduces it exactly, and that list of actions becomes its test.</li>
 <li>
@@ -183,7 +183,7 @@
 <a href="/community/curriculum/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Curriculum</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

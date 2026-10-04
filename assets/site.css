@@ -1007,8 +1007,8 @@ main:has(+ .service-cards) > .page-content:last-child { padding-bottom: 0; }
   list-style: none;
 }
 .pagination [rel="next"] { margin-left: auto; }
-/* A lesson's next lesson sits on the right (docs/design.md, Lesson posts). */
-@media (min-width: 30.0625rem) { .page-nav[aria-label="Lessons"] a[rel="next"] { text-align: right; } }
+/* A lesson's next lesson, or the last one's way onward, sits on the right (docs/design.md, Lesson posts). */
+@media (min-width: 30.0625rem) { .page-nav[aria-label="Lessons"] :is(a + a, a[rel="next"]) { text-align: right; } }
 .pagination li { margin: 0; }
 /* The lessons stand a group's room under the text above them (docs/design.md). */
 .archive-cards {

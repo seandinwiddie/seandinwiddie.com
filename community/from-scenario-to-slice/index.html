@@ -226,7 +226,7 @@ extraReducers: (builder) =&gt; {
 <p>Both tests carry the scenario&rsquo;s name, so a failure on either side names the same behavior.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every noun in a Given belongs to the slice. &ldquo;Widget A is in stock at $25&rdquo; is the server&rsquo;s fact: RTK Query owns the catalog, and the slice sees the product only as the event&rsquo;s payload, which is why the test builds it as a plain fixture.</p>
 <p>A cart that must follow the customer from phone to laptop belongs to the server too; then the slice gives way to an endpoint and its cache, and the same scenario runs against the endpoint instead. The scenario stays, and only its owner moves. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#decide-who-owns-the-state">Redux Toolkit and RTK Query Best Practices</a> sets out which owner holds which kind of state.</p></aside>
-<p>The view that shows the cart stays minimal: it reads <code>selectLines</code> and <code>selectTotalCents</code> and dispatches <code>itemAdded</code>, and every decision it depends on lives in the slice, where the scenario tests it.</p>
+<p>The view that shows the cart stays minimal: it reads <code>selectLines</code> and <code>selectTotalCents</code> and dispatches <code>itemAdded</code>, and every decision it depends on lives in the slice, where the scenario tests it. First the order has to reach the API: <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>, next, generates <code>placeOrder</code> from the API&rsquo;s contract, the endpoint this slice listens for.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -237,7 +237,7 @@ extraReducers: (builder) =&gt; {
 <a href="/community/endpoints-at-the-boundary/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Endpoints at the boundary</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

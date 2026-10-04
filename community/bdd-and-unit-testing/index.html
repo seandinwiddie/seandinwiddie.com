@@ -155,7 +155,7 @@
 <rect class="node" x="12" y="116" width="336" height="44" rx="4"/>
 <g><text x="180" y="27">end to end</text><text class="note" x="180" y="44">a few journeys</text><text x="180" y="79">scenarios</text><text class="note" x="180" y="96">API, endpoint, slice, view</text><text x="180" y="131">unit tests</text><text class="note" x="180" y="148">every case of each pure function</text></g>
 </svg>
-<figcaption>The suite the course builds, by layer. Unit tests pin every case of the pure functions at the base, scenarios run at each owner that holds part of a behavior, and a few end-to-end journeys cross the top. Each rule is tested once, at the lowest layer that shows it.</figcaption>
+<figcaption>The suite the course builds, by layer. Unit tests pin every case of the pure functions at the base, scenarios run at each layer that holds part of a behavior, and a few end-to-end journeys cross the top. Each rule is tested once, at the lowest layer that shows it.</figcaption>
 </figure>
 <h2 id="challenges-and-considerations"><a class="heading-anchor" href="#challenges-and-considerations">Challenges and considerations</a></h2>
 <ul>
@@ -167,11 +167,11 @@
 <strong>Test maintenance:</strong> Scenarios and unit tests both need upkeep as the software evolves. A test changes in the same commit as the behavior it checks, so the suite never describes software that no longer exists.</li>
 </ul>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> puts each test where its rule lives. An empty order and an unknown product are rules of <code>validateOrder</code>, a pure function, so they are unit tests that compare its result as plain data, with no database, no server and no screen, and the written scope never names them.</p>
-<p>A declined card is behavior an owner can name, so it is a scenario, run under its own name at each of the four owners that hold part of it, and one journey runs end to end because each owner&rsquo;s test has already proved its part.</p>
+<p>A declined card is behavior an owner can name, so it is a scenario, run under its own name at each of the four layers that hold part of it, and one journey runs end to end because each layer&rsquo;s test has already proved its part.</p>
 <p>The rule bends where a scenario and a unit test overlap on purpose. In <a href="/community/the-view-stays-minimal/">The view stays minimal</a>, the view&rsquo;s scenario and <code>orderNotice</code>&rsquo;s unit test both check that a declined card asks for another, and they fail for different reasons:</p>
 <ul>
 <li>Break the wiring, say a view that never renders its status line, and only the scenario fails.</li>
-<li>Break the declined card&rsquo;s words and both fail, but the unit test names the function and the case.</li>
+<li>Break the words that ask for another card and both fail, but the unit test names the function and the case.</li>
 <li>Break the words for a dropped connection, which no scenario names, and only the unit test sees it.</li>
 </ul>
 <p>So the overlap stays thin: the scenario checks the one case an owner would name and matches only the words that carry the behavior, and the unit test pins every case word for word. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> tests every branch of a pure function the same way.</p></aside>
@@ -186,7 +186,7 @@
 <a href="/community/bdd-testing-framework/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">BDD testing framework</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

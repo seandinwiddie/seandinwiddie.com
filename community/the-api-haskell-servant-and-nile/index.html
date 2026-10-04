@@ -151,7 +151,7 @@ server pool (Authenticated user) tenantId = listOrders :&lt;|&gt; placeOrder
       either (\problem -&gt; throwError err422 { errBody = encode problem, errHeaders = [(hContentType, "application/json")] }) pure decided
 server _ _ _ = throwAll err401
 
--- One transaction per request: name the tenant and the user, run the work, commit.
+-- One transaction: name the tenant and the user, run the work, commit.
 -- Nile refuses a user outside the tenant, and the refusal answers 403.
 withTenant :: Pool Connection -&gt; UserId -&gt; TenantId -&gt; (Connection -&gt; IO a) -&gt; Handler a
 withTenant pool user tenantId work = do
@@ -252,8 +252,10 @@ ordersOpenApi =
 <p>The contract is only as honest as the JSON behind it: in the Hspec suite, servant-openapi3&rsquo;s <code>validateEveryToJSON</code> checks values of every JSON type in the API against the published schema, generating them from each type&rsquo;s <code>Arbitrary</code> instance, so <code>Order</code> and <code>NewOrder</code> need one.</p>
 <h2 id="5-the-scenarios-test-the-api"><a class="heading-anchor" href="#5-the-scenarios-test-the-api">5. The scenarios test the API</a></h2>
 <p>Module 2&rsquo;s scenarios run against the API as well as the slice. Hspec, with hspec-wai, calls the Servant application directly, with no browser and no HTTP server, against Nile running locally in Docker so the tenant checks run too.</p>
-<p>Every route sits behind <code>Auth</code>, so each test signs a token with the test&rsquo;s own key and sends it as a bearer token: Ada, a member of the shop&rsquo;s tenant, gets 201 Created, and Grace, a user from another shop, gets 403 Forbidden.</p>
-<pre class="code-block" tabindex="0"><code>app :: JWTSettings -&gt; Pool Connection -&gt; Application
+<p>Every route sits behind <code>Auth</code>, so each test signs a token with the test&rsquo;s own key and sends it as a bearer token: Ada, a member of the shop&rsquo;s tenant, gets 201 Created and the order as recorded, at 2500 cents, and Grace, a user from another shop, gets 403 Forbidden.</p>
+<pre class="code-block" tabindex="0"><code>{-# LANGUAGE OverloadedRecordDot #-}   -- for (.totalCents)
+
+app :: JWTSettings -&gt; Pool Connection -&gt; Application
 app jwt pool =
   serveWithContext (Proxy :: Proxy OrdersAPI) (defaultCookieSettings :. jwt :. EmptyContext) (server pool)
 
@@ -267,7 +269,10 @@ spec = do
     describe "Feature: Checkout" $ do
       it "Scenario: Placing the order" $ do
         token &lt;- liftIO (signIn ada)
-        request methodPost (ordersPath shop) (asUser token) widgetAOrder `shouldRespondWith` 201
+        placed &lt;- request methodPost (ordersPath shop) (asUser token) widgetAOrder
+        -- Then the order is recorded at $25
+        liftIO $ simpleStatus placed `shouldBe` status201
+        liftIO $ fmap (.totalCents) (decode @Order (simpleBody placed)) `shouldBe` Just 2500
       it "Scenario: Placing an order in someone else's shop" $ do
         token &lt;- liftIO (signIn grace)
         request methodPost (ordersPath shop) (asUser token) widgetAOrder `shouldRespondWith` 403</code></pre>
@@ -286,7 +291,7 @@ spec = do
 <a href="/community/from-scenario-to-slice/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">From scenario to slice</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

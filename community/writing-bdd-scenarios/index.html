@@ -185,13 +185,14 @@
 <p>The criteria from step 1 go into the Feature as Rules, each holding the scenarios that test it, so a failing scenario names the criterion it breaks.</p>
 <h2 id="example-bdd-scenario"><a class="heading-anchor" href="#example-bdd-scenario">Example BDD scenario</a></h2>
 <p>Here is one for an online shop&rsquo;s cart:</p>
-<pre class="code-block" tabindex="0"><code>Scenario: Adding a product to the cart
+<pre class="code-block" tabindex="0"><code>Feature: Cart
 
-Given "Widget A" is in stock at $25
-And the cart is empty
-When the customer adds "Widget A" to the cart
-Then the cart contains "Widget A"
-And the cart total is $25</code></pre>
+  Scenario: Adding a product to the cart
+    Given "Widget A" is in stock at $25
+    And the cart is empty
+    When the customer adds "Widget A" to the cart
+    Then the cart contains "Widget A"
+    And the cart total is $25</code></pre>
 <p>It says what should happen when a customer adds a product to the cart. Its When is the event a cart slice would name <code>itemAdded</code>; the lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#event-oriented-slices">Redux Toolkit and RTK Query Best Practices</a> names actions after events the same way. Module 4&rsquo;s <a href="/community/from-scenario-to-slice/">From scenario to slice</a> follows it into a slice and its test.</p>
 <aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> A step says what happened in the business&rsquo;s words, never how the screen did it: &ldquo;When the customer adds &lsquo;Widget A&rsquo; to the cart&rdquo;, not &ldquo;When she clicks Add&rdquo;. The test is whether the step would survive a redesign.</p>
 <p>Each Then names a value that would be wrong if the behavior broke: &ldquo;the cart total is $25&rdquo; fails when the total is miscounted, while &ldquo;the page shows no error&rdquo; passes when nothing happened at all. A scenario earns its place when breaking the rule it describes makes it fail.</p></aside>
@@ -206,7 +207,7 @@ And the cart total is $25</code></pre>
 <a href="/community/writing-bdd-scenarios-for-software-modules/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing BDD scenarios for software modules</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

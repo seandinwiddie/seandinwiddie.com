@@ -2,6 +2,28 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Community loop round 1: CTO and webmaster/SWE reviews: October 4, 2026
+
+Two reviewers read the whole course, the hub and archives, Joining the team, the offer page and contact: the senior CTO for accuracy (every claim against its code, its sources and the site's build), and a senior software engineer weighing whether to join, as a peer and a prospective team member, for the sign-up hook. Six fixers applied their findings by part of the course, and the integrator applied the ones only the sync renders.
+
+- **Scores:** neither review's score reached the integrator with the findings, so this entry records none; the next round scores afresh.
+- **Objections that matter most:** the curriculum and the course's descriptions stopped at FRP, though Modules 4 to 6 exist (the Course Outline's and Introduction's cards, and the archive pages); the capstone's `statusOf` clashed with Servant's own; Module 5 cited OWASP's earlier list, whose advice the 2026 one changes, and the skill lesson said `check-draft.ts` catches times it doesn't read; and a webmaster finishing any lesson met only the owners' door, with the course's last lesson a dead end.
+- **Applied (85 findings, none rejected, a few in other words where the proposed ones overran the 158-character description limit or misread):**
+  - **Course overview and Module 1 (18):** the curriculum names Modules 4 to 6; the three Cs in Ron Jeffries' order; Dan North's BDD dated 2003 to 2006; the last unlinked Activity links Apply FRP; the FRP step chart at one scale; the Introduction drops a hard-sell pair and links its next lesson.
+  - **Module 2 (13):** the Writing BDD scenarios block is a whole `Feature: Cart` that parses (cucumber-js: 1 scenario, 5 steps passed), "owner" no longer means a layer, the Gherkin outline's step and results agree, and the Vitest excerpt names its source.
+  - **Modules 3 and 4 (12):** `statusFor` in the capstone, and the API test proves the order recorded at 2500 cents (the Haskell harness: 10 examples, 0 failures, and fails when an order records 0); the endpoint lesson's error split matches `fetchBaseQuery` (`PARSING_ERROR` for a page that isn't JSON, `CUSTOM_ERROR` for JSON of the wrong shape); onward lines where three lessons stopped.
+  - **Module 5 (8):** OWASP LLM01:2026 and LLM03:2026 cited, authorization enforced in code; the stop reasons include `pause_turn`; a fallback's billed tokens read from `usage.iterations`; the skill lesson's Vitest printout is a real run.
+  - **Module 6 (7):** the TypeScript paths in the protocol map follow the harness, the opener's release gate reads as `gate_errors` decides, and the last lesson's close matches Joining the team.
+  - **Hub, archives, Joining the team, offer and contact (21):** card alt text matches its photographs; the archive descriptions name their modules; contact opens with the 70%, and it and Joining the team break long paragraphs; the offer page says no membership is needed to join the team, with its tier names and price lines unchanged.
+  - **The sync (6):** every lesson but the last closes with a second line, for webmasters who build this way, linking Joining the team; the last lesson's previous link pairs with "After the course: Joining the team" (`docs/design.md`, Moving on; site.css grows 43 bytes, to 63,686 of 64,000); the offer page's h1, card and sitemap entry drop "Unveiling" ("Our community: Offer and prices"); a typed apostrophe and an entity give one section id ("in-the-teams-work"; no page linked the old one); the Module 3 comment in `LESSONS` follows the course.
+
+### Waiting
+
+- The course's last lesson links Joining the team in its closing paragraph and in its links onward; the paragraph's clause can be trimmed.
+- The release lesson's gate docstring (`pipeline/release/gate.py`) still says "at no point worse … by more than a declared margin", the wording the Module 6 opener dropped; it changes with its harness file.
+- `check-draft.ts` reads only times written as `open-times.ts` prints them; a rule for other spellings changes the feature file, the house-rules test and the printouts together.
+- The hub names Modules 5 and 6 in a line; the archive pages 2 to 4's titles run 67 to 72 characters (noindex, so the length check skips them); Joining the team's closing line may ask for a line on the reader's work (the coordinator's call).
+
 ## Modules 5 and 6: October 3, 2026
 
 At Sean's direction Module 5 is business automation with AI, and the old Module 5 is Module 6, the AI protocol ecosystem.

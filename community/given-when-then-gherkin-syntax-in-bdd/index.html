@@ -177,16 +177,16 @@
       Given a reset link issued &lt;age&gt; ago
       And the link &lt;history&gt;
       When Ada opens the link
-      Then the reset form is &lt;result&gt;
+      Then the link is &lt;result&gt;
 
       Examples:
-        | age      | history       | result  |
-        | 1 hour   | is unused     | shown   |
-        | 1 hour   | was used once | refused |
-        | 25 hours | is unused     | refused |</code></pre>
+        | age      | history       | result   |
+        | 1 hour   | is unused     | accepted |
+        | 1 hour   | was used once | refused  |
+        | 25 hours | is unused     | refused  |</code></pre>
 <p>A failing row names the case that broke. The steps name the domain, never the page, so the same table runs against a slice, an endpoint or the browser. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a> takes the rule one step further, with property tests that check it across generated inputs.</p>
 </aside>
-<p>That is Gherkin: a small, standard vocabulary for how software should behave from the user’s perspective, clear enough for the owner to read and unambiguous enough for a test to run.</p>
+<p>That is Gherkin: a small, standard vocabulary for how software should behave from the user’s perspective, clear enough for the owner to read and unambiguous enough for a test to run. The next lesson, Writing BDD scenarios, puts the vocabulary to work on a cart scenario, the one Module 4 later builds into a slice.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -197,7 +197,7 @@
 <a href="/community/writing-bdd-scenarios/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing BDD scenarios</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

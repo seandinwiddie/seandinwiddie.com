@@ -131,7 +131,7 @@
 <h3 id="3-define-high-level-scenarios">3. Define high-level scenarios</h3>
 <p>Sketch the case&rsquo;s key interactions or processes as a few high-level scenarios first. They are the frame the detailed scenarios hang on.</p>
 <h3 id="4-name-the-scenarios">4. Name the scenarios</h3>
-<p>For each high-level scenario, list the smaller scenarios it holds by name, one behavior each, before writing any steps. (In Gherkin, a Scenario Outline is something else: one scenario run once for each row of an Examples table.)</p>
+<p>For each high-level scenario, list the smaller scenarios it holds by name, one behavior each, before writing any steps.</p>
 <h2 id="as-you-write"><a class="heading-anchor" href="#as-you-write">As you write</a></h2>
 <h3 id="5-list-user-actions-when">5. List user actions (When)</h3>
 <p>List what users actually do in the case, such as entering data, making a decision or exchanging messages with the software.</p>
@@ -183,7 +183,7 @@
     Given Ada's account email is "ada@example.com"
     When she places an order
     Then a confirmation email goes to "ada@example.com"</code></pre>
-<p>The first draft of this case bundled four behaviors under one When; split into three scenarios, with the chosen card a Given of the second, each When names one event and each failure names one behavior.</p>
+<p>A first draft put four behaviors under one When (choosing the address, choosing the card, placing the order and sending the confirmation); split into three scenarios, with the chosen card a Given of the second, each When names one event and each failure names one behavior.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The three scenarios above all succeed. A declined card is the failure this case can&rsquo;t leave out, and it is a scenario of its own, with Thens that say what doesn&rsquo;t happen as well as what does:</p>
 <pre class="code-block" tabindex="0"><code>  Scenario: Placing the order with a declined card
     Given Ada's cart holds "Widget A" at $25
@@ -204,7 +204,7 @@
 <a href="/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Reviewing and enhancing BDD scenarios as a group</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -414,7 +414,7 @@ $ node scripts/open-times.ts perm 2026-10-10 bookings.json
 {"kind":"unknownService","service":"perm","services":["cut","color","blowout"]}
 $ node scripts/open-times.ts cut 2026-04-31 bookings.json
 {"kind":"badInput","faults":["date \"2026-04-31\" is not a yyyy-mm-dd date"]}</code></pre>
-<p>The second script closes the loop the guide recommends for work where quality matters: run a validator, fix what it reports, run it again. It reads the draft for every time it offers, and holds them to the list:</p>
+<p>The second script closes the loop the guide recommends for work where quality matters: run a validator, fix what it reports, run it again. It reads the draft for every time written the way <code>open-times.ts</code> prints one, and holds them to the list. A time written any other way, such as 10:30am, it doesn&rsquo;t see, which is why step 4 asks for times exactly as printed:</p>
 <pre class="code-block" tabindex="0"><code>// drafting-booking-replies/scripts/check-draft.ts
 // Checks a draft reply against the open times: prints "ok", or every fault.
 //   node scripts/check-draft.ts &lt;draft.txt&gt; [open-times.json]
@@ -479,32 +479,32 @@ describe('Feature: Drafting the reply to a booking inquiry', () =&gt; {
     })
   })</code></pre>
 <p>The six other scenarios follow in the same <code>describe</code>. The run takes the whole folder, so the linter&rsquo;s tests and the three that keep the evals honest, which come up below, run beside them:</p>
-<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/writing-an-agentic-skill --reporter=tree | sed -n '/✓/,$p'
- ✓ src/writing-an-agentic-skill/evals.test.ts (3 tests) 4ms
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run --reporter=tree | sed -n '/✓/,$p'
+ ✓ evals.test.ts (3 tests) 9ms
    ✓ The evals cover the feature (3)
-     ✓ every scenario has an eval, and every eval names a scenario 2ms
+     ✓ every scenario has an eval, and every eval names a scenario 6ms
      ✓ every file an eval hands the model exists 1ms
-     ✓ the description has evals on both sides 0ms
- ✓ src/writing-an-agentic-skill/lint-skill.test.ts (4 tests) 5ms
+     ✓ the description has evals on both sides 1ms
+ ✓ lint-skill.test.ts (4 tests) 5ms
    ✓ lintSkill (4)
      ✓ passes the booking skill 2ms
-     ✓ reports every fault in a broken frontmatter at once 0ms
-     ✓ holds compatibility to 500 characters 0ms
+     ✓ reports every fault in a broken frontmatter at once 1ms
+     ✓ holds compatibility to 500 characters 1ms
      ✓ needs frontmatter on the first line 0ms
- ✓ src/writing-an-agentic-skill/skill.test.ts (7 tests) 8ms
+ ✓ skill.test.ts (7 tests) 7ms
    ✓ Feature: Drafting the reply to a booking inquiry (7)
      ✓ Scenario: A day with open times 4ms
      ✓ Scenario: A day the salon is closed 0ms
      ✓ Scenario: A day with no time that fits 0ms
      ✓ Scenario: A service the salon doesn't offer 0ms
      ✓ Scenario: Bookings written with mistakes 0ms
-     ✓ Scenario: A draft that breaks the house rules 1ms
+     ✓ Scenario: A draft that breaks the house rules 0ms
      ✓ Scenario: An inquiry that names no day 0ms
 
  Test Files  3 passed (3)
       Tests  14 passed (14)
-   Start at  11:24:34
-   Duration  250ms (transform 71%, import 17%, tests 7%, worker 5%)</code></pre>
+   Start at  01:19:33
+   Duration  253ms (transform 66%, import 23%, tests 7%, worker 4%)</code></pre>
 <h2 id="evals-before-and-after-every-change"><a class="heading-anchor" href="#evals-before-and-after-every-change">Evals before and after every change</a></h2>
 <p>A test checks the code; an eval checks what the model does with it. The guide&rsquo;s eval is plain data: the skills to load, a query, the files to hand over and the behavior to expect. The salon&rsquo;s file follows that shape and adds one field, the scenario each eval checks:</p>
 <pre class="code-block" tabindex="0"><code>{
@@ -554,7 +554,7 @@ describe('Feature: Drafting the reply to a booking inquiry', () =&gt; {
 <a href="/community/automating-a-business-process/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Automating a business process with a person in the loop</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -160,7 +160,7 @@
 <p>A selector that builds a new array on every call re-renders its view for nothing, and a view that reads the whole cart re-renders when any line changes; the lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> keeps each subscription to the smallest value its view shows.</p>
 <p>Instant feedback is a choice made per action: adding to a cart can show at once and be undone if the API refuses, as <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a> shows, while placing an order waits for the API.</p>
 <p>A failure is an event like any other, never an exception for a view to catch. When the API refuses an order, RTK Query dispatches the request&rsquo;s rejected action with the API&rsquo;s reason as plain data. The slice, which empties the cart only on <code>matchFulfilled</code>, leaves it alone, and a pure function turns the request&rsquo;s state into the words the customer reads, as <code>orderNotice</code> does in <a href="/community/the-view-stays-minimal/">The view stays minimal</a>.</p>
-<p>A response that isn&rsquo;t what the API promised fails its decoder and arrives the same way, as a <code>CUSTOM_ERROR</code> the view can show.</p></aside>
+<p>A JSON response that isn&rsquo;t the shape the API promised fails its decoder and arrives the same way, as a <code>CUSTOM_ERROR</code> the view can show.</p></aside>
 <p>So FRP gives every user interaction, and every request it starts, a name, a place and a test. Declared once and composed from small pure functions over events and state, complex event-driven behavior gets simpler, and every response to user input traces back to the event behind it.</p>
 
 <!-- .entry-content -->
@@ -172,7 +172,7 @@
 <a href="/community/apply-frp-concepts-to-software-modules/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Apply FRP concepts to software modules</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

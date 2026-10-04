@@ -116,11 +116,11 @@
 <p>A behavior-driven development (BDD) testing framework earns its place when it runs the scenarios reliably, stays easy to maintain and reports each failure in the scenario&rsquo;s own words.</p>
 <p>In custom apps, the Sean Dinwiddie’s Webmastery team writes its scenarios in Gherkin and runs them in two ways, and keeps exploring both:</p>
 <ul>
-<li>as executable steps with cucumber-js, Cucumber’s official runner;</li>
+<li>as executable steps with cucumber-js, Cucumber’s official JavaScript implementation;</li>
 <li>as tests named after the scenarios in the codebase’s own runner, such as Vitest for TypeScript and Hspec for Haskell.</li>
 </ul>
 <h2 id="what-a-framework-has-to-do"><a class="heading-anchor" href="#what-a-framework-has-to-do">What a framework has to do</a></h2>
-<p>Either way, the framework has twelve requirements to meet:</p>
+<p>Either way, the framework has twelve requirements to meet, though most matter at only one layer, as the end of this lesson shows:</p>
 <ol>
 <li>
 <strong>Gherkin as written:</strong> The framework should run scenarios written in Gherkin, in the owner&rsquo;s words, or name its tests after them, so the owner can read what runs.</li>
@@ -200,7 +200,10 @@ Then('the cart total is ${int}', function (this: CartWorld, dollars: number) {
   assert.equal(selectTotalCents({ cart: this.cart }), dollars * 100)
 })</code></pre>
 <p>Run the second way, the scenario is one test in the codebase&rsquo;s own runner, named for it, with its steps as comments:</p>
-<pre class="code-block" tabindex="0"><code>it('Scenario: Adding a product to the cart', () =&gt; {
+<pre class="code-block" tabindex="0"><code>// features/cart/cart.test.ts, from From Scenario to Slice
+const widgetA = { productId: 'widget-a', name: 'Widget A', priceCents: 2500 }
+
+it('Scenario: Adding a product to the cart', () =&gt; {
   // Given "Widget A" is in stock at $25, and the cart is empty
   const before = cartSlice.getInitialState()
   // When the customer adds "Widget A" to the cart
@@ -224,7 +227,7 @@ Then('the cart total is ${int}', function (this: CartWorld, dollars: number) {
 <a href="/community/module-3-functional-reactive-programming-frp/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 3: Functional reactive programming (FRP)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

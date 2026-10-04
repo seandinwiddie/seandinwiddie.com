@@ -138,7 +138,7 @@
 <h2 id="3-define-the-high-level-behavior"><a class="heading-anchor" href="#3-define-the-high-level-behavior">3. Define the high-level behavior</a></h2>
 <p>Say what the module is for and how it serves the rest of the system. That high-level view guides every detailed scenario after it.</p>
 <h2 id="4-group-the-scenarios-under-a-feature"><a class="heading-anchor" href="#4-group-the-scenarios-under-a-feature">4. Group the scenarios under a Feature</a></h2>
-<p>A Feature block names the module and holds its scenarios, with the user story beneath the title. (In Gherkin, a Scenario Outline is something else: one scenario run once for each row of an Examples table.)</p>
+<p>A Feature block names the module and holds its scenarios, with the user story beneath the title.</p>
 <h2 id="5-list-user-actions-when"><a class="heading-anchor" href="#5-list-user-actions-when">5. List user actions (When)</a></h2>
 <p>List what users do in the module that you want to test. Name each as the event it is, such as placing an order or cancelling a booking, rather than the clicks that trigger it.</p>
 <h2 id="6-describe-the-initial-state-given"><a class="heading-anchor" href="#6-describe-the-initial-state-given">6. Describe the initial state (Given)</a></h2>
@@ -187,7 +187,7 @@
       | 7      | refused   |</code></pre>
 <p>A Background holds only Givens, and only those every scenario needs. A fact one scenario needs stays in that scenario, where its reader sees it; a Background that grows past a few lines turns each scenario into a puzzle whose start is somewhere else.</p>
 <p>In Vitest, the Background is a <code>beforeEach</code> inside the <code>describe</code> block named for the Feature; in Hspec, a <code>before_</code> around its <code>describe</code>.</p>
-<p>A Feature often outgrows one module: the Checkout in <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> is proved at the API, the endpoint, the slice and the view, and each of their tests carries the same Feature and scenario names, so a report reads the same at every owner. When a Feature&rsquo;s scenarios stop sharing a Background or a story, it is usually two Features, and the place they part is where the scope can split them.</p></aside>
+<p>A Feature often outgrows one module: the Checkout in <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> is proved at the API, the endpoint, the slice and the view, and each of their tests carries the same Feature and scenario names, so a report reads the same at every layer. When a Feature&rsquo;s scenarios stop sharing a Background or a story, it is usually two Features, and the place they part is where the scope can split them.</p></aside>
 <p>Counted out, the booking Feature above makes three runs, and the Background opens each one:</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="writing-bdd-scenarios-for-software-modules-background-title writing-bdd-scenarios-for-software-modules-background-desc" viewBox="0 0 360 217">
@@ -214,7 +214,7 @@
 <a href="/community/creating-bdd-scenarios-for-real-world-cases/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Creating BDD scenarios for real-world cases</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

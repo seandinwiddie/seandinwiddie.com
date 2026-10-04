@@ -273,18 +273,18 @@ reasonOf PaymentsUnavailable = "payments-unavailable"
 
 -- 503 when a later try can succeed; 422 for every other refusal. Every case is
 -- named, so a new Problem without a status is flagged by -Wincomplete-patterns.
-statusOf :: Problem -&gt; ServerError
-statusOf EmptyOrder = err422
-statusOf (UnknownProduct _) = err422
-statusOf CardDeclined = err422
-statusOf PaymentsUnavailable = err503
+statusFor :: Problem -&gt; ServerError
+statusFor EmptyOrder = err422
+statusFor (UnknownProduct _) = err422
+statusFor CardDeclined = err422
+statusFor PaymentsUnavailable = err503
 
 -- The status, with the reason as JSON and a header that says so.
 refuse :: Problem -&gt; Handler a
 refuse problem =
-  throwError (statusOf problem) { errBody = encode problem, errHeaders = [(hContentType, "application/json")] }</code></pre>
+  throwError (statusFor problem) { errBody = encode problem, errHeaders = [(hContentType, "application/json")] }</code></pre>
 <p>Servant&rsquo;s <code>err422</code> and <code>err503</code> carry no headers of their own, so <code>refuse</code> names the content type; without it, the client could still parse the body, but the tests below would fail.</p>
-<p><code>statusOf</code> names every <code>Problem</code> rather than ending in a wildcard, so a refusal added later without a status is flagged by <code>-Wincomplete-patterns</code>, part of <code>-Wall</code>: the compiler&rsquo;s version of the status table in <a href="/community/the-view-stays-minimal/">The view stays minimal</a>.</p>
+<p><code>statusFor</code> names every <code>Problem</code> rather than ending in a wildcard, so a refusal added later without a status is flagged by <code>-Wincomplete-patterns</code>, part of <code>-Wall</code>: the compiler&rsquo;s version of the status table in <a href="/community/the-view-stays-minimal/">The view stays minimal</a>.</p>
 <p>The order keeps the id of the charge that paid for it, in one column the API lesson&rsquo;s <code>orders</code> table gains: <code>ALTER TABLE orders ADD COLUMN charge_id text</code>.</p>
 <h3>Testing the refusals</h3>
 <p>The tests give the app a stand-in for the provider that declines every card, and one that can&rsquo;t be reached. In each, they check the two things the API owns: the refusal, as JSON with its reason and its status, and no order recorded. The order history is read before the attempt and must read the same after it:</p>
@@ -434,7 +434,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 <p>A timeout after the request went out is no answer at all, since the provider may have charged the card, and a 5xx from the provider isn&rsquo;t <code>Unavailable</code> either, since the request reached it.</p>
 <p>Either way the real <code>charge</code> sends the same request again with the same key, which a provider that honors the key answers with its first result rather than a second charge; once an attempt has gone out, a retry that can&rsquo;t connect is no answer either. If it still has no answer it can trust, it throws, the server answers 500, and the customer reads that the order wasn&rsquo;t confirmed, never that she wasn&rsquo;t charged.</p></aside>
 <p>That is the course&rsquo;s chain in one feature: a story in the written scope, its scenarios in Gherkin, a typed API that refuses with a reason, an endpoint and a slice that change nothing they shouldn&rsquo;t, a view that says what happened, and a review against the scope before anything goes live.</p>
-<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>. Webmasters at any stage of the craft build this way under the Sean Dinwiddie&rsquo;s Webmastery name, and <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
+<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>. <a href="/community/module-5-business-automation-with-ai/">Module 5</a>, next, puts an agent to work along the same chain, with a person approving what leaves the building. Webmasters at any stage of the craft build this way under the Sean Dinwiddie&rsquo;s Webmastery name, and every launch gets a review like the one above; <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -445,7 +445,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 <a href="/community/module-5-business-automation-with-ai/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 5: Business automation with AI (agentic skills)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

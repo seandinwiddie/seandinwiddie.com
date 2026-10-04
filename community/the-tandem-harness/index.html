@@ -661,7 +661,7 @@ serveTurn env model' salonVar logVar req = do
   rejects output that isn't a choice and a reply [✔]
 7 examples, 0 failures</code></pre>
 <p>The checker reads only the claims it can parse. A price spelled out in words gets past it, and so would any claim in a form <code>mentions</code> doesn&rsquo;t know. The missing-price check only looks for the word &ldquo;price&rdquo;, so a reply that calls the price great, without saying it isn&rsquo;t set, passes too.</p>
-<p>It reads which days and hours a reply names, not what it says of them. &ldquo;Monday has no openings.&rdquo; is a fact that names Monday, so &ldquo;Tuesday 3pm is open, and Monday works too&rdquo; passes.</p>
+<p>It reads which days and hours a reply names, not what it says of them. &ldquo;Monday has no openings.&rdquo; is a fact that names Monday, so &ldquo;Tuesday 3pm is open, and Monday works too&rdquo; passes, at a salon whose price is set.</p>
 <p>That is where this check ends and meaning begins: the choice, which matters most, is held by the grammar and the parse, and the free text by a checker that grows a case, with a spec named for it, each time a reply slips through.</p>
 <p><code>timeout</code> stops a turn by throwing it an exception, so a model adapter that catches every exception, <code>SomeException</code> included, can swallow the stop, as a note in <a href="https://hackage.haskell.org/package/base-4.17.2.0/docs/src/System.Timeout.html">base&rsquo;s source</a> warns. It can&rsquo;t stop a foreign call that blocks either, though the standard socket I/O a Haskell HTTP client runs on can be stopped.</p>
 <p>And tandem has another reading in the research. In speculative decoding, a small model drafts several tokens and a large one checks them in parallel, without changing the large model&rsquo;s output distribution (Leviathan, Kalman and Matias, <a href="https://proceedings.mlr.press/v202/leviathan23a.html">ICML 2023</a>). The pairing is the same, one side proposes and the other checks, but there both sides are models, and the check buys speed, not rules.</p></aside>
@@ -676,7 +676,7 @@ serveTurn env model' salonVar logVar req = do
 <a href="/community/server-and-client-in-tandem/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Server and client in tandem</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -135,7 +135,7 @@
 <li>The request lists the tools, each a name, a description and a JSON Schema for its input.</li>
 <li>When the model wants a tool, the response stops with <code>stop_reason: "tool_use"</code> and carries one or more <code>tool_use</code> blocks, each with an <code>id</code>, the tool&rsquo;s <code>name</code> and its <code>input</code>.</li>
 <li>The application runs every call and sends back one user message of <code>tool_result</code> blocks, each naming the <code>tool_use_id</code> it answers, with <code>is_error</code> set when the tool failed.</li>
-<li>The loop goes round again while the stop reason is <code>"tool_use"</code>. Any other reason ends it, among them an answer (<code>"end_turn"</code>), a reply cut off at <code>max_tokens</code>, and a <code>"refusal"</code>.</li>
+<li>The loop goes round again while the stop reason is <code>"tool_use"</code>. Any other reason ends this lesson&rsquo;s loop, among them an answer (<code>"end_turn"</code>), a reply cut off at <code>max_tokens</code>, and a <code>"refusal"</code>. <code>pause_turn</code>, which only server tools return, asks the application to send the reply back and go on.</li>
 </ol>
 <p>Anthropic&rsquo;s <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a> (December 2024) describes agents the same way: usually just a model using tools on feedback from its environment, in a loop, with a stopping condition such as a maximum number of iterations to keep it in hand. This lesson&rsquo;s loop has three ways to stop besides the answer, and each one is a value the caller can switch on.</p>
 <figure class="diagram">
@@ -792,9 +792,9 @@ export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: s
   return runAgent(claudeModel(client, system, tools), tools, question, { maxTurns: 6, maxTokens: 50_000 })
 }</code></pre>
 <p>The limits here are this lesson&rsquo;s own; set yours from what real runs cost.</p>
-<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The budget is checked between turns, because the loop can&rsquo;t know what a reply costs until it arrives, so a run can pass its budget by one reply. <code>max_tokens</code> caps what one reply writes, thinking included, not what it reads, and each request sends the whole conversation again, so a long run reads more on every turn.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The budget is checked between turns, because the loop can&rsquo;t know what a reply costs until it arrives, so a run can pass its budget by one reply. <code>max_tokens</code> caps what one reply writes, thinking included, not what it reads, and each request sends the whole conversation again, so a long run reads more on every turn. With a fallback, the response&rsquo;s top-level <code>usage</code> counts only the model that answered; each attempt, the declined one included, has its own entry in <code>usage.iterations</code>, the record the bill follows, so a budget that must match the bill reads those.</p>
 <p>Running calls together suits tools that only read. Tools that change something, such as booking a pickup or taking a payment, are better run one at a time, in order, and often wait for a person&rsquo;s approval.</p>
-<p>The customer&rsquo;s question is untrusted text, and Anthropic&rsquo;s docs advise keeping content from outside, such as inbound email, in <code>tool_result</code> blocks rather than plain user text. Here the tools only read and a person reads every draft, so a question that tries to steer the agent can waste turns, which the limits cap, or spoil a draft, which the person catches. The module&rsquo;s last lesson treats an email&rsquo;s text as data, never instructions.</p></aside>
+<p>The customer&rsquo;s question is untrusted text, and <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks#indirect-prompt-injection">Anthropic&rsquo;s docs</a> advise keeping content from outside, such as inbound email, in <code>tool_result</code> blocks rather than plain user text. Here the tools only read and a person reads every draft, so a question that tries to steer the agent can waste turns, which the limits cap, or spoil a draft, which the person catches. The module&rsquo;s last lesson treats an email&rsquo;s text as data, never instructions.</p></aside>
 <p>The loop gives the agent its hands. <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> gives it know-how: a skill it loads when a task matches, written from a user story and its scenarios, the same way.</p>
 
 <!-- .entry-content -->
@@ -806,7 +806,7 @@ export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: s
 <a href="/community/writing-an-agentic-skill/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing an agentic skill</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

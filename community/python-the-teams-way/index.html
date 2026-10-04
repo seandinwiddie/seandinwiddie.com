@@ -606,7 +606,7 @@ def pytest_terminal_summary(terminalreporter, config):
 def pytest_sessionfinish(session):
     if skipped(session.config):
         session.exitstatus = 1</code></pre>
-<p>With a skipped test added, the run reports it and exits non-zero:</p>
+<p>The whole suite holds 17 tests: these eleven, four in <code>tests/test_config.py</code> for the config reader (the frozen record, every fault in one report, <code>True</code> refused as a number, and a config that isn&rsquo;t one object), and the two in <code>tests/test_inputs.py</code> further down. With a skipped test added, the run reports it and exits non-zero:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ python -m pytest -q; echo "exit $?"
 .............s....
 1 skipped: every test must run
@@ -735,7 +735,7 @@ def test_the_rows_meet_their_contract():
 <a href="/community/measuring-reasoning-on-the-geometry/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Measuring reasoning on the geometry</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>

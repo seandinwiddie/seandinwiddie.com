@@ -183,7 +183,7 @@
 <p>Revision 2026-07-28 changed MCP&rsquo;s shape. There is no <code>initialize</code> handshake and no protocol session. Every request carries its protocol version and the client&rsquo;s capabilities in <code>_meta</code>, under the <code>io.modelcontextprotocol/</code> prefix, and the server answers each request on its own. Every server implements <code>server/discover</code>, so a client can ask what it speaks first (<a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">changelog</a>).</p>
 <p>The specification calls 2026-07-28 and later modern, and 2025-11-25 and earlier legacy. Tutorials from the legacy era teach the handshake, session IDs and the old HTTP+SSE transport, so check the revision at the top of anything you learn from. One server may speak both eras; the cart&rsquo;s speaks the modern one and says so when a legacy client knocks (<a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning">versioning</a>).</p>
 <p>Here is the cart server&rsquo;s pure core. It takes the store and one message, and gives back the store and a reply:</p>
-<pre class="code-block" tabindex="0"><code>// protocol-map/server.ts
+<pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/server.ts
 // The pure core of the cart's MCP server: the store and one message in, the store and a reply out.
 import { todaysMenu, tools } from './cart.ts'
 import { callTool, type Context, type Store } from './orders.ts'
@@ -264,7 +264,7 @@ export const handle = (store: Store, message: unknown, ctx: Context): Step =&gt;
 <p>Roots, Sampling and Logging are <a href="https://modelcontextprotocol.io/specification/2026-07-28/deprecated">deprecated</a> in this revision, with at least twelve months before any removal. A stdio server logs to stderr instead, as the cart&rsquo;s shell does below.</p>
 <h2 id="tools-schemas-structured-results-and-two-kinds-of-failure"><a class="heading-anchor" href="#tools-schemas-structured-results-and-two-kinds-of-failure">Tools: schemas, structured results and two kinds of failure</a></h2>
 <p>A tool is a name, a description written for the model, and JSON Schema for what goes in and, if it likes, what comes out. With no <code>$schema</code> of its own, a tool&rsquo;s schema is JSON Schema 2020-12. Here are the cart&rsquo;s menu and its two tools; the items, the prices and the thirty-minute expiry are invented for the lesson:</p>
-<pre class="code-block" tabindex="0"><code>// protocol-map/cart.ts
+<pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/cart.ts
 // A coffee cart's menu and tools, invented for the lesson: the items, prices and expiry are made up.
 export type Size = 'small' | 'medium' | 'large'
 export const sizes: readonly Size[] = ['small', 'medium', 'large']
@@ -328,7 +328,7 @@ export const tools = [
 <p><code>create_order</code>&rsquo;s description says how long an order lasts, so the model knows before it starts one, as the <a href="https://modelcontextprotocol.io/specification/2026-07-28/server/tools">tools page</a> advises. Its input schema accepts an empty object and nothing else, the form the page recommends for a tool with no parameters.</p>
 <p>Every result says what kind it is, <code>complete</code> or <code>input_required</code>. A tool that returns <code>structuredContent</code> holds it to its <code>outputSchema</code>, and sends the same JSON as text for clients that read only text.</p>
 <p>Failure comes in two kinds. A protocol error means the request itself is wrong, such as an unknown tool, and goes back as a JSON-RPC error a model can rarely fix. A tool execution error is the tool&rsquo;s own answer, such as a sold-out bun, and goes back as a result with <code>isError: true</code> and a reason the model can act on:</p>
-<pre class="code-block" tabindex="0"><code>// protocol-map/wire.ts
+<pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/wire.ts
 // JSON-RPC 2.0 as MCP 2026-07-28 uses it: every result says what kind of result it is.
 export const VERSION = '2026-07-28'
 export const META = 'io.modelcontextprotocol/'
@@ -366,7 +366,7 @@ export const toolError = (text: string): Body =&gt; ({ content: [{ type: 'text',
 export const record = (value: unknown): Body | undefined =&gt;
   typeof value === 'object' &amp;&amp; value !== null &amp;&amp; !Array.isArray(value) ? (value as Body) : undefined</code></pre>
 <p>The specification&rsquo;s examples put input validation on both sides of that line. The cart follows the schema&rsquo;s own example and sends arguments that break the input schema back as <code>-32602</code>, and every rule of the cart as a result. In Module 5&rsquo;s loop an unknown tool came back as a result the model read; across MCP it&rsquo;s a protocol error, and the host decides what the model sees.</p>
-<pre class="code-block" tabindex="0"><code>// protocol-map/orders.ts
+<pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/orders.ts
 // The cart's two tools. An order lives behind a handle the server mints, checked on every call.
 import { ORDER_MINUTES, sizes, todaysMenu, type MenuItem, type Size } from './cart.ts'
 import { error, record, result, toolError, toolResult, type Body, type Id, type Reply } from './wire.ts'
@@ -468,8 +468,8 @@ export const callTool = (store: Store, id: Id, params: Body, capabilities: Body,
 }</code></pre>
 <p>Each failure that belongs to the cart says what to do next: start a new order, pick from what&rsquo;s still available, ask which size. That&rsquo;s expected failure as plain data, as the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> teaches it. A client decodes each result at the boundary before trusting it, as <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes an RTK Query response.</p>
 <p>The scenarios live in <code>cart.feature</code>, in Gherkin, and each test carries its scenario&rsquo;s name; a last test fails if the two lists drift apart:</p>
-<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run protocol-map/server.test.ts --reporter=tree | grep -E '✓|Tests'
- ✓ protocol-map/server.test.ts (13 tests) 11ms
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/the-ai-protocol-map/server.test.ts --reporter=tree | grep -E '✓|Tests'
+ ✓ src/the-ai-protocol-map/server.test.ts (13 tests) 11ms
    ✓ Feature: The coffee cart's tool server (13)
      ✓ Scenario: A client discovers what the server speaks 3ms
      ✓ Scenario: A request in another version is refused with the versions the server speaks 1ms
@@ -487,7 +487,7 @@ export const callTool = (store: Store, id: Id, params: Body, capabilities: Body,
       Tests  13 passed (13)</code></pre>
 <h2 id="transports-and-trust"><a class="heading-anchor" href="#transports-and-trust">Transports and trust</a></h2>
 <p>A <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports">transport</a> is a binding: it carries messages and never changes what they mean. On stdio, the client launches the server as a subprocess and they trade JSON-RPC one message per line. The server writes nothing to stdout that isn&rsquo;t a protocol message, and logs, if anywhere, to stderr. Streamable HTTP uses one endpoint that takes a POST for each message and answers with JSON or a stream scoped to that request.</p>
-<pre class="code-block" tabindex="0"><code>// protocol-map/stdio.ts
+<pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/stdio.ts
 // The stdio shell: one JSON-RPC message per line in, one per line out, and logs only on stderr.
 import { randomUUID } from 'node:crypto'
 import { realpathSync } from 'node:fs'
@@ -525,7 +525,7 @@ if (script !== undefined &amp;&amp; import.meta.url === pathToFileURL(realpathSy
   await serve(process.stdin, process.stdout, process.stderr, process.env.CART_CALLER ?? 'local')
 }</code></pre>
 <p>The shell does the three things the core never does: it reads the clock, mints a random handle and keeps the store from one line to the next. Here it answers a legacy handshake and a modern discovery request, with stderr sent to a file:</p>
-<pre class="code-block code-output" tabindex="0"><code>$ node protocol-map/stdio.ts &lt; protocol-map/first-contact.jsonl 2&gt; stderr.log
+<pre class="code-block code-output" tabindex="0"><code>$ node src/the-ai-protocol-map/stdio.ts &lt; src/the-ai-protocol-map/first-contact.jsonl 2&gt; stderr.log
 {"jsonrpc":"2.0","id":1,"error":{"code":-32601,"message":"initialize is the legacy handshake; this server speaks 2026-07-28","data":{"supported":["2026-07-28"]}}}
 {"jsonrpc":"2.0","id":2,"result":{"resultType":"complete","supportedVersions":["2026-07-28"],"capabilities":{"tools":{},"resources":{}},"ttlMs":300000,"cacheScope":"public","_meta":{"io.modelcontextprotocol/serverInfo":{"name":"coffee-cart","version":"0.1.0"}}}}
 $ cat stderr.log
@@ -683,7 +683,7 @@ $ cabal test the-ai-protocol-map --test-show-details=direct | grep -E '✘|but g
 <li>a boolean <code>exclusiveMinimum</code> beside <code>minimum</code> becomes the bound itself;</li>
 <li>a reference into <code>components</code> moves into <code>$defs</code>, so the tool&rsquo;s schema stands alone.</li>
 </ul>
-<pre class="code-block" tabindex="0"><code>// protocol-map/operation-to-tool.ts
+<pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/operation-to-tool.ts
 // An OpenAPI 3.0 operation, as servant-openapi3 writes it, to an MCP tool in JSON Schema 2020-12.
 type Schema = Readonly&lt;Record&lt;string, unknown&gt;&gt;
 type Named = Readonly&lt;Record&lt;string, Schema&gt;&gt;
@@ -768,8 +768,8 @@ export const operationToTool = (doc: OpenApi, op: Operation): Converted =&gt; {
   const inputSchema = defs.length === 0 ? toJsonSchema(top) : { ...toJsonSchema(top), $defs }
   return { ok: true, tool: { name, description: `${op.summary} ${op.description}`, inputSchema } }
 }</code></pre>
-<p>Each rule has a test named for its scenario: Given a nullable field, When the operation becomes a tool, Then null is allowed by a type union. One more converts <code>placeOrder</code> from the committed document, the one file both languages read:</p>
-<pre class="code-block code-output" tabindex="0"><code>$ node protocol-map/show-tool.ts placeOrder
+<p>Each rule has a test named for its scenario: Given a nullable field, When the operation becomes a tool, Then null is allowed by a type union. One more converts <code>placeOrder</code> from the committed document, the one file both languages read, since the TypeScript folder&rsquo;s <code>openapi.json</code> is a link to the one the Haskell spec commits:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ node src/the-ai-protocol-map/show-tool.ts placeOrder
 {
   "name": "placeOrder",
   "description": "Place a pickup order at the coffee cart. Use it once the customer has chosen an item and a size. It answers with the order number.",
@@ -800,7 +800,7 @@ export const operationToTool = (doc: OpenApi, op: Operation): Converted =&gt; {
 <p>Some operations become tools that never run without a person&rsquo;s yes. Placing an order commits the cart to a drink and the customer to paying for it, so the host asks before every call, as the approval gate does.</p>
 <h2 id="agents-as-peers-files-as-know-how-pages-that-offer-tools"><a class="heading-anchor" href="#agents-as-peers-files-as-know-how-pages-that-offer-tools">Agents as peers, files as know-how, pages that offer tools</a></h2>
 <p>A2A treats other agents as peers that stay opaque: they work together without sharing their memory, their logic or their tools. An agent publishes an Agent Card, conventionally at <code>/.well-known/agent-card.json</code>, naming its skills, its endpoints and how to authenticate. Work happens in Tasks with a lifecycle (submitted, working, input required, completed and more), Messages carry Parts such as text, files or data, and results come back as Artifacts.</p>
-<p>Here is a card at <a href="https://a2a-protocol.org/v1.0.0/specification/">A2A 1.0</a> for the bakery that supplies the cart&rsquo;s morning buns, <code>protocol-map/bakery.agent-card.json</code>. The cart&rsquo;s agent can ask for a quote without ever seeing how the bakery prices one:</p>
+<p>Here is a card at <a href="https://a2a-protocol.org/v1.0.0/specification/">A2A 1.0</a> for the bakery that supplies the cart&rsquo;s morning buns, <code>src/the-ai-protocol-map/bakery.agent-card.json</code>. The cart&rsquo;s agent can ask for a quote without ever seeing how the bakery prices one:</p>
 <pre class="code-block" tabindex="0"><code>{
   "name": "Bakery wholesale agent",
   "description": "Quotes wholesale bakes and schedules deliveries for cafes and coffee carts that resell them. An invented bakery, for the lesson.",
@@ -828,11 +828,11 @@ export const operationToTool = (doc: OpenApi, op: Operation): Converted =&gt; {
     }
   ]
 }</code></pre>
-<p>A type guard in <code>protocol-map/peers.ts</code> checks the fields the 1.0 data model requires of the card and of each part it names, from its provider and interfaces to its skills, security schemes and signatures, and reports each fault it finds. Its tests read this card and the salon&rsquo;s file below, and both pass.</p>
+<p>A type guard in <code>src/the-ai-protocol-map/peers.ts</code> checks the fields the 1.0 data model requires of the card and of each part it names, from its provider and interfaces to its skills, security schemes and signatures, and reports each fault it finds. Its tests read this card and the salon&rsquo;s file below, and both pass.</p>
 <p>Two file formats carry know-how. <a href="https://agents.md/">AGENTS.md</a> is a README for coding agents: plain Markdown with no required fields, where the closest file to the one being edited wins and the person&rsquo;s own instructions override everything. An <a href="https://agentskills.io/specification">Agent Skill</a> is a folder an agent loads a little at a time, by progressive disclosure; <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> builds one.</p>
 <p>Two more meet a webmaster at the page itself, and both are emerging. <a href="https://webmachinelearning.github.io/webmcp">WebMCP</a>, a draft of the W3C&rsquo;s Web Machine Learning Community Group with editors from Microsoft and Google, lets a page register a tool with <code>document.modelContext.registerTool()</code> or offer a form as one. Its status page lists origin trials in Chrome and Edge.</p>
 <p>A tool registered that way runs the page&rsquo;s own code, so on the cart&rsquo;s order page it would dispatch the same action the Add button does, and the agent and the person share one state.</p>
-<p>And <a href="https://llmstxt.org/">llms.txt</a>, Jeremy Howard&rsquo;s proposal, revised as v2 in August 2026, is a Markdown file at a site&rsquo;s root, or under any path, that sums up the site and links to clean Markdown versions of its pages. Here is the salon&rsquo;s, <code>protocol-map/salon-llms.txt</code>:</p>
+<p>And <a href="https://llmstxt.org/">llms.txt</a>, Jeremy Howard&rsquo;s proposal, revised as v2 in August 2026, is a Markdown file at a site&rsquo;s root, or under any path, that sums up the site and links to clean Markdown versions of its pages. Here is the salon&rsquo;s, <code>src/the-ai-protocol-map/salon-llms.txt</code>:</p>
 <pre class="code-block" tabindex="0"><code># The salon
 
 &gt; An invented salon, for the lesson: cuts, color and blowouts, Tuesday to Saturday. Bookings are by email, and a person confirms every one.
@@ -869,7 +869,7 @@ Open Tuesday, Wednesday and Friday 9 to 5, Thursday 9 to 7 and Saturday 9 to 3. 
 <a href="/community/geometric-reasoning-as-data/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Geometric reasoning as data</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
 </aside>
 <!-- #comments -->
       </div>
