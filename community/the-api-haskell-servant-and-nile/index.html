@@ -225,7 +225,7 @@ SELECT id, total_cents FROM orders WHERE user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d
 <rect class="node on" x="230.5" y="120.75" width="107" height="26" rx="4"/>
 <g><text class="note" x="180" y="19.75">nile.tenant_id = the shop</text><text class="note" x="107.5" y="57.75">orders: tenant table</text><text class="note" x="284.25" y="57.75">products: shared</text><text x="107.75" y="93.75">shop · order 1</text><text class="note" x="107.75" y="133.75">other shop: hidden</text><text x="107.75" y="173.75">shop · order 2</text><text class="note" x="107.75" y="213.75">other shop: hidden</text><text x="284" y="93.75">Widget A</text><text x="284" y="133.75">Widget B</text></g>
 </svg>
-<figcaption>With <code>nile.tenant_id</code> set to the shop, a tenant table such as <code>orders</code> shows the connection only the shop&rsquo;s rows, outlined in violet. A shared table, such as the product catalog, stays readable.</figcaption>
+<figcaption>With <code>nile.tenant_id</code> set to the shop, a tenant table such as <code>orders</code> shows the connection only the shop&rsquo;s rows. A shared table, such as the product catalog, stays readable. Every row the connection sees is outlined in violet.</figcaption>
 </figure>
 <p>The tenant in the path is only a claim. With <code>nile.user_id</code> set, Nile raises an error unless that user belongs to the tenant in its built-in <code>users.tenant_users</code> table, and the shell answers 403 Forbidden; an app that keeps its own users checks membership the same way before <code>withTenant</code> runs.</p>
 <p><code>SET</code> takes no bind parameters, so both IDs are written into the statement, which is safe here because the Capture and the auth layer have already parsed them as UUIDs.</p>

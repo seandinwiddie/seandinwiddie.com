@@ -172,7 +172,7 @@ export default config</code></pre>
 </ul>
 <p>The generated file is read in review like any other source and never edited by hand: the config changes, the generator runs again, and the diff is reviewed. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Redux Toolkit and RTK Query Best Practices</a> lists what that review checks.</p>
 <h2 id="3-decode-at-the-boundary"><a class="heading-anchor" href="#3-decode-at-the-boundary">3. Decode at the boundary</a></h2>
-<p>The generated types say what the API promised; they don&rsquo;t check what arrives. A server deployed ahead of its client, or a gateway that answers 200 with JSON of its own, can answer with something else (a page that isn&rsquo;t JSON at all never gets that far: <code>fetchBaseQuery</code> reports it as a <code>PARSING_ERROR</code>). So every response is <code>unknown</code> until a decoder accepts it, written as a pure function that returns the lectures&rsquo; small <code>Either</code>:</p>
+<p>The generated types say what the API promised; they don&rsquo;t check what arrives. A server deployed ahead of its client, or a gateway that answers 200 with JSON of its own, can answer with something else (a page that isn&rsquo;t JSON at all never gets that far: <code>fetchBaseQuery</code> reports it as a <code>PARSING_ERROR</code>). So every response is <code>unknown</code> until a decoder accepts it, written as a pure function that returns the lectures&rsquo; <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">small <code>Either</code></a>, kept in <code>shared/either.ts</code>:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/decodeOrders.ts
 import { left, right, type Either } from '../../shared/either'
 import type { Order } from './ordersApi.generated'
@@ -234,7 +234,7 @@ const decodingBaseQuery: BaseQueryFn&lt;string | FetchArgs, unknown, FetchBaseQu
 </svg>
 <figcaption>Every response is unknown until its endpoint&rsquo;s decoder accepts it. The violet line is a payload that passes and is cached; one that fails becomes a <code>CUSTOM_ERROR</code>, with the raw payload beside it, for the view to show.</figcaption>
 </figure>
-<p>An endpoint that names no decoder passes through unchecked, so the review checks that every endpoint names one; the cart in the depth passage below leaves its decoder out only to keep the patch in view.</p>
+<p>An endpoint that names no decoder passes through unchecked, so the review checks that every endpoint names one; the cart under &ldquo;Where it bends&rdquo;, below, leaves its decoder out only to keep the patch in view.</p>
 <p>RTK Query can also run the same check itself, as an endpoint&rsquo;s <code>responseSchema</code>, for validators written to the Standard Schema interface. The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#react-and-rtk-query">Practical Applications of Functional Programming</a> holds to the same rule: an endpoint checks the response before any component receives it.</p>
 <h2 id="4-tags-say-what-to-refetch"><a class="heading-anchor" href="#4-tags-say-what-to-refetch">4. Tags say what to refetch</a></h2>
 <p>A query provides tags for what it holds, and a mutation invalidates the tags its change makes stale. The generated endpoints take their decoders and tags in one reviewed file beside the generated one:</p>
@@ -279,7 +279,7 @@ export const { useListOrdersQuery, usePlaceOrderMutation } = ordersApi</code></p
 <p>The tags are written here, where they are reviewed, because tags generated from the document are only as fine as the document&rsquo;s own grouping. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#understand-invalidation">Redux Toolkit and RTK Query Best Practices</a> walks through invalidation.</p>
 <h2 id="5-the-scenario-at-the-endpoint"><a class="heading-anchor" href="#5-the-scenario-at-the-endpoint">5. The scenario at the endpoint</a></h2>
 <p>An endpoint is tested against a controlled boundary: a real store with the root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>.</p>
-<p>The view builds the new order from the slice&rsquo;s lines, product and quantity only; the price the customer saw is for display, and the API prices the order in its own transaction. The test carries the same scenario name as the API&rsquo;s and the slice&rsquo;s:</p>
+<p>The view builds the new order from the slice&rsquo;s lines, product and quantity only; the price the customer saw is for display, and the API prices the order in its own transaction. The test carries the same scenario name as the API&rsquo;s, and because the slice shares its store, it checks the slice&rsquo;s Then too:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/ordersApi.test.ts
 import { configureStore } from '@reduxjs/toolkit'
 import { afterEach, describe, expect, it, vi } from 'vitest'

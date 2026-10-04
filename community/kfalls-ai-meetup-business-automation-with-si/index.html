@@ -114,7 +114,7 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>Module 5, as a talk for the KFalls AI Meetup (evening, business &amp; student): an order typed twice, an agent that drafts it once, and a person who approves what leaves the building. It runs about twenty minutes. The slides carry only the meetup&rsquo;s name, and the list after them links each slide to the lesson that goes deeper.</p>
+<p>Module 5, as a talk for the KFalls AI Meetup (evening, business &amp; student): an order typed twice, an agent that drafts it once, and a person who approves what leaves the building. It runs about twenty minutes. Members of the community meet at meetups such as this one. The slides carry only the meetup&rsquo;s name, and the list after them links each slide to the lesson that goes deeper.</p>
 <div class="deck">
 <div class="deck__bar" hidden>
 <button type="button" class="deck__present" data-deck="present">Present</button>
@@ -176,7 +176,7 @@
 <div>
 <p>An agent is ordinary software: a model in a loop with tools. The model is the SI part, the part that reads and writes.</p>
 <p>It reads the task, asks for a tool, reads the result and goes round again, until it answers or a limit stops it.</p>
-<p>It always stops in one of four ways, each with a name, so the program knows why it stopped.</p>
+<p>Each way it can stop has a name, so the program knows why it stopped.</p>
 </div>
 <figure class="diagram">
 <svg role="img" aria-labelledby="talk-loop-title talk-loop-desc" viewBox="0 0 360 320">
@@ -189,14 +189,14 @@
 <rect class="node on" x="232" y="76" width="112" height="24" rx="4"/>
 <rect class="node on" x="36" y="148" width="120" height="24" rx="4"/>
 <rect class="node" x="16" y="212" width="160" height="96" rx="4"/>
-<g><text x="96" y="24">the task</text><text x="96" y="88">model</text><text x="288" y="88">tools</text><text x="96" y="160">code decides</text><text x="96" y="230">answered</text><text x="96" y="250">out of turns</text><text x="96" y="270">out of tokens</text><text x="96" y="290">model stopped</text><text class="note" x="194" y="76">results</text><text class="note" x="222" y="148">tool calls</text><text class="note" x="266" y="250">every way out</text><text class="note" x="266" y="270">is named</text></g>
+<g><text x="96" y="24">the task</text><text x="96" y="88">model</text><text x="288" y="88">tools</text><text x="96" y="160">code decides</text><text x="96" y="230">answered</text><text x="96" y="250">out of turns</text><text x="96" y="270">out of tokens</text><text x="96" y="290">model stopped</text><text class="note" x="194" y="76">results</text><text class="note" x="222" y="148">tool calls</text><text class="note" x="266" y="250">each way it stops</text><text class="note" x="266" y="270">is named</text></g>
 </svg>
 <figcaption>The loop, round the violet path, and its four named ways out.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>That&rsquo;s the whole trick. The model is the part that learned from a great deal of written text, so it can read a message and write a reply. A tool is just a small, plain program the model can ask for, like one that looks up the menu. The box marked &ldquo;code decides&rdquo; is plain code too: it reads the model&rsquo;s reply, checks the limits, and either goes on to the tools or takes one of the ways out. The arrow marked &ldquo;tool calls&rdquo; carries the model&rsquo;s requests for tools, once the code has checked them. A model reads and writes in little chunks of text called tokens, and each task gets a budget of them, so no task can quietly run up the bill. All told, there are four ways out. It answered. It ran out of turns: a turn is one trip round the loop, and we allow only so many. It ran out of tokens. Or the model stopped short, say by declining the task. We test the loop with a scripted model, a stand-in that gives back the replies we wrote for it, so our tests never use a real model at all.</p></div>
+<div class="slide__notes"><p>That&rsquo;s the whole trick. The model is the part that learned from a great deal of written text, so it can read a message and write a reply. A tool is just a small, plain program the model can ask for, like one that looks up the menu. The box marked &ldquo;code decides&rdquo; is plain code too: it reads the model&rsquo;s reply, checks the limits, and either goes on to the tools or takes one of the ways out. The arrow marked &ldquo;tool calls&rdquo; carries the model&rsquo;s requests for tools, once the code has checked them. A model reads and writes in little chunks of text called tokens, and each task gets a budget of them, so no task can quietly run up the bill. All told, there are four named ways out. It answered. It ran out of turns: a turn is one trip round the loop, and we allow only so many. It ran out of tokens. Or the model stopped short, say by declining the task. And if the model can&rsquo;t be reached at all, say the internet drops, the program hears an error, the way it would from any request that fails. We test the loop with a scripted model, a stand-in that gives back the replies we wrote for it, so our tests never use a real model at all.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -220,25 +220,25 @@
 <figure class="diagram">
 <svg role="img" aria-labelledby="talk-folder-title talk-folder-desc" viewBox="0 0 360 357">
 <title id="talk-folder-title">What the model reads, and when</title>
-<desc id="talk-folder-desc">A folder tree. The folder drafting-booking-replies holds the skill file, scripts and assets. The skill file's header is highlighted: its name and description are read at the start, for every installed skill. The instructions are read when a task matches. The scripts open-times and check-draft are run by a step, and the model sees only their output. The assets folder holds the salon's data, which is read by a script.</desc>
+<desc id="talk-folder-desc">A folder tree. The salon's skill is a folder holding the skill file, scripts and assets. The skill file's header is highlighted: its name and description are read at the start, for every installed skill. The instructions are read when a task matches. The scripts that find the open times and check a draft are run by a step, and the model sees only their output. The assets folder holds the salon's data, which is read by a script.</desc>
 <g class="edge"><line x1="26.5" y1="38.5" x2="26.5" y2="292.5"/><line x1="26.5" y1="64.5" x2="38.5" y2="64.5"/><line x1="26.5" y1="178.5" x2="38.5" y2="178.5"/><line x1="26.5" y1="292.5" x2="38.5" y2="292.5"/><line x1="50.5" y1="76.5" x2="50.5" y2="140.5"/><line x1="50.5" y1="102.5" x2="62.5" y2="102.5"/><line x1="50.5" y1="140.5" x2="62.5" y2="140.5"/><line x1="50.5" y1="190.5" x2="50.5" y2="254.5"/><line x1="50.5" y1="216.5" x2="62.5" y2="216.5"/><line x1="50.5" y1="254.5" x2="62.5" y2="254.5"/><line x1="50.5" y1="304.5" x2="50.5" y2="330.5"/><line x1="50.5" y1="330.5" x2="62.5" y2="330.5"/></g>
-<rect class="node" x="14.5" y="14.5" width="226" height="24" rx="4"/>
+<rect class="node" x="14.5" y="14.5" width="160" height="24" rx="4"/>
 <rect class="node" x="38.5" y="52.5" width="100" height="24" rx="4"/>
 <rect class="node on" x="62.5" y="90.5" width="68" height="24" rx="4"/>
 <rect class="node" x="62.5" y="128.5" width="116" height="24" rx="4"/>
-<rect class="node" x="38.5" y="166.5" width="84" height="24" rx="4"/>
+<rect class="node" x="38.5" y="166.5" width="76" height="24" rx="4"/>
 <rect class="node" x="62.5" y="204.5" width="100" height="24" rx="4"/>
 <rect class="node" x="62.5" y="242.5" width="108" height="24" rx="4"/>
-<rect class="node" x="38.5" y="280.5" width="76" height="24" rx="4"/>
-<rect class="node" x="62.5" y="318.5" width="100" height="24" rx="4"/>
-<g><text x="127.5" y="26.5">drafting-booking-replies/</text><text x="88.5" y="64.5">skill file</text><text x="96.5" y="102.5">header</text><text x="120.5" y="140.5">instructions</text><text x="80.5" y="178.5">scripts/</text><text x="112.5" y="216.5">open-times</text><text x="116.5" y="254.5">check-draft</text><text x="76.5" y="292.5">assets/</text><text x="112.5" y="330.5">salon-data</text><text class="note" x="285.5" y="94.5">name, description</text><text class="note" x="285.5" y="110.5">read at the start</text><text class="note" x="285.5" y="132.5">read when a</text><text class="note" x="285.5" y="148.5">task matches</text><text class="note" x="285.5" y="219.5">run by a step;</text><text class="note" x="285.5" y="235.5">the model sees</text><text class="note" x="285.5" y="251.5">only the output</text><text class="note" x="285.5" y="330.5">read by a script</text></g>
+<rect class="node" x="38.5" y="280.5" width="68" height="24" rx="4"/>
+<rect class="node" x="62.5" y="318.5" width="152" height="24" rx="4"/>
+<g><text x="94.5" y="26.5">the salon&rsquo;s skill</text><text x="88.5" y="64.5">skill file</text><text x="96.5" y="102.5">header</text><text x="120.5" y="140.5">instructions</text><text x="76.5" y="178.5">scripts</text><text x="112.5" y="216.5">open times</text><text x="116.5" y="254.5">draft check</text><text x="72.5" y="292.5">assets</text><text x="138.5" y="330.5">the salon&rsquo;s data</text><text class="note" x="285.5" y="94.5">name, description</text><text class="note" x="285.5" y="110.5">read at the start</text><text class="note" x="285.5" y="132.5">read when a</text><text class="note" x="285.5" y="148.5">task matches</text><text class="note" x="285.5" y="219.5">run by a step;</text><text class="note" x="285.5" y="235.5">the model sees</text><text class="note" x="285.5" y="251.5">only the output</text><text class="note" x="285.5" y="322.5">read by</text><text class="note" x="285.5" y="338.5">a script</text></g>
 </svg>
 <figcaption>A made-up salon&rsquo;s skill. The violet header is all the model sees until a task calls for more.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>Let&rsquo;s step next door to a made-up salon, and its skill for drafting replies to booking emails. On the picture, a slash after a name just means it&rsquo;s a folder, and the dashes stand in for spaces, the way computer folks often write names. The header is just the top of the card: its name and its description. &ldquo;At the start&rdquo; means when the agent starts up: the model reads the top of every card, and nothing more. The model reads only what the job needs, a layer at a time, and engineers have a grand name for that: progressive disclosure. It&rsquo;s why you can keep many skills on the shelf without crowding the model&rsquo;s desk, and why the description matters most. Together with the name, it&rsquo;s all the model reads before it picks a skill. A script here isn&rsquo;t what you&rsquo;d say on the phone. It&rsquo;s a little program that does one exact job, the same way every time. When a script runs, the model sees what the script printed, never the script itself. Only that printout joins the text on the model&rsquo;s desk, which engineers call its context. The assets folder is where the skill keeps its own files, here the salon&rsquo;s data. That&rsquo;s assets in the filing-cabinet sense, not the accountant&rsquo;s. And the format itself is an open standard, so anyone can read it and use it.</p></div>
+<div class="slide__notes"><p>Let&rsquo;s step next door to a made-up salon, and its skill for drafting replies to booking emails. On the picture, the top line is the skill&rsquo;s folder, and everything tucked under it lives inside. The header is just the top of the card: its name and its description. &ldquo;At the start&rdquo; means when the agent starts up: the model reads the top of every card, and nothing more. The model reads only what the job needs, a layer at a time, and engineers have a grand name for that: progressive disclosure. It&rsquo;s why you can keep many skills on the shelf without crowding the model&rsquo;s desk, and why the description matters most. Together with the name, it&rsquo;s all the model reads before it picks a skill. A script here isn&rsquo;t what you&rsquo;d say on the phone. It&rsquo;s a little program that does one exact job, the same way every time. When a script runs, the model sees what the script printed, never the script itself. Only that printout joins the text on the model&rsquo;s desk, which engineers call its context. The assets folder is where the skill keeps its own files, here the salon&rsquo;s data. That&rsquo;s assets in the filing-cabinet sense, not the accountant&rsquo;s. And the format itself is an open standard, so anyone can read it and use it.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">

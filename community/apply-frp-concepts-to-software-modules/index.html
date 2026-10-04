@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 
-<p>Here functional reactive programming (FRP) goes to work on one module at a time, in thirteen steps: name its events, derive what each screen shows, keep its effects at the edge, and test its core without a browser.</p>
+<p>Here functional reactive programming (FRP) goes to work on one module at a time, in twelve steps: name its events, derive what each screen shows, keep its effects at the edge, and test its core without a browser.</p>
 <h2 id="model-the-module"><a class="heading-anchor" href="#model-the-module">Model the module</a></h2>
 <ol>
 <li>
@@ -122,16 +122,14 @@
 <li>
 <strong>Choose the state layer:</strong> In custom apps, the Sean Dinwiddie’s Webmastery team keeps a module’s state in Redux Toolkit: slices define each part of the state and the pure reducers that change it, RTK Query endpoints fetch and cache server data, and the React views stay minimal. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/">Redux Toolkit and Functional Programming</a> covers the foundation.</li>
 <li>
-<strong>Model events as actions:</strong> Name each action for what happened, such as <code>orderPlaced</code> rather than <code>setOrders</code>; the reducer decides the next state.</li>
+<strong>Model events as actions:</strong> Name each action for what happened, such as <code>orderPlaced</code> rather than <code>setOrders</code>; the reducer takes the current state and the action and returns the next, so no earlier state is overwritten.</li>
 <li>
 <strong>Derive with selectors:</strong> Compute what a view shows from the state with selectors, composed with <code>createSelector</code>, so each derived value has one definition and recomputes only when its inputs change.</li>
 <li>
 <strong>Put effects at the boundary:</strong> RTK Query fetches and caches server data, a thunk runs a workflow started from one place, and listener middleware debounces, cancels and reacts to later actions; reducers and selectors stay pure.</li>
-<li>
-<strong>State management:</strong> Keep the module’s state in its slice. Each reducer takes the current state and an action and returns the next state, so every change is a named event and no earlier state is overwritten.</li>
 </ol>
 <h2 id="make-it-hold-up"><a class="heading-anchor" href="#make-it-hold-up">Make it hold up</a></h2>
-<ol start="7">
+<ol start="6">
 <li>
 <strong>Error handling:</strong> Give each expected failure a name and a shape the module can read: the API answers a declined card with its reason, the slice leaves the cart alone because it empties only on success, and a pure function turns the request&rsquo;s state into the message the view shows, as <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> follows end to end.</li>
 <li>
