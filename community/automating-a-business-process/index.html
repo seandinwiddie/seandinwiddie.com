@@ -221,7 +221,7 @@ Feature: Emailed orders, drafted for one check
 <p>The gate decides what each call the model makes may do. A call that reads, or leaves a note for the person, runs at once. A call off the task&rsquo;s list is refused. A call that would change something is held, since nothing in the loop&rsquo;s reach can make the change, and the only way on is a person&rsquo;s approval, which arrives by a path the model never touches.</p>
 <h2 id="the-gate-is-data-and-pure-functions"><a class="heading-anchor" href="#the-gate-is-data-and-pure-functions">The gate is data and pure functions</a></h2>
 <p>OWASP calls the failure this design guards against <a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM03_ExcessiveAgency.md">excessive agency</a> (LLM03:2026): an agent with more functionality, permissions or autonomy than its job needs, so that a wrong or manipulated output does real damage. Three of its mitigations shape this lesson: offer only the tools a job needs, have a person approve high-impact actions, and enforce authorization in code rather than asking the model whether an action is allowed.</p>
-<p>The first two live in this file. The third is <code>approve</code> and the add-only systems in <code>shop.ts</code>: the only way into the register, the calendar and the order sheet.</p>
+<p>The first and third live in this file. The second ends at <code>approve</code> in <code>shop.ts</code>, behind a person&rsquo;s yes: the only way into the register, the calendar and the order sheet.</p>
 <pre class="code-block" tabindex="0"><code>// orders/gate.ts
 // Which tools each task may use, and which calls wait for a person. Data and pure functions.
 import type { ToolCall } from '../agent/model.ts'

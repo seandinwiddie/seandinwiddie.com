@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 <p>A skill is packaged know-how: a folder with a <code>SKILL.md</code> that an agent loads only when a task matches its description. The loop from <a href="/community/the-agent-loop-and-its-tools/">the last lesson</a> runs the same with a skill installed, given a tool that reads the skill&rsquo;s files and runs its scripts; what changes is what the model knows on its way round.</p>
-<p>This lesson writes one for a job the <a href="/automation/">automation</a> page names, drafting the stock answers, for an invented salon: the stock reply to an email asking for an appointment. It runs from the user story, through the description and the instructions, to the scripts and the evals that check them. Then it reads two skills from this site&rsquo;s own repository.</p>
+<p>This lesson writes one for an invented salon, for a job the <a href="/automation/">automation</a> page names, drafting the stock answers: here, the reply to an email asking for an appointment. It runs from the user story, through the description and the instructions, to the scripts and the evals that check them. Then it reads two skills from this site&rsquo;s own repository.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
 <ul>
@@ -246,7 +246,7 @@ export const lintSkill = (folder: string, text: string): string[] =&gt; {
     ...(/^[a-z0-9-]*$/.test(name) ? [] : ['name takes only a-z, 0-9 and hyphens']),
     ...(/^-|-$|--/.test(name) ? ['name must not start or end with a hyphen, or hold two in a row'] : []),
     ...(name === folder ? [] : [`name "${name}" must match its folder, "${folder}"`]),
-    ...(/anthropic|claude/.test(name) ? ['name must not hold the reserved words "anthropic" or "claude"'] : []),
+    ...(/anthropic|claude/i.test(name) ? ['name must not hold the reserved words "anthropic" or "claude"'] : []),
     ...(description.length &gt;= 1 &amp;&amp; description.length &lt;= 1024
       ? []
       : [`description must be 1 to 1,024 characters, not ${description.length}`]),
@@ -336,7 +336,7 @@ The front desk
 <p>A shell that reaches the network can send as surely as a mail tool, and where a skill runs decides which shell it gets: Anthropic&rsquo;s overview gives a skill no network on the Claude API, and in Claude Code the same network as any other program on the computer. Claude Code&rsquo;s <a href="https://code.claude.com/docs/en/sandboxing">Bash sandbox</a> narrows that: with it on, <code>failIfUnavailable</code> and <code>strictAllowlist</code> true and <code>allowUnsandboxedCommands</code> false, set in managed settings or with <code>--settings</code> so a repository&rsquo;s own settings can&rsquo;t loosen it, a command reaches only the domains allowed, a list that starts empty. Without <code>failIfUnavailable</code>, a sandbox that can&rsquo;t start lets commands run without it. The API&rsquo;s container documents Python 3.11 and names no Node.js, so the salon&rsquo;s TypeScript scripts get their shell with no network from Claude Code&rsquo;s sandbox, or from a container the team runs with its network off.</p>
 <p>A check holds only where code runs it on every draft, whatever the model did. <a href="/community/automating-a-business-process/">The module&rsquo;s last lesson</a> puts its check inside the tool the model drafts with, and tests the whole design with an email that tries.</p>
 <h2 id="scripts-for-the-parts-that-must-be-exact"><a class="heading-anchor" href="#scripts-for-the-parts-that-must-be-exact">Scripts for the parts that must be exact</a></h2>
-<p>Which times are open is arithmetic on a calendar, and a model writing times token by token can offer one that isn&rsquo;t free. A script can&rsquo;t. Anthropic&rsquo;s overview puts it plainly: instructions for flexible guidance, code for reliability, and a script&rsquo;s code never enters the context, only its output.</p>
+<p>Which times are open is arithmetic on a calendar, and a model writing times token by token can offer one that isn&rsquo;t free. A script can&rsquo;t, given the day&rsquo;s bookings as they stand. Step 2 still has the model copy them out of the calendar, and neither script sees a booking the copy leaves out: the person who reads every draft is the check on that, and a script that reads the calendar itself would close the gap. Anthropic&rsquo;s overview puts it plainly: instructions for flexible guidance, code for reliability, and a script&rsquo;s code never enters the context, only its output.</p>
 <p>The script is the course&rsquo;s usual shape: a pure function that answers, and a thin shell that reads the files and prints, the <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">functional core and imperative shell</a>. A failure is an answer too, such as a service the salon doesn&rsquo;t offer, with the list of what it does offer, so the model can put it right on its own:</p>
 <pre class="code-block" tabindex="0"><code>// drafting-booking-replies/scripts/open-times.ts
 // Prints, as JSON, the start times when a service fits on a day.

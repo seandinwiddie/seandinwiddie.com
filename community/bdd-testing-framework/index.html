@@ -228,7 +228,7 @@ describe('Feature: Cart', () =&gt; {
   })
 })</code></pre>
 <p>Both run the same reducer and selectors, and both fail in the scenario&rsquo;s own words. To try it, change <code>quantity: 1</code> to <code>quantity: 0</code> in <code>itemAdded</code>, in the <code>cartSlice.ts</code> from From scenario to slice, and run both: each fails on the cart total, under the scenario&rsquo;s name.</p>
-<pre class="code-block code-output" tabindex="0"><code>$ sed -i 's/quantity: 1 })/quantity: 0 })/' src/features/cart/cartSlice.ts
+<pre class="code-block code-output" tabindex="0"><code>$ sed -i.bak 's/quantity: 1 })/quantity: 0 })/' src/features/cart/cartSlice.ts
 $ npx cucumber-js 2&gt;&amp;1 | grep -E '#|Error|!=='
   1) Adding a product to the cart # features/cart.feature:3
        And the cart total is $25 # features/step_definitions/cart.steps.ts:33

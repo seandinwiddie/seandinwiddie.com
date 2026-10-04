@@ -175,7 +175,7 @@
 <div class="slide__split">
 <div>
 <p>An agent is ordinary software: a model in a loop with tools. The model is the SI part, the part that reads and writes.</p>
-<p>It reads the task, asks for a tool, reads the result and goes round again, until it answers or a limit stops it.</p>
+<p>It reads the task, asks for a tool, reads the result and goes round again, until it answers, a limit stops it, or the model stops short.</p>
 <p>Each way it can stop has a name, so the program knows why it stopped.</p>
 </div>
 <figure class="diagram">
@@ -251,7 +251,7 @@ still holds the placeholder {first name}</code></pre>
 <p>The model fixes all three, and the check runs again.</p>
 </div>
 </div>
-<div class="slide__notes"><p>A model writes its reply a token at a time, predicting what likely comes next. Nothing in that step checks the calendar, so now and then it offers a time that isn&rsquo;t free. A script reads the calendar and works the times out, so it doesn&rsquo;t make that kind of slip. That&rsquo;s why the instructions get the parts that want a light touch, and code gets the parts that must be exact. A good baker judges the dough by feel, and still weighs the flour. And the check we lean on is the one code runs on every single draft, however the model wrote it. The last line in the box is an old friend: a draft that still says {first name} where the customer&rsquo;s name belongs. You&rsquo;ve likely had an email like that yourself.</p></div>
+<div class="slide__notes"><p>A model writes its reply a token at a time, predicting what likely comes next. Nothing in that step checks the calendar, so now and then it offers a time that isn&rsquo;t free. Instead, the model copies down the day&rsquo;s bookings, and a script works the times out from them the same way every time, so the arithmetic can&rsquo;t slip. That&rsquo;s why the instructions get the parts that want a light touch, and code gets the parts that must be exact. A good baker judges the dough by feel, and still weighs the flour. One honest catch: the model still copies the bookings and runs the check itself, and a model can slip or skip a step. So a person still reads every draft before it&rsquo;s sent. The last line in the box is an old friend: a draft that still says {first name} where the customer&rsquo;s name belongs. You&rsquo;ve likely had an email like that yourself.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -407,7 +407,7 @@ refused     send an email</code></pre>
 <li>Tests for the pipes, evals for real days: <a href="/community/automating-a-business-process/#evals-on-real-days">Automating a business process with a person in the loop</a></li>
 <li>Handover, with written notes: <a href="/community/automating-a-business-process/#handover-with-written-notes">Automating a business process with a person in the loop</a></li>
 <li>Questions owners ask: <a href="/community/module-5-business-automation-with-ai/#a-person-approves-what-leaves-the-building">Module 5: Business automation with AI (agentic skills)</a></li>
-<li>Questions students ask: <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a></li>
+<li>Questions students ask: <a href="/community/module-5-business-automation-with-ai/#the-same-chain-with-an-agent-in-the-middle">Module 5: Business automation with AI (agentic skills)</a></li>
 </ul>
 <p><a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a> starts the lessons themselves, building the loop in TypeScript and testing it against a scripted model.</p>
 

@@ -113,7 +113,7 @@
 <!-- .entry-meta -->
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
-<p>An agent is software: a model in a loop with tools. The model asks for a tool, the application runs it and hands back the result, and the loop goes round until the model answers or a limit stops it. On the Sean Dinwiddie&rsquo;s Webmastery team the loop is built like the rest of the practice: a pure core that decides, effects at the edge, and tests named after scenarios.</p>
+<p>An agent is software: a model in a loop with tools. The model asks for a tool, the application runs it and hands back the result, and the loop goes round until the model answers or stops for a reason the loop names, such as a limit. On the Sean Dinwiddie&rsquo;s Webmastery team the loop is built like the rest of the practice: a pure core that decides, effects at the edge, and tests named after scenarios.</p>
 <p>This lesson builds one for a bakery, an invented one. A customer asks whether two dozen sourdough rolls and six croissants can be picked up on Saturday at 9, and the agent reads the menu and the hours and drafts the answer. Its tools only read, and the draft goes nowhere on its own: <a href="/community/automating-a-business-process/">Automating a business process with a person in the loop</a> puts a person between a draft and the customer.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
@@ -667,7 +667,7 @@ describe('Feature: Pickup questions at the bakery', () =&gt; {
  ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: A refusal is a stop, never an answer 1ms
  ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; has a test for every scenario in pickup.feature 0ms
       Tests  10 passed (10)</code></pre>
-<p>A failing test names the rule that broke. Change one character in <code>decide</code>, <code>&gt;=</code> to <code>&gt;</code>, and the model gets asked a fourth time:</p>
+<p>A failing test names the rule that broke. Delete one character in <code>decide</code>, turning <code>&gt;=</code> into <code>&gt;</code>, and the model gets asked a fourth time:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ sed -i 's/turns &gt;= limits/turns &gt; limits/' agent/decide.ts
 $ npx vitest run 2&gt;&amp;1 | grep -E 'FAIL|AssertionError'
  FAIL  agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: The loop stops at its turn limit

@@ -161,7 +161,30 @@ export const selectNewOrder = createSelector([selectLines], (lines) =&gt; ({
   lines: lines.map(({ productId, quantity }) =&gt; ({ productId, quantity })),
 }))</code></pre>
 <p><code>createSelector</code> returns the same object until the lines change, so the view re-renders only when there is something new to show. React Redux checks this in development: a selector that returns a new object for the same state logs a warning.</p>
-<p>Both selectors are tested like the slice&rsquo;s, with plain state and no view. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#selector-layers">Modern Redux Architecture Patterns</a> makes simple selectors a feature&rsquo;s public read API, and memoizes where reference stability matters.</p>
+<p>Both selectors are tested like the slice&rsquo;s, with plain state and no view:</p>
+<pre class="code-block" tabindex="0"><code>// features/checkout/checkoutSelectors.test.ts
+import { describe, expect, it } from 'vitest'
+import { cartSlice, itemAdded } from '../cart/cartSlice'
+import { selectCheckout, selectNewOrder } from './checkoutSelectors'
+
+const widgetA = { productId: 'widget-a', name: 'Widget A', priceCents: 2500 }
+const cart = [itemAdded(widgetA), itemAdded(widgetA)].reduce(cartSlice.reducer, cartSlice.getInitialState())
+
+describe('checkout selectors', () =&gt; {
+  it('shows each line as the customer reads it, and the total', () =&gt; {
+    expect(selectCheckout({ cart })).toEqual({
+      lines: [{ id: 'widget-a', name: 'Widget A', quantity: 2, price: '$50.00' }],
+      total: '$50.00',
+      canPlace: true,
+    })
+    // The same lines give back the same object, so the view has nothing new to render.
+    expect(selectCheckout({ cart })).toBe(selectCheckout({ cart }))
+  })
+  it('sends product and quantity only', () =&gt; {
+    expect(selectNewOrder({ cart })).toEqual({ lines: [{ productId: 'widget-a', quantity: 2 }] })
+  })
+})</code></pre>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#selector-layers">Modern Redux Architecture Patterns</a> makes simple selectors a feature&rsquo;s public read API, and memoizes where reference stability matters.</p>
 <h2 id="3-the-view-reads-shows-and-forwards"><a class="heading-anchor" href="#3-the-view-reads-shows-and-forwards">3. The view reads, shows and forwards</a></h2>
 <p>The store&rsquo;s hooks are typed once, so no view imports the store:</p>
 <pre class="code-block" tabindex="0"><code>// app/hooks.ts
@@ -335,7 +358,7 @@ export function OrderHistory({ tenantId }: { tenantId: string }) {
 }</code></pre>
 <p>RTK Query compares what <code>selectFromResult</code> returns field by field. A fallback written as <code>data ?? []</code> is a new array each time the callback runs, so it reads as a change and costs a render for nothing; <code>NO_ORDERS</code>, declared once outside the component, keeps one reference.</p>
 <p><code>isLoading</code> is true only for the first load, so after an order is placed the list stays on the screen while its tag refetches it. The lecture <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#narrow-subscriptions-and-preserve-references">Modern Redux Architecture Patterns</a> warns against the copied array for the same reason.</p>
-<p>The history&rsquo;s own test, <code>it('Scenario: Listing my orders')</code>, serves two orders from a stand-in behind <code>fetch</code> and reads one line per order, <code>Widget B</code> and <code>Widget A, Widget C</code>. The endpoint and the API each test the same scenario under the same name.</p>
+<p>The history&rsquo;s own test, <code>it('Scenario: Listing my orders')</code>, serves two orders from a stand-in behind <code>fetch</code> and reads one line per order, <code>Widget B</code> and <code>Widget A, Widget C</code>. The endpoint&rsquo;s test file and the API&rsquo;s Hspec suite each carry a test under the same name, and <a href="/community/one-feature-scope-to-launch/#1-the-scope-names-the-stories-and-the-stack">One feature, scope to launch</a> lists it in its scope as Story 2.</p>
 <h2 id="5-the-test-reads-the-screen"><a class="heading-anchor" href="#5-the-test-reads-the-screen">5. The test reads the screen</a></h2>
 <p>The view&rsquo;s test renders it in a real store, with the cart slice, the API root&rsquo;s reducer and middleware, and a stand-in for the server behind <code>fetch</code>, as the endpoint&rsquo;s test does.</p>
 <p>It finds what the customer finds, by role and by visible text, clicks through Testing Library&rsquo;s user-event, and never mocks a hook or reads the component&rsquo;s state. Its two tests carry the names Module 2 gave the scenarios:</p>

@@ -822,8 +822,9 @@ const withArchiveCards = (name, html) => {
 // each archive maps the course, its parts in order, each with its place and count by its
 // name and linked to its first lesson, the Introduction first. It is set as a module's
 // lesson list (module-lessons), its place and name as the lesson links' label and title.
-// After the parts, one row shows the way from reading to joining, in the words the
-// last lesson's link uses (community loop round 4).
+// After the parts, one row shows the way from reading to joining (community loop round 4),
+// labelled "For webmasters" as contact's note is, so it never reads as a course to finish
+// before joining (community loop round 10; the last lesson's link keeps "After the course:").
 const COURSE_MAP_PATTERN = /<nav class="course-map module-lessons"[\s\S]*?<\/nav>\n/;
 const courseMap = () => `<nav class="course-map module-lessons" aria-label="The course">
 <ol>
@@ -833,7 +834,7 @@ ${Object.entries(PARTS)
     return `<li><a href="/community/${opener}/"><span class="page-nav__label">${place} · ${partOf(key).length} lessons</span> <span class="page-nav__title">${title}</span></a></li>`;
   })
   .join("\n")}
-<li><a href="/community/staff/"><span class="page-nav__label">After the course</span> <span class="page-nav__title">Joining the team</span></a></li>
+<li><a href="/community/staff/"><span class="page-nav__label">For webmasters</span> <span class="page-nav__title">Joining the team</span></a></li>
 </ol>
 </nav>
 `;

@@ -129,7 +129,7 @@
 </nav>
 <h2 id="two-rounds-on-mcps-shape"><a class="heading-anchor" href="#two-rounds-on-mcps-shape">Two rounds, on MCP&rsquo;s shape</a></h2>
 <p>Under MCP&rsquo;s 2026-07-28 revision, a server answers <code>input_required</code> when a tool call needs something only the person can give, as <a href="/community/the-ai-protocol-map/#stateless-as-of-2026-07-28">The AI protocol map</a> shows. The client asks the person, then sends the original request again with the answers, and whatever the server must remember rides in <code>requestState</code>, which the client echoes back untouched.</p>
-<p>The <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr">Multi Round-Trip Requests</a> page puts it plainly: the server handling the retry needs nothing beyond what the retry carries.</p>
+<p>The <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr">Multi Round-Trip Requests</a> page says the pattern needs no shared storage layer across server instances and no stateful load balancing: whichever instance takes the retry works from what the retry carries, apart from anything a server keeps to make a state single-use.</p>
 <p>This lesson builds a booking route on that shape. Round one sends the app&rsquo;s booking: the customer&rsquo;s words and the slots still open. The server answers <code>input_required</code>, with a question in an elicitation form and a signed <code>requestState</code>. The app asks the customer, who picks a time. Round two sends the same booking, the answer and the state, and the server completes it.</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="server-and-client-in-tandem-rounds-title server-and-client-in-tandem-rounds-desc" viewBox="0 0 360 317">
@@ -167,7 +167,7 @@ data Question = Question {ask :: Text, choices :: [Text]}
 data Booked = Booked {slot :: Text, say :: Text} | NotBooked {say :: Text}
   deriving stock (Generic, Show, Eq)
 
--- One round's outcome, in MCP's two result types: input required, or complete.
+-- One round's outcome, in the two result types MCP's core defines: input required, or complete.
 data Outcome = InputRequired Question | Complete Booked
   deriving stock (Show, Eq)
 
@@ -182,7 +182,7 @@ step b Nothing = case toOffer b of
   times -&gt; InputRequired (Question "Which time suits you?" times)
 step _ (Just (Accepted time)) = Complete (Booked (offeredTime time) (offeredTime time &lt;&gt; " is yours."))
 step _ (Just Declined) = Complete (NotBooked "No time was chosen, so nothing is booked.")</code></pre>
-<p>Which hours are on offer is what one offer list decides in <a href="/community/the-tandem-harness/">The tandem harness</a>, where a model picks one and its checker accepts or refuses the pick; here <code>toOffer</code> stands in for the list and takes the first two open slots, so the wire is all that&rsquo;s new. The outcomes are MCP&rsquo;s own two result types, input required and complete, and nothing else.</p>
+<p>Which hours are on offer is what one offer list decides in <a href="/community/the-tandem-harness/">The tandem harness</a>, where a model picks one and its checker accepts or refuses the pick; here <code>toOffer</code> stands in for the list and takes the first two open slots, so the wire is all that&rsquo;s new. The outcomes are the two result types MCP&rsquo;s core defines, input required and complete, and nothing else.</p>
 <h2 id="signed-single-use-short-lived-request-state"><a class="heading-anchor" href="#signed-single-use-short-lived-request-state">Signed, single-use, short-lived request state</a></h2>
 <p>The server keeps no session between rounds, so what it must trust in round two leaves with the client in round one, signed. Here that is the times it offered.</p>
 <p><code>toOffer</code> could work them out again from the same booking, but if a model chose the times, as it chooses an hour in <a href="/community/the-tandem-harness/">The tandem harness</a>, a model asked twice need not choose the same ones. A client that could add a time would book one nobody offered.</p>
@@ -449,7 +449,7 @@ describe "Feature: A request state completes once, for its own request, before i
 <p>On the client, a slice holds where the booking stands: idle, asking the customer, done or failed. Two thunks drive it, one per round, because the customer answers in between, in their own time, on the screen. The lecture Modern Redux Architecture Patterns picks a thunk for work an app starts from a call site (<a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#side-effect-architecture">Side-effect architecture</a>).</p>
 <pre class="code-block" tabindex="0"><code>// src/server-and-client-in-tandem/wire.ts
 // The booking route as the client holds it once decoded. The salon and its times are invented.
-export const RESULT_TYPES = ['input_required', 'complete'] as const // MCP's two result types, listed once
+export const RESULT_TYPES = ['input_required', 'complete'] as const // the two result types MCP's core defines, listed once
 export type ResultType = (typeof RESULT_TYPES)[number]
 
 // Reached only by a value the types say can't exist, and then it throws.

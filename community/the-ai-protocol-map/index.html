@@ -326,7 +326,7 @@ export const tools = [
   },
 ] as const</code></pre>
 <p><code>create_order</code>&rsquo;s description says how long an order lasts, so the model knows before it starts one, as the <a href="https://modelcontextprotocol.io/specification/2026-07-28/server/tools">tools page</a> advises. Its input schema accepts an empty object and nothing else, the form the page recommends for a tool with no parameters.</p>
-<p>Every result says what kind it is, <code>complete</code> or <code>input_required</code>. A tool that returns <code>structuredContent</code> holds it to its <code>outputSchema</code>, and sends the same JSON as text for clients that read only text.</p>
+<p>Every result says what kind it is; the core defines <code>complete</code> and <code>input_required</code>. A tool that returns <code>structuredContent</code> holds it to its <code>outputSchema</code>, and sends the same JSON as text for clients that read only text.</p>
 <p>Failure comes in two kinds. A protocol error means the request itself is wrong, such as an unknown tool, and goes back as a JSON-RPC error a model can rarely fix. A tool execution error is the tool&rsquo;s own answer, such as a sold-out bun, and goes back as a result with <code>isError: true</code> and a reason the model can act on:</p>
 <pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/wire.ts
 // JSON-RPC 2.0 as MCP 2026-07-28 uses it: every result says what kind of result it is.
@@ -435,7 +435,8 @@ const askSize = (item: string): Body =&gt; ({
 export const callTool = (store: Store, id: Id, params: Body, capabilities: Body, ctx: Context): Step =&gt; {
   const done = (body: Body): Step =&gt; ({ store, reply: result(id, 'complete', body) })
   const refuse = (message: string): Step =&gt; ({ store, reply: error(id, -32602, message) })
-  const args = record(params.arguments) ?? {}
+  const args = params.arguments === undefined ? {} : record(params.arguments)
+  if (args === undefined) return refuse('arguments must be an object')
 
   if (params.name === 'create_order') {
     if (Object.keys(args).length &gt; 0) return refuse('create_order takes no arguments')
@@ -860,7 +861,7 @@ Open Tuesday, Wednesday and Friday 9 to 5, Thursday 9 to 7 and Saturday 9 to 3. 
 <p>The <a href="https://modelcontextprotocol.io/registry/about">MCP Registry</a>, in preview, is a catalog of metadata pointing at packages in npm, PyPI and the like, and hosts no code. An MCP App earns its place when its UI must live in the conversation or trade data with the host; otherwise, the MCP docs say, a regular web app may be simpler.</p>
 <p>The cart&rsquo;s server writes the wire by hand to show how small it is: JSON-RPC and a schema, both of which the course&rsquo;s own tools cover. TypeScript has a Tier 1 SDK on the <a href="https://modelcontextprotocol.io/docs/2026-07-28/sdk">official SDK list</a>. Haskell has none there, only community packages on Hackage, so a Servant backend that speaks MCP checks which revision a package speaks, or writes this layer itself.</p>
 <p>Which of these protocols a project uses is chosen with the rest of its stack, project by project.</p></aside>
-<p>The joins are mapped. <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> turns to what crosses them, and gives it a shape every later lesson in the module reads.</p>
+<p>The joins are mapped. <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> turns to what crosses them: the coffee cart&rsquo;s possible answers, declared as points in one design file that the TypeScript and Python lessons both read.</p>
 
 <!-- .entry-content -->
 <footer>
