@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Server and Client in Tandem | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="A booking in two rounds on MCP&#x27;s multi round-trip shape: a pure step, signed request state used once, strict decoding and one contract.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/server-and-client-in-tandem/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Server and Client in Tandem | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="A booking in two rounds on MCP&#x27;s multi round-trip shape: a pure step, signed request state used once, strict decoding and one contract.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/server-and-client-in-tandem/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-03T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Server and Client in Tandem | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="A booking in two rounds on MCP&#x27;s multi round-trip shape: a pure step, signed request state used once, strict decoding and one contract.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#webpage","url":"https://seandinwiddie.com/community/server-and-client-in-tandem/","name":"Server and Client in Tandem | Sean Dinwiddie's Webmastery","description":"A booking in two rounds on MCP's multi round-trip shape: a pure step, signed request state used once, strict decoding and one contract.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Server and client in tandem","item":"https://seandinwiddie.com/community/server-and-client-in-tandem/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#article","headline":"Server and client in tandem","description":"A booking in two rounds on MCP's multi round-trip shape: a pure step, signed request state used once, strict decoding and one contract.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/server-and-client-in-tandem/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/glenn-carstens-peters-npxXWgQ33ZQ-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Server and client in tandem</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 5; --lessons: 10">Lesson 5 of 10 in Module 6</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/server-and-client-in-tandem/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>In <a href="/community/the-tandem-harness/">The tandem harness</a>, the model proposes and typed code decides, inside one request. This lesson carries the outcome across the wire, to the app a customer uses, with a server that keeps no session between requests.</p>
+<p>The running example is an invented salon&rsquo;s booking. A customer asks for a cut on Saturday morning; the server asks back which of two open times suits them, and their answer completes the booking. <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a> carried one request and one response; here one contract carries two rounds of one conversation, in Haskell Servant on the server and RTK Query on the client.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#two-rounds-on-mcps-shape">Two rounds, on MCP&rsquo;s shape</a></li>
+<li><a href="#a-pure-step-function">A pure step function</a></li>
+<li><a href="#signed-single-use-short-lived-request-state">Signed, single-use, short-lived request state</a></li>
+<li><a href="#parse-what-the-client-sends">Parse what the client sends</a></li>
+<li><a href="#the-client-asks-then-retries">The client asks, then retries</a></li>
+<li><a href="#decode-once-and-strictly">Decode once, and strictly</a></li>
+<li><a href="#one-contract-checked-from-both-sides">One contract, checked from both sides</a></li>
+</ul>
+</nav>
+<h2 id="two-rounds-on-mcps-shape"><a class="heading-anchor" href="#two-rounds-on-mcps-shape">Two rounds, on MCP&rsquo;s shape</a></h2>
+<p>Under MCP&rsquo;s 2026-07-28 revision, a server answers <code>input_required</code> when a tool call needs something only the person can give, as <a href="/community/the-ai-protocol-map/#stateless-as-of-2026-07-28">The AI protocol map</a> shows. The client asks the person, then sends the original request again with the answers, and whatever the server must remember rides in <code>requestState</code>, which the client echoes back untouched.</p>
+<p>The <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr">Multi Round-Trip Requests</a> page puts it plainly: the server handling the retry needs nothing beyond what the retry carries.</p>
+<p>This lesson builds a booking route on that shape. Round one sends the app&rsquo;s booking: the customer&rsquo;s words and the slots still open. The server answers <code>input_required</code>, with a question in an elicitation form and a signed <code>requestState</code>. The app asks the customer, who picks a time. Round two sends the same booking, the answer and the state, and the server completes it.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="server-and-client-in-tandem-rounds-title server-and-client-in-tandem-rounds-desc" viewBox="0 0 360 317">
+<title id="server-and-client-in-tandem-rounds-title">One booking, two rounds</title>
+<desc id="server-and-client-in-tandem-rounds-desc">Three lanes: the customer, the app and the server. The customer asks for Saturday morning. The app sends the booking, and the server answers input_required, with a question and a signed state. The app asks the customer, 10:30 or 11:30, and the customer answers 11:30. Highlighted, the app sends the booking again with the answer and the state, and the server answers complete.</desc>
+<g class="edge"><line x1="60" y1="44.5" x2="60" y2="304.5"/><line x1="180" y1="44.5" x2="180" y2="304.5"/><line x1="300" y1="44.5" x2="300" y2="304.5"/><line x1="60" y1="78" x2="180" y2="78"/><line x1="180" y1="78" x2="174.8" y2="81.0"/><line x1="180" y1="78" x2="174.8" y2="75.0"/><line x1="180" y1="114" x2="300" y2="114"/><line x1="300" y1="114" x2="294.8" y2="117.0"/><line x1="300" y1="114" x2="294.8" y2="111.0"/><line x1="300" y1="150" x2="180" y2="150"/><line x1="180" y1="150" x2="185.2" y2="147.0"/><line x1="180" y1="150" x2="185.2" y2="153.0"/><line x1="180" y1="186" x2="60" y2="186"/><line x1="60" y1="186" x2="65.2" y2="183.0"/><line x1="60" y1="186" x2="65.2" y2="189.0"/><line x1="60" y1="222" x2="180" y2="222"/><line x1="180" y1="222" x2="174.8" y2="225.0"/><line x1="180" y1="222" x2="174.8" y2="219.0"/></g>
+<g class="path"><line x1="180" y1="258" x2="300" y2="258"/><line x1="300" y1="258" x2="294.8" y2="261.0"/><line x1="300" y1="258" x2="294.8" y2="255.0"/><line x1="300" y1="294" x2="180" y2="294"/><line x1="180" y1="294" x2="185.2" y2="291.0"/><line x1="180" y1="294" x2="185.2" y2="297.0"/></g>
+<rect class="node" x="12.5" y="12.5" width="95" height="32" rx="6"/>
+<rect class="node" x="132.5" y="12.5" width="95" height="32" rx="6"/>
+<rect class="node" x="252.5" y="12.5" width="95" height="32" rx="6"/>
+<g><text x="60" y="28.5">customer</text><text x="180" y="28.5">app</text><text x="300" y="28.5">server</text><text class="note" x="120" y="66">Saturday a.m.?</text><text class="note" x="240" y="102">booking</text><text class="note" x="240" y="138">input_required</text><text class="note" x="120" y="174">10:30 or 11:30?</text><text class="note" x="120" y="210">11:30</text><text class="note" x="240" y="246">+ answer, state</text><text class="note" x="240" y="282">complete</text></g>
+</svg>
+<figcaption>One booking in two rounds, in the lanes of the protocol map&rsquo;s two-round request. The server keeps no session between rounds: the booking travels again, and the signed state carries what the server offered. The violet round brings the customer&rsquo;s answer back and completes.</figcaption>
+</figure>
+<h2 id="a-pure-step-function"><a class="heading-anchor" href="#a-pure-step-function">A pure step function</a></h2>
+<p>The server&rsquo;s protocol is one pure function. Each request carries the booking and, on a retry, the customer&rsquo;s answer, already parsed, and <code>step</code> returns exactly one outcome. It reads no clock, keeps no session and calls nothing, so a recorded run can be fed back through it and watched one step at a time.</p>
+<p>Brett Cannon keeps a page of <a href="https://sans-io.readthedocs.io/">network protocols written sans I/O</a>: libraries that work on bytes or text alone, so any I/O code, synchronous or asynchronous, can drive them. The step function takes that idea up a level. The Servant handler does the I/O, and <code>step</code> only decides, the way the lecture What Is a Function? <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">pushes effects to the edges</a>.</p>
+<pre class="code-block" tabindex="0"><code>-- server-and-client-in-tandem/Step.hs
+-- A salon's booking assistant, invented for the lesson: what each round carries, and the pure step.
+module Step where
+
+import Answer (Answer (..), offeredTime)
+import Data.Text (Text)
+import GHC.Generics (Generic)
+
+-- What the app sends in every round: the customer's words and the slots still open, in the app's own order.
+data Booking = Booking {message :: Text, openSlots :: [Text]}
+  deriving stock (Generic, Show, Eq)
+
+-- What the customer is asked, and the times they may answer with.
+data Question = Question {ask :: Text, choices :: [Text]}
+  deriving stock (Generic, Show, Eq)
+
+-- A finished booking: a time, or none, with the words the customer sees.
+data Booked = Booked {slot :: Text, say :: Text} | NotBooked {say :: Text}
+  deriving stock (Generic, Show, Eq)
+
+-- One round's outcome, in MCP's two result types: input required, or complete.
+data Outcome = InputRequired Question | Complete Booked
+  deriving stock (Show, Eq)
+
+-- The times to offer. Here, the first two open; in the tandem harness, the hours its one offer list holds.
+toOffer :: Booking -&gt; [Text]
+toOffer = take 2 . openSlots
+
+-- One step: the booking, and the customer's answer once there is one, in; exactly one outcome out.
+step :: Booking -&gt; Maybe Answer -&gt; Outcome
+step b Nothing = case toOffer b of
+  [] -&gt; Complete (NotBooked "Nothing is open then, so the salon will call you.")
+  times -&gt; InputRequired (Question "Which time suits you?" times)
+step _ (Just (Accepted time)) = Complete (Booked (offeredTime time) (offeredTime time &lt;&gt; " is yours."))
+step _ (Just Declined) = Complete (NotBooked "No time was chosen, so nothing is booked.")</code></pre>
+<p>Which hours are on offer is what one offer list decides in <a href="/community/the-tandem-harness/">The tandem harness</a>, where a model picks one and its checker accepts or refuses the pick; here <code>toOffer</code> stands in for the list and takes the first two open slots, so the wire is all that&rsquo;s new. The outcomes are MCP&rsquo;s own two result types, input required and complete, and nothing else.</p>
+<h2 id="signed-single-use-short-lived-request-state"><a class="heading-anchor" href="#signed-single-use-short-lived-request-state">Signed, single-use, short-lived request state</a></h2>
+<p>The server keeps no session between rounds, so what it must trust in round two leaves with the client in round one, signed. Here that is the times it offered.</p>
+<p><code>toOffer</code> could work them out again from the same booking, but if a model chose the times, as it chooses an hour in <a href="/community/the-tandem-harness/">The tandem harness</a>, a model asked twice need not choose the same ones. A client that could add a time would book one nobody offered.</p>
+<p>MCP asks the same of <code>requestState</code>: treat it as attacker-controlled, protect its integrity with something like an HMAC when it sways access or business logic, bind it to the caller and the originating request with a short expiry.</p>
+<p>Where a state must be used once, MCP asks the server to enforce that, since a signature alone never will.</p>
+<pre class="code-block" tabindex="0"><code>-- server-and-client-in-tandem/RequestState.hs
+-- requestState, signed: the times offered, how long it holds, and a digest of the request it answers.
+module RequestState (Key, validFor, issue, verify, spend) where
+
+import Control.Concurrent.STM (TVar, atomically, modifyTVar', readTVar)
+import Control.Monad (unless, when)
+import Crypto.Hash (Digest, SHA3_256, digestFromByteString, hash)
+import Crypto.MAC.HMAC (HMAC (..), hmac)
+import Data.Aeson (FromJSON, ToJSON, decodeStrict, encode)
+import Data.ByteArray.Encoding (Base (Base16), convertFromBase)
+import Data.ByteString (ByteString)
+import qualified Data.ByteString.Lazy as BL
+import Data.Set (Set)
+import qualified Data.Set as Set
+import Data.Text (Text)
+import qualified Data.Text as T
+import Data.Text.Encoding (decodeUtf8, encodeUtf8)
+import Data.Time (UTCTime)
+import Data.Time.Clock.POSIX (utcTimeToPOSIXSeconds)
+import GHC.Generics (Generic)
+import Step (Booking (..))
+
+type Key = ByteString
+
+-- What the state says, under its MAC.
+data Claims = Claims {offered :: [Text], goodUntil :: Int, request :: Text}
+  deriving stock (Generic)
+
+instance ToJSON Claims
+instance FromJSON Claims
+
+validFor :: Int
+validFor = 120 -- seconds, invented for the lesson
+
+seconds :: UTCTime -&gt; Int
+seconds = floor . utcTimeToPOSIXSeconds
+
+-- A keyed MAC: HMAC over SHA3-256, written out in hex.
+signed :: Key -&gt; Text -&gt; HMAC SHA3_256
+signed key payload = hmac key (encodeUtf8 payload)
+
+mac :: Key -&gt; Text -&gt; Text
+mac key = T.pack . show . hmacGetDigest . signed key
+
+-- A digest of the request's salient parameters: the salon, the words and the open slots in order.
+digest :: Text -&gt; Booking -&gt; Text
+digest salon b = T.pack (show (hash (BL.toStrict (encode (salon, message b, openSlots b))) :: Digest SHA3_256))
+
+issue :: Key -&gt; UTCTime -&gt; Text -&gt; Booking -&gt; [Text] -&gt; Text
+issue key now salon b times = payload &lt;&gt; "." &lt;&gt; mac key payload
+  where
+    payload = decodeUtf8 (BL.toStrict (encode (Claims times (seconds now + validFor) (digest salon b))))
+
+-- The given MAC, read back from hex into an HMAC. crypton compares two HMACs in constant time.
+macMatches :: Key -&gt; Text -&gt; Text -&gt; Bool
+macMatches key payload given = case convertFromBase Base16 (encodeUtf8 given) of
+  Right bytes | Just d &lt;- digestFromByteString (bytes :: ByteString) -&gt; HMAC d == signed key payload
+  _ -&gt; False
+
+-- Every check that needs no memory, in one pure function. A good state gives back the offered times,
+-- and its MAC in issue's own lowercase hex, so a replay with its MAC in capitals is still caught.
+verify :: Key -&gt; UTCTime -&gt; Text -&gt; Booking -&gt; Text -&gt; Either Text ([Text], Text)
+verify key now salon b state = do
+  let (dotted, given) = T.breakOnEnd "." state
+      payload = T.dropEnd 1 dotted
+  unless (macMatches key payload given) (Left "requestState doesn't verify")
+  claims &lt;- maybe (Left "requestState doesn't verify") Right (decodeStrict (encodeUtf8 payload))
+  when (request claims /= digest salon b) (Left "requestState belongs to another request")
+  when (seconds now &gt; goodUntil claims) (Left "requestState has expired")
+  pure (offered claims, mac key payload)
+
+-- One transaction reads the used states, checks this one and records it, so a state completes once.
+spend :: TVar (Set Text) -&gt; Text -&gt; IO (Either Text ())
+spend used given = atomically $ do
+  seen &lt;- readTVar used
+  if Set.member given seen
+    then pure (Left "requestState was already used")
+    else Right &lt;$&gt; modifyTVar' used (Set.insert given)</code></pre>
+<p><code>verify</code> holds every check that needs no memory, in one pure function, so a later edit to the handler can&rsquo;t skip one. <code>spend</code> is the one that needs memory: it reads the used states, checks this one and records it in the same STM transaction, so two requests racing with one state can&rsquo;t both complete.</p>
+<p><code>macMatches</code> reads the given MAC back into crypton&rsquo;s <code>HMAC</code> type, whose equality compares in constant time, as Python&rsquo;s <code>hmac.compare_digest</code> does.</p>
+<p>The digest covers the request&rsquo;s salient parameters, as MCP&rsquo;s page puts it: the salon, the customer&rsquo;s words and the open slots in the app&rsquo;s order. JSON escapes every separator, so two different requests never share an encoding, and a slot added or moved between rounds no longer matches. The MAC is HMAC over SHA3-256 from the crypton package, and the two-minute life is invented for the lesson.</p>
+<p>Here is round one&rsquo;s reply from the real step and signer:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ cabal repl test:server-and-client-in-tandem -v0 &lt; server-and-client-in-tandem/round-one.ghci
+{"inputRequests":{"time":{"method":"elicitation/create","params":{"message":"Which time suits you?","mode":"form","requestedSchema":{"properties":{"time":{"enum":["sat-10:30","sat-11:30"],"type":"string"}},"required":["time"],"type":"object"}}}},"requestState":"{\"goodUntil\":1791018120,\"offered\":[\"sat-10:30\",\"sat-11:30\"],\"request\":\"cc46a46dac1e042f51cfa1cc7df214ad18fdfc6b4390c08d49d952f34fb9dfe1\"}.b5dcf7e456b83e34e0d820bc8763e613e5a0a7fe072f537effdf1f85b7b2c914","resultType":"input_required"}</code></pre>
+<p>The state is readable JSON and a MAC: signed, not encrypted. Nothing in it is secret, and the client never parses it.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="server-and-client-in-tandem-state-title server-and-client-in-tandem-state-desc" viewBox="0 0 360 310">
+<title id="server-and-client-in-tandem-state-title">A request state&rsquo;s life</title>
+<desc id="server-and-client-in-tandem-state-desc">Six steps down a column: issued and signed, carried unopened, verified for its MAC, its request and its time, then, along a highlighted path, the answer parsed into an offered time, the state spent once, atomically, and, highlighted, the step completing the booking. Beside the steps, the refusals: a state that is forged or for another request is refused at verify, and an expired one is refused there for good; a time never offered is refused; a state used before is refused when spent. Every refusal before the spend leaves the state unused, and only an expired or used state is final.</desc>
+<g class="edge"><line x1="272" y1="48" x2="272" y2="62"/><line x1="272" y1="62" x2="269.0" y2="56.8"/><line x1="272" y1="62" x2="275.0" y2="56.8"/><line x1="272" y1="98" x2="272" y2="112"/><line x1="272" y1="112" x2="269.0" y2="106.8"/><line x1="272" y1="112" x2="275.0" y2="106.8"/></g>
+<g class="path"><line x1="272" y1="148" x2="272" y2="162"/><line x1="272" y1="162" x2="269.0" y2="156.8"/><line x1="272" y1="162" x2="275.0" y2="156.8"/><line x1="272" y1="198" x2="272" y2="212"/><line x1="272" y1="212" x2="269.0" y2="206.8"/><line x1="272" y1="212" x2="275.0" y2="206.8"/><line x1="272" y1="248" x2="272" y2="262"/><line x1="272" y1="262" x2="269.0" y2="256.8"/><line x1="272" y1="262" x2="275.0" y2="256.8"/></g>
+<rect class="node" x="196" y="12" width="152" height="36" rx="4"/>
+<rect class="node" x="196" y="62" width="152" height="36" rx="4"/>
+<rect class="node" x="196" y="112" width="152" height="36" rx="4"/>
+<rect class="node" x="196" y="162" width="152" height="36" rx="4"/>
+<rect class="node" x="196" y="212" width="152" height="36" rx="4"/>
+<rect class="node on" x="196" y="262" width="152" height="36" rx="4"/>
+<g><text x="272" y="24">issued</text><text class="note" x="272" y="39">signed</text><text x="272" y="74">carried</text><text class="note" x="272" y="89">opaque</text><text x="272" y="124">verified</text><text class="note" x="272" y="139">MAC, request, time</text><text x="272" y="174">answer parsed</text><text class="note" x="272" y="189">an offered time</text><text x="272" y="224">spent</text><text class="note" x="272" y="239">once, atomically</text><text x="272" y="274">step completes</text><text class="note" x="272" y="289">the booking</text><text class="note" x="96" y="117">forged, other request:</text><text class="note" x="96" y="132">refused</text><text class="note" x="96" y="147">expired: refused, final</text><text class="note" x="96" y="174">never offered:</text><text class="note" x="96" y="189">refused</text><text class="note" x="96" y="224">used before:</text><text class="note" x="96" y="239">refused, final</text></g>
+</svg>
+<figcaption>A request state passes once. The violet path is a state that verifies, carries an answer that parses, and is spent in the same transaction that checks it. Any refusal before the spend leaves the state unused, so a corrected request can follow on it; only an expired or used state is final.</figcaption>
+</figure>
+<h2 id="parse-what-the-client-sends"><a class="heading-anchor" href="#parse-what-the-client-sends">Parse what the client sends</a></h2>
+<p>The handler runs its checks in one order: the request state, then the answer, then the step. A refusal is a reason the client can act on, and it answers 400. A server deployed without its signing key answers 503 instead, a fault of the server&rsquo;s own, with nothing about its configuration in the body, so a half-configured deploy never completes a booking.</p>
+<pre class="code-block" tabindex="0"><code>-- server-and-client-in-tandem/Server.hs
+-- The booking route: the request state, then the answer, then the step.
+{-# LANGUAGE OverloadedRecordDot #-}
+
+module Server (BookingAPI, Env (..), Refusal (..), bookFor, app, bookOpenApi) where
+
+import Answer (parseAnswer)
+import Control.Concurrent.STM (TVar)
+import Control.Monad.IO.Class (liftIO)
+import Data.Aeson (encode)
+import Data.OpenApi (OpenApi)
+import Data.Set (Set)
+import Data.Text (Text)
+import Data.Time (UTCTime)
+import RequestState (Key, issue, spend, verify)
+import Servant
+import Servant.OpenApi (toOpenApi)
+import Step
+import Wire
+
+type BookingAPI =
+  "salons" :&gt; Capture "salon" Text :&gt; "book" :&gt; ReqBody '[JSON] BookRequest :&gt; Post '[JSON] BookResult
+
+data Env = Env
+  { signingKey :: Maybe Key -- with none, the route books nothing
+  , clock :: IO UTCTime
+  , used :: TVar (Set Text) -- used request states: all the server keeps between requests
+  }
+
+-- Why a request gets no result: the server can't serve it, or the request is refused for a reason it can fix.
+data Refusal = Unavailable | Refused Text
+  deriving stock (Show, Eq)
+
+-- A refusal is never a result: nothing about it reads as a booking.
+bookFor :: Env -&gt; Text -&gt; BookRequest -&gt; IO (Either Refusal BookResult)
+bookFor env salon req = case env.signingKey of
+  Nothing -&gt; pure (Left Unavailable)
+  Just key -&gt; do
+    now &lt;- env.clock
+    let result outcome = case outcome of
+          InputRequired q -&gt; InputRequiredResult (askTime q) (issue key now salon req.arguments (choices q))
+          Complete booked -&gt; CompleteResult booked
+    case (req.inputResponses, req.requestState) of
+      (Nothing, Nothing) -&gt; pure (Right (result (step req.arguments Nothing)))
+      (Just (Raw answers), Just state) -&gt;
+        case verify key now salon req.arguments state of
+          Left why -&gt; pure (Left (Refused why))
+          Right (offered, given) -&gt; case parseAnswer offered answers of
+            Left why -&gt; pure (Left (Refused why)) -- a bad answer leaves the state unused, so a corrected one can follow
+            Right answer -&gt; either (Left . Refused) (const (Right (result (step req.arguments (Just answer))))) &lt;$&gt; spend env.used given
+      _ -&gt; pure (Left (Refused "answers and their requestState travel together"))
+
+app :: Env -&gt; Application
+app env = serve (Proxy @BookingAPI) $ \salon req -&gt;
+  liftIO (bookFor env salon req) &gt;&gt;= \case
+    Right result -&gt; pure result
+    Left Unavailable -&gt; throwError err503 {errBody = encode ("the booking service is unavailable" :: Text)}
+    Left (Refused why) -&gt; throwError err400 {errBody = encode why}
+
+bookOpenApi :: OpenApi
+bookOpenApi = toOpenApi (Proxy @BookingAPI)</code></pre>
+<p><code>BookRequest</code> has no field for a result, so one slipped into a request has nowhere to land; MCP&rsquo;s page likewise asks a server to ignore what it doesn&rsquo;t recognize in a client&rsquo;s answers. In production, <code>clock</code> reads the system clock, and the specs pass a clock they move.</p>
+<p>The answers stay raw JSON until the state verifies. Then <code>parseAnswer</code> reads them into an <code>Answer</code>, and an accepted time only as an <code>Offered</code>, a type whose one constructor the module keeps to itself and builds only from the times the state carried. Alexis King&rsquo;s <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">Parse, don&rsquo;t validate</a> names the rule: get data into its most precise form at the boundary, before any of it is acted on.</p>
+<pre class="code-block" tabindex="0"><code>-- server-and-client-in-tandem/Answer.hs
+-- The customer's answer, parsed into a time the server offered, or refused. Nothing else gets through.
+module Answer (Offered, offeredTime, Answer (..), parseAnswer) where
+
+import qualified Data.Aeson.KeyMap as KeyMap
+import Data.Aeson.Types (Value (..))
+import Data.Text (Text)
+
+-- A time this booking offered. Only parseAnswer makes one, and only from the offered list.
+newtype Offered = Offered Text
+  deriving stock (Show, Eq)
+
+offeredTime :: Offered -&gt; Text
+offeredTime (Offered t) = t
+
+-- MCP's elicitation answers: accept with content, decline, or cancel. Decline and cancel book nothing.
+data Answer = Accepted Offered | Declined
+  deriving stock (Show, Eq)
+
+parseAnswer :: [Text] -&gt; Value -&gt; Either Text Answer
+parseAnswer offered responses = case field "time" responses of
+  Just answer -&gt; case (field "action" answer, field "time" =&lt;&lt; field "content" answer) of
+    (Just "accept", Just (String t))
+      | t `elem` offered -&gt; Right (Accepted (Offered t))
+      | otherwise -&gt; Left (t &lt;&gt; " was never offered")
+    (Just "decline", _) -&gt; Right Declined
+    (Just "cancel", _) -&gt; Right Declined
+    _ -&gt; Left "the answer is not an accept, a decline or a cancel"
+  Nothing -&gt; Left "no answer to the question asked"
+  where
+    field k = \case
+      Object o -&gt; KeyMap.lookup k o
+      _ -&gt; Nothing</code></pre>
+<p>The state is spent only after the answer parses, so a slip costs the customer nothing: a time never offered is refused, and the same state completes a corrected answer.</p>
+<p><code>Wire.hs</code>, beside these files, derives the JSON and the OpenAPI schema from the same aeson options, so the derived types can&rsquo;t disagree; <code>Raw</code>, the JSON kept raw (the answers until the state verifies, and the form&rsquo;s schema), declares its schema by hand. Each refusal has a scenario; here are five of them:</p>
+<pre class="code-block" tabindex="0"><code>-- server-and-client-in-tandem/Spec.hs: the request state's checks, each refused before any step runs.
+describe "Feature: A request state completes once, for its own request, before it expires" $ do
+  it "Scenario: Given a signed state, When the app adds a slot or edits the state before round two, Then the server refuses it" $ do
+    w &lt;- world (Just key)
+    state &lt;- stateFrom =&lt;&lt; roundOne w booking
+    roundTwo w booking {openSlots = "sat-08:00" : openSlots booking} (answers "accept" "sat-10:30") state
+      `shouldReturn` Left (Refused "requestState belongs to another request")
+    roundTwo w booking (answers "accept" "sat-10:30") (T.replace "sat-11:30" "sat-13:00" state)
+      `shouldReturn` Left (Refused "requestState doesn't verify")
+  it "Scenario: Given a signed state, When the app reorders its slots before round two, Then the server refuses it" $ do
+    w &lt;- world (Just key)
+    state &lt;- stateFrom =&lt;&lt; roundOne w booking
+    roundTwo w booking {openSlots = reverse (openSlots booking)} (answers "accept" "sat-10:30") state
+      `shouldReturn` Left (Refused "requestState belongs to another request")
+  it "Scenario: Given a used state, When it is sent again, however its MAC is written, Then the server refuses it" $ do
+    w &lt;- world (Just key)
+    state &lt;- stateFrom =&lt;&lt; roundOne w booking
+    let (dotted, given) = T.breakOnEnd "." state
+    roundTwo w booking (answers "accept" "sat-10:30") state `shouldReturn` booked "sat-10:30"
+    roundTwo w booking (answers "accept" "sat-10:30") state `shouldReturn` Left (Refused "requestState was already used")
+    roundTwo w booking (answers "accept" "sat-10:30") (dotted &lt;&gt; T.toUpper given) `shouldReturn` Left (Refused "requestState was already used")
+  it "Scenario: Given one state, When two requests race with it, Then exactly one completes" $ do
+    w &lt;- world (Just key)
+    state &lt;- stateFrom =&lt;&lt; roundOne w booking
+    boxes &lt;- replicateM 2 newEmptyMVar
+    mapM_ (\box -&gt; forkIO (roundTwo w booking (answers "accept" "sat-10:30") state &gt;&gt;= putMVar box)) boxes
+    results &lt;- mapM takeMVar boxes
+    length (filter isRight results) `shouldBe` 1
+  it "Scenario: Given a signed state, When round two comes after it expires, Then the server refuses it" $ do
+    w &lt;- world (Just key)
+    state &lt;- stateFrom =&lt;&lt; roundOne w booking
+    atomically (modifyTVar' w.now (addUTCTime (fromIntegral validFor + 1)))
+    roundTwo w booking (answers "accept" "sat-10:30") state `shouldReturn` Left (Refused "requestState has expired")</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ cabal test server-and-client-in-tandem --test-show-details=direct | grep -E '✔|✘|examples'
+  Scenario: Round one asks the customer to choose between two open times [✔]
+  Scenario: Round two, with the customer's choice and the request state, completes the booking [✔]
+  Scenario: A customer who declines, or cancels, is booked nothing [✔]
+  Scenario: With nothing open, round one completes without a question [✔]
+  Scenario: A field the server doesn't read is ignored [✔]
+  Scenario: Given a signed state, When the app adds a slot or edits the state before round two, Then the server refuses it [✔]
+  Scenario: Given a signed state, When the app reorders its slots before round two, Then the server refuses it [✔]
+  Scenario: Given a used state, When it is sent again, however its MAC is written, Then the server refuses it [✔]
+  Scenario: Given one state, When two requests race with it, Then exactly one completes [✔]
+  Scenario: Given a signed state, When round two comes after it expires, Then the server refuses it [✔]
+  Scenario: Given an answer with a time never offered, Then the server refuses it, and the state still completes a corrected answer [✔]
+  Scenario: Given an answer that is not an accept, a decline or a cancel, Then the server refuses it [✔]
+  Scenario: Given answers to a question the server never asked, Then the server refuses them [✔]
+  Scenario: Given answers with no request state, or a request state with no answers, Then the server refuses them [✔]
+  Scenario: Given no signing key is configured, When a request arrives, Then nothing is booked [✔]
+  Scenario: The committed OpenAPI document is the one the type generates [✔]
+  Scenario: The route answers a first round over HTTP [✔]
+  Scenario: A request the decoder can't read is refused before any step [✔]
+  Scenario: A refused retry answers 400, with its reason [✔]
+  Scenario: A server with no signing key answers 503, and says nothing of why [✔]
+20 examples, 0 failures</code></pre>
+<p>In the race, two threads send round two with one state at once, and the STM transaction lets exactly one complete. The runs here come from a UTF-8 terminal; under the POSIX locale, Hspec marks a pass <code>[v]</code> where they show &#x2714;.</p>
+<h2 id="the-client-asks-then-retries"><a class="heading-anchor" href="#the-client-asks-then-retries">The client asks, then retries</a></h2>
+<p>On the client, a slice holds where the booking stands: idle, asking the customer, done or failed. Two thunks drive it, one per round, because the customer answers in between, in their own time, on the screen. The lecture Modern Redux Architecture Patterns picks a thunk for work an app starts from a call site (<a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#side-effect-architecture">Side-effect architecture</a>).</p>
+<pre class="code-block" tabindex="0"><code>// src/server-and-client-in-tandem/wire.ts
+// The booking route as the client holds it once decoded. The salon and its times are invented.
+export const RESULT_TYPES = ['input_required', 'complete'] as const // MCP's two result types, listed once
+export type ResultType = (typeof RESULT_TYPES)[number]
+
+// Reached only by a value the types say can't exist, and then it throws.
+export const unhandled = (value: never): never =&gt; {
+  throw new Error(`no handler for ${JSON.stringify(value)}`)
+}
+
+// What the app sends in every round: the customer's words and the slots still open, in its own order.
+export type Booking = { readonly message: string; readonly openSlots: readonly string[] }
+export type Question = { readonly message: string; readonly choices: readonly string[] }
+export type Booked =
+  | { readonly status: 'booked'; readonly slot: string; readonly say: string }
+  | { readonly status: 'not_booked'; readonly say: string }
+export type Result =
+  | { readonly resultType: 'input_required'; readonly question: Question; readonly requestState: string }
+  | { readonly resultType: 'complete'; readonly booked: Booked }
+export type Decoded = { readonly ok: true; readonly result: Result } | { readonly ok: false; readonly problem: string }
+
+// The customer's answer, in MCP's elicitation terms.
+export type Answer = { readonly action: 'accept'; readonly time: string } | { readonly action: 'decline' }
+export type BookRequest = {
+  readonly salon: string
+  readonly arguments: Booking
+  readonly inputResponses?: { readonly time: { readonly action: string; readonly content?: { readonly time: string } } }
+  readonly requestState?: string
+}</code></pre>
+<pre class="code-block" tabindex="0"><code>// src/server-and-client-in-tandem/booking.ts
+// The client's side of two rounds: ask, let the customer answer, retry with the answer and the state untouched.
+import { createAsyncThunk, createSlice, type ThunkDispatch, type UnknownAction } from '@reduxjs/toolkit'
+import { bookingApi } from './bookingApi.ts'
+import { unhandled, type Answer, type Booked, type Booking, type BookRequest, type Question, type Result } from './wire.ts'
+
+export type BookingState =
+  | { readonly phase: 'idle' }
+  | { readonly phase: 'asking'; readonly salon: string; readonly booking: Booking; readonly question: Question; readonly requestState: string }
+  | { readonly phase: 'done'; readonly booked: Booked }
+  | { readonly phase: 'failed'; readonly problem: string }
+
+type Thunk = { state: { booking: BookingState }; rejectValue: string }
+
+type Dispatch = ThunkDispatch&lt;unknown, unknown, UnknownAction&gt;
+
+// A reply, a refusal with its status, a reply it can't read, or no answer at all, each told apart.
+const send = async (dispatch: Dispatch, request: BookRequest, round: string): Promise&lt;Result | string&gt; =&gt; {
+  const sent = dispatch(bookingApi.endpoints.book.initiate(request))
+  const reply = await sent.unwrap().catch((error: { status?: unknown }) =&gt; ({ failed: error.status }))
+  sent.reset() // the thunk holds the reply now, so the store lets the request go
+  if (!('failed' in reply)) return reply.ok ? reply.result : `${round}: ${reply.problem}`
+  if (typeof reply.failed === 'number') return `${round}: the server refused it (${reply.failed})`
+  return reply.failed === 'PARSING_ERROR' ? `${round}: the reply can't be read` : `${round}: the server gave no reply`
+}
+
+// Round one: the booking alone. A question waits in state for the customer; a completed booking ends here.
+export const start = createAsyncThunk&lt;Result, { salon: string; booking: Booking }, Thunk&gt;(
+  'booking/start',
+  async ({ salon, booking }, { dispatch, rejectWithValue }) =&gt; {
+    const result = await send(dispatch, { salon, arguments: booking }, 'round one')
+    return typeof result === 'string' ? rejectWithValue(result) : result
+  },
+)
+
+// Round two: the same booking again, the customer's answer, and the request state exactly as it came.
+export const answer = createAsyncThunk&lt;Booked, Answer, Thunk&gt;('booking/answer', async (choice, { dispatch, getState, rejectWithValue }) =&gt; {
+  const asked = getState().booking
+  if (asked.phase !== 'asking') return rejectWithValue('nothing was asked')
+  const time = choice.action === 'accept' ? { action: 'accept', content: { time: choice.time } } : { action: 'decline' }
+  const request = { salon: asked.salon, arguments: asked.booking, inputResponses: { time }, requestState: asked.requestState }
+  const result = await send(dispatch, request, 'round two')
+  if (typeof result === 'string') return rejectWithValue(result)
+  return result.resultType === 'complete' ? result.booked : rejectWithValue('round two: the server asked again')
+})
+
+export const bookingSlice = createSlice({
+  name: 'booking',
+  initialState: { phase: 'idle' } as BookingState,
+  reducers: {},
+  extraReducers: (builder) =&gt;
+    builder
+      .addCase(start.fulfilled, (_, { payload, meta }): BookingState =&gt; {
+        switch (payload.resultType) {
+          case 'input_required':
+            return { phase: 'asking', salon: meta.arg.salon, booking: meta.arg.booking, question: payload.question, requestState: payload.requestState }
+          case 'complete':
+            return { phase: 'done', booked: payload.booked }
+          default:
+            return unhandled(payload)
+        }
+      })
+      .addCase(answer.fulfilled, (_, { payload }): BookingState =&gt; ({ phase: 'done', booked: payload }))
+      .addCase(start.rejected, (_, { payload }): BookingState =&gt; ({ phase: 'failed', problem: payload ?? 'round one failed' }))
+      .addCase(answer.rejected, (_, { payload }): BookingState =&gt; ({ phase: 'failed', problem: payload ?? 'round two failed' })),
+})</code></pre>
+<p>Round two sends the booking from round one again, the answer, and the request state exactly as it came. The client never reads the state; the slice holds it as an opaque string. A server that asks a second time ends the run with a clear error, since this booking has one question and one answer.</p>
+<p>MCP&rsquo;s page asks a server to ask again when an answer is missing, rather than returning an error, and lets it ask more than once. This route refuses instead, since its one client always sends the answer it was asked for, and that client stops on a second question rather than guess.</p>
+<p>The app then books only the slot a completed booking names, and only while that slot is still open. A completed booking&rsquo;s <code>say</code> is shown to the customer and never read for a time, so free text never moves anything:</p>
+<pre class="code-block" tabindex="0"><code>// src/server-and-client-in-tandem/app.ts
+// The app books only the slot a completed booking names, and only while that slot is still open.
+import type { Booked } from './wire.ts'
+
+export type AppAction = { readonly kind: 'book'; readonly slot: string } | { readonly kind: 'show'; readonly say: string }
+
+export const actOn = (booked: Booked, openNow: ReadonlySet&lt;string&gt;): AppAction =&gt; {
+  if (booked.status === 'not_booked') return { kind: 'show', say: booked.say }
+  if (!openNow.has(booked.slot)) return { kind: 'show', say: `${booked.slot} was taken meanwhile. Pick another time?` }
+  return { kind: 'book', slot: booked.slot } // say is shown to the customer, never read for a time
+}</code></pre>
+<p>The client&rsquo;s tests run against a fake server, a pure function from the salon and a request body to a reply body, behind a stubbed <code>fetch</code>: the controlled request boundary the lecture Redux Toolkit and RTK Query Best Practices tests endpoints against (<a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Testing</a>). Every request and reply still crosses as JSON text:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/server-and-client-in-tandem/booking.test.ts src/server-and-client-in-tandem/app.test.ts --reporter=tree | grep -E '✓|Tests'
+ ✓ src/server-and-client-in-tandem/app.test.ts (2 tests) 4ms
+   ✓ Feature: The app books only the slot a booking names (2)
+     ✓ Scenario: Given words that name another time, When the app acts, Then it books the slot the booking names 2ms
+     ✓ Scenario: Given the slot was taken meanwhile, When the app acts, Then it books nothing and says so 1ms
+ ✓ src/server-and-client-in-tandem/booking.test.ts (9 tests) 64ms
+   ✓ Feature: The client asks the customer, then retries (9)
+     ✓ Scenario: Given a server that asks, When the customer picks a time, Then the retry carries the same booking, the answer and the state untouched 44ms
+     ✓ Scenario: Given the customer declines, When the retry completes, Then nothing is booked 5ms
+     ✓ Scenario: Given a server that asks again in round two, When the customer answers, Then the run stops with a clear error 3ms
+     ✓ Scenario: Given a server that is down, When the booking starts, Then the run stops and books nothing 1ms
+     ✓ Scenario: Given a server that refuses round two, When the customer answers, Then the run names the refusal, not a missing reply 3ms
+     ✓ Scenario: Given a server that refuses with a plain-text body, When the booking starts, Then the run names the refusal (400) 1ms
+     ✓ Scenario: Given a reply labelled JSON that does not parse, When it arrives, Then the run says it can't be read, not that none came 2ms
+     ✓ Scenario: Given a server that refuses with a body, When the booking starts, Then no reply body reaches the store 2ms
+     ✓ Scenario: Given a reply of a result type the client has never heard of, When it arrives, Then the run stops and names it 2ms
+      Tests  11 passed (11)</code></pre>
+<h2 id="decode-once-and-strictly"><a class="heading-anchor" href="#decode-once-and-strictly">Decode once, and strictly</a></h2>
+<p>The booking endpoint decodes in <code>transformResponse</code>, which RTK Query runs before it stores what a request returned, and <code>transformErrorResponse</code> keeps only a failed reply&rsquo;s status, so no reply body reaches the store raw.</p>
+<p>The base query reads each body as the type it declares. Servant&rsquo;s own 400 for a request it can&rsquo;t decode is plain text, so it arrives as a refusal with its status, not as a body that failed to parse. A reply that claims to be JSON and doesn&rsquo;t parse is named as unreadable, never as no reply.</p>
+<p>In a project the endpoint comes from the generator, as the lecture Redux Toolkit and RTK Query Best Practices does it (<a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#generate-endpoints-from-openapi">Generate endpoints from OpenAPI</a>), and the decoder is attached with <code>enhanceEndpoints</code> in a reviewed file beside it, so the generated file is never edited by hand. Here the endpoint is written out to keep the decoder in view.</p>
+<pre class="code-block" tabindex="0"><code>// src/server-and-client-in-tandem/bookingApi.ts
+// The booking route. Both transforms run before anything is stored, so no reply body reaches the store raw.
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { decodeResult } from './decode.ts'
+import type { BookRequest, Decoded } from './wire.ts'
+
+export const bookingApi = createApi({
+  reducerPath: 'bookingApi',
+  // Each body is read as the type it declares, so a plain-text refusal, such as Servant's own 400 for a request
+  // it can't decode, keeps its status instead of failing to parse as JSON.
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://booking.example/', responseHandler: 'content-type' }),
+  endpoints: (build) =&gt; ({
+    book: build.mutation&lt;Decoded, BookRequest&gt;({
+      query: ({ salon, ...body }) =&gt; ({ url: `salons/${encodeURIComponent(salon)}/book`, method: 'POST', body }),
+      transformResponse: (raw: unknown) =&gt; decodeResult(raw), // a success is decoded
+      transformErrorResponse: (error) =&gt; ({ status: error.status }), // a failure keeps its status, never its body
+    }),
+  }),
+})</code></pre>
+<p><a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decoded in the base query and turned a failure into an error for a view to show. Here a failure is a plain value the thunk reads, because the thunk, not a view, decides what happens next.</p>
+<p>Every field the client reads decodes strictly. The result types come from the one <code>RESULT_TYPES</code> list, and a value the switch doesn&rsquo;t name goes to <code>unhandled</code>, whose argument has type <code>never</code>, so the compiler proves no result type is left over:</p>
+<pre class="code-block" tabindex="0"><code>// src/server-and-client-in-tandem/decode.ts
+// Decode once, at the boundary, and strictly: every field the client reads, or nothing.
+import { RESULT_TYPES, unhandled, type Booked, type Decoded, type ResultType } from './wire.ts'
+
+type Obj = Readonly&lt;Record&lt;string, unknown&gt;&gt;
+const isObj = (v: unknown): v is Obj =&gt; typeof v === 'object' &amp;&amp; v !== null &amp;&amp; !Array.isArray(v)
+const isText = (v: unknown): v is string =&gt; typeof v === 'string'
+const isResultType = (v: unknown): v is ResultType =&gt; RESULT_TYPES.some((t) =&gt; t === v)
+const at = (v: unknown, ...path: readonly string[]): unknown =&gt; path.reduce((o, key) =&gt; (isObj(o) ? o[key] : undefined), v)
+const no = (problem: string): Decoded =&gt; ({ ok: false, problem })
+
+const booked = (v: unknown): Booked | string =&gt; {
+  if (!isObj(v) || !isText(v.say)) return 'structuredContent is not a booking'
+  if (v.status === 'not_booked') return { status: 'not_booked', say: v.say }
+  if (v.status !== 'booked') return `structuredContent has unknown status ${JSON.stringify(v.status)}`
+  return isText(v.slot) ? { status: 'booked', slot: v.slot, say: v.say } : 'a booking needs its slot'
+}
+
+export const decodeResult = (raw: unknown): Decoded =&gt; {
+  const resultType = at(raw, 'resultType')
+  if (!isResultType(resultType)) return no(`unknown resultType ${JSON.stringify(resultType)}`)
+  switch (resultType) {
+    case 'input_required': {
+      const form = at(raw, 'inputRequests', 'time')
+      const message = at(form, 'params', 'message')
+      const choices = at(form, 'params', 'requestedSchema', 'properties', 'time', 'enum')
+      const requestState = at(raw, 'requestState')
+      if (at(form, 'method') !== 'elicitation/create' || !isText(message)) return no('the question is not an elicitation form')
+      if (!Array.isArray(choices) || choices.length === 0 || !choices.every(isText)) return no('the question offers no times')
+      if (!isText(requestState)) return no('a question needs its requestState')
+      return { ok: true, result: { resultType, question: { message, choices }, requestState } }
+    }
+    case 'complete': {
+      const b = booked(at(raw, 'structuredContent'))
+      return typeof b === 'string' ? no(b) : { ok: true, result: { resultType, booked: b } }
+    }
+    default:
+      return unhandled(resultType)
+  }
+}</code></pre>
+<p>That is stricter than MCP asks of a general client. This client talks only to its own route, which always sends <code>resultType</code> and a state with every question, so it refuses a reply missing either. A general MCP client reads a missing <code>resultType</code> as complete, as the specification requires for servers on earlier revisions, and takes a question that carries no state.</p>
+<p>RFC 9413, <a href="https://www.rfc-editor.org/rfc/rfc9413.html">Maintaining Robust Protocols</a>, makes the case for that strictness: a fatal error for a condition the specification doesn&rsquo;t cover gets the fault attention, where tolerating it conceals the problem.</p>
+<p>The malformed shapes run as a <a href="https://cucumber.io/docs/gherkin/reference/">Scenario Outline</a> in <code>decode.feature</code>, once per row of its examples, each row a whole reply through the real decoder:</p>
+<pre class="code-block" tabindex="0"><code>Feature: Every reply decodes strictly, or not at all
+
+  Each row's JSON is a whole reply from the server, run through the real decoder.
+
+  Scenario Outline: A reply that is &lt;shape&gt;
+    Given the server's reply &lt;json&gt;
+    When the client decodes it
+    Then the problem is &lt;problem&gt;
+
+    Examples:
+      | shape                     | json                                                                   | problem                                  |
+      | of no known result type   | {"resultType":"maybe"}                                                 | unknown resultType "maybe"               |
+      | a question with no state  | {"resultType":"input_required","inputRequests":{"time":{"method":"elicitation/create","params":{"message":"Which time?","requestedSchema":{"properties":{"time":{"enum":["sat-10:30"]}}}}}}} | a question needs its requestState |
+      | a question with no times  | {"resultType":"input_required","requestState":"s","inputRequests":{"time":{"method":"elicitation/create","params":{"message":"Which time?"}}}} | the question offers no times |
+      | a booking with no slot    | {"resultType":"complete","structuredContent":{"status":"booked","say":"Booked."}} | a booking needs its slot      |
+      | a booking of a new status | {"resultType":"complete","structuredContent":{"status":"held","say":"Held."}}     | structuredContent has unknown status "held" |</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/server-and-client-in-tandem/decode.test.ts --reporter=tree | grep -E '✓|Tests'
+ ✓ src/server-and-client-in-tandem/decode.test.ts (5 tests) 5ms
+   ✓ Feature: Every reply decodes strictly, or not at all (5)
+     ✓ Scenario Outline: A reply that is of no known result type 2ms
+     ✓ Scenario Outline: A reply that is a question with no state 0ms
+     ✓ Scenario Outline: A reply that is a question with no times 0ms
+     ✓ Scenario Outline: A reply that is a booking with no slot 0ms
+     ✓ Scenario Outline: A reply that is a booking of a new status 0ms
+      Tests  5 passed (5)</code></pre>
+<h2 id="one-contract-checked-from-both-sides"><a class="heading-anchor" href="#one-contract-checked-from-both-sides">One contract, checked from both sides</a></h2>
+<p>The Servant type is the contract. servant-openapi3&rsquo;s <code>toOpenApi</code> describes it as an OpenAPI 3.0 document, which the Haskell spec keeps committed and compares on every run, and which RTK Query&rsquo;s code generator turns into endpoints, as in <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>. The type holds the server to it; the document lets the client check against it too.</p>
+<p>In Ian Robinson&rsquo;s <a href="https://martinfowler.com/articles/consumerDrivenContracts.html">consumer-driven contracts</a>, a service evolution pattern, each consumer keeps a consumer contract, its own statement of what it relies on, and the provider is held to all of them.</p>
+<p>The booking client&rsquo;s contract copies the parts of the provider&rsquo;s document it uses: for each round, the route it calls, the fields it sends, and for each typed field it reads, a type or every value it handles. <code>contractDiff</code> is a pure function from the provider&rsquo;s document and that copy to readable differences:</p>
+<pre class="code-block" tabindex="0"><code>// src/server-and-client-in-tandem/contract.ts
+// A consumer-driven contract check: the provider's OpenAPI document against one consumer's copy, as readable lines.
+type Schema = Readonly&lt;Record&lt;string, unknown&gt;&gt;
+export type Expectation = {
+  readonly round: string // which round of the conversation relies on it
+  readonly method: string
+  readonly path: string
+  readonly sends: readonly string[] // request fields the consumer sends
+  readonly reads: Readonly&lt;Record&lt;string, string | readonly string[]&gt;&gt; // a type, or every value the consumer handles
+}
+export type ConsumerCopy = { readonly consumer: string; readonly expectations: readonly Expectation[] }
+
+const isSchema = (v: unknown): v is Schema =&gt; typeof v === 'object' &amp;&amp; v !== null &amp;&amp; !Array.isArray(v)
+const at = (v: unknown, key: string): unknown =&gt; (isSchema(v) ? v[key] : undefined)
+const shape = (path: string) =&gt; path.replace(/\{[^}]*\}/g, '{}')
+
+// Every schema reachable along a path, through $ref, oneOf and items ("[]").
+const reach = (doc: Schema, schema: unknown, path: readonly string[]): Schema[] =&gt; {
+  const ref = at(schema, '$ref')
+  if (typeof ref === 'string') return reach(doc, at(at(at(doc, 'components'), 'schemas'), ref.split('/').pop() ?? ''), path)
+  const branches = at(schema, 'oneOf')
+  if (Array.isArray(branches)) return branches.flatMap((branch) =&gt; reach(doc, branch, path))
+  if (!isSchema(schema)) return []
+  const [head, ...rest] = path
+  if (head === undefined) return [schema]
+  return reach(doc, head === '[]' ? schema.items : at(schema.properties, head), rest)
+}
+
+const body = (holder: unknown): unknown =&gt; {
+  const content = at(holder, 'content')
+  return isSchema(content) ? at(Object.values(content)[0], 'schema') : undefined
+}
+const quoted = (values: readonly unknown[]) =&gt; values.map((v) =&gt; JSON.stringify(v)).join(', ')
+
+export const contractDiff = (doc: Schema, copy: ConsumerCopy): string[] =&gt;
+  copy.expectations.flatMap((e) =&gt; {
+    const where = `${e.round}: ${e.method.toUpperCase()} ${e.path}`
+    const operation = at(at(at(doc, 'paths'), e.path), e.method)
+    if (operation === undefined) {
+      const paths = at(doc, 'paths')
+      const near = isSchema(paths) ? Object.keys(paths).filter((p) =&gt; shape(p) === shape(e.path)) : []
+      return [`${where} is not in the provider${near.length ? `; it has ${quoted(near)}` : ''}`]
+    }
+    const request = body(at(operation, 'requestBody'))
+    const reply = body(at(at(operation, 'responses'), '200'))
+    const sent = e.sends.filter((f) =&gt; reach(doc, request, [f]).length === 0).map((f) =&gt; `${where} sends ${f}, which the provider doesn't read`)
+    const read = Object.entries(e.reads).flatMap(([field, expected]) =&gt; {
+      const found = reach(doc, reply, field.replaceAll('[]', '.[]').split('.'))
+      if (found.length === 0) return [`${where} reads ${field}, which the provider never sends`]
+      if (typeof expected === 'string') {
+        const types = [...new Set(found.map((s) =&gt; s.type ?? 'object'))]
+        return types.every((t) =&gt; t === expected) ? [] : [`${where} reads ${field} as ${expected}; the provider sends ${quoted(types)}`]
+      }
+      const sends = found.flatMap((s) =&gt; (Array.isArray(s.enum) ? s.enum : []))
+      return [
+        ...sends.filter((v) =&gt; !expected.includes(v)).map((v) =&gt; `${where} reads ${field}; the provider can send ${JSON.stringify(v)}, which this consumer doesn't handle`),
+        ...expected.filter((v) =&gt; !sends.includes(v)).map((v) =&gt; `${where} handles ${field} = ${JSON.stringify(v)}, which the provider never sends`),
+      ]
+    })
+    return [...sent, ...read]
+  })</code></pre>
+<p>It runs with the tests, and from the command line. To try it, copy <code>consumer.contract.json</code> to <code>planted.contract.json</code> beside it. In round one, rename the route&rsquo;s <code>{salon}</code> parameter to <code>{salonId}</code>; in round two, change the statuses it handles to <code>booked</code> and <code>cancelled</code>. Then run the report from the TypeScript course&rsquo;s root, on Node.js 22.18 or later, which runs TypeScript directly:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ node src/server-and-client-in-tandem/report.ts src/server-and-client-in-tandem/planted.contract.json
+round one: POST /salons/{salonId}/book is not in the provider; it has "/salons/{salon}/book"
+round two: POST /salons/{salon}/book reads structuredContent.status; the provider can send "not_booked", which this consumer doesn't handle
+round two: POST /salons/{salon}/book handles structuredContent.status = "cancelled", which the provider never sends</code></pre>
+<p>Each line names its fix. The provider calls the parameter <code>salon</code>, so the copy goes back to <code>{salon}</code>. The provider can send <code>not_booked</code>, which the client must handle, and never sends <code>cancelled</code>. Run it on the consumer&rsquo;s own copy, and it reads clean:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ node src/server-and-client-in-tandem/report.ts src/server-and-client-in-tandem/consumer.contract.json
+the booking client: no differences</code></pre>
+<p>The offered times are the one thing the copy can&rsquo;t pin. They sit inside the form&rsquo;s own schema, which the document types only as an object, so the decoder from the section before holds them, not the contract.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> A server that&rsquo;s down books nothing, and the client never books a slot on its own: the thunk stops with &ldquo;the server gave no reply&rdquo;, and the app falls back to its own screen. A refusal is told apart from it by its status, and this client ends the booking on any refusal, though the server would take a corrected answer on the same state.</p>
+<p>Single use needs memory somewhere. MCP&rsquo;s page leaves single use to the server, and a signature can&rsquo;t give it. With more than one server process, the used states live in Postgres under a unique constraint, so a second insert of the same state fails.</p>
+<p>A used state needs keeping only until it expires, since <code>verify</code> refuses an expired one before anything looks it up, so the store drops entries past their expiry, the same window <a href="https://www.rfc-editor.org/rfc/rfc9449#section-11.1">RFC 9449</a> gives a DPoP proof&rsquo;s <code>jti</code>: in Postgres, a column holding the expiry and a periodic delete.</p>
+<p>The state here is deterministic: the same salon, words and slots in the same second sign the same state. Two customers who type the same thing, or one double tap, share it, and only the first retry completes. In a signed-in app, the caller&rsquo;s identity joins the signed fields, as MCP&rsquo;s page asks, and tells two customers apart; a double tap still completes once.</p>
+<p>A booking that takes a deposit reaches a payment processor and can&rsquo;t be retried blind: the charge goes under an idempotency key, so the processor charges once however often that key is sent. Stripe&rsquo;s post on <a href="https://stripe.com/blog/idempotency">designing robust and predictable APIs with idempotency</a> walks through the retry side.</p></aside>
+<p><a href="/community/extending-the-harness/">Extending the harness</a> shows where both kinds of harness grow, the one a webmaster works in and the one shipped in an app, without forking either.</p>
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/the-tandem-harness/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">The tandem harness</span></a>
+<a href="/community/extending-the-harness/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Extending the harness</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

@@ -2,7 +2,8 @@
 
 /** Keep repeated, content-bearing page components synchronized across the static site. */
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { ROOT, fileForPathname, isNoindex, publicPageFiles, read, relativePath } from "./static-site.mjs";
 
@@ -159,7 +160,8 @@ const PARTS = Object.freeze({
   m2: { name: "Module 2: Behavior-driven development (BDD)", opener: "module-2-behavior-driven-development-bdd" },
   m3: { name: "Module 3: Functional reactive programming (FRP)", opener: "module-3-functional-reactive-programming-frp" },
   m4: { name: "Module 4: The chain end to end", opener: "the-api-haskell-servant-and-nile" },
-  m5: { name: "Module 5: Python and model training", opener: "module-5-python-and-model-training" },
+  m5: { name: "Module 5: Business automation with AI (agentic skills)", opener: "module-5-business-automation-with-ai" },
+  m6: { name: "Module 6: AI protocol ecosystem", opener: "module-6-ai-protocol-ecosystem" },
 });
 
 const LESSONS = [
@@ -205,12 +207,25 @@ const LESSONS = [
   ["endpoints-at-the-boundary", "Endpoints at the boundary", "m4", "Endpoints at the Boundary"],
   ["the-view-stays-minimal", "The view stays minimal", "m4", "The View Stays Minimal"],
   ["one-feature-scope-to-launch", "One feature, scope to launch", "m4", "One Feature, Scope to Launch"],
-  // Module 5: the team's Python, the geometry its model training rests on, then the
-  // path from fine-tune to release. The same principles, in a different stack.
-  ["module-5-python-and-model-training", "Module 5: Python and model training", "m5", "Module 5: Python and Model Training"],
-  ["python-the-teams-way", "Python, the team\u2019s way", "m5", "Python, the Team\u2019s Way"],
-  ["geometric-reasoning-in-model-training", "Geometric reasoning in model training", "m5", "Geometric Reasoning in Model Training"],
-  ["from-fine-tune-to-release", "From fine-tune to release", "m5", "From Fine-Tune to Release"],
+  // Module 5: an agent at work on a business process, from its loop and tools to a
+  // skill it loads, then a process run with a person approving what leaves the building.
+  ["module-5-business-automation-with-ai", "Module 5: Business automation with AI (agentic skills)", "m5", "Module 5: Business Automation with AI (Agentic Skills)"],
+  ["the-agent-loop-and-its-tools", "The agent loop and its tools", "m5", "The Agent Loop and Its Tools"],
+  ["writing-an-agentic-skill", "Writing an agentic skill", "m5", "Writing an Agentic Skill"],
+  ["automating-a-business-process", "Automating a business process with a person in the loop", "m5", "Automating a Business Process with a Person in the Loop"],
+  // Module 6: the joins an AI system crosses and the data that crosses them, in
+  // TypeScript and Haskell; then Python, where the model work lives: the foundation,
+  // measurement before training, training on the geometry, and release.
+  ["module-6-ai-protocol-ecosystem", "Module 6: AI protocol ecosystem", "m6", "Module 6: AI Protocol Ecosystem"],
+  ["the-ai-protocol-map", "The AI protocol map", "m6", "The AI Protocol Map"],
+  ["geometric-reasoning-as-data", "Geometric reasoning as data", "m6", "Geometric Reasoning as Data"],
+  ["the-tandem-harness", "The tandem harness", "m6", "The Tandem Harness"],
+  ["server-and-client-in-tandem", "Server and client in tandem", "m6", "Server and Client in Tandem"],
+  ["extending-the-harness", "Extending the harness", "m6", "Extending the Harness"],
+  ["python-the-teams-way", "Python, the team\u2019s way", "m6", "Python, the Team\u2019s Way"],
+  ["measuring-reasoning-on-the-geometry", "Measuring reasoning on the geometry", "m6", "Measuring Reasoning on the Geometry"],
+  ["geometric-reasoning-in-model-training", "Geometric reasoning in model training", "m6", "Geometric Reasoning in Model Training"],
+  ["from-fine-tune-to-release", "From fine-tune to release", "m6", "From Fine-Tune to Release"],
 ];
 
 const partOf = (key) => LESSONS.filter(([, , part]) => part === key);
@@ -602,13 +617,13 @@ const withModuleLessons = (name, html) => {
 };
 
 // The Course Outline's Module 4 list was kept by hand, so each new lesson had
-// to be typed into it. Module 4's and Module 5's lists render from LESSONS, like
+// to be typed into it. The lists of Modules 4, 5 and 6 render from LESSONS, like
 // each module's own list; the objectives, topics and activities below each stay
 // as written. Each module's heading is its PARTS name, as on the hub's map and the
 // community sitemap. An opener that is a page about its module (its title is the
 // module's name) stays out of the list, since the module's heading links it.
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const OUTLINE_MODULES = ["m4", "m5"];
+const OUTLINE_MODULES = ["m4", "m5", "m6"];
 const OUTLINE_HEADINGS = Object.keys(PARTS).filter((key) => key !== "course");
 const outlineHeadingPattern = (key) =>
   new RegExp(`(<h2><a href="/community/${PARTS[key].opener}/">)[^<]*(</a></h2>)`);
@@ -677,8 +692,9 @@ const CARD_ORDER = [
   ...ALSO_IN_THE_COMMUNITY.filter(([href]) => href !== "/community/"),
 ];
 // The parts each archive page opens with: the overview (with Module 1), Module 2,
-// Module 3 (with Module 4) and Module 5 (with the pages off the path).
-const ARCHIVE_PAGE_PARTS = ["course", "m2", "m3", "m5"];
+// Module 3 (with Modules 4 and 5) and Module 6 (with the pages off the path), so each
+// page holds whole modules and the four run to a similar length.
+const ARCHIVE_PAGE_PARTS = ["course", "m2", "m3", "m6"];
 const ARCHIVE_PAGE_STARTS = ARCHIVE_PAGE_PARTS.map((key) =>
   CARD_ORDER.findIndex(([href]) => href === `/community/${PARTS[key].opener}/`),
 );
@@ -814,6 +830,8 @@ const HEAD_TITLES = new Map([
   ["master-the-fundamentals-of-frp-in-software-development", "FRP Fundamentals"],
   ["discover-how-frp-enhances-user-interaction-and-responsiveness", "How FRP Improves User Interaction"],
   ["apply-frp-concepts-to-software-modules", "Applying FRP to Software Modules"],
+  ["module-5-business-automation-with-ai", "Module 5: AI Business Automation"],
+  ["automating-a-business-process", "Automating a Business Process"],
   ["geometric-reasoning-in-model-training", "Geometric Reasoning in Training"],
 ]);
 const titleCaseName = ([, title, , name]) => name ?? title;
@@ -1032,8 +1050,36 @@ const RETIRED_OFFERS =
 const RX_WORDS = /\b(?:observables?|RxJS|RxJava|ReactiveX|multicasting)\b/i;
 const RX_HISTORY = "Observable libraries often borrow the name";
 // Private work stays private (AGENTS.md): no community page names the company
-// behind Sean's private model work or its product.
-const PRIVATE_NAMES = /forboc|servitor/i;
+// behind Sean's private model work or its products. The company's stem is kept as
+// a SHA-256 digest, a name AGENTS.md already gives. The product names appear nowhere
+// public, and a digest of a short word can be looked up, so their stems never sit
+// in this file: they come from the PRIVATE_NAME_STEMS environment variable (a CI
+// secret) or an untracked .private-names file, separated by commas or whitespace.
+// With neither, the sync says so and checks the company's name alone. Every run of
+// letters on a page is checked once.
+const COMPANY_STEM = [6, "597eea07e94fb0546041e81c80e6051d1b327e1b68f4eca1a433c2c3c7d3c0fc"];
+const PRIVATE_NAMES_FILE = resolve(ROOT, ".private-names");
+const listedStems = (() => {
+  const listed =
+    process.env.PRIVATE_NAME_STEMS || (existsSync(PRIVATE_NAMES_FILE) ? readFileSync(PRIVATE_NAMES_FILE, "utf8") : undefined);
+  if (listed === undefined) {
+    console.warn("sync: no PRIVATE_NAME_STEMS or .private-names, so only the company's name is checked for private work");
+  }
+  return (listed ?? "").toLowerCase().split(/[\s,]+/).filter(Boolean);
+})();
+const stemSeen = new Map();
+const holdsPrivateStem = (word) => {
+  if (!stemSeen.has(word)) {
+    const [length, digest] = COMPANY_STEM;
+    let found = listedStems.some((stem) => word.includes(stem));
+    for (let at = 0; !found && at + length <= word.length; at += 1) {
+      found = createHash("sha256").update(word.slice(at, at + length)).digest("hex") === digest;
+    }
+    stemSeen.set(word, found);
+  }
+  return stemSeen.get(word);
+};
+const namesPrivateWork = (html) => new Set(html.toLowerCase().match(/[a-z]+/g) ?? []).values().some(holdsPrivateStem);
 const mainText = (html) => (html.match(/<main\b[\s\S]*?<\/main>/)?.[0] ?? "").replace(/<[^>]+>/g, " ");
 
 const withGuards = (name, html) => {
@@ -1051,7 +1097,7 @@ const withGuards = (name, html) => {
   if ((lessonIndex(name) !== -1 || PAGINATED_ARCHIVES.has(name)) && RX_WORDS.test(main.replaceAll(RX_HISTORY, ""))) {
     throw new Error(`${name}: teaches Rx vocabulary in its text, images or alt text`);
   }
-  if (name.startsWith("community/") && PRIVATE_NAMES.test(html)) {
+  if (name.startsWith("community/") && namesPrivateWork(html)) {
     throw new Error(`${name}: names private work (AGENTS.md, "Private work stays private")`);
   }
   return html;

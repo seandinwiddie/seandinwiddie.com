@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>The Agent Loop and Its Tools | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="An agent is a model in a loop with tools: typed tool contracts, stopping conditions as typed outcomes, and a scripted model so tests never call a real one.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/the-agent-loop-and-its-tools/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Agent Loop and Its Tools | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="An agent is a model in a loop with tools: typed tool contracts, stopping conditions as typed outcomes, and a scripted model so tests never call a real one.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/the-agent-loop-and-its-tools/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-03T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Agent Loop and Its Tools | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="An agent is a model in a loop with tools: typed tool contracts, stopping conditions as typed outcomes, and a scripted model so tests never call a real one.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#webpage","url":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/","name":"The Agent Loop and Its Tools | Sean Dinwiddie's Webmastery","description":"An agent is a model in a loop with tools: typed tool contracts, stopping conditions as typed outcomes, and a scripted model so tests never call a real one.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"The agent loop and its tools","item":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#article","headline":"The agent loop and its tools","description":"An agent is a model in a loop with tools: typed tool contracts, stopping conditions as typed outcomes, and a scripted model so tests never call a real one.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/the-agent-loop-and-its-tools/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/glenn-carstens-peters-npxXWgQ33ZQ-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>The agent loop and its tools</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 2; --lessons: 4">Lesson 2 of 4 in Module 5</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/the-agent-loop-and-its-tools/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>An agent is software: a model in a loop with tools. The model asks for a tool, the application runs it and hands back the result, and the loop goes round until the model answers or a limit stops it. On the Sean Dinwiddie&rsquo;s Webmastery team the loop is built like the rest of the practice: a pure core that decides, effects at the edge, and tests named after scenarios.</p>
+<p>This lesson builds one for a bakery, an invented one. A customer asks whether two dozen sourdough rolls and six croissants can be picked up on Saturday at 9, and the agent reads the menu and the hours and drafts the answer. Its tools only read, and the draft goes nowhere on its own: <a href="/community/automating-a-business-process/">Automating a business process with a person in the loop</a> puts a person between a draft and the customer.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#the-loop-as-the-api-runs-it">The loop, as the API runs it</a></li>
+<li><a href="#a-model-as-the-loop-sees-it">A model, as the loop sees it</a></li>
+<li><a href="#tools-are-typed-functions-with-contracts">Tools are typed functions with contracts</a></li>
+<li><a href="#a-pure-core-decides">A pure core decides</a></li>
+<li><a href="#the-shell-runs-the-effects">The shell runs the effects</a></li>
+<li><a href="#one-run-call-by-call">One run, call by call</a></li>
+<li><a href="#tests-with-a-scripted-model">Tests with a scripted model</a></li>
+<li><a href="#the-claude-adapter">The Claude adapter</a></li>
+</ul>
+</nav>
+<h2 id="the-loop-as-the-api-runs-it"><a class="heading-anchor" href="#the-loop-as-the-api-runs-it">The loop, as the API runs it</a></h2>
+<p>Anthropic&rsquo;s documentation calls tool use a contract between the application and the model: the application says which tools exist and what their inputs look like, and the model decides when to call them. The model never runs anything. It asks, and the application does the work (<a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works">How tool use works</a>).</p>
+<p>On the Claude Messages API, one round of the loop goes like this:</p>
+<ol>
+<li>The request lists the tools, each a name, a description and a JSON Schema for its input.</li>
+<li>When the model wants a tool, the response stops with <code>stop_reason: "tool_use"</code> and carries one or more <code>tool_use</code> blocks, each with an <code>id</code>, the tool&rsquo;s <code>name</code> and its <code>input</code>.</li>
+<li>The application runs every call and sends back one user message of <code>tool_result</code> blocks, each naming the <code>tool_use_id</code> it answers, with <code>is_error</code> set when the tool failed.</li>
+<li>The loop goes round again while the stop reason is <code>"tool_use"</code>. Any other reason ends it, among them an answer (<code>"end_turn"</code>), a reply cut off at <code>max_tokens</code>, and a <code>"refusal"</code>.</li>
+</ol>
+<p>Anthropic&rsquo;s <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a> (December 2024) describes agents the same way: usually just a model using tools on feedback from its environment, in a loop, with a stopping condition such as a maximum number of iterations to keep it in hand. This lesson&rsquo;s loop has three ways to stop besides the answer, and each one is a value the caller can switch on.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="the-agent-loop-and-its-tools-loop-title the-agent-loop-and-its-tools-loop-desc" viewBox="0 0 360 320">
+<title id="the-agent-loop-and-its-tools-loop-title">The agent loop and its ways out</title>
+<desc id="the-agent-loop-and-its-tools-loop-desc">The task goes to the model. A highlighted loop runs from the model down to decide, from decide across to the tools, labelled tool calls, and from the tools back to the model, labelled results. From decide, one more line leads down to a box listing the four values of Stop: answered, outOfTurns, outOfTokens and modelStopped.</desc>
+<g class="edge"><line x1="96" y1="36" x2="96" y2="76"/><line x1="93" y1="70.8" x2="96" y2="76"/><line x1="99" y1="70.8" x2="96" y2="76"/><line x1="96" y1="172" x2="96" y2="212"/><line x1="93" y1="206.8" x2="96" y2="212"/><line x1="99" y1="206.8" x2="96" y2="212"/></g>
+<g class="path"><line x1="96" y1="100" x2="96" y2="148"/><line x1="93" y1="142.8" x2="96" y2="148"/><line x1="99" y1="142.8" x2="96" y2="148"/><line x1="156" y1="160" x2="288" y2="160"/><line x1="288" y1="160" x2="288" y2="100"/><line x1="285" y1="105.2" x2="288" y2="100"/><line x1="291" y1="105.2" x2="288" y2="100"/><line x1="232" y1="88" x2="156" y2="88"/><line x1="161.2" y1="85" x2="156" y2="88"/><line x1="161.2" y1="91" x2="156" y2="88"/></g>
+<rect class="node" x="16" y="12" width="160" height="24" rx="4"/>
+<rect class="node on" x="36" y="76" width="120" height="24" rx="4"/>
+<rect class="node on" x="232" y="76" width="112" height="24" rx="4"/>
+<rect class="node on" x="36" y="148" width="120" height="24" rx="4"/>
+<rect class="node" x="16" y="212" width="160" height="96" rx="4"/>
+<g><text x="96" y="24">the task</text><text x="96" y="88">model</text><text x="288" y="88">tools</text><text x="96" y="160">decide</text><text x="96" y="230">answered</text><text x="96" y="250">outOfTurns</text><text x="96" y="270">outOfTokens</text><text x="96" y="290">modelStopped</text><text class="note" x="194" y="76">results</text><text class="note" x="222" y="148">tool calls</text><text class="note" x="266" y="250">every way out</text><text class="note" x="266" y="270">is a Stop</text></g>
+</svg>
+<figcaption>The loop as this lesson builds it. The violet path goes round: the model replies, <code>decide</code> chooses, the tools run and their results go back to the model. Every way out leads to one value of the type <code>Stop</code>.</figcaption>
+</figure>
+<h2 id="a-model-as-the-loop-sees-it"><a class="heading-anchor" href="#a-model-as-the-loop-sees-it">A model, as the loop sees it</a></h2>
+<p>The loop never imports a provider&rsquo;s SDK. It talks to a <code>Model</code>: one conversation that takes a turn and gives back a reply. A turn is the task, or the results of the last calls; a reply is an answer, some tool calls or a stop, each with the tokens it cost.</p>
+<pre class="code-block" tabindex="0"><code>// agent/model.ts
+// What the loop needs from a model, and nothing about any one provider.
+
+export type ToolCall = { readonly id: string; readonly name: string; readonly input: unknown }
+
+export type ToolResult = { readonly callId: string; readonly content: string; readonly isError: boolean }
+
+export type ModelTurn =
+  | { readonly kind: 'task'; readonly text: string }
+  | { readonly kind: 'results'; readonly results: readonly ToolResult[] }
+
+export type ModelReply =
+  | { readonly kind: 'answer'; readonly text: string; readonly tokens: number }
+  | { readonly kind: 'toolCalls'; readonly calls: readonly ToolCall[]; readonly tokens: number }
+  | { readonly kind: 'stopped'; readonly reason: 'refused' | 'truncated' | 'unfinished'; readonly tokens: number }
+
+// One conversation. The first turn carries the task; each later turn carries
+// the results of the calls the model asked for last.
+export interface Model {
+  readonly reply: (turn: ModelTurn) =&gt; Promise&lt;ModelReply&gt;
+}</code></pre>
+<p>Three kinds of reply and no more, so the compiler can tell when a <code>switch</code> over them misses one. The interface is a seam: a scripted model fills it in the tests, and Claude fills it in production, through one small adapter at the end of this lesson.</p>
+<h2 id="tools-are-typed-functions-with-contracts"><a class="heading-anchor" href="#tools-are-typed-functions-with-contracts">Tools are typed functions with contracts</a></h2>
+<p>A tool has three parts. The spec is what the model reads: a name, a description and a JSON Schema for the input. The decoder turns whatever arrived into a typed value or a typed failure, the way <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes a response before the app trusts it. Then comes the run itself, which only ever sees a value that decoded.</p>
+<pre class="code-block" tabindex="0"><code>// agent/tool.ts
+import type { ToolCall, ToolResult } from './model.ts'
+
+export type Failure = { readonly kind: 'badInput' | 'notFound' | 'unavailable'; readonly message: string }
+
+export type Outcome&lt;T&gt; = { readonly ok: true; readonly value: T } | { readonly ok: false; readonly failure: Failure }
+
+export const ok = &lt;T&gt;(value: T): Outcome&lt;T&gt; =&gt; ({ ok: true, value })
+export const fail = (kind: Failure['kind'], message: string): Outcome&lt;never&gt; =&gt; ({ ok: false, failure: { kind, message } })
+
+// What the model sees: a name, a description and a JSON Schema for the input.
+export type ToolSpec = {
+  readonly name: string
+  readonly description: string
+  readonly inputSchema: {
+    readonly type: 'object'
+    readonly properties: Readonly&lt;Record&lt;string, object&gt;&gt;
+    readonly required: readonly string[]
+    readonly additionalProperties: false
+  }
+}
+
+export type Tool = ToolSpec &amp; { readonly call: (input: unknown) =&gt; Promise&lt;Outcome&lt;unknown&gt;&gt; }
+
+// The input is decoded before the tool runs, so run only ever sees a typed value.
+export const defineTool = &lt;I, O&gt;(
+  spec: ToolSpec,
+  decode: (input: unknown) =&gt; Outcome&lt;I&gt;,
+  run: (input: I) =&gt; Promise&lt;Outcome&lt;O&gt;&gt;,
+): Tool =&gt; ({
+  ...spec,
+  call: async (input) =&gt; {
+    const decoded = decode(input)
+    return decoded.ok ? run(decoded.value) : decoded
+  },
+})
+
+// Pure: every outcome, success or failure, becomes a result the model can read.
+export const toResult = (call: ToolCall, outcome: Outcome&lt;unknown&gt;): ToolResult =&gt;
+  outcome.ok
+    ? { callId: call.id, content: JSON.stringify(outcome.value), isError: false }
+    : { callId: call.id, content: `${outcome.failure.kind}: ${outcome.failure.message}`, isError: true }</code></pre>
+<p>A failure is plain data: <code>badInput</code>, <code>notFound</code> or <code>unavailable</code>, with a message the model can act on. <code>toResult</code> turns every outcome into a result, so a failed tool becomes a result with <code>isError</code> set, never an exception. <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls">Handle tool calls</a> asks for exactly that: an error result with <code>is_error</code>, and a message that says what went wrong and what to try next.</p>
+<p>The lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> treats expected failure the same way. Here are the bakery&rsquo;s two tools:</p>
+<pre class="code-block" tabindex="0"><code>// agent/bakery.ts
+// Two tools for a bakery. Both only read: nothing here changes an order or sends a word.
+import { defineTool, fail, ok, type Outcome, type Tool } from './tool.ts'
+
+const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as const
+type Day = (typeof days)[number]
+
+export type Item = { readonly name: string; readonly priceCents: number; readonly noticeDays: number }
+export type Bakery = {
+  readonly hours: Readonly&lt;Record&lt;Day, { readonly opens: string; readonly closes: string } | 'closed'&gt;&gt;
+  readonly menu: readonly Item[]
+}
+
+const field = (input: unknown, key: string): unknown =&gt;
+  typeof input === 'object' &amp;&amp; input !== null ? (input as Record&lt;string, unknown&gt;)[key] : undefined
+
+// Even strict tool use doesn't promise an enum value's capitals, so the day matches in any case.
+const decodeDay = (input: unknown): Outcome&lt;Day&gt; =&gt; {
+  const wanted = field(input, 'day')
+  const day = days.find((d) =&gt; typeof wanted === 'string' &amp;&amp; d === wanted.toLowerCase())
+  return day === undefined ? fail('badInput', `day must be one of: ${days.join(', ')}.`) : ok(day)
+}
+
+const decodeName = (input: unknown): Outcome&lt;string&gt; =&gt; {
+  const name = field(input, 'name')
+  return typeof name === 'string' &amp;&amp; name.trim() !== ''
+    ? ok(name.trim().toLowerCase())
+    : fail('badInput', 'name must be the item as the customer wrote it.')
+}
+
+export const bakeryTools = (bakery: Bakery): readonly Tool[] =&gt; [
+  defineTool(
+    {
+      name: 'opening_hours',
+      description: "The bakery's opening hours on one day of the week.",
+      inputSchema: {
+        type: 'object',
+        properties: { day: { type: 'string', enum: days } },
+        required: ['day'],
+        additionalProperties: false,
+      },
+    },
+    decodeDay,
+    async (day) =&gt; ok({ day, hours: bakery.hours[day] }),
+  ),
+  defineTool(
+    {
+      name: 'menu_item',
+      description: 'One item on the menu: its price in cents and the days of notice a large order needs.',
+      inputSchema: {
+        type: 'object',
+        properties: { name: { type: 'string', description: 'The item, as the customer wrote it.' } },
+        required: ['name'],
+        additionalProperties: false,
+      },
+    },
+    decodeName,
+    async (name) =&gt; {
+      const item = bakery.menu.find((i) =&gt; i.name === name)
+      return item === undefined
+        ? fail('notFound', `the menu has no ${name}. It has: ${bakery.menu.map((i) =&gt; i.name).join(', ')}.`)
+        : ok(item)
+    },
+  ),
+]
+
+// An invented bakery for the lesson: its hours, items and prices are made up.
+export const exampleBakery: Bakery = {
+  hours: {
+    monday: 'closed',
+    tuesday: { opens: '07:00', closes: '15:00' },
+    wednesday: { opens: '07:00', closes: '15:00' },
+    thursday: { opens: '07:00', closes: '15:00' },
+    friday: { opens: '07:00', closes: '15:00' },
+    saturday: { opens: '08:00', closes: '13:00' },
+    sunday: 'closed',
+  },
+  menu: [
+    { name: 'sourdough rolls', priceCents: 150, noticeDays: 2 },
+    { name: 'rye loaf', priceCents: 900, noticeDays: 1 },
+    { name: 'cinnamon buns', priceCents: 400, noticeDays: 1 },
+  ],
+}</code></pre>
+<p>The bakery is passed in, so a test chooses its data, and in production it comes from wherever the bakery keeps its menu. The schema&rsquo;s <code>enum</code> tells the model which days exist, and <code>decodeDay</code> checks again anyway: a tool doesn&rsquo;t trust whoever called it. It matches the day in any case, so <code>"Saturday"</code> reads Saturday&rsquo;s hours, while <code>"Saturday morning"</code> is still bad input.</p>
+<p>A failed lookup says what the menu does have, so the model&rsquo;s next turn can offer something real instead of guessing.</p>
+<h2 id="a-pure-core-decides"><a class="heading-anchor" href="#a-pure-core-decides">A pure core decides</a></h2>
+<p><code>decide</code> takes the model&rsquo;s reply, what the run has spent and the limits, and returns a <code>Decision</code>: run these calls, or stop. It awaits nothing and reads no clock, so the same arguments give the same decision every time.</p>
+<pre class="code-block" tabindex="0"><code>// agent/decide.ts
+import type { ModelReply, ToolCall } from './model.ts'
+
+export type Limits = { readonly maxTurns: number; readonly maxTokens: number }
+export type Spent = { readonly turns: number; readonly tokens: number }
+
+export type Stop =
+  | { readonly kind: 'answered'; readonly text: string }
+  | { readonly kind: 'outOfTurns' }
+  | { readonly kind: 'outOfTokens' }
+  | { readonly kind: 'modelStopped'; readonly reason: 'refused' | 'truncated' | 'unfinished' }
+
+export type Decision =
+  | { readonly kind: 'runTools'; readonly calls: readonly ToolCall[] }
+  | { readonly kind: 'stop'; readonly stop: Stop }
+
+const stop = (s: Stop): Decision =&gt; ({ kind: 'stop', stop: s })
+
+// Pure: from the model's reply and what the run has spent, go round again or stop.
+// A limit only keeps the loop from going round again; an answer that arrives is kept.
+export const decide = (reply: ModelReply, spent: Spent, limits: Limits): Decision =&gt; {
+  switch (reply.kind) {
+    case 'answer':
+      return stop({ kind: 'answered', text: reply.text })
+    case 'stopped':
+      return stop({ kind: 'modelStopped', reason: reply.reason })
+    case 'toolCalls':
+      if (spent.turns &gt;= limits.maxTurns) return stop({ kind: 'outOfTurns' })
+      if (spent.tokens &gt;= limits.maxTokens) return stop({ kind: 'outOfTokens' })
+      return { kind: 'runTools', calls: reply.calls }
+  }
+}</code></pre>
+<p>It&rsquo;s the pure core of <a href="/community/master-the-fundamentals-of-frp-in-software-development/">FRP fundamentals in software development</a>, and the same split as the thin handlers in <a href="/community/the-api-haskell-servant-and-nile/#2-handlers-stay-thin">The API: Haskell Servant and Nile</a>: pure code decides, and the code around it does the waiting. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> names the pattern: a functional core in an imperative shell.</p>
+<p>Every stop is a value of <code>Stop</code>: <code>answered</code>, <code>outOfTurns</code>, <code>outOfTokens</code>, or <code>modelStopped</code> with its reason. A caller switches over four cases instead of searching a log for what happened.</p>
+<p>The order of the checks is a rule too. An answer is always kept, even one that arrives over budget, since it&rsquo;s already paid for. A limit only keeps the loop from going round again, so a limit of 3 turns means the model is asked at most three times.</p>
+<h2 id="the-shell-runs-the-effects"><a class="heading-anchor" href="#the-shell-runs-the-effects">The shell runs the effects</a></h2>
+<p><code>runAgent</code> is the only code that waits on anything. It asks the model, adds up turns and tokens, lets <code>decide</code> choose, runs the calls and goes round with the results. Each turn hands what the run has spent to the next as an argument, so there&rsquo;s no counter to mutate, and recursion does the work of a <code>while</code> loop.</p>
+<pre class="code-block" tabindex="0"><code>// agent/loop.ts
+import { decide, type Limits, type Spent, type Stop } from './decide.ts'
+import type { Model, ModelTurn, ToolCall, ToolResult } from './model.ts'
+import { fail, toResult, type Tool } from './tool.ts'
+
+export type Step = { readonly call: ToolCall; readonly result: ToolResult }
+export type Run = { readonly stop: Stop; readonly spent: Spent; readonly steps: readonly Step[] }
+
+// The shell: the only code that waits on the model or a tool. decide makes every choice.
+export const runAgent = (model: Model, tools: readonly Tool[], task: string, limits: Limits): Promise&lt;Run&gt; =&gt; {
+  const go = async (turn: ModelTurn, before: Spent, steps: readonly Step[]): Promise&lt;Run&gt; =&gt; {
+    const reply = await model.reply(turn)
+    const spent = { turns: before.turns + 1, tokens: before.tokens + reply.tokens }
+    const decision = decide(reply, spent, limits)
+    if (decision.kind === 'stop') return { stop: decision.stop, spent, steps }
+    const ran = await Promise.all(decision.calls.map((call) =&gt; runTool(tools, call)))
+    return go({ kind: 'results', results: ran.map((step) =&gt; step.result) }, spent, [...steps, ...ran])
+  }
+  return go({ kind: 'task', text: task }, { turns: 0, tokens: 0 }, [])
+}
+
+// An unknown name or a tool that throws is a failure like any other, never a crash.
+const runTool = async (tools: readonly Tool[], call: ToolCall): Promise&lt;Step&gt; =&gt; {
+  const tool = tools.find((t) =&gt; t.name === call.name)
+  const outcome =
+    tool === undefined
+      ? fail('notFound', `no tool is named ${call.name}. The tools are: ${tools.map((t) =&gt; t.name).join(', ')}.`)
+      : await tool.call(call.input).catch((error: unknown) =&gt; fail('unavailable', String(error)))
+  return { call, result: toResult(call, outcome) }
+}</code></pre>
+<p>The model can ask for several tools in one reply. Lookups that only read are usually safe to run together, so <code>Promise.all</code> runs them at once, and the results go back in one turn, each matched to its call by id. <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use">Parallel tool use</a> asks for one result per call, all in the next user message; this loop also keeps them in the order the model asked, so a test can read them.</p>
+<p>An unknown tool name and a tool that throws both become failures, so a broken tool costs the model a turn, never the run.</p>
+<h2 id="one-run-call-by-call"><a class="heading-anchor" href="#one-run-call-by-call">One run, call by call</a></h2>
+<p>Here is the customer&rsquo;s question run end to end, with a scripted model in the model&rsquo;s seat. The script asks for three lookups in one turn, then answers; its token counts are made up, like the bakery:</p>
+<pre class="code-block" tabindex="0"><code>// agent/trace.ts
+// One run with a scripted model, printed call by call: what a real model would read back.
+import { bakeryTools, exampleBakery } from './bakery.ts'
+import { runAgent } from './loop.ts'
+import { answers, asks, scriptedModel } from './scripted.ts'
+
+const question = 'Can I pick up two dozen sourdough rolls and six croissants on Saturday at 9?'
+const model = scriptedModel([
+  asks(
+    300,
+    { id: 'c1', name: 'menu_item', input: { name: 'Sourdough rolls' } },
+    { id: 'c2', name: 'menu_item', input: { name: 'Croissants' } },
+    { id: 'c3', name: 'opening_hours', input: { day: 'saturday' } },
+  ),
+  answers(
+    500,
+    "Two dozen sourdough rolls are $36 and need two days' notice, so please order by Thursday. " +
+      "We don't bake croissants; the menu has sourdough rolls, rye loaf and cinnamon buns. " +
+      'On Saturday we open at 8, so 9 works.',
+  ),
+])
+
+const run = await runAgent(model, bakeryTools(exampleBakery), question, { maxTurns: 6, maxTokens: 20_000 })
+
+for (const { call, result } of run.steps) {
+  console.log(`${call.id} ${call.name} ${JSON.stringify(call.input)}`)
+  console.log(`   ${result.isError ? 'error' : 'ok'} ${result.content}`)
+}
+console.log(`${run.stop.kind} after ${run.spent.turns} turns and ${run.spent.tokens} tokens:`)
+if (run.stop.kind === 'answered') console.log(run.stop.text)</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ node agent/trace.ts
+c1 menu_item {"name":"Sourdough rolls"}
+   ok {"name":"sourdough rolls","priceCents":150,"noticeDays":2}
+c2 menu_item {"name":"Croissants"}
+   error notFound: the menu has no croissants. It has: sourdough rolls, rye loaf, cinnamon buns.
+c3 opening_hours {"day":"saturday"}
+   ok {"day":"saturday","hours":{"opens":"08:00","closes":"13:00"}}
+answered after 2 turns and 800 tokens:
+Two dozen sourdough rolls are $36 and need two days' notice, so please order by Thursday. We don't bake croissants; the menu has sourdough rolls, rye loaf and cinnamon buns. On Saturday we open at 8, so 9 works.</code></pre>
+<p>Read <code>c2</code>. The model asked for croissants, the menu has none, and what came back is an error that lists what the menu does have. A real model reads that on its next turn and can say so plainly, as the scripted answer does, instead of inventing a croissant.</p>
+<h2 id="tests-with-a-scripted-model"><a class="heading-anchor" href="#tests-with-a-scripted-model">Tests with a scripted model</a></h2>
+<p>The behavior comes first, as scenarios, in the Gherkin of <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) syntax in BDD</a>. Each one is a sentence an owner can read and a rule the loop has to keep:</p>
+<pre class="code-block" tabindex="0"><code>Feature: Pickup questions at the bakery
+
+  The agent drafts an answer from the bakery's own hours and menu.
+  Its tools only read, and the draft goes nowhere until a person sends it.
+
+  Scenario: The agent answers from the bakery's own data
+    Given a customer asks for two dozen sourdough rolls on Saturday at 9
+    When the model asks for the item and Saturday's hours in one turn
+    Then both results go back to it together, in the order it asked
+    And the run stops with its answer
+
+  Scenario: A failed lookup goes back to the model as a result
+    Given a customer asks for croissants, which the bakery doesn't bake
+    When the model looks them up
+    Then it reads an error that lists what the menu has
+
+  Scenario: Input that breaks the schema never reaches the tool
+    When the model asks for the hours on "Saturday morning"
+    Then it reads a badInput error that names the days the tool takes
+
+  Scenario: A day with a capital letter still finds the hours
+    When the model asks for the hours on "Saturday"
+    Then it reads Saturday's hours
+
+  Scenario: An unknown tool is a failure, not a crash
+    When the model asks for a tool named "place_order"
+    Then it reads a notFound error that names the tools it has
+
+  Scenario: A tool that throws is a failure, not a crash
+    Given the till that holds the menu is offline
+    When the model looks up an item
+    Then it reads an unavailable error that says why
+
+  Scenario: The loop stops at its turn limit
+    Given a model that asks for a tool on every turn
+    When the agent runs with a limit of 3 turns
+    Then the model is asked 3 times and no more
+    And the run stops at the turn limit
+
+  Scenario: The loop stops when its budget is spent
+    Given each reply costs 400 tokens
+    When the agent runs with a budget of 1000 tokens
+    Then the run stops over budget after the third reply
+
+  Scenario: A refusal is a stop, never an answer
+    Given the model declines the task
+    When the agent runs
+    Then the run stops with the reason "refused"
+    And no tool runs</code></pre>
+<p>A scripted model plays back replies written in advance and keeps every turn the loop sends it, so a test can check what a real model would have read. No test calls a real model, so every run is the same on every machine and costs nothing.</p>
+<pre class="code-block" tabindex="0"><code>// agent/scripted.ts
+import type { Model, ModelReply, ModelTurn, ToolCall } from './model.ts'
+
+// A model that plays back a script, so no test ever calls a real one. It keeps every
+// turn the loop sends it, so a test can check what a real model would have read.
+export const scriptedModel = (script: readonly ModelReply[]): Model &amp; { readonly seen: readonly ModelTurn[] } =&gt; {
+  const seen: ModelTurn[] = []
+  return {
+    seen,
+    reply: async (turn) =&gt; {
+      seen.push(turn)
+      const next = script[seen.length - 1]
+      if (next === undefined) throw new Error(`the script ran out after ${script.length} replies`)
+      return next
+    },
+  }
+}
+
+export const asks = (tokens: number, ...calls: readonly ToolCall[]): ModelReply =&gt; ({ kind: 'toolCalls', calls, tokens })
+export const answers = (tokens: number, text: string): ModelReply =&gt; ({ kind: 'answer', text, tokens })</code></pre>
+<p>Each test carries its scenario&rsquo;s name, and its comments follow the scenario&rsquo;s lines. The last test reads the feature file and fails if a scenario has no test, so the two can&rsquo;t drift apart:</p>
+<pre class="code-block" tabindex="0"><code>// agent/loop.test.ts
+import { readFileSync } from 'node:fs'
+import { describe, expect, it } from 'vitest'
+import { bakeryTools, exampleBakery } from './bakery.ts'
+import { runAgent } from './loop.ts'
+import type { ToolCall, ToolResult } from './model.ts'
+import { answers, asks, scriptedModel } from './scripted.ts'
+import { defineTool, ok, type Tool } from './tool.ts'
+
+const tools = bakeryTools(exampleBakery)
+const limits = { maxTurns: 6, maxTokens: 20_000 }
+const noInput = { type: 'object', properties: {}, required: [], additionalProperties: false } as const
+
+// The feature file and the tests name the same scenarios, or a test fails.
+const feature = readFileSync(new URL('./pickup.feature', import.meta.url), 'utf8')
+const written = [...feature.matchAll(/^\s*Scenario: (.+)$/gm)].map((match) =&gt; match[1])
+const tested: string[] = []
+const scenario = (title: string, test: () =&gt; Promise&lt;void&gt;) =&gt; {
+  tested.push(title)
+  it(`Scenario: ${title}`, test)
+}
+
+// One call, then the result the model reads back on its next turn.
+const resultOf = async (call: ToolCall, using: readonly Tool[] = tools): Promise&lt;ToolResult | undefined&gt; =&gt; {
+  const model = scriptedModel([asks(100, call), answers(100, 'Thanks for asking.')])
+  await runAgent(model, using, 'A pickup question', limits)
+  const next = model.seen[1]
+  return next?.kind === 'results' ? next.results[0] : undefined
+}
+
+const asksEveryTurn = (tokens: number) =&gt;
+  scriptedModel(
+    Array.from({ length: 5 }, (_, n) =&gt; asks(tokens, { id: `c${n}`, name: 'opening_hours', input: { day: 'friday' } })),
+  )
+
+describe('Feature: Pickup questions at the bakery', () =&gt; {
+  scenario("The agent answers from the bakery's own data", async () =&gt; {
+    // Given a customer asks for two dozen sourdough rolls on Saturday at 9
+    const answer = "Yes. Two dozen sourdough rolls are $36, and we open at 8 on Saturday."
+    const model = scriptedModel([
+      // When the model asks for the item and Saturday's hours in one turn
+      asks(
+        300,
+        { id: 'c1', name: 'menu_item', input: { name: 'Sourdough rolls' } },
+        { id: 'c2', name: 'opening_hours', input: { day: 'saturday' } },
+      ),
+      answers(400, answer),
+    ])
+    const run = await runAgent(model, tools, 'Two dozen sourdough rolls on Saturday at 9?', limits)
+    // Then both results go back to it together, in the order it asked
+    expect(model.seen[1]).toEqual({
+      kind: 'results',
+      results: [
+        { callId: 'c1', isError: false, content: '{"name":"sourdough rolls","priceCents":150,"noticeDays":2}' },
+        { callId: 'c2', isError: false, content: '{"day":"saturday","hours":{"opens":"08:00","closes":"13:00"}}' },
+      ],
+    })
+    // And the run stops with its answer
+    expect(run.stop).toEqual({ kind: 'answered', text: answer })
+    expect(run.spent).toEqual({ turns: 2, tokens: 700 })
+  })
+
+  scenario('A failed lookup goes back to the model as a result', async () =&gt; {
+    // Given a customer asks for croissants, which the bakery doesn't bake
+    // When the model looks them up
+    const result = await resultOf({ id: 'c1', name: 'menu_item', input: { name: 'Croissants' } })
+    // Then it reads an error that lists what the menu has
+    expect(result).toEqual({
+      callId: 'c1',
+      isError: true,
+      content: 'notFound: the menu has no croissants. It has: sourdough rolls, rye loaf, cinnamon buns.',
+    })
+  })
+
+  scenario('Input that breaks the schema never reaches the tool', async () =&gt; {
+    // When the model asks for the hours on "Saturday morning"
+    const result = await resultOf({ id: 'c1', name: 'opening_hours', input: { day: 'Saturday morning' } })
+    // Then it reads a badInput error that names the days the tool takes
+    expect(result).toEqual({
+      callId: 'c1',
+      isError: true,
+      content: 'badInput: day must be one of: monday, tuesday, wednesday, thursday, friday, saturday, sunday.',
+    })
+  })
+
+  scenario('A day with a capital letter still finds the hours', async () =&gt; {
+    // When the model asks for the hours on "Saturday"
+    const result = await resultOf({ id: 'c1', name: 'opening_hours', input: { day: 'Saturday' } })
+    // Then it reads Saturday's hours
+    expect(result).toEqual({
+      callId: 'c1',
+      isError: false,
+      content: '{"day":"saturday","hours":{"opens":"08:00","closes":"13:00"}}',
+    })
+  })
+
+  scenario('An unknown tool is a failure, not a crash', async () =&gt; {
+    // When the model asks for a tool named "place_order"
+    const result = await resultOf({ id: 'c1', name: 'place_order', input: { item: 'rye loaf' } })
+    // Then it reads a notFound error that names the tools it has
+    expect(result).toEqual({
+      callId: 'c1',
+      isError: true,
+      content: 'notFound: no tool is named place_order. The tools are: opening_hours, menu_item.',
+    })
+  })
+
+  scenario('A tool that throws is a failure, not a crash', async () =&gt; {
+    // Given the till that holds the menu is offline
+    const offline = defineTool(
+      { name: 'menu_item', description: 'The menu, read from the till.', inputSchema: noInput },
+      ok, // every input decodes
+      () =&gt; Promise.reject(new Error('the till is offline')),
+    )
+    // When the model looks up an item
+    const result = await resultOf({ id: 'c1', name: 'menu_item', input: {} }, [offline])
+    // Then it reads an unavailable error that says why
+    expect(result).toEqual({ callId: 'c1', isError: true, content: 'unavailable: Error: the till is offline' })
+  })
+
+  scenario('The loop stops at its turn limit', async () =&gt; {
+    // Given a model that asks for a tool on every turn
+    const model = asksEveryTurn(100)
+    // When the agent runs with a limit of 3 turns
+    const run = await runAgent(model, tools, 'When are you open?', { ...limits, maxTurns: 3 })
+    // Then the model is asked 3 times and no more
+    expect(model.seen).toHaveLength(3)
+    // And the run stops at the turn limit
+    expect(run.stop).toEqual({ kind: 'outOfTurns' })
+  })
+
+  scenario('The loop stops when its budget is spent', async () =&gt; {
+    // Given each reply costs 400 tokens
+    const model = asksEveryTurn(400)
+    // When the agent runs with a budget of 1000 tokens
+    const run = await runAgent(model, tools, 'When are you open?', { ...limits, maxTokens: 1000 })
+    // Then the run stops over budget after the third reply
+    expect(run.stop).toEqual({ kind: 'outOfTokens' })
+    expect(run.spent).toEqual({ turns: 3, tokens: 1200 })
+  })
+
+  scenario('A refusal is a stop, never an answer', async () =&gt; {
+    // Given the model declines the task
+    const model = scriptedModel([{ kind: 'stopped', reason: 'refused', tokens: 50 }])
+    // When the agent runs
+    const run = await runAgent(model, tools, 'A pickup question', limits)
+    // Then the run stops with the reason "refused"
+    expect(run.stop).toEqual({ kind: 'modelStopped', reason: 'refused' })
+    // And no tool runs
+    expect(run.steps).toEqual([])
+  })
+
+  it('has a test for every scenario in pickup.feature', () =&gt; expect(tested).toEqual(written))
+})</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run --reporter=verbose | grep -E '✓|Tests'
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: The agent answers from the bakery's own data 3ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: A failed lookup goes back to the model as a result 1ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: Input that breaks the schema never reaches the tool 0ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: A day with a capital letter still finds the hours 0ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: An unknown tool is a failure, not a crash 0ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: A tool that throws is a failure, not a crash 0ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: The loop stops at its turn limit 1ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: The loop stops when its budget is spent 1ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: A refusal is a stop, never an answer 1ms
+ ✓ agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; has a test for every scenario in pickup.feature 0ms
+      Tests  10 passed (10)</code></pre>
+<p>A failing test names the rule that broke. Change one character in <code>decide</code>, <code>&gt;=</code> to <code>&gt;</code>, and the model gets asked a fourth time:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ sed -i 's/turns &gt;= limits/turns &gt; limits/' agent/decide.ts
+$ npx vitest run 2&gt;&amp;1 | grep -E 'FAIL|AssertionError'
+ FAIL  agent/loop.test.ts &gt; Feature: Pickup questions at the bakery &gt; Scenario: The loop stops at its turn limit
+AssertionError: expected [ { kind: 'task', …(1) }, …(3) ] to have a length of 3 but got 4</code></pre>
+<p>A scripted model tests the loop, never the model&rsquo;s judgment: its answers were written before the run. Whether a real model asks for the right tools and drafts a good answer is a question for evals on real days, and <a href="/community/automating-a-business-process/">Automating a business process with a person in the loop</a> runs them.</p>
+<h2 id="the-claude-adapter"><a class="heading-anchor" href="#the-claude-adapter">The Claude adapter</a></h2>
+<p>One file speaks Claude&rsquo;s API. It turns each <code>ToolSpec</code> into a tool definition, keeps the conversation, and maps each response to a <code>ModelReply</code>:</p>
+<pre class="code-block" tabindex="0"><code>// agent/claude.ts
+// The one file that speaks Claude's API. No test calls it; strict tsc checks it.
+import type Anthropic from '@anthropic-ai/sdk'
+import type { Model, ModelReply, ModelTurn } from './model.ts'
+import type { ToolSpec } from './tool.ts'
+
+export const claudeModel = (client: Anthropic, system: string, specs: readonly ToolSpec[]): Model =&gt; {
+  // The system prompt and the tools stay fixed for the conversation, and the
+  // messages only grow: each reply's content goes back exactly as it came.
+  const tools: Anthropic.Beta.BetaTool[] = specs.map((spec) =&gt; ({
+    name: spec.name,
+    description: spec.description,
+    input_schema: { ...spec.inputSchema, required: [...spec.inputSchema.required] },
+    strict: true,
+  }))
+  const messages: Anthropic.Beta.BetaMessageParam[] = []
+  return {
+    reply: async (turn) =&gt; {
+      messages.push(toMessage(turn))
+      const response = await client.beta.messages.create({
+        model: 'claude-opus-5-5',
+        max_tokens: 16000,
+        output_config: { effort: 'medium' },
+        system,
+        tools,
+        messages,
+        // If a safety classifier declines, the API retries on the model it recommends.
+        betas: ['server-side-fallback-2026-07-01'],
+        fallbacks: 'default',
+      })
+      messages.push({ role: 'assistant', content: response.content })
+      return toReply(response)
+    },
+  }
+}
+
+const toMessage = (turn: ModelTurn): Anthropic.Beta.BetaMessageParam =&gt;
+  turn.kind === 'task'
+    ? { role: 'user', content: turn.text }
+    : {
+        role: 'user',
+        content: turn.results.map((result) =&gt; ({
+          type: 'tool_result' as const,
+          tool_use_id: result.callId,
+          content: result.content,
+          is_error: result.isError,
+        })),
+      }
+
+// Every stop reason the SDK knows maps to a reply. When the SDK adds one,
+// this switch stops compiling until someone decides what it means.
+const toReply = (response: Anthropic.Beta.BetaMessage): ModelReply =&gt; {
+  const tokens = response.usage.input_tokens + response.usage.output_tokens
+  switch (response.stop_reason) {
+    case 'end_turn':
+    case 'stop_sequence':
+      return { kind: 'answer', text: response.content.flatMap((b) =&gt; (b.type === 'text' ? [b.text] : [])).join(''), tokens }
+    case 'tool_use':
+      return {
+        kind: 'toolCalls',
+        calls: response.content.flatMap((b) =&gt; (b.type === 'tool_use' ? [{ id: b.id, name: b.name, input: b.input }] : [])),
+        tokens,
+      }
+    case 'refusal':
+      return { kind: 'stopped', reason: 'refused', tokens }
+    case 'max_tokens':
+    case 'model_context_window_exceeded':
+      return { kind: 'stopped', reason: 'truncated', tokens }
+    case 'pause_turn':
+    case 'compaction':
+    case null:
+      return { kind: 'stopped', reason: 'unfinished', tokens }
+  }
+}</code></pre>
+<p>A few of its choices carry weight:</p>
+<ul>
+<li><strong>The model</strong> is <code>claude-opus-5-5</code>, Claude Opus 5.5, where Anthropic&rsquo;s <a href="https://platform.claude.com/docs/en/about-claude/models/overview">models overview</a> suggests most work start. Its effort is set to <code>medium</code>, the model&rsquo;s own default, written out so a change shows in a diff (<a href="https://platform.claude.com/docs/en/build-with-claude/effort">Effort</a>).</li>
+<li><strong>Strict tools.</strong> With <code>strict: true</code>, Claude&rsquo;s tool inputs match the schema, because the API constrains sampling to it (<a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use">Strict tool use</a>), apart from the cases <a href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs#invalid-outputs">Structured outputs</a> lists: a refusal, a reply cut off at <code>max_tokens</code>, and the capitalization of an <code>enum</code> value. The decoders still run: the scripted model isn&rsquo;t strict, <code>decodeDay</code> compares the day without regard to case, as those docs advise, and a tool still doesn&rsquo;t trust its caller.</li>
+<li><strong>The conversation only grows.</strong> The system prompt and the tools stay fixed, and each response&rsquo;s content goes back exactly as it came, thinking blocks included. On Claude Opus 5.5 a thinking block stays valid only while everything sent before it is unchanged (<a href="https://platform.claude.com/docs/en/build-with-claude/preserved-thinking">Preserved thinking</a>). The adapter keeps that transcript; the loop keeps only what it needs to decide.</li>
+<li><strong>Refusals.</strong> Claude Opus 5.5&rsquo;s safety classifiers can decline a request, and that arrives as an ordinary response with <code>stop_reason: "refusal"</code>, not an error. The adapter opts into the API&rsquo;s server-side fallback, a beta: a declined request is retried on the model Anthropic recommends for that kind of refusal, and where there&rsquo;s none, the refusal stands and the loop stops with <code>modelStopped</code> (<a href="https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback">Refusals and fallback</a>).</li>
+<li><strong>Truncation.</strong> A reply cut off at <code>max_tokens</code> maps to <code>truncated</code>, so a half-written tool call never runs.</li>
+</ul>
+<p>Here is the conversation the adapter would keep if Claude made the same three calls:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="the-agent-loop-and-its-tools-wire-title the-agent-loop-and-its-tools-wire-desc" viewBox="0 0 360 220">
+<title id="the-agent-loop-and-its-tools-wire-title">The conversation the adapter keeps</title>
+<desc id="the-agent-loop-and-its-tools-wire-desc">Four messages from top to bottom, user and assistant in turn. The user's question. The assistant's reply: a thinking block and three tool_use blocks, c1, c2 and c3. The user's reply: three tool_result blocks, c1, c2 and c3, each joined by a highlighted line to the tool_use with the same id above it. The assistant's last reply: a thinking block and the draft.</desc>
+<g class="path"><line x1="220" y1="88" x2="220" y2="128"/><line x1="217" y1="122.8" x2="220" y2="128"/><line x1="223" y1="122.8" x2="220" y2="128"/><line x1="272" y1="88" x2="272" y2="128"/><line x1="269" y1="122.8" x2="272" y2="128"/><line x1="275" y1="122.8" x2="272" y2="128"/><line x1="324" y1="88" x2="324" y2="128"/><line x1="321" y1="122.8" x2="324" y2="128"/><line x1="327" y1="122.8" x2="324" y2="128"/></g>
+<rect class="node" x="96" y="12" width="248" height="24" rx="4"/>
+<rect class="node" x="96" y="64" width="80" height="24" rx="4"/>
+<rect class="node on" x="200" y="64" width="40" height="24" rx="4"/>
+<rect class="node on" x="252" y="64" width="40" height="24" rx="4"/>
+<rect class="node on" x="304" y="64" width="40" height="24" rx="4"/>
+<rect class="node on" x="200" y="128" width="40" height="24" rx="4"/>
+<rect class="node on" x="252" y="128" width="40" height="24" rx="4"/>
+<rect class="node on" x="304" y="128" width="40" height="24" rx="4"/>
+<rect class="node" x="96" y="184" width="80" height="24" rx="4"/>
+<rect class="node" x="200" y="184" width="144" height="24" rx="4"/>
+<g><text class="note" x="47.3" y="24">user</text><text class="note" x="47.3" y="76">assistant</text><text class="note" x="47.3" y="140">user</text><text class="note" x="47.3" y="196">assistant</text><text x="220" y="24">the question</text><text x="136" y="76">thinking</text><text x="220" y="76">c1</text><text x="272" y="76">c2</text><text x="324" y="76">c3</text><text x="220" y="140">c1</text><text x="272" y="140">c2</text><text x="324" y="140">c3</text><text x="136" y="196">thinking</text><text x="272" y="196">the draft</text><text class="note" x="272" y="50">tool_use</text><text class="note" x="272" y="168">tool_result</text></g>
+</svg>
+<figcaption>The adapter&rsquo;s transcript, top to bottom: it only grows. Each <code>tool_result</code> answers the <code>tool_use</code> with its id (the violet lines), all three in one user message, and any thinking blocks go back as they came.</figcaption>
+</figure>
+<p><code>toReply</code> covers every stop reason the SDK knows, including <code>pause_turn</code> and <code>compaction</code>, which come only from server tools and the API&rsquo;s compaction features, and this agent uses neither. The <code>switch</code> has no default, so when the SDK learns a new reason, the build stops until someone decides what it means. Take a case away and see:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ sed -i "/case 'compaction':/d" agent/claude.ts
+$ npx tsc --noEmit
+agent/claude.ts(52,57): error TS2366: Function lacks ending return statement and return type does not include 'undefined'.</code></pre>
+<p>The production wiring puts the pieces together. The tools the model reads and the tools the loop runs come from one list:</p>
+<pre class="code-block" tabindex="0"><code>// agent/pickup.ts
+// The same loop and tools the tests run, with Claude in the model's seat.
+import type Anthropic from '@anthropic-ai/sdk'
+import { bakeryTools, type Bakery } from './bakery.ts'
+import { claudeModel } from './claude.ts'
+import { runAgent, type Run } from './loop.ts'
+
+const system =
+  "You draft answers to customers' pickup questions for the bakery. " +
+  'Take hours, items and prices from the tools, never from memory. A person reads every draft before it is sent.'
+
+// A fresh conversation for every question; the limits are this lesson's own.
+export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: string): Promise&lt;Run&gt; =&gt; {
+  const tools = bakeryTools(bakery)
+  return runAgent(claudeModel(client, system, tools), tools, question, { maxTurns: 6, maxTokens: 50_000 })
+}</code></pre>
+<p>The limits here are this lesson&rsquo;s own; set yours from what real runs cost.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The budget is checked between turns, because the loop can&rsquo;t know what a reply costs until it arrives, so a run can pass its budget by one reply. <code>max_tokens</code> caps what one reply writes, thinking included, not what it reads, and each request sends the whole conversation again, so a long run reads more on every turn.</p>
+<p>Running calls together suits tools that only read. Tools that change something, such as booking a pickup or taking a payment, are better run one at a time, in order, and often wait for a person&rsquo;s approval.</p>
+<p>The customer&rsquo;s question is untrusted text, and Anthropic&rsquo;s docs advise keeping content from outside, such as inbound email, in <code>tool_result</code> blocks rather than plain user text. Here the tools only read and a person reads every draft, so a question that tries to steer the agent can waste turns, which the limits cap, or spoil a draft, which the person catches. The module&rsquo;s last lesson treats an email&rsquo;s text as data, never instructions.</p></aside>
+<p>The loop gives the agent its hands. <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> gives it know-how: a skill it loads when a task matches, written from a user story and its scenarios, the same way.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/module-5-business-automation-with-ai/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">Module 5: Business automation with AI (agentic skills)</span></a>
+<a href="/community/writing-an-agentic-skill/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing an agentic skill</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

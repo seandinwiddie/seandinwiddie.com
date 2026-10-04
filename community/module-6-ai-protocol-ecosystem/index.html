@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Module 6: AI Protocol Ecosystem | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Module 6 of the community course: the open protocols at each join an AI system crosses, the harness that checks them, and the model work in Python.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Module 6: AI Protocol Ecosystem | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Module 6 of the community course: the open protocols at each join an AI system crosses, the harness that checks them, and the model work in Python.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-01T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Module 6: AI Protocol Ecosystem | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Module 6 of the community course: the open protocols at each join an AI system crosses, the harness that checks them, and the model work in Python.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#webpage","url":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/","name":"Module 6: AI Protocol Ecosystem | Sean Dinwiddie's Webmastery","description":"Module 6 of the community course: the open protocols at each join an AI system crosses, the harness that checks them, and the model work in Python.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-01T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Module 6: AI protocol ecosystem","item":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#article","headline":"Module 6: AI protocol ecosystem","description":"Module 6 of the community course: the open protocols at each join an AI system crosses, the harness that checks them, and the model work in Python.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-01T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/pexels-thisisengineering-3861958-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Module 6: AI protocol ecosystem</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 1; --lessons: 10">Lesson 1 of 10 in Module 6</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/module-6-ai-protocol-ecosystem/" rel="bookmark"><time datetime="2026-10-01T12:00:00+00:00">October 1, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>The first four modules build an app: a user story, the scenarios that test it, the state behind its screens and the typed API behind them. Module 5 puts an agent loop to work on a business process, with tools, a skill and a person approving anything that leaves the building. This module opens up every join that loop crosses, and the model at its center, one boundary at a time, with the same principles.</p>
+<nav class="module-lessons" aria-labelledby="module-lessons">
+<h2 id="module-lessons">Lessons in this module</h2>
+<ol start="2">
+<li><a href="/community/the-ai-protocol-map/">The AI protocol map</a></li>
+<li><a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a></li>
+<li><a href="/community/the-tandem-harness/">The tandem harness</a></li>
+<li><a href="/community/server-and-client-in-tandem/">Server and client in tandem</a></li>
+<li><a href="/community/extending-the-harness/">Extending the harness</a></li>
+<li><a href="/community/python-the-teams-way/">Python, the team’s way</a></li>
+<li><a href="/community/measuring-reasoning-on-the-geometry/">Measuring reasoning on the geometry</a></li>
+<li><a href="/community/geometric-reasoning-in-model-training/">Geometric reasoning in model training</a></li>
+<li><a href="/community/from-fine-tune-to-release/">From fine-tune to release</a></li>
+</ol>
+</nav>
+<p>The Sean Dinwiddie&rsquo;s Webmastery team works on both sides of those joins: the apps and APIs the course builds, and the small language models it trains and evaluates in Python. <a href="/community/the-ai-protocol-map/">The AI protocol map</a>, the next lesson, starts with the joins themselves.</p>
+<h2 id="a-contract-at-every-join"><a class="heading-anchor" href="#a-contract-at-every-join">A contract at every join</a></h2>
+<p>One rule runs through the module: every join between an app, an agent, a model and the tools around it carries a contract, and something checks it. Here is each join the module opens, what crosses it and what checks it, with the lesson that teaches it.</p>
+<ul>
+<li><strong>App to tool.</strong> A tool call and its result, checked against the tool&rsquo;s input and output schemas (<a href="/community/the-ai-protocol-map/">The AI protocol map</a>).</li>
+<li><strong>Client to API.</strong> A request and its response, typed by one Servant type, with a drift check holding the committed OpenAPI document to that type (<a href="/community/the-ai-protocol-map/">The AI protocol map</a>) and a decoder on every response the client receives (<a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>).</li>
+<li><strong>Design file to reader.</strong> Factors and a table of points, read by one shared reader in each language that refuses a broken design and reports every fault at once, and pairs built in memory by a constructor that refuses any pair that doesn&rsquo;t differ in exactly one fact (<a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a>).</li>
+<li><strong>Harness to model.</strong> A prompt out, and a choice and a reply back: the choice checked against one offer list, and the reply sent exactly as written, or held back with every reason that applies (<a href="/community/the-tandem-harness/">The tandem harness</a>).</li>
+<li><strong>Server to app.</strong> Two rounds of one booking in MCP&rsquo;s result types, with a signed request state used once and every reply decoded strictly (<a href="/community/server-and-client-in-tandem/">Server and client in tandem</a>).</li>
+<li><strong>Harness to extension.</strong> A new rule, skill or tool, added only at a documented extension point, each with a scenario, and a new kind of question added to one list the compiler holds every screen to (<a href="/community/extending-the-harness/">Extending the harness</a>).</li>
+<li><strong>File to program.</strong> Data rows and config, read into frozen data by contracts that report every fault (<a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a>).</li>
+<li><strong>Model to measurement.</strong> Answers to paired items, each pair scored together (<a href="/community/measuring-reasoning-on-the-geometry/">Measuring reasoning on the geometry</a>).</li>
+<li><strong>Serving to training.</strong> The prompts serving sent, logged as sent and read back by training, never rendered a second time (<a href="/community/geometric-reasoning-in-model-training/">Geometric reasoning in model training</a>).</li>
+<li><strong>Training to release.</strong> A trained model, checked by a gate against the model in service: both scored on the same pairs, point by point, and none worse by more than a declared margin (<a href="/community/from-fine-tune-to-release/">From fine-tune to release</a>).</li>
+</ul>
+<p>To try it, write one more entry for a join in a project of your own: a booking form that posts to a calendar, say, or a price list a script reads each morning. Name what crosses it and what checks it today. A join with nothing to name in that last part is the next one to give a contract.</p>
+<h2 id="the-same-principles"><a class="heading-anchor" href="#the-same-principles">The same principles</a></h2>
+<ul>
+<li><strong>Behavior is named before it is built.</strong> A user story names what a feature does for someone before any code is written. Here, a join&rsquo;s contract is written before either side of it, and the behavior a model must show is named first: the points of an experiment, and the oracle each answer must pass, are fixed before any data is generated or any training runs.</li>
+<li><strong>Pure functions sit at the core, and effects at the edges.</strong> Composing a prompt, generating data, scoring answers and comparing two models are pure functions over plain data. Calling a tool, crossing the wire and running a model sit in thin rings around them, so the logic is tested without any of the three.</li>
+<li><strong>Tests carry names.</strong> Each test names the rule it proves, the way a scenario names a behavior, so a failing run reads as a list of broken rules, and a run with a skipped test fails.</li>
+<li><strong>Evidence comes before a release.</strong> A trained model is released only when its evidence shows it is no worse than the model it replaces wherever it is measured, the way a feature launches only after the review against its written scope.</li>
+</ul>
+<p>The course&rsquo;s pure core grows outward here, one ring for each kind of join, and each ring is checked where something crosses into it.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="module-6-ai-protocol-ecosystem-rings-title module-6-ai-protocol-ecosystem-rings-desc" viewBox="0 0 360 384">
+<title id="module-6-ai-protocol-ecosystem-rings-title">The pure core and its rings</title>
+<desc id="module-6-ai-protocol-ecosystem-rings-desc">Four nested frames. The outermost holds the tools, apps and agents beyond, checked by a data contract. Inside it is the wire between server and client, checked by a typed message, and inside that the harness beside the model, which checks what comes back. At the center a highlighted box, the pure core, composes a prompt, scores the answers and compares two models. From the named tests, below the frames, a highlighted arrow runs straight into the core.</desc>
+<rect class="node" x="12.5" y="12.5" width="335" height="316" rx="6"/>
+<rect class="node" x="32.5" y="66.5" width="295" height="248" rx="6"/>
+<rect class="node" x="52.5" y="120.5" width="255" height="180" rx="6"/>
+<rect class="node on" x="72.5" y="174.5" width="215" height="112" rx="6"/>
+<g class="path"><line x1="180" y1="350" x2="180" y2="289.5"/><line x1="177" y1="294.7" x2="180" y2="289.5"/><line x1="183" y1="294.7" x2="180" y2="289.5"/></g>
+<g><text class="note" x="180" y="32.5">tools, apps and agents beyond</text><text x="180" y="50.5">a data contract</text><text class="note" x="180" y="86.5">the wire: server and client</text><text x="180" y="104.5">a typed message</text><text class="note" x="180" y="140.5">the harness, beside the model</text><text x="180" y="158.5">a check on what comes back</text><text class="note" x="180" y="194.5">the pure core</text><text x="180" y="218.5">compose a prompt</text><text x="180" y="242.5">score the answers</text><text x="180" y="266.5">compare two models</text><text x="180" y="364">named tests</text></g>
+</svg>
+<figcaption>The logic lives in the pure core, outlined in violet. Under each ring&rsquo;s name is the check made where anything crosses into it. The violet arrow is the named tests: they call the core directly, with no tool, wire or model in the way.</figcaption>
+</figure>
+<h2 id="two-halves-in-this-order"><a class="heading-anchor" href="#two-halves-in-this-order">Two halves, in this order</a></h2>
+<p>The stack follows the project. The team builds its apps in Haskell, TypeScript and Rust, and the work of training a model lives in Python: the libraries that load a model, fine-tune it, measure it and convert it for a runtime are written for Python first, and the research behind them is published with Python beside it. So the module runs in two halves.</p>
+<ul>
+<li><strong>The joins, in TypeScript and Haskell.</strong> <a href="/community/the-ai-protocol-map/">The AI protocol map</a> names the joins, <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> builds what crosses them, <a href="/community/the-tandem-harness/">The tandem harness</a> checks it, <a href="/community/server-and-client-in-tandem/">Server and client in tandem</a> carries it over the wire, and <a href="/community/extending-the-harness/">Extending the harness</a> shows where both kinds of harness grow.</li>
+<li><strong>The model, in Python.</strong> <a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a> lays the foundation, <a href="/community/measuring-reasoning-on-the-geometry/">Measuring reasoning on the geometry</a> writes the measurement before any training, as a scenario comes before its code, <a href="/community/geometric-reasoning-in-model-training/">Geometric reasoning in model training</a> builds the training set on the geometry, and <a href="/community/from-fine-tune-to-release/">From fine-tune to release</a> decides whether a model ships.</li>
+</ul>
+<p>Each lesson leans on the one before. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/">Functional Programming in Other Languages</a> makes the same case for carrying one discipline from language to language.</p>
+<h2 id="what-geometric-reasoning-and-tandem-mean-here"><a class="heading-anchor" href="#what-geometric-reasoning-and-tandem-mean-here">What geometric reasoning and tandem mean here</a></h2>
+<p>Geometric reasoning, in this course, is discrete: the behaviors to build and measure are points in a declared design space, one level for each factor, with a distance between any two of them. <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> draws the line between this sense and the others in circulation.</p>
+<p>Tandem means deterministic code runs beside a model on every request, so the model proposes and the code decides.</p>
+<h2 id="how-the-module-runs"><a class="heading-anchor" href="#how-the-module-runs">How the module runs</a></h2>
+<p>Nine lessons, each building on the one before, with examples that run: Vitest for TypeScript, Hspec for Haskell and pytest for Python, on the standard library wherever it will do. A step that can&rsquo;t run on a laptop, such as a GPU training stage, is shown as a sketch and labelled one. Every business, price, score and setting in an example is invented; the numbers a protocol defines, such as its error codes, come from its specification.</p>
+<p>Every page that teaches a protocol names the revision it teaches: the Model Context Protocol (MCP) at revision <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning">2026-07-28</a>, beside the earlier, handshake-based revisions its specification calls legacy, and the Agent2Agent protocol (A2A) at <a href="https://a2a-protocol.org/v1.0.0/specification/">1.0</a>. The protocols are taught as the ecosystem a webmaster works in, and where a lesson describes the team&rsquo;s own practice, it says so.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> A claim from the field reaches a lesson with no contract of its own. The field moves fast, and it mixes measured results with bare assertions: a paper with its code and data sits beside a launch post with a figure and no method. So this module reads it with a claims ledger, where each row holds the claim, its source, whether it was measured, released or only asserted, and what would show it false.</p>
+<p>Take a booking assistant whose maker promises it never double-books. Its row gives the maker&rsquo;s page as the source and asserted as the status, and two overlapping bookings in a test calendar would show it false. A lesson teaches from what was measured or released, and an assertion waits in the ledger until something checks it.</p></aside>
+<p>It assumes no machine learning, only the habits the earlier modules teach: name the behavior, keep the core pure and let the evidence decide. <a href="/community/from-fine-tune-to-release/">From fine-tune to release</a> closes the module, and <a href="/community/staff/">Joining the team</a> sets out the terms for webmasters at any stage of the craft who build this way under the Sean Dinwiddie&rsquo;s Webmastery name.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/automating-a-business-process/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">Automating a business process with a person in the loop</span></a>
+<a href="/community/the-ai-protocol-map/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The AI protocol map</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

@@ -2,6 +2,15 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Modules 5 and 6: October 3, 2026
+
+At Sean's direction Module 5 is business automation with AI, and the old Module 5 is Module 6, the AI protocol ecosystem.
+
+- **Built:** Module 5's opener and its three lessons; Module 6's opener at its new address (the old one retires) and six new lessons; Python, the Team's Way, Geometric Reasoning in Model Training and From Fine-Tune to Release revised. The Course Outline, the hub's map and the archives follow `LESSONS`. Every code block comes from a harness that compiles and passes (tsc and Vitest, pytest, five cabal suites), and every printed output is a real run.
+- **Audited before release:** the new pages were checked against the rule that private work stays private, and against the lesson template. The agent-loop lesson takes a shared lesson photograph, so the Development hub's photograph stays the hub's alone; diagram margins are even, each lesson keeps one depth passage, and two tables became lists.
+- **Revisions:** six lessons were rebuilt so each teaches its pattern through a mechanism of its own (`docs/community-plan.md`, Module 6), and a second round checked every claim against its code and its sources; every example ran again; a third round moved the shipped Python lesson to one config read once and to uv's project lock, so the live page's composer and lock script go with this release, and gave the release gate a declared margin with an error bar at each point; a fourth round gave the tandem harness one checked answer per call and a real time limit at the edge, moved the geometry lessons to points and neighbors, and moved the private-name list out of the repo; a fifth round set pair accuracy beside every split rate, gave the shipped harness's transport the anti-forgery header its server asks for, and versioned the trail ruler's checking code with its settings; a sixth round let the tandem harness's audit pass a turn or name every failed check, drew its time limit around the whole turn, named a deleted input in the release record, and corrected what the lessons say of servant-auth's cookie check and TRL's length limit; a seventh round kept a plain-text refusal's status in the tandem client, named the checker's closed-day gap, anchored the release lesson's DPO reference copy to the TRL release that makes it, and cited the published practice behind one-difference preference pairs.
+- **Waits on Sean:** his read of the rebuilt lessons; the trail notice's move to three voice traits; whether a lesson may say the team builds against MCP, A2A or WebMCP; whether this repo's harness is a case study.
+
 ## The Development hub's photograph from Unsplash: October 2, 2026
 
 Sean found the glass tower behind the church spires didn't work for the Development hub and asked for a photograph from Unsplash. Of about a hundred free photographs searched (developer workspaces, small teams, brick studios), most were open-plan offices or screens of legible code. The one chosen shows someone at work on a laptop against an old brick wall, a carafe on the wooden table: quiet, focused and neo-rustic, for "From idea to production, built to last". Photo by Jonathan Kemper, free under the Unsplash License; mirrored so the hero's line falls on the brick rather than the face, cropped at 24% so the head stays whole at a desktop's width, saved at 1600px and 270 KB. No legible words, and no featured card or other page uses it.
@@ -1130,7 +1139,7 @@ These scores read the site after pass 6. The copywriter expects 6.5, close to 9 
 - **The community:** intuitive for every level, in teaching order, with apprentice, journeyman and master marks.
 - **Testing:** both ways of running Gherkin, cucumber-js steps and scenario-named tests in Vitest or Hspec.
 - **Planning:** hybrid and fluid.
-- **ForbocAI** stays out of the lessons for now.
+- **Sean's private company** stays out of the lessons for now.
 - **Research:** Sean's repositories were researched for the community (`docs/community-plan.md`; private findings stay out of this public repository).
 
 ### Tweaks applied
@@ -1224,7 +1233,7 @@ These scores read the site after pass 5 and before this pass's tweaks. The copyw
 - **Sean's pages.** His pages (prices, tools, resources, Training, and now the cut-sheet, a concept he builds out himself) are as he intends. Reviewers don't count their content.
 - **The menu.** It marks the right page for screen readers.
 - **The team's practice.** User stories → BDD tests → Redux Toolkit slices and RTK Query endpoints → minimal React views, with Haskell (Servant) and Rust on the backend. The site never recommends tools the team doesn't use.
-- **Research.** Sean's repositories and the ForbocAI repositories can be researched for community content.
+- **Research.** Sean's repositories, private ones included, can be researched for community content.
 - **Training.** It links to the community, and the community pages link to the lectures where one fits.
 
 ### Tweaks applied

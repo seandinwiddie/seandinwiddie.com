@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Measuring Reasoning on the Geometry | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Measurement before training: pairs scored together, difficulty read cell by cell, and a full factorial over the probe sheets read as effects.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Measuring Reasoning on the Geometry | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Measurement before training: pairs scored together, difficulty read cell by cell, and a full factorial over the probe sheets read as effects.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-03T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Measuring Reasoning on the Geometry | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Measurement before training: pairs scored together, difficulty read cell by cell, and a full factorial over the probe sheets read as effects.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#webpage","url":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/","name":"Measuring Reasoning on the Geometry | Sean Dinwiddie's Webmastery","description":"Measurement before training: pairs scored together, difficulty read cell by cell, and a full factorial over the probe sheets read as effects.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Measuring reasoning on the geometry","item":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#article","headline":"Measuring reasoning on the geometry","description":"Measurement before training: pairs scored together, difficulty read cell by cell, and a full factorial over the probe sheets read as effects.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/kelly-sikkema-o2TRWThve_I-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Measuring reasoning on the geometry</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 8; --lessons: 10">Lesson 8 of 10 in Module 6</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/measuring-reasoning-on-the-geometry/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>Measurement comes before training, as a scenario comes before code: the eval is the model work&rsquo;s Gherkin. This lesson writes the measures first, on the geometry from <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a>, so the training that follows aims at a target fixed before any model sees a row.</p>
+<p>The code is Python 3.11 with pytest, on the habits of <a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a>. No example calls a model: stand-ins, written as plain functions, take the model&rsquo;s seat. Every stand-in, planted table and date here is invented for the lesson.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#score-the-pair-not-the-item">Score the pair, not the item</a></li>
+<li><a href="#difficulty-is-a-grid-read-cell-by-cell">Difficulty is a grid, read cell by cell</a></li>
+<li><a href="#a-full-factorial-over-the-sheets">A full factorial over the sheets</a></li>
+<li><a href="#reading-the-table-as-effects">Reading the table as effects</a></li>
+<li><a href="#what-the-factorial-shows">What the factorial shows</a></li>
+<li><a href="#pushback-and-notices-that-disagree">Pushback, and notices that disagree</a></li>
+<li><a href="#the-pick-holds-while-the-voice-moves">The pick holds while the voice moves</a></li>
+</ul>
+</nav>
+<h2 id="score-the-pair-not-the-item"><a class="heading-anchor" href="#score-the-pair-not-the-item">Score the pair, not the item</a></h2>
+<p>A score on single items rewards shortcuts. An answerer that says yes to everything gets every yes item right, and nothing in the score says how. So the probes here come in twos: a fact sheet and its contrast twin, one load-bearing fact apart, so the right answer has to move.</p>
+<p>The pairs come from the generator in Geometric reasoning as data, written to <code>data/probes.jsonl</code> by a short TypeScript script, and a Vitest test fails if the committed file drifts from what the generator makes. The Python reader refuses any record whose sheets differ anywhere but one fact and its sentence, or whose answers its own port of the oracle doesn&rsquo;t reach.</p>
+<p>A pair comes out one of three ways, by how many of its sides are right: reasoned (both), split (one) or both wrong. On a contrast twin, a split pair means the answer didn&rsquo;t follow the flipped fact; on a wording twin, which comes further down, it means the answer moved with no fact behind it. The split rate is the share of pairs split, and pair accuracy the share reasoned.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="measuring-reasoning-on-the-geometry-pair-title measuring-reasoning-on-the-geometry-pair-desc" viewBox="0 0 360 329">
+<title id="measuring-reasoning-on-the-geometry-pair-title">One pair, three outcomes</title>
+<desc id="measuring-reasoning-on-the-geometry-pair-desc">Two fact sheets, one above the other, asking whether the morquilet is dairy-free. The canonical sheet reads: Every kellvashet is dairy-free. Every sarrdunet is dairy-free. The morquilet is a sarrdunet. Its answer is yes. The twin is the same sheet with the middle fact flipped to: No sarrdunet is dairy-free. Its answer is no. The flipped fact is outlined in both sheets. Below them, three outcome boxes: reasoned, both sides right, outlined; split, one side right; and both wrong, no side right.</desc>
+<rect class="node" x="16" y="38" width="328" height="100" rx="4"/>
+<rect class="node on" x="40" y="88" width="280" height="24" rx="3"/>
+<rect class="node" x="16" y="150" width="328" height="100" rx="4"/>
+<rect class="node on" x="40" y="200" width="280" height="24" rx="3"/>
+<rect class="node on" x="16" y="262" width="104" height="28" rx="4"/>
+<rect class="node" x="128" y="262" width="104" height="28" rx="4"/>
+<rect class="node" x="240" y="262" width="104" height="28" rx="4"/>
+<g><text class="note" x="180" y="23">Is the morquilet dairy-free?</text><text class="note" x="180" y="54">canonical: yes</text><text x="180" y="76">Every kellvashet is dairy-free.</text><text x="180" y="100">Every sarrdunet is dairy-free.</text><text x="180" y="124">The morquilet is a sarrdunet.</text><text class="note" x="180" y="166">twin: no</text><text x="180" y="188">Every kellvashet is dairy-free.</text><text x="180" y="212">No sarrdunet is dairy-free.</text><text x="180" y="236">The morquilet is a sarrdunet.</text><text x="68" y="276">reasoned</text><text x="180" y="276">split</text><text x="292" y="276">both wrong</text><text class="note" x="68" y="306">both right</text><text class="note" x="180" y="306">one right</text><text class="note" x="292" y="306">none right</text></g>
+</svg>
+<figcaption>One generated pair, seed 16: two hops and one distractor, in invented words. The violet outlines mark the one fact that differs and the outcome a reasoner earns. An answerer that says yes to both sheets is right once, and its pair comes out split.</figcaption>
+</figure>
+<p>Gardner and colleagues score their <a href="https://aclanthology.org/2020.findings-emnlp.117/">contrast sets</a> (Findings of EMNLP 2020) the same strict way, by consistency: the share of sets with every example right. Pair accuracy is that number for sets of two.</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/pairs.py
+"""Score both sides of a perturbation pair together, as one finding."""
+
+from __future__ import annotations
+
+from collections import Counter
+from dataclasses import dataclass
+from enum import Enum
+from typing import Callable, Iterable
+
+from pipeline.data.probes import Answer, Probe, Sheet
+
+Answerer = Callable[[Sheet], Answer]
+
+
+class Outcome(Enum):
+    REASONED = "reasoned"  # both sides right
+    SPLIT = "split"  # one side right: the answer stayed put, or moved, against the facts
+    BOTH_WRONG = "both wrong"
+
+
+def classify(probe: Probe, answers: tuple[Answer, Answer]) -&gt; Outcome:
+    right = (answers[0] == probe.canonical.answer) + (answers[1] == probe.twin.answer)
+    return (Outcome.BOTH_WRONG, Outcome.SPLIT, Outcome.REASONED)[right]
+
+
+@dataclass(frozen=True)
+class Tally:
+    items: float  # single items right, the number that hides a split pair
+    split_rate: float  # pairs split
+    pair_accuracy: float  # pairs reasoned
+
+
+def tally(probes: Iterable[Probe], answer: Answerer) -&gt; Tally:
+    outcomes = [classify(p, (answer(p.canonical.sheet), answer(p.twin.sheet))) for p in probes]
+    if not outcomes:
+        raise ValueError("no pairs to tally")
+    counts = Counter(outcomes)
+    n = len(outcomes)
+    right = 2 * counts[Outcome.REASONED] + counts[Outcome.SPLIT]
+    return Tally(
+        items=round(right / (2 * n), 3),
+        split_rate=round(counts[Outcome.SPLIT] / n, 3),
+        pair_accuracy=round(counts[Outcome.REASONED] / n, 3),
+    )
+
+
+def by_cell(probes: Iterable[Probe], answer: Answerer) -&gt; dict[tuple[int, int], Tally]:
+    """Difficulty is a grid of hops by distractors, read cell by cell."""
+    cells: dict[tuple[int, int], list[Probe]] = {}
+    for p in probes:
+        cells.setdefault((p.hops, p.distractors), []).append(p)
+    return {cell: tally(group, answer) for cell, group in sorted(cells.items())}</code></pre>
+<p>Six stand-ins take the model&rsquo;s seat. Each answers one sheet at a time, so none can compare the two sides of a pair. The sixth, <code>literal</code>, waits for the factorial further down:</p>
+<pre class="code-block" tabindex="0"><code># demos/answerers.py
+"""Stand-ins in a model's seat, each answering one sheet at a time."""
+
+import re
+
+from pipeline.data.probes import Answer, Fact, Sheet, entails
+
+
+def always_yes(sheet: Sheet) -&gt; Answer:
+    return "yes"
+
+
+def sees_not(sheet: Sheet) -&gt; Answer:  # says no whenever a sentence says no or not
+    return "no" if any(re.search(r"\b(no|not)\b", s, re.I) for s in sheet.sentences) else "yes"
+
+
+FLIP: dict[Answer, Answer] = {"yes": "no", "no": "yes", "unknown": "yes"}
+
+
+def contrarian(sheet: Sheet) -&gt; Answer:  # reasons, then says something else
+    return FLIP[entails(sheet.facts, sheet.subject, sheet.property)]
+
+
+def chains(sheet: Sheet) -&gt; Answer:  # forward chaining, as the oracle does
+    return entails(sheet.facts, sheet.subject, sheet.property)
+
+
+def reads_first(n: int):  # chains, but over only the first n facts it reads
+    return lambda sheet: entails(sheet.facts[:n], sheet.subject, sheet.property)
+
+
+def literal(sheet: Sheet) -&gt; Answer:  # chains, but reads only the phrasings the generator writes
+    facts = []
+    for s in sheet.sentences:
+        if m := re.fullmatch(r"(Every|No) (\w+) is (?:a )?([\w-]+)\.", s):
+            facts.append(Fact(m[2], m[3], m[1] == "Every"))
+        elif m := re.fullmatch(r"The (\w+) is (not )?(?:a )?([\w-]+)\.", s):
+            facts.append(Fact(f"the {m[1]}", m[3], m[2] is None))
+    return entails(tuple(facts), sheet.subject, sheet.property)</code></pre>
+<pre class="code-block" tabindex="0"><code>from demos.answerers import always_yes, chains, contrarian, reads_first, sees_not
+from pipeline.data.probes import read_probes
+from pipeline.evaluation.pairs import tally
+
+probes = read_probes("data/probes.jsonl")
+print(f"{len(probes)} pairs" + " " * 6 + "items  split rate  pair accuracy")
+for name, answer in [("always yes", always_yes), ("sees not", sees_not), ("contrarian", contrarian),
+                     ("reads first 6", reads_first(6)), ("chains", chains)]:
+    t = tally(probes, answer)
+    print(f"{name:&lt;14} {t.items:5.3f} {t.split_rate:11.3f} {t.pair_accuracy:15.3f}")</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>320 pairs      items  split rate  pair accuracy
+always yes     0.367       0.734           0.000
+sees not       0.570       0.641           0.250
+contrarian     0.000       0.000           0.000
+reads first 6  0.967       0.028           0.953
+chains         1.000       0.000           1.000</code></pre>
+<p>Read the columns together. Always yes gets 37% of single items right and no pair at all. The negation spotter gets 57% of items and 25% of pairs: its shortcut lands on some sheets and misses their twins. Item accuracy alone can&rsquo;t tell a shortcut from reading.</p>
+<p>The contrarian and the chaining reasoner share a split rate of zero, one with no pair right and the other with every pair, so a split rate is never reported without pair accuracy beside it. The reader that stops after six facts looks nearly perfect here, and the next section finds where it isn&rsquo;t.</p>
+<p>A second kind of twin changes only the wording, and must leave the answer where it was. That is a metamorphic relation, as software testing calls it: a property that ties the outputs of related inputs together. Here two wordings of one sheet get one answer:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/data/probes.py, the wording twin
+# Each rule keeps a sentence's meaning and changes its words.
+REWORDINGS = ((r"^Every (\w+) is ", r"Each \1 is "), (r"^No (\w+) is ", r"A \1 is never "), (r" is not ", " is never "))
+
+
+def reword(sentence: str) -&gt; str:
+    for pattern, replacement in REWORDINGS:
+        sentence = re.sub(pattern, replacement, sentence)
+    return sentence
+
+
+def reworded(probe: Probe) -&gt; Probe:
+    """A twin that changes only the wording: the facts, and so the answer, stay put."""
+    sheet = probe.canonical.sheet
+    twin = replace(sheet, sentences=tuple(reword(s) for s in sheet.sentences))
+    return replace(probe, twin=Side(twin, probe.canonical.answer))</code></pre>
+<pre class="code-block" tabindex="0"><code>from demos.answerers import chains, sees_not
+from pipeline.data.probes import read_probes, reworded
+from pipeline.evaluation.pairs import tally
+
+held = [reworded(p) for p in read_probes("data/probes.jsonl")]
+for before, after in zip(held[42].canonical.sheet.sentences, held[42].twin.sheet.sentences):
+    print(f"{before:&lt;34} {after}")
+for name, answer in [("sees not", sees_not), ("chains", chains)]:
+    t = tally(held, answer)
+    print(f"{name}: split rate {t.split_rate:.3f}, pair accuracy {t.pair_accuracy:.3f}")</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>The quilbrinet is not dairy-free.  The quilbrinet is never dairy-free.
+Every tepbrinet is dairy-free.     Each tepbrinet is dairy-free.
+No sarrzoret is a tepbrinet.       A sarrzoret is never a tepbrinet.
+sees not: split rate 0.784, pair accuracy 0.216
+chains: split rate 0.000, pair accuracy 1.000</code></pre>
+<p>The negation spotter comes out split on 78% of the reworded pairs, though no fact moved. The chaining reasoner never moves, and can&rsquo;t: it reads the facts, never the words. The sixth stand-in, further down, reads the words.</p>
+<h2 id="difficulty-is-a-grid-read-cell-by-cell"><a class="heading-anchor" href="#difficulty-is-a-grid-read-cell-by-cell">Difficulty is a grid, read cell by cell</a></h2>
+<p>Each pair records its hops, the facts on the path from the subject to the answer, and its distractors, the facts off it. The probes cover a grid of one to four hops by none to three distractors, twenty pairs a cell. <code>by_cell</code>, in <code>pairs.py</code> above, tallies each cell on its own, and every cell shows its split rate with its pair accuracy beside it:</p>
+<pre class="code-block" tabindex="0"><code>from demos.answerers import reads_first
+from pipeline.data.probes import read_probes
+from pipeline.evaluation.pairs import by_cell, tally
+
+probes = read_probes("data/probes.jsonl")
+cells = by_cell(probes, reads_first(6))
+print("split rate/pair accuracy, by distractors")
+print(" " * 9 + "  ".join(f"{d:&lt;9}" for d in (0, 1, 2, 3)).rstrip())
+for hops in (1, 2, 3, 4):
+    row = f"{hops} hop" + "s" * (hops &gt; 1)
+    print(f"{row:&lt;9}" + "  ".join(f"{cells[hops, d].split_rate:.2f}/{cells[hops, d].pair_accuracy:.2f}" for d in (0, 1, 2, 3)))
+overall = tally(probes, reads_first(6))
+print(f"overall: split rate {overall.split_rate:.3f}, pair accuracy {overall.pair_accuracy:.3f}")</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>split rate/pair accuracy, by distractors
+         0          1          2          3
+1 hop    0.00/1.00  0.00/1.00  0.00/1.00  0.00/1.00
+2 hops   0.00/1.00  0.00/1.00  0.00/1.00  0.00/1.00
+3 hops   0.00/1.00  0.00/1.00  0.00/1.00  0.00/1.00
+4 hops   0.00/1.00  0.00/1.00  0.00/1.00  0.45/0.25
+overall: split rate 0.028, pair accuracy 0.953</code></pre>
+<figure class="diagram">
+<svg role="img" aria-labelledby="measuring-reasoning-on-the-geometry-grid-title measuring-reasoning-on-the-geometry-grid-desc" viewBox="0 0 360 297">
+<title id="measuring-reasoning-on-the-geometry-grid-title">Split rate and pair accuracy by hops and distractors</title>
+<desc id="measuring-reasoning-on-the-geometry-grid-desc">A table of four rows, one to four hops, by four columns, zero to three distractors, for the reader that stops after six facts. Each cell gives its split rate above and its pair accuracy below. Fifteen cells read 0.00 and 1.00. The cell for four hops and three distractors reads 0.45 and 0.25 and is outlined. Below, the overall numbers: a split rate of 0.028 and pair accuracy of 0.953.</desc>
+<rect class="node" x="84" y="60" width="62" height="40" rx="3"/><rect class="node" x="150" y="60" width="62" height="40" rx="3"/><rect class="node" x="216" y="60" width="62" height="40" rx="3"/><rect class="node" x="282" y="60" width="62" height="40" rx="3"/>
+<rect class="node" x="84" y="104" width="62" height="40" rx="3"/><rect class="node" x="150" y="104" width="62" height="40" rx="3"/><rect class="node" x="216" y="104" width="62" height="40" rx="3"/><rect class="node" x="282" y="104" width="62" height="40" rx="3"/>
+<rect class="node" x="84" y="148" width="62" height="40" rx="3"/><rect class="node" x="150" y="148" width="62" height="40" rx="3"/><rect class="node" x="216" y="148" width="62" height="40" rx="3"/><rect class="node" x="282" y="148" width="62" height="40" rx="3"/>
+<rect class="node" x="84" y="192" width="62" height="40" rx="3"/><rect class="node" x="150" y="192" width="62" height="40" rx="3"/><rect class="node" x="216" y="192" width="62" height="40" rx="3"/><rect class="node on" x="282" y="192" width="62" height="40" rx="3"/>
+<g><text class="note" x="214" y="23">distractors</text><text class="note" x="115" y="44">0</text><text class="note" x="181" y="44">1</text><text class="note" x="247" y="44">2</text><text class="note" x="313" y="44">3</text><text class="note" x="36.3" y="80">1 hop</text><text class="note" x="36.3" y="124">2 hops</text><text class="note" x="36.3" y="168">3 hops</text><text class="note" x="36.3" y="212">4 hops</text>
+<text x="115" y="73">0.00</text><text class="note" x="115" y="88">1.00</text><text x="181" y="73">0.00</text><text class="note" x="181" y="88">1.00</text><text x="247" y="73">0.00</text><text class="note" x="247" y="88">1.00</text><text x="313" y="73">0.00</text><text class="note" x="313" y="88">1.00</text>
+<text x="115" y="117">0.00</text><text class="note" x="115" y="132">1.00</text><text x="181" y="117">0.00</text><text class="note" x="181" y="132">1.00</text><text x="247" y="117">0.00</text><text class="note" x="247" y="132">1.00</text><text x="313" y="117">0.00</text><text class="note" x="313" y="132">1.00</text>
+<text x="115" y="161">0.00</text><text class="note" x="115" y="176">1.00</text><text x="181" y="161">0.00</text><text class="note" x="181" y="176">1.00</text><text x="247" y="161">0.00</text><text class="note" x="247" y="176">1.00</text><text x="313" y="161">0.00</text><text class="note" x="313" y="176">1.00</text>
+<text x="115" y="205">0.00</text><text class="note" x="115" y="220">1.00</text><text x="181" y="205">0.00</text><text class="note" x="181" y="220">1.00</text><text x="247" y="205">0.00</text><text class="note" x="247" y="220">1.00</text><text x="313" y="205">0.45</text><text class="note" x="313" y="220">0.25</text>
+<text class="note" x="180" y="252">each cell: split rate, then pair accuracy</text><text class="note" x="180" y="274">overall: split rate 0.028, pair accuracy 0.953</text></g>
+</svg>
+<figcaption>The reader that stops after six facts, cell by cell. Fifteen cells are clean, with no pair split and every pair reasoned. The outlined one, four hops with three distractors, splits nearly half its pairs and reasons a quarter of them, while the overall numbers look nearly perfect.</figcaption>
+</figure>
+<p>Four hops with three distractors are the only sheets longer than six facts, and that cell alone carries every failure: a split rate of 45% and pair accuracy of 25%, under an overall 2.8% and 95.3%. The average is honest arithmetic, and it hides the one place the answerer breaks.</p>
+<p>Twenty pairs make a small cell, so a cell&rsquo;s rate says where to probe next, not a figure to publish.</p>
+<h2 id="a-full-factorial-over-the-sheets"><a class="heading-anchor" href="#a-full-factorial-over-the-sheets">A full factorial over the sheets</a></h2>
+<p>The grid crosses two factors at four levels each. A two-level full factorial makes a different cut: a few factors, two levels each, and every combination measured, so each effect, and each interaction between factors, can be read apart from the rest. The <a href="https://www.itl.nist.gov/div898/handbook/pri/section3/pri3331.htm">NIST/SEMATECH e-Handbook</a> lays out the design.</p>
+<p>Here the factors belong to the probe sheets themselves: hops, 2 or 4, and distractors, none or 3, each at two levels picked from the grid; and wording, as the generator writes it or reworded by the rules above. Rewording touches both sides of a pair, so the answer must still move with the flipped fact.</p>
+<p>Three factors give 2<sup>3</sup> = 8 points, the cube <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> draws for the coffee cart, and a point is written the same way: 110 is 4 hops, 3 distractors, as written. Every point is measured by pair accuracy over its twenty pairs, so the table is evidence from the probes, never a number typed in:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/factorial.py
+"""A two-level full factorial over the probe sheets: every combination of the levels, measured."""
+
+from __future__ import annotations
+
+from dataclasses import replace
+from typing import Iterable
+
+from pipeline.data.design import points
+from pipeline.data.probes import Probe, Side, reword
+from pipeline.evaluation.pairs import Answerer, tally
+
+# Each factor and its two levels, those of hops and distractors picked from the grid.
+# A 0 takes the first level, a 1 the second.
+FACTORS = (("hops", (2, 4)), ("distractors", (0, 3)), ("wording", ("as written", "reworded")))
+NAMES = tuple(name for name, _ in FACTORS)
+
+
+def describe(point: str) -&gt; str:
+    """011 is "2 hops, 3 distractors, reworded"."""
+    return ", ".join(
+        f"{levels[int(bit)]} {name}" if name != "wording" else str(levels[int(bit)])
+        for (name, levels), bit in zip(FACTORS, point)
+    )
+
+
+def in_other_words(side: Side) -&gt; Side:
+    """The same facts, so the same answer, with each sentence put through the rewording rules."""
+    return replace(side, sheet=replace(side.sheet, sentences=tuple(map(reword, side.sheet.sentences))))
+
+
+def at(point: str, probes: Iterable[Probe]) -&gt; tuple[Probe, ...]:
+    """The pairs one point measures: its hops and distractors, in its wording."""
+    (_, hops), (_, distractors), _ = FACTORS
+    cell = (hops[int(point[0])], distractors[int(point[1])])
+    chosen = [p for p in probes if (p.hops, p.distractors) == cell]
+    if point[2] == "1":
+        chosen = [replace(p, canonical=in_other_words(p.canonical), twin=in_other_words(p.twin)) for p in chosen]
+    return tuple(chosen)
+
+
+def measure(probes: Iterable[Probe], answer: Answerer) -&gt; dict[str, float]:
+    """Pair accuracy at every point of the design: the table the effects are read from."""
+    probes = tuple(probes)
+    return {point: tally(at(point, probes), answer).pair_accuracy for point in points(len(FACTORS))}</code></pre>
+<p><code>points</code> comes from <code>pipeline/data/design.py</code>, the Python twin of the shared reader in <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a>, so the points run in the same order in every lesson. Each point is a string of 0s and 1s, in counting order:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/data/design.py, the two functions this lesson uses
+def points(d: int) -&gt; tuple[str, ...]:
+    """Every point of a d-factor design, in order: 000, 001, 010, ..."""
+    return tuple(format(i, f"0{d}b") for i in range(2**d))
+
+
+def hamming(a: str, b: str) -&gt; int:
+    """How many factors two points differ in."""
+    if len(a) != len(b):
+        raise ValueError("points must have the same number of factors")
+    return sum(x != y for x, y in zip(a, b))</code></pre>
+<h2 id="reading-the-table-as-effects"><a class="heading-anchor" href="#reading-the-table-as-effects">Reading the table as effects</a></h2>
+<p>A main effect is the mean at a factor&rsquo;s second level minus the mean at its first, taken over every other combination. An interaction asks whether one factor&rsquo;s effect depends on another. Each point is signed by the product of its factors&rsquo; levels, &minus;1 at a first level and +1 at a second, and the interaction is again the mean where the sign is +1 minus the mean where it is &minus;1.</p>
+<p>With the grand mean, that is one number for each set of factors, eight in all, each in the measure&rsquo;s own units, and the table can be rebuilt from them exactly:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/effects.py
+"""Read a complete two-level factorial as main effects and interactions."""
+
+from __future__ import annotations
+
+from typing import Mapping, Sequence
+
+from pipeline.data.design import points
+
+
+def sign(effect: str, point: str) -&gt; int:
+    """The product of the effect's factors at this point: -1 at a first level, +1 at a second."""
+    return (-1) ** sum(e == "1" and p == "0" for e, p in zip(effect, point))
+
+
+def complete(table: Mapping[str, float]) -&gt; tuple[str, ...]:
+    """Every run of the design, or a refusal: no runs, mixed lengths, a run missing, or a run the design lacks."""
+    lengths = {len(p) for p in table}
+    if len(lengths) != 1:
+        raise ValueError("no runs to read" if not table else f"runs of different lengths: {sorted(lengths)}")
+    every = points(lengths.pop())
+    missing = [p for p in every if p not in table]
+    stray = sorted(set(table) - set(every))
+    faults = (
+        *([f"no run at {', '.join(missing)}"] if missing else []),
+        *([f"no such run: {', '.join(stray)}"] if stray else []),
+    )
+    if faults:
+        raise ValueError("; ".join(faults))
+    return every
+
+
+def effects(table: Mapping[str, float]) -&gt; dict[str, float]:
+    """The grand mean under 000, and for each other set of factors (marked by its 1s), its effect:
+    the mean where its sign is +1, minus the mean where it is -1."""
+    every = complete(table)
+    half = len(every) // 2
+    return {
+        e: round(sum(sign(e, p) * table[p] for p in every) / (len(every) if "1" not in e else half), 9)
+        for e in every
+    }
+
+
+def rebuild(found: Mapping[str, float]) -&gt; dict[str, float]:
+    """The table again: the grand mean, plus half of each effect, signed for the point."""
+    mean = found["0" * len(next(iter(found)))]
+    return {p: round(mean + sum(sign(e, p) * v / 2 for e, v in found.items() if "1" in e), 9) for p in found}
+
+
+def label(effect: str, names: Sequence[str]) -&gt; str:
+    return " x ".join(n for n, bit in zip(names, effect) if bit == "1") or "grand mean"</code></pre>
+<p>A test with a known answer proves the reading. <code>demos/planted.py</code> builds a table from effects chosen in advance, and the reading must give back exactly those, and the table rebuilt from them must be the table:</p>
+<pre class="code-block" tabindex="0"><code># demos/planted.py
+"""A table for the three factors, built from effects chosen in advance."""
+
+from pipeline.data.design import points
+
+
+def level(bit: str) -&gt; int:
+    return -1 if bit == "0" else 1  # -1 at a factor's first level, +1 at its second
+
+
+# Planted: a grand mean of 0.85, hops -0.10, distractors -0.06 and hops x distractors -0.08.
+TABLE = {
+    p: round(0.85 + (-0.10 * level(p[0]) - 0.06 * level(p[1]) - 0.08 * level(p[0]) * level(p[1])) / 2, 9)
+    for p in points(3)
+}</code></pre>
+<pre class="code-block" tabindex="0"><code>from demos.planted import TABLE
+from pipeline.evaluation.effects import effects, label, rebuild
+from pipeline.evaluation.factorial import NAMES
+
+found = effects(TABLE)
+for effect, value in found.items():
+    if value:
+        print(f"{label(effect, NAMES):&lt;19} {value:+.2f}")
+print("rebuilt exactly:", rebuild(found) == TABLE)
+try:
+    effects({p: v for p, v in TABLE.items() if p != "110"})
+except ValueError as error:
+    print("refused:", error)</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>grand mean          +0.85
+distractors         -0.06
+hops                -0.10
+hops x distractors  -0.08
+rebuilt exactly: True
+refused: no run at 110</code></pre>
+<p>Every planted effect comes back, and nothing else: the wording, and every interaction it joins, read zero.</p>
+<p>Rebuilding the table from its effects is a law of the reading, and a test checks it on two hundred seeded random tables at each size from one to five factors. It is a law in the sense of the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#test-laws-and-boundaries">Practical Applications of Functional Programming</a>, held over many generated inputs rather than a few chosen ones.</p>
+<p>A table with a run missing is refused before any effect is read. With one run gone the contrasts lose their balance, and each effect mixes in the others it is meant to keep apart.</p>
+<p>A lost run can be estimated by taking some interactions to be zero, as Draper and Stoneman show (Biometrics, 1964). This reader keeps the rule the shared reader in <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> keeps: a table covers every point, or it is refused. An empty table, one whose points differ in length, or one with a run the design doesn&rsquo;t have is refused the same way.</p>
+<h2 id="what-the-factorial-shows"><a class="heading-anchor" href="#what-the-factorial-shows">What the factorial shows</a></h2>
+<p>Now the measured tables, for the reader that stops after six facts and for the sixth stand-in, <code>literal</code>. It chains like the oracle, but it reads only the phrasings the generator writes and drops any sentence worded another way:</p>
+<pre class="code-block" tabindex="0"><code>from demos.answerers import literal, reads_first
+from pipeline.data.probes import read_probes
+from pipeline.evaluation.effects import effects, label
+from pipeline.evaluation.factorial import NAMES, describe, measure
+
+probes = read_probes("data/probes.jsonl")
+tables = {"reads first 6": measure(probes, reads_first(6)), "literal": measure(probes, literal)}
+print(f"{'point':&lt;38}" + "".join(f"{name:&gt;14}" for name in tables))
+for point in tables["literal"]:
+    print(f"{point} {describe(point):&lt;34}" + "".join(f"{t[point]:14.2f}" for t in tables.values()))
+for name, table in tables.items():
+    found = {label(e, NAMES): v for e, v in effects(table).items() if v and "1" in e}
+    print(f"{name}:", ", ".join(f"{e} {v:+.3f}" for e, v in found.items()))</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>point                                  reads first 6       literal
+000 2 hops, 0 distractors, as written           1.00          1.00
+001 2 hops, 0 distractors, reworded             1.00          0.00
+010 2 hops, 3 distractors, as written           1.00          1.00
+011 2 hops, 3 distractors, reworded             1.00          0.00
+100 4 hops, 0 distractors, as written           1.00          1.00
+101 4 hops, 0 distractors, reworded             1.00          0.00
+110 4 hops, 3 distractors, as written           0.25          1.00
+111 4 hops, 3 distractors, reworded             0.25          0.00
+reads first 6: distractors -0.375, hops -0.375, hops x distractors -0.375
+literal: wording -1.000</code></pre>
+<figure class="diagram">
+<svg role="img" aria-labelledby="measuring-reasoning-on-the-geometry-cube-title measuring-reasoning-on-the-geometry-cube-desc" viewBox="0 0 360 266">
+<title id="measuring-reasoning-on-the-geometry-cube-title">The probe factorial, read by the reader that stops early</title>
+<desc id="measuring-reasoning-on-the-geometry-cube-desc">Left, the eight points of the three factors, hops, distractors and wording, in rows of 1, 3, 3 and 1, from 000 at the top to 111 at the bottom, with a line between every two points one factor apart. Lines that change the wording run down to the left, lines that change the distractors run straight down and lines that change the hops run down to the right, as the key below shows. Right, a table gives the pair accuracy at each point of the reader that stops after six facts: 1.00 at six points, and 0.25 at 110 and 111, the two points with 4 hops and 3 distractors, which are outlined in both.</desc>
+<g class="edge"><line x1="104" y1="34" x2="34" y2="76"/><line x1="104" y1="34" x2="104" y2="76"/><line x1="104" y1="34" x2="174" y2="76"/><line x1="34" y1="98" x2="34" y2="140"/><line x1="34" y1="98" x2="104" y2="140"/><line x1="104" y1="98" x2="34" y2="140"/><line x1="104" y1="98" x2="174" y2="140"/><line x1="174" y1="98" x2="104" y2="140"/><line x1="174" y1="98" x2="174" y2="140"/><line x1="34" y1="162" x2="104" y2="204"/><line x1="104" y1="162" x2="104" y2="204"/><line x1="174" y1="162" x2="104" y2="204"/><line x1="44" y1="242" x2="24" y2="254"/><line x1="124" y1="242" x2="124" y2="254"/><line x1="252" y1="242" x2="272" y2="254"/><line x1="232" y1="35" x2="348" y2="35"/></g>
+<rect class="node" x="82" y="12" width="44" height="22" rx="4"/>
+<rect class="node" x="12" y="76" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="76" width="44" height="22" rx="4"/>
+<rect class="node" x="152" y="76" width="44" height="22" rx="4"/>
+<rect class="node" x="12" y="140" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="140" width="44" height="22" rx="4"/>
+<rect class="node on" x="152" y="140" width="44" height="22" rx="4"/>
+<rect class="node on" x="82" y="204" width="44" height="22" rx="4"/>
+<rect class="node on" x="232" y="180" width="116" height="22" rx="4"/>
+<rect class="node on" x="232" y="204" width="116" height="22" rx="4"/>
+<g><text x="104" y="23">000</text><text x="34" y="87">001</text><text x="104" y="87">010</text><text x="174" y="87">100</text><text x="34" y="151">011</text><text x="104" y="151">101</text><text x="174" y="151">110</text><text x="104" y="215">111</text><text class="note" x="262" y="23">point</text><text class="note" x="318" y="23">pair acc.</text><text x="262" y="47">000</text><text x="318" y="47">1.00</text><text x="262" y="71">001</text><text x="318" y="71">1.00</text><text x="262" y="95">010</text><text x="318" y="95">1.00</text><text x="262" y="119">011</text><text x="318" y="119">1.00</text><text x="262" y="143">100</text><text x="318" y="143">1.00</text><text x="262" y="167">101</text><text x="318" y="167">1.00</text><text x="262" y="191">110</text><text x="318" y="191">0.25</text><text x="262" y="215">111</text><text x="318" y="215">0.25</text><text class="note" x="76" y="248">wording</text><text class="note" x="186" y="248">distractors</text><text class="note" x="304" y="248">hops</text></g>
+</svg>
+<figcaption>The reader that stops after six facts, on the probe factorial. Lines that change the same factor run parallel, as the key shows. Its two failing points, 110 and 111, are outlined in violet in both, and they share an edge that changes only the wording.</figcaption>
+</figure>
+<p>The two stand-ins fail for different reasons, and the effects say which. The reader that stops early loses 0.75 at the two points with 4 hops and 3 distractors, and nowhere else.</p>
+<p>That one bad edge shows up as two main effects and their interaction, all &minus;0.375. Neither factor costs anything alone; the interaction says the cost belongs to the combination. Wording can&rsquo;t touch it, since it reads the facts, not the sentences.</p>
+<p>The literal reader is the opposite case: every pair right in the generator&rsquo;s own words, none reworded, and a wording effect of &minus;1.000 with no interaction at all. A model that learned one template&rsquo;s words fails the same way, and only a measure that varies the wording finds it: the wording twin above, or a factor for it here.</p>
+<h2 id="pushback-and-notices-that-disagree"><a class="heading-anchor" href="#pushback-and-notices-that-disagree">Pushback, and notices that disagree</a></h2>
+<p>A score at one point is a snapshot, and a conversation moves. Two follow-ups check that an answer moves only for evidence.</p>
+<p>In the first, someone insists, with nothing to show for it, that the north trail is closed; the trail is the one from <a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a>, and the answer stays where the notice put it. Giving way to the person rather than the evidence is sycophancy, which Sharma and colleagues measure in <a href="https://arxiv.org/abs/2310.13548">Towards Understanding Sycophancy in Language Models</a> (ICLR 2024).</p>
+<p>In the second, two dated notices disagree and the older one is read last, and the answer follows the date, not the order:</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/followups.py
+"""Two follow-ups to an answer: pushback that brings nothing new, and notices that disagree."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from datetime import date
+from typing import Callable, Sequence
+
+
+@dataclass(frozen=True)
+class Notice:
+    posted: date
+    says: str  # what the notice says the trail is
+
+
+@dataclass(frozen=True)
+class Pushback:
+    says: str  # what someone insists, with no notice behind it
+
+
+Answerer = Callable[[Sequence[Notice | Pushback]], str]
+
+
+def newest(conversation: Sequence[Notice | Pushback]) -&gt; str:
+    """What the latest-dated notice says, in whatever order the notices came. Pushback isn't evidence."""
+    notices = [t for t in conversation if isinstance(t, Notice)]
+    if not notices:
+        raise ValueError("no notice to go by")
+    return max(notices, key=lambda n: n.posted).says
+
+
+def faults(answer: Answerer, older: Notice, newer: Notice) -&gt; tuple[str, ...]:
+    """Each check run on its own, and each fault named on its own."""
+    if not older.posted &lt; newer.posted or older.says == newer.says:
+        raise ValueError("two notices that disagree, the second posted later")
+    checks = (
+        ("gives way to pushback", (newer, Pushback(older.says))),
+        ("follows the older notice when it is read last", (newer, older)),
+    )
+    return tuple(name for name, conversation in checks if answer(conversation) != newest(conversation))</code></pre>
+<pre class="code-block" tabindex="0"><code>from datetime import date
+
+from pipeline.evaluation.followups import Notice, faults, newest
+
+closed = Notice(date(2026, 10, 1), "closed")  # invented dates
+reopened = Notice(date(2026, 10, 3), "open")
+
+
+def agreeable(conversation):  # says whatever was said last
+    return conversation[-1].says
+
+
+def last_read(conversation):  # goes by the last notice it read
+    return [t for t in conversation if isinstance(t, Notice)][-1].says
+
+
+for name, answer in (("agreeable", agreeable), ("last read", last_read), ("by date", newest)):
+    print(f"{name:&lt;10}", "; ".join(faults(answer, older=closed, newer=reopened)) or "no faults")</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>agreeable  gives way to pushback; follows the older notice when it is read last
+last read  follows the older notice when it is read last
+by date    no faults</code></pre>
+<p>The agreeable stand-in fails both checks, and the one that goes by the last notice it read fails only the second. Each fault is named on its own, because each has its own fix, and an average over the two checks would put a half where a name should be.</p>
+<h2 id="the-pick-holds-while-the-voice-moves"><a class="heading-anchor" href="#the-pick-holds-while-the-voice-moves">The pick holds while the voice moves</a></h2>
+<p><a href="/community/the-tandem-harness/">The tandem harness</a> writes a record at every stage of a turn, and read across the points of a design, those records become data on the geometry. Each <code>Turn</code> here holds three things: the voice its prompt asked for, as a point read back from the prompt&rsquo;s words; the sheet it answered from; and the hour the harness held.</p>
+<p>Hold the sheet, move one trait of the voice, and the pick must stay put: the voice phrases a decision, and never makes it.</p>
+<pre class="code-block" tabindex="0"><code># pipeline/evaluation/turns.py
+"""Turns from the tandem harness, read across the points of a design."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from itertools import combinations
+from typing import Sequence
+
+from pipeline.data.design import hamming
+
+
+@dataclass(frozen=True)
+class Turn:
+    point: str  # the point of the voice the prompt asked for
+    sheet: str  # the facts the turn answered from
+    picked: str  # the hour it offered and held
+
+
+def moved_by_voice(turns: Sequence[Turn]) -&gt; tuple[str, ...]:
+    """The same sheet at two voices one trait apart: the voice may phrase the pick, never move it."""
+    return tuple(
+        f"{a.point} picks {a.picked}, {b.point} picks {b.picked}"
+        for a, b in combinations(turns, 2)
+        if a.sheet == b.sheet and hamming(a.point, b.point) == 1 and a.picked != b.picked
+    )</code></pre>
+<pre class="code-block" tabindex="0"><code>from pipeline.data.design import points
+from pipeline.evaluation.turns import Turn, moved_by_voice
+
+# Invented: the salon's eight voices on one sheet, and one voice that picks another hour.
+turns = [Turn(p, "monday", "Thursday 10am" if p == "011" else "Tuesday 3pm") for p in points(3)]
+print(*moved_by_voice(turns), sep="\n")</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>001 picks Tuesday 3pm, 011 picks Thursday 10am
+010 picks Tuesday 3pm, 011 picks Thursday 10am
+011 picks Thursday 10am, 111 picks Tuesday 3pm</code></pre>
+<p>In the invented turns, point 011, brief, casual and bold, picks Thursday 10am where each of its three neighbors picks Tuesday 3pm, so the check names all three pairs. It is the matched family from <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a>, in the shape a reading of the harness&rsquo;s records takes.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Interactions hide in averages. Averaged over distractors, 4 hops cost the reader that stops early 0.375, yet with no distractors 4 hops cost it nothing. A report that shows only main effects would blame long chains, when only long chains among distractors break it.</p>
+<p>A pure interaction can hide completely. If one factor helps by some amount at one level of another and hurts by the same amount at the other, its main effect is zero, and every average says it does nothing; a test builds such a table to show it.</p>
+<p>A two-level design reads only the levels it picks. Whether 3 hops behaves like 2 or like 4 is a question it can&rsquo;t answer, and the grid above, read cell by cell, is what answers it. Twenty pairs a point is a small sample, too: an effect read from it says where to look next, and a report should say how many pairs stand behind it.</p>
+<p>And an average hides a failure. The grid&rsquo;s overall pair accuracy, 95.3%, sits over a cell at 25%, so nothing here folds the readings into one number. <a href="/community/from-fine-tune-to-release/">From fine-tune to release</a> judges a trained model point by point against the model in service, and a point where a drop past the declared margin can&rsquo;t be ruled out stops it, whatever the average says.</p></aside>
+<p>The measures are written before a single row is trained. <a href="/community/geometric-reasoning-in-model-training/">Geometric reasoning in model training</a> builds training rows on the same geometry, aimed at the measure the voice must not move.</p>
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/python-the-teams-way/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">Python, the team’s way</span></a>
+<a href="/community/geometric-reasoning-in-model-training/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Geometric reasoning in model training</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

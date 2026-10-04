@@ -8,7 +8,7 @@ import { relative, resolve, sep } from "node:path";
 export const ROOT = resolve(process.env.SITE_ROOT || resolve(import.meta.dirname, ".."));
 export const OUTPUT = resolve(ROOT, "_site");
 export const ORIGIN = "https://seandinwiddie.com";
-export const EXPECTED_SHARED_PAGE_COUNT = 95;
+export const EXPECTED_SHARED_PAGE_COUNT = 105;
 
 export const ROUTE_ROOTS = Object.freeze([
   "about",
@@ -75,6 +75,7 @@ export const PUBLIC_ASSET_DIRECTORIES = Object.freeze([
   "assets/social/",
 ]);
 
+// Paths that must not come back: leftovers of the WordPress export, and retired page addresses.
 export const RETIRED_PATHS = Object.freeze([
   "assets/agency-static.css",
   "assets/dank-only.css",
@@ -96,6 +97,9 @@ export const RETIRED_PATHS = Object.freeze([
   "comments",
   "community/feed",
   "community/comments",
+  // A retired lesson address: Module 5's opener moved to Module 6 when business automation took its place.
+  // It was live for two days, from October 1 to 3, 2026, so it retires without a forwarding page.
+  "community/module-5-python-and-model-training",
 ]);
 
 const EXCLUDED_DIRECTORY_NAMES = new Set([

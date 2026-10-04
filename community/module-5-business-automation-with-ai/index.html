@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Module 5: AI Business Automation | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Module 5 of the community course: an agent at work on a business process, with typed tools, a skill it loads and a person approving what leaves the building.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/module-5-business-automation-with-ai/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Module 5: AI Business Automation | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Module 5 of the community course: an agent at work on a business process, with typed tools, a skill it loads and a person approving what leaves the building.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/module-5-business-automation-with-ai/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-03T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Module 5: AI Business Automation | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Module 5 of the community course: an agent at work on a business process, with typed tools, a skill it loads and a person approving what leaves the building.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#webpage","url":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/","name":"Module 5: AI Business Automation | Sean Dinwiddie's Webmastery","description":"Module 5 of the community course: an agent at work on a business process, with typed tools, a skill it loads and a person approving what leaves the building.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Module 5: Business automation with AI (agentic skills)","item":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#article","headline":"Module 5: Business automation with AI (agentic skills)","description":"Module 5 of the community course: an agent at work on a business process, with typed tools, a skill it loads and a person approving what leaves the building.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/module-5-business-automation-with-ai/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/brooke-cagle-g1Kr4Ozfoac-unsplash-scaled.jpg');background-position:center 10%;"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Module 5: Business automation with AI (agentic skills)</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 1; --lessons: 4">Lesson 1 of 4 in Module 5</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/module-5-business-automation-with-ai/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>An agent is software: a model in a loop with tools. This module puts one to work on the kind of repetitive job the <a href="/automation/">automation</a> page names, with a person approving anything that leaves the building.</p>
+<nav class="module-lessons" aria-labelledby="module-lessons">
+<h2 id="module-lessons">Lessons in this module</h2>
+<ol start="2">
+<li><a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a></li>
+<li><a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a></li>
+<li><a href="/community/automating-a-business-process/">Automating a business process with a person in the loop</a></li>
+</ol>
+</nav>
+<p><a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a>, the next lesson, builds the loop itself. The sections below show where an agent sits in the course&rsquo;s chain and what the three lessons build.</p>
+<h2 id="the-same-chain-with-an-agent-in-the-middle"><a class="heading-anchor" href="#the-same-chain-with-an-agent-in-the-middle">The same chain, with an agent in the middle</a></h2>
+<p>The first four modules build an app along one chain: a user story names the job, scenarios say what done right means, the code does the work, tests prove it, and the owner runs it after launch. <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> walks it end to end.</p>
+<p>An agent goes into the same chain without changing its order. That is why the Sean Dinwiddie&rsquo;s Webmastery team, which builds in Haskell, TypeScript and Rust, builds agents too: the craft is the chain, and the stack follows the job. The lessons write the agent in TypeScript, checked by strict <code>tsc</code> and tested in Vitest.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="module-5-business-automation-with-ai-chain-title module-5-business-automation-with-ai-chain-desc" viewBox="0 0 360 417">
+<title id="module-5-business-automation-with-ai-chain-title">The chain, with the agent in the middle</title>
+<desc id="module-5-business-automation-with-ai-chain-desc">Five boxes in a column, joined top to bottom by highlighted arrows: the user story, which names the job; the scenarios, which say what done right means; the agent, highlighted; the tests and evals, which prove it; and the handover, where the owner runs it. Inside the agent, a box for the skill points to the model, and arrows run both ways between the model and its tools. Two notes beneath them say a skill loads when a task matches and a person approves what leaves.</desc>
+<g class="path"><line x1="180" y1="56.5" x2="180" y2="80.5"/><line x1="177" y1="75.3" x2="180" y2="80.5"/><line x1="183" y1="75.3" x2="180" y2="80.5"/><line x1="180" y1="124.5" x2="180" y2="148.5"/><line x1="177" y1="143.3" x2="180" y2="148.5"/><line x1="183" y1="143.3" x2="180" y2="148.5"/><line x1="180" y1="268.5" x2="180" y2="292.5"/><line x1="177" y1="287.3" x2="180" y2="292.5"/><line x1="183" y1="287.3" x2="180" y2="292.5"/><line x1="180" y1="336.5" x2="180" y2="360.5"/><line x1="177" y1="355.3" x2="180" y2="360.5"/><line x1="183" y1="355.3" x2="180" y2="360.5"/></g>
+<rect class="node" x="64.5" y="12.5" width="231" height="44" rx="4"/>
+<rect class="node" x="64.5" y="80.5" width="231" height="44" rx="4"/>
+<rect class="node on" x="9.5" y="148.5" width="341" height="120" rx="6"/>
+<g class="edge"><line x1="105.5" y1="196.5" x2="140" y2="196.5"/><line x1="134.8" y1="193.5" x2="140" y2="196.5"/><line x1="134.8" y1="199.5" x2="140" y2="196.5"/><line x1="220" y1="190.5" x2="254.5" y2="190.5"/><line x1="249.3" y1="187.5" x2="254.5" y2="190.5"/><line x1="249.3" y1="193.5" x2="254.5" y2="190.5"/><line x1="254.5" y1="202.5" x2="220" y2="202.5"/><line x1="225.2" y1="199.5" x2="220" y2="202.5"/><line x1="225.2" y1="205.5" x2="220" y2="202.5"/></g>
+<rect class="node" x="25.5" y="180.5" width="80" height="32" rx="4"/>
+<rect class="node" x="140" y="180.5" width="80" height="32" rx="4"/>
+<rect class="node" x="254.5" y="180.5" width="80" height="32" rx="4"/>
+<rect class="node" x="64.5" y="292.5" width="231" height="44" rx="4"/>
+<rect class="node" x="64.5" y="360.5" width="231" height="44" rx="4"/>
+<g><text x="180" y="26.5">the user story</text><text class="note" x="180" y="43.5">names the job</text><text x="180" y="94.5">the scenarios</text><text class="note" x="180" y="111.5">say what done right means</text><text x="180" y="164.5">the agent</text><text x="65.5" y="196.5">skill</text><text x="180" y="196.5">model</text><text x="294.5" y="196.5">tools</text><text class="note" x="180" y="232.5">a skill loads when a task matches</text><text class="note" x="180" y="252.5">a person approves what leaves</text><text x="180" y="306.5">the tests and evals</text><text class="note" x="180" y="323.5">prove it</text><text x="180" y="374.5">the handover</text><text class="note" x="180" y="391.5">the owner runs it</text></g>
+</svg>
+<figcaption>The course&rsquo;s chain, top to bottom along the violet arrows, with the agent where the code was, outlined in violet. Inside it the model asks for tools and reads their results, a skill can bring the know-how for the task at hand, and a person approves anything outward.</figcaption>
+</figure>
+<p>Take the first job on the automation page, the same thing typed twice, with the order arriving by email rather than by phone, so an agent can read it. The module&rsquo;s last lesson builds it, calling the page&rsquo;s spreadsheet the order sheet, and along the chain it reads like this:</p>
+<ul>
+<li><strong>The user story names the job.</strong> As the person who takes the orders, I want each emailed order drafted into the register, the calendar and the order sheet, so that I check it once instead of typing it three times.</li>
+<li><strong>The scenarios say what done right means.</strong> A complete order is drafted once, for one check; an email with no pickup day becomes a question rather than a guess; nothing is entered until a person approves it.</li>
+<li><strong>The agent does the work.</strong> Its instructions carry the shop&rsquo;s know-how: how an order reads, and when to ask rather than guess. Its tools read the email and the menu and leave a draft or a question, and none of them can touch the register, the calendar or the order sheet: those wait for a person.</li>
+<li><strong>The tests and evals prove it.</strong> Tests run the loop against a scripted model, so they are quick and give the same answer every run. Evals run the real model over real days&rsquo; email, before and after every change.</li>
+<li><strong>The owner runs it after handover,</strong> with training and written notes, as the automation page promises.</li>
+</ul>
+<h2 id="four-words-plainly"><a class="heading-anchor" href="#four-words-plainly">Four words, plainly</a></h2>
+<ul>
+<li><strong>Agent.</strong> A model in a loop with tools. It reads the job, asks for a tool, reads the result and goes round again, until it answers, or stops for a reason the loop names, such as a refusal or a limit. Anthropic&rsquo;s <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a> describes agents the same way: models using tools in a loop, steered by what each step returns.</li>
+<li><strong>Tool.</strong> A function the program offers the model, with a contract: a schema for what goes in and, in this module, a typed result and a typed failure. The model only asks for a tool. The program decides whether to run it, and that is where every rule in this module lives.</li>
+<li><strong>Skill.</strong> Packaged know-how: a folder holding a <code>SKILL.md</code> file, whose frontmatter gives a name and a description and whose body gives instructions, with any scripts and reference files it needs beside it. Only the name and description load up front; the instructions load when a task matches, and the other files when needed.</li>
+<li><strong>Eval.</strong> A set of tasks from real work, each with the behavior it should produce, run against the real model before and after a change. A test checks the code; an eval checks what the model does with it.</li>
+</ul>
+<p>Anthropic calls a skill&rsquo;s staged loading <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">progressive disclosure</a>, and <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">published the format</a> as an open standard in December 2025. Its <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices">guide to writing skills</a> asks for the evaluations before the instructions, the order BDD asks for: say what done right means, then build.</p>
+<h2 id="a-person-approves-what-leaves-the-building"><a class="heading-anchor" href="#a-person-approves-what-leaves-the-building">A person approves what leaves the building</a></h2>
+<p>Inside the building, the agent reads and drafts. At the door stands a person: anything outward, such as sending an email, taking a payment, deleting a record or booking a slot, waits for someone to approve it. A draft costs nothing to throw away, and a sent email can&rsquo;t be unsent.</p>
+<p>Three more rules keep the door honest. Each task gets only the tools it needs, so the order-entry agent has no tool that sends email at all. Text from outside is data, never instructions, and the program holds that line, not the model: an email that tells the agent to ignore its rules changes nothing the program lets it do. And every action leaves a log line, so the owner can read what the agent did.</p>
+<p>OWASP ranks prompt injection first among the risks to apps built on large language models (<a href="https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM01_PromptInjection.md">LLM01:2026</a>). It names a web page, a document and an email among the ways in, and its controls include least privilege for each operation and a person&rsquo;s confirmation before any privileged, irreversible or externally visible action. <a href="/community/automating-a-business-process/">The module&rsquo;s last lesson</a> tests each rule.</p>
+<p>It is the course&rsquo;s rule about effects, at the scale of a business: the model proposes, plain code and a person decide what happens, and the effects wait at the edge, the habit the lecture <a href="https://seandinwiddie.github.io/lectures/what-is-a-function/#push-effects-to-the-edges">What Is a Function?</a> teaches for a single function.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Not every job needs an agent. When the steps are the same every time, a script or a formula does it for less, and the same way every run; and, as the automation page says, sometimes the answer is a setting the owner already pays for, switched on. <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a> draws the same line between workflows, whose steps are fixed in code, and agents, which choose their own, and advises the simplest solution that works.</p>
+<p>An agent earns its place where the input varies, such as an email written however a customer likes, and where a wrong step is caught before it leaves the building. The approval gate and the tool list give an agent a workflow&rsquo;s predictability at the door, while it keeps its freedom inside.</p></aside>
+<h2 id="how-the-module-runs"><a class="heading-anchor" href="#how-the-module-runs">How the module runs</a></h2>
+<p>Three lessons, each building on the one before:</p>
+<ul>
+<li><a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a> builds the loop as a function over a model, with typed tools and typed stops, and tests it against a scripted model, so no test calls a real one.</li>
+<li><a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> writes a skill for a local business task from a user story and its scenarios: its description, its instructions and its evals, with two skills from this site&rsquo;s own repository as worked examples.</li>
+<li><a href="/community/automating-a-business-process/">Automating a business process with a person in the loop</a> takes the emailed order from its user story to handover, with the approval gate, a tool list per task and a test that an email&rsquo;s instructions change nothing.</li>
+</ul>
+<p>The code is TypeScript under strict <code>tsc</code>, with Vitest tests named after the scenarios they prove. No machine learning is assumed, only the habits the earlier modules teach. <a href="/community/module-6-ai-protocol-ecosystem/">Module 6</a> follows, opening up the protocols and harnesses around the loop and the model at its center.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/one-feature-scope-to-launch/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">One feature, scope to launch</span></a>
+<a href="/community/the-agent-loop-and-its-tools/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The agent loop and its tools</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

@@ -98,9 +98,9 @@ The template as post design rounds 1 to 3 set it, every rule on the reading page
 - **Code** takes its own size, 0.875em at 1.6 leading, in Dank Mono with its ligatures on. It runs 58.5rem wide on a desktop and to the screen's edges on a phone. A soft shadow at an edge says more code runs past it. Each code block, never a printout, carries a Copy button in a band across its top (`assets/site.js`); the band is set before the script runs, so nothing moves. A file's name is the code's first line, a comment (`// features/checkout/checkoutSelectors.ts`), as the TypeScript lessons write it; the template adds no label of its own.
 - **The depth passage** keeps its frame and its room. On a screen 75rem wide or wider its cursive label hangs in the left margin beside its first line, in the muted grey, like a master's note in the margin; narrower, the label stays a run-in. Its paper is a few points warmer than a notice's, #f7f6f2 where a notice is #f5f7f9 (post design round 1's color step). It reads best in short paragraphs.
 - **Moving on.** The previous and next lessons are a pair of framed links, each its label ("Previous lesson:") in the muted grey over its title in bold violet, the next on the right, one column on a phone. The lesson closes on a quiet line under a hairline, in the muted grey at 0.9em, set as the note to webmasters is: how to have work built this way (the team's terms and the offer close on their questions line the same way; post design round 2). A module's lesson list is its table of contents: it follows the opener's lede, a section's room above it (since post design round 2; it sat between the byline and the lede), the numbers hang in the margin, each title on its own hairline.
-- **The front door.** The hub's first page (and the author and category archives', which repeat it) maps the course after its opening, set as a module's lesson list: the six parts in order, each on its hairline, its place and count in the muted grey ("Start here · 6 lessons", "Module 2 · 11 lessons") beside its name in bold violet on a desktop and over it narrower, linked to its first lesson. The sync renders it from the course's parts (post design round 3).
+- **The front door.** The hub's first page (and the author and category archives', which repeat it) maps the course after its opening, set as a module's lesson list: the seven parts in order, each on its hairline, its place and count in the muted grey ("Start here · 6 lessons", "Module 2 · 11 lessons") beside its name in bold violet on a desktop and over it narrower, linked to its first lesson. The sync renders it from the course's parts (post design round 3).
 - **The hub's cards** read as a curriculum: on each archive page every part of the course takes its name as an h2 over its cards (the off-path pages follow under "Also in the community"), the cards' titles are h3s, and each card names its place over its title in the muted grey at 0.875rem (7.6:1), "Start here" on the Introduction and "Lesson 3" on the rest (post design round 3). They stand on a hairline with no shadow; on hover the hairline darkens to the muted grey, with no lift, and keyboard focus rings the whole card (post design round 2).
-- **The hub's pages** each start where a part of the course starts, never mid-module: the overview with Module 1, then Module 2, Modules 3 and 4, and Module 5 with the pages off the path, still four pages. The earlier pages' links sit on the left and the later pages' on the right (post design round 3). The previous and next links name the part their page opens with ("Next page: Module 2"), and a first or last page link that repeats one of them is left out (copy round 4). A lesson of a dozen steps groups them under a few stages, each step an h3 that keeps its id and clears the sticky menu when a link lands on it (copy round 4).
+- **The hub's pages** each start where a part of the course starts, never mid-module: the overview with Module 1, then Module 2, Modules 3, 4 and 5, and Module 6 with the pages off the path, still four pages of similar length (since Module 5 became business automation and Module 6 the AI protocol ecosystem). The earlier pages' links sit on the left and the later pages' on the right (post design round 3). The previous and next links name the part their page opens with ("Next page: Module 2"), and a first or last page link that repeats one of them is left out (copy round 4). A lesson of a dozen steps groups them under a few stages, each step an h3 that keeps its id and clears the sticky menu when a link lands on it (copy round 4).
 - **Contrast.** Body text #171717 on white is 17.9:1, the muted grey 7.6:1 on white, 7.1:1 on a notice's #f5f7f9 and 7.0:1 on a diagram's plate, the link violet 8.2:1, code #f7f7f7 on #202631 14.2:1: every text in a lesson meets AAA. Code in a diagram's caption takes the page's ink, 15.8:1 on its chip, where the caption's grey read 6.7:1 (post design round 2).
 
 ## Diagrams
@@ -118,17 +118,17 @@ Lessons carry diagrams wherever a picture shows the mechanism faster than prose:
 
 ```html
 <figure class="diagram">
-<svg role="img" aria-labelledby="cube-title cube-desc" viewBox="0 0 360 352">
-<title id="cube-title">The four-trait cube</title>
-<desc id="cube-desc">Sixteen corners in rows of 1, 4, 6, 4 and 1, from 0000 to 1111; lines join corners one trait apart, and a highlighted path runs from 0000 to 1111 in four steps.</desc>
-<text class="note" x="180" y="18">plain · brief · warm · cautious</text>
-<g class="edge"><line x1="180" y1="63" x2="144" y2="105"/><!-- … --></g>
-<g class="path"><line x1="180" y1="63" x2="72" y2="105"/><!-- … --></g>
-<rect class="node on" x="157" y="41" width="46" height="22" rx="4"/>
-<rect class="node" x="121" y="105" width="46" height="22" rx="4"/>
-<g><text x="180" y="52">0000</text><text x="144" y="116">0010</text><!-- … --></g>
+<svg role="img" aria-labelledby="cube-title cube-desc" viewBox="0 0 360 267">
+<title id="cube-title">The three-trait cube</title>
+<desc id="cube-desc">Eight points in rows of 1, 3, 3 and 1, from 000 to 111; lines join points one trait apart, and a highlighted line joins 000 to 010.</desc>
+<text class="note" x="180" y="18">length · register · certainty</text>
+<g class="edge"><line x1="180" y1="63" x2="110" y2="105"/><!-- … --></g>
+<g class="path"><line x1="180" y1="63" x2="180" y2="105"/></g>
+<rect class="node on" x="158" y="41" width="44" height="22" rx="4"/>
+<rect class="node" x="88" y="105" width="44" height="22" rx="4"/>
+<g><text x="180" y="52">000</text><text x="110" y="116">001</text><!-- … --></g>
 </svg>
-<figcaption>The cube, drawn by how many traits sit at their second pole. A line joins two corners one trait apart, and the violet path walks from 0000 to its opposite, 1111, one trait at a time.</figcaption>
+<figcaption>The cube, drawn by how many traits sit at their second level. A line joins two points one trait apart, and the violet line is the one step the paragraph above discusses, from 000 to 010.</figcaption>
 </figure>
 ```
 

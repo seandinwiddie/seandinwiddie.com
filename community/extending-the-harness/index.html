@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Extending the Harness | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="A harness grows at documented points, never by forking its core: instructions, skills, subagents, hooks and tools, in the harness you use and one you ship.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/extending-the-harness/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Extending the Harness | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="A harness grows at documented points, never by forking its core: instructions, skills, subagents, hooks and tools, in the harness you use and one you ship.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/extending-the-harness/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-03T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Extending the Harness | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="A harness grows at documented points, never by forking its core: instructions, skills, subagents, hooks and tools, in the harness you use and one you ship.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/extending-the-harness/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/extending-the-harness/#webpage","url":"https://seandinwiddie.com/community/extending-the-harness/","name":"Extending the Harness | Sean Dinwiddie's Webmastery","description":"A harness grows at documented points, never by forking its core: instructions, skills, subagents, hooks and tools, in the harness you use and one you ship.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/extending-the-harness/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/extending-the-harness/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/extending-the-harness/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Extending the harness","item":"https://seandinwiddie.com/community/extending-the-harness/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/extending-the-harness/#article","headline":"Extending the harness","description":"A harness grows at documented points, never by forking its core: instructions, skills, subagents, hooks and tools, in the harness you use and one you ship.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/extending-the-harness/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/extending-the-harness/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/noaa-Z2gm_Ml_qzk-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Extending the harness</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 6; --lessons: 10">Lesson 6 of 10 in Module 6</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/extending-the-harness/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>A harness grows through documented extension points, never by changing the model or forking the core. The rule holds for both kinds of harness this module meets: the agent harness a webmaster works in, such as Claude Code, and the tandem harness built in <a href="/community/the-tandem-harness/">The tandem harness</a> and carried over <a href="/community/server-and-client-in-tandem/">its wire</a>.</p>
+<p>Everything the lesson extends in the shipped harness was built in earlier lessons, so it can stay on the points where each one grows.</p>
+<p>One question sorts them: is this judgment, or must it happen every time? Judgment goes where the model reads it. Anything that must happen every time goes to code that runs whether or not the model remembers. <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> built one kind of judgment; this lesson places it among the rest.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#extend-dont-fork">Extend, don&rsquo;t fork</a></li>
+<li><a href="#judgment-or-every-time">Judgment, or every time</a></li>
+<li><a href="#hooks-rules-the-model-cant-forget">Hooks: rules the model can&rsquo;t forget</a></li>
+<li><a href="#fresh-contexts-for-review">Fresh contexts for review</a></li>
+<li><a href="#the-harness-you-ship-grows-by-composition">The harness you ship grows by composition</a></li>
+<li><a href="#new-rules-go-to-the-server">New rules go to the server</a></li>
+<li><a href="#a-new-question-from-one-list">A new question, from one list</a></li>
+<li><a href="#every-extension-carries-a-scenario">Every extension carries a scenario</a></li>
+<li><a href="#a-site-repositorys-harness-move-by-move">A site repository&rsquo;s harness, move by move</a></li>
+</ul>
+</nav>
+<h2 id="extend-dont-fork"><a class="heading-anchor" href="#extend-dont-fork">Extend, don&rsquo;t fork</a></h2>
+<p>A harness, as <a href="/community/the-tandem-harness/">The tandem harness</a> defined it, is the program around a model: the loop, the tools, the permissions and the context it works in. Five kinds of thing can be added to one: context, know-how, isolated helpers, deterministic rules and outside tools. Two stay fixed: the model and the core loop.</p>
+<p>The difference shows at the next update. An extension rides along, because it sits where the harness expects something to sit. A patched core has to be patched again, by hand, every time the harness moves.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="extending-the-harness-plugs-title extending-the-harness-plugs-desc" viewBox="0 0 360 237">
+<title id="extending-the-harness-plugs-title">Where each extension plugs in</title>
+<desc id="extending-the-harness-plugs-desc">Two boxes in the middle, the model and the tools, joined by a highlighted loop: a tool call goes out and its result comes back. A small circle sits on each arrow, a hook: PreToolUse before the call, PostToolUse after it. Above the model, CLAUDE.md is always on, and below it skills load on demand. Above the tools, an MCP server adds more tools, and below them a subagent works in its own context. From the model a last arrow leads to the answer, with a Stop hook on it.</desc>
+<g class="edge"><line x1="64.5" y1="56.5" x2="64.5" y2="96.5"/><line x1="64.5" y1="96.5" x2="67.5" y2="91.3"/><line x1="64.5" y1="96.5" x2="61.5" y2="91.3"/><line x1="295.5" y1="56.5" x2="295.5" y2="96.5"/><line x1="64.5" y1="140.5" x2="64.5" y2="180.5"/><line x1="295.5" y1="140.5" x2="295.5" y2="180.5"/><line x1="100.5" y1="140.5" x2="150.5" y2="180.5"/><line x1="150.5" y1="180.5" x2="148.32" y2="174.91"/><line x1="150.5" y1="180.5" x2="144.57" y2="179.6"/></g>
+<g class="path"><line x1="116.5" y1="110.5" x2="243.5" y2="110.5"/><line x1="243.5" y1="110.5" x2="238.3" y2="107.5"/><line x1="243.5" y1="110.5" x2="238.3" y2="113.5"/><line x1="243.5" y1="126.5" x2="116.5" y2="126.5"/><line x1="116.5" y1="126.5" x2="121.7" y2="129.5"/><line x1="116.5" y1="126.5" x2="121.7" y2="123.5"/></g>
+<rect class="node" x="12.5" y="12.5" width="104" height="44" rx="6"/>
+<rect class="node" x="243.5" y="12.5" width="104" height="44" rx="6"/>
+<rect class="node" x="12.5" y="96.5" width="104" height="44" rx="6"/>
+<rect class="node" x="243.5" y="96.5" width="104" height="44" rx="6"/>
+<rect class="node" x="12.5" y="180.5" width="104" height="44" rx="6"/>
+<rect class="node" x="128.5" y="180.5" width="104" height="44" rx="6"/>
+<rect class="node" x="243.5" y="180.5" width="104" height="44" rx="6"/>
+<circle class="node" cx="180" cy="110.5" r="5"/><circle class="node" cx="180" cy="126.5" r="5"/><circle class="node" cx="125.5" cy="160.5" r="5"/>
+<g><text x="64.5" y="27">CLAUDE.md</text><text class="note" x="64.5" y="44">always on</text><text x="295.5" y="27">MCP server</text><text class="note" x="295.5" y="44">more tools</text><text x="64.5" y="118.5">model</text><text x="295.5" y="118.5">tools</text><text class="note" x="180" y="93">PreToolUse</text><text class="note" x="180" y="145">PostToolUse</text><text class="note" x="98" y="163">Stop</text><text x="64.5" y="195">skills</text><text class="note" x="64.5" y="212">on demand</text><text x="180.5" y="202.5">answer</text><text x="295.5" y="195">subagent</text><text class="note" x="295.5" y="212">own context</text></g>
+</svg>
+<figcaption>Where each extension plugs in. The violet loop is the core, and no extension changes it. Context and know-how sit beside the model, more tools and an isolated helper beside the tools, and hooks sit on the arrows: before a tool, after it, and at the end of the turn. A plugin can bundle all of them but the always-on file; instructions travel in a plugin as a skill.</figcaption>
+</figure>
+<h2 id="judgment-or-every-time"><a class="heading-anchor" href="#judgment-or-every-time">Judgment, or every time</a></h2>
+<p>Claude Code&rsquo;s guide, <a href="https://code.claude.com/docs/en/features-overview">Extend Claude Code</a>, lists its extension points and when each loads. Six of them carry this lesson:</p>
+<ul>
+<li><strong><code>CLAUDE.md</code> or <code>AGENTS.md</code></strong> loads every session, in full: what the agent must always know.</li>
+<li><strong>A skill</strong> loads its description at the start and the rest when it&rsquo;s used: know-how a task needs sometimes.</li>
+<li><strong>A subagent</strong> loads when spawned, in a fresh context: work that would flood the conversation, or a review that starts clean.</li>
+<li><strong>A hook</strong> runs on its event, outside the conversation: anything that must happen every time.</li>
+<li><strong>An MCP server</strong> loads tool names at the start and schemas when used: tools and data from another system.</li>
+<li><strong>A plugin</strong> is the packaging: what it bundles loads as its own kind does, for the same setup in a second repository.</li>
+</ul>
+<p>Claude Code reads <code>AGENTS.md</code> when a repository has no <code>CLAUDE.md</code>, and a <code>CLAUDE.md</code> can import it with <code>@AGENTS.md</code>, so one file serves every coding agent. The guide adds output styles and a few more points; these six cover the moves here.</p>
+<p>The guide is plain about the sorting: an instruction in <code>CLAUDE.md</code> or a skill is a request, not a guarantee, while a hook that blocks is enforcement. A rule that must hold every time becomes a hook, or a check in CI.</p>
+<p>To try it, sort these five before reading on. The agent got the same convention wrong twice. Every page edit must pass the page check. A playbook is pasted into chat for the third time. A side task floods the conversation with logs. The price list lives in a system the agent can&rsquo;t see.</p>
+<p>In order: the instructions file, a hook, a skill, a subagent and an MCP server. Each matches a trigger in the guide&rsquo;s own table for building a setup over time.</p>
+<h2 id="hooks-rules-the-model-cant-forget"><a class="heading-anchor" href="#hooks-rules-the-model-cant-forget">Hooks: rules the model can&rsquo;t forget</a></h2>
+<p>A hook is a handler Claude Code runs at a lifecycle event: a shell command, an HTTP request, an MCP tool call, a prompt for a model, or a subagent. It fires on every matching event, whatever the model has in mind. The <a href="https://code.claude.com/docs/en/hooks">hooks reference</a> lists the events; two carry this example. <code>PostToolUse</code> fires after a tool succeeds, and <code>Stop</code> fires when the agent finishes its turn.</p>
+<p>The example is an invented webmaster&rsquo;s repository for a bakery&rsquo;s site. Its project settings, <code>.claude/settings.json</code>, are committed with the code:</p>
+<pre class="code-block" tabindex="0"><code>{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "node", "args": ["${CLAUDE_PROJECT_DIR}/scripts/hook-gate.ts"] }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node", "args": ["${CLAUDE_PROJECT_DIR}/scripts/hook-gate.ts"] }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+<p>The matcher <code>Edit|Write</code> is a list of exact tool names. <code>Stop</code> takes no matcher and fires whenever the agent finishes responding on its own; an interrupt skips it, and an API error fires <code>StopFailure</code> instead.</p>
+<p>With <code>args</code> set, the handler runs in exec form: Claude Code substitutes the project&rsquo;s root into the path and spawns <code>node</code> directly, with no shell between. Node runs the TypeScript file as it stands, since <a href="https://nodejs.org/api/typescript.html">type stripping</a> is on by default from Node 22.18, and reads it as an ES module because the bakery&rsquo;s <code>package.json</code> sets <code>"type": "module"</code>.</p>
+<pre class="code-block" tabindex="0"><code>// bakery-site/scripts/gate.ts
+// The decision behind two hooks: the quick check after a page edit, the full check before the agent stops.
+// Exit 0 lets the agent carry on; exit 2 hands stderr back to it to act on.
+import { relative } from 'node:path'
+
+export type HookInput = {
+  readonly hook_event_name: string
+  readonly cwd: string
+  readonly tool_input?: { readonly file_path?: string }
+  readonly stop_hook_active?: boolean
+}
+export type Check = { readonly ok: boolean; readonly output: string }
+export type Shell = { readonly root: string; readonly run: (script: string) =&gt; Check }
+export type Outcome = { readonly exit: 0 | 2; readonly stdout?: string; readonly stderr?: string }
+
+const pass: Outcome = { exit: 0 }
+
+export const gate = (input: HookInput, shell: Shell): Outcome =&gt; {
+  if (input.hook_event_name === 'PostToolUse') {
+    const file = relative(shell.root, input.tool_input?.file_path ?? shell.root)
+    if (!file.startsWith('pages/')) return pass // only a page edit pays for a check
+    const check = shell.run('check:pages')
+    return check.ok ? pass : { exit: 2, stderr: `check:pages failed after editing ${file}:\n${check.output}` }
+  }
+  if (input.hook_event_name === 'Stop') {
+    const check = shell.run('check')
+    if (check.ok) return pass
+    // The agent gets one more try to fix it. After that the person is told, and the session never loops.
+    return input.stop_hook_active === true
+      ? { exit: 0, stdout: JSON.stringify({ systemMessage: `npm run check still fails:\n${check.output}` }) }
+      : { exit: 2, stderr: `npm run check fails, so the work isn't finished:\n${check.output}` }
+  }
+  return pass
+}</code></pre>
+<p>The script Claude Code runs is a thin entry around it. It checks the tree Claude is working in, the git top level of the event&rsquo;s <code>cwd</code>, since the hooks reference notes that in a worktree <code>CLAUDE_PROJECT_DIR</code> stays at the main checkout while <code>cwd</code> follows Claude. It compares real paths, since a folder reached through a link has two names.</p>
+<p>It fails closed. An event it can&rsquo;t read exits 2 with the reason. An <code>npm</code> it can&rsquo;t start counts as a failing check: it blocks, and at the second stop the person is told instead.</p>
+<pre class="code-block" tabindex="0"><code>// bakery-site/scripts/hook-gate.ts
+// The script Claude Code runs: read the event, ask the gate, answer with an exit code. It fails closed.
+import { spawnSync } from 'node:child_process'
+import { readFileSync, realpathSync } from 'node:fs'
+import { gate, type HookInput, type Shell } from './gate.ts'
+
+// A folder reached through a link has two names, so paths are compared by their real ones.
+const real = (path: string): string =&gt; {
+  try {
+    return realpathSync(path)
+  } catch {
+    return path
+  }
+}
+
+// The tree Claude is working in: the git top level of the event's cwd. In a worktree that is the worktree,
+// while CLAUDE_PROJECT_DIR stays at the main checkout. Outside git, the project directory.
+const treeOf = (cwd: string): string =&gt; {
+  const top = spawnSync('git', ['-C', cwd, 'rev-parse', '--show-toplevel'], { encoding: 'utf8' })
+  return top.status === 0 ? top.stdout.trim() : (process.env['CLAUDE_PROJECT_DIR'] ?? cwd)
+}
+
+const npm = (root: string): Shell =&gt; ({
+  root,
+  run: (script) =&gt; {
+    const done = spawnSync('npm', ['run', '--silent', script], { cwd: root, encoding: 'utf8' })
+    return { ok: done.status === 0, output: done.error?.message ?? `${done.stdout}${done.stderr}`.trim() }
+  },
+})
+
+try {
+  const input = JSON.parse(readFileSync(0, 'utf8')) as HookInput
+  const file = input.tool_input?.file_path
+  const event = file === undefined ? input : { ...input, tool_input: { ...input.tool_input, file_path: real(file) } }
+  const outcome = gate(event, npm(real(treeOf(input.cwd))))
+  if (outcome.stdout !== undefined) process.stdout.write(outcome.stdout)
+  if (outcome.stderr !== undefined) process.stderr.write(outcome.stderr)
+  process.exitCode = outcome.exit
+} catch (error) {
+  // A gate that can't run blocks: exit 2 hands the reason to the agent instead of letting the turn end quietly.
+  process.stderr.write(`the hook gate couldn't run: ${error instanceof Error ? error.message : String(error)}`)
+  process.exitCode = 2
+}</code></pre>
+<p>Exit codes carry most of a hook&rsquo;s answer. Zero lets the agent carry on. Two is a blocking error, and what it blocks depends on the event.</p>
+<p>After an edit, the tool has already run, so nothing is undone, but the agent reads the stderr and acts on it. At <code>Stop</code>, the turn&rsquo;s end is blocked, and the agent keeps working. Any other code, one included, is a non-blocking error, and the action goes ahead; a gate that means it exits 2.</p>
+<p>A <code>Stop</code> hook that always blocks would send the agent back again and again, so its input carries <code>stop_hook_active</code>, true when the agent is already continuing because of a stop hook. This gate sends the agent back once. The second time, it lets the turn end and tells the person, through a <code>systemMessage</code>, which Claude Code shows to the user.</p>
+<p>Claude Code also caps how many times in a row stop hooks may continue a turn: eight, by default.</p>
+<p>A <code>Stop</code> hook can also send the agent back with <code>additionalContext</code>, under the same protections, and the transcript then shows it as hook feedback rather than an error. This gate exits 2, because a failing check is a block, not advice.</p>
+<p>The pure part, <code>gate</code>, takes the event and a shell, so the tests hand it a shell that answers from a table.</p>
+<p>The first feature&rsquo;s last four scenarios run the real script as Claude Code would, with event JSON on stdin and a project whose page check fails: once directly, once through links, once from a <code>cwd</code> in another tree than <code>CLAUDE_PROJECT_DIR</code>, as in a worktree, and once with an event it can&rsquo;t read. Each reads back the exit code and the whole of stderr, so a stray warning from Node fails it too.</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/extending-the-harness/bakery-site.test.ts --reporter=tree | grep -E '✓|×|Tests'
+ ✓ src/extending-the-harness/bakery-site.test.ts (10 tests) 1006ms
+   ✓ Feature: The checks the agent can never skip (9)
+     ✓ Scenario: Given an edit that breaks a page, When the PostToolUse hook runs, Then it exits 2 and names the file 2ms
+     ✓ Scenario: Given an edit outside pages/, When the PostToolUse hook runs, Then no check runs 0ms
+     ✓ Scenario: Given the full check fails, When the agent first tries to stop, Then it is sent back with the reason 0ms
+     ✓ Scenario: Given the check still fails after one more try, When the agent stops again, Then it stops and the person is told 0ms
+     ✓ Scenario: The project settings send Edit and Write to the gate after each call, and every stop to it too 1ms
+     ✓ Scenario: Given a project whose page check fails, When the real script reads a PostToolUse event, Then it exits 2 with the report alone 291ms
+     ✓ Scenario: Given a project and a script reached through links, When the real script runs, Then it still checks the page 277ms
+     ✓ Scenario: Given a cwd in another git tree than CLAUDE_PROJECT_DIR, as in a worktree, When the real script runs, Then it checks the tree Claude works in 334ms
+     ✓ Scenario: Given an event the script cannot read, When it runs, Then it exits 2 and says why 98ms
+   ✓ Feature: A reviewer that reads and never writes (1)
+     ✓ Scenario: The menu reviewer names itself, says when to use it, and holds read-only tools 1ms
+      Tests  10 passed (10)</code></pre>
+<p>Hooks can live in user settings, in the project&rsquo;s committed <code>.claude/settings.json</code>, in an uncommitted <code>.claude/settings.local.json</code>, in managed policy, in a plugin, or in a skill&rsquo;s or a subagent&rsquo;s frontmatter.</p>
+<p>In an interactive session, Claude Code runs no hook from a settings file until the folder&rsquo;s workspace trust dialog is accepted, so a freshly cloned repository can&rsquo;t run its hooks unasked. A <code>-p</code> or SDK run treats the folder as trusted, so there the committed hooks run.</p>
+<p>The cheapest checks sit closest to the edit. Here the quick page check runs after every page edit and the full check before the agent may stop. The same two tiers suit git hooks, quick before a commit and full before a push, and CI runs the full check again on every push, where nothing on a laptop can switch it off.</p>
+<h2 id="fresh-contexts-for-review"><a class="heading-anchor" href="#fresh-contexts-for-review">Fresh contexts for review</a></h2>
+<p>A subagent runs its own loop in its own context window, with its own system prompt and its own tools, and hands back only a summary. That makes it a natural reviewer: it starts clean, so it can&rsquo;t lean on the reasoning that produced the change. Project subagents are Markdown files in <code>.claude/agents/</code>, and Claude Code decides when to delegate from each one&rsquo;s <code>description</code>. See the <a href="https://code.claude.com/docs/en/sub-agents">subagents guide</a>.</p>
+<pre class="code-block" tabindex="0"><code>---
+name: menu-reviewer
+description: Reviews a change to the bakery's menu pages against the written scope and the price list. Use after any edit under pages/menu/, before the change is committed.
+tools: Read, Grep, Glob
+---
+
+You review one change to the bakery's menu pages, and you change nothing.
+Read the written scope in docs/scope.md and the price list in data/prices.json first.
+Report each finding as the file, the line, and the rule it breaks: a price that
+differs from the price list, an item the scope doesn't name, or a heading out of order.
+If nothing breaks a rule, say so in one line.</code></pre>
+<p>Only <code>name</code> and <code>description</code> are required. The <code>tools</code> line is an allowlist, so this reviewer reads, searches and lists files, and nothing else: a review that can&rsquo;t write has changed nothing. The bakery&rsquo;s tests lint the file the way Module 5 lints a skill. Here the lint wants a name, a description that says when, and only reading tools.</p>
+<p>Several reviewers raise one more question: whether they favor one another. Andrej Karpathy&rsquo;s <a href="https://github.com/karpathy/llm-council">LLM Council</a> sends one question to several models, then hands each model the answers with the models&rsquo; names swapped for labels, Response A, Response B and so on, so no model can play favorites as it ranks them. A chairman model writes the final answer.</p>
+<p>Shuffling the order too would take away position as a clue; that step is an addition, not part of Karpathy&rsquo;s version. In Claude Code, each reviewer can be a subagent like the menu reviewer, with the labels put on before any of them reads a word.</p>
+<h2 id="the-harness-you-ship-grows-by-composition"><a class="heading-anchor" href="#the-harness-you-ship-grows-by-composition">The harness you ship grows by composition</a></h2>
+<p>A harness built into an app grows by the same rule. Take a client for <a href="/community/the-tandem-harness/">The tandem harness</a>&rsquo;s one route, cut down to a single turn, and split it into a core and what plugs into it. The core names what it needs from outside as ports, adapters fill them, and each place that uses the core, here the app and its tests, plugs in adapters of its own. The core imports none of them.</p>
+<p>Alistair Cockburn&rsquo;s <a href="https://alistair.cockburn.us/hexagonal-architecture">hexagonal architecture</a> states the aim: an application driven equally by users, programs, automated tests or batch scripts, and built and tested apart from its eventual devices and databases. Mark Seemann calls the one place the parts are put together a <a href="https://blog.ploeh.dk/2011/07/28/CompositionRoot/">composition root</a>: here the app has one and the tests have one, and each builds its store there and nowhere else.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="extending-the-harness-core-title extending-the-harness-core-desc" viewBox="0 0 360 296">
+<title id="extending-the-harness-core-title">One core, two composition roots</title>
+<desc id="extending-the-harness-core-desc">Two composition roots across the top, the app and the tests, each with a highlighted arrow pointing down into the core. The core holds the store and a turn&rsquo;s actions, and two ports sit on its bottom edge, calendar and transport. Below, each root&rsquo;s adapters plug into both ports.</desc>
+<g class="edge"><line x1="124.5" y1="228.5" x2="124.5" y2="188.5"/><line x1="124.5" y1="188.5" x2="121.5" y2="193.7"/><line x1="124.5" y1="188.5" x2="127.5" y2="193.7"/><line x1="235.5" y1="228.5" x2="235.5" y2="188.5"/><line x1="235.5" y1="188.5" x2="232.5" y2="193.7"/><line x1="235.5" y1="188.5" x2="238.5" y2="193.7"/></g>
+<g class="path"><line x1="92.5" y1="44.5" x2="92.5" y2="84.5"/><line x1="92.5" y1="84.5" x2="95.5" y2="79.3"/><line x1="92.5" y1="84.5" x2="89.5" y2="79.3"/><line x1="267.5" y1="44.5" x2="267.5" y2="84.5"/><line x1="267.5" y1="84.5" x2="270.5" y2="79.3"/><line x1="267.5" y1="84.5" x2="264.5" y2="79.3"/></g>
+<rect class="node" x="12.5" y="12.5" width="160" height="32" rx="6"/>
+<rect class="node" x="187.5" y="12.5" width="160" height="32" rx="6"/>
+<rect class="node on" x="48.5" y="84.5" width="263" height="92" rx="6"/>
+<rect class="node" x="84.5" y="164.5" width="80" height="24" rx="4"/>
+<rect class="node" x="195.5" y="164.5" width="80" height="24" rx="4"/>
+<rect class="node" x="96.5" y="228.5" width="167" height="32" rx="6"/>
+<g><text x="92.5" y="28.5">the app</text><text x="267.5" y="28.5">the tests</text><text x="180" y="102.5">core</text><text class="note" x="180" y="122.5">composeStore</text><text class="note" x="180" y="142.5">a turn&rsquo;s actions</text><text class="note" x="124.5" y="176.5">calendar</text><text class="note" x="235.5" y="176.5">transport</text><text x="180" y="244.5">adapters</text><text class="note" x="180" y="276.5">passed in at each root</text></g>
+</svg>
+<figcaption>Every violet arrow points into the core: each composition root depends on it, and it depends on neither. A root&rsquo;s adapters reach the core only through the ports on its edge.</figcaption>
+</figure>
+<p>The core needs two things from outside: a calendar, where the app pencils in an hour the server offered until the customer confirms it, and a transport, which carries each call to the server:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/core/ports.ts
+// What the core needs from outside, as ports. Each composition root passes its own adapters in, from adapters/.
+
+// The app's own calendar, where an offered hour waits for the customer: a map in tests, browser storage in the app.
+export type CalendarPort = {
+  readonly pencil: (customer: string, hour: string) =&gt; Promise&lt;void&gt;
+  readonly penciled: (customer: string) =&gt; Promise&lt;readonly string[]&gt;
+}
+
+// How a call reaches the server: fetch in a browser, a stub in a test.
+export type Call = { readonly method: 'GET' | 'POST'; readonly path: string; readonly body?: unknown }
+export type Transport = (call: Call) =&gt; Promise&lt;unknown&gt;
+
+// The dependencies that aren't data. The store passes them to every thunk, endpoint and listener as `extra`.
+export type Deps = { readonly calendar: CalendarPort; readonly transport: Transport }</code></pre>
+<p>Neither can go in state. Redux&rsquo;s <a href="https://redux.js.org/style-guide/#do-not-put-non-serializable-values-in-state-or-actions">style guide</a> keeps non-serializable values out of state and actions, and the lecture Functional Programming Maintenance Strategy checks the state half in review (<a href="https://seandinwiddie.github.io/lectures/functional-programming-maintenance-strategy/#code-review-checklist">Code review checklist</a>). So they travel as the store&rsquo;s dependencies: the thunk middleware passes them to every thunk, the listener middleware to every listener, and RTK Query to every base query.</p>
+<p>A browser can&rsquo;t keep a secret, so the browser&rsquo;s transport carries none. The customer&rsquo;s session rides in a cookie the browser sends itself, and the server decides what each call may do, as the <code>Auth</code> combinator does in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a>; servant-auth&rsquo;s <code>Cookie</code> scheme reads the same session from a cookie:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/adapters/transport.ts
+// The transport adapter: a call, sent to the server over HTTP by whatever send the composition root hands in.
+import type { Transport } from '../core/ports.ts'
+
+type Send = (url: URL, init: RequestInit &amp; { headers: Record&lt;string, string&gt; }) =&gt; Promise&lt;Response&gt;
+type ExtraHeaders = () =&gt; Readonly&lt;Record&lt;string, string&gt;&gt;
+
+// A browser can't keep a secret, so the transport carries none. The customer's session rides in a cookie
+// the browser sends itself and no script can read, and the server decides what each call may do.
+// Any header the server asks every call to carry, the composition root hands in, read again for each call.
+export const connect = (server: { readonly baseUrl: string }, send: Send, extra: ExtraHeaders = () =&gt; ({})): Transport =&gt;
+  async ({ method, path, body }) =&gt; {
+    const reply = await send(new URL(path, server.baseUrl), {
+      method,
+      credentials: 'include',
+      headers: { ...extra(), 'content-type': 'application/json' },
+      ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+    })
+    if (!reply.ok) throw new Error(`${method} ${path}: HTTP ${reply.status}`)
+    return reply.json()
+  }</code></pre>
+<p>servant-auth&rsquo;s <code>Cookie</code> scheme asks one thing more of the client. Beside the session&rsquo;s cookie it sets an <code>XSRF-TOKEN</code> cookie a script can read, and by default it won&rsquo;t authenticate any call, a GET included, whose <code>X-XSRF-TOKEN</code> header doesn&rsquo;t repeat it, so the server&rsquo;s last clause answers 401, as in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a>.</p>
+<p>A page on another site can&rsquo;t read that cookie, so the header proves a call came from the app&rsquo;s own pages. It is a proof, not a secret, and the session cookie stays HttpOnly, out of every script&rsquo;s reach. The app&rsquo;s composition root hands <code>connect</code> the header, read from <code>document.cookie</code> for each call; the tests&rsquo; root hands it none.</p>
+<p>The session cookie is also <code>SameSite=Lax</code> by default, so a fetch from another site never carries it. The API is served from the same origin as the app, since the token cookie is host-only by default; an API on a sibling host sets servant-auth&rsquo;s <code>cookieDomain</code>, so the app&rsquo;s pages can read the token.</p>
+<p>Every call goes through the transport. In the browser it wraps <code>fetch</code>, and in a test it answers from a script, so swapping one for the other changes how a call travels and nothing about what it means.</p>
+<p>A port gets one set of tests, and every adapter runs them. The calendar has two adapters: one in memory, and one over any Web Storage object, which the app hands <code>window.localStorage</code> and a test hands a small fake:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/adapters/calendar.ts
+// Two adapters for the calendar port. The same tests run against both.
+import type { CalendarPort } from '../core/ports.ts'
+
+export const inMemory = (): CalendarPort =&gt; {
+  const hours = new Map&lt;string, readonly string[]&gt;()
+  return {
+    pencil: async (customer, hour) =&gt; void hours.set(customer, [...(hours.get(customer) ?? []), hour]),
+    penciled: async (customer) =&gt; hours.get(customer) ?? [],
+  }
+}
+
+// Any Web Storage object will do: window.localStorage in the app, a small fake in a test.
+export const browserStorage = (storage: Pick&lt;Storage, 'getItem' | 'setItem'&gt;, prefix = 'salon-calendar:'): CalendarPort =&gt; {
+  const penciled = async (customer: string): Promise&lt;readonly string[]&gt; =&gt;
+    JSON.parse(storage.getItem(prefix + customer) ?? '[]') as string[]
+  return {
+    penciled,
+    pencil: async (customer, hour) =&gt; storage.setItem(prefix + customer, JSON.stringify([...(await penciled(customer)), hour])),
+  }
+}</code></pre>
+<p>The core exports <code>composeStore</code>. A composition root passes its reducers, its dependencies and its listeners, and gets back a store. The same file holds the client&rsquo;s one RTK Query API slice, whose base query sends every call through the transport.</p>
+<p>Redux&rsquo;s <a href="https://redux.js.org/usage/writing-tests#setting-up-a-reusable-test-render-function">testing guide</a> asks for a separate store in every test, so every call builds a new one, with its own listener middleware, and two tests never share state or a listener:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/core/store.ts
+// The core's store. A composition root extends it with reducers, its dependencies and listeners, and never edits it.
+import {
+  configureStore,
+  createListenerMiddleware,
+  type ReducersMapObject,
+  type ThunkDispatch,
+  type TypedStartListening,
+  type UnknownAction,
+} from '@reduxjs/toolkit'
+import { createApi } from '@reduxjs/toolkit/query'
+import type { Call, Deps } from './ports.ts'
+import { turnsSlice } from './turns.ts'
+
+type Dispatch = ThunkDispatch&lt;unknown, Deps, UnknownAction&gt;
+// Each listener names the part of the state it reads, with startListening.withTypes.
+export type StartListening = TypedStartListening&lt;unknown, Dispatch, Deps&gt;
+
+// The client's server calls, as RTK Query endpoints. Each goes through the transport, so a fetch or a stub carries it.
+export const api = createApi({
+  reducerPath: 'api',
+  baseQuery: async (call: Call, { extra }) =&gt; {
+    try {
+      return { data: await (extra as Deps).transport(call) } // RTK Query types the thunk's extra argument as unknown
+    } catch (error) {
+      return { error: String(error) }
+    }
+  },
+  endpoints: () =&gt; ({}),
+})
+
+export type Extension&lt;R extends ReducersMapObject&gt; = {
+  readonly reducers: R
+  readonly deps: Deps
+  readonly listen?: (start: StartListening) =&gt; void
+}
+
+export const composeStore = &lt;R extends ReducersMapObject&gt;({ reducers, deps, listen }: Extension&lt;R&gt;) =&gt; {
+  // A fresh middleware for every store, so two stores never share a listener.
+  const listeners = createListenerMiddleware&lt;unknown, Dispatch, Deps&gt;({ extra: deps })
+  listen?.(listeners.startListening)
+  return configureStore({
+    reducer: { ...reducers, turns: turnsSlice.reducer, [api.reducerPath]: api.reducer },
+    middleware: (defaults) =&gt;
+      defaults({ thunk: { extraArgument: deps } }).prepend(listeners.middleware).concat(api.middleware),
+  })
+}</code></pre>
+<p>The app&rsquo;s composition root is a few lines: the browser&rsquo;s adapters, the core and one extension. The tests&rsquo; root has the same shape, over the in-memory calendar and a scripted server:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/roots/app.ts
+// The app's composition root: the core and the warnings extension, over browser storage and fetch.
+// The app hands it window.localStorage and () =&gt; document.cookie; a test hands it fakes and a scripted send.
+import { browserStorage } from '../adapters/calendar.ts'
+import { connect } from '../adapters/transport.ts'
+import { composeStore } from '../core/store.ts'
+import { warnAfterFallbacks, warningsSlice } from '../warnings/warnings.ts'
+
+type Server = Parameters&lt;typeof connect&gt;[0]
+type Send = Parameters&lt;typeof connect&gt;[1]
+
+// servant-auth's Cookie scheme sets an XSRF-TOKEN cookie a script can read, beside the session's,
+// and won't authenticate any call, a GET included, whose X-XSRF-TOKEN header doesn't repeat it.
+export const xsrfHeader = (cookies: string): Record&lt;string, string&gt; =&gt; {
+  const token = cookies.split('; ').find((c) =&gt; c.startsWith('XSRF-TOKEN='))?.slice('XSRF-TOKEN='.length)
+  return token === undefined ? {} : { 'X-XSRF-TOKEN': token }
+}
+
+export const appStore = (
+  server: Server,
+  storage: Pick&lt;Storage, 'getItem' | 'setItem'&gt;,
+  cookies: () =&gt; string,
+  send: Send = (url, init) =&gt; fetch(url, init),
+) =&gt;
+  composeStore({
+    reducers: { warnings: warningsSlice.reducer },
+    deps: { calendar: browserStorage(storage), transport: connect(server, send, () =&gt; xsrfHeader(cookies())) },
+    listen: warnAfterFallbacks,
+  })</code></pre>
+<p>In the shipped harness, hooks are listeners. The core says what happens as plain actions, asked for an hour, hour offered, fell back and no answer, and an extension listens instead of threading callbacks through the turn&rsquo;s code. The lecture Modern Redux Architecture Patterns picks a listener for exactly this: behavior that reacts to actions over time (<a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#listener-middleware">Listener middleware</a>).</p>
+<p>This one counts the fallbacks each customer gets, and raises a warning when a customer reaches a count invented for the lesson. Not a line of the core changes:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/warnings/warnings.ts
+// An extension that changes nothing in the core: it counts fallbacks and warns once a customer has had a few.
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import type { StartListening } from '../core/store.ts'
+import { fellBack } from '../core/turns.ts'
+
+export const WARN_AFTER = 3 // invented for the lesson
+
+type Warnings = { readonly fallbacks: Readonly&lt;Record&lt;string, number&gt;&gt;; readonly warned: readonly string[] }
+
+export const warningsSlice = createSlice({
+  name: 'warnings',
+  initialState: { fallbacks: {}, warned: [] } as Warnings,
+  reducers: {
+    warningRaised: (w, { payload }: PayloadAction&lt;{ readonly customer: string }&gt;) =&gt; ({
+      ...w,
+      warned: [...w.warned, payload.customer],
+    }),
+  },
+  extraReducers: (builder) =&gt;
+    builder.addCase(fellBack, (w, { payload: { customer } }) =&gt; ({
+      ...w,
+      fallbacks: { ...w.fallbacks, [customer]: (w.fallbacks[customer] ?? 0) + 1 },
+    })),
+})
+
+export const { warningRaised } = warningsSlice.actions
+
+// Listeners run after the reducers, so the count already includes this fallback.
+export const warnAfterFallbacks = (start: StartListening) =&gt;
+  start.withTypes&lt;{ readonly warnings: Warnings }&gt;()({
+    actionCreator: fellBack,
+    effect: ({ payload: { customer } }, api) =&gt; {
+      if (api.getState().warnings.fallbacks[customer] === WARN_AFTER) api.dispatch(warningRaised({ customer }))
+    },
+  })</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/extending-the-harness/composition.test.ts --reporter=tree | grep -E '✓|×|Tests'
+ ✓ src/extending-the-harness/composition.test.ts (9 tests) 72ms
+   ✓ Feature: The core grows by composition (5)
+     ✓ Scenario: Given two stores built for tests, When one customer gets the fallback in one, Then the other never hears of it 54ms
+     ✓ Scenario: Given fallbacks for one customer, When their count reaches the limit, Then one warning is raised for that customer alone 7ms
+     ✓ Scenario: Given a server that answers with something else, When the turn runs, Then it has no answer and nothing is penciled in 2ms
+     ✓ Scenario: Given the app's store over a storage, When an hour is offered, Then it is penciled into that storage 2ms
+     ✓ Scenario: Given the server's XSRF-TOKEN cookie, When the app's store sends a call, Then the call repeats it in the X-XSRF-TOKEN header 3ms
+   ✓ Feature: The calendar port, in memory (2)
+     ✓ Scenario: Penciled hours come back in the order they were penciled 0ms
+     ✓ Scenario: Two customers never share hours 0ms
+   ✓ Feature: The calendar port, browser storage (2)
+     ✓ Scenario: Penciled hours come back in the order they were penciled 0ms
+     ✓ Scenario: Two customers never share hours 0ms
+      Tests  9 passed (9)</code></pre>
+<p>The fourth scenario builds the app&rsquo;s store over a fake storage and finds the offered hour penciled into it. The fifth finds the cookie&rsquo;s token in each call&rsquo;s header, read again after the cookie changes, and the port&rsquo;s tests run once per adapter. The lecture&rsquo;s <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">testing architecture</a> gives listeners tests of their own, for what they match and what they emit, and the warning scenario is one.</p>
+<h2 id="new-rules-go-to-the-server"><a class="heading-anchor" href="#new-rules-go-to-the-server">New rules go to the server</a></h2>
+<p>A booking app could take its rules as callbacks, each client registering its own party-size check. Then a second client, a phone app say, forgets one, and the two disagree about the same booking. So the rules live on the server, in one list, and every client posts a booking to the same route. The server decides, as in <a href="/community/server-and-client-in-tandem/">Server and client in tandem</a>, and a rule is a decision.</p>
+<p>The Haskell here compiles under the course&rsquo;s cabal file, which turns on GHC2021 for every module, plus <code>DataKinds</code>, <code>DeriveGeneric</code>, <code>DerivingStrategies</code>, <code>LambdaCase</code>, <code>OverloadedStrings</code> and <code>TypeOperators</code>. A module copied into a fresh project needs the same settings, or <code>LANGUAGE</code> pragmas of its own.</p>
+<pre class="code-block" tabindex="0"><code>-- extending-the-harness/SalonRules.hs
+-- The salon's booking rules, in one place on the server, and one check every client calls.
+-- The chairs and the hours are invented for the lesson.
+module SalonRules (Booking (..), Checked (..), rules, check) where
+
+import Data.Aeson (FromJSON, ToJSON (..), object, (.=))
+import Data.Text (Text)
+import GHC.Generics (Generic)
+
+data Booking = Booking {party :: Int, hour :: Int}
+  deriving stock (Generic, Show, Eq)
+
+instance FromJSON Booking
+instance ToJSON Booking
+
+-- Accepted, or refused with every rule the booking breaks, never just the first.
+data Checked = Accepted | Refused [Text]
+  deriving stock (Show, Eq)
+
+instance ToJSON Checked where
+  toJSON = \case
+    Accepted -&gt; object ["status" .= ("accepted" :: Text)]
+    Refused broken -&gt; object ["status" .= ("refused" :: Text), "broken" .= broken]
+
+-- Each rule: what it says, and whether a booking keeps it.
+rules :: [(Text, Booking -&gt; Bool)]
+rules =
+  [ ("a booking needs at least one person", \b -&gt; party b &gt;= 1)
+  , ("the salon has 6 chairs", \b -&gt; party b &lt;= 6)
+  , ("bookings start between 9:00 and 14:00", \b -&gt; hour b &gt;= 9 &amp;&amp; hour b &lt;= 14)
+  ]
+
+check :: Booking -&gt; Checked
+check b = case [rule | (rule, keeps) &lt;- rules, not (keeps b)] of
+  [] -&gt; Accepted
+  broken -&gt; Refused broken</code></pre>
+<p><code>check</code> answers one of two ways. Accepted lets the app book it. Refused lists every rule the booking breaks, so the customer fixes the booking once rather than once per rule. The route stays as thin as the handlers in <a href="/community/the-api-haskell-servant-and-nile/#2-handlers-stay-thin">The API: Haskell Servant and Nile</a>:</p>
+<pre class="code-block" tabindex="0"><code>-- extending-the-harness/SalonCheckApi.hs
+-- One route: post a booking, get the check back. Every client calls this one.
+module SalonCheckApi (BookingCheckAPI, app) where
+
+import SalonRules
+import Servant
+
+type BookingCheckAPI = "bookings" :&gt; "check" :&gt; ReqBody '[JSON] Booking :&gt; Post '[JSON] Checked
+
+app :: Application
+app = serve (Proxy @BookingCheckAPI) (pure . check)</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ cabal test extending-the-harness --test-show-details=direct 2&gt;&amp;1 | grep -E '✔|✘|examples|Feature|OK'
+Feature: The salon's booking rules live on the server
+  Scenario: Given a party of nine at 10:00, When it is checked, Then it is refused for the chairs [✔]
+  Scenario: Given a party of nine at 16:00, When it is checked, Then it is refused for the chairs and the hours at once [✔]
+  Property: a booking is accepted exactly when 1 to 6 people come from 9:00 to 14:00, and a refusal names every bound it breaks [✔]
+    +++ OK, passed 100 tests.
+  Scenario: Every reply the client's tests read is what check encodes for its booking [✔]
+Feature: Every client checks against the same route
+  Scenario: The app posts a booking and gets the check back [✔]
+  Scenario: A booking the decoder can't read is refused before any rule runs [✔]
+6 examples, 0 failures</code></pre>
+<p>The property matters most. It states the bounds again on its own, one to six people from 9:00 to 14:00, and over random bookings checks that <code>check</code> accepts exactly those and refuses the rest with every bound they break, no more and no fewer. A wrong rule in the list fails it, so the reasons a customer reads are the real ones.</p>
+<p>The runs here come from a UTF-8 terminal; under the POSIX locale, Hspec marks a pass <code>[v]</code> where they show &#x2714;.</p>
+<h2 id="a-new-question-from-one-list"><a class="heading-anchor" href="#a-new-question-from-one-list">A new question, from one list</a></h2>
+<p>The booking route in <a href="/community/server-and-client-in-tandem/">Server and client in tandem</a> asks the customer one question: which time. Say the salon now wants to ask which stylist, too. On the client, two places need the new question: the decoder, which must accept its name, and the screens, one for each question.</p>
+<p>The wire lesson already shows the move that keeps such places together. List the names once, <code>as const</code>, and derive the type from the list. <code>isQuestion</code>, the guard a decoder uses, checks a name against the list, and the screens are a record over the type, so the compiler holds every screen to the list:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/questions/questions.ts
+// Every question the booking server may ask the customer, listed once. The type comes from the list.
+export const QUESTIONS = ['time', 'stylist'] as const
+export type Question = (typeof QUESTIONS)[number]
+
+export const isQuestion = (value: unknown): value is Question =&gt; QUESTIONS.some((q) =&gt; q === value)</code></pre>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/questions/screens.ts
+// One screen for each question. The record's type is the list, so a question without a screen doesn't compile.
+import { isQuestion, type Question } from './questions.ts'
+
+export type Screen = { readonly title: string; readonly choices: readonly string[] }
+
+export const screens: { readonly [Q in Question]: (choices: readonly string[]) =&gt; Screen } = {
+  time: (choices) =&gt; ({ title: 'Which time suits you?', choices }),
+  stylist: (choices) =&gt; ({ title: 'Who would you like?', choices }),
+}
+
+// A question the server sends arrives as text; only a name on the list gets a screen.
+export const screenFor = (name: unknown, choices: readonly string[]): Screen | string =&gt;
+  isQuestion(name) ? screens[name](choices) : `no screen for the question ${JSON.stringify(name)}`</code></pre>
+<p>Make the change the way it usually starts, in the list. Add <code>'stylist'</code> to <code>QUESTIONS</code> before writing its screen, and the compiler names the place that lacks it:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx tsc --noEmit -p .
+src/extending-the-harness/questions/screens.ts(7,14): error TS2741: Property 'stylist' is missing in type '{ time: (choices: readonly string[]) =&gt; { title: string; choices: readonly string[]; }; }' but required in type '{ readonly stylist: (choices: readonly string[]) =&gt; Screen; readonly time: (choices: readonly string[]) =&gt; Screen; }'.</code></pre>
+<p>Add the screen, and every check passes. A name the list doesn&rsquo;t hold still gets no screen at all:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/extending-the-harness/questions.test.ts --reporter=tree | grep -E '✓|×|Tests'
+ ✓ src/extending-the-harness/questions.test.ts (3 tests) 7ms
+   ✓ Feature: A new question, from one list (3)
+     ✓ Scenario: Given every question the list names, When the screens are counted, Then each has exactly one 3ms
+     ✓ Scenario: Given the stylist question, When it arrives, Then the screen asks who 1ms
+     ✓ Scenario: Given a question the list does not name, When it arrives, Then no screen is shown 1ms
+      Tests  3 passed (3)</code></pre>
+<p>On the client there is no second copy of the names to fall out of step: the list is the one source, and the compiler reads it.</p>
+<p>The server still names the questions it asks. The contract check in <a href="/community/server-and-client-in-tandem/#one-contract-checked-from-both-sides">One contract, checked from both sides</a> catches a server that stops sending a question the client reads. A question the server adds before the client lists it arrives as a name off the list, and gets no screen.</p>
+<h2 id="every-extension-carries-a-scenario"><a class="heading-anchor" href="#every-extension-carries-a-scenario">Every extension carries a scenario</a></h2>
+<p>An extension without a scenario is a claim. The rules extension&rsquo;s scenarios live in <code>rules.feature</code>, written in Gherkin as <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) syntax in BDD</a> teaches, and run as Vitest tests named after them, through the real store, endpoint and decoder:</p>
+<pre class="code-block" tabindex="0"><code>Feature: The salon's booking rules live on the server
+  Every client sends a booking to one route, and gets back accepted,
+  or refused with every rule the booking breaks.
+
+  Scenario: A party that fits the chairs, at an hour the salon books, is accepted
+    Given a party of 2 at 10:00
+    When the app checks the booking
+    Then it is accepted
+
+  Scenario: A party larger than the chairs is refused, with the rule
+    Given a party of 9 at 10:00
+    When the app checks the booking
+    Then it is refused, because the salon has 6 chairs
+
+  Scenario: A booking that breaks two rules is refused with both
+    Given a party of 9 at 16:00
+    When the app checks the booking
+    Then it is refused for the chairs and for the hours, in one reply
+
+  Scenario: A booking for nobody is refused
+    Given a party of 0 at 10:00
+    When the app checks the booking
+    Then it is refused, because a booking needs at least one person</code></pre>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/rules/bookingCheck.ts
+// The rules extension: the app asks the server to check a booking before it acts on one.
+import { api } from '../core/store.ts'
+
+export type Booking = { readonly party: number; readonly hour: number }
+export type Checked = { readonly status: 'accepted' } | { readonly status: 'refused'; readonly broken: readonly string[] }
+
+// Strict, at the boundary: a reply that isn't one of the two shapes never reaches the cache.
+export const decodeChecked = (raw: unknown): Checked =&gt; {
+  const r = (typeof raw === 'object' &amp;&amp; raw !== null ? raw : {}) as Record&lt;string, unknown&gt;
+  const broken = r['broken']
+  if (r['status'] === 'accepted') return { status: 'accepted' }
+  if (r['status'] === 'refused' &amp;&amp; Array.isArray(broken) &amp;&amp; broken.length &gt; 0 &amp;&amp; broken.every((b) =&gt; typeof b === 'string'))
+    return { status: 'refused', broken }
+  throw new Error(`not a checked booking: ${JSON.stringify(raw)}`)
+}
+
+export const bookingCheckApi = api.injectEndpoints({
+  endpoints: (build) =&gt; ({
+    checkBooking: build.mutation&lt;Checked, Booking&gt;({
+      query: (booking) =&gt; ({ method: 'POST', path: 'bookings/check', body: booking }),
+      transformResponse: decodeChecked,
+    }),
+  }),
+})</code></pre>
+<p>One more test reads the feature file and fails when a scenario has no test, the move <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> makes for its families. Write the scenario first, and the run says what&rsquo;s missing:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/extending-the-harness/rules.test.ts 2&gt;&amp;1 | grep -E '×|^Error|Tests'
+     × Scenario: A booking for nobody is refused 3ms
+     × has a test for every scenario in rules.feature 4ms
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+Error: no test for the scenario "A booking for nobody is refused"
+      Tests  2 failed | 3 passed (5)</code></pre>
+<p>Write its test and the run passes. Every reply the scenarios decode comes from <code>replies.json</code>, which the Haskell spec pins to what <code>check</code> encodes for each booking, and the stub answers only a POST to <code>bookings/check</code>. So the client is held to the route and to the shapes the server really sends:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/extending-the-harness/rules.test.ts --reporter=tree | grep -E '✓|×|Tests'
+ ✓ src/extending-the-harness/rules.test.ts (5 tests) 63ms
+   ✓ Feature: The salon's booking rules live on the server (5)
+     ✓ Scenario: A party that fits the chairs, at an hour the salon books, is accepted 53ms
+     ✓ Scenario: A party larger than the chairs is refused, with the rule 3ms
+     ✓ Scenario: A booking that breaks two rules is refused with both 2ms
+     ✓ Scenario: A booking for nobody is refused 2ms
+     ✓ has a test for every scenario in rules.feature 0ms
+      Tests  5 passed (5)</code></pre>
+<p>From there, every extension climbs the same rungs of checks as everything else. <a href="/community/from-fine-tune-to-release/">From fine-tune to release</a> draws the three rungs, with a trained model on them.</p>
+<h2 id="a-site-repositorys-harness-move-by-move"><a class="heading-anchor" href="#a-site-repositorys-harness-move-by-move">A site repository&rsquo;s harness, move by move</a></h2>
+<p>Back to the bakery&rsquo;s repository, as it stood before the hooks and the reviewer. It starts modestly, as most do:</p>
+<ul>
+<li><strong>Always on.</strong> A <code>CLAUDE.md</code> with the site&rsquo;s conventions, pointing to the written scope.</li>
+<li><strong>Know-how.</strong> Two project skills: one written for the site, and one copied from a public plugin.</li>
+<li><strong>A pre-launch checklist</strong> in the README: what a person checks before a page goes live.</li>
+<li><strong>Gates</strong> as scripts in <code>package.json</code>, run before a push and again in CI.</li>
+<li><strong>Not yet:</strong> hooks, MCP configuration, project subagents.</li>
+</ul>
+<p>Each move into the harness is an option, taken when its trigger shows up. The gates become the two hooks above, so a turn that ends on a failing check gets one more try first and then tells the person; CI stays, because a hook runs only where Claude Code runs. The checklist&rsquo;s review becomes a project subagent, starting clean.</p>
+<p>The checklist becomes a skill once it&rsquo;s pasted into chat a third time. A design tool whose data gets copied over by hand becomes an MCP server. A second site that needs the same setup gets it as a plugin, with the conventions from its <code>CLAUDE.md</code> carried as a skill.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Every extension costs something, even idle. An enabled plugin puts the name and description of each skill, agent and command the model may invoke on its own into context on every turn, whether or not any of them runs (<a href="https://code.claude.com/docs/en/plugins">Plugins</a>).</p>
+<p>A hook costs no context until it returns output, but its command still takes time: the <code>Stop</code> gate here runs the full check at the end of every turn. It also sends the agent back from a turn that changed nothing, when a person only asked a question and the check was already failing, so a team may run it only when the working tree has changes: when <code>git status --porcelain</code> prints anything.</p>
+<p>The platform bends it too. The gate spawns <code>npm</code> with no shell, which works on macOS and Linux. On Windows, <code>npm</code> is a <code>.cmd</code> shim that can&rsquo;t be spawned without a shell, as the hooks reference says of exec form, so this example targets macOS and Linux.</p>
+<p>Trust bends the MCP move. A cloned repository can&rsquo;t approve its own MCP servers: approvals committed to its project settings are ignored until the folder is trusted, and the servers wait as pending (<a href="https://code.claude.com/docs/en/mcp">MCP</a>). Portability bends the skill move. Claude Code accepts frontmatter fields beyond the Agent Skills spec, but claude.ai uploads and the Skills API take only the spec&rsquo;s six and reject a skill with more (<a href="https://code.claude.com/docs/en/skills">Skills</a>).</p>
+<p>Scale bends the gates. A scenario for every rule pays for itself in a booking flow with several clients. On a small brochure site, the same gate costs more than it saves.</p>
+<p>Long work bends the whole harness. Anthropic&rsquo;s post on <a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">long-running agents</a> has a first session write a feature list in JSON, every feature marked failing, and a progress file. Each later session reads the progress file and the git log, runs a basic end-to-end check, takes one feature and commits clean. The authors found the model less likely to overwrite JSON than Markdown.</p>
+<p>That maps onto the practice: the feature list is the written scope&rsquo;s user stories, each feature&rsquo;s steps are a Gherkin scenario, and the progress file is a log of each session&rsquo;s work.</p></aside>
+<p><a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a> opens the module&rsquo;s Python lessons, where the model work lives, with the same habit of a contract at every boundary.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/server-and-client-in-tandem/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">Server and client in tandem</span></a>
+<a href="/community/python-the-teams-way/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Python, the team’s way</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

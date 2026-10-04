@@ -16,3 +16,6 @@ _site/
 
 # dream-loop skill: README-only demo GIF (7 MB), not needed for the skill to work
 .claude/skills/dream-loop/assets/
+
+# The private product names the sync checks community pages for: local only, never committed
+.private-names

@@ -6,6 +6,10 @@
     <lastmod>2026-10-01</lastmod>
   </url>
   <url>
+    <loc>https://seandinwiddie.com/community/automating-a-business-process/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
     <loc>https://seandinwiddie.com/community/bdd-and-unit-testing/</loc>
     <lastmod>2026-10-01</lastmod>
   </url>
@@ -50,8 +54,12 @@
     <lastmod>2026-10-01</lastmod>
   </url>
   <url>
+    <loc>https://seandinwiddie.com/community/extending-the-harness/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
     <loc>https://seandinwiddie.com/community/from-fine-tune-to-release/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/from-marketing-to-development/</loc>
@@ -66,8 +74,12 @@
     <lastmod>2026-10-01</lastmod>
   </url>
   <url>
+    <loc>https://seandinwiddie.com/community/geometric-reasoning-as-data/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
     <loc>https://seandinwiddie.com/community/geometric-reasoning-in-model-training/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/given-when-then-gherkin-syntax-in-bdd/</loc>
@@ -102,6 +114,10 @@
     <lastmod>2026-10-01</lastmod>
   </url>
   <url>
+    <loc>https://seandinwiddie.com/community/measuring-reasoning-on-the-geometry/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
     <loc>https://seandinwiddie.com/community/module-2-behavior-driven-development-bdd/</loc>
     <lastmod>2026-10-01</lastmod>
   </url>
@@ -110,8 +126,12 @@
     <lastmod>2026-10-01</lastmod>
   </url>
   <url>
-    <loc>https://seandinwiddie.com/community/module-5-python-and-model-training/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <loc>https://seandinwiddie.com/community/module-5-business-automation-with-ai/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seandinwiddie.com/community/module-6-ai-protocol-ecosystem/</loc>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/one-feature-scope-to-launch/</loc>
@@ -135,19 +155,35 @@
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/python-the-teams-way/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/reviewing-and-enhancing-bdd-scenarios-as-a-group/</loc>
     <lastmod>2026-10-01</lastmod>
   </url>
   <url>
+    <loc>https://seandinwiddie.com/community/server-and-client-in-tandem/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
     <loc>https://seandinwiddie.com/community/staff/</loc>
     <lastmod>2026-10-01</lastmod>
   </url>
   <url>
+    <loc>https://seandinwiddie.com/community/the-agent-loop-and-its-tools/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
+    <loc>https://seandinwiddie.com/community/the-ai-protocol-map/</loc>
+    <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
     <loc>https://seandinwiddie.com/community/the-api-haskell-servant-and-nile/</loc>
     <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://seandinwiddie.com/community/the-tandem-harness/</loc>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/the-view-stays-minimal/</loc>
@@ -167,11 +203,15 @@
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/user-story_bdd_frp-workflow/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/welcome-to-module-1-understanding-user-stories/</loc>
     <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://seandinwiddie.com/community/writing-an-agentic-skill/</loc>
+    <lastmod>2026-10-03</lastmod>
   </url>
   <url>
     <loc>https://seandinwiddie.com/community/writing-bdd-scenarios-for-software-modules/</loc>

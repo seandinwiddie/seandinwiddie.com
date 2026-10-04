@@ -80,7 +80,7 @@ for (const required of REQUIRED_SHARED_ASSETS) {
   if (!existsSync(resolve(ROOT, required))) failures.push(`${required}: missing required public asset`);
 }
 for (const retired of RETIRED_PATHS) {
-  if (existsSync(resolve(ROOT, retired))) failures.push(`${retired}: retired export artifact still exists`);
+  if (existsSync(resolve(ROOT, retired))) failures.push(`${retired}: retired path still exists`);
 }
 
 const allowedAssetPaths = new Set(

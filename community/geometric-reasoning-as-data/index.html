@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Geometric Reasoning as Data | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Geometric reasoning as data: behaviors as points in a design space with a distance, facts as a graph, matched families and evidence that arrives in order.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/geometric-reasoning-as-data/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Geometric Reasoning as Data | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Geometric reasoning as data: behaviors as points in a design space with a distance, facts as a graph, matched families and evidence that arrives in order.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/geometric-reasoning-as-data/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-03T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Geometric Reasoning as Data | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Geometric reasoning as data: behaviors as points in a design space with a distance, facts as a graph, matched families and evidence that arrives in order.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#webpage","url":"https://seandinwiddie.com/community/geometric-reasoning-as-data/","name":"Geometric Reasoning as Data | Sean Dinwiddie's Webmastery","description":"Geometric reasoning as data: behaviors as points in a design space with a distance, facts as a graph, matched families and evidence that arrives in order.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Geometric reasoning as data","item":"https://seandinwiddie.com/community/geometric-reasoning-as-data/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#article","headline":"Geometric reasoning as data","description":"Geometric reasoning as data: behaviors as points in a design space with a distance, facts as a graph, matched families and evidence that arrives in order.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/geometric-reasoning-as-data/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/pexels-dominykas-s-6858311-scaled.jpg');background-position:center 30%;"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Geometric reasoning as data</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 3; --lessons: 10">Lesson 3 of 10 in Module 6</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/geometric-reasoning-as-data/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>Geometric reasoning, in this course, starts from a declared design space: every behavior to build or measure is a point in it, one level for each factor, with a distance between any two points. This lesson builds that space as data, with the evidence, families and timelines that live in it, and the lessons after it read what it builds.</p>
+<p>This is the data that crosses the joins named in <a href="/community/the-ai-protocol-map/">The AI protocol map</a>. The examples come from a coffee cart that answers questions about its menu, and every trait, word and score in them is invented for the lesson. The code is TypeScript, tested with Vitest. The design file&rsquo;s format is the module&rsquo;s shared fixture: the Python lessons read it too, and a test on each side holds both readers to the same output.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#three-senses-of-one-phrase">Three senses of one phrase</a></li>
+<li><a href="#factors-points-and-distance">Factors, points and distance</a></li>
+<li><a href="#evidence-as-a-fact-graph">Evidence as a fact graph</a></li>
+<li><a href="#matched-families">Matched families</a></li>
+<li><a href="#evidence-in-order">Evidence in order</a></li>
+<li><a href="#tables-cover-every-point-and-prompts-use-words">Tables cover every point, and prompts use words</a></li>
+</ul>
+</nav>
+<h2 id="three-senses-of-one-phrase"><a class="heading-anchor" href="#three-senses-of-one-phrase">Three senses of one phrase</a></h2>
+<p>&ldquo;Geometric reasoning&rdquo; names at least three different things in circulation, and a neighboring field shares half the name. What the space is, and what gets measured in it, tells them apart:</p>
+<ul>
+<li><strong>A declared design space.</strong> The space is a set of discrete factors chosen in advance, such as how long an answer runs or how boldly it commits, and its points are every combination of their levels. A behavior is measured at each point, and the distance between two points is how many factors differ. This is the course&rsquo;s sense.</li>
+<li><strong>The shape of a model&rsquo;s representations.</strong> The space is the vectors inside a model as it works, and reasoning shows up as a path through them. Zhou, Wang, Yin, Zhou and Zhang&rsquo;s <a href="https://arxiv.org/abs/2510.09782">The Geometry of Reasoning: Flowing Logics in Representation Space</a> (ICLR 2026) reads such paths by their position, velocity and curvature.</li>
+<li><strong>Geometry itself.</strong> The plain sense: a model solves geometry problems. DeepMind&rsquo;s AlphaGeometry, in Trinh, Wu, Le, He and Luong&rsquo;s <a href="https://www.nature.com/articles/s41586-023-06747-5">Solving olympiad geometry without human demonstrations</a> (Nature, 2024), proves olympiad geometry theorems.</li>
+<li><strong>Symmetry in learning, the neighbor.</strong> <a href="https://arxiv.org/abs/2104.13478">Geometric deep learning</a>, in the 2021 work by Bronstein, Bruna, Cohen and Veli&ccaron;kovi&cacute;, shares half the name. Its space is the data&rsquo;s own domain, such as a grid or a graph, and it builds a model&rsquo;s architecture around the transformations that leave that domain unchanged.</li>
+</ul>
+<p>The module builds on the first sense. The other three stay out of it, named here so a reader who meets the phrase elsewhere can tell which one is meant.</p>
+<h2 id="factors-points-and-distance"><a class="heading-anchor" href="#factors-points-and-distance">Factors, points and distance</a></h2>
+<p>The coffee cart&rsquo;s answers vary on three traits, each with two levels: brief or detailed, formal or casual, cautious or bold. The design file, <code>shared/coffee-cart.design.json</code>, declares them once, in order, with a table of invented values:</p>
+<pre class="code-block" tabindex="0"><code>{
+  "$schema": "./design.schema.json",
+  "name": "coffee-cart-answers",
+  "note": "A coffee cart's menu answers, on three invented two-level traits. Every value in the table is invented for the lesson.",
+  "factors": [
+    { "name": "length", "levels": ["brief", "detailed"] },
+    { "name": "register", "levels": ["formal", "casual"] },
+    { "name": "certainty", "levels": ["cautious", "bold"] }
+  ],
+  "table": {
+    "measure": "invented score",
+    "rows": [
+      { "point": "000", "value": 0.9 },
+      { "point": "001", "value": 0.8 },
+      { "point": "010", "value": 0.85 },
+      { "point": "011", "value": 0.7 },
+      { "point": "100", "value": 0.88 },
+      { "point": "101", "value": 0.75 },
+      { "point": "110", "value": 0.8 },
+      { "point": "111", "value": 0.6 }
+    ]
+  }
+}</code></pre>
+<p>A point takes one level of each factor, written as a digit: 0 for the first level, 1 for the second. So <code>011</code> is brief, casual and bold. Three two-level factors give 2&sup3; = 8 points, a two-level full factorial in the terms of the <a href="https://www.itl.nist.gov/div898/handbook/pri/section3/pri3331.htm">NIST/SEMATECH e-Handbook</a>. The distance between two points is how many factors they differ in, their Hamming distance, after R. W. Hamming&rsquo;s 1950 paper on error-correcting codes.</p>
+<p>Nothing derived is stored. The file holds the factors and the table, and the points, distances and counts come from the factors every time, so they can&rsquo;t drift from them; the lecture Redux Toolkit and RTK Query Best Practices gives state the same rule (<a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#derive-views-with-selectors">Derive views with selectors</a>). The shared reader, <code>src/shared/design.ts</code>, parses the file into readonly types once, at the edge, and derives the rest:</p>
+<pre class="code-block" tabindex="0"><code>/** Every point of a d-factor design, in order: 000, 001, 010, ... */
+export const points = (d: number): readonly string[] =&gt;
+  Array.from({ length: 2 ** d }, (_, i) =&gt; i.toString(2).padStart(d, "0"));
+
+/** How many factors two points differ in. */
+export const hamming = (a: string, b: string): number =&gt; {
+  if (a.length !== b.length) throw new Error("points must have the same number of factors");
+  return [...a].filter((bit, i) =&gt; bit !== b[i]).length;
+};
+
+export const describe = (design: Design, point: string): string =&gt;
+  design.factors.map((factor, i) =&gt; factor.levels[point[i] === "1" ? 1 : 0]).join(", ");</code></pre>
+<p>This lesson adds the two relations the later lessons need: the neighbors of a point, and the one factor a step to a neighbor changes.</p>
+<pre class="code-block" tabindex="0"><code>// src/geometric-reasoning-as-data/space.ts
+// Relations between a design's points, derived from the points alone.
+import { hamming, points } from "../shared/design.ts";
+
+/** The points one factor away. */
+export const neighbors = (point: string): readonly string[] =&gt;
+  points(point.length).filter((other) =&gt; hamming(point, other) === 1);
+
+/** The one factor two points differ in; any other step is an error. */
+export const flipped = (a: string, b: string): number =&gt; {
+  if (hamming(a, b) !== 1) throw new Error(`${a} and ${b} are not one factor apart`);
+  return [...a].findIndex((bit, i) =&gt; bit !== b[i]);
+};</code></pre>
+<p>Every point has one neighbor for each factor, and a step to a neighbor moves one trait. From <code>011</code>, brief, casual and bold, the step to <code>001</code> moves the register, to <code>010</code> the certainty and to <code>111</code> the length. A step across two factors is refused, since it can&rsquo;t say which trait made the difference:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/geometric-reasoning-as-data/space.test.ts --reporter=verbose | grep -E '✓|Tests'
+ ✓ src/geometric-reasoning-as-data/space.test.ts &gt; the space a design declares &gt; Given any point, When its neighbors are listed, Then there is one per factor, each one factor away 13ms
+ ✓ src/geometric-reasoning-as-data/space.test.ts &gt; the space a design declares &gt; Given 011 and each of its neighbors, When the step is read, Then it names the one factor that moved 1ms
+ ✓ src/geometric-reasoning-as-data/space.test.ts &gt; the space a design declares &gt; Given two points two factors apart, When the step is read, Then it is refused 1ms
+      Tests  3 passed (3)</code></pre>
+<p>Drawn by how many traits sit at their second level, the cube stands in rows of 1, 3, 3 and 1, and the table beside it names each point once:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="geometric-reasoning-as-data-cube-title geometric-reasoning-as-data-cube-desc" viewBox="0 0 360 266">
+<title id="geometric-reasoning-as-data-cube-title">The coffee cart&rsquo;s cube beside its table</title>
+<desc id="geometric-reasoning-as-data-cube-desc">Left, the eight points of the coffee cart&rsquo;s three traits in rows of 1, 3, 3 and 1, from 000 at the top to 111 at the bottom, with a line between every two points one trait apart. Lines that change the certainty run down to the left, lines that change the register run straight down and lines that change the length run down to the right, as the key below the drawing shows. Right, the table lists each point once with its invented value. Point 011 is outlined in both, and its value is 0.7.</desc>
+<g class="edge"><line x1="104" y1="34" x2="34" y2="76"/><line x1="104" y1="34" x2="104" y2="76"/><line x1="104" y1="34" x2="174" y2="76"/><line x1="34" y1="98" x2="34" y2="140"/><line x1="34" y1="98" x2="104" y2="140"/><line x1="104" y1="98" x2="34" y2="140"/><line x1="104" y1="98" x2="174" y2="140"/><line x1="174" y1="98" x2="104" y2="140"/><line x1="174" y1="98" x2="174" y2="140"/><line x1="34" y1="162" x2="104" y2="204"/><line x1="104" y1="162" x2="104" y2="204"/><line x1="174" y1="162" x2="104" y2="204"/><line x1="44" y1="242" x2="24" y2="254"/><line x1="136" y1="242" x2="136" y2="254"/><line x1="252" y1="242" x2="272" y2="254"/><line x1="232" y1="35" x2="348" y2="35"/></g>
+<rect class="node" x="82" y="12" width="44" height="22" rx="4"/>
+<rect class="node" x="12" y="76" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="76" width="44" height="22" rx="4"/>
+<rect class="node" x="152" y="76" width="44" height="22" rx="4"/>
+<rect class="node on" x="12" y="140" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="140" width="44" height="22" rx="4"/>
+<rect class="node" x="152" y="140" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="204" width="44" height="22" rx="4"/>
+<rect class="node on" x="232" y="108" width="116" height="22" rx="4"/>
+<g><text x="104" y="23">000</text><text x="34" y="87">001</text><text x="104" y="87">010</text><text x="174" y="87">100</text><text x="34" y="151">011</text><text x="104" y="151">101</text><text x="174" y="151">110</text><text x="104" y="215">111</text><text class="note" x="262" y="23">point</text><text class="note" x="318" y="23">value</text><text x="262" y="47">000</text><text x="318" y="47">0.9</text><text x="262" y="71">001</text><text x="318" y="71">0.8</text><text x="262" y="95">010</text><text x="318" y="95">0.85</text><text x="262" y="119">011</text><text x="318" y="119">0.7</text><text x="262" y="143">100</text><text x="318" y="143">0.88</text><text x="262" y="167">101</text><text x="318" y="167">0.75</text><text x="262" y="191">110</text><text x="318" y="191">0.8</text><text x="262" y="215">111</text><text x="318" y="215">0.6</text><text class="note" x="76" y="248">certainty</text><text class="note" x="180" y="248">register</text><text class="note" x="304" y="248">length</text></g>
+</svg>
+<figcaption>The coffee cart&rsquo;s cube beside its table. Each line joins two points one trait apart, and lines that change the same trait run parallel, as the key shows. Point 011, brief, casual and bold, is outlined in violet in both.</figcaption>
+</figure>
+<p>A design measures coverage, not quality, and its factors are chosen for what a release must not get worse at. A trait that matters less is held fixed rather than added.</p>
+<h2 id="evidence-as-a-fact-graph"><a class="heading-anchor" href="#evidence-as-a-fact-graph">Evidence as a fact graph</a></h2>
+<p>A behavior is measured on evidence, and the evidence is data too: a list of facts, each one edge in a graph. The facts are written in invented words, so what a model already knows about the world can&rsquo;t stand in for the premises. <a href="https://github.com/asaparov/prontoqa">PrOntoQA</a> (Saparov and He, ICLR 2023) can generate its reasoning questions over a fictional ontology, so that what a model knows of the world doesn&rsquo;t decide the answer.</p>
+<p>An oracle labels every answer, so none is typed by hand. It chains forward: from the subject, it follows every fact that holds until nothing new is reached, then reads off yes, no or unknown.</p>
+<pre class="code-block" tabindex="0"><code>// src/geometric-reasoning-as-data/facts.ts
+// Evidence as a graph of facts in invented words, and the oracle that reads it.
+
+/** One edge. From "the brintepet" it is about one thing; from any other word, about every member. */
+export type Fact = { readonly from: string; readonly to: string; readonly holds: boolean };
+export type Answer = "yes" | "no" | "unknown";
+
+/** Forward chaining: follow every fact that holds out from the subject, until nothing new is reached. */
+export const entails = (facts: readonly Fact[], subject: string, property: string): Answer =&gt; {
+  const reached = new Set([subject]);
+  for (let grew = true; grew; ) {
+    grew = false;
+    for (const f of facts)
+      if (f.holds &amp;&amp; reached.has(f.from) &amp;&amp; !reached.has(f.to)) {
+        reached.add(f.to);
+        grew = true;
+      }
+  }
+  const denied = facts.some((f) =&gt; !f.holds &amp;&amp; f.to === property &amp;&amp; reached.has(f.from));
+  if (reached.has(property) &amp;&amp; denied) throw new Error(`the facts say both yes and no to ${property}`);
+  return reached.has(property) ? "yes" : denied ? "no" : "unknown";
+};
+
+/** One fact as a sentence; the property is an adjective, every other word a noun. */
+export const sentence = (f: Fact, property: string): string =&gt; {
+  const what = f.to === property ? f.to : `a ${f.to}`;
+  if (f.from.startsWith("the ")) return `The ${f.from.slice(4)} is ${f.holds ? "" : "not "}${what}.`;
+  return `${f.holds ? "Every" : "No"} ${f.from} is ${what}.`;
+};</code></pre>
+<p>A perturbation pair is two fact sheets that differ in one fact. Flip a load-bearing fact, one on the path from the subject to the answer, and the answer must move; flip a distractor, and it must not. <a href="https://aclanthology.org/2020.findings-emnlp.117/">Contrast sets</a> (Gardner and others, Findings of EMNLP 2020) perturb test items by hand in small ways that typically change the gold label. A generator and an oracle make the same move in code.</p>
+<p>The pair record holds everything a reviewer needs to trust it: both sheets, which fact flipped, the hop count, the distractor count, both answers and its provenance (the generator, the seed and the rule). Its one constructor labels both sides with the oracle and refuses a pair whose sheets differ in length, or in anything but exactly one fact.</p>
+<pre class="code-block" tabindex="0"><code>// src/geometric-reasoning-as-data/pairs.ts
+// A perturbation pair: two fact sheets that differ in one fact, both labelled by the oracle.
+import { entails, type Answer, type Fact } from "./facts.ts";
+
+export type Pair = {
+  readonly subject: string;
+  readonly property: string;
+  readonly facts: readonly Fact[];
+  readonly perturbed: readonly Fact[];
+  readonly flipped: number;
+  readonly hops: number;
+  readonly distractors: number;
+  readonly answers: { readonly canonical: Answer; readonly perturbed: Answer };
+  readonly provenance: { readonly generator: string; readonly seed: number; readonly rule: string };
+};
+
+/** The one constructor: it labels both sides with the oracle, and refuses sheets of
+    different lengths or any pair where anything but exactly one fact differs. */
+export const pair = (p: Omit&lt;Pair, "flipped" | "answers"&gt;): Pair =&gt; {
+  const same = (a?: Fact, b?: Fact) =&gt; a?.from === b?.from &amp;&amp; a?.to === b?.to &amp;&amp; a?.holds === b?.holds;
+  if (p.facts.length !== p.perturbed.length)
+    throw new Error(`a pair's sheets have ${p.facts.length} and ${p.perturbed.length} facts`);
+  const changed = p.facts.flatMap((f, i) =&gt; (same(f, p.perturbed[i]) ? [] : [i]));
+  if (changed.length !== 1 || changed[0] === undefined)
+    throw new Error(`a pair differs in exactly one fact, not ${changed.length}`);
+  const answers = {
+    canonical: entails(p.facts, p.subject, p.property),
+    perturbed: entails(p.perturbed, p.subject, p.property),
+  };
+  return { ...p, flipped: changed[0], answers };
+};
+
+export const flip = (facts: readonly Fact[], i: number): readonly Fact[] =&gt;
+  facts.map((f, j) =&gt; (j === i ? { ...f, holds: !f.holds } : f));
+
+/** splitmix32, a small public seeded generator: the same seed always gives the same pair. */
+const seeded = (seed: number) =&gt; () =&gt; {
+  seed = (seed + 0x9e3779b9) | 0;
+  let z = Math.imul(seed ^ (seed &gt;&gt;&gt; 16), 0x21f0aaad);
+  z = Math.imul(z ^ (z &gt;&gt;&gt; 15), 0x735a2d97);
+  return ((z ^ (z &gt;&gt;&gt; 15)) &gt;&gt;&gt; 0) / 2 ** 32;
+};
+
+const SYLLABLES = ["quil", "mor", "dun", "vash", "tep", "zor", "brin", "kell", "lom", "sarr"];
+
+/** A chain of `hops` facts from an invented drink to the property, with distractors among them. */
+export const makePair = (seed: number, hops: number, distractors: number, property = "dairy-free"): Pair =&gt; {
+  const random = seeded(seed);
+  const pick = &lt;T&gt;(xs: readonly T[]): T =&gt; xs[Math.floor(random() * xs.length)] as T;
+  const words = new Set&lt;string&gt;();
+  while (words.size &lt; hops + distractors) {
+    const [a, b] = [pick(SYLLABLES), pick(SYLLABLES)];
+    if (a !== b) words.add(`${a}${b}et`);
+  }
+  const [first = "", ...rest] = [...words];
+  const chain = [`the ${first}`, ...rest.slice(0, hops - 1), property];
+  const spare = rest.slice(hops - 1);
+  // On the path every fact holds, except perhaps the last, which decides yes or no.
+  const onPath: Fact[] = chain.slice(1).map((to, i) =&gt; ({
+    from: chain[i] ?? "",
+    to,
+    holds: i &lt; hops - 1 || random() &lt; 0.5,
+  }));
+  // Off the path, facts start from words the subject never reaches.
+  const offPath: Fact[] = spare.map((from) =&gt; {
+    const others = spare.filter((w) =&gt; w !== from);
+    const to = others.length &gt; 0 &amp;&amp; random() &lt; 0.5 ? pick(others) : property;
+    return { from, to, holds: random() &lt; 0.5 };
+  });
+  const facts = [...onPath, ...offPath]
+    .map((f) =&gt; ({ f, at: random() }))
+    .sort((a, b) =&gt; a.at - b.at)
+    .map(({ f }) =&gt; f);
+  const loadBearing = facts.indexOf(pick(onPath));
+  const provenance = { generator: "invented-chain", seed, rule: "flip one load-bearing fact" };
+  const perturbed = flip(facts, loadBearing);
+  return pair({ subject: chain[0] ?? "", property, facts, perturbed, hops, distractors, provenance });
+};</code></pre>
+<p>One pair, printed the way a reviewer reads it:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ node src/geometric-reasoning-as-data/pair.ts
+invented-chain, seed 8: 3 hops, 2 distractors, flip one load-bearing fact
+  0 Every zorquilet is a zorbrinet.
+  1 No zorbrinet is dairy-free.
+  2 Every lomkellet is a kellbrinet.
+  3 Every kellbrinet is dairy-free.
+  4 The brintepet is a lomkellet.
+question: Is the brintepet dairy-free?
+fact 3 becomes: No kellbrinet is dairy-free.
+answers: yes, then no</code></pre>
+<p>Drawn as a graph, the proof is one path from the subject to the property, and the distractors never touch it:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="geometric-reasoning-as-data-facts-title geometric-reasoning-as-data-facts-desc" viewBox="0 0 360 298">
+<title id="geometric-reasoning-as-data-facts-title">A fact graph and its twin, one fact apart</title>
+<desc id="geometric-reasoning-as-data-facts-desc">On the left, a highlighted proof path runs from the brintepet to lomkellet, to kellbrinet and down to dairy-free. On the right, two greyed distractors, zorquilet and zorbrinet, form a chain of their own that ends in a line labelled no into dairy-free. The last edge of the proof path is labelled: it was every, and in the perturbed sheet it is no. Below, the question asks whether the brintepet is dairy-free; the canonical sheet answers yes and the perturbed sheet answers no.</desc>
+<g class="edge"><line x1="270" y1="98" x2="270" y2="140"/><line x1="273" y1="134.8" x2="270" y2="140"/><line x1="267" y1="134.8" x2="270" y2="140"/><line x1="270" y1="162" x2="210" y2="204"/><line x1="216" y1="203.5" x2="210" y2="204"/><line x1="212.5" y1="198.6" x2="210" y2="204"/></g>
+<g class="path"><line x1="96" y1="34" x2="96" y2="76"/><line x1="99" y1="70.8" x2="96" y2="76"/><line x1="93" y1="70.8" x2="96" y2="76"/><line x1="96" y1="98" x2="96" y2="140"/><line x1="99" y1="134.8" x2="96" y2="140"/><line x1="93" y1="134.8" x2="96" y2="140"/><line x1="96" y1="162" x2="150" y2="204"/><line x1="147.7" y1="198.4" x2="150" y2="204"/><line x1="144.1" y1="203.2" x2="150" y2="204"/></g>
+<rect class="node on" x="30" y="12" width="132" height="22" rx="4"/>
+<rect class="node on" x="44" y="76" width="104" height="22" rx="4"/>
+<rect class="node on" x="44" y="140" width="104" height="22" rx="4"/>
+<rect class="node on" x="128" y="204" width="104" height="22" rx="4"/>
+<rect class="node" x="218" y="76" width="104" height="22" rx="4"/>
+<rect class="node" x="218" y="140" width="104" height="22" rx="4"/>
+<rect class="node" x="12" y="264" width="160" height="22" rx="4"/>
+<rect class="node" x="188" y="264" width="160" height="22" rx="4"/>
+<g><text x="96" y="23">the brintepet</text><text x="96" y="87">lomkellet</text><text x="96" y="151">kellbrinet</text><text x="180" y="215">dairy-free</text><text class="note" x="270" y="87">zorquilet</text><text class="note" x="270" y="151">zorbrinet</text><text class="note" x="56" y="176">was: every</text><text class="note" x="56" y="194">now: no</text><text class="note" x="256" y="190">no</text><text class="note" x="180" y="243">Is the brintepet dairy-free?</text><text x="92" y="275">canonical: yes</text><text x="268" y="275">perturbed: no</text></g>
+</svg>
+<figcaption>The pair above as a graph. The violet path is the proof, three hops from the brintepet to dairy-free. The grey facts are distractors, a chain of their own the subject never reaches. Flipping the proof&rsquo;s last edge from every to no moves the answer from yes to no.</figcaption>
+</figure>
+<p>The tests hold the generator to its invariants over 600 seeded pairs, from one hop to five and from no distractors to four. The third is the strongest: flip each fact of a sheet alone, and exactly the hops move the answer, so the counts the record states are counted again by the oracle.</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/geometric-reasoning-as-data/pairs.test.ts --reporter=verbose | grep -E '✓|Tests'
+ ✓ src/geometric-reasoning-as-data/pairs.test.ts &gt; perturbation pairs &gt; Given seeded pairs, When each is built, Then exactly one fact differs, at the recorded index 20ms
+ ✓ src/geometric-reasoning-as-data/pairs.test.ts &gt; perturbation pairs &gt; Given a load-bearing flip, When the oracle reads both sheets, Then its two answers differ 5ms
+ ✓ src/geometric-reasoning-as-data/pairs.test.ts &gt; perturbation pairs &gt; Given every fact of a sheet, When each is flipped alone, Then only the hops move the answer 9ms
+ ✓ src/geometric-reasoning-as-data/pairs.test.ts &gt; perturbation pairs &gt; Given the same seed, When a pair is made twice, Then both are the same pair 1ms
+ ✓ src/geometric-reasoning-as-data/pairs.test.ts &gt; perturbation pairs &gt; Given two sheets two facts apart, When they are made a pair, Then the constructor refuses 1ms
+ ✓ src/geometric-reasoning-as-data/pairs.test.ts &gt; perturbation pairs &gt; Given a perturbed sheet with one fact more, When they are made a pair, Then the constructor names both lengths 0ms
+ ✓ src/geometric-reasoning-as-data/pairs.test.ts &gt; perturbation pairs &gt; Given a sheet that says both yes and no, When the oracle reads it, Then it refuses to answer 0ms
+      Tests  7 passed (7)</code></pre>
+<h2 id="matched-families"><a class="heading-anchor" href="#matched-families">Matched families</a></h2>
+<p>A matched family is one fact sheet answered at every point of a design. The sheet, the question and the evidence stay fixed and only the point moves, so any difference between two answers belongs to the traits that differ.</p>
+<p>Every field of an answer is declared in advance as one of two kinds. Invariant fields are the same at every point: here, the facts and the answer. Expressive fields move with the voice: here, one, the tone. A field nobody declared is a fault, never quietly treated as either kind.</p>
+<pre class="code-block" tabindex="0"><code>// src/geometric-reasoning-as-data/family.ts
+// A matched family: one fact sheet answered at every point of a design.
+import { points } from "../shared/design.ts";
+
+export type Value = string | readonly string[];
+export type Member = { readonly point: string; readonly output: Readonly&lt;Record&lt;string, Value&gt;&gt; };
+export type Declared = { readonly invariant: readonly string[]; readonly expressive: readonly string[] };
+
+/** A value as a key; a list is compared as a set, so its order never matters. */
+const key = (v: Value | undefined): string =&gt;
+  JSON.stringify(typeof v === "string" || v === undefined ? v : [...v].sort());
+
+/** Every fault in a family, as data: a point missing or answered twice, a field nobody declared,
+ *  an invariant field that moved, two points that say it the same way. An empty list is a family that holds. */
+export const validateFamily = (d: number, declared: Declared, family: readonly Member[]): readonly string[] =&gt; {
+  const faults: string[] = [];
+  for (const p of points(d)) {
+    const n = family.filter((m) =&gt; m.point === p).length;
+    if (n !== 1) faults.push(n === 0 ? `point ${p} is missing` : `point ${p} is answered ${n} times`);
+  }
+  const known = new Set([...declared.invariant, ...declared.expressive]);
+  for (const m of family)
+    for (const f of Object.keys(m.output)) if (!known.has(f)) faults.push(`${m.point}: ${f} is not declared`);
+  const [first, ...rest] = family;
+  for (const f of declared.invariant)
+    for (const m of rest)
+      if (first &amp;&amp; key(m.output[f]) !== key(first.output[f]))
+        faults.push(`${m.point}: ${f} differs from ${first.point}`);
+  const voices = new Map&lt;string, string&gt;();
+  for (const m of family) {
+    const voice = declared.expressive.map((f) =&gt; key(m.output[f])).join("|");
+    const twin = voices.get(voice);
+    if (twin !== undefined &amp;&amp; twin !== m.point) faults.push(`${twin} and ${m.point} say it the same way`);
+    voices.set(voice, m.point);
+  }
+  return faults;
+};</code></pre>
+<p>The validator returns every fault as data, the way the lecture Practical Applications of Functional Programming collects every failure instead of stopping at the first (<a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#accumulate-every-error-with-validation">Accumulate every error with validation</a>). A family with a missing point and a changed answer needs both repairs, and a report that names only one sends the generator round twice.</p>
+<p>The contract starts as a feature, written in Gherkin the way <a href="/community/given-when-then-gherkin-syntax-in-bdd/">Given-When-Then (Gherkin) syntax in BDD</a> teaches:</p>
+<pre class="code-block" tabindex="0"><code>Feature: A matched family holds the facts and moves the voice
+  The coffee cart's dairy-free latte sheet, answered at every point of its three traits.
+  The facts and the answer are invariant. The tone is expressive.
+
+  Scenario: A family that holds the facts and moves the voice has no faults
+    Given the sheet answered once at each of the 8 points
+    When the family is validated
+    Then no fault is reported
+
+  Scenario: Every fault is reported at once
+    Given the family with 111 missing and 000 answered twice
+    And the answer at 101 offering whole milk
+    When the family is validated
+    Then all three faults are reported together
+
+  Scenario: An undeclared field is a fault, never a default
+    Given an answer at 010 with a greeting nobody declared
+    When the family is validated
+    Then the undeclared field is reported
+
+  Scenario: Two points that say it the same way are a fault
+    Given the answer at 001 in the same tone as the answer at 000
+    When the family is validated
+    Then both points are named</code></pre>
+<p>The tests take their names from the feature file, and one more test fails if a scenario has no test. The second scenario expects exactly three faults in one report: <code>point 000 is answered 2 times</code>, <code>point 111 is missing</code> and <code>101: answer differs from 000</code>.</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/geometric-reasoning-as-data/family.test.ts --reporter=verbose | grep -E '✓|Tests'
+ ✓ src/geometric-reasoning-as-data/family.test.ts &gt; Feature: A matched family holds the facts and moves the voice &gt; Scenario: A family that holds the facts and moves the voice has no faults 2ms
+ ✓ src/geometric-reasoning-as-data/family.test.ts &gt; Feature: A matched family holds the facts and moves the voice &gt; Scenario: Every fault is reported at once 1ms
+ ✓ src/geometric-reasoning-as-data/family.test.ts &gt; Feature: A matched family holds the facts and moves the voice &gt; Scenario: An undeclared field is a fault, never a default 1ms
+ ✓ src/geometric-reasoning-as-data/family.test.ts &gt; Feature: A matched family holds the facts and moves the voice &gt; Scenario: Two points that say it the same way are a fault 0ms
+ ✓ src/geometric-reasoning-as-data/family.test.ts &gt; Feature: A matched family holds the facts and moves the voice &gt; has a test for every scenario in family.feature 0ms
+      Tests  5 passed (5)</code></pre>
+<p>Drawn as a family, the feature&rsquo;s latte sheet holds one band fixed at every point and lets the rest move:</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="geometric-reasoning-as-data-family-title geometric-reasoning-as-data-family-desc" viewBox="0 0 360 236">
+<title id="geometric-reasoning-as-data-family-title">A matched family</title>
+<desc id="geometric-reasoning-as-data-family-desc">One fact sheet at the top fans out to eight answers, one at each point from 000 to 111. Below them, one highlighted band runs under all eight: the invariant fields, the same at every point: the facts, that oat milk is dairy-free and whole milk isn&rsquo;t, and the answer, a latte with oat milk. Below that, each point has its own box naming its tone, t1 at 000 through t8 at 111, so no two points share one.</desc>
+<g class="edge"><line x1="180" y1="34" x2="33" y2="66"/><line x1="180" y1="34" x2="75" y2="66"/><line x1="180" y1="34" x2="117" y2="66"/><line x1="180" y1="34" x2="159" y2="66"/><line x1="180" y1="34" x2="201" y2="66"/><line x1="180" y1="34" x2="243" y2="66"/><line x1="180" y1="34" x2="285" y2="66"/><line x1="180" y1="34" x2="327" y2="66"/></g>
+<rect class="node" x="100" y="12" width="160" height="22" rx="4"/>
+<rect class="node" x="14" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="56" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="98" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="140" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="182" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="224" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="266" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="308" y="66" width="38" height="22" rx="4"/>
+<rect class="node on" x="12" y="116" width="336" height="48" rx="4"/>
+<rect class="node" x="14" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="56" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="98" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="140" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="182" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="224" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="266" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="308" y="194" width="38" height="28" rx="4"/>
+<g><text x="180" y="23">one fact sheet</text><text x="33" y="77">000</text><text x="75" y="77">001</text><text x="117" y="77">010</text><text x="159" y="77">011</text><text x="201" y="77">100</text><text x="243" y="77">101</text><text x="285" y="77">110</text><text x="327" y="77">111</text><text class="note" x="180" y="104">invariant: the facts and the answer</text><text x="180" y="133">oat milk is dairy-free; whole isn&rsquo;t</text><text x="180" y="153">answer: a latte with oat milk</text><text class="note" x="180" y="182">expressive: the tone</text><text x="33" y="208">t1</text><text x="75" y="208">t2</text><text x="117" y="208">t3</text><text x="159" y="208">t4</text><text x="201" y="208">t5</text><text x="243" y="208">t6</text><text x="285" y="208">t7</text><text x="327" y="208">t8</text></g>
+</svg>
+<figcaption>The latte sheet as a family. The violet band is locked: the same facts and the same answer at every point. Below it, t numbers the eight tones, one for each point, and no two points share one.</figcaption>
+</figure>
+<h2 id="evidence-in-order"><a class="heading-anchor" href="#evidence-in-order">Evidence in order</a></h2>
+<p>Evidence arrives in order, and an answer has to follow it. The oat milk is in stock at 7:00, a customer asks about the hours at 8:30, the last carton goes at 9:15, and the 10:40 delivery brings almond milk and no oat milk. At each step the answer should match the latest evidence: in stock, still in stock after the question, then sold out, and still sold out once the delivery is in.</p>
+<p>Each step&rsquo;s context is every event so far, in order, taken from the timeline itself. A chat request carries its conversation the same way: Claude&rsquo;s Messages API, for one, is <a href="https://platform.claude.com/docs/en/build-with-claude/working-with-messages">stateless</a>, and every request sends the whole of it.</p>
+<pre class="code-block" tabindex="0"><code>// src/geometric-reasoning-as-data/timeline.ts
+// Evidence in order: each step's context is every event so far, taken from the timeline itself.
+export type Event = { readonly at: string; readonly says: string; readonly inStock?: boolean };
+
+/** Each step's context: every event so far, in order, built from the timeline alone. */
+export const contexts = (events: readonly Event[]): readonly (readonly Event[])[] =&gt;
+  events.map((_, i) =&gt; events.slice(0, i + 1));
+
+/** What an answer should commit to: the latest evidence, or unknown before there is any. */
+export const expected = (context: readonly Event[]): boolean | "unknown" =&gt;
+  context.findLast((e) =&gt; e.inStock !== undefined)?.inStock ?? "unknown";</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/geometric-reasoning-as-data/timeline.test.ts --reporter=verbose | grep -E '✓|Tests'
+ ✓ src/geometric-reasoning-as-data/timeline.test.ts &gt; evidence in order &gt; Given in stock, then a question, then sold out, then a delivery without it, When each step is read, Then it expects the latest evidence 7ms
+ ✓ src/geometric-reasoning-as-data/timeline.test.ts &gt; evidence in order &gt; Given no evidence yet, When the first step is read, Then the answer is unknown 1ms
+ ✓ src/geometric-reasoning-as-data/timeline.test.ts &gt; evidence in order &gt; Given any step, When its context is built, Then it holds every earlier event in order and nothing later 2ms
+      Tests  3 passed (3)</code></pre>
+<p><a href="/community/measuring-reasoning-on-the-geometry/">Measuring reasoning on the geometry</a> reads a factorial table point by point, and checks that an answer moves only for evidence.</p>
+<h2 id="tables-cover-every-point-and-prompts-use-words"><a class="heading-anchor" href="#tables-cover-every-point-and-prompts-use-words">Tables cover every point, and prompts use words</a></h2>
+<p>A measurement table covers every point exactly once. The shared reader refuses a design whose table misses a point or holds a point of the wrong length, and reports both at once.</p>
+<p>A prompt asks for a voice in plain words read from the design, such as &ldquo;Answer in a brief, casual, bold voice&rdquo;, because a point like <code>011</code> means nothing to a reader outside the design:</p>
+<pre class="code-block" tabindex="0"><code>// src/geometric-reasoning-as-data/table.ts
+// A prompt names the voice in words, read from the design.
+import { describe, type Design } from "../shared/design.ts";
+
+/** The request a model sees: the voice in plain words, never its point. */
+export const ask = (design: Design, point: string, question: string): string =&gt;
+  `Answer in a ${describe(design, point)} voice. ${question}`;</code></pre>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/geometric-reasoning-as-data/table.test.ts --reporter=verbose | grep -E '✓|Tests'
+ ✓ src/geometric-reasoning-as-data/table.test.ts &gt; tables and prompts &gt; Given a table with 111 missing and a four-factor point, When it is read, Then both are refused 2ms
+ ✓ src/geometric-reasoning-as-data/table.test.ts &gt; tables and prompts &gt; Given the point 011, When its prompt is rendered, Then it asks for the voice in words 1ms
+ ✓ src/geometric-reasoning-as-data/table.test.ts &gt; tables and prompts &gt; Given every point, When its prompt is rendered, Then no two points ask for the same voice 0ms
+      Tests  3 passed (3)</code></pre>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Hop and distractor counts are definitions, and benchmarks draw them in different ways: whether the subject&rsquo;s own fact counts as a hop, whether a fact that names the property but can&rsquo;t be reached is a distractor. A team writes its rules in code and tests them, as this lesson does, and never claims its counts reproduce another kit&rsquo;s.</p>
+<p>And a claim about reasoning reaches the module with no contract of its own. The claims ledger from <a href="/community/module-6-ai-protocol-ecosystem/">the module&rsquo;s opener</a> keeps it honest here too: each claim gets its own row, marked measured, released or asserted, and the lessons build on what was measured or released.</p></aside>
+<p>That is the data the module&rsquo;s joins carry. <a href="/community/the-tandem-harness/">The tandem harness</a> puts it to work beside a model: it composes a prompt from a point and a fact sheet, and checks what comes back before anything leaves.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/the-ai-protocol-map/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">The AI protocol map</span></a>
+<a href="/community/the-tandem-harness/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The tandem harness</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>

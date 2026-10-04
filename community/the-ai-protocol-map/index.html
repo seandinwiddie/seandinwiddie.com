@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>The AI Protocol Map | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="The open agreements at each join an AI system crosses, from MCP and A2A to AGENTS.md, Agent Skills and OpenAPI, and a tool endpoint built by hand.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/the-ai-protocol-map/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The AI Protocol Map | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="The open agreements at each join an AI system crosses, from MCP and A2A to AGENTS.md, Agent Skills and OpenAPI, and a tool endpoint built by hand.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/the-ai-protocol-map/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-03T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-03">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The AI Protocol Map | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="The open agreements at each join an AI system crosses, from MCP and A2A to AGENTS.md, Agent Skills and OpenAPI, and a tool endpoint built by hand.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#webpage","url":"https://seandinwiddie.com/community/the-ai-protocol-map/","name":"The AI Protocol Map | Sean Dinwiddie's Webmastery","description":"The open agreements at each join an AI system crosses, from MCP and A2A to AGENTS.md, Agent Skills and OpenAPI, and a tool endpoint built by hand.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"The AI protocol map","item":"https://seandinwiddie.com/community/the-ai-protocol-map/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#article","headline":"The AI protocol map","description":"The open agreements at each join an AI system crosses, from MCP and A2A to AGENTS.md, Agent Skills and OpenAPI, and a tool endpoint built by hand.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/the-ai-protocol-map/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-03T12:00:00+00:00","dateModified":"2026-10-03"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/vecteezy_late-night-brainstorming-session-leads-to-successful_25492054_539-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>The AI protocol map</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 2; --lessons: 10">Lesson 2 of 10 in Module 6</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/the-ai-protocol-map/" rel="bookmark"><time datetime="2026-10-03T12:00:00+00:00">October 3, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>In <a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a>, the bakery&rsquo;s tools lived in the same program as the loop. Put a tool behind an open agreement instead, and any agent that speaks the agreement can call it, whoever made the agent, with no adapter written for the pair. This lesson maps those agreements, one join at a time, and builds the one at the center by hand.</p>
+<p>The running example is an invented coffee cart: a tool server an assistant can order through, the cart&rsquo;s Servant API turned into a tool, an Agent Card for the bakery that supplies its buns, and an <code>llms.txt</code> for the salon from <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a>. Where a protocol has a version or a revision, the page names the one it teaches.</p>
+<nav class="page-contents" aria-label="On this page">
+<p>On this page</p>
+<ul>
+<li><a href="#one-join-one-agreement">One join, one agreement</a></li>
+<li><a href="#hosts-clients-and-servers-and-who-decides">Hosts, clients and servers, and who decides</a></li>
+<li><a href="#stateless-as-of-2026-07-28">Stateless as of 2026-07-28</a></li>
+<li><a href="#tools-schemas-structured-results-and-two-kinds-of-failure">Tools: schemas, structured results and two kinds of failure</a></li>
+<li><a href="#transports-and-trust">Transports and trust</a></li>
+<li><a href="#from-a-servant-operation-to-a-tool">From a Servant operation to a tool</a></li>
+<li><a href="#agents-as-peers-files-as-know-how-pages-that-offer-tools">Agents as peers, files as know-how, pages that offer tools</a></li>
+</ul>
+</nav>
+<h2 id="one-join-one-agreement"><a class="heading-anchor" href="#one-join-one-agreement">One join, one agreement</a></h2>
+<p>An AI system crosses several joins, and each has an open agreement of its own. Learn the joins, and any new protocol finds its place on the map: ask which two things it joins, what crosses, and what checks it.</p>
+<ul>
+<li><strong>MCP</strong>, the <a href="https://modelcontextprotocol.io/specification/2026-07-28">Model Context Protocol</a>, joins an AI application to tools and data. A2A&rsquo;s own docs call it vertical: it deepens one agent.</li>
+<li><strong>A2A</strong>, the <a href="https://a2a-protocol.org/latest/topics/a2a-and-mcp/">Agent2Agent protocol</a>, joins one agent to another across a team or company line, which the same docs call horizontal.</li>
+<li><strong>ACP</strong>, the <a href="https://agentclientprotocol.com/">Agent Client Protocol</a>, joins a code editor to a coding agent; its current stable protocol version is 1.</li>
+<li><strong>WebMCP</strong>, a community-group draft, lets a web page offer tools to an agent in the browser.</li>
+<li><strong>OpenAPI</strong> joins a client to an HTTP API, as it does in Module 4.</li>
+<li><strong>AGENTS.md</strong> and <strong>Agent Skills</strong> are file formats, not wire protocols: a repository&rsquo;s standing instructions, and know-how an agent loads when a task calls for it. <strong>llms.txt</strong> is a proposal for pointing agents at a site&rsquo;s content.</li>
+</ul>
+<p>The wire protocols share a lot. MCP and ACP speak <a href="https://www.jsonrpc.org/specification">JSON-RPC 2.0</a> and publish JSON Schema for their messages; A2A defines its data model once, in Protocol Buffers, and binds it to JSON-RPC, gRPC and plain HTTP. MCP&rsquo;s specification names its inspiration: the <a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a>, which gave editors one standard joint for every language in place of an adapter for each pair.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="the-ai-protocol-map-joins-title the-ai-protocol-map-joins-desc" viewBox="0 0 360 280">
+<title id="the-ai-protocol-map-joins-title">One join, one agreement</title>
+<desc id="the-ai-protocol-map-joins-desc">The cart&rsquo;s app in the center, joined to six agreements and the parties beyond them. Above: MCP to an assistant, highlighted, OpenAPI to a web client, A2A to the bakery&rsquo;s agent. Below: WebMCP to a browser agent, AGENTS.md to a coding agent, llms.txt to any agent.</desc>
+<g class="edge"><line x1="180" y1="118.5" x2="180" y2="55.5"/><line x1="220" y1="118.5" x2="296" y2="55.5"/><line x1="140" y1="161.5" x2="64" y2="224.5"/><line x1="180" y1="161.5" x2="180" y2="224.5"/><line x1="220" y1="161.5" x2="296" y2="224.5"/></g>
+<g class="path"><line x1="140" y1="118.5" x2="64" y2="55.5"/></g>
+<rect class="node on" x="12.5" y="12.5" width="103" height="43" rx="6"/>
+<rect class="node" x="128.5" y="12.5" width="103" height="43" rx="6"/>
+<rect class="node" x="244.5" y="12.5" width="103" height="43" rx="6"/>
+<rect class="node" x="100.5" y="118.5" width="159" height="43" rx="6"/>
+<rect class="node" x="12.5" y="224.5" width="103" height="43" rx="6"/>
+<rect class="node" x="128.5" y="224.5" width="103" height="43" rx="6"/>
+<rect class="node" x="244.5" y="224.5" width="103" height="43" rx="6"/>
+<g><text x="64" y="27">MCP</text><text class="note" x="64" y="43">assistant</text><text x="180" y="27">OpenAPI</text><text class="note" x="180" y="43">web client</text><text x="296" y="27">A2A</text><text class="note" x="296" y="43">bakery agent</text><text x="180" y="140">the cart&rsquo;s app</text><text x="64" y="239">WebMCP</text><text class="note" x="64" y="255">browser agent</text><text x="180" y="239">AGENTS.md</text><text class="note" x="180" y="255">coding agent</text><text x="296" y="239">llms.txt</text><text class="note" x="296" y="255">any agent</text></g>
+</svg>
+<figcaption>Each box names a join&rsquo;s agreement, with the party on its far side beneath. The violet join, MCP, is the one this lesson builds by hand. ACP sits one step further out, between the coding agent and its editor.</figcaption>
+</figure>
+<p>Governance, in brief: Anthropic open-sourced MCP on <a href="https://www.anthropic.com/news/model-context-protocol">November 25, 2024</a>, and on <a href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation">December 9, 2025</a> donated it to the Agentic AI Foundation, a directed fund under the Linux Foundation co-founded by Anthropic, Block and OpenAI, with AGENTS.md and goose as fellow founding projects.</p>
+<p>A2A is a Linux Foundation project contributed by Google. OpenAPI is stewarded by the OpenAPI Initiative, a Linux Foundation Collaborative Project, and Agent Skills is an open standard Anthropic first developed.</p>
+<h2 id="hosts-clients-and-servers-and-who-decides"><a class="heading-anchor" href="#hosts-clients-and-servers-and-who-decides">Hosts, clients and servers, and who decides</a></h2>
+<p>MCP names three roles. The host is the AI application, the one that talks to the model and the person. Inside it, each client holds a connection to exactly one server. A server offers context and capabilities; the cart&rsquo;s server is one.</p>
+<p>A server offers three kinds of thing, and the <a href="https://modelcontextprotocol.io/specification/2026-07-28/server">specification</a> sorts them by who decides when each is used. Tools are model-controlled: the model calls them. Resources are application-controlled: the host decides what to attach, such as a file the person picks. Prompts are user-controlled: templates a person chooses, often as slash commands.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="the-ai-protocol-map-control-title the-ai-protocol-map-control-desc" viewBox="0 0 360 166">
+<title id="the-ai-protocol-map-control-title">Who decides</title>
+<desc id="the-ai-protocol-map-control-desc">Three columns, each pointing from who decides to what they decide on: the model to tools, such as add_item, highlighted; the app to resources, such as menu://today; the person to prompts, such as the /special slash command.</desc>
+<g class="edge"><line x1="180" y1="48.5" x2="180" y2="91.5"/><line x1="180" y1="91.5" x2="183" y2="86.3"/><line x1="180" y1="91.5" x2="177" y2="86.3"/><line x1="296" y1="48.5" x2="296" y2="91.5"/><line x1="296" y1="91.5" x2="299" y2="86.3"/><line x1="296" y1="91.5" x2="293" y2="86.3"/></g>
+<g class="path"><line x1="64" y1="48.5" x2="64" y2="91.5"/><line x1="64" y1="91.5" x2="67" y2="86.3"/><line x1="64" y1="91.5" x2="61" y2="86.3"/></g>
+<rect class="node" x="12.5" y="12.5" width="103" height="36" rx="6"/>
+<rect class="node" x="128.5" y="12.5" width="103" height="36" rx="6"/>
+<rect class="node" x="244.5" y="12.5" width="103" height="36" rx="6"/>
+<rect class="node on" x="12.5" y="91.5" width="103" height="36" rx="6"/>
+<rect class="node" x="128.5" y="91.5" width="103" height="36" rx="6"/>
+<rect class="node" x="244.5" y="91.5" width="103" height="36" rx="6"/>
+<g><text x="64" y="30.5">the model</text><text x="64" y="109.5">tools</text><text class="note" x="64" y="145.7">add_item</text><text x="180" y="30.5">the app</text><text x="180" y="109.5">resources</text><text class="note" x="180" y="145.7">menu://today</text><text x="296" y="30.5">the person</text><text x="296" y="109.5">prompts</text><text class="note" x="296" y="145.7">/special</text></g>
+</svg>
+<figcaption>Who decides when each kind of thing is used. The violet column is the one this lesson builds: the model calls tools, and the host still lets a person deny any call.</figcaption>
+</figure>
+<p>Model-controlled never means unsupervised. The tools page says a person should always be able to deny a tool call, and that a client treats tool annotations, hints such as read-only, as untrusted unless the server is trusted. That&rsquo;s the approval gate from <a href="/community/automating-a-business-process/#the-gate-is-data-and-pure-functions">Automating a business process with a person in the loop</a>, now on the host&rsquo;s side of the wire.</p>
+<p>To try it, sort ten things the cart&rsquo;s ordering app could offer by who decides when each is used: today&rsquo;s menu, adding an item, a template for the week&rsquo;s special, the cart&rsquo;s hours, cancelling an order, the allergen sheet, a draft reply to a catering inquiry, a loyalty balance, yesterday&rsquo;s sales and a refund.</p>
+<p>One sorting: the menu, the hours, the allergen sheet and yesterday&rsquo;s sales are resources; the special and the catering reply are prompts; the rest are tools, and a refund is a tool a person approves every time it&rsquo;s called.</p>
+<h2 id="stateless-as-of-2026-07-28"><a class="heading-anchor" href="#stateless-as-of-2026-07-28">Stateless as of 2026-07-28</a></h2>
+<p>Revision 2026-07-28 changed MCP&rsquo;s shape. There is no <code>initialize</code> handshake and no protocol session. Every request carries its protocol version and the client&rsquo;s capabilities in <code>_meta</code>, under the <code>io.modelcontextprotocol/</code> prefix, and the server answers each request on its own. Every server implements <code>server/discover</code>, so a client can ask what it speaks first (<a href="https://modelcontextprotocol.io/specification/2026-07-28/changelog">changelog</a>).</p>
+<p>The specification calls 2026-07-28 and later modern, and 2025-11-25 and earlier legacy. Tutorials from the legacy era teach the handshake, session IDs and the old HTTP+SSE transport, so check the revision at the top of anything you learn from. One server may speak both eras; the cart&rsquo;s speaks the modern one and says so when a legacy client knocks (<a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning">versioning</a>).</p>
+<p>Here is the cart server&rsquo;s pure core. It takes the store and one message, and gives back the store and a reply:</p>
+<pre class="code-block" tabindex="0"><code>// protocol-map/server.ts
+// The pure core of the cart's MCP server: the store and one message in, the store and a reply out.
+import { todaysMenu, tools } from './cart.ts'
+import { callTool, type Context, type Store } from './orders.ts'
+import { error, META, record, result, VERSION, type Body, type Id, type Reply } from './wire.ts'
+
+export type Step = { readonly store: Store; readonly reply?: Reply }
+type Request = { readonly jsonrpc: '2.0'; readonly id?: Id; readonly method: string; readonly params?: Body }
+
+// Invented freshness hints: lists keep five minutes, the menu one, since items sell out.
+const listCache = { ttlMs: 300_000, cacheScope: 'public' }
+const menuCache = { ttlMs: 60_000, cacheScope: 'public' }
+const menu = { uri: 'menu://today', name: 'menu', title: "Today's menu", mimeType: 'application/json' }
+const menuText = { uri: menu.uri, mimeType: menu.mimeType, text: JSON.stringify(todaysMenu) }
+
+const asRequest = (message: unknown): Request | undefined =&gt; {
+  const m = record(message)
+  if (m?.jsonrpc !== '2.0' || typeof m.method !== 'string') return undefined
+  if ('id' in m &amp;&amp; typeof m.id !== 'string' &amp;&amp; typeof m.id !== 'number') return undefined
+  if ('params' in m &amp;&amp; record(m.params) === undefined) return undefined
+  return m as Request
+}
+
+export const handle = (store: Store, message: unknown, ctx: Context): Step =&gt; {
+  const request = asRequest(message)
+  if (request === undefined) return { store, reply: error(undefined, -32600, 'Invalid Request') }
+  const { id, method, params } = request
+  if (id === undefined) return { store } // a notification is never answered
+  const refuse = (code: number, message: string, data?: unknown): Step =&gt; ({ store, reply: error(id, code, message, data) })
+
+  // The legacy era opened with a handshake. Answer it with the version this server speaks.
+  if (method === 'initialize')
+    return refuse(-32601, `initialize is the legacy handshake; this server speaks ${VERSION}`, { supported: [VERSION] })
+
+  // No session: every request says which version it speaks and what its client can do.
+  const meta = record(params?._meta)
+  const version = meta?.[`${META}protocolVersion`]
+  const capabilities = record(meta?.[`${META}clientCapabilities`])
+  if (typeof version !== 'string' || capabilities === undefined)
+    return refuse(-32602, `_meta needs ${META}protocolVersion and ${META}clientCapabilities`)
+  if (version !== VERSION)
+    return refuse(-32022, 'Unsupported protocol version', { supported: [VERSION], requested: version })
+
+  const answer = (body: Body): Step =&gt; ({ store, reply: result(id, 'complete', body) })
+  switch (method) {
+    case 'server/discover':
+      return answer({ supportedVersions: [VERSION], capabilities: { tools: {}, resources: {} }, ...listCache })
+    case 'tools/list':
+      return answer({ tools, ...listCache })
+    case 'resources/list':
+      return answer({ resources: [menu], ...listCache })
+    case 'resources/read':
+      if (params?.uri !== menu.uri) return refuse(-32602, 'Resource not found', { uri: params?.uri })
+      return answer({ contents: [menuText], ...menuCache })
+    case 'tools/call':
+      return callTool(store, id, params ?? {}, capabilities, ctx)
+    default:
+      return refuse(-32601, `Method not found: ${method}`)
+  }
+}</code></pre>
+<p>A request in a version the server doesn&rsquo;t speak gets error <code>-32022</code>, with the versions it does speak in <code>data.supported</code>, and the client retries in one of them. A notification has no <code>id</code> and never gets a reply. <code>handle</code> awaits nothing and reads no clock: the shell hands it the caller, the time and a fresh random handle, so every test holds the server&rsquo;s whole memory as a value.</p>
+<p>State that must last lives behind a handle. <code>create_order</code> mints one, the model carries it as an ordinary argument, and the server checks it on every call, keyed to the caller, so a guessed or leaked handle opens nothing. The <a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices">security guide</a> names the attack, state handle hijacking, and that defense.</p>
+<p>When a tool needs something only the person can give, the server doesn&rsquo;t call the client back: servers no longer send requests at all. It answers <code>input_required</code>, with its questions in <code>inputRequests</code>, and the client asks the person and retries the original request under a new <code>id</code>, with the answers in <code>inputResponses</code>. The specification calls this <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr">Multi Round-Trip Requests</a>.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="the-ai-protocol-map-rounds-title the-ai-protocol-map-rounds-desc" viewBox="0 0 360 281">
+<title id="the-ai-protocol-map-rounds-title">One request, two rounds</title>
+<desc id="the-ai-protocol-map-rounds-desc">Three lanes: customer, client and server. The client calls the tool with id 2 and the server answers input_required; the client asks the customer, who answers small. Highlighted, the client sends id 3 with the answers, and the server answers complete.</desc>
+<g class="edge"><line x1="60" y1="44.5" x2="60" y2="268.5"/><line x1="180" y1="44.5" x2="180" y2="268.5"/><line x1="300" y1="44.5" x2="300" y2="268.5"/><line x1="180" y1="78" x2="300" y2="78"/><line x1="300" y1="78" x2="294.8" y2="75"/><line x1="300" y1="78" x2="294.8" y2="81"/><line x1="300" y1="114" x2="180" y2="114"/><line x1="180" y1="114" x2="185.2" y2="117"/><line x1="180" y1="114" x2="185.2" y2="111"/><line x1="180" y1="150" x2="60" y2="150"/><line x1="60" y1="150" x2="65.2" y2="153"/><line x1="60" y1="150" x2="65.2" y2="147"/><line x1="60" y1="186" x2="180" y2="186"/><line x1="180" y1="186" x2="174.8" y2="183"/><line x1="180" y1="186" x2="174.8" y2="189"/></g>
+<g class="path"><line x1="180" y1="222" x2="300" y2="222"/><line x1="300" y1="222" x2="294.8" y2="219"/><line x1="300" y1="222" x2="294.8" y2="225"/><line x1="300" y1="258" x2="180" y2="258"/><line x1="180" y1="258" x2="185.2" y2="261"/><line x1="180" y1="258" x2="185.2" y2="255"/></g>
+<rect class="node" x="12.5" y="12.5" width="95" height="32" rx="6"/>
+<rect class="node" x="132.5" y="12.5" width="95" height="32" rx="6"/>
+<rect class="node" x="252.5" y="12.5" width="95" height="32" rx="6"/>
+<g><text x="60" y="28.5">customer</text><text x="180" y="28.5">client</text><text x="300" y="28.5">server</text><text class="note" x="240" y="66">tools/call, id 2</text><text class="note" x="240" y="102">input_required</text><text class="note" x="120" y="138">which size?</text><text class="note" x="120" y="174">small</text><text class="note" x="240" y="210">id 3 + answers</text><text class="note" x="240" y="246">complete</text></g>
+</svg>
+<figcaption>One tool call in two rounds. The first ends with <code>input_required</code>, and the server keeps nothing. The violet second round is a new request, id 3, with the same arguments and the customer&rsquo;s answer, and it completes. <a href="/community/server-and-client-in-tandem/">Server and client in tandem</a> draws its booking in the same three-lane form.</figcaption>
+</figure>
+<p>The cart&rsquo;s retry carries all the server needs: the same arguments and the answer. A server that must remember something between rounds puts it in <code>requestState</code>, which the client echoes back untouched, and treats it as attacker-controlled: if it sways access or business logic, it carries an integrity check, such as an HMAC.</p>
+<p>A server leans only on capabilities the client declares. One that can&rsquo;t go on without an undeclared one answers error <code>-32021</code>, <code>MissingRequiredClientCapability</code>, listing what&rsquo;s missing in <code>data.requiredCapabilities</code>. The cart can go on: a client that doesn&rsquo;t declare elicitation, the capability for asking the person, gets a tool execution error telling the model to ask which size, then call again with it.</p>
+<p>Roots, Sampling and Logging are <a href="https://modelcontextprotocol.io/specification/2026-07-28/deprecated">deprecated</a> in this revision, with at least twelve months before any removal. A stdio server logs to stderr instead, as the cart&rsquo;s shell does below.</p>
+<h2 id="tools-schemas-structured-results-and-two-kinds-of-failure"><a class="heading-anchor" href="#tools-schemas-structured-results-and-two-kinds-of-failure">Tools: schemas, structured results and two kinds of failure</a></h2>
+<p>A tool is a name, a description written for the model, and JSON Schema for what goes in and, if it likes, what comes out. With no <code>$schema</code> of its own, a tool&rsquo;s schema is JSON Schema 2020-12. Here are the cart&rsquo;s menu and its two tools; the items, the prices and the thirty-minute expiry are invented for the lesson:</p>
+<pre class="code-block" tabindex="0"><code>// protocol-map/cart.ts
+// A coffee cart's menu and tools, invented for the lesson: the items, prices and expiry are made up.
+export type Size = 'small' | 'medium' | 'large'
+export const sizes: readonly Size[] = ['small', 'medium', 'large']
+
+// One price, or one for each size.
+export type MenuItem = {
+  readonly name: string
+  readonly cents: number | Readonly&lt;Record&lt;Size, number&gt;&gt;
+  readonly soldOut: boolean
+}
+
+export const todaysMenu: readonly MenuItem[] = [
+  { name: 'latte', cents: { small: 400, medium: 475, large: 550 }, soldOut: false },
+  { name: 'drip coffee', cents: { small: 250, medium: 300, large: 350 }, soldOut: false },
+  { name: 'morning bun', cents: 350, soldOut: false },
+  { name: 'cardamom bun', cents: 375, soldOut: true },
+]
+
+export const ORDER_MINUTES = 30
+
+const line = {
+  type: 'object',
+  properties: { item: { type: 'string' }, size: { enum: [...sizes, null] }, cents: { type: 'integer' } },
+  required: ['item', 'size', 'cents'],
+}
+
+// What tools/list returns: a name, a description and JSON Schema 2020-12 in and out.
+export const tools = [
+  {
+    name: 'create_order',
+    title: 'Start a pickup order',
+    description: `Start a pickup order and get its handle for add_item. It expires after ${ORDER_MINUTES} minutes.`,
+    inputSchema: { type: 'object', additionalProperties: false },
+    outputSchema: { type: 'object', properties: { order: { type: 'string' } }, required: ['order'] },
+  },
+  {
+    name: 'add_item',
+    title: 'Add an item to an order',
+    description: "Add one item from today's menu (menu://today). A drink needs a size; without one, the customer is asked.",
+    inputSchema: {
+      type: 'object',
+      properties: {
+        order: { type: 'string', description: 'The handle create_order returned.' },
+        item: { type: 'string', description: "An item on today's menu, by name." },
+        size: { type: 'string', enum: sizes },
+      },
+      required: ['order', 'item'],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      properties: {
+        order: { type: 'string' },
+        lines: { type: 'array', items: line },
+        totalCents: { type: 'integer' },
+      },
+      required: ['order', 'lines', 'totalCents'],
+    },
+  },
+] as const</code></pre>
+<p><code>create_order</code>&rsquo;s description says how long an order lasts, so the model knows before it starts one, as the <a href="https://modelcontextprotocol.io/specification/2026-07-28/server/tools">tools page</a> advises. Its input schema accepts an empty object and nothing else, the form the page recommends for a tool with no parameters.</p>
+<p>Every result says what kind it is, <code>complete</code> or <code>input_required</code>. A tool that returns <code>structuredContent</code> holds it to its <code>outputSchema</code>, and sends the same JSON as text for clients that read only text.</p>
+<p>Failure comes in two kinds. A protocol error means the request itself is wrong, such as an unknown tool, and goes back as a JSON-RPC error a model can rarely fix. A tool execution error is the tool&rsquo;s own answer, such as a sold-out bun, and goes back as a result with <code>isError: true</code> and a reason the model can act on:</p>
+<pre class="code-block" tabindex="0"><code>// protocol-map/wire.ts
+// JSON-RPC 2.0 as MCP 2026-07-28 uses it: every result says what kind of result it is.
+export const VERSION = '2026-07-28'
+export const META = 'io.modelcontextprotocol/'
+
+export type Id = string | number
+export type Body = Readonly&lt;Record&lt;string, unknown&gt;&gt;
+type Failure = { readonly code: number; readonly message: string; readonly data?: unknown }
+export type Reply =
+  | { readonly jsonrpc: '2.0'; readonly id: Id; readonly result: Body }
+  | { readonly jsonrpc: '2.0'; readonly id?: Id; readonly error: Failure }
+
+const serverInfo = { name: 'coffee-cart', version: '0.1.0' }
+
+export const result = (id: Id, resultType: 'complete' | 'input_required', body: Body): Reply =&gt; ({
+  jsonrpc: '2.0',
+  id,
+  result: { resultType, ...body, _meta: { [`${META}serverInfo`]: serverInfo } },
+})
+
+// A protocol error: the request itself is wrong, and a model can rarely fix that.
+export const error = (id: Id | undefined, code: number, message: string, data?: unknown): Reply =&gt; ({
+  jsonrpc: '2.0',
+  ...(id === undefined ? {} : { id }),
+  error: data === undefined ? { code, message } : { code, message, data },
+})
+
+// A tool's own outcome is a result: structured content, or an error a model can act on.
+export const toolResult = (structured: Body): Body =&gt; ({
+  content: [{ type: 'text', text: JSON.stringify(structured) }],
+  structuredContent: structured,
+  isError: false,
+})
+export const toolError = (text: string): Body =&gt; ({ content: [{ type: 'text', text }], isError: true })
+
+export const record = (value: unknown): Body | undefined =&gt;
+  typeof value === 'object' &amp;&amp; value !== null &amp;&amp; !Array.isArray(value) ? (value as Body) : undefined</code></pre>
+<p>The specification&rsquo;s examples put input validation on both sides of that line. The cart follows the schema&rsquo;s own example and sends arguments that break the input schema back as <code>-32602</code>, and every rule of the cart as a result. In Module 5&rsquo;s loop an unknown tool came back as a result the model read; across MCP it&rsquo;s a protocol error, and the host decides what the model sees.</p>
+<pre class="code-block" tabindex="0"><code>// protocol-map/orders.ts
+// The cart's two tools. An order lives behind a handle the server mints, checked on every call.
+import { ORDER_MINUTES, sizes, todaysMenu, type MenuItem, type Size } from './cart.ts'
+import { error, record, result, toolError, toolResult, type Body, type Id, type Reply } from './wire.ts'
+
+type Line = { readonly item: string; readonly size: Size | null; readonly cents: number }
+type Order = { readonly startedAt: number; readonly lines: readonly Line[] }
+
+// Orders are kept under `${caller}:${handle}`, so a handle alone opens nothing.
+export type Store = Readonly&lt;Record&lt;string, Order&gt;&gt;
+
+// What the shell knows and the core never fetches: who is calling, the time, a fresh random handle.
+export type Context = { readonly caller: string; readonly now: number; readonly freshHandle: string }
+
+type Step = { readonly store: Store; readonly reply: Reply }
+type AddItem = { readonly order: string; readonly item: string; readonly size?: Size }
+
+const decode = (args: Body): AddItem | string =&gt; {
+  const { order, item, size, ...rest } = args
+  if (typeof order !== 'string') return 'order must be the handle create_order returned'
+  if (typeof item !== 'string') return "item must be a name on today's menu"
+  const known = sizes.find((s) =&gt; s === size)
+  if (size !== undefined &amp;&amp; known === undefined) return `size must be one of ${sizes.join(', ')}`
+  if (Object.keys(rest).length &gt; 0) return `unknown arguments: ${Object.keys(rest).join(', ')}`
+  return known === undefined ? { order, item } : { order, item, size: known }
+}
+
+// A size from the arguments, or from the customer's answer when the call is retried.
+const chosenSize = (input: AddItem, params: Body): Size | 'declined' | undefined =&gt; {
+  if (input.size !== undefined) return input.size
+  const answer = record(record(params.inputResponses)?.size)
+  if (answer === undefined) return undefined
+  if (answer.action !== 'accept') return 'declined'
+  return sizes.find((s) =&gt; s === record(answer.content)?.size)
+}
+
+type Pricing =
+  | { readonly kind: 'priced'; readonly size: Size | null; readonly cents: number }
+  | { readonly kind: 'ask' }
+  | { readonly kind: 'refuse'; readonly reason: string }
+
+// A drink needs a size: from the call, from the customer if the client can ask, or a reason to stop.
+const pricing = (item: MenuItem, input: AddItem, params: Body, capabilities: Body): Pricing =&gt; {
+  if (typeof item.cents === 'number') return { kind: 'priced', size: null, cents: item.cents }
+  const chosen = chosenSize(input, params)
+  if (chosen === 'declined') return { kind: 'refuse', reason: 'The customer chose no size, so nothing was added.' }
+  if (chosen !== undefined) return { kind: 'priced', size: chosen, cents: item.cents[chosen] }
+  const form = record(capabilities.elicitation)
+  if (form !== undefined &amp;&amp; (Object.keys(form).length === 0 || 'form' in form)) return { kind: 'ask' }
+  const choices = `${sizes.slice(0, -1).join(', ')} or ${sizes.at(-1)}`
+  return { kind: 'refuse', reason: `A ${item.name} comes in ${choices}. Ask which, then call add_item with size.` }
+}
+
+const askSize = (item: string): Body =&gt; ({
+  inputRequests: {
+    size: {
+      method: 'elicitation/create',
+      params: {
+        mode: 'form',
+        message: `Which size of ${item}?`,
+        requestedSchema: { type: 'object', properties: { size: { type: 'string', enum: sizes } }, required: ['size'] },
+      },
+    },
+  },
+})
+
+export const callTool = (store: Store, id: Id, params: Body, capabilities: Body, ctx: Context): Step =&gt; {
+  const done = (body: Body): Step =&gt; ({ store, reply: result(id, 'complete', body) })
+  const refuse = (message: string): Step =&gt; ({ store, reply: error(id, -32602, message) })
+  const args = record(params.arguments) ?? {}
+
+  if (params.name === 'create_order') {
+    if (Object.keys(args).length &gt; 0) return refuse('create_order takes no arguments')
+    const opened = { ...store, [`${ctx.caller}:${ctx.freshHandle}`]: { startedAt: ctx.now, lines: [] } }
+    return { store: opened, reply: result(id, 'complete', toolResult({ order: ctx.freshHandle })) }
+  }
+  if (params.name !== 'add_item') return refuse(`Unknown tool: ${String(params.name)}`)
+
+  const input = decode(args)
+  if (typeof input === 'string') return refuse(`Invalid arguments for add_item: ${input}`)
+  const key = `${ctx.caller}:${input.order}`
+  const order = store[key]
+  if (order === undefined) return done(toolError(`There is no order ${input.order}. Start one with create_order.`))
+  if (ctx.now - order.startedAt &gt; ORDER_MINUTES * 60_000)
+    return done(toolError(`Order ${input.order} expired after ${ORDER_MINUTES} minutes. Start a new one.`))
+
+  const onMenu = todaysMenu.find((i) =&gt; i.name === input.item)
+  const available = todaysMenu.filter((i) =&gt; !i.soldOut).map((i) =&gt; i.name).join(', ')
+  if (onMenu === undefined) return done(toolError(`Today's menu has no ${input.item}. It has ${available}.`))
+  if (onMenu.soldOut) return done(toolError(`The ${onMenu.name} is sold out today. Still available: ${available}.`))
+
+  const priced = pricing(onMenu, input, params, capabilities)
+  if (priced.kind === 'ask') return { store, reply: result(id, 'input_required', askSize(onMenu.name)) }
+  if (priced.kind === 'refuse') return done(toolError(priced.reason))
+
+  const lines = [...order.lines, { item: onMenu.name, size: priced.size, cents: priced.cents }]
+  const totalCents = lines.reduce((sum, l) =&gt; sum + l.cents, 0)
+  const reply = result(id, 'complete', toolResult({ order: input.order, lines, totalCents }))
+  return { store: { ...store, [key]: { ...order, lines } }, reply }
+}</code></pre>
+<p>Each failure that belongs to the cart says what to do next: start a new order, pick from what&rsquo;s still available, ask which size. That&rsquo;s expected failure as plain data, as the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> teaches it. A client decodes each result at the boundary before trusting it, as <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes an RTK Query response.</p>
+<p>The scenarios live in <code>cart.feature</code>, in Gherkin, and each test carries its scenario&rsquo;s name; a last test fails if the two lists drift apart:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ npx vitest run protocol-map/server.test.ts --reporter=tree | grep -E '✓|Tests'
+ ✓ protocol-map/server.test.ts (13 tests) 11ms
+   ✓ Feature: The coffee cart's tool server (13)
+     ✓ Scenario: A client discovers what the server speaks 3ms
+     ✓ Scenario: A request in another version is refused with the versions the server speaks 1ms
+     ✓ Scenario: A legacy handshake is refused by name 0ms
+     ✓ Scenario: The agent starts an order and adds a drink 1ms
+     ✓ Scenario: A missing size asks the customer, and the retry completes the call 0ms
+     ✓ Scenario: A client that can't ask the customer reads a reason instead 1ms
+     ✓ Scenario: An expired order handle is an execution error 1ms
+     ✓ Scenario: An order handle opens nothing for another caller 0ms
+     ✓ Scenario: A sold-out item is an execution error the model can act on 1ms
+     ✓ Scenario: An unknown tool is a protocol error 0ms
+     ✓ Scenario: The menu is a resource the application reads 0ms
+     ✓ Scenario: A notification gets no reply 0ms
+     ✓ names every scenario in cart.feature 0ms
+      Tests  13 passed (13)</code></pre>
+<h2 id="transports-and-trust"><a class="heading-anchor" href="#transports-and-trust">Transports and trust</a></h2>
+<p>A <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports">transport</a> is a binding: it carries messages and never changes what they mean. On stdio, the client launches the server as a subprocess and they trade JSON-RPC one message per line. The server writes nothing to stdout that isn&rsquo;t a protocol message, and logs, if anywhere, to stderr. Streamable HTTP uses one endpoint that takes a POST for each message and answers with JSON or a stream scoped to that request.</p>
+<pre class="code-block" tabindex="0"><code>// protocol-map/stdio.ts
+// The stdio shell: one JSON-RPC message per line in, one per line out, and logs only on stderr.
+import { randomUUID } from 'node:crypto'
+import { realpathSync } from 'node:fs'
+import { createInterface } from 'node:readline'
+import type { Readable, Writable } from 'node:stream'
+import { pathToFileURL } from 'node:url'
+import type { Store } from './orders.ts'
+import { handle } from './server.ts'
+import { record } from './wire.ts'
+
+const parseError = { jsonrpc: '2.0', error: { code: -32700, message: 'Parse error' } }
+
+export const serve = async (input: Readable, output: Writable, log: Writable, caller: string) =&gt; {
+  let store: Store = {}
+  for await (const line of createInterface({ input, crlfDelay: Infinity })) {
+    if (line.trim() === '') continue
+    let message: unknown
+    try {
+      message = JSON.parse(line)
+    } catch {
+      output.write(`${JSON.stringify(parseError)}\n`)
+      continue
+    }
+    const step = handle(store, message, { caller, now: Date.now(), freshHandle: `ord_${randomUUID()}` })
+    store = step.store
+    if (step.reply !== undefined) output.write(`${JSON.stringify(step.reply)}\n`)
+    const outcome = step.reply === undefined ? 'no reply' : 'error' in step.reply ? 'error' : 'result'
+    log.write(`${String(record(message)?.method)} -&gt; ${outcome}\n`)
+  }
+}
+
+// Run as a program, the caller comes from the environment that launched it.
+const script = process.argv[1]
+if (script !== undefined &amp;&amp; import.meta.url === pathToFileURL(realpathSync(script)).href) {
+  await serve(process.stdin, process.stdout, process.stderr, process.env.CART_CALLER ?? 'local')
+}</code></pre>
+<p>The shell does the three things the core never does: it reads the clock, mints a random handle and keeps the store from one line to the next. Here it answers a legacy handshake and a modern discovery request, with stderr sent to a file:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ node protocol-map/stdio.ts &lt; protocol-map/first-contact.jsonl 2&gt; stderr.log
+{"jsonrpc":"2.0","id":1,"error":{"code":-32601,"message":"initialize is the legacy handshake; this server speaks 2026-07-28","data":{"supported":["2026-07-28"]}}}
+{"jsonrpc":"2.0","id":2,"result":{"resultType":"complete","supportedVersions":["2026-07-28"],"capabilities":{"tools":{},"resources":{}},"ttlMs":300000,"cacheScope":"public","_meta":{"io.modelcontextprotocol/serverInfo":{"name":"coffee-cart","version":"0.1.0"}}}}
+$ cat stderr.log
+initialize -&gt; error
+server/discover -&gt; result</code></pre>
+<p>Two replies out, two lines logged, nothing mixed. On Streamable HTTP the tool definitions stay the same; only the binding changes, and where the credentials come from.</p>
+<p>Authorization is optional. A server on HTTP that uses it acts as an <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">OAuth 2.1 resource server</a>; a server on stdio takes its credentials from the environment, the way the shell takes its caller.</p>
+<p>Two attacks from the security guide are the ones to learn first. Token passthrough is a server accepting a token issued for something else and forwarding it downstream; the rule against it is short: a server accepts only tokens issued to itself.</p>
+<p>The confused deputy is a proxy server that signs in to a third party under one static client ID while letting MCP clients register themselves. A consent cookie from the person&rsquo;s earlier sign-in skips the consent screen, so an attacker&rsquo;s link, carrying a freshly registered client and its own redirect URI, collects an authorization code. The defense: the proxy asks the person&rsquo;s consent for each client before it forwards anything.</p>
+<h2 id="from-a-servant-operation-to-a-tool"><a class="heading-anchor" href="#from-a-servant-operation-to-a-tool">From a Servant operation to a tool</a></h2>
+<p>In Module 4, one Servant type is the contract: it describes itself as OpenAPI, and RTK Query&rsquo;s generator turns the document into the client&rsquo;s endpoints (<a href="/community/the-api-haskell-servant-and-nile/#4-one-contract-at-both-ends">The API: Haskell Servant and Nile</a>). A tool list is one more consumer of the same document.</p>
+<figure class="diagram">
+<svg role="img" aria-labelledby="the-ai-protocol-map-consumers-title the-ai-protocol-map-consumers-desc" viewBox="0 0 360 255">
+<title id="the-ai-protocol-map-consumers-title">One type, three consumers</title>
+<desc id="the-ai-protocol-map-consumers-desc">The Servant type points, through a drift check, at the OpenAPI 3.0 document, which fans out to RTK Query endpoints, an MCP tool converted from 3.0 to 2020-12, and docs for people. The route to the tool is highlighted.</desc>
+<g class="edge"><line x1="180" y1="120.5" x2="64" y2="180.5"/><line x1="64" y1="180.5" x2="69.99" y2="180.78"/><line x1="64" y1="180.5" x2="67.24" y2="175.45"/><line x1="180" y1="120.5" x2="296" y2="180.5"/><line x1="296" y1="180.5" x2="292.76" y2="175.45"/><line x1="296" y1="180.5" x2="290.01" y2="180.78"/></g>
+<g class="path"><line x1="180" y1="48.5" x2="180" y2="84.5"/><line x1="180" y1="84.5" x2="183" y2="79.3"/><line x1="180" y1="84.5" x2="177" y2="79.3"/><line x1="180" y1="120.5" x2="180" y2="180.5"/><line x1="180" y1="180.5" x2="183" y2="175.3"/><line x1="180" y1="180.5" x2="177" y2="175.3"/></g>
+<rect class="node" x="110.5" y="12.5" width="139" height="36" rx="6"/>
+<rect class="node" x="110.5" y="84.5" width="139" height="36" rx="6"/>
+<rect class="node" x="12.5" y="180.5" width="103" height="36" rx="6"/>
+<rect class="node on" x="128.5" y="180.5" width="103" height="36" rx="6"/>
+<rect class="node" x="244.5" y="180.5" width="103" height="36" rx="6"/>
+<g><text x="180" y="30.5">Servant type</text><text class="note" x="250" y="66.5">drift check</text><text x="180" y="102.5">OpenAPI 3.0</text><text x="64" y="198.5">RTK Query</text><text x="180" y="198.5">MCP tool</text><text x="296" y="198.5">docs</text><text class="note" x="64" y="234.7">endpoints</text><text class="note" x="180" y="234.7">3.0 to 2020-12</text><text class="note" x="296" y="234.7">for people</text></g>
+</svg>
+<figcaption>One Servant type, described once as OpenAPI 3.0, feeds three consumers. The violet route is this section&rsquo;s: the drift check holds the document to the type, and the tool&rsquo;s schema is converted to JSON Schema 2020-12 on the way out.</figcaption>
+</figure>
+<p>Here is the cart&rsquo;s order endpoint, written fresh for this lesson, with a summary and a description for whoever calls it. Mind the note: OpenAPI 3.0 has no null type, so a field that may be null says <code>nullable: true</code>.</p>
+<pre class="code-block" tabindex="0"><code>-- the-ai-protocol-map/CoffeeCart.hs
+-- A coffee cart's ordering API, invented for the lesson.
+module CoffeeCart (CartAPI, NewOrder (..), Size (..), Note (..), cartOpenApi) where
+
+import Data.Aeson (FromJSON (..), ToJSON (..), genericParseJSON, genericToJSON)
+import qualified Data.Aeson as Aeson
+import Data.Char (toLower)
+import Data.Function ((&amp;))
+import Data.Functor.Identity (Identity (..))
+import Data.OpenApi
+import Data.Proxy (Proxy (..))
+import Data.Text (Text)
+import GHC.Generics (Generic)
+import Servant.API
+import Servant.OpenApi (toOpenApi)
+
+data Size = Small | Medium | Large
+  deriving stock (Generic, Show, Eq)
+
+-- On the wire a size is "small", "medium" or "large", in the JSON and the schema alike.
+lower :: Aeson.Options
+lower = Aeson.defaultOptions {Aeson.constructorTagModifier = map toLower}
+
+instance ToJSON Size where toJSON = genericToJSON lower
+instance FromJSON Size where parseJSON = genericParseJSON lower
+instance ToSchema Size where declareNamedSchema = genericDeclareNamedSchema (fromAesonOptions lower)
+
+-- A note the customer may send as null: OpenAPI 3.0 says so with nullable.
+newtype Note = Note Text
+  deriving newtype (Show, Eq, ToJSON, FromJSON)
+
+instance ToSchema Note where
+  declareNamedSchema _ =
+    pure . NamedSchema Nothing $
+      mempty
+        { _schemaType = Just OpenApiString
+        , _schemaNullable = Just True
+        , _schemaExample = Just "extra hot"
+        }
+
+data NewOrder = NewOrder {item :: Text, size :: Size, note :: Maybe Note}
+  deriving stock (Generic, Show, Eq)
+
+instance ToJSON NewOrder
+instance FromJSON NewOrder
+instance ToSchema NewOrder
+
+type CartAPI =
+  "orders"
+    :&gt; Summary "Place a pickup order at the coffee cart."
+    :&gt; Description "Use it once the customer has chosen an item and a size. It answers with the order number."
+    :&gt; ReqBody '[JSON] NewOrder
+    :&gt; PostCreated '[JSON] Text
+
+-- lens's set, from base alone: a setter is a traversal run in Identity.
+set :: ((a -&gt; Identity b) -&gt; s -&gt; Identity t) -&gt; b -&gt; s -&gt; t
+set l b = runIdentity . l (const (Identity b))
+
+-- The one contract: Servant's type, described as OpenAPI 3.0, with its operation named.
+cartOpenApi :: OpenApi
+cartOpenApi =
+  toOpenApi (Proxy :: Proxy CartAPI)
+    &amp; set (paths . traverse . post . traverse . operationId) (Just "placeOrder")</code></pre>
+<p><code>set</code> is lens&rsquo;s own, written from base in two lines, since a setter is a traversal run in <code>Identity</code>; the traversal names the one operation <code>placeOrder</code>. The document is committed beside the type, and a spec fails when the two drift apart, naming every place they differ:</p>
+<pre class="code-block" tabindex="0"><code>-- the-ai-protocol-map/Spec.hs
+module Main (main) where
+
+import CoffeeCart (cartOpenApi)
+import Control.Monad (when)
+import Data.Aeson (Value (..), eitherDecodeFileStrict, encode, encodeFile, object, toJSON, (.=))
+import qualified Data.Aeson.Key as Key
+import qualified Data.Aeson.KeyMap as KeyMap
+import qualified Data.ByteString.Lazy.Char8 as BL
+import Data.Foldable (toList)
+import Data.Maybe (isJust)
+import qualified Data.Set as Set
+import System.Environment (lookupEnv)
+import Test.Hspec
+
+committedPath :: FilePath
+committedPath = "the-ai-protocol-map/openapi.json"
+
+-- Every place two JSON documents differ, as a path from the root.
+drift :: Value -&gt; Value -&gt; [String]
+drift = go ""
+  where
+    go at (Object a) (Object b) =
+      concat [field at k (KeyMap.lookup k a) (KeyMap.lookup k b) | k &lt;- keysOf a b]
+    go at (Array a) (Array b)
+      | length a == length b = concat (zipWith3 go (indexes at) (toList a) (toList b))
+    go at a b = [at &lt;&gt; ": committed " &lt;&gt; json a &lt;&gt; ", generated " &lt;&gt; json b | a /= b]
+    field at k (Just a) (Just b) = go (at &lt;&gt; "/" &lt;&gt; Key.toString k) a b
+    field at k Nothing _ = [at &lt;&gt; "/" &lt;&gt; Key.toString k &lt;&gt; ": only in the generated document"]
+    field at k _ Nothing = [at &lt;&gt; "/" &lt;&gt; Key.toString k &lt;&gt; ": only in the committed document"]
+    json = BL.unpack . encode
+    keysOf a b = Set.toList (Set.fromList (KeyMap.keys a &lt;&gt; KeyMap.keys b))
+    indexes at = [at &lt;&gt; "/" &lt;&gt; show i | i &lt;- [0 :: Int ..]]
+
+main :: IO ()
+main = do
+  -- ACCEPT_OPENAPI=1 rewrites the committed document; a person reviews the diff.
+  accept &lt;- lookupEnv "ACCEPT_OPENAPI"
+  when (isJust accept) $ encodeFile committedPath cartOpenApi
+  hspec $ describe "Feature: One contract for the coffee cart" $ do
+    it "Scenario: The drift check names every place two documents differ" $
+      drift (object ["a" .= (1 :: Int), "b" .= True]) (object ["a" .= (2 :: Int), "c" .= True])
+        `shouldBe` [ "/a: committed 1, generated 2"
+                   , "/b: only in the committed document"
+                   , "/c: only in the generated document"
+                   ]
+    it "Scenario: The committed OpenAPI document is the one the type generates" $ do
+      committed &lt;- either fail pure =&lt;&lt; eitherDecodeFileStrict committedPath
+      drift committed (toJSON cartOpenApi) `shouldBe` []</code></pre>
+<p>Add a field to the order, forget to regenerate, and the spec says exactly what moved. <code>ACCEPT_OPENAPI=1</code> rewrites the file, and the diff goes to review like any other. It&rsquo;s in the spirit of the <a href="https://seandinwiddie.github.io/lectures/functional-composition/#test-the-contract">Functional Composition</a> lecture&rsquo;s section on testing the contract: what the document promises is tested, never trusted.</p>
+<pre class="code-block code-output" tabindex="0"><code>$ cabal test the-ai-protocol-map --test-show-details=direct | grep -E '✔|✘|examples'
+  Scenario: The drift check names every place two documents differ [✔]
+  Scenario: The committed OpenAPI document is the one the type generates [✔]
+2 examples, 0 failures
+$ sed -i 's/note :: Maybe Note}/note :: Maybe Note, pickupName :: Text}/' the-ai-protocol-map/CoffeeCart.hs
+$ cabal test the-ai-protocol-map --test-show-details=direct | grep -E '✘|but got|examples'
+  Scenario: The committed OpenAPI document is the one the type generates [✘]
+        but got: ["/components/schemas/NewOrder/properties/pickupName: only in the generated document","/components/schemas/NewOrder/required: committed [\"item\",\"size\"], generated [\"item\",\"size\",\"pickupName\"]"]
+2 examples, 1 failure</code></pre>
+<p>Now the dialect. servant-openapi3 builds on <a href="https://hackage.haskell.org/package/openapi3">openapi3</a>, an OpenAPI 3.0 data model, and the document says <code>"openapi": "3.0.0"</code>. OpenAPI 3.1 made its Schema Object a superset of <a href="https://json-schema.org/draft/2020-12">JSON Schema 2020-12</a>, but 3.0&rsquo;s schemas speak an older dialect. So a tool&rsquo;s input schema is converted, never copied:</p>
+<ul>
+<li><code>nullable: true</code> becomes a type union, <code>["string", "null"]</code>;</li>
+<li><code>example</code> becomes <code>examples</code>, a list;</li>
+<li>a boolean <code>exclusiveMinimum</code> beside <code>minimum</code> becomes the bound itself;</li>
+<li>a reference into <code>components</code> moves into <code>$defs</code>, so the tool&rsquo;s schema stands alone.</li>
+</ul>
+<pre class="code-block" tabindex="0"><code>// protocol-map/operation-to-tool.ts
+// An OpenAPI 3.0 operation, as servant-openapi3 writes it, to an MCP tool in JSON Schema 2020-12.
+type Schema = Readonly&lt;Record&lt;string, unknown&gt;&gt;
+type Named = Readonly&lt;Record&lt;string, Schema&gt;&gt;
+type Media = Readonly&lt;Record&lt;string, { readonly schema?: Schema }&gt;&gt;
+
+export type Operation = {
+  readonly operationId?: string
+  readonly summary?: string
+  readonly description?: string
+  readonly parameters?: readonly unknown[]
+  readonly requestBody?: { readonly content: Media }
+}
+export type OpenApi = {
+  readonly paths: Readonly&lt;Record&lt;string, Readonly&lt;Record&lt;string, Operation&gt;&gt;&gt;&gt;
+  readonly components?: { readonly schemas?: Named }
+}
+export type Tool = { readonly name: string; readonly description: string; readonly inputSchema: Schema }
+export type Converted = { readonly ok: true; readonly tool: Tool } | { readonly ok: false; readonly reason: string }
+
+const FROM = '#/components/schemas/'
+const isSchema = (v: unknown): v is Schema =&gt; typeof v === 'object' &amp;&amp; v !== null &amp;&amp; !Array.isArray(v)
+const each = (named: Named): Named =&gt;
+  Object.fromEntries(Object.entries(named).map(([key, schema]) =&gt; [key, toJsonSchema(schema)]))
+
+// One schema, from OpenAPI 3.0's dialect to JSON Schema 2020-12, all the way down.
+export const toJsonSchema = (schema: Schema): Schema =&gt; {
+  const out: Record&lt;string, unknown&gt; = {}
+  for (const [key, value] of Object.entries(schema)) {
+    if (['nullable', 'exclusiveMinimum', 'exclusiveMaximum'].includes(key)) continue
+    else if (key === 'example') out.examples = [value]
+    else if (key === '$ref' &amp;&amp; typeof value === 'string') out.$ref = value.replace(FROM, '#/$defs/')
+    else if (key === 'properties' &amp;&amp; isSchema(value)) out.properties = each(value as Named)
+    else if (['items', 'additionalProperties', 'not'].includes(key) &amp;&amp; isSchema(value)) out[key] = toJsonSchema(value)
+    else if (['allOf', 'anyOf', 'oneOf'].includes(key)) out[key] = (value as Schema[]).map(toJsonSchema)
+    else out[key] = value
+  }
+  // 3.0 adds null with a flag beside the type; 2020-12 lists null in the type.
+  if (schema.nullable === true &amp;&amp; typeof schema.type === 'string') out.type = [schema.type, 'null']
+  // 3.0 marks a bound exclusive with a boolean; 2020-12 makes the bound itself exclusive.
+  if (schema.exclusiveMinimum === true) {
+    out.exclusiveMinimum = schema.minimum
+    delete out.minimum
+  }
+  if (schema.exclusiveMaximum === true) {
+    out.exclusiveMaximum = schema.maximum
+    delete out.maximum
+  }
+  return out
+}
+
+// The named schemas a schema reaches, following every reference.
+const reached = (schema: Schema, named: Named, found = new Set&lt;string&gt;()): Set&lt;string&gt; =&gt; {
+  for (const [, name = ''] of JSON.stringify(schema).matchAll(/"\$ref":"#\/components\/schemas\/([^"]+)"/g)) {
+    const target = named[name]
+    if (target === undefined || found.has(name)) continue
+    found.add(name)
+    reached(target, named, found)
+  }
+  return found
+}
+
+export const findOperation = (doc: OpenApi, id: string): Operation | undefined =&gt;
+  Object.values(doc.paths).flatMap((item) =&gt; Object.values(item)).find((op) =&gt; op.operationId === id)
+
+export const operationToTool = (doc: OpenApi, op: Operation): Converted =&gt; {
+  const fail = (reason: string): Converted =&gt; ({ ok: false, reason })
+  const name = op.operationId
+  if (name === undefined || !/^[A-Za-z0-9_.-]{1,128}$/.test(name)) return fail('it needs an operationId fit to name a tool')
+  if (op.summary === undefined || op.description === undefined)
+    return fail(`${name} needs a summary and a description written for an agent: what it does and when to use it`)
+  if ((op.parameters ?? []).length &gt; 0)
+    return fail(`${name} takes path or query parameters: map each by hand, as some come from the credential`)
+
+  const named = doc.components?.schemas ?? {}
+  const json = Object.entries(op.requestBody?.content ?? {}).find(([type]) =&gt; type.startsWith('application/json'))
+  const body = json?.[1].schema ?? { type: 'object', additionalProperties: false }
+  const top = typeof body.$ref === 'string' ? named[body.$ref.replace(FROM, '')] : body
+  if (top?.type !== 'object') return fail(`${name} takes a body that is not a JSON object`)
+
+  const defs = [...reached(top, named)]
+  const $defs = Object.fromEntries(defs.map((d) =&gt; [d, toJsonSchema(named[d] ?? {})]))
+  const inputSchema = defs.length === 0 ? toJsonSchema(top) : { ...toJsonSchema(top), $defs }
+  return { ok: true, tool: { name, description: `${op.summary} ${op.description}`, inputSchema } }
+}</code></pre>
+<p>Each rule has a test named for its scenario: Given a nullable field, When the operation becomes a tool, Then null is allowed by a type union. One more converts <code>placeOrder</code> from the committed document, the one file both languages read:</p>
+<pre class="code-block code-output" tabindex="0"><code>$ node protocol-map/show-tool.ts placeOrder
+{
+  "name": "placeOrder",
+  "description": "Place a pickup order at the coffee cart. Use it once the customer has chosen an item and a size. It answers with the order number.",
+  "inputSchema": {
+    "properties": {
+      "item": {
+        "type": "string"
+      },
+      "note": {
+        "examples": ["extra hot"],
+        "type": ["string", "null"]
+      },
+      "size": {
+        "$ref": "#/$defs/Size"
+      }
+    },
+    "required": ["item", "size"],
+    "type": "object",
+    "$defs": {
+      "Size": {
+        "enum": ["small", "medium", "large"],
+        "type": "string"
+      }
+    }
+  }
+}</code></pre>
+<p>The converter refuses what it can&rsquo;t do safely. An operation needs a summary and a description written for an agent, saying what it does and when to use it. And one with path or query parameters is mapped by hand, since some of those, such as a tenant or a signed-in user, come from the credential and never from the model.</p>
+<p>Some operations become tools that never run without a person&rsquo;s yes. Placing an order commits the cart to a drink and the customer to paying for it, so the host asks before every call, as the approval gate does.</p>
+<h2 id="agents-as-peers-files-as-know-how-pages-that-offer-tools"><a class="heading-anchor" href="#agents-as-peers-files-as-know-how-pages-that-offer-tools">Agents as peers, files as know-how, pages that offer tools</a></h2>
+<p>A2A treats other agents as peers that stay opaque: they work together without sharing their memory, their logic or their tools. An agent publishes an Agent Card, conventionally at <code>/.well-known/agent-card.json</code>, naming its skills, its endpoints and how to authenticate. Work happens in Tasks with a lifecycle (submitted, working, input required, completed and more), Messages carry Parts such as text, files or data, and results come back as Artifacts.</p>
+<p>Here is a card at <a href="https://a2a-protocol.org/v1.0.0/specification/">A2A 1.0</a> for the bakery that supplies the cart&rsquo;s morning buns, <code>protocol-map/bakery.agent-card.json</code>. The cart&rsquo;s agent can ask for a quote without ever seeing how the bakery prices one:</p>
+<pre class="code-block" tabindex="0"><code>{
+  "name": "Bakery wholesale agent",
+  "description": "Quotes wholesale bakes and schedules deliveries for cafes and coffee carts that resell them. An invented bakery, for the lesson.",
+  "supportedInterfaces": [{ "url": "https://bakery.example/a2a/v1", "protocolBinding": "JSONRPC", "protocolVersion": "1.0" }],
+  "provider": { "organization": "An invented bakery", "url": "https://bakery.example" },
+  "version": "1.0.0",
+  "capabilities": { "streaming": false, "pushNotifications": true },
+  "securitySchemes": { "bearer": { "httpAuthSecurityScheme": { "scheme": "Bearer" } } },
+  "securityRequirements": [{ "schemes": { "bearer": { "list": [] } } }],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["application/json"],
+  "skills": [
+    {
+      "id": "quote-wholesale",
+      "name": "Quote a wholesale order",
+      "description": "Prices a standing or one-off wholesale order of the bakery's buns and loaves.",
+      "tags": ["wholesale", "pricing"],
+      "examples": ["Two dozen morning buns every Saturday for a month"]
+    },
+    {
+      "id": "schedule-delivery",
+      "name": "Schedule a delivery",
+      "description": "Books a delivery window for an accepted quote.",
+      "tags": ["delivery", "scheduling"]
+    }
+  ]
+}</code></pre>
+<p>A type guard in <code>protocol-map/peers.ts</code> checks the fields the 1.0 data model requires of the card and of each part it names, from its provider and interfaces to its skills, security schemes and signatures, and reports each fault it finds. Its tests read this card and the salon&rsquo;s file below, and both pass.</p>
+<p>Two file formats carry know-how. <a href="https://agents.md/">AGENTS.md</a> is a README for coding agents: plain Markdown with no required fields, where the closest file to the one being edited wins and the person&rsquo;s own instructions override everything. An <a href="https://agentskills.io/specification">Agent Skill</a> is a folder an agent loads a little at a time, by progressive disclosure; <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> builds one.</p>
+<p>Two more meet a webmaster at the page itself, and both are emerging. <a href="https://webmachinelearning.github.io/webmcp">WebMCP</a>, a draft of the W3C&rsquo;s Web Machine Learning Community Group with editors from Microsoft and Google, lets a page register a tool with <code>document.modelContext.registerTool()</code> or offer a form as one. Its status page lists origin trials in Chrome and Edge.</p>
+<p>A tool registered that way runs the page&rsquo;s own code, so on the cart&rsquo;s order page it would dispatch the same action the Add button does, and the agent and the person share one state.</p>
+<p>And <a href="https://llmstxt.org/">llms.txt</a>, Jeremy Howard&rsquo;s proposal, revised as v2 in August 2026, is a Markdown file at a site&rsquo;s root, or under any path, that sums up the site and links to clean Markdown versions of its pages. Here is the salon&rsquo;s, <code>protocol-map/salon-llms.txt</code>:</p>
+<pre class="code-block" tabindex="0"><code># The salon
+
+&gt; An invented salon, for the lesson: cuts, color and blowouts, Tuesday to Saturday. Bookings are by email, and a person confirms every one.
+
+Open Tuesday, Wednesday and Friday 9 to 5, Thursday 9 to 7 and Saturday 9 to 3. Closed Sunday and Monday.
+
+## Services
+
+- [Cuts](https://salon.example/services/cut.md): 45 minutes
+- [Color](https://salon.example/services/color.md): two hours
+- [Blowouts](https://salon.example/services/blowout.md): 30 minutes
+
+## Booking
+
+- [How to book](https://salon.example/booking.md): the service, and two times that suit
+
+## Optional
+
+- [The stylists](https://salon.example/stylists.md)</code></pre>
+<p>The principle under all four: give agents the same honest, structured path you give people. The card says what the bakery&rsquo;s agent will do, the file says what the salon offers, and the page&rsquo;s tool does exactly what its button does.</p>
+<aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> These protocols move fast. MCP&rsquo;s 2026-07-28 revision removed the handshake every earlier tutorial teaches, so each page in this module names the revision it teaches, and the changelog is read before a lesson is revised.</p>
+<p><a href="https://modelcontextprotocol.io/extensions/overview">Extensions</a> sit outside the core, and both sides opt in. MCP Apps render interactive UI in a sandboxed frame inside the conversation, Tasks give long work a durable handle to poll, and Skills over MCP serves Agent Skills as resources. Names follow <code>{vendor-prefix}/{name}</code>, and official ones start <code>io.modelcontextprotocol</code>.</p>
+<p>The <a href="https://modelcontextprotocol.io/registry/about">MCP Registry</a>, in preview, is a catalog of metadata pointing at packages in npm, PyPI and the like, and hosts no code. An MCP App earns its place when its UI must live in the conversation or trade data with the host; otherwise, the MCP docs say, a regular web app may be simpler.</p>
+<p>The cart&rsquo;s server writes the wire by hand to show how small it is: JSON-RPC and a schema, both of which the course&rsquo;s own tools cover. TypeScript has a Tier 1 SDK on the <a href="https://modelcontextprotocol.io/docs/2026-07-28/sdk">official SDK list</a>. Haskell has none there, only community packages on Hackage, so a Servant backend that speaks MCP checks which revision a package speaks, or writes this layer itself.</p>
+<p>Which of these protocols a project uses is chosen with the rest of its stack, project by project.</p></aside>
+<p>The joins are mapped. <a href="/community/geometric-reasoning-as-data/">Geometric reasoning as data</a> turns to what crosses them, and gives it a shape every later lesson in the module reads.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/module-6-ai-protocol-ecosystem/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">Module 6: AI protocol ecosystem</span></a>
+<a href="/community/geometric-reasoning-as-data/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Geometric reasoning as data</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+</body>
+</html>
