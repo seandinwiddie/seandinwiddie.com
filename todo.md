@@ -35,7 +35,7 @@ The reading-list audit answers how the copy reads; these facts come from Sean. T
 - [ ] Whether Sean drives to Redding for in-person meetings. Until he decides, Redding owners work by phone, video and email, and the site promises no Redding meetings.
 - [ ] The Marketing hub's H1, "SEO and campaigns that compound traffic and leads", is Sean's wording, but "compound" is a word the recruiting rules keep away from pay.
 - [ ] The Development hub's H1, "From idea to production, built to last", is Sean's wording too (the same commit as Marketing's), and owners read "production" as a developer's word (pass 15). Its intro line is plain since pass 15.
-- [ ] The Design hub's H1, "Design that turns visitors into customers", is Sean's wording from the same commit (pass 16); the owner review reads it as a little salesy. And whether the Introduction's "Fallibility" (Sean's own principle, with the meals and wardrobe lines) reads better as "Side effects" is his call. The senior engineer's read in community loop round 8 has its High-return and Low-return lists reading as lifestyle rather than code; the loop leaves them as he wrote them.
+- [ ] The Design hub's H1, "Design that turns visitors into customers", is Sean's wording from the same commit (pass 16); the owner review reads it as a little salesy.
 - [ ] The terms of service: they cover website use only, under California law, while Sean works from Klamath Falls, Oregon.
 - [ ] The SMS terms name an "Inquiry Form" and SMS opt-in the site doesn't have.
 - [ ] Whether to keep the empty blog post titled "https://en.wikipedia.org/wiki/Cargo_cult_programming".
