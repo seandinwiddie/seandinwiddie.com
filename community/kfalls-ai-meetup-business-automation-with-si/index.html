@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Meetup Talk: SI Business Automation | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Module 5 as a twenty-minute meetup talk: the agent loop, skills, a person approving what leaves, email as data, evals on real days and handover.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Meetup Talk: SI Business Automation | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Module 5 as a twenty-minute meetup talk: the agent loop, skills, a person approving what leaves, email as data, evals on real days and handover.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-04T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-04">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meetup Talk: SI Business Automation | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Module 5 as a twenty-minute meetup talk: the agent loop, skills, a person approving what leaves, email as data, evals on real days and handover.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/deck.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#webpage","url":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/","name":"Meetup Talk: SI Business Automation | Sean Dinwiddie's Webmastery","description":"Module 5 as a twenty-minute meetup talk: the agent loop, skills, a person approving what leaves, email as data, evals on real days and handover.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-04T12:00:00+00:00","dateModified":"2026-10-04"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Meetup talk: Business automation with SI (agentic skills)","item":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#article","headline":"Meetup talk: Business automation with SI (agentic skills)","description":"Module 5 as a twenty-minute meetup talk: the agent loop, skills, a person approving what leaves, email as data, evals on real days and handover.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-business-automation-with-si/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-04T12:00:00+00:00","dateModified":"2026-10-04"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/sigmund-Zs1zHhHBG8g-unsplash-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Meetup talk: Business automation with SI (agentic skills)</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 2; --lessons: 5">Lesson 2 of 5 in Module 5</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/kfalls-ai-meetup-business-automation-with-si/" rel="bookmark"><time datetime="2026-10-04T12:00:00+00:00">October 4, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>Module 5, as a talk for the KFalls AI Meetup (evening, business &amp; student): an order typed twice, an agent that drafts it once, and a person who approves what leaves the building. It runs about twenty minutes, and every slide links to the lesson that goes deeper.</p>
+<div class="deck">
+<div class="deck__bar" hidden>
+<button type="button" class="deck__present" data-deck="present">Present</button>
+<button type="button" class="deck__toggle" data-deck="notes" aria-pressed="false">Speaker notes</button>
+<p>Present shows one slide per screen: the arrow keys or space move, N shows the notes and Esc leaves. Printed, each slide takes a page.</p>
+</div>
+<section class="slide slide--title" id="talk-start">
+<div class="slide__frame">
+<div class="slide__cover">
+<p class="slide__kicker">KFalls AI Meetup (evening, business &amp; student)</p>
+<p class="slide__title">Business automation with&nbsp;SI <span>(agentic skills)</span></p>
+<p class="slide__sub">Module 5 of the community course, as a twenty-minute talk</p>
+<p class="slide__byline"><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> Klamath Falls, Redding and the towns in between</p>
+</div>
+<div class="slide__photo" style="background-image:url('/assets/img/sigmund-Zs1zHhHBG8g-unsplash-scaled.jpg');background-position:30% center;"></div>
+</div>
+<div class="slide__notes"><p>Twenty minutes, one problem from the counter, and the software that takes it off. Owners: listen for the parts that keep you in charge. Students: listen for the parts that are craft.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="the-same-order-typed-twice"><a class="heading-anchor" href="#the-same-order-typed-twice">The same order, typed twice</a></h2>
+<div class="slide__body">
+<p class="slide__lead">An order comes in by phone or email. Someone types it into the register, then again into the calendar and the order sheet.</p>
+<p class="slide__lead">None of it is hard, and all of it has to happen, every day.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/automating-a-business-process/#the-job-as-a-story-and-its-scenarios">Automating a business process with a person in the loop</a> · The first job on <a href="/automation/">Automation</a></p>
+</div>
+<div class="slide__notes"><p>Ask the room who types the same details into two systems, and let the hands go up. This is the first job on the automation page, and the job the whole module builds.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="what-the-retyping-costs"><a class="heading-anchor" href="#what-the-retyping-costs">What the retyping costs</a></h2>
+<div class="slide__body">
+<ul class="slide__lead">
+<li>A typo between two screens, and the customer finds it first.</li>
+<li>The admin, done at night after closing.</li>
+<li>One person is the system, and when they&rsquo;re away it stops.</li>
+</ul>
+<p class="slide__lead">Everyone here can put their own number on it.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/module-5-business-automation-with-ai/">Module 5: Business automation with AI (agentic skills)</a></p>
+</div>
+<div class="slide__notes"><p>No figures from the front of the room. Ask what happens when the calendar and the register disagree, and who does the typing on a day off. Let the owners name their own cost.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="si-what-federal-agencies-now-call-ai"><a class="heading-anchor" href="#si-what-federal-agencies-now-call-ai">SI: what federal agencies now call AI</a></h2>
+<div class="slide__body">
+<p class="slide__lead">Since September 29, 2026, federal agencies write Super Intelligence, SI, in their own documents and communications, where they wrote artificial intelligence, AI.</p>
+<p>Executive Order 14434 changes the name, not the law: it defines SI by the statutory definition of AI, so the two cover the same systems. Proposed language for a federal definition is due to the President within 60 days.</p>
+<p>In research, &ldquo;superintelligence&rdquo; means something else. Here, SI is only the new name.</p>
+</div>
+<p class="slide__deeper">Sources: <a href="https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/">the order</a> and <a href="https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/">its fact sheet</a> · The course&rsquo;s modules keep &ldquo;AI&rdquo; in their names: <a href="/community/module-5-business-automation-with-ai/">Module 5</a></p>
+</div>
+<div class="slide__notes"><p>Say it once, plainly, and move on. The order is titled &ldquo;Inaugurating the Era of Super Intelligence.&rdquo; It binds the executive branch&rsquo;s departments and agencies from now on, and leaves statutes, regulations and earlier documents as they are. For its purposes SI means what the statutory definition of AI, 15 U.S.C. 9401(3), covers, and the legal summaries agree it changes no law. No claim about what the systems can do rides on the name, and from here on the talk says SI.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="an-agent-is-a-loop"><a class="heading-anchor" href="#an-agent-is-a-loop">An agent is a loop</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>An agent is software: a model in a loop with tools.</p>
+<p>It reads the job, asks for a tool, reads the result and goes round again, until it answers or a limit stops it.</p>
+<p>Every way out is a value the program names.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-loop-title talk-loop-desc" viewBox="0 0 360 320">
+<title id="talk-loop-title">The agent loop and its ways out</title>
+<desc id="talk-loop-desc">The task goes to the model. A highlighted loop runs from the model down to decide, from decide across to the tools, labelled tool calls, and from the tools back to the model, labelled results. From decide, one more line leads down to a box listing the four values of Stop: answered, outOfTurns, outOfTokens and modelStopped.</desc>
+<g class="edge"><line x1="96" y1="36" x2="96" y2="76"/><line x1="93" y1="70.8" x2="96" y2="76"/><line x1="99" y1="70.8" x2="96" y2="76"/><line x1="96" y1="172" x2="96" y2="212"/><line x1="93" y1="206.8" x2="96" y2="212"/><line x1="99" y1="206.8" x2="96" y2="212"/></g>
+<g class="path"><line x1="96" y1="100" x2="96" y2="148"/><line x1="93" y1="142.8" x2="96" y2="148"/><line x1="99" y1="142.8" x2="96" y2="148"/><line x1="156" y1="160" x2="288" y2="160"/><line x1="288" y1="160" x2="288" y2="100"/><line x1="285" y1="105.2" x2="288" y2="100"/><line x1="291" y1="105.2" x2="288" y2="100"/><line x1="232" y1="88" x2="156" y2="88"/><line x1="161.2" y1="85" x2="156" y2="88"/><line x1="161.2" y1="91" x2="156" y2="88"/></g>
+<rect class="node" x="16" y="12" width="160" height="24" rx="4"/>
+<rect class="node on" x="36" y="76" width="120" height="24" rx="4"/>
+<rect class="node on" x="232" y="76" width="112" height="24" rx="4"/>
+<rect class="node on" x="36" y="148" width="120" height="24" rx="4"/>
+<rect class="node" x="16" y="212" width="160" height="96" rx="4"/>
+<g><text x="96" y="24">the task</text><text x="96" y="88">model</text><text x="288" y="88">tools</text><text x="96" y="160">decide</text><text x="96" y="230">answered</text><text x="96" y="250">outOfTurns</text><text x="96" y="270">outOfTokens</text><text x="96" y="290">modelStopped</text><text class="note" x="194" y="76">results</text><text class="note" x="222" y="148">tool calls</text><text class="note" x="266" y="250">every way out</text><text class="note" x="266" y="270">is a Stop</text></g>
+</svg>
+<figcaption>The loop as the lesson builds it, round the violet path. Every way out is one value of <code>Stop</code>.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a></p>
+</div>
+<div class="slide__notes"><p>The whole trick, and it is ordinary software. The four ways out are answered, out of turns, out of tokens and stopped by the model. The lesson builds the loop in TypeScript and tests it against a scripted model, so no test calls a real one.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="the-model-asks-the-program-decides"><a class="heading-anchor" href="#the-model-asks-the-program-decides">The model asks; the program decides</a></h2>
+<div class="slide__body">
+<p class="slide__lead">The model never runs anything. It asks for a tool by name, and plain code checks the request and decides whether to run it.</p>
+<p class="slide__lead">Ask an invented bakery for croissants it doesn&rsquo;t bake, and the tool answers with what the menu does have, so the model offers something real.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/the-agent-loop-and-its-tools/#tools-are-typed-functions-with-contracts">The agent loop and its tools</a></p>
+</div>
+<div class="slide__notes"><p>Every rule in the module lives on the program&rsquo;s side of that line. A failed tool is a result the model reads on its next turn, never a crash, so it can say plainly that there are no croissants instead of inventing one.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="a-skill-is-packaged-know-how"><a class="heading-anchor" href="#a-skill-is-packaged-know-how">A skill is packaged know-how</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>A skill is a folder with a <code>SKILL.md</code>: a name, a description and instructions, with scripts beside them.</p>
+<p>Only the name and description load at the start. The instructions load when a task matches, and a script runs only when a step calls it.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-folder-title talk-folder-desc" viewBox="0 0 360 357">
+<title id="talk-folder-title">What loads when</title>
+<desc id="talk-folder-desc">A folder tree. The folder drafting-booking-replies holds SKILL.md, scripts and assets. SKILL.md's frontmatter is highlighted: its name and description are loaded at startup, for every installed skill. The body is loaded when a task matches. The scripts open-times.ts and check-draft.ts are run by a step, and only their output is loaded. The assets folder holds salon.json, which is read by a script.</desc>
+<g class="edge"><line x1="26.5" y1="38.5" x2="26.5" y2="292.5"/><line x1="26.5" y1="64.5" x2="38.5" y2="64.5"/><line x1="26.5" y1="178.5" x2="38.5" y2="178.5"/><line x1="26.5" y1="292.5" x2="38.5" y2="292.5"/><line x1="50.5" y1="76.5" x2="50.5" y2="140.5"/><line x1="50.5" y1="102.5" x2="62.5" y2="102.5"/><line x1="50.5" y1="140.5" x2="62.5" y2="140.5"/><line x1="50.5" y1="190.5" x2="50.5" y2="254.5"/><line x1="50.5" y1="216.5" x2="62.5" y2="216.5"/><line x1="50.5" y1="254.5" x2="62.5" y2="254.5"/><line x1="50.5" y1="304.5" x2="50.5" y2="330.5"/><line x1="50.5" y1="330.5" x2="62.5" y2="330.5"/></g>
+<rect class="node" x="14.5" y="14.5" width="226" height="24" rx="4"/>
+<rect class="node" x="38.5" y="52.5" width="84" height="24" rx="4"/>
+<rect class="node on" x="62.5" y="90.5" width="108" height="24" rx="4"/>
+<rect class="node" x="62.5" y="128.5" width="52" height="24" rx="4"/>
+<rect class="node" x="38.5" y="166.5" width="84" height="24" rx="4"/>
+<rect class="node" x="62.5" y="204.5" width="126" height="24" rx="4"/>
+<rect class="node" x="62.5" y="242.5" width="134" height="24" rx="4"/>
+<rect class="node" x="38.5" y="280.5" width="76" height="24" rx="4"/>
+<rect class="node" x="62.5" y="318.5" width="100" height="24" rx="4"/>
+<g><text x="127.5" y="26.5">drafting-booking-replies/</text><text x="80.5" y="64.5">SKILL.md</text><text x="116.5" y="102.5">frontmatter</text><text x="88.5" y="140.5">body</text><text x="80.5" y="178.5">scripts/</text><text x="125.5" y="216.5">open-times.ts</text><text x="129.5" y="254.5">check-draft.ts</text><text x="76.5" y="292.5">assets/</text><text x="112.5" y="330.5">salon.json</text><text class="note" x="285.5" y="94.5">name, description</text><text class="note" x="285.5" y="110.5">loaded at startup</text><text class="note" x="285.5" y="132.5">loaded when a</text><text class="note" x="285.5" y="148.5">task matches</text><text class="note" x="285.5" y="219.5">run by a step;</text><text class="note" x="285.5" y="235.5">only the output</text><text class="note" x="285.5" y="251.5">is loaded</text><text class="note" x="285.5" y="330.5">read by a script</text></g>
+</svg>
+<figcaption>An invented salon&rsquo;s skill. The violet frontmatter is all the model sees until a task calls for more.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a></p>
+</div>
+<div class="slide__notes"><p>Staged loading is why a team can install many skills at little cost, and why the description carries the weight: it is the only part the model reads before deciding. A script&rsquo;s output enters the context, never its code. Anthropic published the format as an open standard in December 2025.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="judgment-to-the-model-exact-work-to-code"><a class="heading-anchor" href="#judgment-to-the-model-exact-work-to-code">Judgment to the model, exact work to code</a></h2>
+<div class="slide__body">
+<p>Which times are open is arithmetic, so a script works them out and a second script checks the draft. How to word the reply is judgment, and the instructions leave room for it.</p>
+<pre class="code-block code-output" tabindex="0"><code>$ node scripts/check-draft.ts draft.txt open-times.json
+offers 10:30 a.m., which open-times.json doesn't list
+offers 4 times; the stock reply offers at most 3
+still holds the placeholder {first name}</code></pre>
+<p>The model fixes all three, and the check runs again.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/writing-an-agentic-skill/#scripts-for-the-parts-that-must-be-exact">Writing an agentic skill</a></p>
+</div>
+<div class="slide__notes"><p>A model writing times token by token can offer one that isn&rsquo;t free; a script can&rsquo;t. Instructions for flexible guidance, code for reliability. A check holds only where code runs it on every draft, whatever the model did.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="a-person-approves-what-leaves-the-building"><a class="heading-anchor" href="#a-person-approves-what-leaves-the-building">A person approves what leaves the building</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>Inside, the agent reads and drafts. At the door stands a person.</p>
+<p>An email sent, a payment taken, a record deleted or a slot booked waits for a yes.</p>
+<p>A draft costs nothing to throw away. A sent email can&rsquo;t be unsent.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-process-title talk-process-desc" viewBox="0 0 360 384">
+<title id="talk-process-title">An emailed order, from the inbox to the register</title>
+<desc id="talk-process-desc">The order email sits at the top, above a line that divides outside from inside. A highlighted arrow carries it across the line, read as data, down to the model. From the model a highlighted arrow leads to the gate, which is highlighted. The gate branches three ways: runs, for tools that read or leave notes; waits, on the highlighted path; and refused, for tools off the task's list. From waits the highlighted path leads to a highlighted box, a person approves, and from there branches to three boxes: the register, the calendar and the order sheet.</desc>
+<g class="edge"><line x1="12" y1="60" x2="348" y2="60"/><line x1="62" y1="196" x2="298" y2="196"/><line x1="62" y1="196" x2="62" y2="212"/><line x1="59" y1="206.8" x2="62" y2="212"/><line x1="65" y1="206.8" x2="62" y2="212"/><line x1="298" y1="196" x2="298" y2="212"/><line x1="295" y1="206.8" x2="298" y2="212"/><line x1="301" y1="206.8" x2="298" y2="212"/></g>
+<g class="path"><line x1="180" y1="44" x2="180" y2="84"/><line x1="177" y1="78.8" x2="180" y2="84"/><line x1="183" y1="78.8" x2="180" y2="84"/><line x1="180" y1="116" x2="180" y2="148"/><line x1="177" y1="142.8" x2="180" y2="148"/><line x1="183" y1="142.8" x2="180" y2="148"/><line x1="180" y1="180" x2="180" y2="212"/><line x1="177" y1="206.8" x2="180" y2="212"/><line x1="183" y1="206.8" x2="180" y2="212"/><line x1="180" y1="244" x2="180" y2="276"/><line x1="177" y1="270.8" x2="180" y2="276"/><line x1="183" y1="270.8" x2="180" y2="276"/><line x1="180" y1="308" x2="180" y2="340"/><line x1="177" y1="334.8" x2="180" y2="340"/><line x1="183" y1="334.8" x2="180" y2="340"/><line x1="62" y1="324" x2="298" y2="324"/><line x1="62" y1="324" x2="62" y2="340"/><line x1="59" y1="334.8" x2="62" y2="340"/><line x1="65" y1="334.8" x2="62" y2="340"/><line x1="298" y1="324" x2="298" y2="340"/><line x1="295" y1="334.8" x2="298" y2="340"/><line x1="301" y1="334.8" x2="298" y2="340"/></g>
+<rect class="node" x="100" y="12" width="160" height="32" rx="4"/>
+<rect class="node" x="120" y="84" width="120" height="32" rx="4"/>
+<rect class="node on" x="120" y="148" width="120" height="32" rx="4"/>
+<rect class="node" x="12" y="212" width="100" height="32" rx="4"/>
+<rect class="node" x="130" y="212" width="100" height="32" rx="4"/>
+<rect class="node" x="248" y="212" width="100" height="32" rx="4"/>
+<rect class="node on" x="100" y="276" width="160" height="32" rx="4"/>
+<rect class="node" x="12" y="340" width="100" height="32" rx="4"/>
+<rect class="node" x="130" y="340" width="100" height="32" rx="4"/>
+<rect class="node" x="248" y="340" width="100" height="32" rx="4"/>
+<g><text x="180" y="28">the order email</text><text class="note" x="44" y="50">outside</text><text class="note" x="44" y="72">inside</text><text class="note" x="234" y="72">read as data</text><text x="180" y="100">the model</text><text x="180" y="164">the gate</text><text x="62" y="228">runs</text><text x="180" y="228">waits</text><text x="298" y="228">refused</text><text class="note" x="62" y="258">reads, notes</text><text class="note" x="298" y="258">off the list</text><text x="180" y="292">a person approves</text><text x="62" y="356">register</text><text x="180" y="356">calendar</text><text x="298" y="356">order sheet</text></g>
+</svg>
+<figcaption>An emailed order&rsquo;s way through, along the violet path: the gate holds every change, and only a person sends it on.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/automating-a-business-process/#the-process-end-to-end">Automating a business process with a person in the loop</a></p>
+</div>
+<div class="slide__notes"><p>The gate is plain data and pure functions. It takes the task and the tool&rsquo;s name and nothing else, so no email can change its answer. OWASP calls the failure this guards against excessive agency.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="each-task-gets-only-its-tools"><a class="heading-anchor" href="#each-task-gets-only-its-tools">Each task gets only its tools</a></h2>
+<div class="slide__body">
+<p class="slide__lead">The order-entry agent reads the email, looks up the menu and drafts. It has no tool that sends email at all.</p>
+<p class="slide__lead">Its tools can&rsquo;t reach the register, the calendar or the order sheet; only an approval can. More reach is a decision, made on purpose, with a test that names it.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/automating-a-business-process/#tools-that-cant-reach-what-they-mustnt">Automating a business process with a person in the loop</a></p>
+</div>
+<div class="slide__notes"><p>Least privilege, at the scale of a bakery. Add a tool to the agent&rsquo;s list and a scenario fails, naming the new tool, so widening its reach is always someone&rsquo;s deliberate change.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="an-emails-words-are-data-never-orders"><a class="heading-anchor" href="#an-emails-words-are-data-never-orders">An email&rsquo;s words are data, never orders</a></h2>
+<div class="slide__body">
+<p>An email can say anything: that the owner approved it, to enter it now, to send the week&rsquo;s orders to a stranger. The program holds the line, not the model. Each call&rsquo;s verdict, from the log:</p>
+<pre class="code-block code-output" tabindex="0"><code>ran         read_order
+held        draft_order
+refused     enter_sale
+refused     send_email</code></pre>
+<p>OWASP&rsquo;s 2026 list ranks prompt injection first among the risks to apps built on large language models.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/automating-a-business-process/#an-email-that-tries-to-give-orders">Automating a business process with a person in the loop</a></p>
+</div>
+<div class="slide__notes"><p>The model in the lesson is scripted to obey the email, the worst case. Both requests are refused and logged for the owner to see, and the draft that waits is the order the customer asked for, priced from the menu. No defense makes a model immune; this design limits what a fooled one can do.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="tests-every-run-evals-on-real-days"><a class="heading-anchor" href="#tests-every-run-evals-on-real-days">Tests every run, evals on real days</a></h2>
+<div class="slide__body">
+<ul class="slide__lead">
+<li><strong>Tests</strong> run the loop against a scripted model: quick, and the same on every run.</li>
+<li><strong>Evals</strong> run the real model over real days&rsquo; email, before and after every change.</li>
+</ul>
+<p class="slide__lead">Each email, with what the person did with it, becomes an eval case, so the evals follow the real mix of orders and questions.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/automating-a-business-process/#evals-on-real-days">Automating a business process with a person in the loop</a></p>
+</div>
+<div class="slide__notes"><p>A scripted model tests the plumbing; it can&rsquo;t say whether a real model drafts the right order. The evals are where the automation page&rsquo;s promise, tested against real days rather than a demo, is kept.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="handover-with-written-notes"><a class="heading-anchor" href="#handover-with-written-notes">Handover, with written notes</a></h2>
+<div class="slide__body">
+<p class="slide__lead">At handover the agent runs in the owner&rsquo;s own accounts, and each order is checked once instead of typed into three systems, so the retyping after closing goes with it. The notes say:</p>
+<ul>
+<li>what it does on its own, and what waits for you;</li>
+<li>what it can&rsquo;t do at all, and how to read its log;</li>
+<li>what happens when it stops: orders typed by hand, as before, with nothing lost.</li>
+</ul>
+<p>Keeping it watched and current is part of the monthly engagement.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/automating-a-business-process/#handover-with-written-notes">Automating a business process with a person in the loop</a></p>
+</div>
+<div class="slide__notes"><p>Written down, so a new hire can pick it up. The last line is the automation page&rsquo;s own: after handover, changes go on the month&rsquo;s written work list.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="fair-questions-from-owners"><a class="heading-anchor" href="#fair-questions-from-owners">Fair questions from owners</a></h2>
+<div class="slide__body">
+<div class="slide__qa">
+<div>
+<h3>Is this hype?</h3>
+<p>It&rsquo;s software you can test: a loop, typed tools, a scenario for every rule and a log you can read.</p>
+</div>
+<div>
+<h3>Things change too fast.</h3>
+<p>Models change. The written scope, the tests and the evals stay, and every change runs against real days before it reaches the counter.</p>
+</div>
+</div>
+<p class="slide__lead">And not every job needs an agent: when the steps never change, a script, or a setting you already pay for, does it for less.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/module-5-business-automation-with-ai/#a-person-approves-what-leaves-the-building">Module 5: Business automation with AI (agentic skills)</a></p>
+</div>
+<div class="slide__notes"><p>Answer calmly. The last line is the honest part, and the module&rsquo;s own advice: the simplest thing that works, and an agent only where the input varies and a wrong step is caught before it leaves the building.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="fair-questions-from-students"><a class="heading-anchor" href="#fair-questions-from-students">Fair questions from students</a></h2>
+<div class="slide__body">
+<div class="slide__qa">
+<div>
+<h3>SI builds websites for free.</h3>
+<p>Drafts and templates got cheap. Judgment, answering for the work, knowing the owner&rsquo;s site and the handover didn&rsquo;t.</p>
+</div>
+<div>
+<h3>SI will replace webmasters.</h3>
+<p>The agent drafts and a person approves. Someone writes the scope, the tools, the tests and the notes: that&rsquo;s the craft, and the course teaches it.</p>
+</div>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a></p>
+</div>
+<div class="slide__notes"><p>No forecasts. What got cheap is real, and saying so is part of the answer; what the fee pays for is the rest.</p></div>
+</section>
+<section class="slide slide--close">
+<div class="slide__frame">
+<h2 id="questions-and-one-next-step"><a class="heading-anchor" href="#questions-and-one-next-step">Questions, and one next step</a></h2>
+<div class="slide__body">
+<div class="slide__paths">
+<div>
+<h3>If you run something local</h3>
+<p>Name the one job typed twice in your business, and tell Sean Dinwiddie&rsquo;s Webmastery the job, when it&rsquo;s needed and the example it&rsquo;s closest to. The answer leads to a written scope and fee.</p>
+<p class="slide__links"><a href="/automation/">Automation</a> · <a href="/contact/">Call or email</a></p>
+</div>
+<div>
+<h3>If you&rsquo;re studying, or building already</h3>
+<p>Take Module 5 from its first lesson, in TypeScript with no machine learning assumed. On the team, a webmaster at any stage of the craft keeps their own practice while the name brings in the work.</p>
+<p class="slide__links"><a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a> · <a href="/community/staff/">Joining the team</a></p>
+</div>
+</div>
+</div>
+<p class="slide__sign">Strengthening the service industry of Jefferson State: Klamath Falls, Redding and the towns in between.</p>
+</div>
+<div class="slide__notes"><p>Take questions. Every job starts with a written scope and fee. If cost comes up, the automation page states it: one automation starts at a third share ($2,000) of the $6,000 monthly engagement, fixed in writing before work starts.</p></div>
+</section>
+</div>
+<p>The talk is the module in brief. <a href="/community/the-agent-loop-and-its-tools/">The agent loop and its tools</a> starts the lessons themselves, building the loop in TypeScript and testing it against a scripted model.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/module-5-business-automation-with-ai/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">Module 5: Business automation with AI (agentic skills)</span></a>
+<a href="/community/the-agent-loop-and-its-tools/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The agent loop and its tools</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+  <script src="/assets/deck.js"></script>
+</body>
+</html>

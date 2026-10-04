@@ -5,6 +5,8 @@
 import { existsSync, readFileSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
 import {
+  DECK_SCRIPT,
+  DECK_STYLESHEET,
   EXPECTED_SHARED_PAGE_COUNT,
   ORIGIN,
   REQUIRED_SHARED_ASSETS,
@@ -12,6 +14,7 @@ import {
   ROOT,
   countMatches,
   fileForPathname,
+  hasDeck,
   isNoindex,
   publicAssetFiles,
   publicPageFiles,
@@ -162,7 +165,9 @@ for (const file of pages) {
   const stylesheetLinks = tags(html, "link")
     .filter((tag) => /(?:^|\s)stylesheet(?:\s|$)/i.test(attribute(tag, "rel")))
     .map((tag) => attribute(tag, "href"));
-  const expectedStyles = ["/assets/fontawesome.css", "/assets/site.css"];
+  // A talk deck adds its own stylesheet and script, and no other page loads them.
+  const deck = hasDeck(html);
+  const expectedStyles = ["/assets/fontawesome.css", "/assets/site.css", ...(deck ? [DECK_STYLESHEET] : [])];
   if (
     stylesheetLinks.length !== expectedStyles.length ||
     expectedStyles.some((href) => !stylesheetLinks.includes(href))
@@ -174,8 +179,9 @@ for (const file of pages) {
     failures.push(`${name}: favicon must be /assets/img/favicon.ico`);
   }
   const runtimeScripts = tags(html, "script").map((tag) => attribute(tag, "src")).filter(Boolean);
-  if (runtimeScripts.length !== 1 || runtimeScripts[0] !== "/assets/site.js") {
-    failures.push(`${name}: runtime script must be exactly /assets/site.js`);
+  const expectedScripts = ["/assets/site.js", ...(deck ? [DECK_SCRIPT] : [])];
+  if (runtimeScripts.length !== expectedScripts.length || expectedScripts.some((src, index) => runtimeScripts[index] !== src)) {
+    failures.push(`${name}: runtime scripts must be exactly ${expectedScripts.join(" then ")}`);
   }
 
   if (countMatches(html, /<main\b/gi) !== 1) failures.push(`${name}: expected one main landmark`);

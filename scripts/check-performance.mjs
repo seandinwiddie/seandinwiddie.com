@@ -4,7 +4,7 @@
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
-import { ROOT, publicPageFiles } from "./static-site.mjs";
+import { ROOT, hasDeck, publicPageFiles } from "./static-site.mjs";
 
 const MAX_HTML_BYTES = 80_000;
 const MAX_TOTAL_HTML_BYTES = 3_000_000;
@@ -17,6 +17,8 @@ const ASSET_BUDGETS = Object.freeze({
   "assets/site.js": 32_000,
   "assets/fontawesome.css": 16_000,
   "assets/dank-mono.css": 128_000,
+  "assets/deck.css": 14_000,
+  "assets/deck.js": 8_000,
 });
 const failures = [];
 const pages = publicPageFiles();
@@ -44,14 +46,16 @@ for (const file of pages) {
       !/\btype=["']application\/ld\+json["']/i.test(match[1]) &&
       match[2].trim(),
   );
-  if (runtimeScripts.length !== 1) failures.push(`${name}: expected one shared runtime script`);
+  // A talk deck loads one stylesheet and one script of its own (docs/design.md, Talk decks).
+  const deckAssets = hasDeck(html) ? 1 : 0;
+  if (runtimeScripts.length !== 1 + deckAssets) failures.push(`${name}: expected one shared runtime script`);
   if (inlineExecutables.length > 0) failures.push(`${name}: contains inline executable JavaScript`);
   if (/googletagmanager\.com\/gtag\/js|gtag\(["']config["']|wp-admin|admin-ajax|forms\.aweber\.com\/form\/displays\.htm/i.test(html)) {
     failures.push(`${name}: immediate analytics or retired plugin runtime remains`);
   }
 
   const stylesheets = [...html.matchAll(/<link\b[^>]*rel=["'][^"']*stylesheet[^"']*["'][^>]*>/gi)];
-  if (stylesheets.length !== 2) failures.push(`${name}: expected exactly two shared stylesheet links`);
+  if (stylesheets.length !== 2 + deckAssets) failures.push(`${name}: expected exactly two shared stylesheet links`);
 }
 
 if (totalHtmlBytes > MAX_TOTAL_HTML_BYTES) {

@@ -2,6 +2,46 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Meetup talks review loop: October 4, 2026
+
+Six reviews read both talks slide by slide, speaker notes included, each run on its own: the local owner in the room, a student or junior webmaster, the copywriter (the reading list's checks and the writing rules), the senior CTO (every claim against its lesson and a primary source, every link and anchor), the designer (every slide at 1920x1080 presenting, the page at 390 and 1366, print) and a privacy read against Sean's private repositories. The loop runs until every review scores 9 or higher, four rounds at most.
+
+### Round 1
+
+- **Scores:** owner 7.5, webmaster/student 8, copywriter 8, CTO 7, designer 8, privacy 9.5.
+- **Objections that matter most:** the SI slide said "the federal government", where the order binds the executive branch's agencies alone, and its notes credited the fact sheet with saying no law changes; Module 6's talk said a rejected answer goes back "once more" (the lesson retries until three tries run out) and that "code checks the rest on every request" (the ledger's assertions wait until something checks them); neither close named what a reply leads to, and Module 5's asked for "the one job your team types twice", which leaves out the owner who works alone; text slides rode high, with a third of the canvas empty under them.
+- **Applied:** the SI slide reads "SI: what federal agencies now call AI", defines SI by the statutory definition of AI, says proposed language for a federal definition is due to the President within 60 days, and cites the order beside its fact sheet; the retry, the ledger, "a person should always be able to deny a tool call" (the tools page's should), the yes-to-everything pair, the skill's staged loading and the eval cases (each email, with what the person did) match their lessons; both closes say the answer leads to a written scope and fee, Module 5's names "the one job typed twice in your business", and the student paths say what the lesson builds; Module 5's owners' questions concede on the slide that not every job needs an agent, its handover names the retyping after closing as what goes, and Module 6's matched family says what it means for the cart. Each content slide's body now sits a little above the middle of the room under its title (`.slide__body`, weighted spacers that shrink to nothing on a full slide), two columns share their rows, and a link never breaks inside itself.
+- **Held:** the Present button's white on `#0073e6` is the site's shared pill, 4.6:1 (AA, not AAA); any change is a color step on a shared component. Pressing N while presenting lays the notes over the slide's foot, which suits rehearsal; a separate presenter window is a larger change.
+
+### Round 2
+
+- **Scores:** owner 8.5, webmaster/student 8.5, copywriter 8.5, CTO 9, designer 9, privacy 9.5.
+- **Objections that matter most:** Module 5's handover left what continues after launch to the notes; Module 6's owners' "Is this hype?" answered with the course's ledger rather than a promise an owner hears, and its middle slides gave owners little to keep; the student paths named the course but not what the team offers a webmaster who joins.
+- **Applied:** the handover slide says keeping the agent watched and current is part of the monthly engagement (the automation page's line); "Is this hype?" takes the ledger's own example, a maker's promise that its assistant never double-books, asserted until a test calendar checks it; the pair slide closes on "One answer can be right by luck; a pair can't"; both student paths carry the recruiting note's line, that a webmaster at any stage of the craft keeps their own practice while the name brings in the work. Every text measures 7:1 or better against its ground while presenting (the diagrams' notes 7.04:1 on the plate), and every slide still fits its frame.
+- **Held:** the diagrams' smallest notes render near 18px on a 1080p projector, the lessons' own drawings at the largest size the slide allows.
+
+### Round 3
+
+- **Scores:** owner 8.5, webmaster/student 9, copywriter 9, CTO 8.5, designer 9, privacy 9.5.
+- **Objections that matter most:** round 2's "One answer can be right by luck; a pair can't" overclaimed (a guesser gets a pair right a quarter of the time); Module 6's server-and-client slide, and the notes for the trait cube and for extending the harness, gave owners nothing of their own.
+- **Applied:** the pair slide says a guess that ignores the flip gets no pair right, which holds for every pair whose answer must move; the server-and-client slide says the customer answers one question and a time the server never offered can't be booked; the notes for the cube and for extending the harness each carry a line for owners. A first draft of the pair line ran a line past its frame, and the shorter one fits.
+
+### Round 4
+
+- **Scores:** owner 9, webmaster/student 9, copywriter 9, CTO 9.5, designer 9, privacy 9.5. Every review is at 9 or higher, so the loop stops here.
+- **Checked:** every claim against its lesson, and the SI slide, OWASP's 2026 list, MCP's 2026-07-28 revision and its multi round-trip requests, A2A 1.0, Agent Skills, LLM-Modulo and contrast sets against their sources; every link and anchor resolves; all 32 slides fit their frames presenting at 1920x1080, the keyboard walk and the focus's return pass, neither page scrolls sideways at 390 or 1366, and print gives sixteen pages a talk. Neither talk names the company behind Sean's private repositories, its products or their terms, and the presenter copies differ from the pages only in the title slide's byline and the closing signature.
+- **Waits on Sean:** his read of both talks and their photographs, as before.
+
+## Meetup talks for Modules 5 and 6: October 4, 2026
+
+For the KFalls AI Meetup (evening, business & student), Modules 5 and 6 each gain a talk, a community page of sixteen slides right after the module's opener: "Meetup talk: Business automation with SI (agentic skills)" and "Meetup talk: An advanced SI protocol ecosystem".
+
+- **Built:** each runs about twenty minutes: a title slide, fourteen content slides and a close with one next step for owners (Automation, or call or email) and one for students (the course, then Joining the team). Every content slide links to the lesson that goes deeper and reuses the lessons' own examples and diagrams, and every slide carries speaker notes. Present mode, print and a notes view come from `assets/deck.css` and `assets/deck.js`, loaded on the two pages alone (`docs/design.md`, Talk decks). The module openers point to the talk as the next lesson, and the lesson counts, the hub, the outline and the sitemaps follow `LESSONS`.
+- **SI:** the talks use the federal government's new name for AI and define it once, neutrally, citing the White House fact sheet: Executive Order 14434 of September 29, 2026 changes the name in executive-branch documents and communications, not the law; SI means what AI means under existing law, and a proposed federal definition is due within 60 days. Legal summaries (Wiley, Freshfields, IAPP, HWG) agree. The course's modules keep "AI" in their names.
+- **Copy, through the reading list:** each talk opens on a problem the room has (the order typed twice; the joins where things break), states consequences without numbers, concedes what got cheap and names what didn't, keeps what the tool does apart from what the team promises, with a person approving anything outward, answers "Is this hype?", "Things change too fast", "AI builds websites for free" and "AI will replace webmasters" calmly, and closes on one step for each audience. No date, time or venue; private work stays out, and the sync's guard ran with the product names.
+- **Checked:** every slide at 1920x1080 in present mode fits its frame; the keyboard walk (the arrows, Page Up and Down, space, Home, End, N, Escape) and the focus's return; no sideways scroll at 390 or 1366; print gives sixteen 16:9 pages a talk.
+- **Waits on Sean:** his read of both talks, and of their photographs (Module 5's talk shares the Introduction's photograph of a laptop over a shoulder; Module 6's shares the release lesson's tiled panels).
+
 ## Community loop round 1: CTO and webmaster/SWE reviews: October 4, 2026
 
 Two reviewers read the whole course, the hub and archives, Joining the team, the offer page and contact: the senior CTO for accuracy (every claim against its code, its sources and the site's build), and a senior software engineer weighing whether to join, as a peer and a prospective team member, for the sign-up hook. Six fixers applied their findings by part of the course, and the integrator applied the ones only the sync renders.

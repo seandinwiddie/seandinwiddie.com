@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>Meetup Talk: SI Protocol Ecosystem | Sean Dinwiddie&#x27;s Webmastery</title>
+  <meta name="description" content="Module 6 as a twenty-minute meetup talk: one agreement per join, geometric reasoning as data, the tandem harness, server and client, and extending it.">
+  <link rel="canonical" href="https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Meetup Talk: SI Protocol Ecosystem | Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:description" content="Module 6 as a twenty-minute meetup talk: one agreement per join, geometric reasoning as data, the tandem harness, server and client, and extending it.">
+  <meta property="og:url" content="https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/">
+  <meta property="og:site_name" content="Sean Dinwiddie&#x27;s Webmastery">
+  <meta property="og:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="article:published_time" content="2026-10-04T12:00:00+00:00">
+  <meta property="article:modified_time" content="2026-10-04">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meetup Talk: SI Protocol Ecosystem | Sean Dinwiddie&#x27;s Webmastery">
+  <meta name="twitter:description" content="Module 6 as a twenty-minute meetup talk: one agreement per join, geometric reasoning as data, the tandem harness, server and client, and extending it.">
+  <meta name="twitter:image" content="https://seandinwiddie.com/assets/social/technical-archive.png">
+  <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
+  <meta name="author" content="seandinwiddie">
+  <meta name="twitter:creator" content="@seandinwiddie">
+  <meta name="twitter:site" content="@seandinwiddie">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/fontawesome.css">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/deck.css">
+  <script type="application/ld+json" data-agency-schema>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://seandinwiddie.com/#organization","name":"Sean Dinwiddie's Webmastery","url":"https://seandinwiddie.com/","email":"hello@seandinwiddie.com","description":"Independent web design, development, local SEO, and business automation agency serving Klamath Falls, Oregon, and Redding, California.","logo":{"@type":"ImageObject","url":"https://seandinwiddie.com/assets/social/agency.png","width":1200,"height":630},"sameAs":["https://github.com/seandinwiddie","https://linkedin.com/in/seandinwiddie","https://twitter.com/seandinwiddie","https://www.facebook.com/seanpaulpaynedinwiddie/","https://www.instagram.com/seanpaulpaynedinwiddie/","https://www.freelancer.com/u/seandinwiddie","https://www.upwork.com/freelancers/~01dce79404e28629c9","https://contra.com/seandinwiddie"],"areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"contactPoint":[{"@type":"ContactPoint","telephone":"+1-530-638-3238","contactType":"customer service","areaServed":[{"@type":"City","name":"Klamath Falls","containedInPlace":{"@type":"State","name":"Oregon"}},{"@type":"City","name":"Redding","containedInPlace":{"@type":"State","name":"California"}}],"availableLanguage":"English"}]},{"@type":"WebSite","@id":"https://seandinwiddie.com/#website","url":"https://seandinwiddie.com/","name":"Sean Dinwiddie's Webmastery","publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#primaryimage","url":"https://seandinwiddie.com/assets/social/technical-archive.png","contentUrl":"https://seandinwiddie.com/assets/social/technical-archive.png","width":1200,"height":630,"caption":"Sean Dinwiddie's Webmastery lessons on Redux, BDD and functional reactive programming","inLanguage":"en-US"},{"@type":"WebPage","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#webpage","url":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/","name":"Meetup Talk: SI Protocol Ecosystem | Sean Dinwiddie's Webmastery","description":"Module 6 as a twenty-minute meetup talk: one agreement per join, geometric reasoning as data, the tandem harness, server and client, and extending it.","isPartOf":{"@id":"https://seandinwiddie.com/#website"},"about":{"@id":"https://seandinwiddie.com/#organization"},"primaryImageOfPage":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#primaryimage"},"breadcrumb":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#breadcrumb"},"inLanguage":"en-US","datePublished":"2026-10-04T12:00:00+00:00","dateModified":"2026-10-04"},{"@type":"BreadcrumbList","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://seandinwiddie.com/"},{"@type":"ListItem","position":2,"name":"Community","item":"https://seandinwiddie.com/community/"},{"@type":"ListItem","position":3,"name":"Meetup talk: An advanced SI protocol ecosystem","item":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/"}]},{"@type":"Article","@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#article","headline":"Meetup talk: An advanced SI protocol ecosystem","description":"Module 6 as a twenty-minute meetup talk: one agreement per join, geometric reasoning as data, the tandem harness, server and client, and extending it.","mainEntityOfPage":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#webpage"},"image":{"@id":"https://seandinwiddie.com/community/kfalls-ai-meetup-si-protocol-ecosystem/#primaryimage"},"author":{"@type":"Person","name":"Sean Dinwiddie"},"publisher":{"@id":"https://seandinwiddie.com/#organization"},"inLanguage":"en-US","datePublished":"2026-10-04T12:00:00+00:00","dateModified":"2026-10-04"}]}</script>
+</head>
+<body class="site-page family-community">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="topbar__contact">
+        <a href="tel:+15306383238">(530)&nbsp;638-3238</a>
+        <a href="mailto:hello@seandinwiddie.com">hello@seandinwiddie.com</a>
+      </div>
+      <a class="topbar__pay" href="https://www.paypal.me/seandinwiddie" target="_blank" rel="noopener noreferrer">💳 Secure Payment</a>
+    </div>
+  </div>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="/" aria-label="Sean Dinwiddie's Webmastery — home">🧙</a>
+      <button class="nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu"><span class="nav__toggle-icon" aria-hidden="true"></span></button>
+      <ul class="nav__menu" id="nav-menu">
+        <li>
+          <a href="/service/">Services</a>
+          <div class="sub">
+            <a href="/design/">Design</a>
+            <a href="/development/">Development</a>
+            <a href="/marketing/">Marketing</a>
+            <a href="/automation/">Automation</a>
+            <a href="/service/training/">Training</a>
+          </div>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+          <div class="sub">
+            <a href="/examples/">Examples</a>
+            <a href="/tools/">Tools</a>
+            <a href="/resources/">Resources</a>
+            <a href="/prices/">Prices</a>
+            <a href="/contact/">Contact</a>
+          </div>
+        </li>
+        <li><a href="/contact/"><b>Contact</b></a></li>
+      </ul>
+      <div class="nav__social">
+        <a href="https://www.facebook.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/seandinwiddie" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/seanpaulpaynedinwiddie/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="page-stage">
+      <div class="hero-banner page-hero">
+        <div class="hero-banner__img" style="background-image:url('/assets/img/community/pexels-lucky-5374862-scaled.jpg');"></div>
+        <p class="hero-banner__eyebrow"><span>Full-Service Web &amp; Software Agency · Klamath Falls and Redding</span></p>
+      </div>
+      <section class="page-lead">
+        <div class="wrap">
+          <h1>Meetup talk: An advanced SI protocol ecosystem</h1>
+          <a class="hero__cta" href="/contact/">Work with Sean</a>
+        </div>
+      </section>
+    </div>
+    <section class="page-content">
+      <div class="wrap content content-page">
+<aside class="notice archive-context" aria-label="About these lessons">
+<p class="lesson-place" style="--lesson: 2; --lessons: 11">Lesson 2 of 11 in Module 6</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+</aside>
+<article>
+
+<!-- .post-thumbnail -->
+<header>
+<div class="page-meta">
+<a href="/community/kfalls-ai-meetup-si-protocol-ecosystem/" rel="bookmark"><time datetime="2026-10-04T12:00:00+00:00">October 4, 2026</time></a>·
+
+<a aria-label="Category: Development" href="/community/category/development/" rel="category">Development</a>
+
+</div>
+<!-- .entry-meta -->
+<div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
+</div> </header><!-- .entry-header -->
+<p>Module 6, as a talk for the KFalls AI Meetup (evening, business &amp; student): the open agreement at each join a system crosses, behavior laid out as points that can be measured, and a harness in which the model proposes and typed code decides. Advanced, and plain enough for a first look; it runs about twenty minutes, and every slide links to the lesson that goes deeper.</p>
+<div class="deck">
+<div class="deck__bar" hidden>
+<button type="button" class="deck__present" data-deck="present">Present</button>
+<button type="button" class="deck__toggle" data-deck="notes" aria-pressed="false">Speaker notes</button>
+<p>Present shows one slide per screen: the arrow keys or space move, N shows the notes and Esc leaves. Printed, each slide takes a page.</p>
+</div>
+<section class="slide slide--title" id="talk-start">
+<div class="slide__frame">
+<div class="slide__cover">
+<p class="slide__kicker">KFalls AI Meetup (evening, business &amp; student)</p>
+<p class="slide__title">An advanced SI protocol ecosystem</p>
+<p class="slide__sub">Module 6 of the community course, as a twenty-minute talk</p>
+<p class="slide__byline"><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> Klamath Falls, Redding and the towns in between</p>
+</div>
+<div class="slide__photo" style="background-image:url('/assets/img/community/pexels-lucky-5374862-scaled.jpg');"></div>
+</div>
+<div class="slide__notes"><p>Advanced, and plain enough for a first look. Owners: listen for where things get checked. Students: listen for the contracts; they&rsquo;re the craft.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="where-things-break-the-joins"><a class="heading-anchor" href="#where-things-break-the-joins">Where things break: the joins</a></h2>
+<div class="slide__body">
+<p class="slide__lead">A booking form posts to a calendar. A script reads the price list each morning. An assistant orders from a coffee cart.</p>
+<p class="slide__lead">Each is a join, where something crosses from one side to the other. When nothing checks what crosses, the customer finds the fault first.</p>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/module-6-ai-protocol-ecosystem/#a-contract-at-every-join">Module 6: AI protocol ecosystem</a></p>
+</div>
+<div class="slide__notes"><p>Ask which joins the room&rsquo;s businesses run on, then what checks what crosses each one today. A join with nothing to name in that last part is the next one to give a contract.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="si-what-federal-agencies-now-call-ai"><a class="heading-anchor" href="#si-what-federal-agencies-now-call-ai">SI: what federal agencies now call AI</a></h2>
+<div class="slide__body">
+<p class="slide__lead">Since September 29, 2026, federal agencies write Super Intelligence, SI, in their own documents and communications, where they wrote artificial intelligence, AI.</p>
+<p>Executive Order 14434 changes the name, not the law: it defines SI by the statutory definition of AI, so the two cover the same systems. Proposed language for a federal definition is due to the President within 60 days.</p>
+<p>In research, &ldquo;superintelligence&rdquo; means something else. Here, SI is only the new name.</p>
+</div>
+<p class="slide__deeper">Sources: <a href="https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/">the order</a> and <a href="https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/">its fact sheet</a> · The course&rsquo;s modules keep &ldquo;AI&rdquo; in their names: <a href="/community/module-6-ai-protocol-ecosystem/">Module 6</a></p>
+</div>
+<div class="slide__notes"><p>Say it once, plainly, and move on. The order is titled &ldquo;Inaugurating the Era of Super Intelligence.&rdquo; It binds the executive branch&rsquo;s departments and agencies from now on, and leaves statutes, regulations and earlier documents as they are. For its purposes SI means what the statutory definition of AI, 15 U.S.C. 9401(3), covers, and the legal summaries agree it changes no law. No claim about what the systems can do rides on the name, and from here on the talk says SI.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="one-join-one-agreement"><a class="heading-anchor" href="#one-join-one-agreement">One join, one agreement</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>Each join an SI system crosses has an open agreement of its own.</p>
+<p>MCP joins an app to tools, A2A one agent to another, OpenAPI a client to an API.</p>
+<p>Ask any new protocol which two things it joins, what crosses and what checks it.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-joins-title talk-joins-desc" viewBox="0 0 360 280">
+<title id="talk-joins-title">One join, one agreement</title>
+<desc id="talk-joins-desc">The cart&rsquo;s app in the center, joined to six agreements and the parties beyond them. Above: MCP to an assistant, highlighted, OpenAPI to a web client, A2A to the bakery&rsquo;s agent. Below: WebMCP to a browser agent, AGENTS.md to a coding agent, llms.txt to any agent.</desc>
+<g class="edge"><line x1="180" y1="118.5" x2="180" y2="55.5"/><line x1="220" y1="118.5" x2="296" y2="55.5"/><line x1="140" y1="161.5" x2="64" y2="224.5"/><line x1="180" y1="161.5" x2="180" y2="224.5"/><line x1="220" y1="161.5" x2="296" y2="224.5"/></g>
+<g class="path"><line x1="140" y1="118.5" x2="64" y2="55.5"/></g>
+<rect class="node on" x="12.5" y="12.5" width="103" height="43" rx="6"/>
+<rect class="node" x="128.5" y="12.5" width="103" height="43" rx="6"/>
+<rect class="node" x="244.5" y="12.5" width="103" height="43" rx="6"/>
+<rect class="node" x="100.5" y="118.5" width="159" height="43" rx="6"/>
+<rect class="node" x="12.5" y="224.5" width="103" height="43" rx="6"/>
+<rect class="node" x="128.5" y="224.5" width="103" height="43" rx="6"/>
+<rect class="node" x="244.5" y="224.5" width="103" height="43" rx="6"/>
+<g><text x="64" y="27">MCP</text><text class="note" x="64" y="43">assistant</text><text x="180" y="27">OpenAPI</text><text class="note" x="180" y="43">web client</text><text x="296" y="27">A2A</text><text class="note" x="296" y="43">bakery agent</text><text x="180" y="140">the cart&rsquo;s app</text><text x="64" y="239">WebMCP</text><text class="note" x="64" y="255">browser agent</text><text x="180" y="239">AGENTS.md</text><text class="note" x="180" y="255">coding agent</text><text x="296" y="239">llms.txt</text><text class="note" x="296" y="255">any agent</text></g>
+</svg>
+<figcaption>An invented coffee cart&rsquo;s app, and the agreement at each join. The lesson builds the violet one, MCP, by hand.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/the-ai-protocol-map/">The AI protocol map</a></p>
+</div>
+<div class="slide__notes"><p>MCP is the Model Context Protocol; the lessons teach its 2026-07-28 revision, which dropped the handshake older tutorials teach. A2A is the Agent2Agent protocol, at 1.0. AGENTS.md and Agent Skills are file formats, not wire protocols, and llms.txt is a proposal.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="who-decides"><a class="heading-anchor" href="#who-decides">Who decides</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>MCP sorts what a server offers by who decides when it&rsquo;s used.</p>
+<p>The model calls tools. The app attaches resources. A person picks prompts.</p>
+<p>And a person should always be able to deny a tool call.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-control-title talk-control-desc" viewBox="0 0 360 166">
+<title id="talk-control-title">Who decides</title>
+<desc id="talk-control-desc">Three columns, each pointing from who decides to what they decide on: the model to tools, such as add_item, highlighted; the app to resources, such as menu://today; the person to prompts, such as the /special slash command.</desc>
+<g class="edge"><line x1="180" y1="48.5" x2="180" y2="91.5"/><line x1="180" y1="91.5" x2="183" y2="86.3"/><line x1="180" y1="91.5" x2="177" y2="86.3"/><line x1="296" y1="48.5" x2="296" y2="91.5"/><line x1="296" y1="91.5" x2="299" y2="86.3"/><line x1="296" y1="91.5" x2="293" y2="86.3"/></g>
+<g class="path"><line x1="64" y1="48.5" x2="64" y2="91.5"/><line x1="64" y1="91.5" x2="67" y2="86.3"/><line x1="64" y1="91.5" x2="61" y2="86.3"/></g>
+<rect class="node" x="12.5" y="12.5" width="103" height="36" rx="6"/>
+<rect class="node" x="128.5" y="12.5" width="103" height="36" rx="6"/>
+<rect class="node" x="244.5" y="12.5" width="103" height="36" rx="6"/>
+<rect class="node on" x="12.5" y="91.5" width="103" height="36" rx="6"/>
+<rect class="node" x="128.5" y="91.5" width="103" height="36" rx="6"/>
+<rect class="node" x="244.5" y="91.5" width="103" height="36" rx="6"/>
+<g><text x="64" y="30.5">the model</text><text x="64" y="109.5">tools</text><text class="note" x="64" y="145.7">add_item</text><text x="180" y="30.5">the app</text><text x="180" y="109.5">resources</text><text class="note" x="180" y="145.7">menu://today</text><text x="296" y="30.5">the person</text><text x="296" y="109.5">prompts</text><text class="note" x="296" y="145.7">/special</text></g>
+</svg>
+<figcaption>Who decides when each kind of thing is used. The violet column is the model&rsquo;s: tools, such as adding an item.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/the-ai-protocol-map/#hosts-clients-and-servers-and-who-decides">The AI protocol map</a></p>
+</div>
+<div class="slide__notes"><p>Model-controlled never means unsupervised. Sort a few with the room: today&rsquo;s menu is a resource, adding an item is a tool, the week&rsquo;s special is a prompt, and a refund is a tool a person approves every time it&rsquo;s called.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="geometric-reasoning-in-which-sense"><a class="heading-anchor" href="#geometric-reasoning-in-which-sense">&ldquo;Geometric reasoning,&rdquo; in which sense?</a></h2>
+<div class="slide__body">
+<ul class="slide__lead">
+<li><strong>A declared design space:</strong> behaviors as points, chosen in advance. The course&rsquo;s sense.</li>
+<li><strong>The shape of a model&rsquo;s representations,</strong> read as paths through its vectors.</li>
+<li><strong>Geometry itself:</strong> a model solving geometry problems.</li>
+<li><strong>Geometric deep learning,</strong> a neighbor that shares half the name.</li>
+</ul>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/geometric-reasoning-as-data/#three-senses-of-one-phrase">Geometric reasoning as data</a></p>
+</div>
+<div class="slide__notes"><p>The phrase is in circulation in at least three senses, with a neighboring field besides. Name the one you mean before arguing about it. The module builds on the first.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="points-traits-and-distance"><a class="heading-anchor" href="#points-traits-and-distance">Points, traits and distance</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>A coffee cart&rsquo;s answers vary on three traits, the space&rsquo;s axes: brief or detailed, formal or casual, cautious or bold.</p>
+<p>A point takes one level of each: <code>011</code> is brief, casual and bold. Three traits make eight points.</p>
+<p>Distance is how many traits differ.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-cube-title talk-cube-desc" viewBox="0 0 360 266">
+<title id="talk-cube-title">The coffee cart&rsquo;s cube beside its table</title>
+<desc id="talk-cube-desc">Left, the eight points of the coffee cart&rsquo;s three traits in rows of 1, 3, 3 and 1, from 000 at the top to 111 at the bottom, with a line between every two points one trait apart. Lines that change the certainty run down to the left, lines that change the register run straight down and lines that change the length run down to the right, as the key below the drawing shows. Right, the table lists each point once with its invented value. Point 011 is outlined in both, and its value is 0.7.</desc>
+<g class="edge"><line x1="104" y1="34" x2="34" y2="76"/><line x1="104" y1="34" x2="104" y2="76"/><line x1="104" y1="34" x2="174" y2="76"/><line x1="34" y1="98" x2="34" y2="140"/><line x1="34" y1="98" x2="104" y2="140"/><line x1="104" y1="98" x2="34" y2="140"/><line x1="104" y1="98" x2="174" y2="140"/><line x1="174" y1="98" x2="104" y2="140"/><line x1="174" y1="98" x2="174" y2="140"/><line x1="34" y1="162" x2="104" y2="204"/><line x1="104" y1="162" x2="104" y2="204"/><line x1="174" y1="162" x2="104" y2="204"/><line x1="44" y1="242" x2="24" y2="254"/><line x1="136" y1="242" x2="136" y2="254"/><line x1="252" y1="242" x2="272" y2="254"/><line x1="232" y1="35" x2="348" y2="35"/></g>
+<rect class="node" x="82" y="12" width="44" height="22" rx="4"/>
+<rect class="node" x="12" y="76" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="76" width="44" height="22" rx="4"/>
+<rect class="node" x="152" y="76" width="44" height="22" rx="4"/>
+<rect class="node on" x="12" y="140" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="140" width="44" height="22" rx="4"/>
+<rect class="node" x="152" y="140" width="44" height="22" rx="4"/>
+<rect class="node" x="82" y="204" width="44" height="22" rx="4"/>
+<rect class="node on" x="232" y="108" width="116" height="22" rx="4"/>
+<g><text x="104" y="23">000</text><text x="34" y="87">001</text><text x="104" y="87">010</text><text x="174" y="87">100</text><text x="34" y="151">011</text><text x="104" y="151">101</text><text x="174" y="151">110</text><text x="104" y="215">111</text><text class="note" x="262" y="23">point</text><text class="note" x="318" y="23">value</text><text x="262" y="47">000</text><text x="318" y="47">0.9</text><text x="262" y="71">001</text><text x="318" y="71">0.8</text><text x="262" y="95">010</text><text x="318" y="95">0.85</text><text x="262" y="119">011</text><text x="318" y="119">0.7</text><text x="262" y="143">100</text><text x="318" y="143">0.88</text><text x="262" y="167">101</text><text x="318" y="167">0.75</text><text x="262" y="191">110</text><text x="318" y="191">0.8</text><text x="262" y="215">111</text><text x="318" y="215">0.6</text><text class="note" x="76" y="248">certainty</text><text class="note" x="180" y="248">register</text><text class="note" x="304" y="248">length</text></g>
+</svg>
+<figcaption>The cube beside its table of invented values. Each line joins two points one trait apart; <code>011</code> is outlined in both.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/geometric-reasoning-as-data/#factors-points-and-distance">Geometric reasoning as data</a></p>
+</div>
+<div class="slide__notes"><p>A two-level full factorial, in a statistician&rsquo;s words; Hamming distance, in a coder&rsquo;s. Nothing derived is stored: the points and distances come from the declared traits every time, so they can&rsquo;t drift. For owners: the voice is chosen on purpose, a point in the design, and measured there.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="change-one-fact-and-the-answer-must-flip"><a class="heading-anchor" href="#change-one-fact-and-the-answer-must-flip">Change one fact, and the answer must flip</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>A pair is two fact sheets one fact apart, in invented words.</p>
+<p>Flip a fact on the proof&rsquo;s path, and the answer must move. Flip a distractor, and it must not.</p>
+<p>Score the pair, not the item: always answering yes gets every yes item right, and not one pair whose answer flips.</p>
+<p>A guess that ignores the flip gets no pair right.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-facts-title talk-facts-desc" viewBox="0 0 360 298">
+<title id="talk-facts-title">A fact graph and its twin, one fact apart</title>
+<desc id="talk-facts-desc">On the left, a highlighted proof path runs from the brintepet to lomkellet, to kellbrinet and down to dairy-free. On the right, two greyed distractors, zorquilet and zorbrinet, form a chain of their own that ends in a line labelled no into dairy-free. The last edge of the proof path is labelled: it was every, and in the perturbed sheet it is no. Below, the question asks whether the brintepet is dairy-free; the canonical sheet answers yes and the perturbed sheet answers no.</desc>
+<g class="edge"><line x1="270" y1="98" x2="270" y2="140"/><line x1="273" y1="134.8" x2="270" y2="140"/><line x1="267" y1="134.8" x2="270" y2="140"/><line x1="270" y1="162" x2="210" y2="204"/><line x1="216" y1="203.5" x2="210" y2="204"/><line x1="212.5" y1="198.6" x2="210" y2="204"/></g>
+<g class="path"><line x1="96" y1="34" x2="96" y2="76"/><line x1="99" y1="70.8" x2="96" y2="76"/><line x1="93" y1="70.8" x2="96" y2="76"/><line x1="96" y1="98" x2="96" y2="140"/><line x1="99" y1="134.8" x2="96" y2="140"/><line x1="93" y1="134.8" x2="96" y2="140"/><line x1="96" y1="162" x2="150" y2="204"/><line x1="147.7" y1="198.4" x2="150" y2="204"/><line x1="144.1" y1="203.2" x2="150" y2="204"/></g>
+<rect class="node on" x="30" y="12" width="132" height="22" rx="4"/>
+<rect class="node on" x="44" y="76" width="104" height="22" rx="4"/>
+<rect class="node on" x="44" y="140" width="104" height="22" rx="4"/>
+<rect class="node on" x="128" y="204" width="104" height="22" rx="4"/>
+<rect class="node" x="218" y="76" width="104" height="22" rx="4"/>
+<rect class="node" x="218" y="140" width="104" height="22" rx="4"/>
+<rect class="node" x="12" y="264" width="160" height="22" rx="4"/>
+<rect class="node" x="188" y="264" width="160" height="22" rx="4"/>
+<g><text x="96" y="23">the brintepet</text><text x="96" y="87">lomkellet</text><text x="96" y="151">kellbrinet</text><text x="180" y="215">dairy-free</text><text class="note" x="270" y="87">zorquilet</text><text class="note" x="270" y="151">zorbrinet</text><text class="note" x="56" y="176">was: every</text><text class="note" x="56" y="194">now: no</text><text class="note" x="256" y="190">no</text><text class="note" x="180" y="243">Is the brintepet dairy-free?</text><text x="92" y="275">canonical: yes</text><text x="268" y="275">perturbed: no</text></g>
+</svg>
+<figcaption>The violet path is the proof. Flip its last edge from every to no, and the answer moves from yes to no.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lessons: <a href="/community/geometric-reasoning-as-data/#evidence-as-a-fact-graph">Geometric reasoning as data</a> · <a href="/community/measuring-reasoning-on-the-geometry/#score-the-pair-not-the-item">Measuring reasoning on the geometry</a></p>
+</div>
+<div class="slide__notes"><p>Invented words keep what a model already knows about the world from standing in for the premises. Contrast sets make this move by hand; here a generator makes it in code, and an oracle labels both sides, so no answer is typed by hand.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="hold-the-facts-move-the-voice"><a class="heading-anchor" href="#hold-the-facts-move-the-voice">Hold the facts, move the voice</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>A matched family is one fact sheet answered at every point.</p>
+<p>The facts and the answer stay locked; only the voice moves. So any difference between two answers belongs to the traits that differ.</p>
+<p>For the cart, the tone can change and the oat milk answer can&rsquo;t.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-family-title talk-family-desc" viewBox="0 0 360 236">
+<title id="talk-family-title">A matched family</title>
+<desc id="talk-family-desc">One fact sheet at the top fans out to eight answers, one at each point from 000 to 111. Below them, one highlighted band runs under all eight: the invariant fields, the same at every point: the facts, that oat milk is dairy-free and whole milk isn&rsquo;t, and the answer, a latte with oat milk. Below that, each point has its own box naming its tone, t1 at 000 through t8 at 111, so no two points share one.</desc>
+<g class="edge"><line x1="180" y1="34" x2="33" y2="66"/><line x1="180" y1="34" x2="75" y2="66"/><line x1="180" y1="34" x2="117" y2="66"/><line x1="180" y1="34" x2="159" y2="66"/><line x1="180" y1="34" x2="201" y2="66"/><line x1="180" y1="34" x2="243" y2="66"/><line x1="180" y1="34" x2="285" y2="66"/><line x1="180" y1="34" x2="327" y2="66"/></g>
+<rect class="node" x="100" y="12" width="160" height="22" rx="4"/>
+<rect class="node" x="14" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="56" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="98" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="140" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="182" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="224" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="266" y="66" width="38" height="22" rx="4"/>
+<rect class="node" x="308" y="66" width="38" height="22" rx="4"/>
+<rect class="node on" x="12" y="116" width="336" height="48" rx="4"/>
+<rect class="node" x="14" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="56" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="98" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="140" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="182" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="224" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="266" y="194" width="38" height="28" rx="4"/>
+<rect class="node" x="308" y="194" width="38" height="28" rx="4"/>
+<g><text x="180" y="23">one fact sheet</text><text x="33" y="77">000</text><text x="75" y="77">001</text><text x="117" y="77">010</text><text x="159" y="77">011</text><text x="201" y="77">100</text><text x="243" y="77">101</text><text x="285" y="77">110</text><text x="327" y="77">111</text><text class="note" x="180" y="104">invariant: the facts and the answer</text><text x="180" y="133">oat milk is dairy-free; whole isn&rsquo;t</text><text x="180" y="153">answer: a latte with oat milk</text><text class="note" x="180" y="182">expressive: the tone</text><text x="33" y="208">t1</text><text x="75" y="208">t2</text><text x="117" y="208">t3</text><text x="159" y="208">t4</text><text x="201" y="208">t5</text><text x="243" y="208">t6</text><text x="285" y="208">t7</text><text x="327" y="208">t8</text></g>
+</svg>
+<figcaption>A latte sheet as a family. The violet band is locked at every point, and each point has a tone of its own.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/geometric-reasoning-as-data/#matched-families">Geometric reasoning as data</a></p>
+</div>
+<div class="slide__notes"><p>Every field of an answer is declared as invariant or expressive, and a field nobody declared is a fault, never a default. The validator reports every fault at once, so one repair round fixes them all.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="the-model-proposes-typed-code-decides"><a class="heading-anchor" href="#the-model-proposes-typed-code-decides">The model proposes; typed code decides</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>In tandem, a harness runs beside the model on every request.</p>
+<p>The model proposes a time and a reply. Typed code decides what&rsquo;s on offer, what goes out and what gets held.</p>
+<p>The model&rsquo;s options and the checker&rsquo;s come from one list.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-lanes-title talk-lanes-desc" viewBox="0 0 360 308">
+<title id="talk-lanes-title">Two lanes, one contract</title>
+<desc id="talk-lanes-desc">A frame, one time limit around the whole turn, holds two lanes side by side. The harness lane selects the facts, puts together the offer list and builds the schema. The model lane reads the prompt and sends back one answer, a choice and a reply. Arrows cross from the facts to the prompt the model reads, and from the offer list to the answer. Both lanes end in one highlighted contract box, the offers and the facts, and three exits leave it: passed, highlighted, which is held; rejected, which goes back with its reasons; and refused, which sends the salon&rsquo;s fallback line. One more line leaves the frame itself for refused: a turn that runs out of time goes straight to the fallback line.</desc>
+<g class="edge"><line x1="12" y1="30" x2="324" y2="30"/><line x1="324" y1="30" x2="324" y2="226"/><line x1="324" y1="226" x2="12" y2="226"/><line x1="12" y1="226" x2="12" y2="30"/><line x1="88" y1="84" x2="88" y2="98"/><line x1="85" y1="92.8" x2="88" y2="98"/><line x1="91" y1="92.8" x2="88" y2="98"/><line x1="88" y1="122" x2="88" y2="136"/><line x1="85" y1="130.8" x2="88" y2="136"/><line x1="91" y1="130.8" x2="88" y2="136"/><line x1="88" y1="160" x2="88" y2="184"/><line x1="85" y1="178.8" x2="88" y2="184"/><line x1="91" y1="178.8" x2="88" y2="184"/><line x1="248" y1="84" x2="248" y2="98"/><line x1="245" y1="92.8" x2="248" y2="98"/><line x1="251" y1="92.8" x2="248" y2="98"/><line x1="248" y1="160" x2="248" y2="184"/><line x1="245" y1="178.8" x2="248" y2="184"/><line x1="251" y1="178.8" x2="248" y2="184"/><line x1="156" y1="72" x2="180" y2="72"/><line x1="174.8" y1="69" x2="180" y2="72"/><line x1="174.8" y1="75" x2="180" y2="72"/><line x1="156" y1="110" x2="180" y2="110"/><line x1="174.8" y1="107" x2="180" y2="110"/><line x1="174.8" y1="113" x2="180" y2="110"/><line x1="180" y1="212" x2="180" y2="250"/><line x1="177" y1="244.8" x2="180" y2="250"/><line x1="183" y1="244.8" x2="180" y2="250"/><line x1="296" y1="212" x2="296" y2="250"/><line x1="293" y1="244.8" x2="296" y2="250"/><line x1="299" y1="244.8" x2="296" y2="250"/><line x1="324" y1="128" x2="338" y2="128"/><line x1="338" y1="128" x2="338" y2="250"/><line x1="335" y1="244.8" x2="338" y2="250"/><line x1="341" y1="244.8" x2="338" y2="250"/></g>
+<g class="path"><line x1="64" y1="212" x2="64" y2="250"/><line x1="61" y1="244.8" x2="64" y2="250"/><line x1="67" y1="244.8" x2="64" y2="250"/></g>
+<rect class="node" x="20" y="60" width="136" height="24" rx="4"/>
+<rect class="node" x="20" y="98" width="136" height="24" rx="4"/>
+<rect class="node" x="20" y="136" width="136" height="24" rx="4"/>
+<rect class="node" x="180" y="60" width="136" height="24" rx="4"/>
+<rect class="node" x="180" y="98" width="136" height="62" rx="4"/>
+<rect class="node on" x="20" y="184" width="296" height="28" rx="4"/>
+<rect class="node on" x="12" y="250" width="104" height="24" rx="4"/>
+<rect class="node" x="128" y="250" width="104" height="24" rx="4"/>
+<rect class="node" x="244" y="250" width="104" height="24" rx="4"/>
+<g><text class="note" x="168" y="16">one time limit, around the whole turn</text><text x="88" y="46">harness</text><text x="248" y="46">model</text><text x="88" y="72">select facts</text><text x="88" y="110">the offer list</text><text x="88" y="148">build schema</text><text x="248" y="72">read the prompt</text><text x="248" y="120">one answer:</text><text x="248" y="138">choice + reply</text><text x="168" y="198">contract: offers and facts</text><text x="64" y="262">passed</text><text x="180" y="262">rejected</text><text x="296" y="262">refused</text><text class="note" x="64" y="292">held</text><text class="note" x="180" y="292">retry + reasons</text><text class="note" x="296" y="292">fallback line</text></g>
+</svg>
+<figcaption>One turn in two lanes, inside one time limit. Only the violet exit, passed, is held.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/the-tandem-harness/">The tandem harness</a></p>
+</div>
+<div class="slide__notes"><p>Research names the pairing LLM-Modulo: a language model can&rsquo;t verify its own plans, so external checkers do. Here the one offer list feeds both the schema that narrows what the model can write and the checker that decides what the harness accepts, and a property test keeps them agreed.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="every-failure-is-refused-never-passed-through"><a class="heading-anchor" href="#every-failure-is-refused-never-passed-through">Every failure is refused, never passed through</a></h2>
+<div class="slide__body">
+<ul class="slide__lead">
+<li>A reply goes out exactly as written, or not at all.</li>
+<li>A rejected answer goes back with every reason, until one passes or the tries run out.</li>
+<li>Out of tries or out of time, the customer hears the salon&rsquo;s own line, and the failure stays in the records.</li>
+</ul>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/the-tandem-harness/#fail-closed">The tandem harness</a></p>
+</div>
+<div class="slide__notes"><p>Fail closed. A fallback has no field for a reply or a hold, so it can&rsquo;t carry one. Internal failures never reach the customer, and every reply that went out traces back through the records to what made it.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="server-and-client-in-tandem"><a class="heading-anchor" href="#server-and-client-in-tandem">Server and client in tandem</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>A booking crosses the wire in two rounds, with no session kept between them.</p>
+<p>The server asks which time, and the app asks the customer. The retry carries the booking, the answer and a signed state that works once.</p>
+<p>The customer answers one question, and a time the server never offered can&rsquo;t be booked.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-rounds-title talk-rounds-desc" viewBox="0 0 360 317">
+<title id="talk-rounds-title">One booking, two rounds</title>
+<desc id="talk-rounds-desc">Three lanes: the customer, the app and the server. The customer asks for Saturday morning. The app sends the booking, and the server answers input_required, with a question and a signed state. The app asks the customer, 10:30 or 11:30, and the customer answers 11:30. Highlighted, the app sends the booking again with the answer and the state, and the server answers complete.</desc>
+<g class="edge"><line x1="60" y1="44.5" x2="60" y2="304.5"/><line x1="180" y1="44.5" x2="180" y2="304.5"/><line x1="300" y1="44.5" x2="300" y2="304.5"/><line x1="60" y1="78" x2="180" y2="78"/><line x1="180" y1="78" x2="174.8" y2="81.0"/><line x1="180" y1="78" x2="174.8" y2="75.0"/><line x1="180" y1="114" x2="300" y2="114"/><line x1="300" y1="114" x2="294.8" y2="117.0"/><line x1="300" y1="114" x2="294.8" y2="111.0"/><line x1="300" y1="150" x2="180" y2="150"/><line x1="180" y1="150" x2="185.2" y2="147.0"/><line x1="180" y1="150" x2="185.2" y2="153.0"/><line x1="180" y1="186" x2="60" y2="186"/><line x1="60" y1="186" x2="65.2" y2="183.0"/><line x1="60" y1="186" x2="65.2" y2="189.0"/><line x1="60" y1="222" x2="180" y2="222"/><line x1="180" y1="222" x2="174.8" y2="225.0"/><line x1="180" y1="222" x2="174.8" y2="219.0"/></g>
+<g class="path"><line x1="180" y1="258" x2="300" y2="258"/><line x1="300" y1="258" x2="294.8" y2="261.0"/><line x1="300" y1="258" x2="294.8" y2="255.0"/><line x1="300" y1="294" x2="180" y2="294"/><line x1="180" y1="294" x2="185.2" y2="291.0"/><line x1="180" y1="294" x2="185.2" y2="297.0"/></g>
+<rect class="node" x="12.5" y="12.5" width="95" height="32" rx="6"/>
+<rect class="node" x="132.5" y="12.5" width="95" height="32" rx="6"/>
+<rect class="node" x="252.5" y="12.5" width="95" height="32" rx="6"/>
+<g><text x="60" y="28.5">customer</text><text x="180" y="28.5">app</text><text x="300" y="28.5">server</text><text class="note" x="120" y="66">Saturday a.m.?</text><text class="note" x="240" y="102">booking</text><text class="note" x="240" y="138">input_required</text><text class="note" x="120" y="174">10:30 or 11:30?</text><text class="note" x="120" y="210">11:30</text><text class="note" x="240" y="246">+ answer, state</text><text class="note" x="240" y="282">complete</text></g>
+</svg>
+<figcaption>One booking in two rounds. The violet round brings the customer&rsquo;s answer back and completes it.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/server-and-client-in-tandem/">Server and client in tandem</a></p>
+</div>
+<div class="slide__notes"><p>The shape is MCP&rsquo;s multi round-trip request. The state is signed, short-lived and spent once, and a time never offered is refused before anything is booked. On the client, every reply decodes strictly or not at all.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="extend-dont-fork"><a class="heading-anchor" href="#extend-dont-fork">Extend, don&rsquo;t fork</a></h2>
+<div class="slide__body">
+<div class="slide__split">
+<div>
+<p>A harness grows at documented points; the model and the core loop stay fixed.</p>
+<p>One question sorts every addition: is it judgment, or must it happen every time?</p>
+<p>Judgment goes where the model reads it. Every time goes to code.</p>
+</div>
+<figure class="diagram">
+<svg role="img" aria-labelledby="talk-plugs-title talk-plugs-desc" viewBox="0 0 360 237">
+<title id="talk-plugs-title">Where each extension plugs in</title>
+<desc id="talk-plugs-desc">Two boxes in the middle, the model and the tools, joined by a highlighted loop: a tool call goes out and its result comes back. A small circle sits on each arrow, a hook: PreToolUse before the call, PostToolUse after it. Above the model, CLAUDE.md is always on, and below it skills load on demand. Above the tools, an MCP server adds more tools, and below them a subagent works in its own context. From the model a last arrow leads to the answer, with a Stop hook on it.</desc>
+<g class="edge"><line x1="64.5" y1="56.5" x2="64.5" y2="96.5"/><line x1="64.5" y1="96.5" x2="67.5" y2="91.3"/><line x1="64.5" y1="96.5" x2="61.5" y2="91.3"/><line x1="295.5" y1="56.5" x2="295.5" y2="96.5"/><line x1="64.5" y1="140.5" x2="64.5" y2="180.5"/><line x1="295.5" y1="140.5" x2="295.5" y2="180.5"/><line x1="100.5" y1="140.5" x2="150.5" y2="180.5"/><line x1="150.5" y1="180.5" x2="148.32" y2="174.91"/><line x1="150.5" y1="180.5" x2="144.57" y2="179.6"/></g>
+<g class="path"><line x1="116.5" y1="110.5" x2="243.5" y2="110.5"/><line x1="243.5" y1="110.5" x2="238.3" y2="107.5"/><line x1="243.5" y1="110.5" x2="238.3" y2="113.5"/><line x1="243.5" y1="126.5" x2="116.5" y2="126.5"/><line x1="116.5" y1="126.5" x2="121.7" y2="129.5"/><line x1="116.5" y1="126.5" x2="121.7" y2="123.5"/></g>
+<rect class="node" x="12.5" y="12.5" width="104" height="44" rx="6"/>
+<rect class="node" x="243.5" y="12.5" width="104" height="44" rx="6"/>
+<rect class="node" x="12.5" y="96.5" width="104" height="44" rx="6"/>
+<rect class="node" x="243.5" y="96.5" width="104" height="44" rx="6"/>
+<rect class="node" x="12.5" y="180.5" width="104" height="44" rx="6"/>
+<rect class="node" x="128.5" y="180.5" width="104" height="44" rx="6"/>
+<rect class="node" x="243.5" y="180.5" width="104" height="44" rx="6"/>
+<circle class="node" cx="180" cy="110.5" r="5"/><circle class="node" cx="180" cy="126.5" r="5"/><circle class="node" cx="125.5" cy="160.5" r="5"/>
+<g><text x="64.5" y="27">CLAUDE.md</text><text class="note" x="64.5" y="44">always on</text><text x="295.5" y="27">MCP server</text><text class="note" x="295.5" y="44">more tools</text><text x="64.5" y="118.5">model</text><text x="295.5" y="118.5">tools</text><text class="note" x="180" y="93">PreToolUse</text><text class="note" x="180" y="145">PostToolUse</text><text class="note" x="98" y="163">Stop</text><text x="64.5" y="195">skills</text><text class="note" x="64.5" y="212">on demand</text><text x="180.5" y="202.5">answer</text><text x="295.5" y="195">subagent</text><text class="note" x="295.5" y="212">own context</text></g>
+</svg>
+<figcaption>Where each extension plugs in. The violet loop is the core, and no extension changes it.</figcaption>
+</figure>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/extending-the-harness/">Extending the harness</a></p>
+</div>
+<div class="slide__notes"><p>An instruction in a skill or a CLAUDE.md is a request; a hook that blocks is enforcement. The same rule holds for the harness shipped in an app, which grows by composition, and every extension carries a scenario. For owners: an extension rides along at the next update, where a patched core has to be patched again by hand.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="fair-questions-from-owners"><a class="heading-anchor" href="#fair-questions-from-owners">Fair questions from owners</a></h2>
+<div class="slide__body">
+<div class="slide__qa">
+<div>
+<h3>Is this hype?</h3>
+<p>Each claim gets a row: measured, released or only asserted. A maker&rsquo;s promise that its assistant never double-books stays asserted until a test calendar checks it.</p>
+</div>
+<div>
+<h3>Things change too fast.</h3>
+<p>Protocols revise, so each lesson names the revision it teaches. The joins hold still, and so do the checks at each one.</p>
+</div>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/module-6-ai-protocol-ecosystem/#how-the-module-runs">Module 6: AI protocol ecosystem</a></p>
+</div>
+<div class="slide__notes"><p>The claims ledger lives in the module&rsquo;s opener. The promise&rsquo;s source is the maker&rsquo;s page, its status is asserted, and two overlapping bookings in a test calendar would show it false. The lessons teach from what was measured or released; an assertion waits in the ledger until something checks it.</p></div>
+</section>
+<section class="slide">
+<div class="slide__frame">
+<h2 id="fair-questions-from-students"><a class="heading-anchor" href="#fair-questions-from-students">Fair questions from students</a></h2>
+<div class="slide__body">
+<div class="slide__qa">
+<div>
+<h3>SI builds websites for free.</h3>
+<p>Drafts got cheap. Deciding what may cross a join, checking it and answering for it didn&rsquo;t.</p>
+</div>
+<div>
+<h3>SI will replace webmasters.</h3>
+<p>The model proposes. Someone writes the contracts, the checks and the scenarios that decide, and that&rsquo;s the craft these lessons teach.</p>
+</div>
+</div>
+</div>
+<p class="slide__deeper">Lesson: <a href="/community/extending-the-harness/#every-extension-carries-a-scenario">Extending the harness</a></p>
+</div>
+<div class="slide__notes"><p>No forecasts. The half that got cheap is real, and saying so is part of the answer; the half the course teaches is the half that answers for the result.</p></div>
+</section>
+<section class="slide slide--close">
+<div class="slide__frame">
+<h2 id="questions-and-one-next-step"><a class="heading-anchor" href="#questions-and-one-next-step">Questions, and one next step</a></h2>
+<div class="slide__body">
+<div class="slide__paths">
+<div>
+<h3>If you run something local</h3>
+<p>Name one join your business runs on, a form, a price list or a booking, and tell Sean Dinwiddie&rsquo;s Webmastery what crosses it and what checks it today. The answer leads to a written scope and fee.</p>
+<p class="slide__links"><a href="/automation/">Automation</a> · <a href="/contact/">Call or email</a></p>
+</div>
+<div>
+<h3>If you&rsquo;re studying, or building already</h3>
+<p>Start Module 6 with the protocol map, where an MCP server is built by hand. On the team, a webmaster at any stage of the craft keeps their own practice while the name brings in the work.</p>
+<p class="slide__links"><a href="/community/the-ai-protocol-map/">The AI protocol map</a> · <a href="/community/staff/">Joining the team</a></p>
+</div>
+</div>
+</div>
+<p class="slide__sign">Strengthening the service industry of Jefferson State: Klamath Falls, Redding and the towns in between.</p>
+</div>
+<div class="slide__notes"><p>Take questions. Every job starts with a written scope and fee. For students, the module&rsquo;s Python half, from Python, the team&rsquo;s way to From fine-tune to release, is where the model work lives.</p></div>
+</section>
+</div>
+<p>The talk is the module&rsquo;s first half in brief. <a href="/community/the-ai-protocol-map/">The AI protocol map</a> starts the lessons themselves, and the Python half, from <a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a>, takes the model work.</p>
+
+<!-- .entry-content -->
+<footer>
+</footer><!-- .entry-footer -->
+</article>
+<nav class="page-nav" aria-label="Lessons">
+<a href="/community/module-6-ai-protocol-ecosystem/" rel="prev"><span class="page-nav__label">Previous lesson:</span> <span class="page-nav__title">Module 6: AI protocol ecosystem</span></a>
+<a href="/community/the-ai-protocol-map/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The AI protocol map</span></a>
+</nav>
+<aside aria-label="Working with the team" class="notice">
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
+</aside>
+<!-- #comments -->
+      </div>
+    </section>
+  </main>
+  <!-- featured-services:start -->
+  <section class="service-cards" aria-label="Featured services">
+    <div class="wrap">
+      <div class="cards">
+          <article class="card">
+            <a class="card__link" href="/marketing/">
+              <div class="card__media" style="background-image:url('/assets/img/community/taras-shypka-iFSvn82XfGo-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Marketing</h2><p>Turn up when someone nearby searches for what you sell. Ads only where they pay for themselves.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/design/">
+              <div class="card__media" style="background-image:url('/assets/img/community/kelly-sikkema-3uygRrmQq28-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Design</h2><p>A look that is yours, on pages built for one job each. Readable in one hand on a phone.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/development/">
+              <div class="card__media" style="background-image:url('/assets/img/AdobeStock_180105378-scaled.jpeg');"></div>
+              <div class="card__body"><h2>Development</h2><p>The site, and the software behind it when a site is not enough. Yours to run afterwards.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/automation/">
+              <div class="card__media" style="background-image:url('/assets/img/community/noaa-4VLA46-_hbM-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Automation</h2><p>Stop paying someone to retype the same order into a second system.</p></div>
+            </a>
+          </article>
+          <article class="card">
+            <a class="card__link" href="/local/">
+              <div class="card__media" style="background-image:url('/assets/img/community/brooke-cagle-uHVRvDr7pg-unsplash-scaled.jpg');"></div>
+              <div class="card__body"><h2>Local</h2><p>Web help in Klamath Falls, Redding, and the towns in between.</p></div>
+            </a>
+          </article>
+      </div>
+    </div>
+  </section>
+  <!-- featured-services:end -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <nav aria-label="Legal">
+        <ul>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/sitemap/">Sitemap</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="More">
+        <ul>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/resources/">Resources</a></li>
+          <li><a href="/prices/">Prices</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__about">
+        <h2>About us</h2>
+        <p><strong>Sean Dinwiddie&rsquo;s Webmastery</strong> is a local webmastery agency working across Jefferson State &mdash; Klamath Falls, Redding, and the towns in between. Shops, restaurants, food trucks, salons, kiosks, contractors, clinics. Whether that is one person or fifty.</p>
+        <p>We build the site, get you found by the people searching nearby, and hand it over so you can run it yourself. When something breaks, you call someone who already knows your site.</p>
+        <p class="footer__tag">Founded by Sean Paul Payne Dinwiddie &bull; Strengthening the service industry of Jefferson State</p>
+      </div>
+    </div>
+  </footer>
+  <div class="bottombar">
+    <div class="wrap bottombar__inner">
+      <div><p class="bottombar__copy">Copyright <a href="/">Sean Paul Payne Dinwiddie</a><br>All Rights Reserved</p></div>
+      <a class="mail" href="mailto:hello@seandinwiddie.com" aria-label="Email Sean"><i class="far fa-envelope" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <script src="/assets/site.js"></script>
+  <script src="/assets/deck.js"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@ import { relative, resolve, sep } from "node:path";
 export const ROOT = resolve(process.env.SITE_ROOT || resolve(import.meta.dirname, ".."));
 export const OUTPUT = resolve(ROOT, "_site");
 export const ORIGIN = "https://seandinwiddie.com";
-export const EXPECTED_SHARED_PAGE_COUNT = 105;
+export const EXPECTED_SHARED_PAGE_COUNT = 107;
 
 export const ROUTE_ROOTS = Object.freeze([
   "about",
@@ -54,6 +54,8 @@ export const REQUIRED_SHARED_ASSETS = Object.freeze([
   "assets/site.js",
   "assets/fontawesome.css",
   "assets/dank-mono.css",
+  "assets/deck.css",
+  "assets/deck.js",
   "assets/img/favicon.ico",
   "assets/social/agency.png",
   "assets/social/local.png",
@@ -67,7 +69,15 @@ export const PUBLIC_ASSET_FILES = new Set([
   "assets/site.js",
   "assets/fontawesome.css",
   "assets/dank-mono.css",
+  "assets/deck.css",
+  "assets/deck.js",
 ]);
+
+// A talk deck (docs/design.md, Talk decks) is the one page that loads more than the
+// shared stylesheets and script: its own small stylesheet and script, on that page alone.
+export const DECK_STYLESHEET = "/assets/deck.css";
+export const DECK_SCRIPT = "/assets/deck.js";
+export const hasDeck = (html) => /<div class="deck">/.test(html);
 
 export const PUBLIC_ASSET_DIRECTORIES = Object.freeze([
   "assets/fonts/",

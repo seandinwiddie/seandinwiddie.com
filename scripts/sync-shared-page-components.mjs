@@ -223,6 +223,8 @@ const LESSONS = [
   // Module 5: an agent at work on a business process, from its loop and tools to a
   // skill it loads, then a process run with a person approving what leaves the building.
   ["module-5-business-automation-with-ai", "Module 5: Business automation with AI (agentic skills)", "m5", "Module 5: Business Automation with AI (Agentic Skills)"],
+  // A module's meetup talk follows its opener: the module in brief, as slides.
+  ["kfalls-ai-meetup-business-automation-with-si", "Meetup talk: Business automation with SI (agentic skills)", "m5", "Meetup Talk: Business Automation with SI (Agentic Skills)"],
   ["the-agent-loop-and-its-tools", "The agent loop and its tools", "m5", "The Agent Loop and Its Tools"],
   ["writing-an-agentic-skill", "Writing an agentic skill", "m5", "Writing an Agentic Skill"],
   ["automating-a-business-process", "Automating a business process with a person in the loop", "m5", "Automating a Business Process with a Person in the Loop"],
@@ -230,6 +232,7 @@ const LESSONS = [
   // TypeScript and Haskell; then Python, where the model work lives: the foundation,
   // measurement before training, training on the geometry, and release.
   ["module-6-ai-protocol-ecosystem", "Module 6: AI protocol ecosystem", "m6", "Module 6: AI Protocol Ecosystem"],
+  ["kfalls-ai-meetup-si-protocol-ecosystem", "Meetup talk: An advanced SI protocol ecosystem", "m6", "Meetup Talk: An Advanced SI Protocol Ecosystem"],
   ["the-ai-protocol-map", "The AI protocol map", "m6", "The AI Protocol Map"],
   ["geometric-reasoning-as-data", "Geometric reasoning as data", "m6", "Geometric Reasoning as Data"],
   ["the-tandem-harness", "The tandem harness", "m6", "The Tandem Harness"],
@@ -852,6 +855,8 @@ const HEAD_TITLES = new Map([
   ["discover-how-frp-enhances-user-interaction-and-responsiveness", "How FRP Improves User Interaction"],
   ["apply-frp-concepts-to-software-modules", "Applying FRP to Software Modules"],
   ["module-5-business-automation-with-ai", "Module 5: AI Business Automation"],
+  ["kfalls-ai-meetup-business-automation-with-si", "Meetup Talk: SI Business Automation"],
+  ["kfalls-ai-meetup-si-protocol-ecosystem", "Meetup Talk: SI Protocol Ecosystem"],
   ["automating-a-business-process", "Automating a Business Process"],
   ["geometric-reasoning-in-model-training", "Geometric Reasoning in Training"],
 ]);
@@ -1004,12 +1009,14 @@ const withHeadingAnchors = (name, html) => {
 // A long lesson's contents (docs/design.md, Lesson posts): on a lesson of four sections
 // or more, a short list after its opening, just before its first section, links each h2
 // by the id the anchors above give it. A module's opener has none: its list of lessons
-// follows its lede.
+// follows its lede. Nor has a talk: its sections are its slides, each a link to itself,
+// and a list before the first would land inside a slide (docs/design.md, Talk decks).
 const PAGE_CONTENTS_PATTERN = /<nav class="page-contents"[\s\S]*?<\/nav>\n/;
+const DECK_PATTERN = /<div class="deck">/;
 const SECTION_PATTERN = /<h2 id="([^"]+)"><a class="heading-anchor" href="#\1">([\s\S]*?)<\/a><\/h2>/g;
 const withPageContents = (name, html) => {
   const without = html.replace(PAGE_CONTENTS_PATTERN, "");
-  if (lessonIndex(name) === -1 || MODULE_LESSONS_PATTERN.test(without)) return without;
+  if (lessonIndex(name) === -1 || MODULE_LESSONS_PATTERN.test(without) || DECK_PATTERN.test(without)) return without;
   const sections = [...(without.match(ARTICLE_BODY_PATTERN)?.[2] ?? "").matchAll(SECTION_PATTERN)];
   if (sections.length < 4) return without;
   const contents = `<nav class="page-contents" aria-label="On this page">

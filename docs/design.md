@@ -134,6 +134,16 @@ Lessons carry diagrams wherever a picture shows the mechanism faster than prose:
 
 Lines and boxes come before the labels, so a label sits on top. A line stops at the edge of the boxes it joins.
 
+### Talk decks
+
+A module can carry a meetup talk: a community page whose sections are slides, right after the module's opener in `LESSONS` (Modules 5 and 6 since October 4, 2026). It reads as a scrolling page first, so a phone reaches it from a QR code: each slide a framed card in the lesson's column, its diagram running to the card's edges on a phone. Where the deck has room (its 58.5rem on a desktop), each slide is a 16:9 canvas 46.8em wide with everything on it set in em, so the same slide scales whole to a projector and to a printed page.
+
+- **Present** shows one slide per screen, full screen where the browser allows. The arrow keys, Page Up and Page Down and space move, Home and End go to the ends, N shows the speaker notes and Escape leaves; focus moves with the slide and returns to it on the page, the address follows the slide, the controls fade while the pointer rests and the counter stays, and reduced motion drops the slide's fade.
+- **Print** gives each slide a 16:9 page; with the notes shown, each page holds the slide with its notes beside it. The notes sit under each slide in the HTML, hidden until shown.
+- **On a slide:** one idea; the title at 1.75em (about 72px on a 1080p projector) over the body at 1em (about 41px); the small print, the lesson link and a caption, at 0.6 to 0.7em, never under 0.875rem on the page. Dank Mono only, its cursive italic for the title slide's line and the mission line; the lesson's ink, muted grey and violet on white, every text at AAA. Every content slide closes on a link to the lesson that goes deeper, and the title slide takes the page's photograph beside the title. The title holds its place on every slide, and a short slide's body sits a little above the middle of the room between it and the lesson link (`.slide__body`) rather than high on the canvas; a slide's two columns share their rows, so a heading that wraps in one doesn't drop the other's answer out of line.
+- **Diagrams** are the lessons' own, their ids moved to the page, on the same plate, with lines heavier in proportion to the slide and never lighter than the lesson's.
+- A talk has no "On this page": its slides are its sections, each h2 a link to itself. Its stylesheet and script (`assets/deck.css`, `assets/deck.js`) load on a page with a deck and nowhere else, and the checks hold both to that (`hasDeck` in `scripts/static-site.mjs`).
+
 ## Tells to avoid
 
 - a subhead at body size or lighter;

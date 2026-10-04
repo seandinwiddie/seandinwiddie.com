@@ -1,0 +1,250 @@
+/* ==========================================================================
+   Talk decks (docs/design.md, Talk decks): a community page whose sections are
+   slides. It reads as a scrolling page; Present (assets/deck.js) shows one slide
+   per screen; print gives one slide per page. Loaded only on a page with a deck.
+   A slide is a canvas 46.8em wide and 9/16 of that tall, so everything on it is
+   set in em and scales with the screen: about 41px a line on a 1080p projector.
+   Colors are the lesson's own (ink, muted grey, violet, the plate's paper).
+   ========================================================================== */
+.deck { container: deck / inline-size; counter-reset: slide; margin: 2.5rem 0 3rem; }
+@media (min-width: 64rem) { .deck { margin-inline: -8.75rem; } }
+
+/* The bar over the slides: Present, the notes, and how the keys work. */
+.deck__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin: 0 0 1.5rem; }
+.deck__bar[hidden] { display: none; }
+.deck__bar p { flex: 1 1 18rem; margin: 0; color: var(--muted); font-size: 0.875em; line-height: 1.6; }
+.deck button { font: inherit; cursor: pointer; }
+.deck__present { padding: 0.55rem 1.25rem; border: 0; border-radius: 999px; color: #fff; background: #0073e6; }
+.deck__present:hover { background: #0066cc; }
+.deck__toggle, .deck__controls button {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(80 84 91 / 45%);
+  border-radius: 999px;
+  color: var(--ink);
+  background: #fff;
+}
+.deck__toggle:hover, .deck__controls button:hover { border-color: var(--muted); }
+.deck__toggle[aria-pressed="true"] { border-color: var(--primary); color: var(--primary); }
+
+/* A slide, as the page reads it on a phone or in a narrow column: a framed card. */
+.slide { counter-increment: slide; margin: 0 0 1.5rem; scroll-margin-top: 6rem; }
+.deck .slide:focus, .deck .slide:focus-visible { outline: none !important; box-shadow: none !important; }
+.slide__frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.25rem 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: #fff;
+  color: #171717;
+  line-height: 1.55;
+}
+.slide__frame::after {
+  content: counter(slide);
+  content: counter(slide) / "";
+  position: absolute;
+  right: 1.25rem;
+  bottom: 0.85rem;
+  color: var(--muted);
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+}
+.slide--title .slide__frame::after { content: none; }
+.deck .slide h2 { margin: 0 0 0.75em; font-size: 1.5em; line-height: 1.2; }
+.deck .slide h3 { margin: 0 0 0.3em; font-size: 1.2em; line-height: 1.3; }
+.deck .slide p { margin: 0 0 0.75em; }
+.deck .slide :is(p, li) { text-wrap: pretty; }
+.deck .slide ul { margin: 0 0 0.75em; padding-left: 1.2em; }
+.deck .slide li { margin: 0 0 0.4em; }
+.slide__lead { font-size: 1.1em; }
+.deck .slide .slide__deeper { margin: auto 0 0; padding-top: 0.75em; color: var(--muted); font-size: 0.82em; line-height: 1.5; }
+.deck .slide .diagram { margin: 0.25em 0 1em; }
+.deck .slide .diagram > svg { width: 100%; margin-inline: 0; border-width: 1px; border-radius: 0.45rem; }
+.deck .slide .diagram figcaption { max-width: none; font-size: 0.8em; }
+/* A printout keeps to the slide: the lesson column's wide code and a phone's edge-to-edge code don't apply. */
+.deck .slide .slide__frame pre.code-block.code-output { max-width: 100%; margin: 0.25em 0 1em; padding: 0.75em 1em; border-width: 1px; border-radius: 0.45rem; font-size: 0.8em; }
+.slide__qa > div + div, .slide__paths > div + div { margin-top: 1em; }
+.slide__links { font-size: 0.95em; }
+.slide__links a { white-space: nowrap; }
+.slide__kicker { color: var(--muted); }
+.slide__title { margin: 0 0 0.4em; color: var(--ink); font-size: 1.6em; font-weight: 700; line-height: 1.15; text-wrap: balance; }
+.deck .slide h2 { text-wrap: balance; }
+.slide__title span { display: block; }
+.deck .slide .slide__sub, .deck .slide .slide__sign { font-style: italic; text-wrap: balance; }
+.deck .slide__byline { margin-bottom: 0; }
+.slide__byline { color: var(--muted); }
+.slide__byline strong { display: block; color: var(--ink); }
+.slide__photo { display: none; background: center / cover no-repeat; }
+.deck .heading-anchor::before { display: none; }
+/* On a phone a diagram runs to the slide's edges, as a lesson's runs to the screen's. */
+@media (max-width: 30rem) {
+  .slide__frame { padding-inline: 1rem; }
+  .deck .slide .diagram > svg { width: calc(100% + 2rem); margin-inline: -1rem; padding: 0.75rem 0.5rem; border-width: 1px 0; border-radius: 0; }
+}
+
+/* Speaker notes: hidden until the notes are shown, then under each slide. */
+.slide__notes { display: none; }
+html.deck-notes .slide__notes {
+  display: block;
+  margin: 0.75rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: #f7f6f2;
+  color: #171717;
+  font-size: 0.875em;
+  line-height: 1.65;
+}
+.slide__notes::before { content: "Speaker notes"; display: block; margin-bottom: 0.35rem; color: var(--muted); font-style: italic; }
+.slide__notes p { margin: 0 0 0.6em; }
+.slide__notes p:last-child { margin-bottom: 0; }
+
+/* The canvas: wherever the deck has room (a desktop's 58.5rem column, a projector,
+   a printed page), a slide is 16:9, sized in em from the deck's width. */
+@container deck (min-width: 46.75rem) {
+  .slide__frame {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    padding: 2.1em 3em 1.5em;
+    font-size: calc(100cqi / 46.8);
+    line-height: 1.4;
+  }
+  .slide__frame::after { right: 3em; bottom: 1.5em; font-size: 0.62em; }
+  .deck .slide h2 { margin: 0 0 0.6em; font-size: 1.75em; line-height: 1.15; }
+  .deck .slide h3 { font-size: 1.2em; }
+  .deck .slide p, .deck .slide ul { margin-bottom: 0.6em; }
+  .deck .slide li { margin-bottom: 0.3em; }
+  .slide__lead { font-size: 1.2em; }
+  /* The small print keeps a floor, so a slide on the page still reads at the page's small size. */
+  .deck .slide .slide__deeper { padding-top: 0.6em; font-size: max(0.7em, 0.875rem); }
+  .slide__split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); gap: 1.6em; align-items: start; }
+  .slide__split > div > :last-child { margin-bottom: 0; }
+  /* The title holds its place; a short slide's body sits a little above the middle of the
+     room left under it, not high on the canvas. A full slide's spacers shrink to nothing. */
+  .slide__body { display: flex; flex: 1 1 auto; flex-direction: column; }
+  .slide__body::before, .slide__body::after { content: ""; flex: 1 1 0; }
+  .slide__body::after { flex-grow: 1.6; }
+  .deck .slide__split .diagram { margin: 0; }
+  .deck .slide .diagram > svg { height: auto; max-height: 15.5em; padding: 0.4em; }
+  .deck .slide .diagram figcaption { margin-top: 0.45em; font-size: max(0.6em, 0.875rem); }
+  .deck .slide .slide__frame pre.code-block.code-output { width: fit-content; margin: 0.2em 0 0.8em; padding: 0.7em 1.1em; font-size: max(0.72em, 0.875rem); line-height: 1.5; }
+  /* Lines hold their weight on a projector: in proportion to the slide, never under the lesson's own. */
+  .deck .slide .diagram .edge { stroke-width: max(1px, 0.05em); }
+  .deck .slide .diagram .node { stroke-width: max(1px, 0.04em); }
+  .deck .slide .diagram .path { stroke-width: max(3px, 0.11em); }
+  .deck .slide .diagram .node.on { stroke-width: max(2.5px, 0.09em); }
+  /* Two columns, their headings, answers and links on shared rows, so a heading that wraps
+     doesn't push one column's answer below the other's. */
+  .slide__qa, .slide__paths { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.4em; }
+  .slide__qa > div { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; }
+  .slide__paths > div { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
+  .deck .slide :is(.slide__qa, .slide__paths) h3 { align-self: end; }
+  .slide__qa > div + div, .slide__paths > div + div { margin-top: 0; }
+  .deck .slide .slide__qa + p { margin-top: 0.4em; }
+  .deck .slide__qa h3 { margin-bottom: 0.5em; font-size: 1.32em; }
+  .slide__qa p { font-size: 1.1em; }
+  .slide__links { font-size: 0.8em; }
+  .slide--title .slide__frame { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding: 0; }
+  .slide__cover { display: flex; flex-direction: column; justify-content: center; padding: 2em 2.4em 2em 3em; }
+  .slide__kicker { font-size: max(0.75em, 0.875rem); }
+  .slide__title { margin: 0.35em 0 0.45em; font-size: 2.15em; }
+  .slide__title span { margin-top: 0.15em; color: var(--muted); font-size: 0.62em; font-weight: 400; }
+  .deck .slide__sub { margin-bottom: 1.6em; font-size: 0.9em; }
+  .slide__byline { font-size: max(0.75em, 0.875rem); }
+  .slide__photo { display: block; }
+  .deck .slide--close .slide__sign { margin: auto 0 0; padding-top: 0.6em; color: var(--muted); font-size: max(0.75em, 0.875rem); }
+  .deck .slide--close .slide__sign + .slide__sign { margin-top: 0; padding-top: 0.2em; }
+}
+
+/* Present: one slide per screen, letterboxed at 16:9 (assets/deck.js). */
+.deck__controls { display: none; }
+html.deck-presenting, html.deck-presenting body { overflow: hidden; background: #fff; }
+html.deck-presenting body > :not(main),
+html.deck-presenting main > :not(.page-content),
+html.deck-presenting .content-page > :not(article),
+html.deck-presenting .content-page > article > :not(.deck),
+html.deck-presenting .deck > :not(.slide, .deck__controls),
+html.deck-presenting .slide:not(.is-current) { display: none !important; }
+html.deck-presenting .deck {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  background: #fff;
+}
+html.deck-presenting .slide { margin: 0; }
+html.deck-presenting .slide__frame {
+  width: min(100vw, 100vh * 16 / 9);
+  border: 0;
+  border-radius: 0;
+  font-size: calc(min(100vw, 100vh * 16 / 9) / 46.8);
+}
+html.deck-presenting .slide__frame::after { content: none; }
+html.deck-presenting .slide.is-current .slide__frame { animation: deck-in 160ms ease-out; }
+@keyframes deck-in { from { opacity: 0; } }
+html.deck-presenting .deck__controls {
+  position: fixed;
+  right: 1rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.8rem, 1.1vw, 1.1rem);
+}
+.deck__controls button { padding: 0.3rem 0.8rem; transition: opacity 200ms; }
+html.deck-presenting:not(.deck-pointer) .deck__controls:not(:focus-within) button { opacity: 0; }
+.deck .deck__count { min-width: 4.5ch; margin: 0; padding: 0.3rem 0.7rem; border-radius: 999px; color: var(--muted); background: #fff; text-align: right; font-variant-numeric: tabular-nums; }
+.deck__controls button:disabled { border-color: var(--line); color: var(--muted); cursor: default; }
+html.deck-presenting.deck-notes .slide.is-current .slide__notes {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 1;
+  max-height: 40vh;
+  overflow: auto;
+  margin: 0;
+  padding: 1rem 1.5rem 3.5rem;
+  border-width: 1px 0 0;
+  border-radius: 0;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.deck-presenting .slide.is-current .slide__frame { animation: none; }
+  .deck__controls button { transition: none; }
+}
+
+/* Print: one slide to a 16:9 page. With the notes shown, each page holds the slide
+   and its notes beside it. */
+@media print {
+  @page { size: 13.333in 7.5in; margin: 0; }
+  html, body { background: #fff !important; }
+  body > :not(main),
+  main > :not(.page-content),
+  .content-page > :not(article),
+  .content-page > article > :not(.deck),
+  .deck > :not(.slide) { display: none !important; }
+  body, main, .page-content, .page-content > .wrap, .content-page, .content-page > article {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+  .deck { width: 13.333in; margin: 0 !important; }
+  .slide { margin: 0; break-inside: avoid; }
+  .slide + .slide { break-before: page; }
+  .slide__frame { width: 13.333in; height: 7.5in; aspect-ratio: auto; border: 0; border-radius: 0; font-size: calc(13.333in / 46.8); }
+  .slide__frame::after { right: 3em; }
+  .slide__notes, html.deck-notes .slide__notes { display: none; }
+  .slide__photo, .deck .diagram > svg { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .deck a { color: inherit; }
+  .deck .slide__deeper a { color: var(--primary); }
+  html.deck-notes .slide { display: grid; grid-template-columns: 8.5in 1fr; gap: 0.35in; height: 7.5in; padding: 0.4in; }
+  html.deck-notes .slide__frame { width: 8.5in; height: 4.78125in; border: 1px solid var(--line); font-size: calc(8.5in / 46.8); }
+  html.deck-notes .slide__notes { display: block; margin: 0; padding: 0; border: 0; background: none; font-size: 10.5pt; }
+}
