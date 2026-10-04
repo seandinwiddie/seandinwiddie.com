@@ -271,7 +271,7 @@ export const bakeryTools = (bakery: Bakery): readonly Tool[] =&gt; [
   defineTool(
     {
       name: 'menu_item',
-      description: 'One item on the menu: its price in cents and the days of notice a large order needs.',
+      description: 'One item on the menu: its price in cents and the days of notice an order of it needs.',
       inputSchema: {
         type: 'object',
         properties: { name: { type: 'string', description: 'The item, as the customer wrote it.' } },
@@ -794,7 +794,7 @@ export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: s
 <p>The limits here are this lesson&rsquo;s own; set yours from what real runs cost.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> The budget is checked between turns, because the loop can&rsquo;t know what a reply costs until it arrives, so a run can pass its budget by one reply. <code>max_tokens</code> caps what one reply writes, thinking included, not what it reads, and each request sends the whole conversation again, so a long run reads more on every turn. With a fallback, the response&rsquo;s top-level <code>usage</code> counts only the model that answered; each attempt, the declined one included, has its own entry in <code>usage.iterations</code>, the record the bill follows, so a budget that must match the bill reads those.</p>
 <p>Running calls together suits tools that only read. Tools that change something, such as booking a pickup or taking a payment, are better run one at a time, in order, and often wait for a person&rsquo;s approval.</p>
-<p>The customer&rsquo;s question is untrusted text, and <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks#indirect-prompt-injection">Anthropic&rsquo;s docs</a> advise keeping content from outside, such as inbound email, in <code>tool_result</code> blocks rather than plain user text. Here the tools only read and a person reads every draft, so a question that tries to steer the agent can waste turns, which the limits cap, or spoil a draft, which the person catches. The module&rsquo;s last lesson treats an email&rsquo;s text as data, never instructions.</p></aside>
+<p>The customer&rsquo;s question is untrusted text, and this lesson&rsquo;s loop sends it as the task, in plain user text, where <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks#indirect-prompt-injection">Anthropic&rsquo;s docs</a> advise keeping content from outside, such as inbound email, in <code>tool_result</code> blocks. Here the tools only read and a person reads every draft, so a question that tries to steer the agent can waste turns, which the limits cap, or spoil a draft, which the person catches. The module&rsquo;s last lesson treats an email&rsquo;s text as data, never instructions.</p></aside>
 <p>The loop gives the agent its hands. <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> gives it know-how: a skill it loads when a task matches, written from a user story and its scenarios, the same way.</p>
 
 <!-- .entry-content -->
@@ -806,7 +806,7 @@ export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: s
 <a href="/community/writing-an-agentic-skill/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing an agentic skill</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -128,11 +128,11 @@
 </ul>
 </nav>
 <h2 id="the-gate-written-first"><a class="heading-anchor" href="#the-gate-written-first">The gate, written first</a></h2>
-<p>The question at the end is the one to write first: does the trained model get worse anywhere it is measured? The gate compares the trained model with the model in service, the one it would replace, at every point of the probe factorial from <a href="/community/measuring-reasoning-on-the-geometry/">Measuring reasoning on the geometry</a>, and a point where it may have got worse blocks the release.</p>
+<p>The question at the end is the one to write first: does the trained model get worse anywhere it is measured? The gate compares the trained model with the model in service, the one it would replace, at every point of the probe factorial from <a href="/community/measuring-reasoning-on-the-geometry/">Measuring reasoning on the geometry</a>, and a point where it may have got worse by more than a declared margin blocks the release.</p>
 <p>Scores carry noise, so &ldquo;worse&rdquo; is defined before any score exists. Both models answer the same probe pairs, and the gate reads the change at each point pair by pair, with an error bar, as <a href="https://arxiv.org/abs/2411.00640">Evan Miller</a> recommends for comparing two models.</p>
 <p>A margin, declared with the gate, is the largest drop at one point the release accepts, and a point blocks when its error bar reaches past it: a drop that large can&rsquo;t be ruled out.</p>
 <pre class="code-block" tabindex="0"><code># pipeline/release/gate.py
-"""The gate, written before training: at no point worse than the model in service by more than a declared margin."""
+"""The gate, written before training: no point where a drop past a declared margin from the model in service can't be ruled out."""
 
 from __future__ import annotations
 

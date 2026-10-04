@@ -115,7 +115,7 @@
 </div> </header><!-- .entry-header -->
 <p>A harness is the deterministic program around a model: the loop, the tools, the permissions and the context it works in. In tandem, the two run side by side on every request, and each does what it does best. The model proposes, and typed code decides what is allowed, what goes out and what changes.</p>
 <p>This lesson builds one for an invented salon&rsquo;s booking assistant, the way the Sean Dinwiddie&rsquo;s Webmastery team builds the rest of its software: behavior named first, a pure core, effects at the edge. The code is Haskell with Servant, Hspec and QuickCheck, plus one TypeScript file tested with Vitest.</p>
-<p>Every name, time, price and figure in it is invented, and no spec calls a model. Stand-ins take its seat: most are pure functions of the call, and the few in specs that time a turn or race it are IO actions that wait, or book an hour, first.</p>
+<p>Every name, time, price and figure in it is invented, and no spec calls a model: a stand-in takes its seat.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
 <ul>
@@ -676,7 +676,7 @@ serveTurn env model' salonVar logVar req = do
 <a href="/community/server-and-client-in-tandem/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Server and client in tandem</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
 </aside>
 <!-- #comments -->
       </div>

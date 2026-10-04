@@ -122,10 +122,13 @@ const SEANS_COMMUNITY_PAGES = new Set(["community/from-marketing-to-development/
 // it is replaced by pattern for the same reason as the banner. "Questions about
 // this page?" invited free consulting, and the team does no free work
 // (docs/terms.md): a lesson points to the work itself, and only the team's terms
-// and the membership offer keep a questions line.
-const QUESTIONS_NOTICE = `<aside aria-label="Questions" class="notice">
-<p>Questions about this page? <a href="/contact/">Call or email</a> Sean Dinwiddie&rsquo;s Webmastery.</p>
+// and the membership offer keep a questions line. Joining the team's line opens
+// the contact page at its note for webmasters, as the page's own button does, not
+// at the owners' first step (community loop round 2).
+const questionsNotice = (href) => `<aside aria-label="Questions" class="notice">
+<p>Questions about this page? <a href="${href}">Call or email</a> Sean Dinwiddie&rsquo;s Webmastery.</p>
 </aside>`;
+const QUESTIONS_HREFS = new Map([["community/staff/index.html", "/contact/#for-webmasters"]]);
 
 const WORK_LINE = `For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee.`;
 const workNotice = (line) => `<aside aria-label="Working with the team" class="notice">
@@ -133,15 +136,17 @@ const workNotice = (line) => `<aside aria-label="Working with the team" class="n
 </aside>`;
 const WORK_NOTICE = workNotice(WORK_LINE);
 // A lesson is where a webmaster weighs the craft, so its closing line also shows
-// them the way in (community loop, round 1), not only the owners' door. The last
-// lesson's own links already end on Joining the team (lessonNav), so its line
-// keeps to the work.
+// them the way in (community loop, round 1), not only the owners' door, and what
+// joining gives, in the recruiting note's words (docs/positioning.md, Webmasters),
+// in the third person, since owners read the lessons too, and with no ladder or
+// split (community loop, round 2). The last lesson's own links already end on
+// Joining the team (lessonNav), so its line keeps to the work.
 const LESSON_NOTICE = workNotice(
-  `${WORK_LINE} For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.`,
+  `${WORK_LINE} For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.`,
 );
 
 const commentsNotice = (name) => {
-  if (NOT_LESSONS.has(name)) return QUESTIONS_NOTICE;
+  if (NOT_LESSONS.has(name)) return questionsNotice(QUESTIONS_HREFS.get(name) ?? "/contact/");
   const index = lessonIndex(name);
   return index === -1 || index === LESSONS.length - 1 ? WORK_NOTICE : LESSON_NOTICE;
 };
@@ -210,10 +215,10 @@ const LESSONS = [
   // Module 3: the introduction first; Apply FRP hands the chain to Module 4's API.
   ["module-3-functional-reactive-programming-frp", "Module 3: Functional reactive programming (FRP)", "m3", "Module 3: Functional Reactive Programming (FRP)"],
   ["introduction-to-functional-reactive-programming-frp", "Introduction to functional reactive programming (FRP)", "m3", "Introduction to Functional Reactive Programming (FRP)"],
-  ["event-streams-and-reactive-programming", "Event streams and reactive programming", "m3"],
+  ["event-streams-and-reactive-programming", "Event streams and reactive programming", "m3", "Event Streams and Reactive Programming"],
   ["master-the-fundamentals-of-frp-in-software-development", "FRP fundamentals in software development", "m3", "FRP Fundamentals in Software Development"],
-  ["discover-how-frp-enhances-user-interaction-and-responsiveness", "Discover how FRP enhances user interaction and responsiveness", "m3"],
-  ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules", "m3"],
+  ["discover-how-frp-enhances-user-interaction-and-responsiveness", "Discover how FRP enhances user interaction and responsiveness", "m3", "Discover How FRP Enhances User Interaction and Responsiveness"],
+  ["apply-frp-concepts-to-software-modules", "Apply FRP concepts to software modules", "m3", "Apply FRP Concepts to Software Modules"],
   // Module 4: the chain end to end, from the API behind the app.
   ["the-api-haskell-servant-and-nile", "The API: Haskell Servant and Nile", "m4"],
   ["from-scenario-to-slice", "From scenario to slice", "m4", "From Scenario to Slice"],
@@ -1052,10 +1057,14 @@ const withByline = (name, html) =>
       )
     : html;
 
-// "Joining the team" shows when its terms last changed. The visible date renders from
-// the page's dateModified, so the byline and the structured data can't disagree, and a
-// change to the terms needs one date edited, not two.
-const UPDATED_PAGES = new Set(["community/staff/index.html"]);
+// "Joining the team" shows when its terms last changed, and the offer when it last
+// changed, since it says membership prices can change (community loop round 2). The visible
+// date renders from the page's dateModified, so the byline and the structured data
+// can't disagree, and a change to the terms needs one date edited, not two.
+const UPDATED_PAGES = new Set([
+  "community/staff/index.html",
+  "community/our-community-unveiling-our-offer-and-prices/index.html",
+]);
 const UPDATED_PATTERN = /(rel="bookmark">Updated )<time datetime="[^"]*">[^<]*<\/time>/;
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const withUpdatedByline = (name, html) => {

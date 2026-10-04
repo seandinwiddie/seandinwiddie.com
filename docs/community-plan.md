@@ -61,15 +61,9 @@ Modules 5 and 6 each carry a meetup talk right after the opener, written for the
 - "Sean Dinwiddie – Software Engineering Consultant" in the "How We Can Help" blocks.
 
 **The practice has, and no lesson covers:**
-- The chain as a whole (Module 4 is empty).
-- Acceptance criteria as Gherkin, and scenario words as test names.
-- Event-named actions; state ownership (component / router / slice / RTK Query / selector).
-- RTK Query: one root, injected endpoints, tags, decoding at the boundary, OpenAPI codegen.
-- Listeners versus thunks versus RTK Query.
-- Minimal views and view-model selectors.
-- Testing a slice through event sequences and selectors, and testing endpoints against a controlled boundary.
-- A Servant API from its types; one contract shared by the API and the client.
-- Functional core with an imperative shell; Maybe/Either at the boundary; one FP vocabulary across TypeScript and Rust.
+- Maybe/Either at the boundary; one FP vocabulary across TypeScript and Rust.
+
+The list's other items are now taught (community loop round 2): Module 2 writes acceptance criteria as Gherkin and names tests by the scenario's words; Module 3 sets listeners, thunks and RTK Query at the boundary; and Module 4 (passes 9 to 13) carries the chain as a whole, with event-named actions and state ownership, RTK Query (one root, injected endpoints, tags, decoding at the boundary, OpenAPI codegen), minimal views and view-model selectors, slices tested through event sequences and selectors, endpoints tested against a controlled boundary, a Servant API from its types sharing one contract with the client, and a functional core with an imperative shell.
 
 ## The lesson map: Lesson → change map (small tweaks, a few per pass)
 

@@ -706,14 +706,15 @@ def test_the_config_reads():
     read_config(ROOT / "config/train.json")
 
 
-def test_the_rows_meet_their_contract():
-    rows = [json.loads(line) for line in (ROOT / "data/rows.jsonl").read_text().splitlines() if line]
+def test_the_training_rows_the_config_names_meet_their_contract():
+    config = read_config(ROOT / "config/train.json")
+    rows = [json.loads(line) for line in (ROOT / config.train).read_text().splitlines() if line]
     validate(rows, json.loads((ROOT / "data/counts.json").read_text()))</code></pre>
 <p><code>uv run --locked</code> runs a command in the project&rsquo;s environment. It stops if the lock no longer matches <code>pyproject.toml</code>, brings the environment in line with the lock, and only then runs the command. So one command checks, before any training run:</p>
 <ul>
 <li>the lock is current;</li>
 <li>the config reads;</li>
-<li>the data meets its contract;</li>
+<li>the training rows the config names meet their contract;</li>
 <li>every test passes.</li>
 </ul>
 <pre class="code-block code-output" tabindex="0"><code>$ uv run --locked python -m pytest -q
@@ -735,7 +736,7 @@ def test_the_rows_meet_their_contract():
 <a href="/community/measuring-reasoning-on-the-geometry/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Measuring reasoning on the geometry</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters who build this way, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live.</p>
 </aside>
 <!-- #comments -->
       </div>
