@@ -141,11 +141,12 @@ const WORK_NOTICE = workNotice(WORK_LINE);
 // in the third person, since owners read the lessons too, and with no ladder or
 // split (community loop, round 2). It speaks to webmasters at any stage of the
 // craft, never only those who already build this way, and says the review before
-// launch is how what one job teaches becomes the team's (community loop, round 3).
-// The last lesson's own links already end on Joining the team (lessonNav), so its
+// launch is how what one job teaches becomes the team's (community loop, round 3),
+// and ends on what the reader gains, growth faster than alone, in the positioning's
+// words and with no ladder (community loop, round 4). The last lesson's own links already end on Joining the team (lessonNav), so its
 // line keeps to the work.
 const LESSON_NOTICE = workNotice(
-  `${WORK_LINE} For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.`,
+  `${WORK_LINE} For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.`,
 );
 
 const commentsNotice = (name) => {
@@ -801,6 +802,8 @@ const withArchiveCards = (name, html) => {
 // each archive maps the course, its parts in order, each with its place and count by its
 // name and linked to its first lesson, the Introduction first. It is set as a module's
 // lesson list (module-lessons), its place and name as the lesson links' label and title.
+// After the parts, one row shows the way from reading to joining, in the words the
+// last lesson's link uses (community loop round 4).
 const COURSE_MAP_PATTERN = /<nav class="course-map module-lessons"[\s\S]*?<\/nav>\n/;
 const courseMap = () => `<nav class="course-map module-lessons" aria-label="The course">
 <ol>
@@ -810,6 +813,7 @@ ${Object.entries(PARTS)
     return `<li><a href="/community/${opener}/"><span class="page-nav__label">${place} · ${partOf(key).length} lessons</span> <span class="page-nav__title">${title}</span></a></li>`;
   })
   .join("\n")}
+<li><a href="/community/staff/"><span class="page-nav__label">After the course</span> <span class="page-nav__title">Joining the team</span></a></li>
 </ol>
 </nav>
 `;
@@ -1049,15 +1053,20 @@ const withDepthPassages = (name, html) =>
   });
 
 // The avatar sits beside the author's name, so it is decorative, and the link
-// shows the name rather than the WordPress username.
+// shows the name rather than the WordPress username. The author meta tag gives the
+// same name, as the byline and the structured data do (community loop round 4);
+// twitter:creator keeps the handle.
+const AUTHOR_META = '<meta name="author" content="seandinwiddie">';
 const BYLINE_PATTERN =
   /<img alt="[^"]*"(?: class="byline-avatar")?( decoding="async" height="36" loading="lazy" src="\/assets\/img\/sean-dinwiddie\.jpg" width="36"\/>)<a href="\/community\/author\/seandinwiddie\/">[^<]*<\/a>/g;
 const withByline = (name, html) =>
   name.startsWith("community/") && !SEANS_COMMUNITY_PAGES.has(name)
-    ? html.replace(
-        BYLINE_PATTERN,
-        (_, rest) => `<img alt="" class="byline-avatar"${rest}<a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>`,
-      )
+    ? html
+        .replace(
+          BYLINE_PATTERN,
+          (_, rest) => `<img alt="" class="byline-avatar"${rest}<a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>`,
+        )
+        .replace(AUTHOR_META, '<meta name="author" content="Sean Dinwiddie">')
     : html;
 
 // "Joining the team" shows when its terms last changed, and the offer when it last

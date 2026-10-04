@@ -26,7 +26,7 @@
   <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
   <meta property="og:locale" content="en_US">
   <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
-  <meta name="author" content="seandinwiddie">
+  <meta name="author" content="Sean Dinwiddie">
   <meta name="twitter:creator" content="@seandinwiddie">
   <meta name="twitter:site" content="@seandinwiddie">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
@@ -147,7 +147,7 @@ export const api = createApi({
   tagTypes: ['Order'],
   endpoints: () =&gt; ({}),
 })</code></pre>
-<p>The store registers the root&rsquo;s reducer and its middleware once; without the middleware, nothing subscribes, refetches or invalidates. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#create-one-api-per-base-url">Redux Toolkit and RTK Query Best Practices</a> shows what a second root for the same backend costs.</p>
+<p>The store registers the root&rsquo;s reducer and its middleware once; without the middleware, nothing subscribes, refetches or invalidates, and in development and tests the first request throws an error that names the missing middleware. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#create-one-api-per-base-url">Redux Toolkit and RTK Query Best Practices</a> shows what a second root for the same backend costs.</p>
 <h2 id="2-generate-the-endpoints-then-review-them"><a class="heading-anchor" href="#2-generate-the-endpoints-then-review-them">2. Generate the endpoints, then review them</a></h2>
 <p>The API writes its contract to an OpenAPI document from the Servant type on every build. RTK Query&rsquo;s code generator reads that document and injects typed endpoints into the root:</p>
 <pre class="code-block" tabindex="0"><code>// openapi-config.ts
@@ -401,7 +401,7 @@ export const cartApi = cartReadApi.injectEndpoints({
 <a href="/community/the-view-stays-minimal/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">The view stays minimal</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

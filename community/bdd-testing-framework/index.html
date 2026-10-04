@@ -26,7 +26,7 @@
   <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
   <meta property="og:locale" content="en_US">
   <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
-  <meta name="author" content="seandinwiddie">
+  <meta name="author" content="Sean Dinwiddie">
   <meta name="twitter:creator" content="@seandinwiddie">
   <meta name="twitter:site" content="@seandinwiddie">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
@@ -204,6 +204,9 @@ Then('the cart total is ${int}', function (this: CartWorld, dollars: number) {
 <p>cucumber-js looks for feature files, and the step definitions beside them, in <code>features/</code> at the project&rsquo;s root; the app&rsquo;s own feature folders, such as <code>features/cart/</code> below, sit under <code>src/</code>. On its own it loads only JavaScript step files, so a TypeScript one like this loads once a transpiler such as tsx is registered in the cucumber-js configuration: <code>{ requireModule: ['tsx/cjs'], require: ['features/step_definitions/**/*.ts'] }</code>.</p>
 <p>Run the second way, the scenario is one test in the codebase&rsquo;s own runner, named for it, with its steps as comments:</p>
 <pre class="code-block" tabindex="0"><code>// features/cart/cart.test.ts, from From scenario to slice
+import { describe, expect, it } from 'vitest'
+import { cartSlice, itemAdded, selectLines, selectTotalCents } from './cartSlice'
+
 const widgetA = { productId: 'widget-a', name: 'Widget A', priceCents: 2500 }
 
 describe('Feature: Cart', () =&gt; {
@@ -217,11 +220,11 @@ describe('Feature: Cart', () =&gt; {
     expect(selectTotalCents({ cart: after })).toBe(2500)
   })
 })</code></pre>
-<p>Both run the same reducer and selectors, and both fail in the scenario&rsquo;s own words.</p>
+<p>Both run the same reducer and selectors, and both fail in the scenario&rsquo;s own words. To try it, change <code>quantity: 1</code> to <code>quantity: 0</code> in <code>itemAdded</code>, in the <code>cartSlice.ts</code> from From scenario to slice, and run both: each fails on the cart total, under the scenario&rsquo;s name.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Three items on the list above belong chiefly to one layer. Scenarios that run below the interface, against a reducer, a selector or an endpoint, need no browser and no environment to configure, so cross-browser testing and environment configuration belong to the few end-to-end journeys, and parallel execution matters most there, since Vitest already runs test files in parallel.</p>
 <p>The runner follows the reader: cucumber-js when people outside the code read and run the feature files, and scenario-named tests in Vitest or Hspec when the team alone reads them and wants one runner, one report and one debugger.</p></aside>
 <p>A framework that meets these requirements runs every scenario on every change and reports each failure in the words the owner read. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what to test at each layer, from reducers and selectors to endpoints and components.</p>
-<p>Module 3 comes next: functional reactive programming (FRP), taught through the Redux Toolkit state layer these scenarios test.</p>
+<p>That completes Module 2: each criterion a scenario the owner can read, reviewed as a group and run on every change, failing in the owner&rsquo;s words. Module 3 comes next: functional reactive programming (FRP), taught through the Redux Toolkit state layer these scenarios test.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -232,7 +235,7 @@ describe('Feature: Cart', () =&gt; {
 <a href="/community/module-3-functional-reactive-programming-frp/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 3: Functional reactive programming (FRP)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

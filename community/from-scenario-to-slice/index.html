@@ -26,7 +26,7 @@
   <meta name="twitter:image:alt" content="Sean Dinwiddie&#x27;s Webmastery lessons on Redux, BDD and functional reactive programming">
   <meta property="og:locale" content="en_US">
   <meta property="article:publisher" content="https://www.facebook.com/seanpaulpaynedinwiddie/">
-  <meta name="author" content="seandinwiddie">
+  <meta name="author" content="Sean Dinwiddie">
   <meta name="twitter:creator" content="@seandinwiddie">
   <meta name="twitter:site" content="@seandinwiddie">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
@@ -217,7 +217,8 @@ describe('Feature: Cart', () =&gt; {
 <h2 id="6-one-scenario-two-layers"><a class="heading-anchor" href="#6-one-scenario-two-layers">6. One scenario, two layers</a></h2>
 <p>Module 2&rsquo;s <a href="/community/creating-bdd-scenarios-for-real-world-cases/">&ldquo;Placing the order&rdquo;</a> ends with two Thens: the order is recorded at $25, and her cart is empty. The first belongs to the API, and the Hspec test in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> proves it.</p>
 <p>The second belongs to the slice, and the cart empties when the API accepts the order, not when the button is pressed. The slice listens for the fulfilled action of <code>placeOrder</code>, the endpoint the client generates from the API&rsquo;s contract (the API names that operation when it builds its OpenAPI document, and <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a> generates the endpoint from it):</p>
-<pre class="code-block" tabindex="0"><code>// in createSlice({ ... }), beside reducers
+<pre class="code-block" tabindex="0"><code>// features/cart/cartSlice.ts, in createSlice({ ... }), beside reducers,
+// with import { ordersApi } from '../orders/ordersApi' at the top
 extraReducers: (builder) =&gt; {
   builder.addMatcher(ordersApi.endpoints.placeOrder.matchFulfilled, (state) =&gt; {
     state.lines = []
@@ -237,7 +238,7 @@ extraReducers: (builder) =&gt; {
 <a href="/community/endpoints-at-the-boundary/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Endpoints at the boundary</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>
