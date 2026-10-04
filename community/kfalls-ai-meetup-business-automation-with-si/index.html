@@ -130,17 +130,17 @@
 </div>
 <div class="slide__photo" style="background-image:url('/assets/img/sigmund-Zs1zHhHBG8g-unsplash-scaled.jpg');background-position:30% center;"></div>
 </div>
-<div class="slide__notes"><p>Twenty minutes: one problem at the counter, the architecture that takes it off, and how it&rsquo;s tested. Owners: listen for where a person stays in charge. Students: listen for the contracts.</p></div>
+<div class="slide__notes"><p>Welcome, everyone, and thank you for coming. We have about twenty minutes together: one small problem at the counter, the design that lifts it off your hands, and how we test it. If you run a business, listen for the places where a person stays in charge. If you&rsquo;re a student, listen for the contracts: the promises each part makes about what it takes in and what it hands back.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="the-same-order-typed-twice"><a class="heading-anchor" href="#the-same-order-typed-twice">The same order, typed twice</a></h2>
 <div class="slide__body">
-<p class="slide__lead">An order comes in by phone or email. Someone types it into the register, then again into the calendar and the order sheet.</p>
+<p class="slide__lead">An order comes in by phone or email. Someone, maybe you, types it into the register, then again into the calendar and the order sheet.</p>
 <p class="slide__lead">None of it is hard, and all of it has to happen, every day.</p>
 </div>
 </div>
-<div class="slide__notes"><p>Ask the room who types the same details into two systems, and let the hands go up. This is the problem the rest of the talk designs against.</p></div>
+<div class="slide__notes"><p>Let&rsquo;s start with a show of hands: who here types the same details into two places? Thank you; you&rsquo;re in good company. That everyday chore is the one the rest of our talk sets out to design away.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -148,25 +148,25 @@
 <div class="slide__body">
 <ul class="slide__lead">
 <li>A typo between two screens, and the customer finds it first.</li>
-<li>The admin, done at night after closing.</li>
+<li>The paperwork, done at night after closing.</li>
 <li>One person is the system, and when they&rsquo;re away it stops.</li>
 </ul>
-<p class="slide__lead">Everyone here can put their own number on it.</p>
+<p class="slide__lead">You know your own number better than anyone.</p>
 </div>
 </div>
-<div class="slide__notes"><p>No figures from the front of the room. Ask what happens when the calendar and the register disagree, and who does the typing on a day off. Let the owners name their own cost.</p></div>
+<div class="slide__notes"><p>We won&rsquo;t put a figure on this for you; you know your own shop far better than we do. So tell us: what happens when the calendar and the register disagree? And who does the typing on your day off? Whatever that costs you is the number that counts.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="si-what-federal-agencies-now-call-ai"><a class="heading-anchor" href="#si-what-federal-agencies-now-call-ai">SI: what federal agencies now call AI</a></h2>
 <div class="slide__body">
-<p class="slide__lead">Since September 29, 2026, federal agencies write Super Intelligence, SI, in their own documents and communications, where they wrote artificial intelligence, AI.</p>
-<p>Executive Order 14434 changes the name, not the law: it defines SI by the statutory definition of AI, so the two cover the same systems. Proposed language for a federal definition is due to the President within 60 days.</p>
-<p>In research, &ldquo;superintelligence&rdquo; means something else. Here, SI is only the new name.</p>
+<p class="slide__lead">Since September 29, 2026, federal agencies write Super Intelligence, SI, in their own documents and communications, where they used to write artificial intelligence, AI.</p>
+<p>Executive Order 14434 changes the name, not the law: SI means what the law already defines as AI, so the two cover the same systems. Proposed wording for a federal definition is due to the President within 60 days.</p>
+<p>In research, &ldquo;superintelligence&rdquo; means something else. In this talk, SI is just the new name.</p>
 </div>
 <p class="slide__deeper">Sources: <a href="https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/">the order</a> and <a href="https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/">its fact sheet</a></p>
 </div>
-<div class="slide__notes"><p>Say it once, plainly, and move on. The order is titled &ldquo;Inaugurating the Era of Super Intelligence.&rdquo; It binds the executive branch&rsquo;s departments and agencies from now on, and leaves statutes, regulations and earlier documents as they are. For its purposes SI means what the statutory definition of AI, 15 U.S.C. 9401(3), covers, and the legal summaries agree it changes no law. No claim about what the systems can do rides on the name, and from here on the talk says SI.</p></div>
+<div class="slide__notes"><p>A quick word on the name, and then on to the good part. The order is called &ldquo;Inaugurating the Era of Super Intelligence.&rdquo; From now on it applies to the departments and agencies of the executive branch, and it leaves laws, regulations and earlier documents just as they are. For its purposes SI means whatever the law&rsquo;s existing definition of AI covers (15 U.S.C. 9401(3), for the curious), and the legal summaries agree it changes no law. The name makes no claim about what these systems can do. From here on, we&rsquo;ll simply say SI.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -174,9 +174,9 @@
 <div class="slide__body">
 <div class="slide__split">
 <div>
-<p>An agent is software: a model in a loop with tools.</p>
+<p>An agent is ordinary software: a model in a loop with tools. The model is the part that reads and writes.</p>
 <p>It reads the job, asks for a tool, reads the result and goes round again, until it answers or a limit stops it.</p>
-<p>Every way out is a value the program names.</p>
+<p>It always stops in one of four named ways, so the program knows why it stopped.</p>
 </div>
 <figure class="diagram">
 <svg role="img" aria-labelledby="talk-loop-title talk-loop-desc" viewBox="0 0 360 320">
@@ -196,17 +196,17 @@
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>The whole trick, and it is ordinary software. The four ways out are answered, out of turns, out of tokens and stopped by the model. The loop is tested against a scripted model, so no test calls a real one.</p></div>
+<div class="slide__notes"><p>That&rsquo;s the whole trick, and it&rsquo;s ordinary software. A model reads and writes in little chunks of text called tokens, and that&rsquo;s how its budget is counted. There are four ways out: it answered; it ran out of turns, the rounds we allow it; it ran out of tokens; or the model stopped short, say by declining the job. We test the loop with a scripted model, a stand-in that gives back the replies we wrote for it, so no test ever calls a real one.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="the-model-asks-the-program-decides"><a class="heading-anchor" href="#the-model-asks-the-program-decides">The model asks; the program decides</a></h2>
 <div class="slide__body">
 <p class="slide__lead">The model never runs anything. It asks for a tool by name, and plain code checks the request and decides whether to run it.</p>
-<p class="slide__lead">Ask an invented bakery for croissants it doesn&rsquo;t bake, and the tool answers with what the menu does have, so the model offers something real.</p>
+<p class="slide__lead">Say you ask our invented bakery for croissants, which it doesn&rsquo;t bake. The menu tool answers with what it does have, so the model offers something real.</p>
 </div>
 </div>
-<div class="slide__notes"><p>Every rule lives on the program&rsquo;s side of that line. A failed tool is a result the model reads on its next turn, never a crash, so it can say plainly that there are no croissants instead of inventing one.</p></div>
+<div class="slide__notes"><p>Every rule lives on the program&rsquo;s side of that line. When a tool can&rsquo;t do what it was asked, nothing crashes: the &ldquo;no&rdquo; comes back as an answer the model reads on its next turn. So it can tell the customer plainly that there are no croissants, rather than make some up.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -214,13 +214,13 @@
 <div class="slide__body">
 <div class="slide__split">
 <div>
-<p>A skill is a folder: a skill file holding a name, a description and instructions, with scripts beside it.</p>
-<p>Only the name and description load at the start. The instructions load when a task matches, and a script runs only when a step calls it.</p>
+<p>A skill is a folder, a bit like a recipe card with its utensils: a skill file with a name, a description and instructions, and scripts beside it.</p>
+<p>At the start the model reads only the name and the description. It reads the instructions when a task matches, and a script runs only when a step calls for it.</p>
 </div>
 <figure class="diagram">
 <svg role="img" aria-labelledby="talk-folder-title talk-folder-desc" viewBox="0 0 360 357">
-<title id="talk-folder-title">What loads when</title>
-<desc id="talk-folder-desc">A folder tree. The folder drafting-booking-replies holds the skill file, scripts and assets. The skill file's header is highlighted: its name and description are loaded at startup, for every installed skill. The body is loaded when a task matches. The scripts open-times and check-draft are run by a step, and only their output is loaded. The assets folder holds the salon's data, which is read by a script.</desc>
+<title id="talk-folder-title">What the model reads, and when</title>
+<desc id="talk-folder-desc">A folder tree. The folder drafting-booking-replies holds the skill file, scripts and assets. The skill file's header is highlighted: its name and description are read at the start, for every installed skill. The body is read when a task matches. The scripts open-times and check-draft are run by a step, and the model sees only their output. The assets folder holds the salon's data, which is read by a script.</desc>
 <g class="edge"><line x1="26.5" y1="38.5" x2="26.5" y2="292.5"/><line x1="26.5" y1="64.5" x2="38.5" y2="64.5"/><line x1="26.5" y1="178.5" x2="38.5" y2="178.5"/><line x1="26.5" y1="292.5" x2="38.5" y2="292.5"/><line x1="50.5" y1="76.5" x2="50.5" y2="140.5"/><line x1="50.5" y1="102.5" x2="62.5" y2="102.5"/><line x1="50.5" y1="140.5" x2="62.5" y2="140.5"/><line x1="50.5" y1="190.5" x2="50.5" y2="254.5"/><line x1="50.5" y1="216.5" x2="62.5" y2="216.5"/><line x1="50.5" y1="254.5" x2="62.5" y2="254.5"/><line x1="50.5" y1="304.5" x2="50.5" y2="330.5"/><line x1="50.5" y1="330.5" x2="62.5" y2="330.5"/></g>
 <rect class="node" x="14.5" y="14.5" width="226" height="24" rx="4"/>
 <rect class="node" x="38.5" y="52.5" width="100" height="24" rx="4"/>
@@ -231,27 +231,27 @@
 <rect class="node" x="62.5" y="242.5" width="108" height="24" rx="4"/>
 <rect class="node" x="38.5" y="280.5" width="76" height="24" rx="4"/>
 <rect class="node" x="62.5" y="318.5" width="100" height="24" rx="4"/>
-<g><text x="127.5" y="26.5">drafting-booking-replies/</text><text x="88.5" y="64.5">skill file</text><text x="96.5" y="102.5">header</text><text x="88.5" y="140.5">body</text><text x="80.5" y="178.5">scripts/</text><text x="112.5" y="216.5">open-times</text><text x="116.5" y="254.5">check-draft</text><text x="76.5" y="292.5">assets/</text><text x="112.5" y="330.5">salon-data</text><text class="note" x="285.5" y="94.5">name, description</text><text class="note" x="285.5" y="110.5">loaded at startup</text><text class="note" x="285.5" y="132.5">loaded when a</text><text class="note" x="285.5" y="148.5">task matches</text><text class="note" x="285.5" y="219.5">run by a step;</text><text class="note" x="285.5" y="235.5">only the output</text><text class="note" x="285.5" y="251.5">is loaded</text><text class="note" x="285.5" y="330.5">read by a script</text></g>
+<g><text x="127.5" y="26.5">drafting-booking-replies/</text><text x="88.5" y="64.5">skill file</text><text x="96.5" y="102.5">header</text><text x="88.5" y="140.5">body</text><text x="80.5" y="178.5">scripts/</text><text x="112.5" y="216.5">open-times</text><text x="116.5" y="254.5">check-draft</text><text x="76.5" y="292.5">assets/</text><text x="112.5" y="330.5">salon-data</text><text class="note" x="285.5" y="94.5">name, description</text><text class="note" x="285.5" y="110.5">read at the start</text><text class="note" x="285.5" y="132.5">read when a</text><text class="note" x="285.5" y="148.5">task matches</text><text class="note" x="285.5" y="219.5">run by a step;</text><text class="note" x="285.5" y="235.5">the model sees</text><text class="note" x="285.5" y="251.5">only the output</text><text class="note" x="285.5" y="330.5">read by a script</text></g>
 </svg>
 <figcaption>An invented salon&rsquo;s skill. The violet header is all the model sees until a task calls for more.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>Staged loading is why a team can install many skills at little cost, and why the description carries the weight: it is the only part the model reads before deciding. A script&rsquo;s output enters the context, never its code. The format is an open standard.</p></div>
+<div class="slide__notes"><p>The model reads a little at a time, and engineers call that staged loading. It&rsquo;s why you can keep many skills on the shelf at little cost, and why the description matters most: it&rsquo;s the only part the model reads before choosing a skill. When a script runs, the model sees what the script printed, never the script itself; in engineers&rsquo; words, only the output enters the context, the text the model has in front of it. And the format itself is an open standard, so anyone can read it and use it.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="judgment-to-the-model-exact-work-to-code"><a class="heading-anchor" href="#judgment-to-the-model-exact-work-to-code">Judgment to the model, exact work to code</a></h2>
 <div class="slide__body">
-<p>Which times are open is arithmetic, so a script works them out and a second script checks the draft. How to word the reply is judgment, and the instructions leave room for it.</p>
+<p>Which times are open is arithmetic, so a script works them out and a second script checks the draft. How to word the reply is judgment, and the instructions leave room for it. Here&rsquo;s what that check found in one draft:</p>
 <pre class="code-block code-output" tabindex="0"><code>offers 10:30 a.m., which the open times don't list
 offers 4 times; the stock reply offers at most 3
 still holds the placeholder {first name}</code></pre>
 <p>The model fixes all three, and the check runs again.</p>
 </div>
 </div>
-<div class="slide__notes"><p>A model writing times token by token can offer one that isn&rsquo;t free; a script can&rsquo;t. Instructions for flexible guidance, code for reliability. A check holds only where code runs it on every draft, whatever the model did.</p></div>
+<div class="slide__notes"><p>A model writes its reply one token at a time, so it can offer a time that isn&rsquo;t free. A script that works the times out can&rsquo;t make that slip. So the instructions get the parts that want a light touch, and code gets the parts that must be exact. And a check we can count on is one that code runs on every draft, whatever the model did.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -260,7 +260,7 @@ still holds the placeholder {first name}</code></pre>
 <div class="slide__split">
 <div>
 <p>Inside, the agent reads and drafts. At the door stands a person.</p>
-<p>An email sent, a payment taken, a record deleted or a slot booked waits for a yes.</p>
+<p>Sending an email, taking a payment, deleting a record, booking a slot: each one waits for a person&rsquo;s yes.</p>
 <p>A draft costs nothing to throw away. A sent email can&rsquo;t be unsent.</p>
 </div>
 <figure class="diagram">
@@ -286,59 +286,59 @@ still holds the placeholder {first name}</code></pre>
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>The gate is plain data and pure functions. It takes the task and the tool&rsquo;s name and nothing else, so no email can change its answer. OWASP calls the failure this guards against excessive agency.</p></div>
+<div class="slide__notes"><p>The gate in the picture sorts every request three ways: it runs, it waits for a person, or it&rsquo;s refused. The gate is a short list and a few small rules that give the same answer to the same question every time; engineers call that plain data and pure functions. It looks at only two things, the task and the tool&rsquo;s name, so nothing written in an email can change its answer. OWASP, a nonprofit known for its lists of software security risks, has a name for the trouble this guards against: excessive agency, an agent given more reach or freedom than its job needs.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="each-task-gets-only-its-tools"><a class="heading-anchor" href="#each-task-gets-only-its-tools">Each task gets only its tools</a></h2>
 <div class="slide__body">
 <p class="slide__lead">The order-entry agent reads the email, looks up the menu and drafts. It has no tool that sends email at all.</p>
-<p class="slide__lead">Its tools can&rsquo;t reach the register, the calendar or the order sheet; only an approval can. More reach is a decision, made on purpose, with a test that names it.</p>
+<p class="slide__lead">Its tools can&rsquo;t touch the register, the calendar or the order sheet; only a person&rsquo;s approval can. Giving it more reach is a choice made on purpose: add a tool, and a test fails and names the new tool.</p>
 </div>
 </div>
-<div class="slide__notes"><p>Least privilege, at the scale of a bakery. Add a tool to the agent&rsquo;s list and a scenario fails, naming the new tool, so widening its reach is always someone&rsquo;s deliberate change.</p></div>
+<div class="slide__notes"><p>Security folks call this least privilege: each part gets only the keys its job needs, the way a new hire gets a key to the back door but not the combination to the safe. Here it is at the size of a bakery. Add a tool to the agent&rsquo;s list and a test fails, naming the new tool, so giving it more reach is always someone&rsquo;s deliberate choice.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
-<h2 id="an-emails-words-are-data-never-orders"><a class="heading-anchor" href="#an-emails-words-are-data-never-orders">An email&rsquo;s words are data, never orders</a></h2>
+<h2 id="an-emails-words-are-data-never-commands"><a class="heading-anchor" href="#an-emails-words-are-data-never-commands">An email&rsquo;s words are data, never commands</a></h2>
 <div class="slide__body">
-<p>An email can say anything: that the owner approved it, to enter it now, to send the week&rsquo;s orders to a stranger. The program holds the line, not the model. Each call&rsquo;s verdict, from the log:</p>
+<p>An email can say anything: that the owner approved it, to enter it now, to send the week&rsquo;s orders to a stranger. The program holds the line, not the model. Here&rsquo;s what the log says happened to each request:</p>
 <pre class="code-block code-output" tabindex="0"><code>ran         read the order
 held        draft the order
 refused     enter the sale
 refused     send an email</code></pre>
-<p>OWASP&rsquo;s 2026 list ranks prompt injection first among the risks to apps built on large language models.</p>
+<p>Words slipped into an email, or any other input, to steer the model are called prompt injection. OWASP, a security nonprofit, ranks it first on its 2026 list of risks to apps built on large language models.</p>
 </div>
 </div>
-<div class="slide__notes"><p>In the test, the model is scripted to obey the email: the worst case. Both requests are refused and logged for the owner to see, and the draft that waits is the order the customer asked for, priced from the menu. No defense makes a model immune; this design limits what a fooled one can do.</p></div>
+<div class="slide__notes"><p>In our test we script the model to do everything the email says: the worst case. The two things the email asked for are refused and logged for the owner to see, and the draft that waits is the order the customer asked for, priced from the menu. No defense makes a model immune, and we won&rsquo;t pretend otherwise; this design limits what a fooled one can do.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="tests-every-run-evals-on-real-days"><a class="heading-anchor" href="#tests-every-run-evals-on-real-days">Tests every run, evals on real days</a></h2>
 <div class="slide__body">
 <ul class="slide__lead">
-<li><strong>Tests</strong> run the loop against a scripted model: quick, and the same on every run.</li>
-<li><strong>Evals</strong> run the real model over real days&rsquo; email, before and after every change.</li>
+<li><strong>Tests</strong> run the loop with a scripted model, a stand-in with set replies: quick, and the same every run.</li>
+<li><strong>Evals</strong>, short for evaluations, try the real model on real days&rsquo; email, before and after every change.</li>
 </ul>
 <p class="slide__lead">Each email, with what the person did with it, becomes an eval case, so the evals follow the real mix of orders and questions.</p>
 </div>
 </div>
-<div class="slide__notes"><p>A scripted model tests the plumbing; it can&rsquo;t say whether a real model drafts the right order. The evals are where the automation is judged on real days rather than a demo.</p></div>
+<div class="slide__notes"><p>A scripted model checks the plumbing, the pipes between the parts. It can&rsquo;t tell us whether a real model drafts the right order. The evals are where we judge the automation on real days, not on a demo.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="handover-with-written-notes"><a class="heading-anchor" href="#handover-with-written-notes">Handover, with written notes</a></h2>
 <div class="slide__body">
-<p class="slide__lead">At handover the agent runs in the owner&rsquo;s own accounts, and each order is checked once instead of typed into three systems, so the retyping after closing goes with it. The notes say:</p>
+<p class="slide__lead">At handover the agent runs in your own accounts. Each order is checked once instead of typed into three places, so the late-night retyping goes away. The written notes say:</p>
 <ul>
 <li>what it does on its own, and what waits for you;</li>
 <li>what it can&rsquo;t do at all, and how to read its log;</li>
 <li>what happens when it stops: orders typed by hand, as before, with nothing lost.</li>
 </ul>
-<p>Who keeps it watched and current is named in writing.</p>
+<p>The notes also name who looks after it and keeps it up to date.</p>
 </div>
 </div>
-<div class="slide__notes"><p>Written down, so a new hire can pick it up. After handover, every change is written down and agreed before it&rsquo;s made.</p></div>
+<div class="slide__notes"><p>We write it all down, so a new hire can pick it up. And after handover, every change is written down and agreed on before anyone makes it.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -347,17 +347,17 @@ refused     send an email</code></pre>
 <div class="slide__qa">
 <div>
 <h3>Is this hype?</h3>
-<p>It&rsquo;s software you can test: a loop, typed tools, a scenario for every rule and a log you can read.</p>
+<p>It&rsquo;s plain software you can test: a loop, tools that check what they&rsquo;re given, a test for every rule, and a log you can read.</p>
 </div>
 <div>
 <h3>Things change too fast.</h3>
-<p>Models change. The written scope, the tests and the evals stay, and every change runs against real days before it reaches the counter.</p>
+<p>Models do change. The written scope, the tests and the evals stay put, and every change is tried on real days&rsquo; email before it reaches your counter.</p>
 </div>
 </div>
 <p class="slide__lead">And not every job needs an agent: when the steps never change, a script, or a setting you already pay for, does it for less.</p>
 </div>
 </div>
-<div class="slide__notes"><p>Answer calmly. The last line is the honest part: the simplest thing that works, and an agent only where the input varies and a wrong step is caught before it leaves the building.</p></div>
+<div class="slide__notes"><p>These are fair questions, and we&rsquo;re glad you ask them. The last line is the honest part: use the simplest thing that works, and reach for an agent only where the input varies and a wrong step gets caught before it leaves the building.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
@@ -365,32 +365,32 @@ refused     send an email</code></pre>
 <div class="slide__body">
 <div class="slide__qa">
 <div>
-<h3>SI builds websites for free.</h3>
-<p>Drafts and templates got cheap. Judgment, answering for the work, knowing the owner&rsquo;s site and the handover didn&rsquo;t.</p>
+<h3>Doesn&rsquo;t SI build websites for free?</h3>
+<p>Drafts and templates got cheap. What didn&rsquo;t: judgment, standing behind the work, knowing the owner&rsquo;s site, and the handover.</p>
 </div>
 <div>
-<h3>SI will replace developers.</h3>
+<h3>Will SI replace developers?</h3>
 <p>The agent drafts and a person approves. Someone writes the scope, the tools, the tests and the notes: that&rsquo;s the engineering.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>No forecasts. What got cheap is real, and saying so is part of the answer; what a person answers for is the rest.</p></div>
+<div class="slide__notes"><p>We won&rsquo;t try to tell the future; nobody in this room knows it, us included. What got cheap really did get cheap, and it&rsquo;s only honest to say so. The rest of the answer is everything a person still stands behind.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
 <h2 id="summary-and-questions"><a class="heading-anchor" href="#summary-and-questions">Summary, and questions</a></h2>
 <div class="slide__body">
 <ul>
-<li>An agent is a model in a loop with typed tools, and the program decides what runs.</li>
+<li>An agent is a model in a loop with tools, and the program, not the model, decides what runs.</li>
 <li>A skill packages know-how: judgment goes to the model, exact work to code.</li>
 <li>A gate holds every change that leaves the building until a person approves it.</li>
-<li>An email&rsquo;s words are data, never orders.</li>
+<li>An email&rsquo;s words are data, never commands.</li>
 <li>Tests run on a scripted model; evals run on real days.</li>
 </ul>
 </div>
 </div>
-<div class="slide__notes"><p>Take questions. For a first step: name the one job typed twice, and write down when it happens, who does it and what a mistake costs. That&rsquo;s the scope an automation starts from.</p></div>
+<div class="slide__notes"><p>Now we&rsquo;d love your questions. And if you&rsquo;d like a first step to take home: pick one job you&rsquo;ve seen typed twice, and jot down when it happens, who does it and what a mistake costs. That little page is the scope an automation starts from.</p></div>
 </section>
 </div>
 <p>The talk is the module in brief. Each slide goes deeper in a lesson:</p>
@@ -403,7 +403,7 @@ refused     send an email</code></pre>
 <li>Judgment to the model, exact work to code: <a href="/community/writing-an-agentic-skill/#scripts-for-the-parts-that-must-be-exact">Writing an agentic skill</a></li>
 <li>A person approves what leaves the building: <a href="/community/automating-a-business-process/#the-process-end-to-end">Automating a business process with a person in the loop</a></li>
 <li>Each task gets only its tools: <a href="/community/automating-a-business-process/#tools-that-cant-reach-what-they-mustnt">Automating a business process with a person in the loop</a></li>
-<li>An email&rsquo;s words are data, never orders: <a href="/community/automating-a-business-process/#an-email-that-tries-to-give-orders">Automating a business process with a person in the loop</a></li>
+<li>An email&rsquo;s words are data, never commands: <a href="/community/automating-a-business-process/#an-email-that-tries-to-give-orders">Automating a business process with a person in the loop</a></li>
 <li>Tests every run, evals on real days: <a href="/community/automating-a-business-process/#evals-on-real-days">Automating a business process with a person in the loop</a></li>
 <li>Handover, with written notes: <a href="/community/automating-a-business-process/#handover-with-written-notes">Automating a business process with a person in the loop</a></li>
 <li>Questions owners ask: <a href="/community/module-5-business-automation-with-ai/#a-person-approves-what-leaves-the-building">Module 5: Business automation with AI (agentic skills)</a></li>
