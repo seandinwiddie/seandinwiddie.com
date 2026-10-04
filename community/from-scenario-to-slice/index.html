@@ -185,6 +185,7 @@ export const { selectLines } = cartSlice.selectors</code></pre>
 <h2 id="3-the-when-is-one-event"><a class="heading-anchor" href="#3-the-when-is-one-event">3. The When is one event</a></h2>
 <p>The When becomes one dispatched action, named in the past tense for what happened. The reducer takes the last state and the event and decides the next state; the caller never computes it.</p>
 <p>Adding a second Widget A is the same event, and the reducer, not the view, knows to raise the quantity. A When that seems to need two events usually hides two scenarios.</p>
+<p>To try it, write the second Widget A as its own scenario, &ldquo;Adding a product already in the cart&rdquo;: the Given is a cart holding one Widget A, built with one <code>itemAdded</code>; the When is one more; and the Thens read one line with a quantity of 2 and a total of 5000.</p>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#setter-style-actions-instead-of-event-style-actions">Redux Toolkit and Functional Programming</a> sets the setter-style action this replaces beside the event-style one.</p>
 <h2 id="4-each-then-reads-a-selector"><a class="heading-anchor" href="#4-each-then-reads-a-selector">4. Each Then reads a selector</a></h2>
 <p>A Then never reaches into the slice&rsquo;s fields; it reads a selector, so the test still holds when the state&rsquo;s shape changes. The total is derived, never stored: it is computed from the lines, and <code>createSelector</code> recomputes it only when the lines change.</p>
@@ -212,7 +213,7 @@ describe('Feature: Cart', () =&gt; {
     expect(selectTotalCents({ cart: after })).toBe(2500)
   })
 })</code></pre>
-<p>A failing test names the behavior that broke. Run as executable steps with cucumber-js instead, each line of the scenario gets a step definition, and the step definitions call the same reducer and selectors; either way, the words the owner read are the words that fail.</p>
+<p>A failing test names the behavior that broke. Run as executable steps with cucumber-js instead, as <a href="/community/bdd-testing-framework/">BDD testing framework</a> shows, each line of the scenario gets a step definition, and the When and the Thens call the same reducer and selectors; either way, the words the owner read are the words that fail.</p>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-functional-programming/#test-transitions-and-derivations">Redux Toolkit and Functional Programming</a> tests a slice the same way, through its events and what its selectors return.</p>
 <h2 id="6-one-scenario-two-layers"><a class="heading-anchor" href="#6-one-scenario-two-layers">6. One scenario, two layers</a></h2>
 <p>Module 2&rsquo;s <a href="/community/creating-bdd-scenarios-for-real-world-cases/">&ldquo;Placing the order&rdquo;</a> ends with two Thens: the order is recorded at $25, and her cart is empty. The first belongs to the API, and the Hspec test in <a href="/community/the-api-haskell-servant-and-nile/">The API: Haskell Servant and Nile</a> proves it.</p>

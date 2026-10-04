@@ -304,7 +304,7 @@ pick offer choice = maybe (Left (NotOnOffer choice)) Right (find (same . label) 
   an empty offer list ends the turn without a model call [✔]
 3 examples, 0 failures</code></pre>
 <p>The property earns its keep when the two drift apart. Point <code>compose</code> at the whole schedule instead of the offer list, so the grammar offers an hour someone else already holds, and the first calendar QuickCheck tries breaks it:</p>
-<pre class="code-block code-output" tabindex="0"><code>$ sed -i 's/options = map label (onOffer salon req)/options = map label (schedule salon)/' the-tandem-harness/Salon.hs
+<pre class="code-block code-output" tabindex="0"><code>$ sed -i.bak 's/options = map label (onOffer salon req)/options = map label (schedule salon)/' the-tandem-harness/Salon.hs
 $ cabal test the-tandem-harness --test-show-details=direct --test-options='-m "one offer list" --seed 7' 2&gt;&amp;1 | grep -E '✔|✘|Falsified|/=|examples'
   every option the grammar is built from passes the checker, in any casing, and nothing else does [✘]
   every open hour is on offer, the day asked for first, and no hour someone else holds [✔]

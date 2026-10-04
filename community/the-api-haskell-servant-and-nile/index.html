@@ -134,7 +134,7 @@
 <p>The type reads like the scenario it serves: for a signed-in user and one shop, list their orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart. To try it, swap the two handlers in the <code>server</code> below to read <code>placeOrder :&lt;|&gt; listOrders</code>, and the server no longer compiles: GHC reports that it couldn&rsquo;t match <code>Handler [Order]</code> with <code>NewOrder -&gt; Handler Order</code>.</p>
 <p>The Haskell in this module compiles under GHC2021, with <code>DataKinds</code> and <code>OverloadedStrings</code> turned on in the cabal file. A module copied into a fresh project needs the same settings, or <code>LANGUAGE</code> pragmas of its own.</p>
 <h2 id="2-handlers-stay-thin"><a class="heading-anchor" href="#2-handlers-stay-thin">2. Handlers stay thin</a></h2>
-<p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction:</p>
+<p>A handler receives the request already parsed by its route&rsquo;s type (the caller, the shop and the new order), calls pure functions that decide, and performs the effects the route needs inside one transaction:</p>
 <ol>
 <li>it reads what a decision needs, such as today&rsquo;s prices;</li>
 <li>it lets the pure code decide;</li>

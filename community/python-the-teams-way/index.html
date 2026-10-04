@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 <p>Python lets a program do almost anything from anywhere: change a global, read a file halfway through a calculation, shuffle with whatever seed the process happens to hold. The Sean Dinwiddie&rsquo;s Webmastery team gives most of that freedom up, gladly, for something better: the same inputs give the same outputs on every machine, and a failing test can say exactly which rule broke.</p>
-<p>Eight habits get it there. Each comes with a small example that runs on the standard library and pytest. From here on the module works in Python, and every boundary it crosses is held to a contract the way this page holds its training rows, from the config and the design files in the module&rsquo;s shared format to a model&rsquo;s output.</p>
+<p>Eight habits get it there. Each comes with a small example that runs on the standard library and pytest. From here on the module works in Python, because the libraries that train and measure a model are written for Python first, as the <a href="/community/module-6-ai-protocol-ecosystem/#two-halves-in-this-order">Module 6 opener</a> sets out. Every boundary it crosses is held to a contract the way this page holds its training rows, from the config and the design files in the module&rsquo;s shared format to a model&rsquo;s output.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
 <ul>
@@ -415,7 +415,7 @@ seed should be int, found str</code></pre>
 <li>the allowed values;</li>
 <li>the rules between fields.</li>
 </ul>
-<p>The checks are independent of each other, so all of them run, and the validator raises once with every fault, not just the first. Whoever fixes the data file gets the whole list in one go.</p>
+<p>The checks are independent of each other, so all of them run, and the validator raises once with every fault, not just the first. A rule about a value judges only a key the row has, so a missing key is reported once, as missing. Whoever fixes the data file gets the whole list in one go.</p>
 <p>Counts and other derived facts are recomputed from the data, never trusted as declared:</p>
 <pre class="code-block" tabindex="0"><code># pipeline/data/contract.py
 """Check training rows against their contract and report every fault at once."""
@@ -438,9 +438,9 @@ def row_errors(row: Mapping[str, Any]) -&gt; tuple[str, ...]:
     rules = (  # each rule and what to say when it doesn't hold
         (keys &lt;= REQUIRED_KEYS | OPTIONAL_KEYS, f"unexpected keys {sorted(keys - REQUIRED_KEYS - OPTIONAL_KEYS)}"),
         (keys &gt;= REQUIRED_KEYS, f"missing keys {sorted(REQUIRED_KEYS - keys)}"),
-        (row.get("split") in SPLITS, f"unknown split {row.get('split')!r}"),
-        (bool(str(row.get("prompt", "")).strip()), "empty prompt"),
-        (row.get("chosen") != row.get("rejected"), "chosen and rejected are the same"),
+        ("split" not in row or row["split"] in SPLITS, f"unknown split {row.get('split')!r}"),
+        ("prompt" not in row or bool(str(row["prompt"]).strip()), "empty prompt"),
+        (not keys &gt;= {"chosen", "rejected"} or row["chosen"] != row["rejected"], "chosen and rejected are the same"),
     )
     return tuple(message for holds, message in rules if not holds)
 

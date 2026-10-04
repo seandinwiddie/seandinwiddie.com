@@ -156,7 +156,7 @@
 <ul>
 <li><strong><code>CLAUDE.md</code> or <code>AGENTS.md</code></strong> loads every session, in full: what the agent must always know.</li>
 <li><strong>A skill</strong> loads its description at the start and the rest when it&rsquo;s used: know-how a task needs sometimes.</li>
-<li><strong>A subagent</strong> loads when spawned, in a fresh context: work that would flood the conversation, or a review that starts clean.</li>
+<li><strong>A subagent</strong> defined in a file loads when spawned, in a fresh context: work that would flood the conversation, or a review that starts clean.</li>
 <li><strong>A hook</strong> runs on its event, outside the conversation: anything that must happen every time.</li>
 <li><strong>An MCP server</strong> loads tool names at the start and schemas when used: tools and data from another system.</li>
 <li><strong>A plugin</strong> is the packaging: what it bundles loads as its own kind does, for the same setup in a second repository.</li>
@@ -294,7 +294,7 @@ try {
 <p>In an interactive session, Claude Code runs no hook from a settings file until the folder&rsquo;s workspace trust dialog is accepted, so a freshly cloned repository can&rsquo;t run its hooks unasked. A <code>-p</code> or SDK run treats the folder as trusted, so there the committed hooks run.</p>
 <p>The cheapest checks sit closest to the edit. Here the quick page check runs after every page edit and the full check before the agent may stop. The same two tiers suit git hooks, quick before a commit and full before a push, and CI runs the full check again on every push, where nothing on a laptop can switch it off.</p>
 <h2 id="fresh-contexts-for-review"><a class="heading-anchor" href="#fresh-contexts-for-review">Fresh contexts for review</a></h2>
-<p>A subagent runs its own loop in its own context window, with its own system prompt and its own tools, and hands back only a summary. That makes it a natural reviewer: it starts clean, so it can&rsquo;t lean on the reasoning that produced the change. Project subagents are Markdown files in <code>.claude/agents/</code>, and Claude Code decides when to delegate from each one&rsquo;s <code>description</code>. The bakery&rsquo;s reviewer is <code>.claude/agents/menu-reviewer.md</code>. See the <a href="https://code.claude.com/docs/en/sub-agents">subagents guide</a>.</p>
+<p>A subagent defined in a file runs its own loop in its own context window, with its own system prompt and its own tools, and hands back only a summary. That makes it a natural reviewer: it starts clean, so it can&rsquo;t lean on the reasoning that produced the change. A fork, which an interactive session can also spawn, inherits the whole conversation instead, so a review that must start clean goes to a defined subagent. Project subagents are Markdown files in <code>.claude/agents/</code>, and Claude Code decides when to delegate from each one&rsquo;s <code>description</code>. The bakery&rsquo;s reviewer is <code>.claude/agents/menu-reviewer.md</code>. See the <a href="https://code.claude.com/docs/en/sub-agents">subagents guide</a>.</p>
 <pre class="code-block" tabindex="0"><code>---
 name: menu-reviewer
 description: Reviews a change to the bakery's menu pages against the written scope and the price list. Use after any edit under pages/menu/, before the change is committed.
@@ -517,7 +517,7 @@ export const warningsSlice = createSlice({
   extraReducers: (builder) =&gt;
     builder.addCase(fellBack, (w, { payload: { customer } }) =&gt; ({
       ...w,
-      fallbacks: { ...w.fallbacks, [customer]: (w.fallbacks[customer] ?? 0) + 1 },
+      fallbacks: { ...w.fallbacks, [customer]: (Object.hasOwn(w.fallbacks, customer) ? w.fallbacks[customer]! : 0) + 1 },
     })),
 })
 
@@ -532,21 +532,22 @@ export const warnAfterFallbacks = (start: StartListening) =&gt;
     },
   })</code></pre>
 <pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/extending-the-harness/composition.test.ts --reporter=tree | grep -E '✓|×|Tests'
- ✓ src/extending-the-harness/composition.test.ts (9 tests) 72ms
-   ✓ Feature: The core grows by composition (5)
-     ✓ Scenario: Given two stores built for tests, When one customer gets the fallback in one, Then the other never hears of it 54ms
+ ✓ src/extending-the-harness/composition.test.ts (10 tests) 83ms
+   ✓ Feature: The core grows by composition (6)
+     ✓ Scenario: Given two stores built for tests, When one customer gets the fallback in one, Then the other never hears of it 61ms
      ✓ Scenario: Given fallbacks for one customer, When their count reaches the limit, Then one warning is raised for that customer alone 7ms
+     ✓ Scenario: Given customers named like built-ins, When their count reaches the limit, Then each gets one warning 6ms
      ✓ Scenario: Given a server that answers with something else, When the turn runs, Then it has no answer and nothing is penciled in 2ms
      ✓ Scenario: Given the app's store over a storage, When an hour is offered, Then it is penciled into that storage 2ms
-     ✓ Scenario: Given the server's XSRF-TOKEN cookie, When the app's store sends a call, Then the call repeats it in the X-XSRF-TOKEN header 3ms
+     ✓ Scenario: Given the server's XSRF-TOKEN cookie, When the app's store sends a call, Then the call repeats it in the X-XSRF-TOKEN header 2ms
    ✓ Feature: The calendar port, in memory (2)
      ✓ Scenario: Penciled hours come back in the order they were penciled 0ms
      ✓ Scenario: Two customers never share hours 0ms
    ✓ Feature: The calendar port, browser storage (2)
      ✓ Scenario: Penciled hours come back in the order they were penciled 0ms
      ✓ Scenario: Two customers never share hours 0ms
-      Tests  9 passed (9)</code></pre>
-<p>The fourth scenario builds the app&rsquo;s store over a fake storage and finds the offered hour penciled into it. The fifth finds the cookie&rsquo;s token in each call&rsquo;s header, read again after the cookie changes, and the port&rsquo;s tests run once per adapter. The lecture&rsquo;s <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">testing architecture</a> gives listeners tests of their own, for what they match and what they emit, and the warning scenario is one.</p>
+      Tests  10 passed (10)</code></pre>
+<p>The third scenario&rsquo;s customers are called <code>constructor</code> and <code>__proto__</code>, names every plain object already answers to through its prototype. The count reads only a key the record holds itself, so each still gets one warning. The fifth builds the app&rsquo;s store over a fake storage and finds the offered hour penciled into it. The sixth finds the cookie&rsquo;s token in each call&rsquo;s header, read again after the cookie changes, and the port&rsquo;s tests run once per adapter. The lecture&rsquo;s <a href="https://seandinwiddie.github.io/lectures/modern-redux-architecture-patterns/#testing-architecture">testing architecture</a> gives listeners tests of their own, for what they match and what they emit, and the warning scenario is one.</p>
 <h2 id="new-rules-go-to-the-server"><a class="heading-anchor" href="#new-rules-go-to-the-server">New rules go to the server</a></h2>
 <p>A booking app could take its rules as callbacks, each client registering its own party-size check. Then a second client, a phone app say, forgets one, and the two disagree about the same booking. So the rules live on the server, in one list, and every client posts a booking to the same route. The server decides, as in <a href="/community/server-and-client-in-tandem/">Server and client in tandem</a>, and a rule is a decision.</p>
 <p>The Haskell here compiles under the course&rsquo;s cabal file, which turns on GHC2021 for every module, plus <code>DataKinds</code>, <code>DeriveGeneric</code>, <code>DerivingStrategies</code>, <code>LambdaCase</code>, <code>OverloadedStrings</code> and <code>TypeOperators</code>. A module copied into a fresh project needs the same settings, or <code>LANGUAGE</code> pragmas of its own.</p>

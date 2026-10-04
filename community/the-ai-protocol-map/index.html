@@ -676,7 +676,7 @@ main = do
   Scenario: The drift check names every place two documents differ [✔]
   Scenario: The committed OpenAPI document is the one the type generates [✔]
 2 examples, 0 failures
-$ sed -i 's/note :: Maybe Note}/note :: Maybe Note, pickupName :: Text}/' the-ai-protocol-map/CoffeeCart.hs
+$ sed -i.bak 's/note :: Maybe Note}/note :: Maybe Note, pickupName :: Text}/' the-ai-protocol-map/CoffeeCart.hs
 $ cabal test the-ai-protocol-map --test-show-details=direct | grep -E '✘|but got|examples'
   Scenario: The committed OpenAPI document is the one the type generates [✘]
         but got: ["/components/schemas/NewOrder/properties/pickupName: only in the generated document","/components/schemas/NewOrder/required: committed [\"item\",\"size\"], generated [\"item\",\"size\",\"pickupName\"]"]
@@ -857,7 +857,7 @@ Open Tuesday, Wednesday and Friday 9 to 5, Thursday 9 to 7 and Saturday 9 to 3. 
 ## Optional
 
 - [The stylists](https://salon.example/stylists.md)</code></pre>
-<p>The principle under all four: give agents the same honest, structured path you give people. The card says what the bakery&rsquo;s agent will do, the file says what the salon offers, and the page&rsquo;s tool does exactly what its button does.</p>
+<p>The principle under them all: give agents the same honest, structured path you give people. The card says what the bakery&rsquo;s agent will do, the file says what the salon offers, and the page&rsquo;s tool does exactly what its button does.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> These protocols move fast. MCP&rsquo;s 2026-07-28 revision removed the handshake every earlier tutorial teaches, so each page in this module names the revision it teaches, and the changelog is read before a lesson is revised.</p>
 <p><a href="https://modelcontextprotocol.io/extensions/overview">Extensions</a> sit outside the core, and both sides opt in. MCP Apps render interactive UI in a sandboxed frame inside the conversation, Tasks give long work a durable handle to poll, and Skills over MCP serves Agent Skills as resources. Names follow <code>{vendor-prefix}/{name}</code>, and official ones start <code>io.modelcontextprotocol</code>.</p>
 <p>The <a href="https://modelcontextprotocol.io/registry/about">MCP Registry</a>, in preview, is a catalog of metadata pointing at packages in npm, PyPI and the like, and hosts no code. An MCP App earns its place when its UI must live in the conversation or trade data with the host; otherwise, the MCP docs say, a regular web app may be simpler.</p>

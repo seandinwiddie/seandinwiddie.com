@@ -181,7 +181,7 @@ export interface Model {
 <ul>
 <li>Node.js 22.18 or later on the 22 line, or 24.3 or later, the first releases on their lines to run them directly, with no flag and no warning;</li>
 <li><code>tsc</code>, which checks them with the strict settings <code>tsc --init</code> writes from TypeScript 5.9 on (checked here with 7.0.2), plus <code>allowImportingTsExtensions</code>, <code>noEmit</code> and <code>"types": ["node"]</code> in place of the empty list it writes, and <code>"type": "module"</code> in <code>package.json</code>;</li>
-<li>the installs <code>typescript</code>, <code>@types/node</code> for the <code>node:</code> imports, <code>vitest</code>, and <code>@anthropic-ai/sdk</code> 0.115 or later, the first to type <code>fallbacks: 'default'</code> (checked here with 0.131.0).</li>
+<li>the installs <code>typescript</code>, <code>@types/node</code> for the <code>node:</code> imports, <code>vitest</code> 4 or later, the first to print tests the way this module&rsquo;s printouts show (checked here with 5.0.3), and <code>@anthropic-ai/sdk</code> 0.115 or later, the first to type <code>fallbacks: 'default'</code> (checked here with 0.131.0).</li>
 </ul>
 <h2 id="tools-are-typed-functions-with-contracts"><a class="heading-anchor" href="#tools-are-typed-functions-with-contracts">Tools are typed functions with contracts</a></h2>
 <p>A tool has three parts. The spec is what the model reads: a name, a description and a JSON Schema for the input. The decoder turns whatever arrived into a typed value or a typed failure, the way <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes a response before the app trusts it. Then comes the run itself, which only ever sees a value that decoded.</p>
