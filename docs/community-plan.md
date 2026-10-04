@@ -31,7 +31,7 @@ Module 6 teaches the open protocols at each join an AI system crosses and the te
 
 ## The Introduction's systems thinking (October 4, 2026)
 
-The Introduction closes its "Why it matters" section on Sean's systems thinking: leverage, duration, fallibility and compounding, with high-return and low-return examples (daily meals and wardrobe choices among the low). They are business principles, and they stay as Sean wrote them (Sean, after community loop round 8). Reviewers don't count them as a lifestyle aside.
+The Introduction closes its "Why it matters" section on Sean's systems thinking: leverage, duration, fallibility and compounding, with high-return and low-return examples (daily meals and wardrobe choices among the low). They are business principles (Sean, after community loop round 8): his principles and examples stay, and a line after the lists reads them as a business does, the high-return choices getting its best thinking and the low-return ones decided once and made routine, the way an automation takes over a repeated task. Reviewers may sharpen that framing, never read the lists as a lifestyle aside.
 
 ## Meetup talks (October 4, 2026)
 
