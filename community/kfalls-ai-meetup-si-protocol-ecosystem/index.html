@@ -199,7 +199,7 @@
 <figure class="diagram">
 <svg role="img" aria-labelledby="talk-control-title talk-control-desc" viewBox="0 0 360 166">
 <title id="talk-control-title">Who decides</title>
-<desc id="talk-control-desc">Three columns, each pointing from who decides to what they decide on: the model to tools, such as add_item, highlighted; the app to resources, such as menu://today; the person to prompts, such as the /special slash command.</desc>
+<desc id="talk-control-desc">Three columns, each pointing from who decides to what they decide on: the model to tools, such as adding an item, highlighted; the app to resources, such as today&rsquo;s menu; the person to prompts, such as the week&rsquo;s special.</desc>
 <g class="edge"><line x1="180" y1="48.5" x2="180" y2="91.5"/><line x1="180" y1="91.5" x2="183" y2="86.3"/><line x1="180" y1="91.5" x2="177" y2="86.3"/><line x1="296" y1="48.5" x2="296" y2="91.5"/><line x1="296" y1="91.5" x2="299" y2="86.3"/><line x1="296" y1="91.5" x2="293" y2="86.3"/></g>
 <g class="path"><line x1="64" y1="48.5" x2="64" y2="91.5"/><line x1="64" y1="91.5" x2="67" y2="86.3"/><line x1="64" y1="91.5" x2="61" y2="86.3"/></g>
 <rect class="node" x="12.5" y="12.5" width="103" height="36" rx="6"/>
@@ -208,7 +208,7 @@
 <rect class="node on" x="12.5" y="91.5" width="103" height="36" rx="6"/>
 <rect class="node" x="128.5" y="91.5" width="103" height="36" rx="6"/>
 <rect class="node" x="244.5" y="91.5" width="103" height="36" rx="6"/>
-<g><text x="64" y="30.5">the model</text><text x="64" y="109.5">tools</text><text class="note" x="64" y="145.7">add_item</text><text x="180" y="30.5">the app</text><text x="180" y="109.5">resources</text><text class="note" x="180" y="145.7">menu://today</text><text x="296" y="30.5">the person</text><text x="296" y="109.5">prompts</text><text class="note" x="296" y="145.7">/special</text></g>
+<g><text x="64" y="30.5">the model</text><text x="64" y="109.5">tools</text><text class="note" x="64" y="145.7">add an item</text><text x="180" y="30.5">the app</text><text x="180" y="109.5">resources</text><text class="note" x="180" y="145.7">today&rsquo;s menu</text><text x="296" y="30.5">the person</text><text x="296" y="109.5">prompts</text><text class="note" x="296" y="145.7">the special</text></g>
 </svg>
 <figcaption>Who decides when each kind of thing is used. The violet column is the model&rsquo;s: tools, such as adding an item.</figcaption>
 </figure>
@@ -400,13 +400,13 @@
 <figure class="diagram">
 <svg role="img" aria-labelledby="talk-rounds-title talk-rounds-desc" viewBox="0 0 360 317">
 <title id="talk-rounds-title">One booking, two rounds</title>
-<desc id="talk-rounds-desc">Three lanes: the customer, the app and the server. The customer asks for Saturday morning. The app sends the booking, and the server answers input_required, with a question and a signed state. The app asks the customer, 10:30 or 11:30, and the customer answers 11:30. Highlighted, the app sends the booking again with the answer and the state, and the server answers complete.</desc>
+<desc id="talk-rounds-desc">Three lanes: the customer, the app and the server. The customer asks for Saturday morning. The app sends the booking, and the server answers that it needs input, with a question and a signed state. The app asks the customer, 10:30 or 11:30, and the customer answers 11:30. Highlighted, the app sends the booking again with the answer and the state, and the server answers complete.</desc>
 <g class="edge"><line x1="60" y1="44.5" x2="60" y2="304.5"/><line x1="180" y1="44.5" x2="180" y2="304.5"/><line x1="300" y1="44.5" x2="300" y2="304.5"/><line x1="60" y1="78" x2="180" y2="78"/><line x1="180" y1="78" x2="174.8" y2="81.0"/><line x1="180" y1="78" x2="174.8" y2="75.0"/><line x1="180" y1="114" x2="300" y2="114"/><line x1="300" y1="114" x2="294.8" y2="117.0"/><line x1="300" y1="114" x2="294.8" y2="111.0"/><line x1="300" y1="150" x2="180" y2="150"/><line x1="180" y1="150" x2="185.2" y2="147.0"/><line x1="180" y1="150" x2="185.2" y2="153.0"/><line x1="180" y1="186" x2="60" y2="186"/><line x1="60" y1="186" x2="65.2" y2="183.0"/><line x1="60" y1="186" x2="65.2" y2="189.0"/><line x1="60" y1="222" x2="180" y2="222"/><line x1="180" y1="222" x2="174.8" y2="225.0"/><line x1="180" y1="222" x2="174.8" y2="219.0"/></g>
 <g class="path"><line x1="180" y1="258" x2="300" y2="258"/><line x1="300" y1="258" x2="294.8" y2="261.0"/><line x1="300" y1="258" x2="294.8" y2="255.0"/><line x1="300" y1="294" x2="180" y2="294"/><line x1="180" y1="294" x2="185.2" y2="291.0"/><line x1="180" y1="294" x2="185.2" y2="297.0"/></g>
 <rect class="node" x="12.5" y="12.5" width="95" height="32" rx="6"/>
 <rect class="node" x="132.5" y="12.5" width="95" height="32" rx="6"/>
 <rect class="node" x="252.5" y="12.5" width="95" height="32" rx="6"/>
-<g><text x="60" y="28.5">customer</text><text x="180" y="28.5">app</text><text x="300" y="28.5">server</text><text class="note" x="120" y="66">Saturday a.m.?</text><text class="note" x="240" y="102">booking</text><text class="note" x="240" y="138">input_required</text><text class="note" x="120" y="174">10:30 or 11:30?</text><text class="note" x="120" y="210">11:30</text><text class="note" x="240" y="246">+ answer, state</text><text class="note" x="240" y="282">complete</text></g>
+<g><text x="60" y="28.5">customer</text><text x="180" y="28.5">app</text><text x="300" y="28.5">server</text><text class="note" x="120" y="66">Saturday a.m.?</text><text class="note" x="240" y="102">booking</text><text class="note" x="240" y="138">input needed</text><text class="note" x="120" y="174">10:30 or 11:30?</text><text class="note" x="120" y="210">11:30</text><text class="note" x="240" y="246">+ answer, state</text><text class="note" x="240" y="282">complete</text></g>
 </svg>
 <figcaption>One booking in two rounds. The violet round brings the customer&rsquo;s answer back and completes it.</figcaption>
 </figure>
@@ -428,7 +428,7 @@
 <figure class="diagram">
 <svg role="img" aria-labelledby="talk-plugs-title talk-plugs-desc" viewBox="0 0 360 237">
 <title id="talk-plugs-title">Where each extension plugs in</title>
-<desc id="talk-plugs-desc">Two boxes in the middle, the model and the tools, joined by a highlighted loop: a tool call goes out and its result comes back. A small circle sits on each arrow, a hook: PreToolUse before the call, PostToolUse after it. Above the model, CLAUDE.md is always on, and below it skills load on demand. Above the tools, an MCP server adds more tools, and below them a subagent works in its own context. From the model a last arrow leads to the answer, with a Stop hook on it.</desc>
+<desc id="talk-plugs-desc">Two boxes in the middle, the model and the tools, joined by a highlighted loop: a tool call goes out and its result comes back. A small circle sits on each arrow, a hook: one before the call, one after it. Above the model, standing instructions are always on, and below it skills load on demand. Above the tools, an MCP server adds more tools, and below them a subagent works in its own context. From the model a last arrow leads to the answer, with an end hook on it.</desc>
 <g class="edge"><line x1="64.5" y1="56.5" x2="64.5" y2="96.5"/><line x1="64.5" y1="96.5" x2="67.5" y2="91.3"/><line x1="64.5" y1="96.5" x2="61.5" y2="91.3"/><line x1="295.5" y1="56.5" x2="295.5" y2="96.5"/><line x1="64.5" y1="140.5" x2="64.5" y2="180.5"/><line x1="295.5" y1="140.5" x2="295.5" y2="180.5"/><line x1="100.5" y1="140.5" x2="150.5" y2="180.5"/><line x1="150.5" y1="180.5" x2="148.32" y2="174.91"/><line x1="150.5" y1="180.5" x2="144.57" y2="179.6"/></g>
 <g class="path"><line x1="116.5" y1="110.5" x2="243.5" y2="110.5"/><line x1="243.5" y1="110.5" x2="238.3" y2="107.5"/><line x1="243.5" y1="110.5" x2="238.3" y2="113.5"/><line x1="243.5" y1="126.5" x2="116.5" y2="126.5"/><line x1="116.5" y1="126.5" x2="121.7" y2="129.5"/><line x1="116.5" y1="126.5" x2="121.7" y2="123.5"/></g>
 <rect class="node" x="12.5" y="12.5" width="104" height="44" rx="6"/>
@@ -439,14 +439,14 @@
 <rect class="node" x="128.5" y="180.5" width="104" height="44" rx="6"/>
 <rect class="node" x="243.5" y="180.5" width="104" height="44" rx="6"/>
 <circle class="node" cx="180" cy="110.5" r="5"/><circle class="node" cx="180" cy="126.5" r="5"/><circle class="node" cx="125.5" cy="160.5" r="5"/>
-<g><text x="64.5" y="27">CLAUDE.md</text><text class="note" x="64.5" y="44">always on</text><text x="295.5" y="27">MCP server</text><text class="note" x="295.5" y="44">more tools</text><text x="64.5" y="118.5">model</text><text x="295.5" y="118.5">tools</text><text class="note" x="180" y="93">PreToolUse</text><text class="note" x="180" y="145">PostToolUse</text><text class="note" x="98" y="163">Stop</text><text x="64.5" y="195">skills</text><text class="note" x="64.5" y="212">on demand</text><text x="180.5" y="202.5">answer</text><text x="295.5" y="195">subagent</text><text class="note" x="295.5" y="212">own context</text></g>
+<g><text x="64.5" y="27">instructions</text><text class="note" x="64.5" y="44">always on</text><text x="295.5" y="27">MCP server</text><text class="note" x="295.5" y="44">more tools</text><text x="64.5" y="118.5">model</text><text x="295.5" y="118.5">tools</text><text class="note" x="180" y="93">before the call</text><text class="note" x="180" y="145">after the call</text><text class="note" x="98" y="163">end</text><text x="64.5" y="195">skills</text><text class="note" x="64.5" y="212">on demand</text><text x="180.5" y="202.5">answer</text><text x="295.5" y="195">subagent</text><text class="note" x="295.5" y="212">own context</text></g>
 </svg>
 <figcaption>Where each extension plugs in. The violet loop is the core, and no extension changes it.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="slide__notes"><p>An instruction in a skill or a CLAUDE.md is a request; a hook that blocks is enforcement. The same rule holds for the harness shipped in an app, which grows by composition, and every extension carries a scenario. For owners: an extension rides along at the next update, where a patched core has to be patched again by hand.</p></div>
+<div class="slide__notes"><p>An instruction in a skill or a standing instructions file is a request; a hook that blocks is enforcement. The same rule holds for the harness shipped in an app, which grows by composition, and every extension carries a scenario. For owners: an extension rides along at the next update, where a patched core has to be patched again by hand.</p></div>
 </section>
 <section class="slide">
 <div class="slide__frame">
