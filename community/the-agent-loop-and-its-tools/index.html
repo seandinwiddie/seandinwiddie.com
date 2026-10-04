@@ -149,7 +149,7 @@
 <rect class="node on" x="232" y="76" width="112" height="24" rx="4"/>
 <rect class="node on" x="36" y="148" width="120" height="24" rx="4"/>
 <rect class="node" x="16" y="212" width="160" height="96" rx="4"/>
-<g><text x="96" y="24">the task</text><text x="96" y="88">model</text><text x="288" y="88">tools</text><text x="96" y="160">decide</text><text x="96" y="230">answered</text><text x="96" y="250">outOfTurns</text><text x="96" y="270">outOfTokens</text><text x="96" y="290">modelStopped</text><text class="note" x="194" y="76">results</text><text class="note" x="222" y="148">tool calls</text><text class="note" x="266" y="250">every way out</text><text class="note" x="266" y="270">is a Stop</text></g>
+<g><text x="96" y="24">the task</text><text x="96" y="88">model</text><text x="288" y="88">tools</text><text x="96" y="160">decide</text><text x="96" y="230">answered</text><text x="96" y="250">outOfTurns</text><text x="96" y="270">outOfTokens</text><text x="96" y="290">modelStopped</text><text class="note" x="194" y="76">results</text><text class="note" x="222" y="148">tool calls</text><text class="note" x="266" y="250">each way it stops</text><text class="note" x="266" y="270">is a Stop</text></g>
 </svg>
 <figcaption>The loop as this lesson builds it. The violet path goes round: the model replies, <code>decide</code> chooses, the tools run and their results go back to the model. Every way the loop stops leads to one value of the type <code>Stop</code>; a request to the model that fails outright rejects <code>runAgent</code>&rsquo;s promise instead.</figcaption>
 </figure>
@@ -179,7 +179,7 @@ export interface Model {
 <p>Three kinds of reply and no more, so the compiler can tell when a <code>switch</code> over them misses one. The interface is a seam: a scripted model fills it in the tests, and Claude fills it in production, through one small adapter at the end of this lesson.</p>
 <p>The imports name their <code>.ts</code> files, so they run and check as written with:</p>
 <ul>
-<li>Node.js 22.18 or later on the 22 line, or 24.3 or later, which runs them directly;</li>
+<li>Node.js 22.18 or later on the 22 line, or 24.3 or later, the first releases on their lines to run them directly, with no flag and no warning;</li>
 <li><code>tsc</code>, which checks them with the strict settings <code>tsc --init</code> writes from TypeScript 5.9 on (checked here with 7.0.2), plus <code>allowImportingTsExtensions</code>, <code>noEmit</code> and <code>"types": ["node"]</code> in place of the empty list it writes, and <code>"type": "module"</code> in <code>package.json</code>;</li>
 <li>the installs <code>typescript</code>, <code>@types/node</code> for the <code>node:</code> imports, <code>vitest</code>, and <code>@anthropic-ai/sdk</code> 0.115 or later, the first to type <code>fallbacks: 'default'</code> (checked here with 0.131.0).</li>
 </ul>

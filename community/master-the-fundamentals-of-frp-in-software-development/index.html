@@ -190,12 +190,12 @@ totalCents(events.reduce(next, [])) // 6200</code></pre>
 <svg role="img" aria-labelledby="master-the-fundamentals-of-frp-in-software-development-pure-core-title master-the-fundamentals-of-frp-in-software-development-pure-core-desc" viewBox="0 0 360 213">
 <title id="master-the-fundamentals-of-frp-in-software-development-pure-core-title">Three pure pieces inside one boundary</title>
 <desc id="master-the-fundamentals-of-frp-in-software-development-pure-core-desc">A frame labelled the edge, where requests, timers and every other effect wait, surrounds an inner frame labelled pure core. Inside the core, three boxes joined by arrows: event, what happened; state, a fold; value, derived.</desc>
-<g class="path"><line x1="116" y1="108.5" x2="142" y2="108.5"/><line x1="136.8" y1="105.5" x2="142" y2="108.5"/><line x1="136.8" y1="111.5" x2="142" y2="108.5"/><line x1="218" y1="108.5" x2="244" y2="108.5"/><line x1="238.8" y1="105.5" x2="244" y2="108.5"/><line x1="238.8" y1="111.5" x2="244" y2="108.5"/></g>
 <rect class="node" x="10" y="12.5" width="340" height="188" rx="4"/>
 <rect class="node on" x="22" y="50.5" width="316" height="128" rx="4"/>
 <rect class="node" x="40" y="92.5" width="76" height="32" rx="4"/>
 <rect class="node" x="142" y="92.5" width="76" height="32" rx="4"/>
 <rect class="node" x="244" y="92.5" width="76" height="32" rx="4"/>
+<g class="edge"><line x1="116" y1="108.5" x2="142" y2="108.5"/><line x1="136.8" y1="105.5" x2="142" y2="108.5"/><line x1="136.8" y1="111.5" x2="142" y2="108.5"/><line x1="218" y1="108.5" x2="244" y2="108.5"/><line x1="238.8" y1="105.5" x2="244" y2="108.5"/><line x1="238.8" y1="111.5" x2="244" y2="108.5"/></g>
 <g><text class="note" x="180" y="31.5">the edge: requests, timers, every effect</text><text class="note" x="180" y="68.5">pure core</text><text x="78" y="108.5">event</text><text x="180" y="108.5">state</text><text x="282" y="108.5">value</text><text class="note" x="78" y="144.5">what happened</text><text class="note" x="180" y="144.5">a fold</text><text class="note" x="282" y="144.5">derived</text></g>
 </svg>
 <figcaption>Three pure pieces and one boundary. An event names what happened, the state folds every event so far, and a value is derived from the state, all inside the pure core (the violet frame). Every effect waits outside it, at the edge.</figcaption>

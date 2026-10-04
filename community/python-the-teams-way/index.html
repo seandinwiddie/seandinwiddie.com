@@ -710,6 +710,7 @@ def test_the_training_rows_the_config_names_meet_their_contract():
     config = read_config(ROOT / "config/train.json")
     rows = [json.loads(line) for line in (ROOT / config.train).read_text().splitlines() if line]
     validate(rows, json.loads((ROOT / "data/counts.json").read_text()))</code></pre>
+<p><code>data/train.jsonl</code> holds six preference rows that meet the contract, and <code>data/counts.json</code> declares them: <code>{"train": 6}</code>.</p>
 <p><code>uv run --locked --exact</code> runs a command in the project&rsquo;s environment. It stops if the lock no longer matches <code>pyproject.toml</code>, brings the environment exactly in line with the lock, removing anything the lock doesn&rsquo;t name, and only then runs the command. So one command checks, before any training run:</p>
 <ul>
 <li>the lock is current;</li>

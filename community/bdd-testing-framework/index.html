@@ -202,7 +202,7 @@ Then('the cart total is ${int}', function (this: CartWorld, dollars: number) {
   assert.equal(selectTotalCents({ cart: this.cart }), dollars * 100)
 })</code></pre>
 <p>cucumber-js looks for feature files, and the step definitions beside them, in <code>features/</code> at the project&rsquo;s root, so the cart scenario, as <a href="/community/writing-bdd-scenarios/#example-bdd-scenario">Writing BDD scenarios</a> sets it out, goes in <code>features/cart.feature</code>; the app&rsquo;s own feature folders, such as <code>features/cart/</code> below, sit under <code>src/</code>.</p>
-<p>On its own, cucumber-js loads only JavaScript step files, so a TypeScript one like this loads once a transpiler such as tsx is registered in the cucumber-js configuration:</p>
+<p>cucumber-js looks only for JavaScript step files on its own, and Node&rsquo;s own type stripping needs file extensions this file&rsquo;s imports leave out, so a TypeScript one like this loads once a transpiler such as tsx is registered in the cucumber-js configuration:</p>
 <pre class="code-block" tabindex="0"><code>// cucumber.mjs
 export default {
   requireModule: ['tsx/cjs'],

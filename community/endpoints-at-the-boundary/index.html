@@ -345,7 +345,7 @@ describe('Feature: Checkout', () =&gt; {
     history.unsubscribe()
   })
 })</code></pre>
-<p>The same file checks the failure paths: a JSON response that isn&rsquo;t an order ends as a <code>CUSTOM_ERROR</code> with the raw payload beside it, and a refused order leaves the history as it was. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what each layer&rsquo;s tests cover, tag invalidation and optimistic rollback included.</p>
+<p>The same file checks the failure paths: a JSON response that isn&rsquo;t a list of orders ends as a <code>CUSTOM_ERROR</code> with the raw payload beside it, and a refused order leaves the history as it was. The lecture <a href="https://seandinwiddie.github.io/lectures/redux-toolkit-and-rtk-query-best-practices/#testing">Redux Toolkit and RTK Query Best Practices</a> lists what each layer&rsquo;s tests cover, tag invalidation and optimistic rollback included.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> Tags wait for the API, and most of the time that is right. When a change should show at once, the mutation patches the cache itself and undoes the patch if the API refuses.</p>
 <p><a href="/community/from-scenario-to-slice/">From scenario to slice</a> ends with the cart moving to the server when it must follow the customer from phone to laptop, and adding to that cart is the classic case. The read endpoint is injected first, so the mutation can patch its cache with full types:</p>
 <pre class="code-block" tabindex="0"><code>// features/cart/cartApi.ts

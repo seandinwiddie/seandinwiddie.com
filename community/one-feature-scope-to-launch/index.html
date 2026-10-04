@@ -421,7 +421,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 [x] Story 1   Placing the order: passes at the API, the endpoint, the slice and the view
 [x] Story 1   Placing the order with a declined card: passes at all four
 [x] Story 1   Placing the order while payments are down: passes at all four
-[x] Story 2   Listing my orders: passes at the API and the endpoint
+[x] Story 2   Listing my orders: passes at the API, the endpoint and the view
 [x] Story 3   Placing an order in, or reading the orders of, someone else's
               shop: the API answers 403
 [x] Stack     as named; the client's endpoints match the API's current
@@ -442,7 +442,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 <p>A timeout after the request went out is no answer at all, since the provider may have charged the card, and a 5xx from the provider isn&rsquo;t <code>Unavailable</code> either, since the request reached it.</p>
 <p>Either way the real <code>charge</code> sends the same request again with the same key, which a provider that honors the key answers with its first result rather than a second charge; once an attempt has gone out, a retry that can&rsquo;t connect is no answer either. If it still has no answer it can trust, it throws, the server answers 500, and the customer reads that the order wasn&rsquo;t confirmed, never that she wasn&rsquo;t charged.</p></aside>
 <p>That is the course&rsquo;s chain in one feature: a story in the written scope, its scenarios in Gherkin, a typed API that refuses with a reason, an endpoint and a slice that change nothing they shouldn&rsquo;t, a view that says what happened, and a review against the scope before anything goes live.</p>
-<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>, and ends where this one did: under the Sean Dinwiddie&rsquo;s Webmastery name, every launch gets <a href="#6-the-review-against-the-scope">the review in section 6</a>, Sean&rsquo;s review last. <a href="/community/module-5-business-automation-with-ai/">Module 5</a>, next, puts an agent to work along the same chain, with a person approving what leaves the building.</p>
+<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>, and ends where this one did, with <a href="#6-the-review-against-the-scope">the review in section 6</a>. <a href="/community/module-5-business-automation-with-ai/">Module 5</a>, next, puts an agent to work along the same chain, with a person approving what leaves the building.</p>
 
 <!-- .entry-content -->
 <footer>

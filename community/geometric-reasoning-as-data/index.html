@@ -378,7 +378,7 @@ export type Value = string | readonly string[];
 export type Member = { readonly point: string; readonly output: Readonly&lt;Record&lt;string, Value&gt;&gt; };
 export type Declared = { readonly invariant: readonly string[]; readonly expressive: readonly string[] };
 
-/** A value as a key; a list is compared as a set, so its order never matters. */
+/** A value as a key; a list is compared sorted, so its order never matters, though a repeat still does. */
 const key = (v: Value | undefined): string =&gt;
   JSON.stringify(typeof v === "string" || v === undefined ? v : [...v].sort());
 

@@ -328,7 +328,7 @@ export function OrderHistory({ tenantId }: { tenantId: string }) {
   return (
     &lt;ul aria-label="Past orders"&gt;
       {orders.map((order) =&gt; (
-        &lt;li key={order.id}&gt;Order {order.id}&lt;/li&gt;
+        &lt;li key={order.id}&gt;{order.lines.map((line) =&gt; line.name).join(', ')}&lt;/li&gt;
       ))}
     &lt;/ul&gt;
   )

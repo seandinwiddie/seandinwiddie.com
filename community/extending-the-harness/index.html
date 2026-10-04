@@ -114,7 +114,7 @@
 <div class="page-meta"> <img alt="" class="byline-avatar" decoding="async" height="36" loading="lazy" src="/assets/img/sean-dinwiddie.jpg" width="36"/><a href="/community/author/seandinwiddie/">Sean Dinwiddie</a>
 </div> </header><!-- .entry-header -->
 <p>A harness grows through documented extension points, never by changing the model or forking the core. The rule holds for both kinds of harness this module meets: the agent harness a webmaster works in, such as Claude Code, and the tandem harness built in <a href="/community/the-tandem-harness/">The tandem harness</a> and carried over <a href="/community/server-and-client-in-tandem/">its wire</a>.</p>
-<p>Everything the lesson extends in the shipped harness was built in earlier lessons, so it can stay on the points where each one grows.</p>
+<p>The shipped harness this lesson extends, the tandem harness and its wire, comes from the earlier lessons; here its client is cut into a core and what plugs into it, so the lesson can stay on the points where each one grows.</p>
 <p>One question sorts them: is this judgment, or must it happen every time? Judgment goes where the model reads it. Anything that must happen every time goes to code that runs whether or not the model remembers. <a href="/community/writing-an-agentic-skill/">Writing an agentic skill</a> built one kind of judgment; this lesson places it among the rest.</p>
 <nav class="page-contents" aria-label="On this page">
 <p>On this page</p>
@@ -393,6 +393,27 @@ export const browserStorage = (storage: Pick&lt;Storage, 'getItem' | 'setItem'&g
     pencil: async (customer, hour) =&gt; storage.setItem(prefix + customer, JSON.stringify([...(await penciled(customer)), hour])),
   }
 }</code></pre>
+<p>The core keeps a turn&rsquo;s actions in one slice, so the store can reduce them and an extension can listen for them:</p>
+<pre class="code-block" tabindex="0"><code>// src/extending-the-harness/core/turns.ts
+// Each customer's turn, as plain actions anything may listen for. The salon's customers are invented.
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+
+export type TurnStatus = 'asking' | 'offered' | 'fell back' | 'no answer'
+export type Turns = Readonly&lt;Record&lt;string, TurnStatus&gt;&gt;
+type About = { readonly customer: string }
+
+export const turnsSlice = createSlice({
+  name: 'turns',
+  initialState: {} as Turns,
+  reducers: {
+    askedForHour: (turns, { payload }: PayloadAction&lt;About&gt;) =&gt; ({ ...turns, [payload.customer]: 'asking' }),
+    hourOffered: (turns, { payload }: PayloadAction&lt;About &amp; { readonly hour: string }&gt;) =&gt; ({ ...turns, [payload.customer]: 'offered' }),
+    fellBack: (turns, { payload }: PayloadAction&lt;About&gt;) =&gt; ({ ...turns, [payload.customer]: 'fell back' }),
+    noAnswer: (turns, { payload }: PayloadAction&lt;About &amp; { readonly why: string }&gt;) =&gt; ({ ...turns, [payload.customer]: 'no answer' }),
+  },
+})
+
+export const { askedForHour, hourOffered, fellBack, noAnswer } = turnsSlice.actions</code></pre>
 <p>The core exports <code>composeStore</code>. A composition root passes its reducers, its dependencies and its listeners, and gets back a store. The same file holds the client&rsquo;s one RTK Query API slice, whose base query sends every call through the transport.</p>
 <p>Redux&rsquo;s <a href="https://redux.js.org/usage/writing-tests#setting-up-a-reusable-test-render-function">testing guide</a> asks for a separate store in every test, so every call builds a new one, with its own listener middleware, and two tests never share state or a listener:</p>
 <pre class="code-block" tabindex="0"><code>// src/extending-the-harness/core/store.ts
