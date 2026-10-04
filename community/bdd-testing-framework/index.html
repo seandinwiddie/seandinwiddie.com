@@ -165,7 +165,7 @@
 </svg>
 <figcaption>Two routes, one destination. cucumber-js matches each line of the scenario to a step definition, Vitest runs one test named for it, and both arrive, along the violet arrows, at the reducer and selectors the app itself uses.</figcaption>
 </figure>
-<p>First, as executable steps: cucumber-js reads the feature file as written, and each step definition matches one line and calls the same reducer and selectors the app uses.</p>
+<p>First, as executable steps: cucumber-js reads the feature file as written, and each step definition matches one line; the When and the Thens call the same reducer and selectors the app uses.</p>
 <pre class="code-block" tabindex="0"><code>// features/step_definitions/cart.steps.ts
 import assert from 'node:assert/strict'
 import { Given, Then, When, World, setWorldConstructor } from '@cucumber/cucumber'

@@ -132,7 +132,7 @@
 <li>the order, and whether the API accepted it, belong to RTK Query;</li>
 <li>what is on the screen for a moment, such as a note being typed or a panel left open, belongs to the component&rsquo;s own <code>useState</code>.</li>
 </ul>
-<p>What is left for the view is small: read, show and forward an event. A view that sums a line, formats a price or empties the cart after a click holds a rule no scenario can reach without a browser.</p>
+<p>What is left for the view is small: read, show and forward an event. A view that sums a line, formats a price or empties the cart after a click holds a rule no scenario can reach without rendering the view.</p>
 <p>The lecture <a href="https://seandinwiddie.github.io/lectures/redux-standard-patterns-and-functional-programming/#select-close-to-the-render">Redux Standard Patterns and Functional Programming</a> shows a view that subscribes to the smallest values it renders and dispatches one event.</p>
 <h2 id="2-a-view-model-is-a-selector"><a class="heading-anchor" href="#2-a-view-model-is-a-selector">2. A view model is a selector</a></h2>
 <p>The checkout shows each line the way the customer reads it: a name, a quantity and a price in dollars, then the total. That shape is a view model, and like the total it is derived, never stored.</p>

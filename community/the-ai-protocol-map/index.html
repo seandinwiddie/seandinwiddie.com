@@ -374,13 +374,14 @@ import { error, record, result, toolError, toolResult, type Body, type Id, type 
 type Line = { readonly item: string; readonly size: Size | null; readonly cents: number }
 type Order = { readonly startedAt: number; readonly lines: readonly Line[] }
 
-// Orders are kept under `${caller}:${handle}`, so a handle alone opens nothing.
+// Orders are kept under the caller and the handle together, as one JSON key, so a handle alone opens nothing.
 export type Store = Readonly&lt;Record&lt;string, Order&gt;&gt;
 
 // What the shell knows and the core never fetches: who is calling, the time, a fresh random handle.
 export type Context = { readonly caller: string; readonly now: number; readonly freshHandle: string }
 
 type Step = { readonly store: Store; readonly reply: Reply }
+const keyOf = (caller: string, handle: string): string =&gt; JSON.stringify([caller, handle])
 type AddItem = { readonly order: string; readonly item: string; readonly size?: Size }
 
 const decode = (args: Body): AddItem | string =&gt; {
@@ -440,14 +441,14 @@ export const callTool = (store: Store, id: Id, params: Body, capabilities: Body,
 
   if (params.name === 'create_order') {
     if (Object.keys(args).length &gt; 0) return refuse('create_order takes no arguments')
-    const opened = { ...store, [`${ctx.caller}:${ctx.freshHandle}`]: { startedAt: ctx.now, lines: [] } }
+    const opened = { ...store, [keyOf(ctx.caller, ctx.freshHandle)]: { startedAt: ctx.now, lines: [] } }
     return { store: opened, reply: result(id, 'complete', toolResult({ order: ctx.freshHandle })) }
   }
   if (params.name !== 'add_item') return refuse(`Unknown tool: ${String(params.name)}`)
 
   const input = decode(args)
   if (typeof input === 'string') return refuse(`Invalid arguments for add_item: ${input}`)
-  const key = `${ctx.caller}:${input.order}`
+  const key = keyOf(ctx.caller, input.order)
   const order = store[key]
   if (order === undefined) return done(toolError(`There is no order ${input.order}. Start one with create_order.`))
   if (ctx.now - order.startedAt &gt; ORDER_MINUTES * 60_000)
@@ -470,22 +471,23 @@ export const callTool = (store: Store, id: Id, params: Body, capabilities: Body,
 <p>Each failure that belongs to the cart says what to do next: start a new order, pick from what&rsquo;s still available, ask which size. That&rsquo;s expected failure as plain data, as the lecture <a href="https://seandinwiddie.github.io/lectures/practical-applications-of-functional-programming/#represent-expected-failure-as-plain-data">Practical Applications of Functional Programming</a> teaches it. A client decodes each result at the boundary before trusting it, as <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes an RTK Query response.</p>
 <p>The scenarios live in <code>cart.feature</code>, in Gherkin, and each test carries its scenario&rsquo;s name; a last test fails if the two lists drift apart:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ npx vitest run src/the-ai-protocol-map/server.test.ts --reporter=tree | grep -E '✓|Tests'
- ✓ src/the-ai-protocol-map/server.test.ts (13 tests) 11ms
-   ✓ Feature: The coffee cart's tool server (13)
-     ✓ Scenario: A client discovers what the server speaks 3ms
+ ✓ src/the-ai-protocol-map/server.test.ts (14 tests) 13ms
+   ✓ Feature: The coffee cart's tool server (14)
+     ✓ Scenario: A client discovers what the server speaks 4ms
      ✓ Scenario: A request in another version is refused with the versions the server speaks 1ms
-     ✓ Scenario: A legacy handshake is refused by name 0ms
+     ✓ Scenario: A legacy handshake is refused by name 1ms
      ✓ Scenario: The agent starts an order and adds a drink 1ms
-     ✓ Scenario: A missing size asks the customer, and the retry completes the call 0ms
-     ✓ Scenario: A client that can't ask the customer reads a reason instead 1ms
+     ✓ Scenario: A missing size asks the customer, and the retry completes the call 1ms
+     ✓ Scenario: A client that can't ask the customer reads a reason instead 0ms
      ✓ Scenario: An expired order handle is an execution error 1ms
      ✓ Scenario: An order handle opens nothing for another caller 0ms
-     ✓ Scenario: A sold-out item is an execution error the model can act on 1ms
+     ✓ Scenario: A handle can't borrow the end of another caller's name 1ms
+     ✓ Scenario: A sold-out item is an execution error the model can act on 0ms
      ✓ Scenario: An unknown tool is a protocol error 0ms
      ✓ Scenario: The menu is a resource the application reads 0ms
      ✓ Scenario: A notification gets no reply 0ms
      ✓ names every scenario in cart.feature 0ms
-      Tests  13 passed (13)</code></pre>
+      Tests  14 passed (14)</code></pre>
 <h2 id="transports-and-trust"><a class="heading-anchor" href="#transports-and-trust">Transports and trust</a></h2>
 <p>A <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports">transport</a> is a binding: it carries messages and never changes what they mean. On stdio, the client launches the server as a subprocess and they trade JSON-RPC one message per line. The server writes nothing to stdout that isn&rsquo;t a protocol message, and logs, if anywhere, to stderr. Streamable HTTP uses one endpoint that takes a POST for each message and answers with JSON or a stream scoped to that request.</p>
 <pre class="code-block" tabindex="0"><code>// src/the-ai-protocol-map/stdio.ts

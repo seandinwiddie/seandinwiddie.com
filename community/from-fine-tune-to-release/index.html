@@ -280,7 +280,7 @@ a fresh batch of places: fresh, so its places go in the record with the next dec
 </figure>
 <p>So a test set passes only when none of its places has been asked about before.</p>
 <h2 id="splits-by-place-checked"><a class="heading-anchor" href="#splits-by-place-checked">Splits by place, checked</a></h2>
-<p>The trail rows are generated: a fixed catalog of made-up situations, turned by index, as <a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a> shows. A change to them is a change to the generator.</p>
+<p>The rows a release trains and tests on are generated the way <a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a> generates its trail rows, turned by index, here over invented places, the Spur trails. A change to them is a change to the generator. The six rows that lesson keeps in <code>data/train.jsonl</code> are a small fixed set for its checks, each one marked <code>train</code>, and the rule below doesn&rsquo;t govern them.</p>
 <p>A row&rsquo;s split comes from a stable hash of its place, so every row about one place lands in the same split, on every run and every machine, which Python&rsquo;s own <code>hash()</code> doesn&rsquo;t promise. Then a check proves what the construction promises: no place appears in two splits. Rows from serving&rsquo;s log split the same way, by a stable hash of a key of their own.</p>
 <pre class="code-block" tabindex="0"><code># pipeline/release/splits.py
 """Splits by place: a stable hash of each row's place decides its split, and a check proves it."""
