@@ -139,7 +139,7 @@
 <li>
 <strong>Testing:</strong> Test a reducer through a sequence of actions and a selector through its output. Neither needs a browser.</li>
 <li>
-<strong>Error handling:</strong> Treat an expected failure, such as a declined card, as data, never as an exception: the client decodes what arrives into an <code>Either</code> in <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>, and the API refuses with its reason in <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a>.</li>
+<strong>Error handling:</strong> Treat an expected failure, such as a declined card, as data, never as an exception: the API refuses with its reason in <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a>, the view reads that reason in <a href="/community/the-view-stays-minimal/">The view stays minimal</a>, and a response of the wrong shape becomes a <code>Left</code> in <a href="/community/endpoints-at-the-boundary/">Endpoints at the boundary</a>.</li>
 <li>
 <strong>Connect the view:</strong> A React view reads shared state through <code>useAppSelector</code> and server data through RTK Query hooks, dispatches events, and keeps only local drafts in its own state.</li>
 <li>
@@ -212,7 +212,7 @@ totalCents(events.reduce(next, [])) // 6200</code></pre>
 <a href="/community/discover-how-frp-enhances-user-interaction-and-responsiveness/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Discover how FRP enhances user interaction and responsiveness</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice and 70% of the fee while the name brings in the work. Sean reviews every launch against its written scope before it goes live, and what one job teaches becomes the team&rsquo;s through those reviews and these lessons, so webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -197,7 +197,7 @@ Feature: Emailed orders, drafted for one check
     Then the case fails, naming the draft and the missing question</code></pre>
 <p>The last two scenarios are about the evals themselves: a case passes when the draft matches what the person approved, and fails when the model guesses. They come back near the end of the lesson.</p>
 <h2 id="the-process-end-to-end"><a class="heading-anchor" href="#the-process-end-to-end">The process, end to end</a></h2>
-<p>Here is the way an order goes. The email starts outside the bakery, written by anyone. The register, the calendar and the order sheet are inside, and the owner relies on them. Between the two stand the gate and a person.</p>
+<p>The email starts outside the bakery, written by anyone. The register, the calendar and the order sheet are inside, and the owner relies on them. Between the two stand the gate and a person.</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="automating-a-business-process-process-title automating-a-business-process-process-desc" viewBox="0 0 360 384">
 <title id="automating-a-business-process-process-title">An emailed order, from the inbox to the register</title>
@@ -944,7 +944,7 @@ export const evalWithClaude = (client: Anthropic, bakery: Bakery, cases: readonl
 <h2 id="a-door-on-this-sites-own-loop"><a class="heading-anchor" href="#a-door-on-this-sites-own-loop">A door on this site&rsquo;s own loop</a></h2>
 <p>This site&rsquo;s own review loop has a door too, in a different place from the bakery&rsquo;s. Each pass, five reviewer agents read the whole site, each in a fresh context, and the edits land as small tweaks rather than large rewrites. The loop doesn&rsquo;t wait to be asked: each pass is applied, built, pushed and logged, and the next one starts. A small tweak that passes the build is quick to read in its diff, and one revert takes it back; a sent email can&rsquo;t be unsent.</p>
 <p>The door is Sean&rsquo;s. A tweak that needs a fact only he has waits for him while the rest of the pass goes ahead. The <a href="https://github.com/seandinwiddie/seandinwiddie.com/tree/master/.claude/skills/llm-council">llm-council</a> skill weighs his pending decisions with five advisors, an anonymous peer review and a chairman&rsquo;s verdict, and the verdict is a recommendation.</p>
-<p>So the agents draft and review, the loop&rsquo;s small tweaks go live pass by pass, and what changes Sean&rsquo;s own work, or what a council recommends, waits for his yes. Client work under the name keeps its door in the same hands: every launch is reviewed against its written scope before it goes live, Sean&rsquo;s review last.</p>
+<p>So the agents draft and review, the loop&rsquo;s small tweaks go live pass by pass, and what changes Sean&rsquo;s own work, or what a council recommends, waits for his yes. Client work under the name keeps its door in the same hands: every launch is reviewed before it goes live, Sean&rsquo;s review last.</p>
 <aside class="notice depth" aria-label="Where it bends"><p><strong>Where it bends.</strong> A person who approves everything unread is no gate. Approval works when a draft is quick to check: the email beside the draft, the total worked out by code, and anything unusual raised as a question rather than buried in the draft. When approving starts to feel like clicking through, the drafts are too hard to check or the questions too few, and that is something to fix, not a reason to take the door off.</p>
 <p>The three entries aren&rsquo;t one transaction. If the calendar fails after the register took the sale, the log shows which entries went in, and the person finishes the rest by hand.</p>
 <p>And the gate decides only what may happen, never whether a draft is right. A model that misreads a quantity drafts a wrong order that passes every rule plain code can check. That is what the person and the evals are for.</p></aside>
@@ -959,7 +959,7 @@ export const evalWithClaude = (client: Anthropic, bakery: Bakery, cases: readonl
 <a href="/community/module-6-ai-protocol-ecosystem/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 6: AI protocol ecosystem</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice and 70% of the fee while the name brings in the work. Sean reviews every launch against its written scope before it goes live, and what one job teaches becomes the team&rsquo;s through those reviews and these lessons, so webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

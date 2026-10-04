@@ -167,7 +167,7 @@
 <li>
 <strong>Test maintenance:</strong> Scenarios and unit tests both need upkeep as the software evolves. A test changes in the same commit as the behavior it checks, so the suite never describes software that no longer exists.</li>
 </ul>
-<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> puts each test where its rule lives. An empty order and an unknown product are rules of <code>validateOrder</code>, a pure function, so they are unit tests that compare its result as plain data, with no database, no server and no screen, and the written scope never names them.</p>
+<aside class="notice depth" aria-label="The rule behind the examples"><p><strong>The rule behind the examples.</strong> <a href="/community/one-feature-scope-to-launch/">One feature, scope to launch</a> puts each test where its rule lives. An empty order, an unknown product and a bad line are rules of <code>validateOrder</code>, a pure function, so they are unit tests that compare its result as plain data, with no database, no server and no screen, and the written scope never names them.</p>
 <p>A declined card is behavior an owner can name, so it is a scenario, run under its own name at each of the four layers that hold part of it, and one journey runs end to end because each layer&rsquo;s test has already proved its part.</p>
 <p>The rule bends where a scenario and a unit test overlap on purpose. In <a href="/community/the-view-stays-minimal/">The view stays minimal</a>, the view&rsquo;s scenario and <code>orderNotice</code>&rsquo;s unit test both check that a declined card asks for another, and they fail for different reasons:</p>
 <ul>
@@ -187,7 +187,7 @@
 <a href="/community/bdd-testing-framework/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">BDD testing framework</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice and 70% of the fee while the name brings in the work. Sean reviews every launch against its written scope before it goes live, and what one job teaches becomes the team&rsquo;s through those reviews and these lessons, so webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

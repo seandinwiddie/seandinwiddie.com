@@ -129,7 +129,7 @@
 <li>
 <strong>Scenario organization:</strong> The framework should group scenarios under the Feature they test, in a feature file or a <code>describe</code> block named for it.</li>
 <li>
-<strong>Parameterization:</strong> The framework should run one scenario once for each row of an Examples table, which Gherkin calls a Scenario Outline, so a rule with many cases stays one scenario.</li>
+<strong>Parameterization:</strong> The framework should run one scenario, a Scenario Outline in Gherkin, once for each row of its Examples table, so a rule with many cases stays one scenario.</li>
 <li>
 <strong>Scenario tags and labels:</strong> The framework should let scenarios carry tags or labels, so they are easy to sort and filter. A tag marks scenarios for a purpose, such as a regression run.</li>
 <li>
@@ -202,7 +202,13 @@ Then('the cart total is ${int}', function (this: CartWorld, dollars: number) {
   assert.equal(selectTotalCents({ cart: this.cart }), dollars * 100)
 })</code></pre>
 <p>cucumber-js looks for feature files, and the step definitions beside them, in <code>features/</code> at the project&rsquo;s root, so the cart scenario, as <a href="/community/writing-bdd-scenarios/#example-bdd-scenario">Writing BDD scenarios</a> sets it out, goes in <code>features/cart.feature</code>; the app&rsquo;s own feature folders, such as <code>features/cart/</code> below, sit under <code>src/</code>.</p>
-<p>On its own, cucumber-js loads only JavaScript step files, so a TypeScript one like this loads once a transpiler such as tsx is registered in the cucumber-js configuration: <code>{ requireModule: ['tsx/cjs'], require: ['features/step_definitions/**/*.ts'] }</code>. cucumber-js&rsquo;s <a href="https://github.com/cucumber/cucumber-js/blob/main/docs/transpiling.md">transpiling guide</a> gives that setup for CommonJS packages; it runs unchanged in a <code>"type": "module"</code> package too, where the guide also offers tsx&rsquo;s ESM register, loaded through <code>import</code>.</p>
+<p>On its own, cucumber-js loads only JavaScript step files, so a TypeScript one like this loads once a transpiler such as tsx is registered in the cucumber-js configuration:</p>
+<pre class="code-block" tabindex="0"><code>// cucumber.mjs
+export default {
+  requireModule: ['tsx/cjs'],
+  require: ['features/step_definitions/**/*.ts'],
+}</code></pre>
+<p>cucumber-js&rsquo;s <a href="https://github.com/cucumber/cucumber-js/blob/main/docs/transpiling.md">transpiling guide</a> gives that setup for CommonJS packages; it runs unchanged in a <code>"type": "module"</code> package too, where the guide also offers tsx&rsquo;s ESM register, loaded through <code>import</code>.</p>
 <p>Run the second way, the scenario is one test in the codebase&rsquo;s own runner, named for it, with its steps as comments:</p>
 <pre class="code-block" tabindex="0"><code>// features/cart/cart.test.ts, from From scenario to slice
 import { describe, expect, it } from 'vitest'
@@ -236,7 +242,7 @@ describe('Feature: Cart', () =&gt; {
 <a href="/community/module-3-functional-reactive-programming-frp/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 3: Functional reactive programming (FRP)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice and 70% of the fee while the name brings in the work. Sean reviews every launch against its written scope before it goes live, and what one job teaches becomes the team&rsquo;s through those reviews and these lessons, so webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

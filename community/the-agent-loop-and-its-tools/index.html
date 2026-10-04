@@ -151,7 +151,7 @@
 <rect class="node" x="16" y="212" width="160" height="96" rx="4"/>
 <g><text x="96" y="24">the task</text><text x="96" y="88">model</text><text x="288" y="88">tools</text><text x="96" y="160">decide</text><text x="96" y="230">answered</text><text x="96" y="250">outOfTurns</text><text x="96" y="270">outOfTokens</text><text x="96" y="290">modelStopped</text><text class="note" x="194" y="76">results</text><text class="note" x="222" y="148">tool calls</text><text class="note" x="266" y="250">every way out</text><text class="note" x="266" y="270">is a Stop</text></g>
 </svg>
-<figcaption>The loop as this lesson builds it. The violet path goes round: the model replies, <code>decide</code> chooses, the tools run and their results go back to the model. Every way out leads to one value of the type <code>Stop</code>.</figcaption>
+<figcaption>The loop as this lesson builds it. The violet path goes round: the model replies, <code>decide</code> chooses, the tools run and their results go back to the model. Every way the loop stops leads to one value of the type <code>Stop</code>; a request to the model that fails outright rejects <code>runAgent</code>&rsquo;s promise instead.</figcaption>
 </figure>
 <h2 id="a-model-as-the-loop-sees-it"><a class="heading-anchor" href="#a-model-as-the-loop-sees-it">A model, as the loop sees it</a></h2>
 <p>The loop never imports a provider&rsquo;s SDK. It talks to a <code>Model</code>: one conversation that takes a turn and gives back a reply. A turn is the task, or the results of the last calls; a reply is an answer, some tool calls or a stop, each with the tokens it cost.</p>
@@ -177,7 +177,12 @@ export interface Model {
   readonly reply: (turn: ModelTurn) =&gt; Promise&lt;ModelReply&gt;
 }</code></pre>
 <p>Three kinds of reply and no more, so the compiler can tell when a <code>switch</code> over them misses one. The interface is a seam: a scripted model fills it in the tests, and Claude fills it in production, through one small adapter at the end of this lesson.</p>
-<p>The imports name their <code>.ts</code> files, so Node.js 22.18 or later on the 22 line, or 24.3 or later, runs them directly, and <code>tsc</code> checks them with the strict settings <code>tsc --init</code> writes from TypeScript 5.9 on (checked here with 7.0.2), plus <code>allowImportingTsExtensions</code>, <code>noEmit</code> and <code>"types": ["node"]</code> in place of the empty list it writes, with <code>"type": "module"</code> in <code>package.json</code>. The installs are <code>@types/node</code> for the <code>node:</code> imports, <code>vitest</code>, and <code>@anthropic-ai/sdk</code> 0.115 or later, the first to type <code>fallbacks: 'default'</code> (checked here with 0.131.0).</p>
+<p>The imports name their <code>.ts</code> files, so they run and check as written with:</p>
+<ul>
+<li>Node.js 22.18 or later on the 22 line, or 24.3 or later, which runs them directly;</li>
+<li><code>tsc</code>, which checks them with the strict settings <code>tsc --init</code> writes from TypeScript 5.9 on (checked here with 7.0.2), plus <code>allowImportingTsExtensions</code>, <code>noEmit</code> and <code>"types": ["node"]</code> in place of the empty list it writes, and <code>"type": "module"</code> in <code>package.json</code>;</li>
+<li>the installs <code>typescript</code>, <code>@types/node</code> for the <code>node:</code> imports, <code>vitest</code>, and <code>@anthropic-ai/sdk</code> 0.115 or later, the first to type <code>fallbacks: 'default'</code> (checked here with 0.131.0).</li>
+</ul>
 <h2 id="tools-are-typed-functions-with-contracts"><a class="heading-anchor" href="#tools-are-typed-functions-with-contracts">Tools are typed functions with contracts</a></h2>
 <p>A tool has three parts. The spec is what the model reads: a name, a description and a JSON Schema for the input. The decoder turns whatever arrived into a typed value or a typed failure, the way <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes a response before the app trusts it. Then comes the run itself, which only ever sees a value that decoded.</p>
 <pre class="code-block" tabindex="0"><code>// agent/tool.ts
@@ -808,7 +813,7 @@ export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: s
 <a href="/community/writing-an-agentic-skill/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing an agentic skill</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice and 70% of the fee while the name brings in the work. Sean reviews every launch against its written scope before it goes live, and what one job teaches becomes the team&rsquo;s through those reviews and these lessons, so webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

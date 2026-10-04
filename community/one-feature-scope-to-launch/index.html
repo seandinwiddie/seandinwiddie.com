@@ -148,9 +148,10 @@ Story 3. As a shop owner, I want my shop's orders kept apart from every
     Scenario: Placing an order in someone else's shop
     Scenario: Reading the orders of someone else's shop
 
-Not in this scope: choosing where the order ships (each order
-  goes to the customer's saved address); refunds; the confirmation
-  email; a cart that follows the customer from phone to laptop
+Not in this scope: choosing a shipping address at checkout (each
+  order goes to the address the customer has already chosen); refunds;
+  the confirmation email; a cart that follows the customer from phone
+  to laptop
 
 Done when: each scenario passes at every layer that holds part of it,
   and the review against this scope finds nothing missing</code></pre>
@@ -341,7 +342,7 @@ spec = do
 <p>The provider, like the database, stays in the shell, the line the lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#functional-core-imperative-shell">Functional Programming in Other Languages</a> draws between a functional core and an imperative shell.</p>
 <h2 id="4-the-endpoint-and-the-slice-change-nothing"><a class="heading-anchor" href="#4-the-endpoint-and-the-slice-change-nothing">4. The endpoint and the slice change nothing</a></h2>
 <p>In the client, the same refusal arrives as data. RTK Query dispatches <code>placeOrder</code>&rsquo;s rejected action with the status and the API&rsquo;s reason, <code>{ status: 422, data: { reason: 'card-declined' } }</code>, and two layers have to do nothing with it. A provider that is down arrives the same way, as 503 with a reason of its own, and they do nothing with it either.</p>
-<p>One test proves both, run once for each refusal, beside the placed-order test from the lesson on endpoints at the boundary, in a real store with a stand-in for the API behind <code>fetch</code>:</p>
+<p>One test proves both, run once for each refusal, beside the placed-order test from <a href="/community/endpoints-at-the-boundary/#5-the-scenario-at-the-endpoint">the lesson on endpoints at the boundary</a>, in a real store with a stand-in for the API behind <code>fetch</code>:</p>
 <pre class="code-block" tabindex="0"><code>// features/orders/ordersApi.test.ts, continued, inside describe('Feature: Checkout')
 const earlier = {
   id: 'order-0',
@@ -414,7 +415,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 </ul>
 <p>A failure in any of them names the same behavior, so the owner can read a test report in the scope&rsquo;s own words. The lecture <a href="https://seandinwiddie.github.io/lectures/functional-programming-in-other-languages/#cross-language-conformance-tests">Functional Programming in Other Languages</a> makes the same point across languages: the test names and fixtures can be shared even where the implementations can&rsquo;t.</p>
 <h2 id="6-the-review-against-the-scope"><a class="heading-anchor" href="#6-the-review-against-the-scope">6. The review against the scope</a></h2>
-<p>Before anything goes live, the results are reviewed against the written scope, line by line: first, where the webmaster&rsquo;s rung sets one, by a peer on the team (a junior&rsquo;s launch by a senior, as <a href="/community/staff/">Joining the team</a> sets out), then by Sean, who reviews every launch. The review checks results, never how the work was done; on a custom app, its passing scenarios are part of the result. For the checkout it reads:</p>
+<p>Before anything goes live, the results are reviewed against the written scope, line by line: first, where the webmaster&rsquo;s stage of the craft calls for one, by a peer on the team, as <a href="/community/staff/">Joining the team</a> sets out, then by Sean, who reviews every launch. The review checks results, never how the work was done; on a custom app, its passing scenarios are part of the result. For the checkout it reads:</p>
 <pre class="code-block" tabindex="0"><code>Review against the scope: Checkout
 
 [x] Story 1   Placing the order: passes at the API, the endpoint, the slice and the view
@@ -437,11 +438,11 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 <p>The usual answer is two calls to the provider: authorize the card for the total, write the order, then capture the payment, voiding the authorization if the write fails, so no money moves until the order exists.</p>
 <p>The key in <code>ChargeRequest</code> covers a retry between the API and the provider, not a retry by the customer. If her connection drops after the API has charged and written the order, the client never hears so, and its notice has to say the order wasn&rsquo;t confirmed, not that it wasn&rsquo;t placed.</p>
 <p>To make her retry safe, the checkout carries a key of its own, made once when it opens and sent with every attempt; the API uses it as the order&rsquo;s id, so a second attempt finds the first order and its charge instead of making new ones. That changes <code>NewOrder</code>, and with it the contract at both ends, which is why it is a line in the scope before it is a line of code.</p>
-<p>And <code>Unavailable</code> is narrower than it looks. It means the connection never opened, so the provider never saw the request, and the notice can tell her that her card wasn&rsquo;t charged; with http-client underneath, that is a <code>ConnectionFailure</code> or a <code>ConnectionTimeout</code> on the first attempt, and nothing else.</p>
+<p>And <code>Unavailable</code> is narrower than it looks. It means the connection never opened, so the provider never saw the request, and the notice can tell her that her card wasn&rsquo;t charged; with http-client underneath, and the manager&rsquo;s own retry of a reused connection turned off (<code>managerRetryableException = const False</code>), that is a <code>ConnectionFailure</code> or a <code>ConnectionTimeout</code> on the first attempt, and nothing else.</p>
 <p>A timeout after the request went out is no answer at all, since the provider may have charged the card, and a 5xx from the provider isn&rsquo;t <code>Unavailable</code> either, since the request reached it.</p>
 <p>Either way the real <code>charge</code> sends the same request again with the same key, which a provider that honors the key answers with its first result rather than a second charge; once an attempt has gone out, a retry that can&rsquo;t connect is no answer either. If it still has no answer it can trust, it throws, the server answers 500, and the customer reads that the order wasn&rsquo;t confirmed, never that she wasn&rsquo;t charged.</p></aside>
 <p>That is the course&rsquo;s chain in one feature: a story in the written scope, its scenarios in Gherkin, a typed API that refuses with a reason, an endpoint and a slice that change nothing they shouldn&rsquo;t, a view that says what happened, and a review against the scope before anything goes live.</p>
-<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>, and ends where this one did: under the Sean Dinwiddie&rsquo;s Webmastery name, every launch gets the review in section 6, Sean&rsquo;s review last. <a href="/community/module-5-business-automation-with-ai/">Module 5</a>, next, puts an agent to work along the same chain, with a person approving what leaves the building.</p>
+<p>The next feature starts where this one did, with <a href="/community/identifying-user-needs/">the people who will use it</a>, and ends where this one did: under the Sean Dinwiddie&rsquo;s Webmastery name, every launch gets <a href="#6-the-review-against-the-scope">the review in section 6</a>, Sean&rsquo;s review last. <a href="/community/module-5-business-automation-with-ai/">Module 5</a>, next, puts an agent to work along the same chain, with a person approving what leaves the building.</p>
 
 <!-- .entry-content -->
 <footer>
@@ -452,7 +453,7 @@ it('Scenario: Placing the order while payments are down', async () =&gt; {
 <a href="/community/module-5-business-automation-with-ai/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Module 5: Business automation with AI (agentic skills)</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice and 70% of the fee while the name brings in the work. Sean reviews every launch against its written scope before it goes live, and what one job teaches becomes the team&rsquo;s through those reviews and these lessons, so webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

@@ -139,18 +139,23 @@ const WORK_NOTICE = workNotice(WORK_LINE);
 // A lesson is where a webmaster weighs the craft, so its closing line also shows
 // them the way in (community loop, round 1), not only the owners' door, and what
 // joining gives, in the recruiting note's words (docs/positioning.md, Webmasters),
-// in the third person, since owners read the lessons too, and with no ladder or
-// split (community loop, round 2). It speaks to webmasters at any stage of the
-// craft, never only those who already build this way, and says the review before
-// launch is how what one job teaches becomes the team's (community loop, round 3),
-// and ends on what the reader gains, growth faster than alone, in the positioning's
-// words and with no ladder (community loop, round 4). Since round 5 that part is two
+// in the third person, since owners read the lessons too, and with no ladder
+// (community loop, round 2). Since round 7 it names the split in the words the
+// positioning gives owner-facing pages, "keep 70% of the fee", since engineers
+// mostly arrive on a lesson from search and the money was a click away. It speaks
+// to webmasters at any stage of the craft, never only those who already build this
+// way, and says the review before launch is how what one job teaches becomes the
+// team's (community loop, round 3), and ends on what the reader gains, growth
+// faster than alone, in the positioning's words and with no ladder (community
+// loop, round 4). Since round 5 that part is two
 // sentences, and the second names the review: Sean's, against the written scope, as
 // docs/terms.md lets the site say (a peer's review before his depends on the rung,
-// so the line promises none). The last lesson's own links already end on Joining
-// the team (lessonNav), so its line keeps to the work.
+// so the line promises none). Since round 7 it names how what a job teaches
+// spreads, as Joining the team does: through those reviews and these lessons, the
+// one the reader has just finished among them. The last lesson's own links already
+// end on Joining the team (lessonNav), so its line keeps to the work.
 const LESSON_NOTICE = workNotice(
-  `${WORK_LINE} For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.`,
+  `${WORK_LINE} For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice and 70% of the fee while the name brings in the work. Sean reviews every launch against its written scope before it goes live, and what one job teaches becomes the team&rsquo;s through those reviews and these lessons, so webmasters grow faster than they could alone.`,
 );
 
 const commentsNotice = (name) => {
@@ -919,13 +924,16 @@ const withLessonHeading = (name, html) => {
 
 // The main sitemap's community list was alphabetical and kept by hand, so a new
 // lesson landed wherever it was typed. It renders from LESSONS, in teaching order,
-// each lesson by its Title Case name, as the rest of that page's labels are.
+// each lesson by its Title Case name, as the rest of that page's labels are. The
+// P.S. note's label follows its head title, "Redux.js and Sublime Text", where it
+// read "Coding Redux JS Apps" (community loop, round 7); the note itself is Sean's
+// to change.
 const MAIN_SITEMAP = "sitemap/index.html";
 const MAIN_SITEMAP_COMMUNITY_PATTERN = /(<h3>Community<\/h3>\n<ul>\n)[\s\S]*?(\n<\/ul>)/;
 const MAIN_SITEMAP_OFF_PATH = [
   ["/community/staff/", "Joining the Team"],
   ["/community/our-community-unveiling-our-offer-and-prices/", "Our Community: Offer and Prices"],
-  ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%E2%9C%8C%F0%9F%8F%BB/", "P.S. Coding Redux JS Apps + Sublime Text"],
+  ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%E2%9C%8C%F0%9F%8F%BB/", "P.S. Redux.js and Sublime Text"],
   ["/community/from-marketing-to-development/", "From Marketing to Development"],
   ["/community/category/development/", "Software Development (category)"],
   ["/community/author/seandinwiddie/", "Technical Articles by Sean Dinwiddie (author)"],
