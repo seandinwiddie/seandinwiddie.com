@@ -64,17 +64,12 @@
 .deck .slide .diagram figcaption { max-width: none; font-size: 0.8em; }
 /* A printout keeps to the slide: the lesson column's wide code and a phone's edge-to-edge code don't apply. */
 .deck .slide .slide__frame pre.code-block.code-output { max-width: 100%; margin: 0.25em 0 1em; padding: 0.75em 1em; border-width: 1px; border-radius: 0.45rem; font-size: 0.8em; }
-.slide__qa > div + div, .slide__paths > div + div { margin-top: 1em; }
-.slide__links { font-size: 0.95em; }
-.slide__links a { white-space: nowrap; }
+.slide__qa > div + div { margin-top: 1em; }
 .slide__kicker { color: var(--muted); }
 .slide__title { margin: 0 0 0.4em; color: var(--ink); font-size: 1.6em; font-weight: 700; line-height: 1.15; text-wrap: balance; }
 .deck .slide h2 { text-wrap: balance; }
 .slide__title span { display: block; }
-.deck .slide .slide__sub, .deck .slide .slide__sign { font-style: italic; text-wrap: balance; }
-.deck .slide__byline { margin-bottom: 0; }
-.slide__byline { color: var(--muted); }
-.slide__byline strong { display: block; color: var(--ink); }
+.deck .slide .slide__sub { font-style: italic; text-wrap: balance; }
 .slide__photo { display: none; background: center / cover no-repeat; }
 .deck .heading-anchor::before { display: none; }
 /* On a phone a diagram runs to the slide's edges, as a lesson's runs to the screen's. */
@@ -134,27 +129,22 @@ html.deck-notes .slide__notes {
   .deck .slide .diagram .node { stroke-width: max(1px, 0.04em); }
   .deck .slide .diagram .path { stroke-width: max(3px, 0.11em); }
   .deck .slide .diagram .node.on { stroke-width: max(2.5px, 0.09em); }
-  /* Two columns, their headings, answers and links on shared rows, so a heading that wraps
+  /* Two columns, their headings and answers on shared rows, so a heading that wraps
      doesn't push one column's answer below the other's. */
-  .slide__qa, .slide__paths { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.4em; }
+  .slide__qa { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.4em; }
   .slide__qa > div { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; }
-  .slide__paths > div { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
-  .deck .slide :is(.slide__qa, .slide__paths) h3 { align-self: end; }
-  .slide__qa > div + div, .slide__paths > div + div { margin-top: 0; }
+  .deck .slide .slide__qa h3 { align-self: end; }
+  .slide__qa > div + div { margin-top: 0; }
   .deck .slide .slide__qa + p { margin-top: 0.4em; }
   .deck .slide__qa h3 { margin-bottom: 0.5em; font-size: 1.32em; }
   .slide__qa p { font-size: 1.1em; }
-  .slide__links { font-size: 0.8em; }
   .slide--title .slide__frame { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding: 0; }
   .slide__cover { display: flex; flex-direction: column; justify-content: center; padding: 2em 2.4em 2em 3em; }
   .slide__kicker { font-size: max(0.75em, 0.875rem); }
   .slide__title { margin: 0.35em 0 0.45em; font-size: 2.15em; }
   .slide__title span { margin-top: 0.15em; color: var(--muted); font-size: 0.62em; font-weight: 400; }
-  .deck .slide__sub { margin-bottom: 1.6em; font-size: 0.9em; }
-  .slide__byline { font-size: max(0.75em, 0.875rem); }
+  .deck .slide__sub { margin-bottom: 0; font-size: 0.9em; }
   .slide__photo { display: block; }
-  .deck .slide--close .slide__sign { margin: auto 0 0; padding-top: 0.6em; color: var(--muted); font-size: max(0.75em, 0.875rem); }
-  .deck .slide--close .slide__sign + .slide__sign { margin-top: 0; padding-top: 0.2em; }
 }
 
 /* Present: one slide per screen, letterboxed at 16:9 (assets/deck.js). */
