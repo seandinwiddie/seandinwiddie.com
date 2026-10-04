@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 4; --lessons: 5">Lesson 4 of 5 in Module 5</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming, and on to agents and small language models. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -157,7 +157,8 @@ drafting-booking-replies/scripts/open-times.ts</code></pre>
 <p>That staging is why a team can install many skills at little cost: until one is needed, it costs the context only its name and its description. It is also why the description carries so much weight. It is the only part the model sees before deciding.</p>
 <h2 id="the-user-story-comes-first"><a class="heading-anchor" href="#the-user-story-comes-first">The user story comes first</a></h2>
 <p>Anthropic&rsquo;s <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices">guide to writing skills</a> asks for the evaluations before the instructions, so a skill solves a real gap instead of an imagined one. That is the order behavior-driven development already keeps, so the salon&rsquo;s skill starts where every feature in this course starts: a user story and its scenarios, in Gherkin.</p>
-<pre class="code-block" tabindex="0"><code>Feature: Drafting the reply to a booking inquiry
+<pre class="code-block" tabindex="0"><code># drafting-booking-replies.feature
+Feature: Drafting the reply to a booking inquiry
 
   As the person who answers the salon's email,
   I want each booking inquiry drafted as our stock reply, with open times that fit,
@@ -255,7 +256,7 @@ export const lintSkill = (folder: string, text: string): string[] =&gt; {
       : ['compatibility must be 1 to 500 characters']),
   ]
 }</code></pre>
-<p>Below it, a thin <code>main</code> reads each folder&rsquo;s <code>SKILL.md</code>, prints what it finds and exits with 1 on any fault. Run over the salon&rsquo;s skill and the six in this site&rsquo;s repository, it finds one thing twice:</p>
+<p>It reads the frontmatter with <code>readFrontmatter</code> from <code>frontmatter.ts</code>, a 23-line reader for one-line <code>key: value</code> fields (a YAML parser serves anything richer); below it, a thin <code>main</code> reads each folder&rsquo;s <code>SKILL.md</code>, prints what it finds and exits with 1 on any fault. Run over the salon&rsquo;s skill and the six in this site&rsquo;s repository, it finds one thing twice:</p>
 <pre class="code-block code-output" tabindex="0"><code>$ node lint-skill.ts drafting-booking-replies seandinwiddie.com/.claude/skills/*/
 drafting-booking-replies: ok
 accessibility-review:
@@ -554,7 +555,7 @@ describe('Feature: Drafting the reply to a booking inquiry', () =&gt; {
 <a href="/community/automating-a-business-process/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Automating a business process with a person in the loop</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

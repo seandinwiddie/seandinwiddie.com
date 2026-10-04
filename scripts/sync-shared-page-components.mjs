@@ -98,9 +98,10 @@ const archiveContext = (name) => {
       : 'the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module';
   const index = lessonIndex(name);
   // The lesson's place leads the banner (docs/design.md, Lesson posts), over the
-  // course's preface.
+  // course's preface. The preface leads with user stories, BDD and functional
+  // programming, and since community loop round 5 goes on to Modules 5 and 6.
   return `<aside class="notice archive-context" aria-label="About these lessons">${index === -1 ? "" : `\n${lessonPlace(index)}`}
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. ${start}, and ${map}.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming, and on to agents and small language models. ${start}, and ${map}.</p>
 </aside>`;
 };
 
@@ -143,10 +144,13 @@ const WORK_NOTICE = workNotice(WORK_LINE);
 // craft, never only those who already build this way, and says the review before
 // launch is how what one job teaches becomes the team's (community loop, round 3),
 // and ends on what the reader gains, growth faster than alone, in the positioning's
-// words and with no ladder (community loop, round 4). The last lesson's own links already end on Joining the team (lessonNav), so its
-// line keeps to the work.
+// words and with no ladder (community loop, round 4). Since round 5 that part is two
+// sentences, and the second names the review: Sean's, against the written scope, as
+// docs/terms.md lets the site say (a peer's review before his depends on the rung,
+// so the line promises none). The last lesson's own links already end on Joining
+// the team (lessonNav), so its line keeps to the work.
 const LESSON_NOTICE = workNotice(
-  `${WORK_LINE} For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.`,
+  `${WORK_LINE} For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.`,
 );
 
 const commentsNotice = (name) => {
@@ -654,7 +658,9 @@ const withModuleLessons = (name, html) => {
 // each module's own list; the objectives, topics and activities below each stay
 // as written. Each module's heading is its PARTS name, as on the hub's map and the
 // community sitemap. An opener that is a page about its module (its title is the
-// module's name) stays out of the list, since the module's heading links it.
+// module's name) stays out of the list, since the module's heading links it. The
+// list opens on a "Lessons:" label, as the objectives, topics and activities do, so
+// a reader scanning the map sees where the lessons end (community loop round 5).
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const OUTLINE_MODULES = ["m4", "m5", "m6"];
 const OUTLINE_HEADINGS = Object.keys(PARTS).filter((key) => key !== "course");
@@ -677,7 +683,7 @@ const withOutlineModules = (name, html) => {
     const items = partOf(key)
       .filter(([, title]) => title !== PARTS[key].name)
       .map(([slug, title]) => `<li><a href="/community/${slug}/">${title}.</a></li>`);
-    return page.replace(pattern, (_, open, close) => `${open}${items.join("\n")}${close}`);
+    return page.replace(pattern, (_, open, close) => `${open}<li><em>Lessons:</em></li>\n${items.join("\n")}${close}`);
   }, headed);
 };
 

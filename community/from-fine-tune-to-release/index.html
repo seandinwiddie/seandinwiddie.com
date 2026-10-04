@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 11; --lessons: 11">Lesson 11 of 11 in Module 6</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming, and on to agents and small language models. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -551,7 +551,7 @@ def changed_inputs(recorded: list[dict[str, str]]) -&gt; tuple[str, ...]:
             if (now := fingerprint(Path(entry["path"])))["sha256"] != entry["sha256"]
         ),
     )</code></pre>
-<p>Here a stand-in for the training rows, <code>data/sample.jsonl</code>, holds three lines, <code>{"id": "row-000"}</code> through <code>{"id": "row-002"}</code>:</p>
+<p>Here a stand-in for the training rows, <code>data/sample.jsonl</code>, holds three lines, <code>{"id": "row-000"}</code> through <code>{"id": "row-002"}</code>. The snippet&rsquo;s last step rewrites that file, so run it on a fresh copy of <code>data/</code> each time:</p>
 <pre class="code-block" tabindex="0"><code>from pathlib import Path
 
 from pipeline.release.inputs import changed_inputs, fingerprint
@@ -578,7 +578,7 @@ data/sample.jsonl changed since the run: recorded 1f1ea15caf02, found 474f637b11
 <li><a href="/community/the-tandem-harness/">The tandem harness</a> let the model propose and typed code decide, <a href="/community/server-and-client-in-tandem/">Server and client in tandem</a> carried a booking across a stateless wire, and <a href="/community/extending-the-harness/">Extending the harness</a> grew both at documented points.</li>
 <li><a href="/community/python-the-teams-way/">Python, the team&rsquo;s way</a> kept the core pure, <a href="/community/measuring-reasoning-on-the-geometry/">Measuring reasoning on the geometry</a> wrote the measures before training, <a href="/community/geometric-reasoning-in-model-training/">Geometric reasoning in model training</a> built rows from what serving logged, and this lesson released a model only on rules written before it ran.</li>
 </ul>
-<p>That is the course, from a user story to a released model. Webmasters at any stage of the craft grow into this practice under the Sean Dinwiddie&rsquo;s Webmastery name, on client work with a written scope and a review against it before every launch, and <a href="/community/staff/">Joining the team</a> sets out the terms.</p>
+<p>That is the course, from a user story to a released model. Webmasters at any stage of the craft grow into this practice under the Sean Dinwiddie&rsquo;s Webmastery name, on client work with a written scope and a review against it before every launch, and <a href="/community/staff/">Joining the team</a> sets out the terms and <a href="/community/staff/#how-to-join">how to join</a>: a link to work they&rsquo;ve built, and the kind of job they want.</p>
 <!-- .entry-content -->
 <footer>
 </footer><!-- .entry-footer -->

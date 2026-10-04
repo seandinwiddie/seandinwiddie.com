@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 1; --lessons: 5">Lesson 1 of 5 in Module 4</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming, and on to agents and small language models. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -132,6 +132,7 @@
     (    Get '[JSON] [Order]
     :&lt;|&gt; ReqBody '[JSON] NewOrder :&gt; PostCreated '[JSON] Order )</code></pre>
 <p>The type reads like the scenario it serves: for a signed-in user and one shop, list their orders, or place one and answer 201 Created with the order. The <code>Auth</code> combinator, from servant-auth, puts the caller in the type, so no handler can forget to ask who is calling. A handler that returns the wrong shape doesn&rsquo;t compile, so a route and its code never drift apart.</p>
+<p>The Haskell in this module compiles under GHC2021, with <code>DataKinds</code> and <code>OverloadedStrings</code> turned on in the cabal file. A module copied into a fresh project needs the same settings, or <code>LANGUAGE</code> pragmas of its own.</p>
 <h2 id="2-handlers-stay-thin"><a class="heading-anchor" href="#2-handlers-stay-thin">2. Handlers stay thin</a></h2>
 <p>A handler parses the request, calls pure functions that decide, and performs the effects the route needs inside one transaction:</p>
 <ol>
@@ -208,7 +209,7 @@ CREATE TABLE order_lines (
 <pre class="code-block" tabindex="0"><code>SET LOCAL nile.tenant_id = '018ade1a-7830-7981-b23f-f3a7f7b8f09f';
 SET LOCAL nile.user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';
 SELECT id, total_cents FROM orders WHERE user_id = '0190a6c4-2f1e-7b3d-9a5c-6e8d4f2b1a07';</code></pre>
-<p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog, stay readable. Nile keeps one shop&rsquo;s orders from another&rsquo;s; inside a shop, each order records the customer who placed it, and <code>selectOrders</code> reads only the signed-in customer&rsquo;s. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one shop into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
+<p>From there the connection sees only that tenant&rsquo;s rows, as if it pointed at the tenant&rsquo;s own database, while shared tables, such as a product catalog every shop sells from, stay readable. Nile keeps one shop&rsquo;s orders from another&rsquo;s; inside a shop, each order records the customer who placed it, and <code>selectOrders</code> reads only the signed-in customer&rsquo;s. <code>SET LOCAL</code> ends with the transaction, so a pooled connection never carries one shop into the next request. Nile speaks the Postgres protocol, so the Haskell side uses an ordinary Postgres library.</p>
 <figure class="diagram">
 <svg role="img" aria-labelledby="tenants-title tenants-desc" viewBox="0 0 360 252">
 <title id="tenants-title">What a tenant's connection sees</title>
@@ -293,7 +294,7 @@ spec = do
 <a href="/community/from-scenario-to-slice/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">From scenario to slice</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>

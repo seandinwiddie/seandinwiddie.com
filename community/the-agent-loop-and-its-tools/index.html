@@ -98,7 +98,7 @@
       <div class="wrap content content-page">
 <aside class="notice archive-context" aria-label="About these lessons">
 <p class="lesson-place" style="--lesson: 3; --lessons: 5">Lesson 3 of 5 in Module 5</p>
-<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
+<p><strong>Agency lessons.</strong> How the Sean Dinwiddie&rsquo;s Webmastery team builds custom software: user stories, behavior-driven development and functional programming, and on to agents and small language models. Every level starts with the <a href="/community/introduction/">Introduction</a>, and the <a href="/community/user-story_bdd_frp-workflow/">course outline</a> maps every module.</p>
 </aside>
 <article>
 
@@ -177,7 +177,7 @@ export interface Model {
   readonly reply: (turn: ModelTurn) =&gt; Promise&lt;ModelReply&gt;
 }</code></pre>
 <p>Three kinds of reply and no more, so the compiler can tell when a <code>switch</code> over them misses one. The interface is a seam: a scripted model fills it in the tests, and Claude fills it in production, through one small adapter at the end of this lesson.</p>
-<p>The imports name their <code>.ts</code> files, so Node.js 22.18 or later on the 22 line, or 24.3 or later, runs them directly, and <code>tsc</code> checks them with the strict settings <code>tsc --init</code> writes, plus <code>allowImportingTsExtensions</code> and <code>noEmit</code>, with <code>"type": "module"</code> in <code>package.json</code> and <code>@types/node</code> installed for the <code>node:</code> imports.</p>
+<p>The imports name their <code>.ts</code> files, so Node.js 22.18 or later on the 22 line, or 24.3 or later, runs them directly, and <code>tsc</code> checks them with the strict settings <code>tsc --init</code> writes, plus <code>allowImportingTsExtensions</code>, <code>noEmit</code> and <code>"types": ["node"]</code> in place of the empty list it writes, with <code>"type": "module"</code> in <code>package.json</code> and <code>@types/node</code> installed for the <code>node:</code> imports.</p>
 <h2 id="tools-are-typed-functions-with-contracts"><a class="heading-anchor" href="#tools-are-typed-functions-with-contracts">Tools are typed functions with contracts</a></h2>
 <p>A tool has three parts. The spec is what the model reads: a name, a description and a JSON Schema for the input. The decoder turns whatever arrived into a typed value or a typed failure, the way <a href="/community/endpoints-at-the-boundary/#3-decode-at-the-boundary">Endpoints at the boundary</a> decodes a response before the app trusts it. Then comes the run itself, which only ever sees a value that decoded.</p>
 <pre class="code-block" tabindex="0"><code>// agent/tool.ts
@@ -379,7 +379,7 @@ const runTool = async (tools: readonly Tool[], call: ToolCall): Promise&lt;Step&
   return { call, result: toResult(call, outcome) }
 }</code></pre>
 <p>The model can ask for several tools in one reply. Lookups that only read are usually safe to run together, so <code>Promise.all</code> runs them at once, and the results go back in one turn, each matched to its call by id. <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use">Parallel tool use</a> asks for one result per call, all in the next user message; this loop also keeps them in the order the model asked, so a test can read them.</p>
-<p>An unknown tool name and a tool that throws both become failures, so a broken tool costs the model a turn, never the run.</p>
+<p>An unknown tool name and a tool that throws both become failures, so a broken tool costs the model a turn, never the run. A request to the model that fails outright, after the SDK&rsquo;s own retries, is the one exit that isn&rsquo;t a <code>Stop</code>: <code>runAgent</code>&rsquo;s promise rejects, and the caller handles it as it would any failed request.</p>
 <h2 id="one-run-call-by-call"><a class="heading-anchor" href="#one-run-call-by-call">One run, call by call</a></h2>
 <p>Here is the customer&rsquo;s question run end to end, with a scripted model in the model&rsquo;s seat. The script asks for three lookups in one turn, then answers; its token counts are made up, like the bakery:</p>
 <pre class="code-block" tabindex="0"><code>// agent/trace.ts
@@ -808,7 +808,7 @@ export const draftPickupAnswer = (client: Anthropic, bakery: Bakery, question: s
 <a href="/community/writing-an-agentic-skill/" rel="next"><span class="page-nav__label">Next lesson:</span> <span class="page-nav__title">Writing an agentic skill</span></a>
 </nav>
 <aside aria-label="Working with the team" class="notice">
-<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work, and every launch is reviewed before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
+<p>For work built this way, <a href="/contact/">call or email</a> Sean Dinwiddie&rsquo;s Webmastery; each job starts with a written scope and fee. For webmasters at any stage of the craft, <a href="/community/staff/">Joining the team</a> sets out the terms: they keep their own practice while the name brings in the work. Sean reviews every launch against its written scope before it goes live, so what one job teaches becomes the team&rsquo;s, and webmasters grow faster than they could alone.</p>
 </aside>
 <!-- #comments -->
       </div>
