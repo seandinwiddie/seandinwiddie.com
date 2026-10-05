@@ -2,6 +2,20 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Decisions Sean left to the loop: October 5, 2026
+
+Sean handed back the list waiting on him: these are the loop's to decide, within his directions and his own pages. The decisions, recorded in `docs/positioning.md`, `docs/terms.md` and `docs/community-plan.md`:
+
+- **The talks' photographs:** the automation talk takes the photo of designers sketching an app's screens around a table, and the protocol talk the hand with a stylus over a tablet, as hero, title slide and archive card; neither repeats a photo on its archive page.
+- **The community's name and readers:** the offer page runs under Sean Dinwiddie's Webmastery, without the "Software Firm/Practice/Consults" byline, and names its administrators as the owners and office staff who run their own site and systems after handover (council 3's recommendation).
+- **The library:** webmasters on the team reach it and its discussions through their work, with no tier; the offer page and Joining the team say so.
+- **The Inner Circle:** its mentorship is fully booked, as Sean's cut-sheet lists it, and its "done for them" stays a worked answer.
+- **How work reaches a webmaster:** the clients they bring in, and inquiries Sean refers by a written rule; the webmaster drafts the scope on the agency's template, Sean confirms the fee, and a webmaster can turn down any job.
+- **The peer review:** paid work, from the agency's 30%, never from the 70% of the webmaster whose launch it is (5% of the job's fee, in `docs/terms.md`).
+- **Module 6:** the rebuilt lessons stand; MCP, A2A and WebMCP stay ecosystem knowledge; this repo's harness is no case study.
+
+`AGENTS.md` now says the coordinator decides what isn't a fact only Sean knows, records it and tells him.
+
 ## Meetup talks after the loops: October 4, 2026
 
 The voice loop reached 9 on both talks in its ninth round (the automation talk had held 9 since round 5; the protocol talk's student, owner, engineer and voice scores all reached 9), and the CTO and webmaster/SWE loop then ran rounds 9 to 12. Two points it left on the protocol talk are settled here.

@@ -12,6 +12,7 @@ Corrections and progress:
 - Klamath Falls meetings are at the KLounge or the owner's shop; Sean no longer goes to Brevada.
 - **Approved September 30, 2026, and moved to `docs/terms.md`:** council 1's decisions 2 (joining free), 6 (the builder keeps Care), 7 (portfolio credit), 8 (the ladder by review), 9 (making things right) and 10 (one review before launch); council 2's decisions 2 (Care optional), 4 (payment), 6 (third-party costs: owners' own accounts, no resale or markup), 10 (AI, in Sean's terms), 11 (names) and 12 (delivery dates). Sean approved the lean on each counsel item as his direction; it is in `docs/terms.md` for counsel to put in legal form.
 - **Council 3, decision 8: the 🧙 stays.** It is the brand's mark and part of Sean's personality.
+- **Decided October 5, 2026, when Sean left these to the loop, and moved to `docs/positioning.md` and `docs/terms.md`:** council 3's community line (the community runs under Sean Dinwiddie's Webmastery, without the byline, and administrators are the owners and office staff who run their own site and systems after handover) and council 1's line 4 in part (a webmaster drafts the scope on the agency's template, Sean confirms the fee, and referrals go by a written rule; owners still speak with Sean). A peer review is paid from the agency's 30%.
 - **Settled facts:** Dank Mono is fine to use. (530) 638-3238 is Sean's number. Sean works from Klamath Falls and hasn't decided on driving to Redding.
 
 ## Council 1: the webmaster deal
