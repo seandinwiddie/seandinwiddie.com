@@ -2,6 +2,19 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Meetup opener: October 20, 2026
+
+Sean asked for a short opener before the two meetup talks: what Forboc AI is and who it's for, a gentle tease for anyone curious about game development, ending on docs.forboc.ai as a cliffhanger, with a link beside the other talks. It is the one page that names the company (`AGENTS.md`, "Private work stays private").
+
+- **Research:** three readers took forboc.ai and every public docs page by section; each fact was re-fetched and checked by a skeptic, and claims were narrowed to what the pages say. Nothing came from the private repositories.
+- **Drafts:** three angles (story first, plain first, question first), judged for the room and the voice, for accuracy and brand safety, and for the tease. All three judges picked story first, and the final grafts in the others' best: five slides, a shopkeeper pieced together from the docs' own examples, a one-turn diagram where the model proposes and the game's rules decide, who it's for by engine, and docs.forboc.ai with a question left open.
+- **Photo:** a painted miniature knight in a lantern-lit courtyard, by Tao Yuan, under the Unsplash License.
+- **Navigation:** each of the three talk pages lists the evening's talks in order, just before its slides.
+
+### Waiting
+
+- The voice reviewer and an accuracy check against the public docs, to 9.
+
 ## Decisions Sean left to the loop: October 5, 2026
 
 Sean handed back the list waiting on him: these are the loop's to decide, within his directions and his own pages. The decisions, recorded in `docs/positioning.md`, `docs/terms.md` and `docs/community-plan.md`:
