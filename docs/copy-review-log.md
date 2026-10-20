@@ -2,6 +2,27 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Meetup opener voice and accuracy round 2: October 20, 2026
+
+The same two reviewers read the opener again from round 1's scores: the voice reviewer for the room, and the accuracy and brand reviewer, who this round also scored the room and the tease, against the public site and docs. One fixer applied their findings sentence by sentence, keeping each slide's idea, order and diagram; the fit check printed "every slide fits", and slides 2 to 5 were checked by screenshot at 1440.
+
+- **Scores (2 reviews, 21 findings):** voice, 8 (student 8.5, owner 8, engineer 8.5, voice 8, tease 7.5; 16 findings, no major); accuracy and brand, 9 (accuracy 9, brand 9, engineer 9, owner 9, student 9, tease 9, voice 9; 5 findings, no major). The tease at 7.5, then the owner and the voice at 8, are where the next round starts.
+- **Objections that matter most:** slide 3 naming "a model" without saying it is a program; slide 4's "in the docs today", which reads as a plugin that exists only on paper; the version note, where "still under one" said more than the docs do, since the March 19 changelog calls the modules "current stable status"; who is invited to early access, which both reviewers raised, where the docs invite studios; slide 5's lead, which read as an order rather than the story; the business idea, left without a concrete hint; the records sentence, which drifted from the source's "storage your studio owns and can read without us"; and the notes' length, at 781 words.
+- **Applied (19 of 21; six in the fixer's own wording):**
+  - **The lede and the line after the deck:** the lede reads "It follows one game shopkeeper, … to show what Forboc AI is and who it's for"; the closing line reads "her note about the old key… all live in Forboc AI's docs" and links the studio's page "for anyone who'd rather not code".
+  - **Title slide and slide 2:** shorter notes ("about five minutes", "who's wondered", "Not this one."); the small print reads "Pieced together from examples in Forboc AI's docs"; the notes close "And no, we didn't make her up… which builders call the docs. All we did was stand its examples behind one counter."
+  - **Slide 3:** "A program called a model writes her words…", and every action "arrives as" a proposal, in Forboc AI's words; the notes put "a small model, right inside the game" in the turn, "checks her memory", "the docs' sample error", and the memories go to "storage the game's makers own and can read without Forboc AI"; the idea that travels gets a hint ("a helper drafts, and your own rules decide") and names no talk.
+  - **Slide 4:** "a plugin, with install steps in the docs" on the slide; in the notes, the add-on for Unreal Engine 5.7 with "The docs show you how to install it", the browser studio that lets you "save it out for the game", "game studios hoping for early access" (so "studio" stays apart from the browser workbench), and the version number "still under one, which in software usually means early days"; the line repeating the title slide's welcome is cut.
+  - **Slide 5:** the lead reads "Tomorrow, you come back and ask again. What might change her answer?", echoing slide 2's "Last time… Today…"; the clue is "she keeps notes on you", which the docs' memory example supports; the small print adds "keep an eye out for runes", which the welcome page carries too; the notes read "We won't spoil it", "a lovely puzzle for later tonight, with a snack close by" and "Not a coder? The studio's page is waiting, too."
+  - **Length:** the notes run 742 words, about five and a half minutes, with no fact dropped.
+- **Held (2):** the company's spelling, as in round 1; and the page's byline, outside the round's scope (below).
+
+### Waiting
+
+- Round 3 of the voice reviewer, to 9, starting from the tease.
+- Outside the round's scope, for the coordinator: the byline still reads "Updated October 4, 2026" though the page was made on October 20 (either the byline's date changes, or the page joins `UPDATED_PAGES` in `scripts/sync-shared-page-components.mjs` so the byline follows `dateModified`); the "evening's talks" list names the two later talks; and the social image's alt text describes the Redux and BDD lessons, not this page.
+- The company's spelling: "ForbocAI", as its docs write it, stays a sweep across the page, `AGENTS.md` and `docs/design.md`, moving slide 3's heading id and anchor together, if it is taken.
+
 ## Meetup opener voice and accuracy round 1: October 20, 2026
 
 Two reviewers read the opener's lede, five slides, speaker notes and closing line: the voice reviewer for the room (a student, an owner and an engineer in the seats, the voice and the tease), and an accuracy and brand reviewer against the public site and docs. One fixer applied their findings sentence by sentence, keeping each slide's idea, order and diagram, and the fit check printed "every slide fits".
