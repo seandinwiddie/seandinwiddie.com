@@ -2,6 +2,15 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Meetup opener after the loop: October 20, 2026
+
+The voice and accuracy loop reached 9 in its fourth round (voice 9: student 9, owner 8.5, engineer 9, voice 9, tease 9; accuracy and brand 9.5), with no major finding. Two points it left are settled here:
+
+- **The company's spelling:** the page, `AGENTS.md`, `docs/design.md` and `docs/community-plan.md` write ForbocAI, as the company's own site and docs do; slide 3's heading id follows.
+- **The byline:** the opener joins the pages whose Updated date renders from their dateModified, so it reads October 20, 2026.
+
+The evening's talks list on the opener's page names the two later talks; that list is the navigation Sean asked for, outside the slides, which leave them unnamed.
+
 ## Meetup opener voice and accuracy round 3: October 20, 2026
 
 The same two reviewers read the opener again from round 2's scores: the voice reviewer for the room, starting from the tease, and the accuracy and brand reviewer against the public site and docs, scoring the room and the tease too. One fixer applied their findings sentence by sentence, keeping each slide's idea, order and diagram; the fit check printed "every slide fits", slides 3 and 4 were checked by screenshot at 1440, and the build passed.

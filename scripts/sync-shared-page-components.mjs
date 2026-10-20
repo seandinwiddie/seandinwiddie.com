@@ -1119,6 +1119,7 @@ const withByline = (name, html) =>
 const UPDATED_PAGES = new Set([
   "community/staff/index.html",
   "community/our-community-unveiling-our-offer-and-prices/index.html",
+  OPENER,
 ]);
 const UPDATED_PATTERN = /(rel="bookmark">)(?:Updated )?<time datetime="[^"]*">[^<]*<\/time>/;
 const MODIFIED_TIME_PATTERN = /\n\s*<meta property="article:modified_time" content="[^"]*">/;
