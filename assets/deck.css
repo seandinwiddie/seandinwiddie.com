@@ -72,6 +72,14 @@
 .deck .slide .slide__sub { font-style: italic; text-wrap: balance; }
 .slide__photo { display: none; background: center / cover no-repeat; }
 .deck .heading-anchor::before { display: none; }
+/* The evening's talks, in order, just before a talk's slides (docs/design.md, Talk decks),
+   set as a lesson's contents list is. */
+.evening-talks { margin: 0 0 2rem; color: var(--muted); font-size: 0.875em; line-height: 1.6; }
+.evening-talks p { margin: 0 0 0.25rem; color: var(--ink); }
+.evening-talks ol { margin: 0; padding-left: 3ch; }
+.evening-talks li { margin: 0; }
+.evening-talks a:not(:hover) { color: inherit; text-decoration: none; }
+.evening-talks a[aria-current="page"] { color: var(--ink); font-weight: 700; }
 /* On a phone a diagram runs to the slide's edges, as a lesson's runs to the screen's. */
 @media (max-width: 30rem) {
   .slide__frame { padding-inline: 1rem; }

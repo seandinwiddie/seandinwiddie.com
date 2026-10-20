@@ -107,11 +107,23 @@ const archiveContext = (name) => {
 
 const ARCHIVE_CONTEXT_PATTERN = /\n<aside class="notice archive-context"[\s\S]*?<\/aside>/;
 
-// Two community pages are not lessons: the team's terms and the membership
-// offer. A lessons banner made live terms read like an old post, so it comes off.
+// The meetup opener (docs/community-plan.md, Meetup talks): a short deck that opens
+// the evening before the two talks, a tease for anyone curious about game
+// development. It is the one page that names the company behind Sean's game work,
+// from its public site and docs only (AGENTS.md, "Private work stays private";
+// Sean, October 20, 2026); its title, and every link to it, leave the name out.
+const OPENER_SLUG = "kfalls-ai-meetup-opener";
+const OPENER = `community/${OPENER_SLUG}/index.html`;
+const OPENER_TITLE = "Meetup opener: AI characters for game worlds";
+const OPENER_TITLE_CASE = "Meetup Opener: AI Characters for Game Worlds";
+
+// Community pages that are not lessons: the team's terms, the membership offer and
+// the meetup opener. A lessons banner made live terms read like an old post, so it
+// comes off.
 const NOT_LESSONS = new Set([
   "community/staff/index.html",
   "community/our-community-unveiling-our-offer-and-prices/index.html",
+  OPENER,
 ]);
 
 // The cut-sheet is Sean's: a concept he builds out himself. The banner and the
@@ -294,6 +306,7 @@ const lessonPlace = (index) => {
 const OFF_THE_PATH = new Set([
   "community/staff/index.html",
   "community/our-community-unveiling-our-offer-and-prices/index.html",
+  OPENER,
   "community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-\u270c\ud83c\udffb/index.html",
 ]);
 
@@ -699,6 +712,7 @@ const COMMUNITY_SITEMAP = "community/sitemap/index.html";
 const SITEMAP_LIST_PATTERN = /<div class="sitemap-list"[^>]*>[\s\S]*?\n<\/div>/;
 const ALSO_IN_THE_COMMUNITY = [
   ["/community/", "Community home"],
+  [`/community/${OPENER_SLUG}/`, OPENER_TITLE],
   ["/community/staff/", "Joining the team"],
   ["/community/our-community-unveiling-our-offer-and-prices/", "Our community: Offer and prices"],
   ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%e2%9c%8c%f0%9f%8f%bb/", "P.S. Did I mention my fondness for coding Redux.js apps? And that I also love Sublime Text! \u270c\ud83c\udffb"],
@@ -932,6 +946,7 @@ const withLessonHeading = (name, html) => {
 const MAIN_SITEMAP = "sitemap/index.html";
 const MAIN_SITEMAP_COMMUNITY_PATTERN = /(<h3>Community<\/h3>\n<ul>\n)[\s\S]*?(\n<\/ul>)/;
 const MAIN_SITEMAP_OFF_PATH = [
+  [`/community/${OPENER_SLUG}/`, OPENER_TITLE_CASE],
   ["/community/staff/", "Joining the Team"],
   ["/community/our-community-unveiling-our-offer-and-prices/", "Our Community: Offer and Prices"],
   ["/community/p-s-did-i-mention-my-fondness-for-coding-redux-js-apps-and-that-i-also-love-sublime-text-%E2%9C%8C%F0%9F%8F%BB/", "P.S. Redux.js and Sublime Text"],
@@ -1184,10 +1199,38 @@ const withGuards = (name, html) => {
   if ((lessonIndex(name) !== -1 || PAGINATED_ARCHIVES.has(name)) && RX_WORDS.test(main.replaceAll(RX_HISTORY, ""))) {
     throw new Error(`${name}: teaches Rx vocabulary in its text, images or alt text`);
   }
-  if (name.startsWith("community/") && namesPrivateWork(html)) {
+  if (name.startsWith("community/") && name !== OPENER && namesPrivateWork(html)) {
     throw new Error(`${name}: names private work (AGENTS.md, "Private work stays private")`);
   }
   return html;
+};
+
+// The meetup's talks in the evening's order (docs/community-plan.md, Meetup talks): the
+// opener, then the two talks. Each one's page lists all three just before its slides,
+// so the presenter steps from one to the next on the night, and a reader finds the
+// others. The opener keeps its own title, which leaves the company's name out.
+const MEETUP_TALKS = [
+  [OPENER_SLUG, OPENER_TITLE],
+  ...["kfalls-ai-meetup-business-automation-with-si", "kfalls-ai-meetup-si-protocol-ecosystem"].map((slug) => {
+    const lesson = LESSONS.find(([lessonSlug]) => lessonSlug === slug);
+    if (!lesson) throw new Error(`the evening's talks: ${slug} is missing from LESSONS`);
+    return [slug, lesson[1]];
+  }),
+];
+const EVENING_TALKS_PATTERN = /<nav class="evening-talks"[\s\S]*?<\/nav>\n/;
+const eveningTalks = (current) => `<nav class="evening-talks" aria-label="The evening&rsquo;s talks">
+<p>The evening&rsquo;s talks</p>
+<ol>
+${MEETUP_TALKS.map(([slug, title]) => `<li><a href="/community/${slug}/"${slug === current ? ' aria-current="page"' : ""}>${title.replace(/^Meetup (?:talk|opener): /, "")}</a></li>`).join("\n")}
+</ol>
+</nav>
+`;
+const withEveningTalks = (name, html) => {
+  const without = html.replace(EVENING_TALKS_PATTERN, "");
+  const talk = MEETUP_TALKS.find(([slug]) => name === `community/${slug}/index.html`);
+  if (!talk) return without;
+  if (!without.includes('\n<div class="deck">')) throw new Error(`${name}: the evening's talks need the page's deck`);
+  return without.replace('\n<div class="deck">', () => `\n${eveningTalks(talk[0])}<div class="deck">`);
 };
 
 const routeTransforms = Object.freeze([
@@ -1215,6 +1258,7 @@ const routeTransforms = Object.freeze([
   withHeadingAnchors,
   withPageContents,
   withDepthPassages,
+  withEveningTalks,
   withByline,
   withUpdatedByline,
   withGuards,
