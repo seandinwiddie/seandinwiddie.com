@@ -2,6 +2,27 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Meetup opener voice and accuracy round 3: October 20, 2026
+
+The same two reviewers read the opener again from round 2's scores: the voice reviewer for the room, starting from the tease, and the accuracy and brand reviewer against the public site and docs, scoring the room and the tease too. One fixer applied their findings sentence by sentence, keeping each slide's idea, order and diagram; the fit check printed "every slide fits", slides 3 and 4 were checked by screenshot at 1440, and the build passed.
+
+- **Scores (2 reviews, 14 findings):** voice, 8.5 (student 9, owner 8.5, engineer 9, voice 8.5, tease 9; 9 findings, no major); accuracy and brand, 9 (accuracy 9, brand 10, engineer 9, owner 9, student 9, tease 9, voice 9; 5 findings, no major). The tease rose from 7.5 to 9; the owner and the voice at 8.5 are where the next round starts.
+- **Objections that matter most:** the records sentence, which both reviewers raised, read awkwardly in the middle and spoke of "her memories" where the source speaks of memory in general; "a small model, right inside the game" said more in our own voice than that sentence could carry; "a voice of their own" suggested spoken audio where the docs describe dialogue text; the diagram's caption leaned on color ("the violet box"); slide 4's notes answered "who's it for?" without naming the people, repeated the bullet's install steps and left "the kit's version number" open to confusion with the Unreal plugin's; and slide 4's sources named the Unity and Godot pages but not Unreal's.
+- **Applied (14 of 14; two in the fixer's own wording):**
+  - **The lede and the line after the deck:** the lede reads "We follow one shopkeeper in a game, pieced together from examples in Forboc AI's docs, to see what Forboc AI is and who it's for"; the closing line reads "the note about the old key", and its second sentence splits in two: "…asks you to pick your engine. If you'd rather not code, the studio's page is waiting."
+  - **Slide 2:** the notes read "Forboc AI's online guide".
+  - **Slide 3:** "a memory and words of their own"; "A program called a model writes what she says and suggests what she does. Forboc AI calls each action 'a proposal your game is free to refuse.'", the quote still matching the homepage; the caption reads "One turn, top to bottom. The game's rules have the last say.", with no color in it. In the fixer's own wording, the turn reads "Next, a small model writes what she might say and do", with "right inside the game" dropped there rather than hedged, since the mind-and-body paragraph carries it as a picture the docs use; and the records sentence reads "Forboc AI's site says memory goes to storage the game's makers own, and they can read it without Forboc AI", one attributed sentence matching the homepage's Vision section.
+  - **Slide 4:** the notes answer "So who's it for? People who make games."; "The docs show you how to install it." is cut as a repeat of the bullet; the version note names "the web kit's version number"; the sources line adds the Unreal page ("the Unreal, Unity and Godot pages") and still sits on one line.
+  - **Length:** the notes run 737 words (103, 120, 209, 160 and 145 by slide).
+- **Not taken (1):** the voice reviewer's optional cut of slide 5's "Not a coder? The studio's page is waiting, too.", offered only if time ran short: at the cliffhanger it is the non-coder's one next step, and the notes already run under the reviewer's planned total.
+
+### Waiting
+
+- Time: at 737 words the notes run about 5.3 minutes at 140 words a minute and 5.9 at 125, before pauses, close to the six-minute limit. Getting clearly under it means about 50 more words cut, past sentence-level fixes; slide 3's notes, at 209, are the longest.
+- Round 4 of the voice reviewer, to 9, starting from the owner and the voice.
+- Outside the round's scope, for the coordinator, as after round 2: the byline still reads "Updated October 4, 2026"; the "evening's talks" list names the two later talks; and the social image's alt text describes the Redux and BDD lessons, not this page.
+- The company's spelling: "ForbocAI", as its docs write it, stays a sweep across the page, `AGENTS.md` and `docs/design.md`, if it is taken.
+
 ## Meetup opener voice and accuracy round 2: October 20, 2026
 
 The same two reviewers read the opener again from round 1's scores: the voice reviewer for the room, and the accuracy and brand reviewer, who this round also scored the room and the tease, against the public site and docs. One fixer applied their findings sentence by sentence, keeping each slide's idea, order and diagram; the fit check printed "every slide fits", and slides 2 to 5 were checked by screenshot at 1440.
