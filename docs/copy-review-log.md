@@ -2,6 +2,26 @@
 
 Each pass of the copy review (`docs/copy-review.md`), newest first. The next pass's reviewers read the previous pass's scores and objections here.
 
+## Meetup opener voice and accuracy round 1: October 20, 2026
+
+Two reviewers read the opener's lede, five slides, speaker notes and closing line: the voice reviewer for the room (a student, an owner and an engineer in the seats, the voice and the tease), and an accuracy and brand reviewer against the public site and docs. One fixer applied their findings sentence by sentence, keeping each slide's idea, order and diagram, and the fit check printed "every slide fits".
+
+- **Scores (2 reviews, 21 findings):** voice, 7.5 (student 8, owner 7, engineer 8, voice 8, tease 7; 14 findings, 1 major); accuracy and brand, 9 (accuracy 9, brand 9; 7 findings, no major). The lowest, the owner and the tease at 7, are where the next round starts.
+- **Objections that matter most:** the one major, slide 4's notes leaning on "game engine" before saying what one is, ahead of "a plugin for Unreal Engine 5.7"; "NPC" named before its plain meaning; slide 3's mind-and-body picture, which both reviewers raised, saying the kit "writes the words" where the docs' concepts page has it run the model and keep memories, with "studio" standing for both the game's makers and the browser workbench; "an engine of your own" reaching past the docs' "custom runtime integration"; the version note, which both reviewers raised; and slide 5's yes-or-no closing question, where an open one carries the tease.
+- **Applied (20 of 21; four in other words where two findings met or the proposed wording read oddly):**
+  - **The lede and the line after the deck:** the lede opens "Through one game shopkeeper…" and ends "It runs about five minutes"; the closing line reads "the sample error about the legendary sword" and "The docs open on a welcome page…".
+  - **Title slide and slide 2:** "feel alive, too?"; her plain meaning comes before "NPC", short for non-player character; three differences become "a little different", with the stock limit admitted as any good shopkeeper's ("Like any good shopkeeper, she can't sell you what she hasn't got"), keeping the slide's order; the docs are "the guide Forboc AI publishes online".
+  - **Slide 3:** the slide reads "A model writes her words and suggests what she does"; the notes' mind and body follow the docs (the service directs each step and checks the result; the kit inside the game runs the model and keeps her memories), and the game's "makers" own the storage, so "studio" means one thing; the sample is "the docs' own sample error message"; the closing idea "travels well beyond games"; the source line reads "forboc.ai".
+  - **Slide 4:** the notes say what a game engine is (ready-made software that runs the game's world; Unreal, Unity and Godot as three a listener may have heard of) before the plugin, "an add-on for version 5.7"; "a setup of your own" on the slide and in the notes; "game makers who'd like early access"; the kit's version number is "still under one", as of the docs.
+  - **Slide 5:** the question reads "What might change her answer?" on the slide and in the notes, and the notes add the studio's docs page for those who'd rather not code; the runes read "what they might spell".
+- **Held (1):** spelling the company "ForbocAI", as its docs do: `AGENTS.md` and `docs/design.md` write "Forboc AI", and switching the page alone would change slide 3's heading id. If the company's spelling is taken, one sweep covers the page and both docs.
+
+### Waiting
+
+- Round 2 of both reviewers, to 9, starting from the owner and the tease.
+- Outside the round's scope, for the coordinator: the page's "evening's talks" list names the two later talks, which the opener otherwise leaves unnamed; the page reads "Updated October 4, 2026", though it was made on October 20; and its social image's alt text describes the Redux and BDD lessons, not this page.
+- The company's spelling, above.
+
 ## Meetup opener: October 20, 2026
 
 Sean asked for a short opener before the two meetup talks: what Forboc AI is and who it's for, a gentle tease for anyone curious about game development, ending on docs.forboc.ai as a cliffhanger, with a link beside the other talks. It is the one page that names the company (`AGENTS.md`, "Private work stays private").
